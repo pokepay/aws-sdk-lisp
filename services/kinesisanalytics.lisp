@@ -2321,8 +2321,10 @@
                                 `(("Action"
                                    ,@"AddApplicationCloudWatchLoggingOption")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddApplicationCloudWatchLoggingOptionResponse" common-lisp:nil)))
  (common-lisp:export 'add-application-cloud-watch-logging-option))
 (common-lisp:progn
@@ -2343,8 +2345,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddApplicationInput")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddApplicationInputResponse" common-lisp:nil)))
  (common-lisp:export 'add-application-input))
 (common-lisp:progn
@@ -2365,8 +2369,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddApplicationOutput")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddApplicationOutputResponse" common-lisp:nil)))
  (common-lisp:export 'add-application-output))
 (common-lisp:progn
@@ -2389,8 +2395,10 @@
                                 `(("Action"
                                    ,@"AddApplicationReferenceDataSource")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddApplicationReferenceDataSourceResponse" common-lisp:nil)))
  (common-lisp:export 'add-application-reference-data-source))
 (common-lisp:progn
@@ -2412,8 +2420,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateApplication")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateApplicationResponse" common-lisp:nil)))
  (common-lisp:export 'create-application))
 (common-lisp:progn
@@ -2432,8 +2442,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApplication")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteApplicationResponse" common-lisp:nil)))
  (common-lisp:export 'delete-application))
 (common-lisp:progn
@@ -2457,8 +2469,10 @@
                                 `(("Action"
                                    ,@"DeleteApplicationCloudWatchLoggingOption")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteApplicationCloudWatchLoggingOptionResponse" common-lisp:nil)))
  (common-lisp:export 'delete-application-cloud-watch-logging-option))
 (common-lisp:progn
@@ -2480,8 +2494,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApplicationOutput")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteApplicationOutputResponse" common-lisp:nil)))
  (common-lisp:export 'delete-application-output))
 (common-lisp:progn
@@ -2504,8 +2520,10 @@
                                 `(("Action"
                                    ,@"DeleteApplicationReferenceDataSource")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteApplicationReferenceDataSourceResponse" common-lisp:nil)))
  (common-lisp:export 'delete-application-reference-data-source))
 (common-lisp:progn
@@ -2523,8 +2541,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeApplication")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeApplicationResponse" common-lisp:nil)))
  (common-lisp:export 'describe-application))
 (common-lisp:progn
@@ -2545,8 +2565,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DiscoverInputSchema")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DiscoverInputSchemaResponse" common-lisp:nil)))
  (common-lisp:export 'discover-input-schema))
 (common-lisp:progn
@@ -2565,8 +2587,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListApplications")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListApplicationsResponse" common-lisp:nil)))
  (common-lisp:export 'list-applications))
 (common-lisp:progn
@@ -2585,8 +2609,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StartApplication")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StartApplicationResponse" common-lisp:nil)))
  (common-lisp:export 'start-application))
 (common-lisp:progn
@@ -2604,8 +2630,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StopApplication")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StopApplicationResponse" common-lisp:nil)))
  (common-lisp:export 'stop-application))
 (common-lisp:progn
@@ -2626,7 +2654,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApplication")
                                   ("Version" ,@"2015-08-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateApplicationResponse" common-lisp:nil)))
  (common-lisp:export 'update-application))

@@ -1443,8 +1443,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"ActivatePipeline")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ActivatePipelineOutput" common-lisp:nil)))
  (common-lisp:export 'activate-pipeline))
 (common-lisp:progn
@@ -1461,8 +1463,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"AddTags")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddTagsOutput" common-lisp:nil)))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
@@ -1480,8 +1484,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"CreatePipeline")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreatePipelineOutput" common-lisp:nil)))
  (common-lisp:export 'create-pipeline))
 (common-lisp:progn
@@ -1498,8 +1504,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"DeactivatePipeline")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeactivatePipelineOutput" common-lisp:nil)))
  (common-lisp:export 'deactivate-pipeline))
 (common-lisp:progn
@@ -1516,8 +1524,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"DeletePipeline")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-pipeline))
 (common-lisp:progn
@@ -1536,8 +1546,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"DescribeObjects")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeObjectsOutput" common-lisp:nil)))
  (common-lisp:export 'describe-objects))
 (common-lisp:progn
@@ -1554,8 +1566,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"DescribePipelines")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribePipelinesOutput" common-lisp:nil)))
  (common-lisp:export 'describe-pipelines))
 (common-lisp:progn
@@ -1573,8 +1587,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"EvaluateExpression")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EvaluateExpressionOutput" common-lisp:nil)))
  (common-lisp:export 'evaluate-expression))
 (common-lisp:progn
@@ -1591,8 +1607,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"GetPipelineDefinition")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetPipelineDefinitionOutput" common-lisp:nil)))
  (common-lisp:export 'get-pipeline-definition))
 (common-lisp:progn
@@ -1609,8 +1627,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"ListPipelines")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListPipelinesOutput" common-lisp:nil)))
  (common-lisp:export 'list-pipelines))
 (common-lisp:progn
@@ -1628,8 +1648,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"PollForTask")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PollForTaskOutput" common-lisp:nil)))
  (common-lisp:export 'poll-for-task))
 (common-lisp:progn
@@ -1649,8 +1671,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"PutPipelineDefinition")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutPipelineDefinitionOutput" common-lisp:nil)))
  (common-lisp:export 'put-pipeline-definition))
 (common-lisp:progn
@@ -1668,8 +1692,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"QueryObjects")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "QueryObjectsOutput" common-lisp:nil)))
  (common-lisp:export 'query-objects))
 (common-lisp:progn
@@ -1686,8 +1712,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTags")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RemoveTagsOutput" common-lisp:nil)))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
@@ -1704,8 +1732,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"ReportTaskProgress")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ReportTaskProgressOutput" common-lisp:nil)))
  (common-lisp:export 'report-task-progress))
 (common-lisp:progn
@@ -1724,8 +1754,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"ReportTaskRunnerHeartbeat")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ReportTaskRunnerHeartbeatOutput" common-lisp:nil)))
  (common-lisp:export 'report-task-runner-heartbeat))
 (common-lisp:progn
@@ -1742,8 +1774,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"SetStatus")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-status))
 (common-lisp:progn
@@ -1763,8 +1797,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"SetTaskStatus")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetTaskStatusOutput" common-lisp:nil)))
  (common-lisp:export 'set-task-status))
 (common-lisp:progn
@@ -1785,7 +1821,9 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"ValidatePipelineDefinition")
                                   ("Version" ,@"2012-10-29"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ValidatePipelineDefinitionOutput" common-lisp:nil)))
  (common-lisp:export 'validate-pipeline-definition))

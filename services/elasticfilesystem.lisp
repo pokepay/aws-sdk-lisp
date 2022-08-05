@@ -1101,8 +1101,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateFileSystem")
                                   ("Version" ,@"2015-02-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "FileSystemDescription" common-lisp:nil)))
  (common-lisp:export 'create-file-system))
 (common-lisp:progn
@@ -1123,8 +1125,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateMountTarget")
                                   ("Version" ,@"2015-02-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "MountTargetDescription" common-lisp:nil)))
  (common-lisp:export 'create-mount-target))
 (common-lisp:progn
@@ -1142,8 +1146,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateTags")
                                   ("Version" ,@"2015-02-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
@@ -1161,8 +1167,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFileSystem")
                                   ("Version" ,@"2015-02-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-file-system))
 (common-lisp:progn
@@ -1180,8 +1188,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteMountTarget")
                                   ("Version" ,@"2015-02-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-mount-target))
 (common-lisp:progn
@@ -1199,8 +1209,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTags")
                                   ("Version" ,@"2015-02-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
@@ -1220,8 +1232,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeFileSystems")
                                   ("Version" ,@"2015-02-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeFileSystemsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-file-systems))
 (common-lisp:progn
@@ -1241,8 +1255,10 @@
                                 `(("Action"
                                    ,@"DescribeMountTargetSecurityGroups")
                                   ("Version" ,@"2015-02-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeMountTargetSecurityGroupsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-mount-target-security-groups))
 (common-lisp:progn
@@ -1262,8 +1278,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeMountTargets")
                                   ("Version" ,@"2015-02-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeMountTargetsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-mount-targets))
 (common-lisp:progn
@@ -1282,8 +1300,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTags")
                                   ("Version" ,@"2015-02-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeTagsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
@@ -1304,7 +1324,9 @@
                                 `(("Action"
                                    ,@"ModifyMountTargetSecurityGroups")
                                   ("Version" ,@"2015-02-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'modify-mount-target-security-groups))

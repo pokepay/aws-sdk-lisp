@@ -3090,8 +3090,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddAttributesToFindings")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddAttributesToFindingsResponse" common-lisp:nil)))
  (common-lisp:export 'add-attributes-to-findings))
 (common-lisp:progn
@@ -3110,8 +3112,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateAssessmentTarget")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateAssessmentTargetResponse" common-lisp:nil)))
  (common-lisp:export 'create-assessment-target))
 (common-lisp:progn
@@ -3133,8 +3137,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateAssessmentTemplate")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateAssessmentTemplateResponse" common-lisp:nil)))
  (common-lisp:export 'create-assessment-template))
 (common-lisp:progn
@@ -3151,8 +3157,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateResourceGroup")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateResourceGroupResponse" common-lisp:nil)))
  (common-lisp:export 'create-resource-group))
 (common-lisp:progn
@@ -3169,8 +3177,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAssessmentRun")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-assessment-run))
 (common-lisp:progn
@@ -3187,8 +3197,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAssessmentTarget")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-assessment-target))
 (common-lisp:progn
@@ -3206,8 +3218,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAssessmentTemplate")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-assessment-template))
 (common-lisp:progn
@@ -3224,8 +3238,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAssessmentRuns")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeAssessmentRunsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-assessment-runs))
 (common-lisp:progn
@@ -3243,8 +3259,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAssessmentTargets")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeAssessmentTargetsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-assessment-targets))
 (common-lisp:progn
@@ -3262,8 +3280,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAssessmentTemplates")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeAssessmentTemplatesResponse" common-lisp:nil)))
  (common-lisp:export 'describe-assessment-templates))
 (common-lisp:progn
@@ -3289,8 +3309,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeFindings")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeFindingsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-findings))
 (common-lisp:progn
@@ -3307,8 +3329,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeResourceGroups")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeResourceGroupsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-resource-groups))
 (common-lisp:progn
@@ -3325,8 +3349,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRulesPackages")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeRulesPackagesResponse" common-lisp:nil)))
  (common-lisp:export 'describe-rules-packages))
 (common-lisp:progn
@@ -3345,8 +3371,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetAssessmentReport")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetAssessmentReportResponse" common-lisp:nil)))
  (common-lisp:export 'get-assessment-report))
 (common-lisp:progn
@@ -3363,8 +3391,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetTelemetryMetadata")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetTelemetryMetadataResponse" common-lisp:nil)))
  (common-lisp:export 'get-telemetry-metadata))
 (common-lisp:progn
@@ -3384,8 +3414,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListAssessmentRunAgents")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListAssessmentRunAgentsResponse" common-lisp:nil)))
  (common-lisp:export 'list-assessment-run-agents))
 (common-lisp:progn
@@ -3405,8 +3437,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListAssessmentRuns")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListAssessmentRunsResponse" common-lisp:nil)))
  (common-lisp:export 'list-assessment-runs))
 (common-lisp:progn
@@ -3423,8 +3457,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListAssessmentTargets")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListAssessmentTargetsResponse" common-lisp:nil)))
  (common-lisp:export 'list-assessment-targets))
 (common-lisp:progn
@@ -3445,8 +3481,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListAssessmentTemplates")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListAssessmentTemplatesResponse" common-lisp:nil)))
  (common-lisp:export 'list-assessment-templates))
 (common-lisp:progn
@@ -3464,8 +3502,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListEventSubscriptions")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListEventSubscriptionsResponse" common-lisp:nil)))
  (common-lisp:export 'list-event-subscriptions))
 (common-lisp:progn
@@ -3484,8 +3524,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListFindings")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListFindingsResponse" common-lisp:nil)))
  (common-lisp:export 'list-findings))
 (common-lisp:progn
@@ -3502,8 +3544,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListRulesPackages")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListRulesPackagesResponse" common-lisp:nil)))
  (common-lisp:export 'list-rules-packages))
 (common-lisp:progn
@@ -3520,8 +3564,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTagsForResourceResponse" common-lisp:nil)))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
@@ -3540,8 +3586,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PreviewAgents")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PreviewAgentsResponse" common-lisp:nil)))
  (common-lisp:export 'preview-agents))
 (common-lisp:progn
@@ -3559,8 +3607,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RegisterCrossAccountAccessRole")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'register-cross-account-access-role))
 (common-lisp:progn
@@ -3578,8 +3628,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemoveAttributesFromFindings")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RemoveAttributesFromFindingsResponse" common-lisp:nil)))
  (common-lisp:export 'remove-attributes-from-findings))
 (common-lisp:progn
@@ -3596,8 +3648,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetTagsForResource")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-tags-for-resource))
 (common-lisp:progn
@@ -3616,8 +3670,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StartAssessmentRun")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StartAssessmentRunResponse" common-lisp:nil)))
  (common-lisp:export 'start-assessment-run))
 (common-lisp:progn
@@ -3634,8 +3690,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StopAssessmentRun")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'stop-assessment-run))
 (common-lisp:progn
@@ -3652,8 +3710,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SubscribeToEvent")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'subscribe-to-event))
 (common-lisp:progn
@@ -3670,8 +3730,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UnsubscribeFromEvent")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'unsubscribe-from-event))
 (common-lisp:progn
@@ -3691,7 +3753,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAssessmentTarget")
                                   ("Version" ,@"2016-02-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-assessment-target))

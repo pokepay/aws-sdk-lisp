@@ -4731,8 +4731,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AbortEnvironmentUpdate")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'abort-environment-update))
 (common-lisp:progn
@@ -4753,8 +4755,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ApplyEnvironmentManagedAction")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ApplyEnvironmentManagedActionResult"
       "ApplyEnvironmentManagedActionResult")))
  (common-lisp:export 'apply-environment-managed-action))
@@ -4773,8 +4777,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CheckDNSAvailability")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CheckDNSAvailabilityResultMessage" "CheckDNSAvailabilityResult")))
  (common-lisp:export 'check-dnsavailability))
 (common-lisp:progn
@@ -4794,8 +4800,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ComposeEnvironments")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EnvironmentDescriptionsMessage" "ComposeEnvironmentsResult")))
  (common-lisp:export 'compose-environments))
 (common-lisp:progn
@@ -4816,8 +4824,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateApplication")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ApplicationDescriptionMessage" "CreateApplicationResult")))
  (common-lisp:export 'create-application))
 (common-lisp:progn
@@ -4841,8 +4851,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateApplicationVersion")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ApplicationVersionDescriptionMessage"
       "CreateApplicationVersionResult")))
  (common-lisp:export 'create-application-version))
@@ -4867,8 +4879,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateConfigurationTemplate")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ConfigurationSettingsDescription" "CreateConfigurationTemplateResult")))
  (common-lisp:export 'create-configuration-template))
 (common-lisp:progn
@@ -4892,8 +4906,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateEnvironment")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EnvironmentDescription" "CreateEnvironmentResult")))
  (common-lisp:export 'create-environment))
 (common-lisp:progn
@@ -4915,8 +4931,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreatePlatformVersion")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreatePlatformVersionResult" "CreatePlatformVersionResult")))
  (common-lisp:export 'create-platform-version))
 (common-lisp:progn
@@ -4944,8 +4962,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApplication")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-application))
 (common-lisp:progn
@@ -4967,8 +4987,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApplicationVersion")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-application-version))
 (common-lisp:progn
@@ -4987,8 +5009,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConfigurationTemplate")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-configuration-template))
 (common-lisp:progn
@@ -5008,8 +5032,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEnvironmentConfiguration")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-environment-configuration))
 (common-lisp:progn
@@ -5027,8 +5053,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeletePlatformVersion")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeletePlatformVersionResult" "DeletePlatformVersionResult")))
  (common-lisp:export 'delete-platform-version))
 (common-lisp:progn
@@ -5050,8 +5078,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeApplicationVersions")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ApplicationVersionDescriptionsMessage"
       "DescribeApplicationVersionsResult")))
  (common-lisp:export 'describe-application-versions))
@@ -5070,8 +5100,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeApplications")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ApplicationDescriptionsMessage" "DescribeApplicationsResult")))
  (common-lisp:export 'describe-applications))
 (common-lisp:progn
@@ -5093,8 +5125,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConfigurationOptions")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ConfigurationOptionsDescription" "DescribeConfigurationOptionsResult")))
  (common-lisp:export 'describe-configuration-options))
 (common-lisp:progn
@@ -5115,8 +5149,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConfigurationSettings")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ConfigurationSettingsDescriptions"
       "DescribeConfigurationSettingsResult")))
  (common-lisp:export 'describe-configuration-settings))
@@ -5138,8 +5174,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEnvironmentHealth")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeEnvironmentHealthResult" "DescribeEnvironmentHealthResult")))
  (common-lisp:export 'describe-environment-health))
 (common-lisp:progn
@@ -5162,8 +5200,10 @@
                                 `(("Action"
                                    ,@"DescribeEnvironmentManagedActionHistory")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeEnvironmentManagedActionHistoryResult"
       "DescribeEnvironmentManagedActionHistoryResult")))
  (common-lisp:export 'describe-environment-managed-action-history))
@@ -5185,8 +5225,10 @@
                                 `(("Action"
                                    ,@"DescribeEnvironmentManagedActions")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeEnvironmentManagedActionsResult"
       "DescribeEnvironmentManagedActionsResult")))
  (common-lisp:export 'describe-environment-managed-actions))
@@ -5207,8 +5249,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEnvironmentResources")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EnvironmentResourceDescriptionsMessage"
       "DescribeEnvironmentResourcesResult")))
  (common-lisp:export 'describe-environment-resources))
@@ -5232,8 +5276,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEnvironments")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EnvironmentDescriptionsMessage" "DescribeEnvironmentsResult")))
  (common-lisp:export 'describe-environments))
 (common-lisp:progn
@@ -5257,8 +5303,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEvents")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EventDescriptionsMessage" "DescribeEventsResult")))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
@@ -5280,8 +5328,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeInstancesHealth")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeInstancesHealthResult" "DescribeInstancesHealthResult")))
  (common-lisp:export 'describe-instances-health))
 (common-lisp:progn
@@ -5300,8 +5350,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribePlatformVersion")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribePlatformVersionResult" "DescribePlatformVersionResult")))
  (common-lisp:export 'describe-platform-version))
 (common-lisp:progn
@@ -5329,8 +5381,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListPlatformVersions")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListPlatformVersionsResult" "ListPlatformVersionsResult")))
  (common-lisp:export 'list-platform-versions))
 (common-lisp:progn
@@ -5349,8 +5403,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RebuildEnvironment")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'rebuild-environment))
 (common-lisp:progn
@@ -5370,8 +5426,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RequestEnvironmentInfo")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'request-environment-info))
 (common-lisp:progn
@@ -5390,8 +5448,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RestartAppServer")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'restart-app-server))
 (common-lisp:progn
@@ -5412,8 +5472,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RetrieveEnvironmentInfo")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RetrieveEnvironmentInfoResultMessage" "RetrieveEnvironmentInfoResult")))
  (common-lisp:export 'retrieve-environment-info))
 (common-lisp:progn
@@ -5435,8 +5497,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SwapEnvironmentCNAMEs")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'swap-environment-cnames))
 (common-lisp:progn
@@ -5457,8 +5521,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"TerminateEnvironment")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EnvironmentDescription" "TerminateEnvironmentResult")))
  (common-lisp:export 'terminate-environment))
 (common-lisp:progn
@@ -5476,8 +5542,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApplication")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ApplicationDescriptionMessage" "UpdateApplicationResult")))
  (common-lisp:export 'update-application))
 (common-lisp:progn
@@ -5499,8 +5567,10 @@
                                 `(("Action"
                                    ,@"UpdateApplicationResourceLifecycle")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ApplicationResourceLifecycleDescriptionMessage"
       "UpdateApplicationResourceLifecycleResult")))
  (common-lisp:export 'update-application-resource-lifecycle))
@@ -5522,8 +5592,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApplicationVersion")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ApplicationVersionDescriptionMessage"
       "UpdateApplicationVersionResult")))
  (common-lisp:export 'update-application-version))
@@ -5546,8 +5618,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateConfigurationTemplate")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ConfigurationSettingsDescription" "UpdateConfigurationTemplateResult")))
  (common-lisp:export 'update-configuration-template))
 (common-lisp:progn
@@ -5571,8 +5645,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateEnvironment")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EnvironmentDescription" "UpdateEnvironmentResult")))
  (common-lisp:export 'update-environment))
 (common-lisp:progn
@@ -5594,8 +5670,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ValidateConfigurationSettings")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ConfigurationSettingsValidationMessages"
       "ValidateConfigurationSettingsResult")))
  (common-lisp:export 'validate-configuration-settings))

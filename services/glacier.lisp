@@ -2300,8 +2300,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"AbortMultipartUpload")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'abort-multipart-upload))
 (common-lisp:progn
@@ -2318,8 +2320,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"AbortVaultLock")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'abort-vault-lock))
 (common-lisp:progn
@@ -2336,8 +2340,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToVault")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'add-tags-to-vault))
 (common-lisp:progn
@@ -2357,8 +2363,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"CompleteMultipartUpload")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ArchiveCreationOutput" common-lisp:nil)))
  (common-lisp:export 'complete-multipart-upload))
 (common-lisp:progn
@@ -2375,8 +2383,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"CompleteVaultLock")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'complete-vault-lock))
 (common-lisp:progn
@@ -2393,8 +2403,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"CreateVault")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateVaultOutput" common-lisp:nil)))
  (common-lisp:export 'create-vault))
 (common-lisp:progn
@@ -2412,8 +2424,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"DeleteArchive")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-archive))
 (common-lisp:progn
@@ -2430,8 +2444,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"DeleteVault")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-vault))
 (common-lisp:progn
@@ -2448,8 +2464,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"DeleteVaultAccessPolicy")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-vault-access-policy))
 (common-lisp:progn
@@ -2466,8 +2484,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"DeleteVaultNotifications")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-vault-notifications))
 (common-lisp:progn
@@ -2484,8 +2504,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"DescribeJob")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GlacierJobDescription" common-lisp:nil)))
  (common-lisp:export 'describe-job))
 (common-lisp:progn
@@ -2502,8 +2524,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"DescribeVault")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeVaultOutput" common-lisp:nil)))
  (common-lisp:export 'describe-vault))
 (common-lisp:progn
@@ -2520,8 +2544,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"GetDataRetrievalPolicy")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetDataRetrievalPolicyOutput" common-lisp:nil)))
  (common-lisp:export 'get-data-retrieval-policy))
 (common-lisp:progn
@@ -2539,8 +2565,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"GetJobOutput")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetJobOutputOutput" common-lisp:nil)))
  (common-lisp:export 'get-job-output))
 (common-lisp:progn
@@ -2557,8 +2585,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"GetVaultAccessPolicy")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetVaultAccessPolicyOutput" common-lisp:nil)))
  (common-lisp:export 'get-vault-access-policy))
 (common-lisp:progn
@@ -2575,8 +2605,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"GetVaultLock")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetVaultLockOutput" common-lisp:nil)))
  (common-lisp:export 'get-vault-lock))
 (common-lisp:progn
@@ -2593,8 +2625,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"GetVaultNotifications")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetVaultNotificationsOutput" common-lisp:nil)))
  (common-lisp:export 'get-vault-notifications))
 (common-lisp:progn
@@ -2612,8 +2646,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"InitiateJob")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "InitiateJobOutput" common-lisp:nil)))
  (common-lisp:export 'initiate-job))
 (common-lisp:progn
@@ -2633,8 +2669,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"InitiateMultipartUpload")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "InitiateMultipartUploadOutput" common-lisp:nil)))
  (common-lisp:export 'initiate-multipart-upload))
 (common-lisp:progn
@@ -2651,8 +2689,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"InitiateVaultLock")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "InitiateVaultLockOutput" common-lisp:nil)))
  (common-lisp:export 'initiate-vault-lock))
 (common-lisp:progn
@@ -2672,8 +2712,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"ListJobs")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListJobsOutput" common-lisp:nil)))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
@@ -2691,8 +2733,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"ListMultipartUploads")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListMultipartUploadsOutput" common-lisp:nil)))
  (common-lisp:export 'list-multipart-uploads))
 (common-lisp:progn
@@ -2711,8 +2755,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"ListParts")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListPartsOutput" common-lisp:nil)))
  (common-lisp:export 'list-parts))
 (common-lisp:progn
@@ -2729,8 +2775,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"ListProvisionedCapacity")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListProvisionedCapacityOutput" common-lisp:nil)))
  (common-lisp:export 'list-provisioned-capacity))
 (common-lisp:progn
@@ -2747,8 +2795,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForVault")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTagsForVaultOutput" common-lisp:nil)))
  (common-lisp:export 'list-tags-for-vault))
 (common-lisp:progn
@@ -2765,8 +2815,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"ListVaults")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListVaultsOutput" common-lisp:nil)))
  (common-lisp:export 'list-vaults))
 (common-lisp:progn
@@ -2784,8 +2836,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"PurchaseProvisionedCapacity")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PurchaseProvisionedCapacityOutput" common-lisp:nil)))
  (common-lisp:export 'purchase-provisioned-capacity))
 (common-lisp:progn
@@ -2802,8 +2856,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromVault")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'remove-tags-from-vault))
 (common-lisp:progn
@@ -2820,8 +2876,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"SetDataRetrievalPolicy")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-data-retrieval-policy))
 (common-lisp:progn
@@ -2838,8 +2896,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"SetVaultAccessPolicy")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-vault-access-policy))
 (common-lisp:progn
@@ -2858,8 +2918,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"SetVaultNotifications")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-vault-notifications))
 (common-lisp:progn
@@ -2879,8 +2941,10 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"UploadArchive")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ArchiveCreationOutput" common-lisp:nil)))
  (common-lisp:export 'upload-archive))
 (common-lisp:progn
@@ -2900,7 +2964,9 @@ common-lisp:nil
                                (common-lisp:append
                                 `(("Action" ,@"UploadMultipartPart")
                                   ("Version" ,@"2012-06-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UploadMultipartPartOutput" common-lisp:nil)))
  (common-lisp:export 'upload-multipart-part))

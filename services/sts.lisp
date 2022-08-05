@@ -763,8 +763,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AssumeRole")
                                   ("Version" ,@"2011-06-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AssumeRoleResponse" "AssumeRoleResult")))
  (common-lisp:export 'assume-role))
 (common-lisp:progn
@@ -784,8 +786,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AssumeRoleWithSAML")
                                   ("Version" ,@"2011-06-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AssumeRoleWithSAMLResponse" "AssumeRoleWithSAMLResult")))
  (common-lisp:export 'assume-role-with-saml))
 (common-lisp:progn
@@ -806,8 +810,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AssumeRoleWithWebIdentity")
                                   ("Version" ,@"2011-06-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AssumeRoleWithWebIdentityResponse" "AssumeRoleWithWebIdentityResult")))
  (common-lisp:export 'assume-role-with-web-identity))
 (common-lisp:progn
@@ -825,8 +831,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DecodeAuthorizationMessage")
                                   ("Version" ,@"2011-06-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DecodeAuthorizationMessageResponse"
       "DecodeAuthorizationMessageResult")))
  (common-lisp:export 'decode-authorization-message))
@@ -852,8 +860,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetFederationToken")
                                   ("Version" ,@"2011-06-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetFederationTokenResponse" "GetFederationTokenResult")))
  (common-lisp:export 'get-federation-token))
 (common-lisp:progn
@@ -872,7 +882,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetSessionToken")
                                   ("Version" ,@"2011-06-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetSessionTokenResponse" "GetSessionTokenResult")))
  (common-lisp:export 'get-session-token))

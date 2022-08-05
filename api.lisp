@@ -15,6 +15,8 @@
            #:aws-request))
 (in-package #:aws-sdk/api)
 
+(defvar *protocol* :query)
+
 (defun aws-host (service region)
   (format nil "~(~A~).~(~A~).amazonaws.com" service region))
 

@@ -4,7 +4,8 @@
   (:import-from #:aws-sdk/generator/shape
                 #:shape-to-params)
   (:import-from #:aws-sdk/api
-                #:aws-request)
+                #:aws-request
+                #:*protocol*)
   (:import-from #:assoc-utils
                 #:aget)
   (:import-from #:xmls)
@@ -44,7 +45,8 @@
                   (aws-request :service ,service
                                :method ,(intern (gethash "method" (gethash "http" options)) :keyword)
                                :params (append `(("Action" . ,,name) ("Version" . ,,version))
-                                               (shape-to-params input)))
+                                               (let ((*protocol* :query))
+                                                 (shape-to-params input))))
                   ,(and output
                         (gethash "shape" output))
                   ,(and output

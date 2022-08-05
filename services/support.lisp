@@ -1584,8 +1584,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddAttachmentsToSet")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddAttachmentsToSetResponse" common-lisp:nil)))
  (common-lisp:export 'add-attachments-to-set))
 (common-lisp:progn
@@ -1606,8 +1608,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddCommunicationToCase")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddCommunicationToCaseResponse" common-lisp:nil)))
  (common-lisp:export 'add-communication-to-case))
 (common-lisp:progn
@@ -1629,8 +1633,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateCase")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateCaseResponse" common-lisp:nil)))
  (common-lisp:export 'create-case))
 (common-lisp:progn
@@ -1647,8 +1653,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAttachment")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeAttachmentResponse" common-lisp:nil)))
  (common-lisp:export 'describe-attachment))
 (common-lisp:progn
@@ -1670,8 +1678,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCases")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeCasesResponse" common-lisp:nil)))
  (common-lisp:export 'describe-cases))
 (common-lisp:progn
@@ -1691,8 +1701,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCommunications")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeCommunicationsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-communications))
 (common-lisp:progn
@@ -1709,8 +1721,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeServices")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeServicesResponse" common-lisp:nil)))
  (common-lisp:export 'describe-services))
 (common-lisp:progn
@@ -1727,8 +1741,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSeverityLevels")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeSeverityLevelsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-severity-levels))
 (common-lisp:progn
@@ -1747,8 +1763,10 @@
                                 `(("Action"
                                    ,@"DescribeTrustedAdvisorCheckRefreshStatuses")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeTrustedAdvisorCheckRefreshStatusesResponse" common-lisp:nil)))
  (common-lisp:export 'describe-trusted-advisor-check-refresh-statuses))
 (common-lisp:progn
@@ -1767,8 +1785,10 @@
                                 `(("Action"
                                    ,@"DescribeTrustedAdvisorCheckResult")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeTrustedAdvisorCheckResultResponse" common-lisp:nil)))
  (common-lisp:export 'describe-trusted-advisor-check-result))
 (common-lisp:progn
@@ -1787,8 +1807,10 @@
                                 `(("Action"
                                    ,@"DescribeTrustedAdvisorCheckSummaries")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeTrustedAdvisorCheckSummariesResponse" common-lisp:nil)))
  (common-lisp:export 'describe-trusted-advisor-check-summaries))
 (common-lisp:progn
@@ -1806,8 +1828,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTrustedAdvisorChecks")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeTrustedAdvisorChecksResponse" common-lisp:nil)))
  (common-lisp:export 'describe-trusted-advisor-checks))
 (common-lisp:progn
@@ -1825,8 +1849,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RefreshTrustedAdvisorCheck")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RefreshTrustedAdvisorCheckResponse" common-lisp:nil)))
  (common-lisp:export 'refresh-trusted-advisor-check))
 (common-lisp:progn
@@ -1843,7 +1869,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"ResolveCase")
                                   ("Version" ,@"2013-04-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ResolveCaseResponse" common-lisp:nil)))
  (common-lisp:export 'resolve-case))

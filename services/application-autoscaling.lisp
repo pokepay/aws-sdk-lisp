@@ -1127,8 +1127,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteScalingPolicy")
                                   ("Version" ,@"2016-02-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteScalingPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'delete-scaling-policy))
 (common-lisp:progn
@@ -1149,8 +1151,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterScalableTarget")
                                   ("Version" ,@"2016-02-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeregisterScalableTargetResponse" common-lisp:nil)))
  (common-lisp:export 'deregister-scalable-target))
 (common-lisp:progn
@@ -1172,8 +1176,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeScalableTargets")
                                   ("Version" ,@"2016-02-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeScalableTargetsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-scalable-targets))
 (common-lisp:progn
@@ -1195,8 +1201,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeScalingActivities")
                                   ("Version" ,@"2016-02-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeScalingActivitiesResponse" common-lisp:nil)))
  (common-lisp:export 'describe-scaling-activities))
 (common-lisp:progn
@@ -1218,8 +1226,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeScalingPolicies")
                                   ("Version" ,@"2016-02-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeScalingPoliciesResponse" common-lisp:nil)))
  (common-lisp:export 'describe-scaling-policies))
 (common-lisp:progn
@@ -1243,8 +1253,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutScalingPolicy")
                                   ("Version" ,@"2016-02-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutScalingPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'put-scaling-policy))
 (common-lisp:progn
@@ -1265,7 +1277,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"RegisterScalableTarget")
                                   ("Version" ,@"2016-02-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RegisterScalableTargetResponse" common-lisp:nil)))
  (common-lisp:export 'register-scalable-target))

@@ -6,6 +6,8 @@
                 #:ensure-car)
   (:import-from #:assoc-utils
                 #:alistp)
+  (:import-from #:aws-sdk/api
+                #:*protocol*)
   (:export #:compile-shape
            #:shape-to-params))
 (in-package #:aws-sdk/generator/shape)
@@ -49,7 +51,12 @@
                        append (to-query-params k v)))
          (loop for i from 1
                for v in value
-               collect (cons (format nil "~A.member.~A" key i) v))))
+               collect (cons (ecase *protocol*
+                               (:query
+                                (format nil "~A.member.~A" key i))
+                               (:ec2
+                                (format nil "~A.~A" key i)))
+                             v))))
     (otherwise (list (cons key value)))))
 
 (defun compile-structure-shape (name &key required members)

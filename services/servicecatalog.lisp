@@ -4459,8 +4459,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AcceptPortfolioShare")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AcceptPortfolioShareOutput" common-lisp:nil)))
  (common-lisp:export 'accept-portfolio-share))
 (common-lisp:progn
@@ -4482,8 +4484,10 @@
                                 `(("Action"
                                    ,@"AssociatePrincipalWithPortfolio")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AssociatePrincipalWithPortfolioOutput" common-lisp:nil)))
  (common-lisp:export 'associate-principal-with-portfolio))
 (common-lisp:progn
@@ -4504,8 +4508,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AssociateProductWithPortfolio")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AssociateProductWithPortfolioOutput" common-lisp:nil)))
  (common-lisp:export 'associate-product-with-portfolio))
 (common-lisp:progn
@@ -4523,8 +4529,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AssociateTagOptionWithResource")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AssociateTagOptionWithResourceOutput" common-lisp:nil)))
  (common-lisp:export 'associate-tag-option-with-resource))
 (common-lisp:progn
@@ -4544,8 +4552,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateConstraint")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateConstraintOutput" common-lisp:nil)))
  (common-lisp:export 'create-constraint))
 (common-lisp:progn
@@ -4565,8 +4575,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreatePortfolio")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreatePortfolioOutput" common-lisp:nil)))
  (common-lisp:export 'create-portfolio))
 (common-lisp:progn
@@ -4584,8 +4596,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreatePortfolioShare")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreatePortfolioShareOutput" common-lisp:nil)))
  (common-lisp:export 'create-portfolio-share))
 (common-lisp:progn
@@ -4608,8 +4622,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateProduct")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateProductOutput" common-lisp:nil)))
  (common-lisp:export 'create-product))
 (common-lisp:progn
@@ -4630,8 +4646,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateProvisioningArtifact")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateProvisioningArtifactOutput" common-lisp:nil)))
  (common-lisp:export 'create-provisioning-artifact))
 (common-lisp:progn
@@ -4648,8 +4666,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateTagOption")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateTagOptionOutput" common-lisp:nil)))
  (common-lisp:export 'create-tag-option))
 (common-lisp:progn
@@ -4666,8 +4686,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConstraint")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteConstraintOutput" common-lisp:nil)))
  (common-lisp:export 'delete-constraint))
 (common-lisp:progn
@@ -4684,8 +4706,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeletePortfolio")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeletePortfolioOutput" common-lisp:nil)))
  (common-lisp:export 'delete-portfolio))
 (common-lisp:progn
@@ -4703,8 +4727,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeletePortfolioShare")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeletePortfolioShareOutput" common-lisp:nil)))
  (common-lisp:export 'delete-portfolio-share))
 (common-lisp:progn
@@ -4721,8 +4747,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteProduct")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteProductOutput" common-lisp:nil)))
  (common-lisp:export 'delete-product))
 (common-lisp:progn
@@ -4743,8 +4771,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteProvisioningArtifact")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteProvisioningArtifactOutput" common-lisp:nil)))
  (common-lisp:export 'delete-provisioning-artifact))
 (common-lisp:progn
@@ -4761,8 +4791,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConstraint")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeConstraintOutput" common-lisp:nil)))
  (common-lisp:export 'describe-constraint))
 (common-lisp:progn
@@ -4779,8 +4811,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribePortfolio")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribePortfolioOutput" common-lisp:nil)))
  (common-lisp:export 'describe-portfolio))
 (common-lisp:progn
@@ -4797,8 +4831,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProduct")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeProductOutput" common-lisp:nil)))
  (common-lisp:export 'describe-product))
 (common-lisp:progn
@@ -4815,8 +4851,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProductAsAdmin")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeProductAsAdminOutput" common-lisp:nil)))
  (common-lisp:export 'describe-product-as-admin))
 (common-lisp:progn
@@ -4833,8 +4871,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProductView")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeProductViewOutput" common-lisp:nil)))
  (common-lisp:export 'describe-product-view))
 (common-lisp:progn
@@ -4852,8 +4892,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProvisionedProduct")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeProvisionedProductOutput" common-lisp:nil)))
  (common-lisp:export 'describe-provisioned-product))
 (common-lisp:progn
@@ -4874,8 +4916,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProvisioningArtifact")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeProvisioningArtifactOutput" common-lisp:nil)))
  (common-lisp:export 'describe-provisioning-artifact))
 (common-lisp:progn
@@ -4896,8 +4940,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProvisioningParameters")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeProvisioningParametersOutput" common-lisp:nil)))
  (common-lisp:export 'describe-provisioning-parameters))
 (common-lisp:progn
@@ -4915,8 +4961,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRecord")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeRecordOutput" common-lisp:nil)))
  (common-lisp:export 'describe-record))
 (common-lisp:progn
@@ -4933,8 +4981,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTagOption")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeTagOptionOutput" common-lisp:nil)))
  (common-lisp:export 'describe-tag-option))
 (common-lisp:progn
@@ -4955,8 +5005,10 @@
                                 `(("Action"
                                    ,@"DisassociatePrincipalFromPortfolio")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DisassociatePrincipalFromPortfolioOutput" common-lisp:nil)))
  (common-lisp:export 'disassociate-principal-from-portfolio))
 (common-lisp:progn
@@ -4976,8 +5028,10 @@
                                 `(("Action"
                                    ,@"DisassociateProductFromPortfolio")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DisassociateProductFromPortfolioOutput" common-lisp:nil)))
  (common-lisp:export 'disassociate-product-from-portfolio))
 (common-lisp:progn
@@ -4996,8 +5050,10 @@
                                 `(("Action"
                                    ,@"DisassociateTagOptionFromResource")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DisassociateTagOptionFromResourceOutput" common-lisp:nil)))
  (common-lisp:export 'disassociate-tag-option-from-resource))
 (common-lisp:progn
@@ -5016,8 +5072,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListAcceptedPortfolioShares")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListAcceptedPortfolioSharesOutput" common-lisp:nil)))
  (common-lisp:export 'list-accepted-portfolio-shares))
 (common-lisp:progn
@@ -5038,8 +5096,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListConstraintsForPortfolio")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListConstraintsForPortfolioOutput" common-lisp:nil)))
  (common-lisp:export 'list-constraints-for-portfolio))
 (common-lisp:progn
@@ -5058,8 +5118,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListLaunchPaths")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListLaunchPathsOutput" common-lisp:nil)))
  (common-lisp:export 'list-launch-paths))
 (common-lisp:progn
@@ -5076,8 +5138,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListPortfolioAccess")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListPortfolioAccessOutput" common-lisp:nil)))
  (common-lisp:export 'list-portfolio-access))
 (common-lisp:progn
@@ -5095,8 +5159,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListPortfolios")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListPortfoliosOutput" common-lisp:nil)))
  (common-lisp:export 'list-portfolios))
 (common-lisp:progn
@@ -5116,8 +5182,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListPortfoliosForProduct")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListPortfoliosForProductOutput" common-lisp:nil)))
  (common-lisp:export 'list-portfolios-for-product))
 (common-lisp:progn
@@ -5137,8 +5205,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListPrincipalsForPortfolio")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListPrincipalsForPortfolioOutput" common-lisp:nil)))
  (common-lisp:export 'list-principals-for-portfolio))
 (common-lisp:progn
@@ -5156,8 +5226,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListProvisioningArtifacts")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListProvisioningArtifactsOutput" common-lisp:nil)))
  (common-lisp:export 'list-provisioning-artifacts))
 (common-lisp:progn
@@ -5177,8 +5249,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListRecordHistory")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListRecordHistoryOutput" common-lisp:nil)))
  (common-lisp:export 'list-record-history))
 (common-lisp:progn
@@ -5198,8 +5272,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListResourcesForTagOption")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListResourcesForTagOptionOutput" common-lisp:nil)))
  (common-lisp:export 'list-resources-for-tag-option))
 (common-lisp:progn
@@ -5216,8 +5292,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTagOptions")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTagOptionsOutput" common-lisp:nil)))
  (common-lisp:export 'list-tag-options))
 (common-lisp:progn
@@ -5240,8 +5318,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ProvisionProduct")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ProvisionProductOutput" common-lisp:nil)))
  (common-lisp:export 'provision-product))
 (common-lisp:progn
@@ -5258,8 +5338,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RejectPortfolioShare")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RejectPortfolioShareOutput" common-lisp:nil)))
  (common-lisp:export 'reject-portfolio-share))
 (common-lisp:progn
@@ -5279,8 +5361,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ScanProvisionedProducts")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ScanProvisionedProductsOutput" common-lisp:nil)))
  (common-lisp:export 'scan-provisioned-products))
 (common-lisp:progn
@@ -5300,8 +5384,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SearchProducts")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SearchProductsOutput" common-lisp:nil)))
  (common-lisp:export 'search-products))
 (common-lisp:progn
@@ -5321,8 +5407,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SearchProductsAsAdmin")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SearchProductsAsAdminOutput" common-lisp:nil)))
  (common-lisp:export 'search-products-as-admin))
 (common-lisp:progn
@@ -5344,8 +5432,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"TerminateProvisionedProduct")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "TerminateProvisionedProductOutput" common-lisp:nil)))
  (common-lisp:export 'terminate-provisioned-product))
 (common-lisp:progn
@@ -5362,8 +5452,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateConstraint")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateConstraintOutput" common-lisp:nil)))
  (common-lisp:export 'update-constraint))
 (common-lisp:progn
@@ -5383,8 +5475,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdatePortfolio")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdatePortfolioOutput" common-lisp:nil)))
  (common-lisp:export 'update-portfolio))
 (common-lisp:progn
@@ -5406,8 +5500,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateProduct")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateProductOutput" common-lisp:nil)))
  (common-lisp:export 'update-product))
 (common-lisp:progn
@@ -5429,8 +5525,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateProvisionedProduct")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateProvisionedProductOutput" common-lisp:nil)))
  (common-lisp:export 'update-provisioned-product))
 (common-lisp:progn
@@ -5451,8 +5549,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateProvisioningArtifact")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateProvisioningArtifactOutput" common-lisp:nil)))
  (common-lisp:export 'update-provisioning-artifact))
 (common-lisp:progn
@@ -5469,7 +5569,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTagOption")
                                   ("Version" ,@"2015-12-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateTagOptionOutput" common-lisp:nil)))
  (common-lisp:export 'update-tag-option))

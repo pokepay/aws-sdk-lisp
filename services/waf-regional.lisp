@@ -3498,8 +3498,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AssociateWebACL")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AssociateWebACLResponse" common-lisp:nil)))
  (common-lisp:export 'associate-web-acl))
 (common-lisp:progn
@@ -3516,8 +3518,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateByteMatchSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateByteMatchSetResponse" common-lisp:nil)))
  (common-lisp:export 'create-byte-match-set))
 (common-lisp:progn
@@ -3534,8 +3538,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateIPSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateIPSetResponse" common-lisp:nil)))
  (common-lisp:export 'create-ipset))
 (common-lisp:progn
@@ -3554,8 +3560,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateRateBasedRule")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateRateBasedRuleResponse" common-lisp:nil)))
  (common-lisp:export 'create-rate-based-rule))
 (common-lisp:progn
@@ -3572,8 +3580,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateRule")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateRuleResponse" common-lisp:nil)))
  (common-lisp:export 'create-rule))
 (common-lisp:progn
@@ -3591,8 +3601,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateSizeConstraintSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateSizeConstraintSetResponse" common-lisp:nil)))
  (common-lisp:export 'create-size-constraint-set))
 (common-lisp:progn
@@ -3610,8 +3622,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateSqlInjectionMatchSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateSqlInjectionMatchSetResponse" common-lisp:nil)))
  (common-lisp:export 'create-sql-injection-match-set))
 (common-lisp:progn
@@ -3630,8 +3644,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateWebACL")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateWebACLResponse" common-lisp:nil)))
  (common-lisp:export 'create-web-acl))
 (common-lisp:progn
@@ -3648,8 +3664,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateXssMatchSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateXssMatchSetResponse" common-lisp:nil)))
  (common-lisp:export 'create-xss-match-set))
 (common-lisp:progn
@@ -3666,8 +3684,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteByteMatchSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteByteMatchSetResponse" common-lisp:nil)))
  (common-lisp:export 'delete-byte-match-set))
 (common-lisp:progn
@@ -3684,8 +3704,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIPSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteIPSetResponse" common-lisp:nil)))
  (common-lisp:export 'delete-ipset))
 (common-lisp:progn
@@ -3702,8 +3724,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRateBasedRule")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteRateBasedRuleResponse" common-lisp:nil)))
  (common-lisp:export 'delete-rate-based-rule))
 (common-lisp:progn
@@ -3720,8 +3744,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRule")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteRuleResponse" common-lisp:nil)))
  (common-lisp:export 'delete-rule))
 (common-lisp:progn
@@ -3740,8 +3766,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSizeConstraintSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteSizeConstraintSetResponse" common-lisp:nil)))
  (common-lisp:export 'delete-size-constraint-set))
 (common-lisp:progn
@@ -3760,8 +3788,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSqlInjectionMatchSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteSqlInjectionMatchSetResponse" common-lisp:nil)))
  (common-lisp:export 'delete-sql-injection-match-set))
 (common-lisp:progn
@@ -3778,8 +3808,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteWebACL")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteWebACLResponse" common-lisp:nil)))
  (common-lisp:export 'delete-web-acl))
 (common-lisp:progn
@@ -3796,8 +3828,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteXssMatchSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteXssMatchSetResponse" common-lisp:nil)))
  (common-lisp:export 'delete-xss-match-set))
 (common-lisp:progn
@@ -3814,8 +3848,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DisassociateWebACL")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DisassociateWebACLResponse" common-lisp:nil)))
  (common-lisp:export 'disassociate-web-acl))
 (common-lisp:progn
@@ -3832,8 +3868,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetByteMatchSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetByteMatchSetResponse" common-lisp:nil)))
  (common-lisp:export 'get-byte-match-set))
 (common-lisp:progn
@@ -3858,8 +3896,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetChangeTokenStatus")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetChangeTokenStatusResponse" common-lisp:nil)))
  (common-lisp:export 'get-change-token-status))
 (common-lisp:progn
@@ -3876,8 +3916,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetIPSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetIPSetResponse" common-lisp:nil)))
  (common-lisp:export 'get-ipset))
 (common-lisp:progn
@@ -3894,8 +3936,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetRateBasedRule")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetRateBasedRuleResponse" common-lisp:nil)))
  (common-lisp:export 'get-rate-based-rule))
 (common-lisp:progn
@@ -3913,8 +3957,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetRateBasedRuleManagedKeys")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetRateBasedRuleManagedKeysResponse" common-lisp:nil)))
  (common-lisp:export 'get-rate-based-rule-managed-keys))
 (common-lisp:progn
@@ -3931,8 +3977,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetRule")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetRuleResponse" common-lisp:nil)))
  (common-lisp:export 'get-rule))
 (common-lisp:progn
@@ -3950,8 +3998,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetSampledRequests")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetSampledRequestsResponse" common-lisp:nil)))
  (common-lisp:export 'get-sampled-requests))
 (common-lisp:progn
@@ -3968,8 +4018,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetSizeConstraintSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetSizeConstraintSetResponse" common-lisp:nil)))
  (common-lisp:export 'get-size-constraint-set))
 (common-lisp:progn
@@ -3987,8 +4039,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetSqlInjectionMatchSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetSqlInjectionMatchSetResponse" common-lisp:nil)))
  (common-lisp:export 'get-sql-injection-match-set))
 (common-lisp:progn
@@ -4005,8 +4059,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetWebACL")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetWebACLResponse" common-lisp:nil)))
  (common-lisp:export 'get-web-acl))
 (common-lisp:progn
@@ -4023,8 +4079,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetWebACLForResource")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetWebACLForResourceResponse" common-lisp:nil)))
  (common-lisp:export 'get-web-aclfor-resource))
 (common-lisp:progn
@@ -4041,8 +4099,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetXssMatchSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetXssMatchSetResponse" common-lisp:nil)))
  (common-lisp:export 'get-xss-match-set))
 (common-lisp:progn
@@ -4059,8 +4119,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListByteMatchSets")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListByteMatchSetsResponse" common-lisp:nil)))
  (common-lisp:export 'list-byte-match-sets))
 (common-lisp:progn
@@ -4077,8 +4139,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListIPSets")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListIPSetsResponse" common-lisp:nil)))
  (common-lisp:export 'list-ipsets))
 (common-lisp:progn
@@ -4095,8 +4159,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListRateBasedRules")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListRateBasedRulesResponse" common-lisp:nil)))
  (common-lisp:export 'list-rate-based-rules))
 (common-lisp:progn
@@ -4114,8 +4180,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListResourcesForWebACL")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListResourcesForWebACLResponse" common-lisp:nil)))
  (common-lisp:export 'list-resources-for-web-acl))
 (common-lisp:progn
@@ -4132,8 +4200,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListRules")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListRulesResponse" common-lisp:nil)))
  (common-lisp:export 'list-rules))
 (common-lisp:progn
@@ -4151,8 +4221,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListSizeConstraintSets")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListSizeConstraintSetsResponse" common-lisp:nil)))
  (common-lisp:export 'list-size-constraint-sets))
 (common-lisp:progn
@@ -4170,8 +4242,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListSqlInjectionMatchSets")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListSqlInjectionMatchSetsResponse" common-lisp:nil)))
  (common-lisp:export 'list-sql-injection-match-sets))
 (common-lisp:progn
@@ -4188,8 +4262,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListWebACLs")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListWebACLsResponse" common-lisp:nil)))
  (common-lisp:export 'list-web-acls))
 (common-lisp:progn
@@ -4206,8 +4282,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListXssMatchSets")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListXssMatchSetsResponse" common-lisp:nil)))
  (common-lisp:export 'list-xss-match-sets))
 (common-lisp:progn
@@ -4225,8 +4303,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateByteMatchSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateByteMatchSetResponse" common-lisp:nil)))
  (common-lisp:export 'update-byte-match-set))
 (common-lisp:progn
@@ -4243,8 +4323,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateIPSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateIPSetResponse" common-lisp:nil)))
  (common-lisp:export 'update-ipset))
 (common-lisp:progn
@@ -4262,8 +4344,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRateBasedRule")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateRateBasedRuleResponse" common-lisp:nil)))
  (common-lisp:export 'update-rate-based-rule))
 (common-lisp:progn
@@ -4280,8 +4364,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRule")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateRuleResponse" common-lisp:nil)))
  (common-lisp:export 'update-rule))
 (common-lisp:progn
@@ -4301,8 +4387,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSizeConstraintSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateSizeConstraintSetResponse" common-lisp:nil)))
  (common-lisp:export 'update-size-constraint-set))
 (common-lisp:progn
@@ -4322,8 +4410,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSqlInjectionMatchSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateSqlInjectionMatchSetResponse" common-lisp:nil)))
  (common-lisp:export 'update-sql-injection-match-set))
 (common-lisp:progn
@@ -4342,8 +4432,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateWebACL")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateWebACLResponse" common-lisp:nil)))
  (common-lisp:export 'update-web-acl))
 (common-lisp:progn
@@ -4361,7 +4453,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateXssMatchSet")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateXssMatchSetResponse" common-lisp:nil)))
  (common-lisp:export 'update-xss-match-set))

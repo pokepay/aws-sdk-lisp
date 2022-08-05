@@ -546,8 +546,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PostContent")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PostContentResponse" common-lisp:nil)))
  (common-lisp:export 'post-content))
 (common-lisp:progn
@@ -567,7 +569,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"PostText")
                                   ("Version" ,@"2016-11-28"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PostTextResponse" common-lisp:nil)))
  (common-lisp:export 'post-text))

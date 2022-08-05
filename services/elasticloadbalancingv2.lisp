@@ -2710,8 +2710,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddTags")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddTagsOutput" "AddTagsResult")))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
@@ -2732,8 +2734,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateListener")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateListenerOutput" "CreateListenerResult")))
  (common-lisp:export 'create-listener))
 (common-lisp:progn
@@ -2754,8 +2758,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateLoadBalancer")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateLoadBalancerOutput" "CreateLoadBalancerResult")))
  (common-lisp:export 'create-load-balancer))
 (common-lisp:progn
@@ -2774,8 +2780,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateRule")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateRuleOutput" "CreateRuleResult")))
  (common-lisp:export 'create-rule))
 (common-lisp:progn
@@ -2800,8 +2808,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateTargetGroup")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateTargetGroupOutput" "CreateTargetGroupResult")))
  (common-lisp:export 'create-target-group))
 (common-lisp:progn
@@ -2819,8 +2829,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteListener")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteListenerOutput" "DeleteListenerResult")))
  (common-lisp:export 'delete-listener))
 (common-lisp:progn
@@ -2838,8 +2850,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLoadBalancer")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteLoadBalancerOutput" "DeleteLoadBalancerResult")))
  (common-lisp:export 'delete-load-balancer))
 (common-lisp:progn
@@ -2857,8 +2871,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRule")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteRuleOutput" "DeleteRuleResult")))
  (common-lisp:export 'delete-rule))
 (common-lisp:progn
@@ -2876,8 +2892,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTargetGroup")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteTargetGroupOutput" "DeleteTargetGroupResult")))
  (common-lisp:export 'delete-target-group))
 (common-lisp:progn
@@ -2895,8 +2913,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterTargets")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeregisterTargetsOutput" "DeregisterTargetsResult")))
  (common-lisp:export 'deregister-targets))
 (common-lisp:progn
@@ -2914,8 +2934,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAccountLimits")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeAccountLimitsOutput" "DescribeAccountLimitsResult")))
  (common-lisp:export 'describe-account-limits))
 (common-lisp:progn
@@ -2935,8 +2957,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeListeners")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeListenersOutput" "DescribeListenersResult")))
  (common-lisp:export 'describe-listeners))
 (common-lisp:progn
@@ -2955,8 +2979,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLoadBalancerAttributes")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeLoadBalancerAttributesOutput"
       "DescribeLoadBalancerAttributesResult")))
  (common-lisp:export 'describe-load-balancer-attributes))
@@ -2977,8 +3003,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLoadBalancers")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeLoadBalancersOutput" "DescribeLoadBalancersResult")))
  (common-lisp:export 'describe-load-balancers))
 (common-lisp:progn
@@ -2997,8 +3025,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRules")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeRulesOutput" "DescribeRulesResult")))
  (common-lisp:export 'describe-rules))
 (common-lisp:progn
@@ -3016,8 +3046,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSSLPolicies")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeSSLPoliciesOutput" "DescribeSSLPoliciesResult")))
  (common-lisp:export 'describe-sslpolicies))
 (common-lisp:progn
@@ -3035,8 +3067,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTags")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeTagsOutput" "DescribeTagsResult")))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
@@ -3055,8 +3089,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTargetGroupAttributes")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeTargetGroupAttributesOutput"
       "DescribeTargetGroupAttributesResult")))
  (common-lisp:export 'describe-target-group-attributes))
@@ -3078,8 +3114,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTargetGroups")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeTargetGroupsOutput" "DescribeTargetGroupsResult")))
  (common-lisp:export 'describe-target-groups))
 (common-lisp:progn
@@ -3097,8 +3135,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTargetHealth")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeTargetHealthOutput" "DescribeTargetHealthResult")))
  (common-lisp:export 'describe-target-health))
 (common-lisp:progn
@@ -3119,8 +3159,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyListener")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyListenerOutput" "ModifyListenerResult")))
  (common-lisp:export 'modify-listener))
 (common-lisp:progn
@@ -3139,8 +3181,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyLoadBalancerAttributes")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyLoadBalancerAttributesOutput"
       "ModifyLoadBalancerAttributesResult")))
  (common-lisp:export 'modify-load-balancer-attributes))
@@ -3159,8 +3203,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyRule")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyRuleOutput" "ModifyRuleResult")))
  (common-lisp:export 'modify-rule))
 (common-lisp:progn
@@ -3185,8 +3231,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyTargetGroup")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyTargetGroupOutput" "ModifyTargetGroupResult")))
  (common-lisp:export 'modify-target-group))
 (common-lisp:progn
@@ -3205,8 +3253,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyTargetGroupAttributes")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyTargetGroupAttributesOutput"
       "ModifyTargetGroupAttributesResult")))
  (common-lisp:export 'modify-target-group-attributes))
@@ -3225,8 +3275,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RegisterTargets")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RegisterTargetsOutput" "RegisterTargetsResult")))
  (common-lisp:export 'register-targets))
 (common-lisp:progn
@@ -3244,8 +3296,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTags")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RemoveTagsOutput" "RemoveTagsResult")))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
@@ -3264,8 +3318,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetIpAddressType")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetIpAddressTypeOutput" "SetIpAddressTypeResult")))
  (common-lisp:export 'set-ip-address-type))
 (common-lisp:progn
@@ -3283,8 +3339,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetRulePriorities")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetRulePrioritiesOutput" "SetRulePrioritiesResult")))
  (common-lisp:export 'set-rule-priorities))
 (common-lisp:progn
@@ -3303,8 +3361,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetSecurityGroups")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetSecurityGroupsOutput" "SetSecurityGroupsResult")))
  (common-lisp:export 'set-security-groups))
 (common-lisp:progn
@@ -3322,7 +3382,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetSubnets")
                                   ("Version" ,@"2015-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetSubnetsOutput" "SetSubnetsResult")))
  (common-lisp:export 'set-subnets))

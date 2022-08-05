@@ -171,7 +171,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutEvents")
                                   ("Version" ,@"2014-06-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-events))

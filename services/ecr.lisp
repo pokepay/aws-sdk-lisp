@@ -1768,8 +1768,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchCheckLayerAvailability")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchCheckLayerAvailabilityResponse" common-lisp:nil)))
  (common-lisp:export 'batch-check-layer-availability))
 (common-lisp:progn
@@ -1787,8 +1789,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchDeleteImage")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchDeleteImageResponse" common-lisp:nil)))
  (common-lisp:export 'batch-delete-image))
 (common-lisp:progn
@@ -1808,8 +1812,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetImage")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchGetImageResponse" common-lisp:nil)))
  (common-lisp:export 'batch-get-image))
 (common-lisp:progn
@@ -1829,8 +1835,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CompleteLayerUpload")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CompleteLayerUploadResponse" common-lisp:nil)))
  (common-lisp:export 'complete-layer-upload))
 (common-lisp:progn
@@ -1847,8 +1855,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateRepository")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateRepositoryResponse" common-lisp:nil)))
  (common-lisp:export 'create-repository))
 (common-lisp:progn
@@ -1866,8 +1876,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRepository")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteRepositoryResponse" common-lisp:nil)))
  (common-lisp:export 'delete-repository))
 (common-lisp:progn
@@ -1884,8 +1896,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRepositoryPolicy")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteRepositoryPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'delete-repository-policy))
 (common-lisp:progn
@@ -1905,8 +1919,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeImages")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeImagesResponse" common-lisp:nil)))
  (common-lisp:export 'describe-images))
 (common-lisp:progn
@@ -1926,8 +1942,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRepositories")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeRepositoriesResponse" common-lisp:nil)))
  (common-lisp:export 'describe-repositories))
 (common-lisp:progn
@@ -1944,8 +1962,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetAuthorizationToken")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetAuthorizationTokenResponse" common-lisp:nil)))
  (common-lisp:export 'get-authorization-token))
 (common-lisp:progn
@@ -1964,8 +1984,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetDownloadUrlForLayer")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetDownloadUrlForLayerResponse" common-lisp:nil)))
  (common-lisp:export 'get-download-url-for-layer))
 (common-lisp:progn
@@ -1982,8 +2004,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetRepositoryPolicy")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetRepositoryPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'get-repository-policy))
 (common-lisp:progn
@@ -2000,8 +2024,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"InitiateLayerUpload")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "InitiateLayerUploadResponse" common-lisp:nil)))
  (common-lisp:export 'initiate-layer-upload))
 (common-lisp:progn
@@ -2021,8 +2047,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListImages")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListImagesResponse" common-lisp:nil)))
  (common-lisp:export 'list-images))
 (common-lisp:progn
@@ -2042,8 +2070,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutImage")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutImageResponse" common-lisp:nil)))
  (common-lisp:export 'put-image))
 (common-lisp:progn
@@ -2062,8 +2092,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetRepositoryPolicy")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetRepositoryPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'set-repository-policy))
 (common-lisp:progn
@@ -2083,7 +2115,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UploadLayerPart")
                                   ("Version" ,@"2015-09-21"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UploadLayerPartResponse" common-lisp:nil)))
  (common-lisp:export 'upload-layer-part))

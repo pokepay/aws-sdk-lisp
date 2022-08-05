@@ -4655,8 +4655,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AssociateVPCWithHostedZone")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AssociateVPCWithHostedZoneResponse" common-lisp:nil)))
  (common-lisp:export 'associate-vpcwith-hosted-zone))
 (common-lisp:progn
@@ -4674,8 +4676,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ChangeResourceRecordSets")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ChangeResourceRecordSetsResponse" common-lisp:nil)))
  (common-lisp:export 'change-resource-record-sets))
 (common-lisp:progn
@@ -4694,8 +4698,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ChangeTagsForResource")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ChangeTagsForResourceResponse" common-lisp:nil)))
  (common-lisp:export 'change-tags-for-resource))
 (common-lisp:progn
@@ -4713,8 +4719,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateHealthCheck")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateHealthCheckResponse" common-lisp:nil)))
  (common-lisp:export 'create-health-check))
 (common-lisp:progn
@@ -4734,8 +4742,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateHostedZone")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateHostedZoneResponse" common-lisp:nil)))
  (common-lisp:export 'create-hosted-zone))
 (common-lisp:progn
@@ -4754,8 +4764,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateReusableDelegationSet")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateReusableDelegationSetResponse" common-lisp:nil)))
  (common-lisp:export 'create-reusable-delegation-set))
 (common-lisp:progn
@@ -4772,8 +4784,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateTrafficPolicy")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateTrafficPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'create-traffic-policy))
 (common-lisp:progn
@@ -4794,8 +4808,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateTrafficPolicyInstance")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateTrafficPolicyInstanceResponse" common-lisp:nil)))
  (common-lisp:export 'create-traffic-policy-instance))
 (common-lisp:progn
@@ -4813,8 +4829,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateTrafficPolicyVersion")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateTrafficPolicyVersionResponse" common-lisp:nil)))
  (common-lisp:export 'create-traffic-policy-version))
 (common-lisp:progn
@@ -4833,8 +4851,10 @@
                                 `(("Action"
                                    ,@"CreateVPCAssociationAuthorization")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateVPCAssociationAuthorizationResponse" common-lisp:nil)))
  (common-lisp:export 'create-vpcassociation-authorization))
 (common-lisp:progn
@@ -4851,8 +4871,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHealthCheck")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteHealthCheckResponse" common-lisp:nil)))
  (common-lisp:export 'delete-health-check))
 (common-lisp:progn
@@ -4869,8 +4891,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHostedZone")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteHostedZoneResponse" common-lisp:nil)))
  (common-lisp:export 'delete-hosted-zone))
 (common-lisp:progn
@@ -4888,8 +4912,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReusableDelegationSet")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteReusableDelegationSetResponse" common-lisp:nil)))
  (common-lisp:export 'delete-reusable-delegation-set))
 (common-lisp:progn
@@ -4906,8 +4932,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTrafficPolicy")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteTrafficPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'delete-traffic-policy))
 (common-lisp:progn
@@ -4925,8 +4953,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTrafficPolicyInstance")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteTrafficPolicyInstanceResponse" common-lisp:nil)))
  (common-lisp:export 'delete-traffic-policy-instance))
 (common-lisp:progn
@@ -4945,8 +4975,10 @@
                                 `(("Action"
                                    ,@"DeleteVPCAssociationAuthorization")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteVPCAssociationAuthorizationResponse" common-lisp:nil)))
  (common-lisp:export 'delete-vpcassociation-authorization))
 (common-lisp:progn
@@ -4964,8 +4996,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DisassociateVPCFromHostedZone")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DisassociateVPCFromHostedZoneResponse" common-lisp:nil)))
  (common-lisp:export 'disassociate-vpcfrom-hosted-zone))
 (common-lisp:progn
@@ -4982,8 +5016,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetChange")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetChangeResponse" common-lisp:nil)))
  (common-lisp:export 'get-change))
 (common-lisp:progn
@@ -5011,8 +5047,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetGeoLocation")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetGeoLocationResponse" common-lisp:nil)))
  (common-lisp:export 'get-geo-location))
 (common-lisp:progn
@@ -5029,8 +5067,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetHealthCheck")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetHealthCheckResponse" common-lisp:nil)))
  (common-lisp:export 'get-health-check))
 (common-lisp:progn
@@ -5058,8 +5098,10 @@
                                 `(("Action"
                                    ,@"GetHealthCheckLastFailureReason")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetHealthCheckLastFailureReasonResponse" common-lisp:nil)))
  (common-lisp:export 'get-health-check-last-failure-reason))
 (common-lisp:progn
@@ -5076,8 +5118,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetHealthCheckStatus")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetHealthCheckStatusResponse" common-lisp:nil)))
  (common-lisp:export 'get-health-check-status))
 (common-lisp:progn
@@ -5094,8 +5138,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetHostedZone")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetHostedZoneResponse" common-lisp:nil)))
  (common-lisp:export 'get-hosted-zone))
 (common-lisp:progn
@@ -5122,8 +5168,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetReusableDelegationSet")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetReusableDelegationSetResponse" common-lisp:nil)))
  (common-lisp:export 'get-reusable-delegation-set))
 (common-lisp:progn
@@ -5140,8 +5188,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetTrafficPolicy")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetTrafficPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'get-traffic-policy))
 (common-lisp:progn
@@ -5159,8 +5209,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetTrafficPolicyInstance")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetTrafficPolicyInstanceResponse" common-lisp:nil)))
  (common-lisp:export 'get-traffic-policy-instance))
 (common-lisp:progn
@@ -5189,8 +5241,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListGeoLocations")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListGeoLocationsResponse" common-lisp:nil)))
  (common-lisp:export 'list-geo-locations))
 (common-lisp:progn
@@ -5207,8 +5261,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListHealthChecks")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListHealthChecksResponse" common-lisp:nil)))
  (common-lisp:export 'list-health-checks))
 (common-lisp:progn
@@ -5226,8 +5282,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListHostedZones")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListHostedZonesResponse" common-lisp:nil)))
  (common-lisp:export 'list-hosted-zones))
 (common-lisp:progn
@@ -5246,8 +5304,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListHostedZonesByName")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListHostedZonesByNameResponse" common-lisp:nil)))
  (common-lisp:export 'list-hosted-zones-by-name))
 (common-lisp:progn
@@ -5268,8 +5328,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListResourceRecordSets")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListResourceRecordSetsResponse" common-lisp:nil)))
  (common-lisp:export 'list-resource-record-sets))
 (common-lisp:progn
@@ -5287,8 +5349,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListReusableDelegationSets")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListReusableDelegationSetsResponse" common-lisp:nil)))
  (common-lisp:export 'list-reusable-delegation-sets))
 (common-lisp:progn
@@ -5305,8 +5369,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTagsForResourceResponse" common-lisp:nil)))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
@@ -5323,8 +5389,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResources")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTagsForResourcesResponse" common-lisp:nil)))
  (common-lisp:export 'list-tags-for-resources))
 (common-lisp:progn
@@ -5342,8 +5410,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTrafficPolicies")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTrafficPoliciesResponse" common-lisp:nil)))
  (common-lisp:export 'list-traffic-policies))
 (common-lisp:progn
@@ -5366,8 +5436,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTrafficPolicyInstances")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTrafficPolicyInstancesResponse" common-lisp:nil)))
  (common-lisp:export 'list-traffic-policy-instances))
 (common-lisp:progn
@@ -5390,8 +5462,10 @@
                                 `(("Action"
                                    ,@"ListTrafficPolicyInstancesByHostedZone")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTrafficPolicyInstancesByHostedZoneResponse" common-lisp:nil)))
  (common-lisp:export 'list-traffic-policy-instances-by-hosted-zone))
 (common-lisp:progn
@@ -5415,8 +5489,10 @@
                                 `(("Action"
                                    ,@"ListTrafficPolicyInstancesByPolicy")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTrafficPolicyInstancesByPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'list-traffic-policy-instances-by-policy))
 (common-lisp:progn
@@ -5436,8 +5512,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTrafficPolicyVersions")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTrafficPolicyVersionsResponse" common-lisp:nil)))
  (common-lisp:export 'list-traffic-policy-versions))
 (common-lisp:progn
@@ -5457,8 +5535,10 @@
                                 `(("Action"
                                    ,@"ListVPCAssociationAuthorizations")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListVPCAssociationAuthorizationsResponse" common-lisp:nil)))
  (common-lisp:export 'list-vpcassociation-authorizations))
 (common-lisp:progn
@@ -5478,8 +5558,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"TestDNSAnswer")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "TestDNSAnswerResponse" common-lisp:nil)))
  (common-lisp:export 'test-dnsanswer))
 (common-lisp:progn
@@ -5504,8 +5586,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateHealthCheck")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateHealthCheckResponse" common-lisp:nil)))
  (common-lisp:export 'update-health-check))
 (common-lisp:progn
@@ -5523,8 +5607,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateHostedZoneComment")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateHostedZoneCommentResponse" common-lisp:nil)))
  (common-lisp:export 'update-hosted-zone-comment))
 (common-lisp:progn
@@ -5542,8 +5628,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTrafficPolicyComment")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateTrafficPolicyCommentResponse" common-lisp:nil)))
  (common-lisp:export 'update-traffic-policy-comment))
 (common-lisp:progn
@@ -5563,7 +5651,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTrafficPolicyInstance")
                                   ("Version" ,@"2013-04-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateTrafficPolicyInstanceResponse" common-lisp:nil)))
  (common-lisp:export 'update-traffic-policy-instance))

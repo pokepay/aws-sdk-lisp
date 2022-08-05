@@ -10323,8 +10323,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddRoleToDBCluster")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'add-role-to-dbcluster))
 (common-lisp:progn
@@ -10344,8 +10346,10 @@
                                 `(("Action"
                                    ,@"AddSourceIdentifierToSubscription")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddSourceIdentifierToSubscriptionResult"
       "AddSourceIdentifierToSubscriptionResult")))
  (common-lisp:export 'add-source-identifier-to-subscription))
@@ -10363,8 +10367,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToResource")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
@@ -10384,8 +10390,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ApplyPendingMaintenanceAction")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ApplyPendingMaintenanceActionResult"
       "ApplyPendingMaintenanceActionResult")))
  (common-lisp:export 'apply-pending-maintenance-action))
@@ -10409,8 +10417,10 @@
                                 `(("Action"
                                    ,@"AuthorizeDBSecurityGroupIngress")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AuthorizeDBSecurityGroupIngressResult"
       "AuthorizeDBSecurityGroupIngressResult")))
  (common-lisp:export 'authorize-dbsecurity-group-ingress))
@@ -10435,8 +10445,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CopyDBClusterParameterGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CopyDBClusterParameterGroupResult"
       "CopyDBClusterParameterGroupResult")))
  (common-lisp:export 'copy-dbcluster-parameter-group))
@@ -10459,8 +10471,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CopyDBClusterSnapshot")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CopyDBClusterSnapshotResult" "CopyDBClusterSnapshotResult")))
  (common-lisp:export 'copy-dbcluster-snapshot))
 (common-lisp:progn
@@ -10482,8 +10496,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CopyDBParameterGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CopyDBParameterGroupResult" "CopyDBParameterGroupResult")))
  (common-lisp:export 'copy-dbparameter-group))
 (common-lisp:progn
@@ -10505,8 +10521,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CopyDBSnapshot")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CopyDBSnapshotResult" "CopyDBSnapshotResult")))
  (common-lisp:export 'copy-dbsnapshot))
 (common-lisp:progn
@@ -10527,8 +10545,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CopyOptionGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CopyOptionGroupResult" "CopyOptionGroupResult")))
  (common-lisp:export 'copy-option-group))
 (common-lisp:progn
@@ -10560,8 +10580,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBCluster")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDBClusterResult" "CreateDBClusterResult")))
  (common-lisp:export 'create-dbcluster))
 (common-lisp:progn
@@ -10582,8 +10604,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBClusterParameterGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDBClusterParameterGroupResult"
       "CreateDBClusterParameterGroupResult")))
  (common-lisp:export 'create-dbcluster-parameter-group))
@@ -10605,8 +10629,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBClusterSnapshot")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDBClusterSnapshotResult" "CreateDBClusterSnapshotResult")))
  (common-lisp:export 'create-dbcluster-snapshot))
 (common-lisp:progn
@@ -10648,8 +10674,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBInstance")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDBInstanceResult" "CreateDBInstanceResult")))
  (common-lisp:export 'create-dbinstance))
 (common-lisp:progn
@@ -10678,8 +10706,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBInstanceReadReplica")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDBInstanceReadReplicaResult"
       "CreateDBInstanceReadReplicaResult")))
  (common-lisp:export 'create-dbinstance-read-replica))
@@ -10700,8 +10730,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBParameterGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDBParameterGroupResult" "CreateDBParameterGroupResult")))
  (common-lisp:export 'create-dbparameter-group))
 (common-lisp:progn
@@ -10721,8 +10753,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBSecurityGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDBSecurityGroupResult" "CreateDBSecurityGroupResult")))
  (common-lisp:export 'create-dbsecurity-group))
 (common-lisp:progn
@@ -10741,8 +10775,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBSnapshot")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDBSnapshotResult" "CreateDBSnapshotResult")))
  (common-lisp:export 'create-dbsnapshot))
 (common-lisp:progn
@@ -10762,8 +10798,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBSubnetGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDBSubnetGroupResult" "CreateDBSubnetGroupResult")))
  (common-lisp:export 'create-dbsubnet-group))
 (common-lisp:progn
@@ -10784,8 +10822,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateEventSubscription")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateEventSubscriptionResult" "CreateEventSubscriptionResult")))
  (common-lisp:export 'create-event-subscription))
 (common-lisp:progn
@@ -10805,8 +10845,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateOptionGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateOptionGroupResult" "CreateOptionGroupResult")))
  (common-lisp:export 'create-option-group))
 (common-lisp:progn
@@ -10826,8 +10868,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBCluster")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteDBClusterResult" "DeleteDBClusterResult")))
  (common-lisp:export 'delete-dbcluster))
 (common-lisp:progn
@@ -10845,8 +10889,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBClusterParameterGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-dbcluster-parameter-group))
 (common-lisp:progn
@@ -10864,8 +10910,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBClusterSnapshot")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteDBClusterSnapshotResult" "DeleteDBClusterSnapshotResult")))
  (common-lisp:export 'delete-dbcluster-snapshot))
 (common-lisp:progn
@@ -10885,8 +10933,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBInstance")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteDBInstanceResult" "DeleteDBInstanceResult")))
  (common-lisp:export 'delete-dbinstance))
 (common-lisp:progn
@@ -10903,8 +10953,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBParameterGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-dbparameter-group))
 (common-lisp:progn
@@ -10921,8 +10973,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBSecurityGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-dbsecurity-group))
 (common-lisp:progn
@@ -10939,8 +10993,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBSnapshot")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteDBSnapshotResult" "DeleteDBSnapshotResult")))
  (common-lisp:export 'delete-dbsnapshot))
 (common-lisp:progn
@@ -10957,8 +11013,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBSubnetGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-dbsubnet-group))
 (common-lisp:progn
@@ -10976,8 +11034,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEventSubscription")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteEventSubscriptionResult" "DeleteEventSubscriptionResult")))
  (common-lisp:export 'delete-event-subscription))
 (common-lisp:progn
@@ -10994,8 +11054,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteOptionGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-option-group))
 (common-lisp:progn
@@ -11023,8 +11085,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCertificates")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CertificateMessage" "DescribeCertificatesResult")))
  (common-lisp:export 'describe-certificates))
 (common-lisp:progn
@@ -11046,8 +11110,10 @@
                                 `(("Action"
                                    ,@"DescribeDBClusterParameterGroups")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBClusterParameterGroupsMessage"
       "DescribeDBClusterParameterGroupsResult")))
  (common-lisp:export 'describe-dbcluster-parameter-groups))
@@ -11069,8 +11135,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBClusterParameters")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBClusterParameterGroupDetails" "DescribeDBClusterParametersResult")))
  (common-lisp:export 'describe-dbcluster-parameters))
 (common-lisp:progn
@@ -11089,8 +11157,10 @@
                                 `(("Action"
                                    ,@"DescribeDBClusterSnapshotAttributes")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDBClusterSnapshotAttributesResult"
       "DescribeDBClusterSnapshotAttributesResult")))
  (common-lisp:export 'describe-dbcluster-snapshot-attributes))
@@ -11113,8 +11183,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBClusterSnapshots")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBClusterSnapshotMessage" "DescribeDBClusterSnapshotsResult")))
  (common-lisp:export 'describe-dbcluster-snapshots))
 (common-lisp:progn
@@ -11133,8 +11205,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBClusters")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBClusterMessage" "DescribeDBClustersResult")))
  (common-lisp:export 'describe-dbclusters))
 (common-lisp:progn
@@ -11158,8 +11232,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBEngineVersions")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBEngineVersionMessage" "DescribeDBEngineVersionsResult")))
  (common-lisp:export 'describe-dbengine-versions))
 (common-lisp:progn
@@ -11178,8 +11254,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBInstances")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBInstanceMessage" "DescribeDBInstancesResult")))
  (common-lisp:export 'describe-dbinstances))
 (common-lisp:progn
@@ -11199,8 +11277,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBLogFiles")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDBLogFilesResponse" "DescribeDBLogFilesResult")))
  (common-lisp:export 'describe-dblog-files))
 (common-lisp:progn
@@ -11220,8 +11300,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBParameterGroups")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBParameterGroupsMessage" "DescribeDBParameterGroupsResult")))
  (common-lisp:export 'describe-dbparameter-groups))
 (common-lisp:progn
@@ -11241,8 +11323,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBParameters")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBParameterGroupDetails" "DescribeDBParametersResult")))
  (common-lisp:export 'describe-dbparameters))
 (common-lisp:progn
@@ -11262,8 +11346,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBSecurityGroups")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBSecurityGroupMessage" "DescribeDBSecurityGroupsResult")))
  (common-lisp:export 'describe-dbsecurity-groups))
 (common-lisp:progn
@@ -11281,8 +11367,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBSnapshotAttributes")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDBSnapshotAttributesResult"
       "DescribeDBSnapshotAttributesResult")))
  (common-lisp:export 'describe-dbsnapshot-attributes))
@@ -11304,8 +11392,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBSnapshots")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBSnapshotMessage" "DescribeDBSnapshotsResult")))
  (common-lisp:export 'describe-dbsnapshots))
 (common-lisp:progn
@@ -11324,8 +11414,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBSubnetGroups")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBSubnetGroupMessage" "DescribeDBSubnetGroupsResult")))
  (common-lisp:export 'describe-dbsubnet-groups))
 (common-lisp:progn
@@ -11347,8 +11439,10 @@
                                 `(("Action"
                                    ,@"DescribeEngineDefaultClusterParameters")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeEngineDefaultClusterParametersResult"
       "DescribeEngineDefaultClusterParametersResult")))
  (common-lisp:export 'describe-engine-default-cluster-parameters))
@@ -11371,8 +11465,10 @@
                                 `(("Action"
                                    ,@"DescribeEngineDefaultParameters")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeEngineDefaultParametersResult"
       "DescribeEngineDefaultParametersResult")))
  (common-lisp:export 'describe-engine-default-parameters))
@@ -11391,8 +11487,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventCategories")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EventCategoriesMessage" "DescribeEventCategoriesResult")))
  (common-lisp:export 'describe-event-categories))
 (common-lisp:progn
@@ -11412,8 +11510,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventSubscriptions")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EventSubscriptionsMessage" "DescribeEventSubscriptionsResult")))
  (common-lisp:export 'describe-event-subscriptions))
 (common-lisp:progn
@@ -11434,8 +11534,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEvents")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EventsMessage" "DescribeEventsResult")))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
@@ -11456,8 +11558,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeOptionGroupOptions")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "OptionGroupOptionsMessage" "DescribeOptionGroupOptionsResult")))
  (common-lisp:export 'describe-option-group-options))
 (common-lisp:progn
@@ -11477,8 +11581,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeOptionGroups")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "OptionGroups" "DescribeOptionGroupsResult")))
  (common-lisp:export 'describe-option-groups))
 (common-lisp:progn
@@ -11500,8 +11606,10 @@
                                 `(("Action"
                                    ,@"DescribeOrderableDBInstanceOptions")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "OrderableDBInstanceOptionsMessage"
       "DescribeOrderableDBInstanceOptionsResult")))
  (common-lisp:export 'describe-orderable-dbinstance-options))
@@ -11523,8 +11631,10 @@
                                 `(("Action"
                                    ,@"DescribePendingMaintenanceActions")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PendingMaintenanceActionsMessage"
       "DescribePendingMaintenanceActionsResult")))
  (common-lisp:export 'describe-pending-maintenance-actions))
@@ -11549,8 +11659,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReservedDBInstances")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ReservedDBInstanceMessage" "DescribeReservedDBInstancesResult")))
  (common-lisp:export 'describe-reserved-dbinstances))
 (common-lisp:progn
@@ -11574,8 +11686,10 @@
                                 `(("Action"
                                    ,@"DescribeReservedDBInstancesOfferings")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ReservedDBInstancesOfferingMessage"
       "DescribeReservedDBInstancesOfferingsResult")))
  (common-lisp:export 'describe-reserved-dbinstances-offerings))
@@ -11594,8 +11708,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSourceRegions")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SourceRegionMessage" "DescribeSourceRegionsResult")))
  (common-lisp:export 'describe-source-regions))
 (common-lisp:progn
@@ -11616,8 +11732,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DownloadDBLogFilePortion")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DownloadDBLogFilePortionDetails" "DownloadDBLogFilePortionResult")))
  (common-lisp:export 'download-dblog-file-portion))
 (common-lisp:progn
@@ -11636,8 +11754,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"FailoverDBCluster")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "FailoverDBClusterResult" "FailoverDBClusterResult")))
  (common-lisp:export 'failover-dbcluster))
 (common-lisp:progn
@@ -11654,8 +11774,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "TagListMessage" "ListTagsForResourceResult")))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
@@ -11683,8 +11805,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBCluster")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyDBClusterResult" "ModifyDBClusterResult")))
  (common-lisp:export 'modify-dbcluster))
 (common-lisp:progn
@@ -11704,8 +11828,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBClusterParameterGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBClusterParameterGroupNameMessage"
       "ModifyDBClusterParameterGroupResult")))
  (common-lisp:export 'modify-dbcluster-parameter-group))
@@ -11728,8 +11854,10 @@
                                 `(("Action"
                                    ,@"ModifyDBClusterSnapshotAttribute")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyDBClusterSnapshotAttributeResult"
       "ModifyDBClusterSnapshotAttributeResult")))
  (common-lisp:export 'modify-dbcluster-snapshot-attribute))
@@ -11771,8 +11899,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBInstance")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyDBInstanceResult" "ModifyDBInstanceResult")))
  (common-lisp:export 'modify-dbinstance))
 (common-lisp:progn
@@ -11790,8 +11920,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBParameterGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBParameterGroupNameMessage" "ModifyDBParameterGroupResult")))
  (common-lisp:export 'modify-dbparameter-group))
 (common-lisp:progn
@@ -11809,8 +11941,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBSnapshot")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyDBSnapshotResult" "ModifyDBSnapshotResult")))
  (common-lisp:export 'modify-dbsnapshot))
 (common-lisp:progn
@@ -11831,8 +11965,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBSnapshotAttribute")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyDBSnapshotAttributeResult" "ModifyDBSnapshotAttributeResult")))
  (common-lisp:export 'modify-dbsnapshot-attribute))
 (common-lisp:progn
@@ -11852,8 +11988,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBSubnetGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyDBSubnetGroupResult" "ModifyDBSubnetGroupResult")))
  (common-lisp:export 'modify-dbsubnet-group))
 (common-lisp:progn
@@ -11874,8 +12012,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyEventSubscription")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyEventSubscriptionResult" "ModifyEventSubscriptionResult")))
  (common-lisp:export 'modify-event-subscription))
 (common-lisp:progn
@@ -11895,8 +12035,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyOptionGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyOptionGroupResult" "ModifyOptionGroupResult")))
  (common-lisp:export 'modify-option-group))
 (common-lisp:progn
@@ -11916,8 +12058,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PromoteReadReplica")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PromoteReadReplicaResult" "PromoteReadReplicaResult")))
  (common-lisp:export 'promote-read-replica))
 (common-lisp:progn
@@ -11935,8 +12079,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PromoteReadReplicaDBCluster")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PromoteReadReplicaDBClusterResult"
       "PromoteReadReplicaDBClusterResult")))
  (common-lisp:export 'promote-read-replica-dbcluster))
@@ -11959,8 +12105,10 @@
                                 `(("Action"
                                    ,@"PurchaseReservedDBInstancesOffering")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PurchaseReservedDBInstancesOfferingResult"
       "PurchaseReservedDBInstancesOfferingResult")))
  (common-lisp:export 'purchase-reserved-dbinstances-offering))
@@ -11979,8 +12127,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RebootDBInstance")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RebootDBInstanceResult" "RebootDBInstanceResult")))
  (common-lisp:export 'reboot-dbinstance))
 (common-lisp:progn
@@ -11998,8 +12148,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemoveRoleFromDBCluster")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'remove-role-from-dbcluster))
 (common-lisp:progn
@@ -12019,8 +12171,10 @@
                                 `(("Action"
                                    ,@"RemoveSourceIdentifierFromSubscription")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RemoveSourceIdentifierFromSubscriptionResult"
       "RemoveSourceIdentifierFromSubscriptionResult")))
  (common-lisp:export 'remove-source-identifier-from-subscription))
@@ -12039,8 +12193,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromResource")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'remove-tags-from-resource))
 (common-lisp:progn
@@ -12061,8 +12217,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ResetDBClusterParameterGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBClusterParameterGroupNameMessage"
       "ResetDBClusterParameterGroupResult")))
  (common-lisp:export 'reset-dbcluster-parameter-group))
@@ -12083,8 +12241,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ResetDBParameterGroup")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DBParameterGroupNameMessage" "ResetDBParameterGroupResult")))
  (common-lisp:export 'reset-dbparameter-group))
 (common-lisp:progn
@@ -12118,8 +12278,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RestoreDBClusterFromS3")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RestoreDBClusterFromS3Result" "RestoreDBClusterFromS3Result")))
  (common-lisp:export 'restore-dbcluster-from-s3))
 (common-lisp:progn
@@ -12145,8 +12307,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RestoreDBClusterFromSnapshot")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RestoreDBClusterFromSnapshotResult"
       "RestoreDBClusterFromSnapshotResult")))
  (common-lisp:export 'restore-dbcluster-from-snapshot))
@@ -12173,8 +12337,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RestoreDBClusterToPointInTime")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RestoreDBClusterToPointInTimeResult"
       "RestoreDBClusterToPointInTimeResult")))
  (common-lisp:export 'restore-dbcluster-to-point-in-time))
@@ -12207,8 +12373,10 @@
                                 `(("Action"
                                    ,@"RestoreDBInstanceFromDBSnapshot")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RestoreDBInstanceFromDBSnapshotResult"
       "RestoreDBInstanceFromDBSnapshotResult")))
  (common-lisp:export 'restore-dbinstance-from-dbsnapshot))
@@ -12242,8 +12410,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RestoreDBInstanceToPointInTime")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RestoreDBInstanceToPointInTimeResult"
       "RestoreDBInstanceToPointInTimeResult")))
  (common-lisp:export 'restore-dbinstance-to-point-in-time))
@@ -12266,8 +12436,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RevokeDBSecurityGroupIngress")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RevokeDBSecurityGroupIngressResult"
       "RevokeDBSecurityGroupIngressResult")))
  (common-lisp:export 'revoke-dbsecurity-group-ingress))
@@ -12285,8 +12457,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StartDBInstance")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StartDBInstanceResult" "StartDBInstanceResult")))
  (common-lisp:export 'start-dbinstance))
 (common-lisp:progn
@@ -12305,7 +12479,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"StopDBInstance")
                                   ("Version" ,@"2014-10-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StopDBInstanceResult" "StopDBInstanceResult")))
  (common-lisp:export 'stop-dbinstance))

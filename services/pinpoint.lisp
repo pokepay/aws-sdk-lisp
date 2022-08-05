@@ -5156,8 +5156,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateApp")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateAppResponse" common-lisp:nil)))
  (common-lisp:export 'create-app))
 (common-lisp:progn
@@ -5175,8 +5177,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateCampaign")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateCampaignResponse" common-lisp:nil)))
  (common-lisp:export 'create-campaign))
 (common-lisp:progn
@@ -5194,8 +5198,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateImportJob")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateImportJobResponse" common-lisp:nil)))
  (common-lisp:export 'create-import-job))
 (common-lisp:progn
@@ -5213,8 +5219,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateSegment")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateSegmentResponse" common-lisp:nil)))
  (common-lisp:export 'create-segment))
 (common-lisp:progn
@@ -5231,8 +5239,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApnsChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteApnsChannelResponse" common-lisp:nil)))
  (common-lisp:export 'delete-apns-channel))
 (common-lisp:progn
@@ -5250,8 +5260,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApnsSandboxChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteApnsSandboxChannelResponse" common-lisp:nil)))
  (common-lisp:export 'delete-apns-sandbox-channel))
 (common-lisp:progn
@@ -5268,8 +5280,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApp")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteAppResponse" common-lisp:nil)))
  (common-lisp:export 'delete-app))
 (common-lisp:progn
@@ -5286,8 +5300,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCampaign")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteCampaignResponse" common-lisp:nil)))
  (common-lisp:export 'delete-campaign))
 (common-lisp:progn
@@ -5304,8 +5320,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEmailChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteEmailChannelResponse" common-lisp:nil)))
  (common-lisp:export 'delete-email-channel))
 (common-lisp:progn
@@ -5322,8 +5340,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEventStream")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteEventStreamResponse" common-lisp:nil)))
  (common-lisp:export 'delete-event-stream))
 (common-lisp:progn
@@ -5340,8 +5360,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteGcmChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteGcmChannelResponse" common-lisp:nil)))
  (common-lisp:export 'delete-gcm-channel))
 (common-lisp:progn
@@ -5358,8 +5380,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSegment")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteSegmentResponse" common-lisp:nil)))
  (common-lisp:export 'delete-segment))
 (common-lisp:progn
@@ -5376,8 +5400,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSmsChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteSmsChannelResponse" common-lisp:nil)))
  (common-lisp:export 'delete-sms-channel))
 (common-lisp:progn
@@ -5394,8 +5420,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetApnsChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetApnsChannelResponse" common-lisp:nil)))
  (common-lisp:export 'get-apns-channel))
 (common-lisp:progn
@@ -5412,8 +5440,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetApnsSandboxChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetApnsSandboxChannelResponse" common-lisp:nil)))
  (common-lisp:export 'get-apns-sandbox-channel))
 (common-lisp:progn
@@ -5430,8 +5460,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetApp")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetAppResponse" common-lisp:nil)))
  (common-lisp:export 'get-app))
 (common-lisp:progn
@@ -5448,8 +5480,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetApplicationSettings")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetApplicationSettingsResponse" common-lisp:nil)))
  (common-lisp:export 'get-application-settings))
 (common-lisp:progn
@@ -5466,8 +5500,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetApps")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetAppsResponse" common-lisp:nil)))
  (common-lisp:export 'get-apps))
 (common-lisp:progn
@@ -5484,8 +5520,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetCampaign")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetCampaignResponse" common-lisp:nil)))
  (common-lisp:export 'get-campaign))
 (common-lisp:progn
@@ -5504,8 +5542,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetCampaignActivities")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetCampaignActivitiesResponse" common-lisp:nil)))
  (common-lisp:export 'get-campaign-activities))
 (common-lisp:progn
@@ -5523,8 +5563,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetCampaignVersion")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetCampaignVersionResponse" common-lisp:nil)))
  (common-lisp:export 'get-campaign-version))
 (common-lisp:progn
@@ -5543,8 +5585,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetCampaignVersions")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetCampaignVersionsResponse" common-lisp:nil)))
  (common-lisp:export 'get-campaign-versions))
 (common-lisp:progn
@@ -5561,8 +5605,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetCampaigns")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetCampaignsResponse" common-lisp:nil)))
  (common-lisp:export 'get-campaigns))
 (common-lisp:progn
@@ -5579,8 +5625,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetEmailChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetEmailChannelResponse" common-lisp:nil)))
  (common-lisp:export 'get-email-channel))
 (common-lisp:progn
@@ -5597,8 +5645,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetEndpoint")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetEndpointResponse" common-lisp:nil)))
  (common-lisp:export 'get-endpoint))
 (common-lisp:progn
@@ -5615,8 +5665,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetEventStream")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetEventStreamResponse" common-lisp:nil)))
  (common-lisp:export 'get-event-stream))
 (common-lisp:progn
@@ -5633,8 +5685,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetGcmChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetGcmChannelResponse" common-lisp:nil)))
  (common-lisp:export 'get-gcm-channel))
 (common-lisp:progn
@@ -5651,8 +5705,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetImportJob")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetImportJobResponse" common-lisp:nil)))
  (common-lisp:export 'get-import-job))
 (common-lisp:progn
@@ -5669,8 +5725,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetImportJobs")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetImportJobsResponse" common-lisp:nil)))
  (common-lisp:export 'get-import-jobs))
 (common-lisp:progn
@@ -5687,8 +5745,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetSegment")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetSegmentResponse" common-lisp:nil)))
  (common-lisp:export 'get-segment))
 (common-lisp:progn
@@ -5707,8 +5767,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetSegmentImportJobs")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetSegmentImportJobsResponse" common-lisp:nil)))
  (common-lisp:export 'get-segment-import-jobs))
 (common-lisp:progn
@@ -5726,8 +5788,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetSegmentVersion")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetSegmentVersionResponse" common-lisp:nil)))
  (common-lisp:export 'get-segment-version))
 (common-lisp:progn
@@ -5746,8 +5810,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetSegmentVersions")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetSegmentVersionsResponse" common-lisp:nil)))
  (common-lisp:export 'get-segment-versions))
 (common-lisp:progn
@@ -5764,8 +5830,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetSegments")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetSegmentsResponse" common-lisp:nil)))
  (common-lisp:export 'get-segments))
 (common-lisp:progn
@@ -5782,8 +5850,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetSmsChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetSmsChannelResponse" common-lisp:nil)))
  (common-lisp:export 'get-sms-channel))
 (common-lisp:progn
@@ -5801,8 +5871,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutEventStream")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutEventStreamResponse" common-lisp:nil)))
  (common-lisp:export 'put-event-stream))
 (common-lisp:progn
@@ -5819,8 +5891,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SendMessages")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SendMessagesResponse" common-lisp:nil)))
  (common-lisp:export 'send-messages))
 (common-lisp:progn
@@ -5838,8 +5912,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApnsChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateApnsChannelResponse" common-lisp:nil)))
  (common-lisp:export 'update-apns-channel))
 (common-lisp:progn
@@ -5859,8 +5935,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApnsSandboxChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateApnsSandboxChannelResponse" common-lisp:nil)))
  (common-lisp:export 'update-apns-sandbox-channel))
 (common-lisp:progn
@@ -5880,8 +5958,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApplicationSettings")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateApplicationSettingsResponse" common-lisp:nil)))
  (common-lisp:export 'update-application-settings))
 (common-lisp:progn
@@ -5900,8 +5980,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateCampaign")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateCampaignResponse" common-lisp:nil)))
  (common-lisp:export 'update-campaign))
 (common-lisp:progn
@@ -5919,8 +6001,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateEmailChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateEmailChannelResponse" common-lisp:nil)))
  (common-lisp:export 'update-email-channel))
 (common-lisp:progn
@@ -5939,8 +6023,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateEndpoint")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateEndpointResponse" common-lisp:nil)))
  (common-lisp:export 'update-endpoint))
 (common-lisp:progn
@@ -5958,8 +6044,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateEndpointsBatch")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateEndpointsBatchResponse" common-lisp:nil)))
  (common-lisp:export 'update-endpoints-batch))
 (common-lisp:progn
@@ -5977,8 +6065,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateGcmChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateGcmChannelResponse" common-lisp:nil)))
  (common-lisp:export 'update-gcm-channel))
 (common-lisp:progn
@@ -5997,8 +6087,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSegment")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateSegmentResponse" common-lisp:nil)))
  (common-lisp:export 'update-segment))
 (common-lisp:progn
@@ -6016,7 +6108,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSmsChannel")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateSmsChannelResponse" common-lisp:nil)))
  (common-lisp:export 'update-sms-channel))

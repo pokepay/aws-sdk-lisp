@@ -2111,8 +2111,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeliveryStream")
                                   ("Version" ,@"2015-08-04"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDeliveryStreamOutput" common-lisp:nil)))
  (common-lisp:export 'create-delivery-stream))
 (common-lisp:progn
@@ -2129,8 +2131,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDeliveryStream")
                                   ("Version" ,@"2015-08-04"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteDeliveryStreamOutput" common-lisp:nil)))
  (common-lisp:export 'delete-delivery-stream))
 (common-lisp:progn
@@ -2150,8 +2154,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDeliveryStream")
                                   ("Version" ,@"2015-08-04"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDeliveryStreamOutput" common-lisp:nil)))
  (common-lisp:export 'describe-delivery-stream))
 (common-lisp:progn
@@ -2168,8 +2174,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetKinesisStream")
                                   ("Version" ,@"2015-08-04"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetKinesisStreamOutput" common-lisp:nil)))
  (common-lisp:export 'get-kinesis-stream))
 (common-lisp:progn
@@ -2189,8 +2197,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListDeliveryStreams")
                                   ("Version" ,@"2015-08-04"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListDeliveryStreamsOutput" common-lisp:nil)))
  (common-lisp:export 'list-delivery-streams))
 (common-lisp:progn
@@ -2207,8 +2217,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutRecord")
                                   ("Version" ,@"2015-08-04"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutRecordOutput" common-lisp:nil)))
  (common-lisp:export 'put-record))
 (common-lisp:progn
@@ -2225,8 +2237,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutRecordBatch")
                                   ("Version" ,@"2015-08-04"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutRecordBatchOutput" common-lisp:nil)))
  (common-lisp:export 'put-record-batch))
 (common-lisp:progn
@@ -2251,7 +2265,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDestination")
                                   ("Version" ,@"2015-08-04"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateDestinationOutput" common-lisp:nil)))
  (common-lisp:export 'update-destination))

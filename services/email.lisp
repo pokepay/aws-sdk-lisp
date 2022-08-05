@@ -3405,8 +3405,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CloneReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CloneReceiptRuleSetResponse" "CloneReceiptRuleSetResult")))
  (common-lisp:export 'clone-receipt-rule-set))
 (common-lisp:progn
@@ -3423,8 +3425,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateConfigurationSet")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateConfigurationSetResponse" "CreateConfigurationSetResult")))
  (common-lisp:export 'create-configuration-set))
 (common-lisp:progn
@@ -3444,8 +3448,10 @@
                                 `(("Action"
                                    ,@"CreateConfigurationSetEventDestination")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateConfigurationSetEventDestinationResponse"
       "CreateConfigurationSetEventDestinationResult")))
  (common-lisp:export 'create-configuration-set-event-destination))
@@ -3463,8 +3469,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateReceiptFilter")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateReceiptFilterResponse" "CreateReceiptFilterResult")))
  (common-lisp:export 'create-receipt-filter))
 (common-lisp:progn
@@ -3481,8 +3489,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateReceiptRule")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateReceiptRuleResponse" "CreateReceiptRuleResult")))
  (common-lisp:export 'create-receipt-rule))
 (common-lisp:progn
@@ -3499,8 +3509,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateReceiptRuleSetResponse" "CreateReceiptRuleSetResult")))
  (common-lisp:export 'create-receipt-rule-set))
 (common-lisp:progn
@@ -3517,8 +3529,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConfigurationSet")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteConfigurationSetResponse" "DeleteConfigurationSetResult")))
  (common-lisp:export 'delete-configuration-set))
 (common-lisp:progn
@@ -3539,8 +3553,10 @@
                                 `(("Action"
                                    ,@"DeleteConfigurationSetEventDestination")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteConfigurationSetEventDestinationResponse"
       "DeleteConfigurationSetEventDestinationResult")))
  (common-lisp:export 'delete-configuration-set-event-destination))
@@ -3558,8 +3574,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIdentity")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteIdentityResponse" "DeleteIdentityResult")))
  (common-lisp:export 'delete-identity))
 (common-lisp:progn
@@ -3576,8 +3594,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIdentityPolicy")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteIdentityPolicyResponse" "DeleteIdentityPolicyResult")))
  (common-lisp:export 'delete-identity-policy))
 (common-lisp:progn
@@ -3594,8 +3614,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReceiptFilter")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteReceiptFilterResponse" "DeleteReceiptFilterResult")))
  (common-lisp:export 'delete-receipt-filter))
 (common-lisp:progn
@@ -3612,8 +3634,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReceiptRule")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteReceiptRuleResponse" "DeleteReceiptRuleResult")))
  (common-lisp:export 'delete-receipt-rule))
 (common-lisp:progn
@@ -3630,8 +3654,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteReceiptRuleSetResponse" "DeleteReceiptRuleSetResult")))
  (common-lisp:export 'delete-receipt-rule-set))
 (common-lisp:progn
@@ -3649,8 +3675,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteVerifiedEmailAddress")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-verified-email-address))
 (common-lisp:progn
@@ -3681,8 +3709,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConfigurationSet")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeConfigurationSetResponse" "DescribeConfigurationSetResult")))
  (common-lisp:export 'describe-configuration-set))
 (common-lisp:progn
@@ -3699,8 +3729,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReceiptRule")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeReceiptRuleResponse" "DescribeReceiptRuleResult")))
  (common-lisp:export 'describe-receipt-rule))
 (common-lisp:progn
@@ -3718,8 +3750,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeReceiptRuleSetResponse" "DescribeReceiptRuleSetResult")))
  (common-lisp:export 'describe-receipt-rule-set))
 (common-lisp:progn
@@ -3737,8 +3771,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetIdentityDkimAttributes")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetIdentityDkimAttributesResponse" "GetIdentityDkimAttributesResult")))
  (common-lisp:export 'get-identity-dkim-attributes))
 (common-lisp:progn
@@ -3757,8 +3793,10 @@
                                 `(("Action"
                                    ,@"GetIdentityMailFromDomainAttributes")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetIdentityMailFromDomainAttributesResponse"
       "GetIdentityMailFromDomainAttributesResult")))
  (common-lisp:export 'get-identity-mail-from-domain-attributes))
@@ -3778,8 +3816,10 @@
                                 `(("Action"
                                    ,@"GetIdentityNotificationAttributes")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetIdentityNotificationAttributesResponse"
       "GetIdentityNotificationAttributesResult")))
  (common-lisp:export 'get-identity-notification-attributes))
@@ -3797,8 +3837,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetIdentityPolicies")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetIdentityPoliciesResponse" "GetIdentityPoliciesResult")))
  (common-lisp:export 'get-identity-policies))
 (common-lisp:progn
@@ -3817,8 +3859,10 @@
                                 `(("Action"
                                    ,@"GetIdentityVerificationAttributes")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetIdentityVerificationAttributesResponse"
       "GetIdentityVerificationAttributesResult")))
  (common-lisp:export 'get-identity-verification-attributes))
@@ -3852,8 +3896,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListConfigurationSets")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListConfigurationSetsResponse" "ListConfigurationSetsResult")))
  (common-lisp:export 'list-configuration-sets))
 (common-lisp:progn
@@ -3871,8 +3917,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListIdentities")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListIdentitiesResponse" "ListIdentitiesResult")))
  (common-lisp:export 'list-identities))
 (common-lisp:progn
@@ -3889,8 +3937,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListIdentityPolicies")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListIdentityPoliciesResponse" "ListIdentityPoliciesResult")))
  (common-lisp:export 'list-identity-policies))
 (common-lisp:progn
@@ -3916,8 +3966,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListReceiptRuleSets")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListReceiptRuleSetsResponse" "ListReceiptRuleSetsResult")))
  (common-lisp:export 'list-receipt-rule-sets))
 (common-lisp:progn
@@ -3943,8 +3995,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutIdentityPolicy")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutIdentityPolicyResponse" "PutIdentityPolicyResult")))
  (common-lisp:export 'put-identity-policy))
 (common-lisp:progn
@@ -3961,8 +4015,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ReorderReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ReorderReceiptRuleSetResponse" "ReorderReceiptRuleSetResult")))
  (common-lisp:export 'reorder-receipt-rule-set))
 (common-lisp:progn
@@ -3983,8 +4039,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SendBounce")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SendBounceResponse" "SendBounceResult")))
  (common-lisp:export 'send-bounce))
 (common-lisp:progn
@@ -4005,8 +4063,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SendEmail")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SendEmailResponse" "SendEmailResult")))
  (common-lisp:export 'send-email))
 (common-lisp:progn
@@ -4026,8 +4086,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SendRawEmail")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SendRawEmailResponse" "SendRawEmailResult")))
  (common-lisp:export 'send-raw-email))
 (common-lisp:progn
@@ -4045,8 +4107,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetActiveReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetActiveReceiptRuleSetResponse" "SetActiveReceiptRuleSetResult")))
  (common-lisp:export 'set-active-receipt-rule-set))
 (common-lisp:progn
@@ -4064,8 +4128,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetIdentityDkimEnabled")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetIdentityDkimEnabledResponse" "SetIdentityDkimEnabledResult")))
  (common-lisp:export 'set-identity-dkim-enabled))
 (common-lisp:progn
@@ -4084,8 +4150,10 @@
                                 `(("Action"
                                    ,@"SetIdentityFeedbackForwardingEnabled")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetIdentityFeedbackForwardingEnabledResponse"
       "SetIdentityFeedbackForwardingEnabledResult")))
  (common-lisp:export 'set-identity-feedback-forwarding-enabled))
@@ -4106,8 +4174,10 @@
                                 `(("Action"
                                    ,@"SetIdentityHeadersInNotificationsEnabled")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetIdentityHeadersInNotificationsEnabledResponse"
       "SetIdentityHeadersInNotificationsEnabledResult")))
  (common-lisp:export 'set-identity-headers-in-notifications-enabled))
@@ -4128,8 +4198,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetIdentityMailFromDomain")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetIdentityMailFromDomainResponse" "SetIdentityMailFromDomainResult")))
  (common-lisp:export 'set-identity-mail-from-domain))
 (common-lisp:progn
@@ -4148,8 +4220,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetIdentityNotificationTopic")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetIdentityNotificationTopicResponse"
       "SetIdentityNotificationTopicResult")))
  (common-lisp:export 'set-identity-notification-topic))
@@ -4168,8 +4242,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetReceiptRulePosition")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetReceiptRulePositionResponse" "SetReceiptRulePositionResult")))
  (common-lisp:export 'set-receipt-rule-position))
 (common-lisp:progn
@@ -4189,8 +4265,10 @@
                                 `(("Action"
                                    ,@"UpdateConfigurationSetEventDestination")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateConfigurationSetEventDestinationResponse"
       "UpdateConfigurationSetEventDestinationResult")))
  (common-lisp:export 'update-configuration-set-event-destination))
@@ -4208,8 +4286,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateReceiptRule")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateReceiptRuleResponse" "UpdateReceiptRuleResult")))
  (common-lisp:export 'update-receipt-rule))
 (common-lisp:progn
@@ -4226,8 +4306,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"VerifyDomainDkim")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "VerifyDomainDkimResponse" "VerifyDomainDkimResult")))
  (common-lisp:export 'verify-domain-dkim))
 (common-lisp:progn
@@ -4244,8 +4326,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"VerifyDomainIdentity")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "VerifyDomainIdentityResponse" "VerifyDomainIdentityResult")))
  (common-lisp:export 'verify-domain-identity))
 (common-lisp:progn
@@ -4262,8 +4346,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"VerifyEmailAddress")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'verify-email-address))
 (common-lisp:progn
@@ -4280,7 +4366,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"VerifyEmailIdentity")
                                   ("Version" ,@"2010-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "VerifyEmailIdentityResponse" "VerifyEmailIdentityResult")))
  (common-lisp:export 'verify-email-identity))

@@ -2242,8 +2242,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BuildSuggesters")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BuildSuggestersResponse" "BuildSuggestersResult")))
  (common-lisp:export 'build-suggesters))
 (common-lisp:progn
@@ -2260,8 +2262,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDomain")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDomainResponse" "CreateDomainResult")))
  (common-lisp:export 'create-domain))
 (common-lisp:progn
@@ -2278,8 +2282,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DefineAnalysisScheme")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DefineAnalysisSchemeResponse" "DefineAnalysisSchemeResult")))
  (common-lisp:export 'define-analysis-scheme))
 (common-lisp:progn
@@ -2296,8 +2302,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DefineExpression")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DefineExpressionResponse" "DefineExpressionResult")))
  (common-lisp:export 'define-expression))
 (common-lisp:progn
@@ -2314,8 +2322,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DefineIndexField")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DefineIndexFieldResponse" "DefineIndexFieldResult")))
  (common-lisp:export 'define-index-field))
 (common-lisp:progn
@@ -2332,8 +2342,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DefineSuggester")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DefineSuggesterResponse" "DefineSuggesterResult")))
  (common-lisp:export 'define-suggester))
 (common-lisp:progn
@@ -2351,8 +2363,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAnalysisScheme")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteAnalysisSchemeResponse" "DeleteAnalysisSchemeResult")))
  (common-lisp:export 'delete-analysis-scheme))
 (common-lisp:progn
@@ -2369,8 +2383,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDomain")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteDomainResponse" "DeleteDomainResult")))
  (common-lisp:export 'delete-domain))
 (common-lisp:progn
@@ -2387,8 +2403,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteExpression")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteExpressionResponse" "DeleteExpressionResult")))
  (common-lisp:export 'delete-expression))
 (common-lisp:progn
@@ -2405,8 +2423,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIndexField")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteIndexFieldResponse" "DeleteIndexFieldResult")))
  (common-lisp:export 'delete-index-field))
 (common-lisp:progn
@@ -2423,8 +2443,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSuggester")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteSuggesterResponse" "DeleteSuggesterResult")))
  (common-lisp:export 'delete-suggester))
 (common-lisp:progn
@@ -2444,8 +2466,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAnalysisSchemes")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeAnalysisSchemesResponse" "DescribeAnalysisSchemesResult")))
  (common-lisp:export 'describe-analysis-schemes))
 (common-lisp:progn
@@ -2463,8 +2487,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAvailabilityOptions")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeAvailabilityOptionsResponse"
       "DescribeAvailabilityOptionsResult")))
  (common-lisp:export 'describe-availability-options))
@@ -2482,8 +2508,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDomains")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDomainsResponse" "DescribeDomainsResult")))
  (common-lisp:export 'describe-domains))
 (common-lisp:progn
@@ -2501,8 +2529,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeExpressions")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeExpressionsResponse" "DescribeExpressionsResult")))
  (common-lisp:export 'describe-expressions))
 (common-lisp:progn
@@ -2520,8 +2550,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeIndexFields")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeIndexFieldsResponse" "DescribeIndexFieldsResult")))
  (common-lisp:export 'describe-index-fields))
 (common-lisp:progn
@@ -2539,8 +2571,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeScalingParameters")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeScalingParametersResponse" "DescribeScalingParametersResult")))
  (common-lisp:export 'describe-scaling-parameters))
 (common-lisp:progn
@@ -2558,8 +2592,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeServiceAccessPolicies")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeServiceAccessPoliciesResponse"
       "DescribeServiceAccessPoliciesResult")))
  (common-lisp:export 'describe-service-access-policies))
@@ -2578,8 +2614,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSuggesters")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeSuggestersResponse" "DescribeSuggestersResult")))
  (common-lisp:export 'describe-suggesters))
 (common-lisp:progn
@@ -2596,8 +2634,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"IndexDocuments")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "IndexDocumentsResponse" "IndexDocumentsResult")))
  (common-lisp:export 'index-documents))
 (common-lisp:progn
@@ -2623,8 +2663,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAvailabilityOptions")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateAvailabilityOptionsResponse" "UpdateAvailabilityOptionsResult")))
  (common-lisp:export 'update-availability-options))
 (common-lisp:progn
@@ -2642,8 +2684,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateScalingParameters")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateScalingParametersResponse" "UpdateScalingParametersResult")))
  (common-lisp:export 'update-scaling-parameters))
 (common-lisp:progn
@@ -2661,8 +2705,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateServiceAccessPolicies")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateServiceAccessPoliciesResponse"
       "UpdateServiceAccessPoliciesResult")))
  (common-lisp:export 'update-service-access-policies))

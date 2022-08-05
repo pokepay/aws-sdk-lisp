@@ -1128,8 +1128,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRule")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-rule))
 (common-lisp:progn
@@ -1154,8 +1156,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRule")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeRuleResponse" common-lisp:nil)))
  (common-lisp:export 'describe-rule))
 (common-lisp:progn
@@ -1172,8 +1176,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DisableRule")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'disable-rule))
 (common-lisp:progn
@@ -1190,8 +1196,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"EnableRule")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'enable-rule))
 (common-lisp:progn
@@ -1209,8 +1217,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListRuleNamesByTarget")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListRuleNamesByTargetResponse" common-lisp:nil)))
  (common-lisp:export 'list-rule-names-by-target))
 (common-lisp:progn
@@ -1227,8 +1237,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListRules")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListRulesResponse" common-lisp:nil)))
  (common-lisp:export 'list-rules))
 (common-lisp:progn
@@ -1245,8 +1257,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTargetsByRule")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTargetsByRuleResponse" common-lisp:nil)))
  (common-lisp:export 'list-targets-by-rule))
 (common-lisp:progn
@@ -1263,8 +1277,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutEvents")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutEventsResponse" common-lisp:nil)))
  (common-lisp:export 'put-events))
 (common-lisp:progn
@@ -1281,8 +1297,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutPermission")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-permission))
 (common-lisp:progn
@@ -1302,8 +1320,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutRule")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutRuleResponse" common-lisp:nil)))
  (common-lisp:export 'put-rule))
 (common-lisp:progn
@@ -1320,8 +1340,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutTargets")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutTargetsResponse" common-lisp:nil)))
  (common-lisp:export 'put-targets))
 (common-lisp:progn
@@ -1338,8 +1360,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemovePermission")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'remove-permission))
 (common-lisp:progn
@@ -1356,8 +1380,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTargets")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RemoveTargetsResponse" common-lisp:nil)))
  (common-lisp:export 'remove-targets))
 (common-lisp:progn
@@ -1374,7 +1400,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"TestEventPattern")
                                   ("Version" ,@"2015-10-07"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "TestEventPatternResponse" common-lisp:nil)))
  (common-lisp:export 'test-event-pattern))

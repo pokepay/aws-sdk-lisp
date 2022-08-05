@@ -1645,8 +1645,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CompareFaces")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CompareFacesResponse" common-lisp:nil)))
  (common-lisp:export 'compare-faces))
 (common-lisp:progn
@@ -1663,8 +1665,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateCollection")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateCollectionResponse" common-lisp:nil)))
  (common-lisp:export 'create-collection))
 (common-lisp:progn
@@ -1681,8 +1685,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCollection")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteCollectionResponse" common-lisp:nil)))
  (common-lisp:export 'delete-collection))
 (common-lisp:progn
@@ -1699,8 +1705,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFaces")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteFacesResponse" common-lisp:nil)))
  (common-lisp:export 'delete-faces))
 (common-lisp:progn
@@ -1717,8 +1725,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DetectFaces")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DetectFacesResponse" common-lisp:nil)))
  (common-lisp:export 'detect-faces))
 (common-lisp:progn
@@ -1736,8 +1746,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DetectLabels")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DetectLabelsResponse" common-lisp:nil)))
  (common-lisp:export 'detect-labels))
 (common-lisp:progn
@@ -1754,8 +1766,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DetectModerationLabels")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DetectModerationLabelsResponse" common-lisp:nil)))
  (common-lisp:export 'detect-moderation-labels))
 (common-lisp:progn
@@ -1772,8 +1786,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetCelebrityInfo")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetCelebrityInfoResponse" common-lisp:nil)))
  (common-lisp:export 'get-celebrity-info))
 (common-lisp:progn
@@ -1793,8 +1809,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"IndexFaces")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "IndexFacesResponse" common-lisp:nil)))
  (common-lisp:export 'index-faces))
 (common-lisp:progn
@@ -1811,8 +1829,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListCollections")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListCollectionsResponse" common-lisp:nil)))
  (common-lisp:export 'list-collections))
 (common-lisp:progn
@@ -1830,8 +1850,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListFaces")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListFacesResponse" common-lisp:nil)))
  (common-lisp:export 'list-faces))
 (common-lisp:progn
@@ -1848,8 +1870,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RecognizeCelebrities")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RecognizeCelebritiesResponse" common-lisp:nil)))
  (common-lisp:export 'recognize-celebrities))
 (common-lisp:progn
@@ -1869,8 +1893,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SearchFaces")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SearchFacesResponse" common-lisp:nil)))
  (common-lisp:export 'search-faces))
 (common-lisp:progn
@@ -1889,7 +1915,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"SearchFacesByImage")
                                   ("Version" ,@"2016-06-27"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SearchFacesByImageResponse" common-lisp:nil)))
  (common-lisp:export 'search-faces-by-image))

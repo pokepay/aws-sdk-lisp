@@ -1280,8 +1280,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddPermission")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'add-permission))
 (common-lisp:progn
@@ -1301,8 +1303,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ChangeMessageVisibility")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'change-message-visibility))
 (common-lisp:progn
@@ -1320,8 +1324,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ChangeMessageVisibilityBatch")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ChangeMessageVisibilityBatchResult"
       "ChangeMessageVisibilityBatchResult")))
  (common-lisp:export 'change-message-visibility-batch))
@@ -1339,8 +1345,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateQueue")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateQueueResult" "CreateQueueResult")))
  (common-lisp:export 'create-queue))
 (common-lisp:progn
@@ -1357,8 +1365,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteMessage")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-message))
 (common-lisp:progn
@@ -1375,8 +1385,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteMessageBatch")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteMessageBatchResult" "DeleteMessageBatchResult")))
  (common-lisp:export 'delete-message-batch))
 (common-lisp:progn
@@ -1393,8 +1405,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteQueue")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-queue))
 (common-lisp:progn
@@ -1411,8 +1425,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetQueueAttributes")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetQueueAttributesResult" "GetQueueAttributesResult")))
  (common-lisp:export 'get-queue-attributes))
 (common-lisp:progn
@@ -1430,8 +1446,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetQueueUrl")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetQueueUrlResult" "GetQueueUrlResult")))
  (common-lisp:export 'get-queue-url))
 (common-lisp:progn
@@ -1449,8 +1467,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListDeadLetterSourceQueues")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListDeadLetterSourceQueuesResult" "ListDeadLetterSourceQueuesResult")))
  (common-lisp:export 'list-dead-letter-source-queues))
 (common-lisp:progn
@@ -1467,8 +1487,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListQueues")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListQueuesResult" "ListQueuesResult")))
  (common-lisp:export 'list-queues))
 (common-lisp:progn
@@ -1485,8 +1507,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PurgeQueue")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'purge-queue))
 (common-lisp:progn
@@ -1509,8 +1533,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ReceiveMessage")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ReceiveMessageResult" "ReceiveMessageResult")))
  (common-lisp:export 'receive-message))
 (common-lisp:progn
@@ -1527,8 +1553,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemovePermission")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'remove-permission))
 (common-lisp:progn
@@ -1549,8 +1577,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SendMessage")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SendMessageResult" "SendMessageResult")))
  (common-lisp:export 'send-message))
 (common-lisp:progn
@@ -1567,8 +1597,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SendMessageBatch")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SendMessageBatchResult" "SendMessageBatchResult")))
  (common-lisp:export 'send-message-batch))
 (common-lisp:progn
@@ -1585,7 +1617,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetQueueAttributes")
                                   ("Version" ,@"2012-11-05"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-queue-attributes))

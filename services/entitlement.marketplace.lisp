@@ -240,7 +240,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetEntitlements")
                                   ("Version" ,@"2017-01-11"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetEntitlementsResult" common-lisp:nil)))
  (common-lisp:export 'get-entitlements))

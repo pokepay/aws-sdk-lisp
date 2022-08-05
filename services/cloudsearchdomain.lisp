@@ -632,8 +632,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"Search")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SearchResponse" common-lisp:nil)))
  (common-lisp:export 'search))
 (common-lisp:progn
@@ -651,8 +653,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"Suggest")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SuggestResponse" common-lisp:nil)))
  (common-lisp:export 'suggest))
 (common-lisp:progn
@@ -670,7 +674,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UploadDocuments")
                                   ("Version" ,@"2013-01-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UploadDocumentsResponse" common-lisp:nil)))
  (common-lisp:export 'upload-documents))

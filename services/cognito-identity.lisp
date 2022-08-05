@@ -1386,8 +1386,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateIdentityPool")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "IdentityPool" common-lisp:nil)))
  (common-lisp:export 'create-identity-pool))
 (common-lisp:progn
@@ -1405,8 +1407,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIdentities")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteIdentitiesResponse" common-lisp:nil)))
  (common-lisp:export 'delete-identities))
 (common-lisp:progn
@@ -1424,8 +1428,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIdentityPool")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-identity-pool))
 (common-lisp:progn
@@ -1443,8 +1449,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeIdentity")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "IdentityDescription" common-lisp:nil)))
  (common-lisp:export 'describe-identity))
 (common-lisp:progn
@@ -1462,8 +1470,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeIdentityPool")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "IdentityPool" common-lisp:nil)))
  (common-lisp:export 'describe-identity-pool))
 (common-lisp:progn
@@ -1483,8 +1493,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetCredentialsForIdentity")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetCredentialsForIdentityResponse" common-lisp:nil)))
  (common-lisp:export 'get-credentials-for-identity))
 (common-lisp:progn
@@ -1503,8 +1515,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetId")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetIdResponse" common-lisp:nil)))
  (common-lisp:export 'get-id))
 (common-lisp:progn
@@ -1522,8 +1536,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetIdentityPoolRoles")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetIdentityPoolRolesResponse" common-lisp:nil)))
  (common-lisp:export 'get-identity-pool-roles))
 (common-lisp:progn
@@ -1541,8 +1557,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetOpenIdToken")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetOpenIdTokenResponse" common-lisp:nil)))
  (common-lisp:export 'get-open-id-token))
 (common-lisp:progn
@@ -1564,8 +1582,10 @@
                                 `(("Action"
                                    ,@"GetOpenIdTokenForDeveloperIdentity")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetOpenIdTokenForDeveloperIdentityResponse" common-lisp:nil)))
  (common-lisp:export 'get-open-id-token-for-developer-identity))
 (common-lisp:progn
@@ -1586,8 +1606,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListIdentities")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListIdentitiesResponse" common-lisp:nil)))
  (common-lisp:export 'list-identities))
 (common-lisp:progn
@@ -1605,8 +1627,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListIdentityPools")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListIdentityPoolsResponse" common-lisp:nil)))
  (common-lisp:export 'list-identity-pools))
 (common-lisp:progn
@@ -1627,8 +1651,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"LookupDeveloperIdentity")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "LookupDeveloperIdentityResponse" common-lisp:nil)))
  (common-lisp:export 'lookup-developer-identity))
 (common-lisp:progn
@@ -1650,8 +1676,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"MergeDeveloperIdentities")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "MergeDeveloperIdentitiesResponse" common-lisp:nil)))
  (common-lisp:export 'merge-developer-identities))
 (common-lisp:progn
@@ -1670,8 +1698,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetIdentityPoolRoles")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-identity-pool-roles))
 (common-lisp:progn
@@ -1692,8 +1722,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UnlinkDeveloperIdentity")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'unlink-developer-identity))
 (common-lisp:progn
@@ -1712,8 +1744,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UnlinkIdentity")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'unlink-identity))
 (common-lisp:progn
@@ -1738,7 +1772,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateIdentityPool")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "IdentityPool" common-lisp:nil)))
  (common-lisp:export 'update-identity-pool))

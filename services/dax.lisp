@@ -2002,8 +2002,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateCluster")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateClusterResponse" common-lisp:nil)))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
@@ -2021,8 +2023,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateParameterGroup")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateParameterGroupResponse" common-lisp:nil)))
  (common-lisp:export 'create-parameter-group))
 (common-lisp:progn
@@ -2040,8 +2044,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateSubnetGroup")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateSubnetGroupResponse" common-lisp:nil)))
  (common-lisp:export 'create-subnet-group))
 (common-lisp:progn
@@ -2062,8 +2068,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DecreaseReplicationFactor")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DecreaseReplicationFactorResponse" common-lisp:nil)))
  (common-lisp:export 'decrease-replication-factor))
 (common-lisp:progn
@@ -2080,8 +2088,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCluster")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteClusterResponse" common-lisp:nil)))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
@@ -2098,8 +2108,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteParameterGroup")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteParameterGroupResponse" common-lisp:nil)))
  (common-lisp:export 'delete-parameter-group))
 (common-lisp:progn
@@ -2116,8 +2128,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSubnetGroup")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteSubnetGroupResponse" common-lisp:nil)))
  (common-lisp:export 'delete-subnet-group))
 (common-lisp:progn
@@ -2135,8 +2149,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeClusters")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeClustersResponse" common-lisp:nil)))
  (common-lisp:export 'describe-clusters))
 (common-lisp:progn
@@ -2154,8 +2170,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDefaultParameters")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDefaultParametersResponse" common-lisp:nil)))
  (common-lisp:export 'describe-default-parameters))
 (common-lisp:progn
@@ -2175,8 +2193,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEvents")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeEventsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
@@ -2196,8 +2216,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeParameterGroups")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeParameterGroupsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-parameter-groups))
 (common-lisp:progn
@@ -2216,8 +2238,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeParameters")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeParametersResponse" common-lisp:nil)))
  (common-lisp:export 'describe-parameters))
 (common-lisp:progn
@@ -2236,8 +2260,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSubnetGroups")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeSubnetGroupsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-subnet-groups))
 (common-lisp:progn
@@ -2258,8 +2284,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"IncreaseReplicationFactor")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "IncreaseReplicationFactorResponse" common-lisp:nil)))
  (common-lisp:export 'increase-replication-factor))
 (common-lisp:progn
@@ -2276,8 +2304,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTags")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTagsResponse" common-lisp:nil)))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
@@ -2294,8 +2324,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RebootNode")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RebootNodeResponse" common-lisp:nil)))
  (common-lisp:export 'reboot-node))
 (common-lisp:progn
@@ -2312,8 +2344,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"TagResource")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "TagResourceResponse" common-lisp:nil)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -2330,8 +2364,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UntagResource")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UntagResourceResponse" common-lisp:nil)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
@@ -2354,8 +2390,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateCluster")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateClusterResponse" common-lisp:nil)))
  (common-lisp:export 'update-cluster))
 (common-lisp:progn
@@ -2374,8 +2412,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateParameterGroup")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateParameterGroupResponse" common-lisp:nil)))
  (common-lisp:export 'update-parameter-group))
 (common-lisp:progn
@@ -2393,7 +2433,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSubnetGroup")
                                   ("Version" ,@"2017-04-19"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateSubnetGroupResponse" common-lisp:nil)))
  (common-lisp:export 'update-subnet-group))

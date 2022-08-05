@@ -6261,8 +6261,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddFacetToObject")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddFacetToObjectResponse" common-lisp:nil)))
  (common-lisp:export 'add-facet-to-object))
 (common-lisp:progn
@@ -6280,8 +6282,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ApplySchema")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ApplySchemaResponse" common-lisp:nil)))
  (common-lisp:export 'apply-schema))
 (common-lisp:progn
@@ -6301,8 +6305,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AttachObject")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AttachObjectResponse" common-lisp:nil)))
  (common-lisp:export 'attach-object))
 (common-lisp:progn
@@ -6321,8 +6327,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AttachPolicy")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AttachPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'attach-policy))
 (common-lisp:progn
@@ -6341,8 +6349,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AttachToIndex")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AttachToIndexResponse" common-lisp:nil)))
  (common-lisp:export 'attach-to-index))
 (common-lisp:progn
@@ -6362,8 +6372,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AttachTypedLink")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AttachTypedLinkResponse" common-lisp:nil)))
  (common-lisp:export 'attach-typed-link))
 (common-lisp:progn
@@ -6382,8 +6394,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchRead")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchReadResponse" common-lisp:nil)))
  (common-lisp:export 'batch-read))
 (common-lisp:progn
@@ -6400,8 +6414,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchWrite")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchWriteResponse" common-lisp:nil)))
  (common-lisp:export 'batch-write))
 (common-lisp:progn
@@ -6418,8 +6434,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDirectory")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDirectoryResponse" common-lisp:nil)))
  (common-lisp:export 'create-directory))
 (common-lisp:progn
@@ -6437,8 +6455,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateFacet")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateFacetResponse" common-lisp:nil)))
  (common-lisp:export 'create-facet))
 (common-lisp:progn
@@ -6459,8 +6479,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateIndex")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateIndexResponse" common-lisp:nil)))
  (common-lisp:export 'create-index))
 (common-lisp:progn
@@ -6480,8 +6502,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateObject")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateObjectResponse" common-lisp:nil)))
  (common-lisp:export 'create-object))
 (common-lisp:progn
@@ -6498,8 +6522,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateSchema")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateSchemaResponse" common-lisp:nil)))
  (common-lisp:export 'create-schema))
 (common-lisp:progn
@@ -6516,8 +6542,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateTypedLinkFacet")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateTypedLinkFacetResponse" common-lisp:nil)))
  (common-lisp:export 'create-typed-link-facet))
 (common-lisp:progn
@@ -6534,8 +6562,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDirectory")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteDirectoryResponse" common-lisp:nil)))
  (common-lisp:export 'delete-directory))
 (common-lisp:progn
@@ -6552,8 +6582,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFacet")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteFacetResponse" common-lisp:nil)))
  (common-lisp:export 'delete-facet))
 (common-lisp:progn
@@ -6570,8 +6602,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteObject")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteObjectResponse" common-lisp:nil)))
  (common-lisp:export 'delete-object))
 (common-lisp:progn
@@ -6588,8 +6622,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSchema")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteSchemaResponse" common-lisp:nil)))
  (common-lisp:export 'delete-schema))
 (common-lisp:progn
@@ -6606,8 +6642,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTypedLinkFacet")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteTypedLinkFacetResponse" common-lisp:nil)))
  (common-lisp:export 'delete-typed-link-facet))
 (common-lisp:progn
@@ -6626,8 +6664,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DetachFromIndex")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DetachFromIndexResponse" common-lisp:nil)))
  (common-lisp:export 'detach-from-index))
 (common-lisp:progn
@@ -6645,8 +6685,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DetachObject")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DetachObjectResponse" common-lisp:nil)))
  (common-lisp:export 'detach-object))
 (common-lisp:progn
@@ -6665,8 +6707,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DetachPolicy")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DetachPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'detach-policy))
 (common-lisp:progn
@@ -6684,8 +6728,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DetachTypedLink")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'detach-typed-link))
 (common-lisp:progn
@@ -6702,8 +6748,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DisableDirectory")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DisableDirectoryResponse" common-lisp:nil)))
  (common-lisp:export 'disable-directory))
 (common-lisp:progn
@@ -6720,8 +6768,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"EnableDirectory")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EnableDirectoryResponse" common-lisp:nil)))
  (common-lisp:export 'enable-directory))
 (common-lisp:progn
@@ -6738,8 +6788,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetDirectory")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetDirectoryResponse" common-lisp:nil)))
  (common-lisp:export 'get-directory))
 (common-lisp:progn
@@ -6756,8 +6808,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetFacet")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetFacetResponse" common-lisp:nil)))
  (common-lisp:export 'get-facet))
 (common-lisp:progn
@@ -6776,8 +6830,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetObjectInformation")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetObjectInformationResponse" common-lisp:nil)))
  (common-lisp:export 'get-object-information))
 (common-lisp:progn
@@ -6794,8 +6850,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetSchemaAsJson")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetSchemaAsJsonResponse" common-lisp:nil)))
  (common-lisp:export 'get-schema-as-json))
 (common-lisp:progn
@@ -6813,8 +6871,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetTypedLinkFacetInformation")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetTypedLinkFacetInformationResponse" common-lisp:nil)))
  (common-lisp:export 'get-typed-link-facet-information))
 (common-lisp:progn
@@ -6832,8 +6892,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListAppliedSchemaArns")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListAppliedSchemaArnsResponse" common-lisp:nil)))
  (common-lisp:export 'list-applied-schema-arns))
 (common-lisp:progn
@@ -6853,8 +6915,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListAttachedIndices")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListAttachedIndicesResponse" common-lisp:nil)))
  (common-lisp:export 'list-attached-indices))
 (common-lisp:progn
@@ -6872,8 +6936,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListDevelopmentSchemaArns")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListDevelopmentSchemaArnsResponse" common-lisp:nil)))
  (common-lisp:export 'list-development-schema-arns))
 (common-lisp:progn
@@ -6890,8 +6956,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListDirectories")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListDirectoriesResponse" common-lisp:nil)))
  (common-lisp:export 'list-directories))
 (common-lisp:progn
@@ -6909,8 +6977,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListFacetAttributes")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListFacetAttributesResponse" common-lisp:nil)))
  (common-lisp:export 'list-facet-attributes))
 (common-lisp:progn
@@ -6928,8 +6998,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListFacetNames")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListFacetNamesResponse" common-lisp:nil)))
  (common-lisp:export 'list-facet-names))
 (common-lisp:progn
@@ -6952,8 +7024,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListIncomingTypedLinks")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListIncomingTypedLinksResponse" common-lisp:nil)))
  (common-lisp:export 'list-incoming-typed-links))
 (common-lisp:progn
@@ -6973,8 +7047,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListIndex")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListIndexResponse" common-lisp:nil)))
  (common-lisp:export 'list-index))
 (common-lisp:progn
@@ -6994,8 +7070,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListObjectAttributes")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListObjectAttributesResponse" common-lisp:nil)))
  (common-lisp:export 'list-object-attributes))
 (common-lisp:progn
@@ -7015,8 +7093,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListObjectChildren")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListObjectChildrenResponse" common-lisp:nil)))
  (common-lisp:export 'list-object-children))
 (common-lisp:progn
@@ -7036,8 +7116,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListObjectParentPaths")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListObjectParentPathsResponse" common-lisp:nil)))
  (common-lisp:export 'list-object-parent-paths))
 (common-lisp:progn
@@ -7057,8 +7139,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListObjectParents")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListObjectParentsResponse" common-lisp:nil)))
  (common-lisp:export 'list-object-parents))
 (common-lisp:progn
@@ -7078,8 +7162,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListObjectPolicies")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListObjectPoliciesResponse" common-lisp:nil)))
  (common-lisp:export 'list-object-policies))
 (common-lisp:progn
@@ -7102,8 +7188,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListOutgoingTypedLinks")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListOutgoingTypedLinksResponse" common-lisp:nil)))
  (common-lisp:export 'list-outgoing-typed-links))
 (common-lisp:progn
@@ -7123,8 +7211,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListPolicyAttachments")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListPolicyAttachmentsResponse" common-lisp:nil)))
  (common-lisp:export 'list-policy-attachments))
 (common-lisp:progn
@@ -7142,8 +7232,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListPublishedSchemaArns")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListPublishedSchemaArnsResponse" common-lisp:nil)))
  (common-lisp:export 'list-published-schema-arns))
 (common-lisp:progn
@@ -7161,8 +7253,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTagsForResourceResponse" common-lisp:nil)))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
@@ -7181,8 +7275,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTypedLinkFacetAttributes")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTypedLinkFacetAttributesResponse" common-lisp:nil)))
  (common-lisp:export 'list-typed-link-facet-attributes))
 (common-lisp:progn
@@ -7201,8 +7297,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTypedLinkFacetNames")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTypedLinkFacetNamesResponse" common-lisp:nil)))
  (common-lisp:export 'list-typed-link-facet-names))
 (common-lisp:progn
@@ -7222,8 +7320,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"LookupPolicy")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "LookupPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'lookup-policy))
 (common-lisp:progn
@@ -7241,8 +7341,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PublishSchema")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PublishSchemaResponse" common-lisp:nil)))
  (common-lisp:export 'publish-schema))
 (common-lisp:progn
@@ -7259,8 +7361,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutSchemaFromJson")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutSchemaFromJsonResponse" common-lisp:nil)))
  (common-lisp:export 'put-schema-from-json))
 (common-lisp:progn
@@ -7279,8 +7383,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemoveFacetFromObject")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RemoveFacetFromObjectResponse" common-lisp:nil)))
  (common-lisp:export 'remove-facet-from-object))
 (common-lisp:progn
@@ -7297,8 +7403,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"TagResource")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "TagResourceResponse" common-lisp:nil)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -7315,8 +7423,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UntagResource")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UntagResourceResponse" common-lisp:nil)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
@@ -7335,8 +7445,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateFacet")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateFacetResponse" common-lisp:nil)))
  (common-lisp:export 'update-facet))
 (common-lisp:progn
@@ -7355,8 +7467,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateObjectAttributes")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateObjectAttributesResponse" common-lisp:nil)))
  (common-lisp:export 'update-object-attributes))
 (common-lisp:progn
@@ -7373,8 +7487,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSchema")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateSchemaResponse" common-lisp:nil)))
  (common-lisp:export 'update-schema))
 (common-lisp:progn
@@ -7394,7 +7510,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTypedLinkFacet")
                                   ("Version" ,@"2016-05-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateTypedLinkFacetResponse" common-lisp:nil)))
  (common-lisp:export 'update-typed-link-facet))

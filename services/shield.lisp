@@ -876,8 +876,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateProtection")
                                   ("Version" ,@"2016-06-02"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateProtectionResponse" common-lisp:nil)))
  (common-lisp:export 'create-protection))
 (common-lisp:progn
@@ -903,8 +905,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteProtection")
                                   ("Version" ,@"2016-06-02"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteProtectionResponse" common-lisp:nil)))
  (common-lisp:export 'delete-protection))
 (common-lisp:progn
@@ -930,8 +934,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAttack")
                                   ("Version" ,@"2016-06-02"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeAttackResponse" common-lisp:nil)))
  (common-lisp:export 'describe-attack))
 (common-lisp:progn
@@ -948,8 +954,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProtection")
                                   ("Version" ,@"2016-06-02"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeProtectionResponse" common-lisp:nil)))
  (common-lisp:export 'describe-protection))
 (common-lisp:progn
@@ -978,8 +986,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListAttacks")
                                   ("Version" ,@"2016-06-02"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListAttacksResponse" common-lisp:nil)))
  (common-lisp:export 'list-attacks))
 (common-lisp:progn
@@ -996,7 +1006,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListProtections")
                                   ("Version" ,@"2016-06-02"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListProtectionsResponse" common-lisp:nil)))
  (common-lisp:export 'list-protections))

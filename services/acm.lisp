@@ -888,8 +888,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToCertificate")
                                   ("Version" ,@"2015-12-08"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'add-tags-to-certificate))
 (common-lisp:progn
@@ -906,8 +908,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCertificate")
                                   ("Version" ,@"2015-12-08"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-certificate))
 (common-lisp:progn
@@ -924,8 +928,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCertificate")
                                   ("Version" ,@"2015-12-08"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeCertificateResponse" common-lisp:nil)))
  (common-lisp:export 'describe-certificate))
 (common-lisp:progn
@@ -942,8 +948,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetCertificate")
                                   ("Version" ,@"2015-12-08"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetCertificateResponse" common-lisp:nil)))
  (common-lisp:export 'get-certificate))
 (common-lisp:progn
@@ -963,8 +971,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ImportCertificate")
                                   ("Version" ,@"2015-12-08"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ImportCertificateResponse" common-lisp:nil)))
  (common-lisp:export 'import-certificate))
 (common-lisp:progn
@@ -983,8 +993,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListCertificates")
                                   ("Version" ,@"2015-12-08"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListCertificatesResponse" common-lisp:nil)))
  (common-lisp:export 'list-certificates))
 (common-lisp:progn
@@ -1002,8 +1014,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForCertificate")
                                   ("Version" ,@"2015-12-08"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTagsForCertificateResponse" common-lisp:nil)))
  (common-lisp:export 'list-tags-for-certificate))
 (common-lisp:progn
@@ -1021,8 +1035,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromCertificate")
                                   ("Version" ,@"2015-12-08"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'remove-tags-from-certificate))
 (common-lisp:progn
@@ -1042,8 +1058,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RequestCertificate")
                                   ("Version" ,@"2015-12-08"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RequestCertificateResponse" common-lisp:nil)))
  (common-lisp:export 'request-certificate))
 (common-lisp:progn
@@ -1061,7 +1079,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"ResendValidationEmail")
                                   ("Version" ,@"2015-12-08"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'resend-validation-email))

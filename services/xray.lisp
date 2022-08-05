@@ -1212,8 +1212,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetTraces")
                                   ("Version" ,@"2016-04-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchGetTracesResult" common-lisp:nil)))
  (common-lisp:export 'batch-get-traces))
 (common-lisp:progn
@@ -1230,8 +1232,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetServiceGraph")
                                   ("Version" ,@"2016-04-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetServiceGraphResult" common-lisp:nil)))
  (common-lisp:export 'get-service-graph))
 (common-lisp:progn
@@ -1248,8 +1252,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetTraceGraph")
                                   ("Version" ,@"2016-04-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetTraceGraphResult" common-lisp:nil)))
  (common-lisp:export 'get-trace-graph))
 (common-lisp:progn
@@ -1269,8 +1275,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetTraceSummaries")
                                   ("Version" ,@"2016-04-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetTraceSummariesResult" common-lisp:nil)))
  (common-lisp:export 'get-trace-summaries))
 (common-lisp:progn
@@ -1290,8 +1298,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutTelemetryRecords")
                                   ("Version" ,@"2016-04-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutTelemetryRecordsResult" common-lisp:nil)))
  (common-lisp:export 'put-telemetry-records))
 (common-lisp:progn
@@ -1308,7 +1318,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutTraceSegments")
                                   ("Version" ,@"2016-04-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutTraceSegmentsResult" common-lisp:nil)))
  (common-lisp:export 'put-trace-segments))

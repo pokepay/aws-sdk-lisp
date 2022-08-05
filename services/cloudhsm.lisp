@@ -1182,8 +1182,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToResource")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddTagsToResourceResponse" common-lisp:nil)))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
@@ -1200,8 +1202,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateHapg")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateHapgResponse" common-lisp:nil)))
  (common-lisp:export 'create-hapg))
 (common-lisp:progn
@@ -1221,8 +1225,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateHsm")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateHsmResponse" common-lisp:nil)))
  (common-lisp:export 'create-hsm))
 (common-lisp:progn
@@ -1239,8 +1245,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateLunaClient")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateLunaClientResponse" common-lisp:nil)))
  (common-lisp:export 'create-luna-client))
 (common-lisp:progn
@@ -1257,8 +1265,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHapg")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteHapgResponse" common-lisp:nil)))
  (common-lisp:export 'delete-hapg))
 (common-lisp:progn
@@ -1275,8 +1285,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHsm")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteHsmResponse" common-lisp:nil)))
  (common-lisp:export 'delete-hsm))
 (common-lisp:progn
@@ -1293,8 +1305,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLunaClient")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteLunaClientResponse" common-lisp:nil)))
  (common-lisp:export 'delete-luna-client))
 (common-lisp:progn
@@ -1311,8 +1325,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeHapg")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeHapgResponse" common-lisp:nil)))
  (common-lisp:export 'describe-hapg))
 (common-lisp:progn
@@ -1329,8 +1345,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeHsm")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeHsmResponse" common-lisp:nil)))
  (common-lisp:export 'describe-hsm))
 (common-lisp:progn
@@ -1348,8 +1366,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLunaClient")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeLunaClientResponse" common-lisp:nil)))
  (common-lisp:export 'describe-luna-client))
 (common-lisp:progn
@@ -1367,8 +1387,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetConfig")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetConfigResponse" common-lisp:nil)))
  (common-lisp:export 'get-config))
 (common-lisp:progn
@@ -1394,8 +1416,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListHapgs")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListHapgsResponse" common-lisp:nil)))
  (common-lisp:export 'list-hapgs))
 (common-lisp:progn
@@ -1412,8 +1436,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListHsms")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListHsmsResponse" common-lisp:nil)))
  (common-lisp:export 'list-hsms))
 (common-lisp:progn
@@ -1430,8 +1456,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListLunaClients")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListLunaClientsResponse" common-lisp:nil)))
  (common-lisp:export 'list-luna-clients))
 (common-lisp:progn
@@ -1448,8 +1476,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTagsForResourceResponse" common-lisp:nil)))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
@@ -1467,8 +1497,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyHapg")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyHapgResponse" common-lisp:nil)))
  (common-lisp:export 'modify-hapg))
 (common-lisp:progn
@@ -1488,8 +1520,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyHsm")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyHsmResponse" common-lisp:nil)))
  (common-lisp:export 'modify-hsm))
 (common-lisp:progn
@@ -1506,8 +1540,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyLunaClient")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ModifyLunaClientResponse" common-lisp:nil)))
  (common-lisp:export 'modify-luna-client))
 (common-lisp:progn
@@ -1525,7 +1561,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromResource")
                                   ("Version" ,@"2014-05-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RemoveTagsFromResourceResponse" common-lisp:nil)))
  (common-lisp:export 'remove-tags-from-resource))

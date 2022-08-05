@@ -1251,8 +1251,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetBuilds")
                                   ("Version" ,@"2016-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchGetBuildsOutput" common-lisp:nil)))
  (common-lisp:export 'batch-get-builds))
 (common-lisp:progn
@@ -1269,8 +1271,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetProjects")
                                   ("Version" ,@"2016-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchGetProjectsOutput" common-lisp:nil)))
  (common-lisp:export 'batch-get-projects))
 (common-lisp:progn
@@ -1291,8 +1295,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateProject")
                                   ("Version" ,@"2016-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateProjectOutput" common-lisp:nil)))
  (common-lisp:export 'create-project))
 (common-lisp:progn
@@ -1309,8 +1315,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteProject")
                                   ("Version" ,@"2016-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteProjectOutput" common-lisp:nil)))
  (common-lisp:export 'delete-project))
 (common-lisp:progn
@@ -1327,8 +1335,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListBuilds")
                                   ("Version" ,@"2016-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListBuildsOutput" common-lisp:nil)))
  (common-lisp:export 'list-builds))
 (common-lisp:progn
@@ -1346,8 +1356,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListBuildsForProject")
                                   ("Version" ,@"2016-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListBuildsForProjectOutput" common-lisp:nil)))
  (common-lisp:export 'list-builds-for-project))
 (common-lisp:progn
@@ -1373,8 +1385,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListProjects")
                                   ("Version" ,@"2016-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListProjectsOutput" common-lisp:nil)))
  (common-lisp:export 'list-projects))
 (common-lisp:progn
@@ -1396,8 +1410,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StartBuild")
                                   ("Version" ,@"2016-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StartBuildOutput" common-lisp:nil)))
  (common-lisp:export 'start-build))
 (common-lisp:progn
@@ -1414,8 +1430,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StopBuild")
                                   ("Version" ,@"2016-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StopBuildOutput" common-lisp:nil)))
  (common-lisp:export 'stop-build))
 (common-lisp:progn
@@ -1436,7 +1454,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateProject")
                                   ("Version" ,@"2016-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateProjectOutput" common-lisp:nil)))
  (common-lisp:export 'update-project))

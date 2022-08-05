@@ -422,8 +422,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchMeterUsage")
                                   ("Version" ,@"2016-01-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchMeterUsageResult" common-lisp:nil)))
  (common-lisp:export 'batch-meter-usage))
 (common-lisp:progn
@@ -444,8 +446,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"MeterUsage")
                                   ("Version" ,@"2016-01-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "MeterUsageResult" common-lisp:nil)))
  (common-lisp:export 'meter-usage))
 (common-lisp:progn
@@ -463,7 +467,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"ResolveCustomer")
                                   ("Version" ,@"2016-01-14"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ResolveCustomerResult" common-lisp:nil)))
  (common-lisp:export 'resolve-customer))

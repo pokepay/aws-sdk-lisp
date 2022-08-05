@@ -4070,8 +4070,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CancelUpdateStack")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'cancel-update-stack))
 (common-lisp:progn
@@ -4091,8 +4093,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ContinueUpdateRollback")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ContinueUpdateRollbackOutput" "ContinueUpdateRollbackResult")))
  (common-lisp:export 'continue-update-rollback))
 (common-lisp:progn
@@ -4116,8 +4120,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateChangeSet")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateChangeSetOutput" "CreateChangeSetResult")))
  (common-lisp:export 'create-change-set))
 (common-lisp:progn
@@ -4142,8 +4148,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateStack")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateStackOutput" "CreateStackResult")))
  (common-lisp:export 'create-stack))
 (common-lisp:progn
@@ -4163,8 +4171,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateStackInstances")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateStackInstancesOutput" "CreateStackInstancesResult")))
  (common-lisp:export 'create-stack-instances))
 (common-lisp:progn
@@ -4185,8 +4195,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateStackSet")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateStackSetOutput" "CreateStackSetResult")))
  (common-lisp:export 'create-stack-set))
 (common-lisp:progn
@@ -4203,8 +4215,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteChangeSet")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteChangeSetOutput" "DeleteChangeSetResult")))
  (common-lisp:export 'delete-change-set))
 (common-lisp:progn
@@ -4224,8 +4238,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStack")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-stack))
 (common-lisp:progn
@@ -4245,8 +4261,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStackInstances")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteStackInstancesOutput" "DeleteStackInstancesResult")))
  (common-lisp:export 'delete-stack-instances))
 (common-lisp:progn
@@ -4263,8 +4281,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStackSet")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteStackSetOutput" "DeleteStackSetResult")))
  (common-lisp:export 'delete-stack-set))
 (common-lisp:progn
@@ -4281,8 +4301,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAccountLimits")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeAccountLimitsOutput" "DescribeAccountLimitsResult")))
  (common-lisp:export 'describe-account-limits))
 (common-lisp:progn
@@ -4300,8 +4322,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeChangeSet")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeChangeSetOutput" "DescribeChangeSetResult")))
  (common-lisp:export 'describe-change-set))
 (common-lisp:progn
@@ -4318,8 +4342,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackEvents")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeStackEventsOutput" "DescribeStackEventsResult")))
  (common-lisp:export 'describe-stack-events))
 (common-lisp:progn
@@ -4339,8 +4365,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackInstance")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeStackInstanceOutput" "DescribeStackInstanceResult")))
  (common-lisp:export 'describe-stack-instance))
 (common-lisp:progn
@@ -4357,8 +4385,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackResource")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeStackResourceOutput" "DescribeStackResourceResult")))
  (common-lisp:export 'describe-stack-resource))
 (common-lisp:progn
@@ -4378,8 +4408,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackResources")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeStackResourcesOutput" "DescribeStackResourcesResult")))
  (common-lisp:export 'describe-stack-resources))
 (common-lisp:progn
@@ -4396,8 +4428,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackSet")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeStackSetOutput" "DescribeStackSetResult")))
  (common-lisp:export 'describe-stack-set))
 (common-lisp:progn
@@ -4415,8 +4449,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackSetOperation")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeStackSetOperationOutput" "DescribeStackSetOperationResult")))
  (common-lisp:export 'describe-stack-set-operation))
 (common-lisp:progn
@@ -4433,8 +4469,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStacks")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeStacksOutput" "DescribeStacksResult")))
  (common-lisp:export 'describe-stacks))
 (common-lisp:progn
@@ -4452,8 +4490,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"EstimateTemplateCost")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EstimateTemplateCostOutput" "EstimateTemplateCostResult")))
  (common-lisp:export 'estimate-template-cost))
 (common-lisp:progn
@@ -4472,8 +4512,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ExecuteChangeSet")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ExecuteChangeSetOutput" "ExecuteChangeSetResult")))
  (common-lisp:export 'execute-change-set))
 (common-lisp:progn
@@ -4490,8 +4532,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetStackPolicy")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetStackPolicyOutput" "GetStackPolicyResult")))
  (common-lisp:export 'get-stack-policy))
 (common-lisp:progn
@@ -4510,8 +4554,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetTemplate")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetTemplateOutput" "GetTemplateResult")))
  (common-lisp:export 'get-template))
 (common-lisp:progn
@@ -4531,8 +4577,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetTemplateSummary")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetTemplateSummaryOutput" "GetTemplateSummaryResult")))
  (common-lisp:export 'get-template-summary))
 (common-lisp:progn
@@ -4549,8 +4597,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListChangeSets")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListChangeSetsOutput" "ListChangeSetsResult")))
  (common-lisp:export 'list-change-sets))
 (common-lisp:progn
@@ -4567,8 +4617,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListExports")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListExportsOutput" "ListExportsResult")))
  (common-lisp:export 'list-exports))
 (common-lisp:progn
@@ -4585,8 +4637,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListImports")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListImportsOutput" "ListImportsResult")))
  (common-lisp:export 'list-imports))
 (common-lisp:progn
@@ -4606,8 +4660,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListStackInstances")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListStackInstancesOutput" "ListStackInstancesResult")))
  (common-lisp:export 'list-stack-instances))
 (common-lisp:progn
@@ -4624,8 +4680,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListStackResources")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListStackResourcesOutput" "ListStackResourcesResult")))
  (common-lisp:export 'list-stack-resources))
 (common-lisp:progn
@@ -4645,8 +4703,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListStackSetOperationResults")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListStackSetOperationResultsOutput"
       "ListStackSetOperationResultsResult")))
  (common-lisp:export 'list-stack-set-operation-results))
@@ -4665,8 +4725,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListStackSetOperations")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListStackSetOperationsOutput" "ListStackSetOperationsResult")))
  (common-lisp:export 'list-stack-set-operations))
 (common-lisp:progn
@@ -4683,8 +4745,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListStackSets")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListStackSetsOutput" "ListStackSetsResult")))
  (common-lisp:export 'list-stack-sets))
 (common-lisp:progn
@@ -4701,8 +4765,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListStacks")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListStacksOutput" "ListStacksResult")))
  (common-lisp:export 'list-stacks))
 (common-lisp:progn
@@ -4721,8 +4787,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetStackPolicy")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-stack-policy))
 (common-lisp:progn
@@ -4741,8 +4809,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SignalResource")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'signal-resource))
 (common-lisp:progn
@@ -4759,8 +4829,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StopStackSetOperation")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StopStackSetOperationOutput" "StopStackSetOperationResult")))
  (common-lisp:export 'stop-stack-set-operation))
 (common-lisp:progn
@@ -4786,8 +4858,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateStack")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateStackOutput" "UpdateStackResult")))
  (common-lisp:export 'update-stack))
 (common-lisp:progn
@@ -4809,8 +4883,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateStackSet")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateStackSetOutput" "UpdateStackSetResult")))
  (common-lisp:export 'update-stack-set))
 (common-lisp:progn
@@ -4827,7 +4903,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"ValidateTemplate")
                                   ("Version" ,@"2010-05-15"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ValidateTemplateOutput" "ValidateTemplateResult")))
  (common-lisp:export 'validate-template))

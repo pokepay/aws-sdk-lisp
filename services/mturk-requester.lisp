@@ -3174,8 +3174,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AcceptQualificationRequest")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AcceptQualificationRequestResponse" common-lisp:nil)))
  (common-lisp:export 'accept-qualification-request))
 (common-lisp:progn
@@ -3195,8 +3197,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ApproveAssignment")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ApproveAssignmentResponse" common-lisp:nil)))
  (common-lisp:export 'approve-assignment))
 (common-lisp:progn
@@ -3218,8 +3222,10 @@
                                 `(("Action"
                                    ,@"AssociateQualificationWithWorker")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AssociateQualificationWithWorkerResponse" common-lisp:nil)))
  (common-lisp:export 'associate-qualification-with-worker))
 (common-lisp:progn
@@ -3241,8 +3247,10 @@
                                 `(("Action"
                                    ,@"CreateAdditionalAssignmentsForHIT")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateAdditionalAssignmentsForHITResponse" common-lisp:nil)))
  (common-lisp:export 'create-additional-assignments-for-hit))
 (common-lisp:progn
@@ -3270,8 +3278,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateHIT")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateHITResponse" common-lisp:nil)))
  (common-lisp:export 'create-hit))
 (common-lisp:progn
@@ -3293,8 +3303,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateHITType")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateHITTypeResponse" common-lisp:nil)))
  (common-lisp:export 'create-hittype))
 (common-lisp:progn
@@ -3318,8 +3330,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateHITWithHITType")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateHITWithHITTypeResponse" common-lisp:nil)))
  (common-lisp:export 'create-hitwith-hittype))
 (common-lisp:progn
@@ -3343,8 +3357,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateQualificationType")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateQualificationTypeResponse" common-lisp:nil)))
  (common-lisp:export 'create-qualification-type))
 (common-lisp:progn
@@ -3361,8 +3377,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateWorkerBlock")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateWorkerBlockResponse" common-lisp:nil)))
  (common-lisp:export 'create-worker-block))
 (common-lisp:progn
@@ -3379,8 +3397,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHIT")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteHITResponse" common-lisp:nil)))
  (common-lisp:export 'delete-hit))
 (common-lisp:progn
@@ -3398,8 +3418,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteQualificationType")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteQualificationTypeResponse" common-lisp:nil)))
  (common-lisp:export 'delete-qualification-type))
 (common-lisp:progn
@@ -3416,8 +3438,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteWorkerBlock")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteWorkerBlockResponse" common-lisp:nil)))
  (common-lisp:export 'delete-worker-block))
 (common-lisp:progn
@@ -3437,8 +3461,10 @@
                                 `(("Action"
                                    ,@"DisassociateQualificationFromWorker")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DisassociateQualificationFromWorkerResponse" common-lisp:nil)))
  (common-lisp:export 'disassociate-qualification-from-worker))
 (common-lisp:progn
@@ -3463,8 +3489,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetAssignment")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetAssignmentResponse" common-lisp:nil)))
  (common-lisp:export 'get-assignment))
 (common-lisp:progn
@@ -3482,8 +3510,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetFileUploadURL")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetFileUploadURLResponse" common-lisp:nil)))
  (common-lisp:export 'get-file-upload-url))
 (common-lisp:progn
@@ -3500,8 +3530,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetHIT")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetHITResponse" common-lisp:nil)))
  (common-lisp:export 'get-hit))
 (common-lisp:progn
@@ -3519,8 +3551,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetQualificationScore")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetQualificationScoreResponse" common-lisp:nil)))
  (common-lisp:export 'get-qualification-score))
 (common-lisp:progn
@@ -3537,8 +3571,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetQualificationType")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetQualificationTypeResponse" common-lisp:nil)))
  (common-lisp:export 'get-qualification-type))
 (common-lisp:progn
@@ -3557,8 +3593,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListAssignmentsForHIT")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListAssignmentsForHITResponse" common-lisp:nil)))
  (common-lisp:export 'list-assignments-for-hit))
 (common-lisp:progn
@@ -3577,8 +3615,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListBonusPayments")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListBonusPaymentsResponse" common-lisp:nil)))
  (common-lisp:export 'list-bonus-payments))
 (common-lisp:progn
@@ -3595,8 +3635,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListHITs")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListHITsResponse" common-lisp:nil)))
  (common-lisp:export 'list-hits))
 (common-lisp:progn
@@ -3616,8 +3658,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListHITsForQualificationType")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListHITsForQualificationTypeResponse" common-lisp:nil)))
  (common-lisp:export 'list-hits-for-qualification-type))
 (common-lisp:progn
@@ -3637,8 +3681,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListQualificationRequests")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListQualificationRequestsResponse" common-lisp:nil)))
  (common-lisp:export 'list-qualification-requests))
 (common-lisp:progn
@@ -3658,8 +3704,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListQualificationTypes")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListQualificationTypesResponse" common-lisp:nil)))
  (common-lisp:export 'list-qualification-types))
 (common-lisp:progn
@@ -3680,8 +3728,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListReviewPolicyResultsForHIT")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListReviewPolicyResultsForHITResponse" common-lisp:nil)))
  (common-lisp:export 'list-review-policy-results-for-hit))
 (common-lisp:progn
@@ -3699,8 +3749,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListReviewableHITs")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListReviewableHITsResponse" common-lisp:nil)))
  (common-lisp:export 'list-reviewable-hits))
 (common-lisp:progn
@@ -3717,8 +3769,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListWorkerBlocks")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListWorkerBlocksResponse" common-lisp:nil)))
  (common-lisp:export 'list-worker-blocks))
 (common-lisp:progn
@@ -3740,8 +3794,10 @@
                                 `(("Action"
                                    ,@"ListWorkersWithQualificationType")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListWorkersWithQualificationTypeResponse" common-lisp:nil)))
  (common-lisp:export 'list-workers-with-qualification-type))
 (common-lisp:progn
@@ -3759,8 +3815,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"NotifyWorkers")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "NotifyWorkersResponse" common-lisp:nil)))
  (common-lisp:export 'notify-workers))
 (common-lisp:progn
@@ -3778,8 +3836,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RejectAssignment")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RejectAssignmentResponse" common-lisp:nil)))
  (common-lisp:export 'reject-assignment))
 (common-lisp:progn
@@ -3798,8 +3858,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RejectQualificationRequest")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RejectQualificationRequestResponse" common-lisp:nil)))
  (common-lisp:export 'reject-qualification-request))
 (common-lisp:progn
@@ -3819,8 +3881,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SendBonus")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SendBonusResponse" common-lisp:nil)))
  (common-lisp:export 'send-bonus))
 (common-lisp:progn
@@ -3838,8 +3902,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SendTestEventNotification")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SendTestEventNotificationResponse" common-lisp:nil)))
  (common-lisp:export 'send-test-event-notification))
 (common-lisp:progn
@@ -3856,8 +3922,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateExpirationForHIT")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateExpirationForHITResponse" common-lisp:nil)))
  (common-lisp:export 'update-expiration-for-hit))
 (common-lisp:progn
@@ -3874,8 +3942,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateHITReviewStatus")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateHITReviewStatusResponse" common-lisp:nil)))
  (common-lisp:export 'update-hitreview-status))
 (common-lisp:progn
@@ -3892,8 +3962,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateHITTypeOfHIT")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateHITTypeOfHITResponse" common-lisp:nil)))
  (common-lisp:export 'update-hittype-of-hit))
 (common-lisp:progn
@@ -3911,8 +3983,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateNotificationSettings")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateNotificationSettingsResponse" common-lisp:nil)))
  (common-lisp:export 'update-notification-settings))
 (common-lisp:progn
@@ -3936,7 +4010,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateQualificationType")
                                   ("Version" ,@"2017-01-17"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateQualificationTypeResponse" common-lisp:nil)))
  (common-lisp:export 'update-qualification-type))

@@ -4283,8 +4283,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToOnPremisesInstances")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'add-tags-to-on-premises-instances))
 (common-lisp:progn
@@ -4302,8 +4304,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetApplicationRevisions")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchGetApplicationRevisionsOutput" common-lisp:nil)))
  (common-lisp:export 'batch-get-application-revisions))
 (common-lisp:progn
@@ -4320,8 +4324,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetApplications")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchGetApplicationsOutput" common-lisp:nil)))
  (common-lisp:export 'batch-get-applications))
 (common-lisp:progn
@@ -4340,8 +4346,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetDeploymentGroups")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchGetDeploymentGroupsOutput" common-lisp:nil)))
  (common-lisp:export 'batch-get-deployment-groups))
 (common-lisp:progn
@@ -4359,8 +4367,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetDeploymentInstances")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchGetDeploymentInstancesOutput" common-lisp:nil)))
  (common-lisp:export 'batch-get-deployment-instances))
 (common-lisp:progn
@@ -4377,8 +4387,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetDeployments")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchGetDeploymentsOutput" common-lisp:nil)))
  (common-lisp:export 'batch-get-deployments))
 (common-lisp:progn
@@ -4396,8 +4408,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetOnPremisesInstances")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchGetOnPremisesInstancesOutput" common-lisp:nil)))
  (common-lisp:export 'batch-get-on-premises-instances))
 (common-lisp:progn
@@ -4414,8 +4428,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ContinueDeployment")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'continue-deployment))
 (common-lisp:progn
@@ -4432,8 +4448,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateApplication")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateApplicationOutput" common-lisp:nil)))
  (common-lisp:export 'create-application))
 (common-lisp:progn
@@ -4458,8 +4476,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeployment")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDeploymentOutput" common-lisp:nil)))
  (common-lisp:export 'create-deployment))
 (common-lisp:progn
@@ -4478,8 +4498,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeploymentConfig")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDeploymentConfigOutput" common-lisp:nil)))
  (common-lisp:export 'create-deployment-config))
 (common-lisp:progn
@@ -4508,8 +4530,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeploymentGroup")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDeploymentGroupOutput" common-lisp:nil)))
  (common-lisp:export 'create-deployment-group))
 (common-lisp:progn
@@ -4526,8 +4550,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApplication")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-application))
 (common-lisp:progn
@@ -4544,8 +4570,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDeploymentConfig")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-deployment-config))
 (common-lisp:progn
@@ -4563,8 +4591,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDeploymentGroup")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteDeploymentGroupOutput" common-lisp:nil)))
  (common-lisp:export 'delete-deployment-group))
 (common-lisp:progn
@@ -4582,8 +4612,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterOnPremisesInstance")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'deregister-on-premises-instance))
 (common-lisp:progn
@@ -4600,8 +4632,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetApplication")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetApplicationOutput" common-lisp:nil)))
  (common-lisp:export 'get-application))
 (common-lisp:progn
@@ -4618,8 +4652,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetApplicationRevision")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetApplicationRevisionOutput" common-lisp:nil)))
  (common-lisp:export 'get-application-revision))
 (common-lisp:progn
@@ -4636,8 +4672,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetDeployment")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetDeploymentOutput" common-lisp:nil)))
  (common-lisp:export 'get-deployment))
 (common-lisp:progn
@@ -4654,8 +4692,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetDeploymentConfig")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetDeploymentConfigOutput" common-lisp:nil)))
  (common-lisp:export 'get-deployment-config))
 (common-lisp:progn
@@ -4673,8 +4713,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetDeploymentGroup")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetDeploymentGroupOutput" common-lisp:nil)))
  (common-lisp:export 'get-deployment-group))
 (common-lisp:progn
@@ -4691,8 +4733,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetDeploymentInstance")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetDeploymentInstanceOutput" common-lisp:nil)))
  (common-lisp:export 'get-deployment-instance))
 (common-lisp:progn
@@ -4709,8 +4753,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetOnPremisesInstance")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetOnPremisesInstanceOutput" common-lisp:nil)))
  (common-lisp:export 'get-on-premises-instance))
 (common-lisp:progn
@@ -4730,8 +4776,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListApplicationRevisions")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListApplicationRevisionsOutput" common-lisp:nil)))
  (common-lisp:export 'list-application-revisions))
 (common-lisp:progn
@@ -4748,8 +4796,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListApplications")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListApplicationsOutput" common-lisp:nil)))
  (common-lisp:export 'list-applications))
 (common-lisp:progn
@@ -4766,8 +4816,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListDeploymentConfigs")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListDeploymentConfigsOutput" common-lisp:nil)))
  (common-lisp:export 'list-deployment-configs))
 (common-lisp:progn
@@ -4784,8 +4836,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListDeploymentGroups")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListDeploymentGroupsOutput" common-lisp:nil)))
  (common-lisp:export 'list-deployment-groups))
 (common-lisp:progn
@@ -4805,8 +4859,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListDeploymentInstances")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListDeploymentInstancesOutput" common-lisp:nil)))
  (common-lisp:export 'list-deployment-instances))
 (common-lisp:progn
@@ -4826,8 +4882,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListDeployments")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListDeploymentsOutput" common-lisp:nil)))
  (common-lisp:export 'list-deployments))
 (common-lisp:progn
@@ -4845,8 +4903,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListGitHubAccountTokenNames")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListGitHubAccountTokenNamesOutput" common-lisp:nil)))
  (common-lisp:export 'list-git-hub-account-token-names))
 (common-lisp:progn
@@ -4865,8 +4925,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListOnPremisesInstances")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListOnPremisesInstancesOutput" common-lisp:nil)))
  (common-lisp:export 'list-on-premises-instances))
 (common-lisp:progn
@@ -4885,8 +4947,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RegisterApplicationRevision")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'register-application-revision))
 (common-lisp:progn
@@ -4906,8 +4970,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RegisterOnPremisesInstance")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'register-on-premises-instance))
 (common-lisp:progn
@@ -4926,8 +4992,10 @@
                                 `(("Action"
                                    ,@"RemoveTagsFromOnPremisesInstances")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'remove-tags-from-on-premises-instances))
 (common-lisp:progn
@@ -4946,8 +5014,10 @@
                                 `(("Action"
                                    ,@"SkipWaitTimeForInstanceTermination")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'skip-wait-time-for-instance-termination))
 (common-lisp:progn
@@ -4965,8 +5035,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StopDeployment")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StopDeploymentOutput" common-lisp:nil)))
  (common-lisp:export 'stop-deployment))
 (common-lisp:progn
@@ -4984,8 +5056,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApplication")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-application))
 (common-lisp:progn
@@ -5015,7 +5089,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDeploymentGroup")
                                   ("Version" ,@"2014-10-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateDeploymentGroupOutput" common-lisp:nil)))
  (common-lisp:export 'update-deployment-group))

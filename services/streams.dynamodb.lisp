@@ -765,8 +765,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStream")
                                   ("Version" ,@"2012-08-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeStreamOutput" common-lisp:nil)))
  (common-lisp:export 'describe-stream))
 (common-lisp:progn
@@ -784,8 +786,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetRecords")
                                   ("Version" ,@"2012-08-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetRecordsOutput" common-lisp:nil)))
  (common-lisp:export 'get-records))
 (common-lisp:progn
@@ -806,8 +810,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetShardIterator")
                                   ("Version" ,@"2012-08-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetShardIteratorOutput" common-lisp:nil)))
  (common-lisp:export 'get-shard-iterator))
 (common-lisp:progn
@@ -827,7 +833,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListStreams")
                                   ("Version" ,@"2012-08-10"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListStreamsOutput" common-lisp:nil)))
  (common-lisp:export 'list-streams))

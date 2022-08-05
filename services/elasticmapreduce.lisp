@@ -4520,8 +4520,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddInstanceFleet")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddInstanceFleetOutput" common-lisp:nil)))
  (common-lisp:export 'add-instance-fleet))
 (common-lisp:progn
@@ -4539,8 +4541,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddInstanceGroups")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddInstanceGroupsOutput" common-lisp:nil)))
  (common-lisp:export 'add-instance-groups))
 (common-lisp:progn
@@ -4558,8 +4562,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddJobFlowSteps")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddJobFlowStepsOutput" common-lisp:nil)))
  (common-lisp:export 'add-job-flow-steps))
 (common-lisp:progn
@@ -4577,8 +4583,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddTags")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddTagsOutput" common-lisp:nil)))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
@@ -4596,8 +4604,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CancelSteps")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CancelStepsOutput" common-lisp:nil)))
  (common-lisp:export 'cancel-steps))
 (common-lisp:progn
@@ -4616,8 +4626,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateSecurityConfiguration")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateSecurityConfigurationOutput" common-lisp:nil)))
  (common-lisp:export 'create-security-configuration))
 (common-lisp:progn
@@ -4636,8 +4648,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSecurityConfiguration")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteSecurityConfigurationOutput" common-lisp:nil)))
  (common-lisp:export 'delete-security-configuration))
 (common-lisp:progn
@@ -4655,8 +4669,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCluster")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeClusterOutput" common-lisp:nil)))
  (common-lisp:export 'describe-cluster))
 (common-lisp:progn
@@ -4677,8 +4693,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeJobFlows")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeJobFlowsOutput" common-lisp:nil)))
  (common-lisp:export 'describe-job-flows))
 (common-lisp:progn
@@ -4697,8 +4715,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSecurityConfiguration")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeSecurityConfigurationOutput" common-lisp:nil)))
  (common-lisp:export 'describe-security-configuration))
 (common-lisp:progn
@@ -4716,8 +4736,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStep")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeStepOutput" common-lisp:nil)))
  (common-lisp:export 'describe-step))
 (common-lisp:progn
@@ -4735,8 +4757,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListBootstrapActions")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListBootstrapActionsOutput" common-lisp:nil)))
  (common-lisp:export 'list-bootstrap-actions))
 (common-lisp:progn
@@ -4756,8 +4780,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListClusters")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListClustersOutput" common-lisp:nil)))
  (common-lisp:export 'list-clusters))
 (common-lisp:progn
@@ -4775,8 +4801,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListInstanceFleets")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListInstanceFleetsOutput" common-lisp:nil)))
  (common-lisp:export 'list-instance-fleets))
 (common-lisp:progn
@@ -4794,8 +4822,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListInstanceGroups")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListInstanceGroupsOutput" common-lisp:nil)))
  (common-lisp:export 'list-instance-groups))
 (common-lisp:progn
@@ -4817,8 +4847,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListInstances")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListInstancesOutput" common-lisp:nil)))
  (common-lisp:export 'list-instances))
 (common-lisp:progn
@@ -4837,8 +4869,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListSecurityConfigurations")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListSecurityConfigurationsOutput" common-lisp:nil)))
  (common-lisp:export 'list-security-configurations))
 (common-lisp:progn
@@ -4857,8 +4891,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListSteps")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListStepsOutput" common-lisp:nil)))
  (common-lisp:export 'list-steps))
 (common-lisp:progn
@@ -4876,8 +4912,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyInstanceFleet")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'modify-instance-fleet))
 (common-lisp:progn
@@ -4895,8 +4933,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ModifyInstanceGroups")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'modify-instance-groups))
 (common-lisp:progn
@@ -4916,8 +4956,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutAutoScalingPolicy")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutAutoScalingPolicyOutput" common-lisp:nil)))
  (common-lisp:export 'put-auto-scaling-policy))
 (common-lisp:progn
@@ -4935,8 +4977,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemoveAutoScalingPolicy")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RemoveAutoScalingPolicyOutput" common-lisp:nil)))
  (common-lisp:export 'remove-auto-scaling-policy))
 (common-lisp:progn
@@ -4954,8 +4998,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTags")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RemoveTagsOutput" common-lisp:nil)))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
@@ -4985,8 +5031,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RunJobFlow")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RunJobFlowOutput" common-lisp:nil)))
  (common-lisp:export 'run-job-flow))
 (common-lisp:progn
@@ -5005,8 +5053,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetTerminationProtection")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-termination-protection))
 (common-lisp:progn
@@ -5025,8 +5075,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetVisibleToAllUsers")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-visible-to-all-users))
 (common-lisp:progn
@@ -5044,7 +5096,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"TerminateJobFlows")
                                   ("Version" ,@"2009-03-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'terminate-job-flows))

@@ -2126,8 +2126,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CancelKeyDeletion")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CancelKeyDeletionResponse" common-lisp:nil)))
  (common-lisp:export 'cancel-key-deletion))
 (common-lisp:progn
@@ -2144,8 +2146,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateAlias")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'create-alias))
 (common-lisp:progn
@@ -2166,8 +2170,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateGrant")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateGrantResponse" common-lisp:nil)))
  (common-lisp:export 'create-grant))
 (common-lisp:progn
@@ -2187,8 +2193,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateKey")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateKeyResponse" common-lisp:nil)))
  (common-lisp:export 'create-key))
 (common-lisp:progn
@@ -2207,8 +2215,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"Decrypt")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DecryptResponse" common-lisp:nil)))
  (common-lisp:export 'decrypt))
 (common-lisp:progn
@@ -2225,8 +2235,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAlias")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-alias))
 (common-lisp:progn
@@ -2244,8 +2256,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteImportedKeyMaterial")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-imported-key-material))
 (common-lisp:progn
@@ -2262,8 +2276,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeKey")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeKeyResponse" common-lisp:nil)))
  (common-lisp:export 'describe-key))
 (common-lisp:progn
@@ -2280,8 +2296,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DisableKey")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'disable-key))
 (common-lisp:progn
@@ -2298,8 +2316,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DisableKeyRotation")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'disable-key-rotation))
 (common-lisp:progn
@@ -2316,8 +2336,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"EnableKey")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'enable-key))
 (common-lisp:progn
@@ -2334,8 +2356,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"EnableKeyRotation")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'enable-key-rotation))
 (common-lisp:progn
@@ -2354,8 +2378,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"Encrypt")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EncryptResponse" common-lisp:nil)))
  (common-lisp:export 'encrypt))
 (common-lisp:progn
@@ -2375,8 +2401,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GenerateDataKey")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GenerateDataKeyResponse" common-lisp:nil)))
  (common-lisp:export 'generate-data-key))
 (common-lisp:progn
@@ -2398,8 +2426,10 @@
                                 `(("Action"
                                    ,@"GenerateDataKeyWithoutPlaintext")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GenerateDataKeyWithoutPlaintextResponse" common-lisp:nil)))
  (common-lisp:export 'generate-data-key-without-plaintext))
 (common-lisp:progn
@@ -2416,8 +2446,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GenerateRandom")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GenerateRandomResponse" common-lisp:nil)))
  (common-lisp:export 'generate-random))
 (common-lisp:progn
@@ -2434,8 +2466,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetKeyPolicy")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetKeyPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'get-key-policy))
 (common-lisp:progn
@@ -2452,8 +2486,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetKeyRotationStatus")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetKeyRotationStatusResponse" common-lisp:nil)))
  (common-lisp:export 'get-key-rotation-status))
 (common-lisp:progn
@@ -2473,8 +2509,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetParametersForImport")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetParametersForImportResponse" common-lisp:nil)))
  (common-lisp:export 'get-parameters-for-import))
 (common-lisp:progn
@@ -2494,8 +2532,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ImportKeyMaterial")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ImportKeyMaterialResponse" common-lisp:nil)))
  (common-lisp:export 'import-key-material))
 (common-lisp:progn
@@ -2512,8 +2552,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListAliases")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListAliasesResponse" common-lisp:nil)))
  (common-lisp:export 'list-aliases))
 (common-lisp:progn
@@ -2530,8 +2572,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListGrants")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListGrantsResponse" common-lisp:nil)))
  (common-lisp:export 'list-grants))
 (common-lisp:progn
@@ -2548,8 +2592,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListKeyPolicies")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListKeyPoliciesResponse" common-lisp:nil)))
  (common-lisp:export 'list-key-policies))
 (common-lisp:progn
@@ -2566,8 +2612,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListKeys")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListKeysResponse" common-lisp:nil)))
  (common-lisp:export 'list-keys))
 (common-lisp:progn
@@ -2584,8 +2632,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListResourceTags")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListResourceTagsResponse" common-lisp:nil)))
  (common-lisp:export 'list-resource-tags))
 (common-lisp:progn
@@ -2603,8 +2653,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListRetirableGrants")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListGrantsResponse" common-lisp:nil)))
  (common-lisp:export 'list-retirable-grants))
 (common-lisp:progn
@@ -2624,8 +2676,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutKeyPolicy")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-key-policy))
 (common-lisp:progn
@@ -2646,8 +2700,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ReEncrypt")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ReEncryptResponse" common-lisp:nil)))
  (common-lisp:export 're-encrypt))
 (common-lisp:progn
@@ -2664,8 +2720,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RetireGrant")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'retire-grant))
 (common-lisp:progn
@@ -2682,8 +2740,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RevokeGrant")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'revoke-grant))
 (common-lisp:progn
@@ -2700,8 +2760,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ScheduleKeyDeletion")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ScheduleKeyDeletionResponse" common-lisp:nil)))
  (common-lisp:export 'schedule-key-deletion))
 (common-lisp:progn
@@ -2718,8 +2780,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"TagResource")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -2736,8 +2800,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UntagResource")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
@@ -2754,8 +2820,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAlias")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-alias))
 (common-lisp:progn
@@ -2772,7 +2840,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateKeyDescription")
                                   ("Version" ,@"2014-11-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-key-description))

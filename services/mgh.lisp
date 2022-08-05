@@ -1211,8 +1211,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AssociateCreatedArtifact")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AssociateCreatedArtifactResult" common-lisp:nil)))
  (common-lisp:export 'associate-created-artifact))
 (common-lisp:progn
@@ -1233,8 +1235,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AssociateDiscoveredResource")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AssociateDiscoveredResourceResult" common-lisp:nil)))
  (common-lisp:export 'associate-discovered-resource))
 (common-lisp:progn
@@ -1253,8 +1257,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateProgressUpdateStream")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateProgressUpdateStreamResult" common-lisp:nil)))
  (common-lisp:export 'create-progress-update-stream))
 (common-lisp:progn
@@ -1273,8 +1279,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteProgressUpdateStream")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteProgressUpdateStreamResult" common-lisp:nil)))
  (common-lisp:export 'delete-progress-update-stream))
 (common-lisp:progn
@@ -1292,8 +1300,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeApplicationState")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeApplicationStateResult" common-lisp:nil)))
  (common-lisp:export 'describe-application-state))
 (common-lisp:progn
@@ -1312,8 +1322,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeMigrationTask")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeMigrationTaskResult" common-lisp:nil)))
  (common-lisp:export 'describe-migration-task))
 (common-lisp:progn
@@ -1334,8 +1346,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DisassociateCreatedArtifact")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DisassociateCreatedArtifactResult" common-lisp:nil)))
  (common-lisp:export 'disassociate-created-artifact))
 (common-lisp:progn
@@ -1356,8 +1370,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DisassociateDiscoveredResource")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DisassociateDiscoveredResourceResult" common-lisp:nil)))
  (common-lisp:export 'disassociate-discovered-resource))
 (common-lisp:progn
@@ -1376,8 +1392,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ImportMigrationTask")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ImportMigrationTaskResult" common-lisp:nil)))
  (common-lisp:export 'import-migration-task))
 (common-lisp:progn
@@ -1397,8 +1415,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListCreatedArtifacts")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListCreatedArtifactsResult" common-lisp:nil)))
  (common-lisp:export 'list-created-artifacts))
 (common-lisp:progn
@@ -1419,8 +1439,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListDiscoveredResources")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListDiscoveredResourcesResult" common-lisp:nil)))
  (common-lisp:export 'list-discovered-resources))
 (common-lisp:progn
@@ -1438,8 +1460,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListMigrationTasks")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListMigrationTasksResult" common-lisp:nil)))
  (common-lisp:export 'list-migration-tasks))
 (common-lisp:progn
@@ -1457,8 +1481,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListProgressUpdateStreams")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListProgressUpdateStreamsResult" common-lisp:nil)))
  (common-lisp:export 'list-progress-update-streams))
 (common-lisp:progn
@@ -1475,8 +1501,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"NotifyApplicationState")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "NotifyApplicationStateResult" common-lisp:nil)))
  (common-lisp:export 'notify-application-state))
 (common-lisp:progn
@@ -1498,8 +1526,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"NotifyMigrationTaskState")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "NotifyMigrationTaskStateResult" common-lisp:nil)))
  (common-lisp:export 'notify-migration-task-state))
 (common-lisp:progn
@@ -1519,7 +1549,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutResourceAttributes")
                                   ("Version" ,@"2017-05-31"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutResourceAttributesResult" common-lisp:nil)))
  (common-lisp:export 'put-resource-attributes))

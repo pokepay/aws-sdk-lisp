@@ -1489,8 +1489,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BulkPublish")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BulkPublishResponse" common-lisp:nil)))
  (common-lisp:export 'bulk-publish))
 (common-lisp:progn
@@ -1509,8 +1511,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDataset")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteDatasetResponse" common-lisp:nil)))
  (common-lisp:export 'delete-dataset))
 (common-lisp:progn
@@ -1529,8 +1533,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDataset")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDatasetResponse" common-lisp:nil)))
  (common-lisp:export 'describe-dataset))
 (common-lisp:progn
@@ -1548,8 +1554,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeIdentityPoolUsage")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeIdentityPoolUsageResponse" common-lisp:nil)))
  (common-lisp:export 'describe-identity-pool-usage))
 (common-lisp:progn
@@ -1566,8 +1574,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeIdentityUsage")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeIdentityUsageResponse" common-lisp:nil)))
  (common-lisp:export 'describe-identity-usage))
 (common-lisp:progn
@@ -1584,8 +1594,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetBulkPublishDetails")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetBulkPublishDetailsResponse" common-lisp:nil)))
  (common-lisp:export 'get-bulk-publish-details))
 (common-lisp:progn
@@ -1602,8 +1614,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetCognitoEvents")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetCognitoEventsResponse" common-lisp:nil)))
  (common-lisp:export 'get-cognito-events))
 (common-lisp:progn
@@ -1621,8 +1635,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetIdentityPoolConfiguration")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetIdentityPoolConfigurationResponse" common-lisp:nil)))
  (common-lisp:export 'get-identity-pool-configuration))
 (common-lisp:progn
@@ -1642,8 +1658,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListDatasets")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListDatasetsResponse" common-lisp:nil)))
  (common-lisp:export 'list-datasets))
 (common-lisp:progn
@@ -1660,8 +1678,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListIdentityPoolUsage")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListIdentityPoolUsageResponse" common-lisp:nil)))
  (common-lisp:export 'list-identity-pool-usage))
 (common-lisp:progn
@@ -1681,8 +1701,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListRecords")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListRecordsResponse" common-lisp:nil)))
  (common-lisp:export 'list-records))
 (common-lisp:progn
@@ -1701,8 +1723,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RegisterDevice")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RegisterDeviceResponse" common-lisp:nil)))
  (common-lisp:export 'register-device))
 (common-lisp:progn
@@ -1719,8 +1743,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetCognitoEvents")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-cognito-events))
 (common-lisp:progn
@@ -1740,8 +1766,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SetIdentityPoolConfiguration")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SetIdentityPoolConfigurationResponse" common-lisp:nil)))
  (common-lisp:export 'set-identity-pool-configuration))
 (common-lisp:progn
@@ -1761,8 +1789,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"SubscribeToDataset")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "SubscribeToDatasetResponse" common-lisp:nil)))
  (common-lisp:export 'subscribe-to-dataset))
 (common-lisp:progn
@@ -1782,8 +1812,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UnsubscribeFromDataset")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UnsubscribeFromDatasetResponse" common-lisp:nil)))
  (common-lisp:export 'unsubscribe-from-dataset))
 (common-lisp:progn
@@ -1804,7 +1836,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRecords")
                                   ("Version" ,@"2014-06-30"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateRecordsResponse" common-lisp:nil)))
  (common-lisp:export 'update-records))

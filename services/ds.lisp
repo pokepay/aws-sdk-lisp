@@ -3284,8 +3284,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddIpRoutes")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddIpRoutesResult" common-lisp:nil)))
  (common-lisp:export 'add-ip-routes))
 (common-lisp:progn
@@ -3302,8 +3304,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToResource")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddTagsToResourceResult" common-lisp:nil)))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
@@ -3321,8 +3325,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CancelSchemaExtension")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CancelSchemaExtensionResult" common-lisp:nil)))
  (common-lisp:export 'cancel-schema-extension))
 (common-lisp:progn
@@ -3342,8 +3348,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ConnectDirectory")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ConnectDirectoryResult" common-lisp:nil)))
  (common-lisp:export 'connect-directory))
 (common-lisp:progn
@@ -3360,8 +3368,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateAlias")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateAliasResult" common-lisp:nil)))
  (common-lisp:export 'create-alias))
 (common-lisp:progn
@@ -3382,8 +3392,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateComputer")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateComputerResult" common-lisp:nil)))
  (common-lisp:export 'create-computer))
 (common-lisp:progn
@@ -3403,8 +3415,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateConditionalForwarder")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateConditionalForwarderResult" common-lisp:nil)))
  (common-lisp:export 'create-conditional-forwarder))
 (common-lisp:progn
@@ -3424,8 +3438,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDirectory")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDirectoryResult" common-lisp:nil)))
  (common-lisp:export 'create-directory))
 (common-lisp:progn
@@ -3444,8 +3460,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateMicrosoftAD")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateMicrosoftADResult" common-lisp:nil)))
  (common-lisp:export 'create-microsoft-ad))
 (common-lisp:progn
@@ -3462,8 +3480,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateSnapshot")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateSnapshotResult" common-lisp:nil)))
  (common-lisp:export 'create-snapshot))
 (common-lisp:progn
@@ -3484,8 +3504,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateTrust")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateTrustResult" common-lisp:nil)))
  (common-lisp:export 'create-trust))
 (common-lisp:progn
@@ -3504,8 +3526,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConditionalForwarder")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteConditionalForwarderResult" common-lisp:nil)))
  (common-lisp:export 'delete-conditional-forwarder))
 (common-lisp:progn
@@ -3522,8 +3546,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDirectory")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteDirectoryResult" common-lisp:nil)))
  (common-lisp:export 'delete-directory))
 (common-lisp:progn
@@ -3540,8 +3566,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSnapshot")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteSnapshotResult" common-lisp:nil)))
  (common-lisp:export 'delete-snapshot))
 (common-lisp:progn
@@ -3560,8 +3588,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTrust")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteTrustResult" common-lisp:nil)))
  (common-lisp:export 'delete-trust))
 (common-lisp:progn
@@ -3578,8 +3608,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterEventTopic")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeregisterEventTopicResult" common-lisp:nil)))
  (common-lisp:export 'deregister-event-topic))
 (common-lisp:progn
@@ -3598,8 +3630,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConditionalForwarders")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeConditionalForwardersResult" common-lisp:nil)))
  (common-lisp:export 'describe-conditional-forwarders))
 (common-lisp:progn
@@ -3616,8 +3650,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDirectories")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDirectoriesResult" common-lisp:nil)))
  (common-lisp:export 'describe-directories))
 (common-lisp:progn
@@ -3638,8 +3674,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDomainControllers")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDomainControllersResult" common-lisp:nil)))
  (common-lisp:export 'describe-domain-controllers))
 (common-lisp:progn
@@ -3656,8 +3694,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventTopics")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeEventTopicsResult" common-lisp:nil)))
  (common-lisp:export 'describe-event-topics))
 (common-lisp:progn
@@ -3676,8 +3716,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSnapshots")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeSnapshotsResult" common-lisp:nil)))
  (common-lisp:export 'describe-snapshots))
 (common-lisp:progn
@@ -3695,8 +3737,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTrusts")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeTrustsResult" common-lisp:nil)))
  (common-lisp:export 'describe-trusts))
 (common-lisp:progn
@@ -3713,8 +3757,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DisableRadius")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DisableRadiusResult" common-lisp:nil)))
  (common-lisp:export 'disable-radius))
 (common-lisp:progn
@@ -3732,8 +3778,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DisableSso")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DisableSsoResult" common-lisp:nil)))
  (common-lisp:export 'disable-sso))
 (common-lisp:progn
@@ -3750,8 +3798,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"EnableRadius")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EnableRadiusResult" common-lisp:nil)))
  (common-lisp:export 'enable-radius))
 (common-lisp:progn
@@ -3769,8 +3819,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"EnableSso")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "EnableSsoResult" common-lisp:nil)))
  (common-lisp:export 'enable-sso))
 (common-lisp:progn
@@ -3796,8 +3848,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetSnapshotLimits")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetSnapshotLimitsResult" common-lisp:nil)))
  (common-lisp:export 'get-snapshot-limits))
 (common-lisp:progn
@@ -3814,8 +3868,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListIpRoutes")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListIpRoutesResult" common-lisp:nil)))
  (common-lisp:export 'list-ip-routes))
 (common-lisp:progn
@@ -3832,8 +3888,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListSchemaExtensions")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListSchemaExtensionsResult" common-lisp:nil)))
  (common-lisp:export 'list-schema-extensions))
 (common-lisp:progn
@@ -3850,8 +3908,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListTagsForResourceResult" common-lisp:nil)))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
@@ -3868,8 +3928,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RegisterEventTopic")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RegisterEventTopicResult" common-lisp:nil)))
  (common-lisp:export 'register-event-topic))
 (common-lisp:progn
@@ -3886,8 +3948,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemoveIpRoutes")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RemoveIpRoutesResult" common-lisp:nil)))
  (common-lisp:export 'remove-ip-routes))
 (common-lisp:progn
@@ -3905,8 +3969,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromResource")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RemoveTagsFromResourceResult" common-lisp:nil)))
  (common-lisp:export 'remove-tags-from-resource))
 (common-lisp:progn
@@ -3923,8 +3989,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RestoreFromSnapshot")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RestoreFromSnapshotResult" common-lisp:nil)))
  (common-lisp:export 'restore-from-snapshot))
 (common-lisp:progn
@@ -3945,8 +4013,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StartSchemaExtension")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StartSchemaExtensionResult" common-lisp:nil)))
  (common-lisp:export 'start-schema-extension))
 (common-lisp:progn
@@ -3966,8 +4036,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateConditionalForwarder")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateConditionalForwarderResult" common-lisp:nil)))
  (common-lisp:export 'update-conditional-forwarder))
 (common-lisp:progn
@@ -3986,8 +4058,10 @@
                                 `(("Action"
                                    ,@"UpdateNumberOfDomainControllers")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateNumberOfDomainControllersResult" common-lisp:nil)))
  (common-lisp:export 'update-number-of-domain-controllers))
 (common-lisp:progn
@@ -4004,8 +4078,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRadius")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateRadiusResult" common-lisp:nil)))
  (common-lisp:export 'update-radius))
 (common-lisp:progn
@@ -4022,7 +4098,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"VerifyTrust")
                                   ("Version" ,@"2015-04-16"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "VerifyTrustResult" common-lisp:nil)))
  (common-lisp:export 'verify-trust))

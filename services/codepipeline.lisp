@@ -2921,8 +2921,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AcknowledgeJob")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AcknowledgeJobOutput" common-lisp:nil)))
  (common-lisp:export 'acknowledge-job))
 (common-lisp:progn
@@ -2940,8 +2942,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AcknowledgeThirdPartyJob")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AcknowledgeThirdPartyJobOutput" common-lisp:nil)))
  (common-lisp:export 'acknowledge-third-party-job))
 (common-lisp:progn
@@ -2962,8 +2966,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateCustomActionType")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateCustomActionTypeOutput" common-lisp:nil)))
  (common-lisp:export 'create-custom-action-type))
 (common-lisp:progn
@@ -2980,8 +2986,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreatePipeline")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreatePipelineOutput" common-lisp:nil)))
  (common-lisp:export 'create-pipeline))
 (common-lisp:progn
@@ -2998,8 +3006,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCustomActionType")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-custom-action-type))
 (common-lisp:progn
@@ -3016,8 +3026,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeletePipeline")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-pipeline))
 (common-lisp:progn
@@ -3036,8 +3048,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DisableStageTransition")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'disable-stage-transition))
 (common-lisp:progn
@@ -3055,8 +3069,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"EnableStageTransition")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'enable-stage-transition))
 (common-lisp:progn
@@ -3073,8 +3089,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetJobDetails")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetJobDetailsOutput" common-lisp:nil)))
  (common-lisp:export 'get-job-details))
 (common-lisp:progn
@@ -3091,8 +3109,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetPipeline")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetPipelineOutput" common-lisp:nil)))
  (common-lisp:export 'get-pipeline))
 (common-lisp:progn
@@ -3110,8 +3130,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetPipelineExecution")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetPipelineExecutionOutput" common-lisp:nil)))
  (common-lisp:export 'get-pipeline-execution))
 (common-lisp:progn
@@ -3128,8 +3150,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetPipelineState")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetPipelineStateOutput" common-lisp:nil)))
  (common-lisp:export 'get-pipeline-state))
 (common-lisp:progn
@@ -3147,8 +3171,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetThirdPartyJobDetails")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetThirdPartyJobDetailsOutput" common-lisp:nil)))
  (common-lisp:export 'get-third-party-job-details))
 (common-lisp:progn
@@ -3165,8 +3191,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListActionTypes")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListActionTypesOutput" common-lisp:nil)))
  (common-lisp:export 'list-action-types))
 (common-lisp:progn
@@ -3184,8 +3212,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListPipelineExecutions")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListPipelineExecutionsOutput" common-lisp:nil)))
  (common-lisp:export 'list-pipeline-executions))
 (common-lisp:progn
@@ -3202,8 +3232,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListPipelines")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListPipelinesOutput" common-lisp:nil)))
  (common-lisp:export 'list-pipelines))
 (common-lisp:progn
@@ -3222,8 +3254,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PollForJobs")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PollForJobsOutput" common-lisp:nil)))
  (common-lisp:export 'poll-for-jobs))
 (common-lisp:progn
@@ -3240,8 +3274,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PollForThirdPartyJobs")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PollForThirdPartyJobsOutput" common-lisp:nil)))
  (common-lisp:export 'poll-for-third-party-jobs))
 (common-lisp:progn
@@ -3261,8 +3297,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutActionRevision")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutActionRevisionOutput" common-lisp:nil)))
  (common-lisp:export 'put-action-revision))
 (common-lisp:progn
@@ -3281,8 +3319,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutApprovalResult")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutApprovalResultOutput" common-lisp:nil)))
  (common-lisp:export 'put-approval-result))
 (common-lisp:progn
@@ -3299,8 +3339,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutJobFailureResult")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-job-failure-result))
 (common-lisp:progn
@@ -3320,8 +3362,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutJobSuccessResult")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-job-success-result))
 (common-lisp:progn
@@ -3340,8 +3384,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutThirdPartyJobFailureResult")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-third-party-job-failure-result))
 (common-lisp:progn
@@ -3362,8 +3408,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutThirdPartyJobSuccessResult")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-third-party-job-success-result))
 (common-lisp:progn
@@ -3383,8 +3431,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"RetryStageExecution")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "RetryStageExecutionOutput" common-lisp:nil)))
  (common-lisp:export 'retry-stage-execution))
 (common-lisp:progn
@@ -3401,8 +3451,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StartPipelineExecution")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StartPipelineExecutionOutput" common-lisp:nil)))
  (common-lisp:export 'start-pipeline-execution))
 (common-lisp:progn
@@ -3419,7 +3471,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdatePipeline")
                                   ("Version" ,@"2015-07-09"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdatePipelineOutput" common-lisp:nil)))
  (common-lisp:export 'update-pipeline))

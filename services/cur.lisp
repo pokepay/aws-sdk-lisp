@@ -309,8 +309,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReportDefinition")
                                   ("Version" ,@"2017-01-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteReportDefinitionResponse" common-lisp:nil)))
  (common-lisp:export 'delete-report-definition))
 (common-lisp:progn
@@ -328,8 +330,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReportDefinitions")
                                   ("Version" ,@"2017-01-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeReportDefinitionsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-report-definitions))
 (common-lisp:progn
@@ -346,7 +350,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutReportDefinition")
                                   ("Version" ,@"2017-01-06"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutReportDefinitionResponse" common-lisp:nil)))
  (common-lisp:export 'put-report-definition))

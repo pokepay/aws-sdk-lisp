@@ -1046,8 +1046,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetNamedQuery")
                                   ("Version" ,@"2017-05-18"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchGetNamedQueryOutput" common-lisp:nil)))
  (common-lisp:export 'batch-get-named-query))
 (common-lisp:progn
@@ -1064,8 +1066,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetQueryExecution")
                                   ("Version" ,@"2017-05-18"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "BatchGetQueryExecutionOutput" common-lisp:nil)))
  (common-lisp:export 'batch-get-query-execution))
 (common-lisp:progn
@@ -1085,8 +1089,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateNamedQuery")
                                   ("Version" ,@"2017-05-18"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateNamedQueryOutput" common-lisp:nil)))
  (common-lisp:export 'create-named-query))
 (common-lisp:progn
@@ -1103,8 +1109,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteNamedQuery")
                                   ("Version" ,@"2017-05-18"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteNamedQueryOutput" common-lisp:nil)))
  (common-lisp:export 'delete-named-query))
 (common-lisp:progn
@@ -1121,8 +1129,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetNamedQuery")
                                   ("Version" ,@"2017-05-18"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetNamedQueryOutput" common-lisp:nil)))
  (common-lisp:export 'get-named-query))
 (common-lisp:progn
@@ -1139,8 +1149,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetQueryExecution")
                                   ("Version" ,@"2017-05-18"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetQueryExecutionOutput" common-lisp:nil)))
  (common-lisp:export 'get-query-execution))
 (common-lisp:progn
@@ -1159,8 +1171,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetQueryResults")
                                   ("Version" ,@"2017-05-18"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetQueryResultsOutput" common-lisp:nil)))
  (common-lisp:export 'get-query-results))
 (common-lisp:progn
@@ -1177,8 +1191,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListNamedQueries")
                                   ("Version" ,@"2017-05-18"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListNamedQueriesOutput" common-lisp:nil)))
  (common-lisp:export 'list-named-queries))
 (common-lisp:progn
@@ -1195,8 +1211,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListQueryExecutions")
                                   ("Version" ,@"2017-05-18"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListQueryExecutionsOutput" common-lisp:nil)))
  (common-lisp:export 'list-query-executions))
 (common-lisp:progn
@@ -1216,8 +1234,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StartQueryExecution")
                                   ("Version" ,@"2017-05-18"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StartQueryExecutionOutput" common-lisp:nil)))
  (common-lisp:export 'start-query-execution))
 (common-lisp:progn
@@ -1234,7 +1254,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"StopQueryExecution")
                                   ("Version" ,@"2017-05-18"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StopQueryExecutionOutput" common-lisp:nil)))
  (common-lisp:export 'stop-query-execution))

@@ -3247,8 +3247,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AddTags")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AddTagsOutput" common-lisp:nil)))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
@@ -3268,8 +3270,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateBatchPrediction")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateBatchPredictionOutput" common-lisp:nil)))
  (common-lisp:export 'create-batch-prediction))
 (common-lisp:progn
@@ -3289,8 +3293,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDataSourceFromRDS")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDataSourceFromRDSOutput" common-lisp:nil)))
  (common-lisp:export 'create-data-source-from-rds))
 (common-lisp:progn
@@ -3311,8 +3317,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDataSourceFromRedshift")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDataSourceFromRedshiftOutput" common-lisp:nil)))
  (common-lisp:export 'create-data-source-from-redshift))
 (common-lisp:progn
@@ -3332,8 +3340,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDataSourceFromS3")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDataSourceFromS3Output" common-lisp:nil)))
  (common-lisp:export 'create-data-source-from-s3))
 (common-lisp:progn
@@ -3353,8 +3363,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateEvaluation")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateEvaluationOutput" common-lisp:nil)))
  (common-lisp:export 'create-evaluation))
 (common-lisp:progn
@@ -3374,8 +3386,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateMLModel")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateMLModelOutput" common-lisp:nil)))
  (common-lisp:export 'create-mlmodel))
 (common-lisp:progn
@@ -3392,8 +3406,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateRealtimeEndpoint")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateRealtimeEndpointOutput" common-lisp:nil)))
  (common-lisp:export 'create-realtime-endpoint))
 (common-lisp:progn
@@ -3410,8 +3426,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBatchPrediction")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteBatchPredictionOutput" common-lisp:nil)))
  (common-lisp:export 'delete-batch-prediction))
 (common-lisp:progn
@@ -3428,8 +3446,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDataSource")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteDataSourceOutput" common-lisp:nil)))
  (common-lisp:export 'delete-data-source))
 (common-lisp:progn
@@ -3446,8 +3466,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEvaluation")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteEvaluationOutput" common-lisp:nil)))
  (common-lisp:export 'delete-evaluation))
 (common-lisp:progn
@@ -3464,8 +3486,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteMLModel")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteMLModelOutput" common-lisp:nil)))
  (common-lisp:export 'delete-mlmodel))
 (common-lisp:progn
@@ -3482,8 +3506,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRealtimeEndpoint")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteRealtimeEndpointOutput" common-lisp:nil)))
  (common-lisp:export 'delete-realtime-endpoint))
 (common-lisp:progn
@@ -3501,8 +3527,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTags")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteTagsOutput" common-lisp:nil)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
@@ -3522,8 +3550,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeBatchPredictions")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeBatchPredictionsOutput" common-lisp:nil)))
  (common-lisp:export 'describe-batch-predictions))
 (common-lisp:progn
@@ -3543,8 +3573,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDataSources")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDataSourcesOutput" common-lisp:nil)))
  (common-lisp:export 'describe-data-sources))
 (common-lisp:progn
@@ -3564,8 +3596,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEvaluations")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeEvaluationsOutput" common-lisp:nil)))
  (common-lisp:export 'describe-evaluations))
 (common-lisp:progn
@@ -3585,8 +3619,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeMLModels")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeMLModelsOutput" common-lisp:nil)))
  (common-lisp:export 'describe-mlmodels))
 (common-lisp:progn
@@ -3603,8 +3639,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTags")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeTagsOutput" common-lisp:nil)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
@@ -3621,8 +3659,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetBatchPrediction")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetBatchPredictionOutput" common-lisp:nil)))
  (common-lisp:export 'get-batch-prediction))
 (common-lisp:progn
@@ -3639,8 +3679,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetDataSource")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetDataSourceOutput" common-lisp:nil)))
  (common-lisp:export 'get-data-source))
 (common-lisp:progn
@@ -3657,8 +3699,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetEvaluation")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetEvaluationOutput" common-lisp:nil)))
  (common-lisp:export 'get-evaluation))
 (common-lisp:progn
@@ -3675,8 +3719,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetMLModel")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetMLModelOutput" common-lisp:nil)))
  (common-lisp:export 'get-mlmodel))
 (common-lisp:progn
@@ -3694,8 +3740,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"Predict")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PredictOutput" common-lisp:nil)))
  (common-lisp:export 'predict))
 (common-lisp:progn
@@ -3714,8 +3762,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateBatchPrediction")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateBatchPredictionOutput" common-lisp:nil)))
  (common-lisp:export 'update-batch-prediction))
 (common-lisp:progn
@@ -3733,8 +3783,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDataSource")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateDataSourceOutput" common-lisp:nil)))
  (common-lisp:export 'update-data-source))
 (common-lisp:progn
@@ -3751,8 +3803,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateEvaluation")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateEvaluationOutput" common-lisp:nil)))
  (common-lisp:export 'update-evaluation))
 (common-lisp:progn
@@ -3770,7 +3824,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateMLModel")
                                   ("Version" ,@"2014-12-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateMLModelOutput" common-lisp:nil)))
  (common-lisp:export 'update-mlmodel))

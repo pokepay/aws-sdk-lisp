@@ -1958,8 +1958,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"AssociateFleet")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "AssociateFleetResult" common-lisp:nil)))
  (common-lisp:export 'associate-fleet))
 (common-lisp:progn
@@ -1980,8 +1982,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateDirectoryConfig")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateDirectoryConfigResult" common-lisp:nil)))
  (common-lisp:export 'create-directory-config))
 (common-lisp:progn
@@ -2004,8 +2008,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateFleet")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateFleetResult" common-lisp:nil)))
  (common-lisp:export 'create-fleet))
 (common-lisp:progn
@@ -2024,8 +2030,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateStack")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateStackResult" common-lisp:nil)))
  (common-lisp:export 'create-stack))
 (common-lisp:progn
@@ -2045,8 +2053,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"CreateStreamingURL")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "CreateStreamingURLResult" common-lisp:nil)))
  (common-lisp:export 'create-streaming-url))
 (common-lisp:progn
@@ -2063,8 +2073,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDirectoryConfig")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteDirectoryConfigResult" common-lisp:nil)))
  (common-lisp:export 'delete-directory-config))
 (common-lisp:progn
@@ -2081,8 +2093,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFleet")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteFleetResult" common-lisp:nil)))
  (common-lisp:export 'delete-fleet))
 (common-lisp:progn
@@ -2099,8 +2113,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStack")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteStackResult" common-lisp:nil)))
  (common-lisp:export 'delete-stack))
 (common-lisp:progn
@@ -2119,8 +2135,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDirectoryConfigs")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDirectoryConfigsResult" common-lisp:nil)))
  (common-lisp:export 'describe-directory-configs))
 (common-lisp:progn
@@ -2137,8 +2155,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeFleets")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeFleetsResult" common-lisp:nil)))
  (common-lisp:export 'describe-fleets))
 (common-lisp:progn
@@ -2155,8 +2175,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeImages")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeImagesResult" common-lisp:nil)))
  (common-lisp:export 'describe-images))
 (common-lisp:progn
@@ -2176,8 +2198,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSessions")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeSessionsResult" common-lisp:nil)))
  (common-lisp:export 'describe-sessions))
 (common-lisp:progn
@@ -2194,8 +2218,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStacks")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeStacksResult" common-lisp:nil)))
  (common-lisp:export 'describe-stacks))
 (common-lisp:progn
@@ -2212,8 +2238,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DisassociateFleet")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DisassociateFleetResult" common-lisp:nil)))
  (common-lisp:export 'disassociate-fleet))
 (common-lisp:progn
@@ -2230,8 +2258,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ExpireSession")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ExpireSessionResult" common-lisp:nil)))
  (common-lisp:export 'expire-session))
 (common-lisp:progn
@@ -2248,8 +2278,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListAssociatedFleets")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListAssociatedFleetsResult" common-lisp:nil)))
  (common-lisp:export 'list-associated-fleets))
 (common-lisp:progn
@@ -2266,8 +2298,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListAssociatedStacks")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListAssociatedStacksResult" common-lisp:nil)))
  (common-lisp:export 'list-associated-stacks))
 (common-lisp:progn
@@ -2284,8 +2318,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StartFleet")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StartFleetResult" common-lisp:nil)))
  (common-lisp:export 'start-fleet))
 (common-lisp:progn
@@ -2302,8 +2338,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StopFleet")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StopFleetResult" common-lisp:nil)))
  (common-lisp:export 'stop-fleet))
 (common-lisp:progn
@@ -2324,8 +2362,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDirectoryConfig")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateDirectoryConfigResult" common-lisp:nil)))
  (common-lisp:export 'update-directory-config))
 (common-lisp:progn
@@ -2350,8 +2390,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateFleet")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateFleetResult" common-lisp:nil)))
  (common-lisp:export 'update-fleet))
 (common-lisp:progn
@@ -2371,7 +2413,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"UpdateStack")
                                   ("Version" ,@"2016-12-01"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "UpdateStackResult" common-lisp:nil)))
  (common-lisp:export 'update-stack))

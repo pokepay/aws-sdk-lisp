@@ -2724,8 +2724,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConfigRule")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-config-rule))
 (common-lisp:progn
@@ -2743,8 +2745,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConfigurationRecorder")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-configuration-recorder))
 (common-lisp:progn
@@ -2761,8 +2765,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDeliveryChannel")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-delivery-channel))
 (common-lisp:progn
@@ -2780,8 +2786,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEvaluationResults")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeleteEvaluationResultsResponse" common-lisp:nil)))
  (common-lisp:export 'delete-evaluation-results))
 (common-lisp:progn
@@ -2798,8 +2806,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DeliverConfigSnapshot")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DeliverConfigSnapshotResponse" common-lisp:nil)))
  (common-lisp:export 'deliver-config-snapshot))
 (common-lisp:progn
@@ -2819,8 +2829,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeComplianceByConfigRule")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeComplianceByConfigRuleResponse" common-lisp:nil)))
  (common-lisp:export 'describe-compliance-by-config-rule))
 (common-lisp:progn
@@ -2841,8 +2853,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeComplianceByResource")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeComplianceByResourceResponse" common-lisp:nil)))
  (common-lisp:export 'describe-compliance-by-resource))
 (common-lisp:progn
@@ -2862,8 +2876,10 @@
                                 `(("Action"
                                    ,@"DescribeConfigRuleEvaluationStatus")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeConfigRuleEvaluationStatusResponse" common-lisp:nil)))
  (common-lisp:export 'describe-config-rule-evaluation-status))
 (common-lisp:progn
@@ -2880,8 +2896,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConfigRules")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeConfigRulesResponse" common-lisp:nil)))
  (common-lisp:export 'describe-config-rules))
 (common-lisp:progn
@@ -2900,8 +2918,10 @@
                                 `(("Action"
                                    ,@"DescribeConfigurationRecorderStatus")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeConfigurationRecorderStatusResponse" common-lisp:nil)))
  (common-lisp:export 'describe-configuration-recorder-status))
 (common-lisp:progn
@@ -2919,8 +2939,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConfigurationRecorders")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeConfigurationRecordersResponse" common-lisp:nil)))
  (common-lisp:export 'describe-configuration-recorders))
 (common-lisp:progn
@@ -2938,8 +2960,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDeliveryChannelStatus")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDeliveryChannelStatusResponse" common-lisp:nil)))
  (common-lisp:export 'describe-delivery-channel-status))
 (common-lisp:progn
@@ -2957,8 +2981,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDeliveryChannels")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "DescribeDeliveryChannelsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-delivery-channels))
 (common-lisp:progn
@@ -2979,8 +3005,10 @@
                                 `(("Action"
                                    ,@"GetComplianceDetailsByConfigRule")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetComplianceDetailsByConfigRuleResponse" common-lisp:nil)))
  (common-lisp:export 'get-compliance-details-by-config-rule))
 (common-lisp:progn
@@ -3001,8 +3029,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetComplianceDetailsByResource")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetComplianceDetailsByResourceResponse" common-lisp:nil)))
  (common-lisp:export 'get-compliance-details-by-resource))
 (common-lisp:progn
@@ -3030,8 +3060,10 @@
                                 `(("Action"
                                    ,@"GetComplianceSummaryByResourceType")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetComplianceSummaryByResourceTypeResponse" common-lisp:nil)))
  (common-lisp:export 'get-compliance-summary-by-resource-type))
 (common-lisp:progn
@@ -3050,8 +3082,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetDiscoveredResourceCounts")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetDiscoveredResourceCountsResponse" common-lisp:nil)))
  (common-lisp:export 'get-discovered-resource-counts))
 (common-lisp:progn
@@ -3072,8 +3106,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"GetResourceConfigHistory")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "GetResourceConfigHistoryResponse" common-lisp:nil)))
  (common-lisp:export 'get-resource-config-history))
 (common-lisp:progn
@@ -3094,8 +3130,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"ListDiscoveredResources")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "ListDiscoveredResourcesResponse" common-lisp:nil)))
  (common-lisp:export 'list-discovered-resources))
 (common-lisp:progn
@@ -3112,8 +3150,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutConfigRule")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-config-rule))
 (common-lisp:progn
@@ -3131,8 +3171,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutConfigurationRecorder")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-configuration-recorder))
 (common-lisp:progn
@@ -3149,8 +3191,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutDeliveryChannel")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-delivery-channel))
 (common-lisp:progn
@@ -3168,8 +3212,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"PutEvaluations")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "PutEvaluationsResponse" common-lisp:nil)))
  (common-lisp:export 'put-evaluations))
 (common-lisp:progn
@@ -3187,8 +3233,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StartConfigRulesEvaluation")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       "StartConfigRulesEvaluationResponse" common-lisp:nil)))
  (common-lisp:export 'start-config-rules-evaluation))
 (common-lisp:progn
@@ -3206,8 +3254,10 @@
                                (common-lisp:append
                                 `(("Action" ,@"StartConfigurationRecorder")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'start-configuration-recorder))
 (common-lisp:progn
@@ -3225,7 +3275,9 @@
                                (common-lisp:append
                                 `(("Action" ,@"StopConfigurationRecorder")
                                   ("Version" ,@"2014-11-12"))
-                                (aws-sdk/generator/shape:shape-to-params
-                                 aws-sdk/generator/operation::input)))
+                                (common-lisp:let ((aws-sdk/api::*protocol*
+                                                   :query))
+                                  (aws-sdk/generator/shape:shape-to-params
+                                   aws-sdk/generator/operation::input))))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'stop-configuration-recorder))
