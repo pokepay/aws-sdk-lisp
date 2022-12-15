@@ -50,6 +50,11 @@
          (loop for i from 1
                for v in value
                collect (cons (format nil "~A.member.~A" key i) v))))
+    (boolean
+     (list (cons key
+		 (if value
+		     "true"
+		     "false"))))
     (otherwise (list (cons key value)))))
 
 (defun compile-structure-shape (name &key required members)
