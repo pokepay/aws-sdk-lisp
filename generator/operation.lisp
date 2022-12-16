@@ -2,11 +2,15 @@
   (:use #:cl
         #:aws-sdk/utils)
   (:import-from #:aws-sdk/generator/shape
-                #:shape-to-params)
+                #:make-request-with-input)
   (:import-from #:aws-sdk/api
                 #:aws-request)
   (:import-from #:aws-sdk/request
                 #:request)
+  (:import-from #:quri)
+  (:import-from #:cl-ppcre
+                #:regex-replace-all
+                #:do-matches-as-strings)
   (:import-from #:assoc-utils
                 #:aget)
   (:import-from #:xmls)
@@ -25,7 +29,7 @@
   (list (%xmls-to-alist xmls)))
 
 (defun parse-response (response response-name wrapper-name)
-  (when response-name
+  (when (and response response-name)
     (let* ((output (xmls-to-alist (xmls:parse-to-list response)))
            (output ;; Unwrap the root element
              (cdr (first output))))
@@ -34,8 +38,30 @@
                   (aget output "ResponseMetadata"))
           output))))
 
+(defun compile-path-pattern (path-pattern)
+  (when path-pattern
+    (let ((slots
+            (let (slots)
+              (ppcre:do-matches-as-strings (match "(?<={)[^}\\+]+\\+?(?=})" path-pattern (nreverse slots))
+                (let* ((plus-ends (char= #\+ (aref match (1- (length match)))))
+                       (slot-symbol (lispify (if plus-ends
+                                                 (subseq match 0 (1- (length match)))
+                                                 match))))
+                  (push
+                    (if plus-ends
+                        `(slot-value input ',slot-symbol)
+                        `(quri:url-encode (slot-value input ',slot-symbol)))
+                    slots))))))
+      (if slots
+          `(lambda (input)
+             (format nil ,(ppcre:regex-replace-all "{[^}]+}" path-pattern "~A")
+                     ,@slots))
+          path-pattern))))
+
 (defun compile-operation (service name version options params)
-  (let ((output (gethash "output" options)))
+  (let* ((output (gethash "output" options))
+         (method (gethash "method" (gethash "http" options)))
+         (request-uri (gethash "requestUri" (gethash "http" options))))
     (if params
         (let ((input-shape-name (lispify (gethash "shape" (gethash "input" options)))))
           `(progn
@@ -44,10 +70,9 @@
                (let ((input (apply ',(intern (format nil "~:@(~A-~A~)" :make input-shape-name)) args)))
                  (parse-response
                   (aws-request
-                    (make-instance ',(intern (format nil "~:@(~A-REQUEST~)" service))
-                                   :method ,(intern (gethash "method" (gethash "http" options)) :keyword)
-                                   :params (append `(("Action" . ,,name) ("Version" . ,,version))
-                                                   (shape-to-params input))))
+                    (make-request-with-input
+                      ',(intern (format nil "~:@(~A-REQUEST~)" service))
+                      input ,method ,(compile-path-pattern request-uri) ,name ,version))
                   ,(and output
                         (gethash "shape" output))
                   ,(and output
@@ -58,8 +83,9 @@
              (parse-response
                (aws-request
                  (make-instance ',(intern (format nil "~:@(~A-REQUEST~)" service))
-                                :method ,(intern (gethash "method" (gethash "http" options)) :keyword)
-                                :params (cons "Action" ,name)))
+                                :method ,method
+                                :path ,request-uri
+                                :params `(("Action" . ,,name) ("Version" . ,,version))))
               ,(and output
                     (gethash "shape" output))
               ,(and output

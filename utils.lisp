@@ -18,7 +18,13 @@
                (string/= value ""))
       value)))
 
-(defun sha-256 (str)
+(defun sha-256 (value)
   (ironclad:byte-array-to-hex-string
-   (ironclad:digest-sequence :sha256
-                             (ironclad:ascii-string-to-byte-array str))))
+    (etypecase value
+      (string
+       (ironclad:digest-sequence :sha256
+                                 (ironclad:ascii-string-to-byte-array value)))
+      ((simple-array (unsigned-byte 8) (*))
+       (ironclad:digest-sequence :sha256 value))
+      (pathname
+       (ironclad:digest-file :sha256 value)))))
