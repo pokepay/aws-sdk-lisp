@@ -14,7 +14,9 @@
                        (:default-initargs :service "elasticloadbalancing"))
  (common-lisp:export 'elasticloadbalancing-request))
 (common-lisp:progn
- (common-lisp:defstruct (access-log (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (access-log (:copier common-lisp:nil)
+      (:conc-name "struct-shape-access-log-"))
    (enabled (common-lisp:error ":enabled is required") :type
     (common-lisp:or access-log-enabled common-lisp:null))
    (s3bucket-name common-lisp:nil :type
@@ -24,48 +26,74 @@
    (s3bucket-prefix common-lisp:nil :type
     (common-lisp:or access-log-prefix common-lisp:null)))
  (common-lisp:export (common-lisp:list 'access-log 'make-access-log))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape access-log))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input access-log))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input access-log))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Enabled"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'enabled)))
-    (aws-sdk/generator/shape::to-query-params "S3BucketName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                's3bucket-name)))
-    (aws-sdk/generator/shape::to-query-params "EmitInterval"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'emit-interval)))
-    (aws-sdk/generator/shape::to-query-params "S3BucketPrefix"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                's3bucket-prefix))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'enabled))
+      (common-lisp:list
+       (common-lisp:cons "Enabled"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 's3bucket-name))
+      (common-lisp:list
+       (common-lisp:cons "S3BucketName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'emit-interval))
+      (common-lisp:list
+       (common-lisp:cons "EmitInterval"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 's3bucket-prefix))
+      (common-lisp:list
+       (common-lisp:cons "S3BucketPrefix"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input access-log))
+   common-lisp:nil))
 (common-lisp:deftype access-log-enabled () 'common-lisp:boolean)
 (common-lisp:deftype access-log-interval () 'common-lisp:integer)
 (common-lisp:deftype access-log-prefix () 'common-lisp:string)
 (common-lisp:deftype access-point-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (access-point-not-found-exception (:copier common-lisp:nil)))
+     (access-point-not-found-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-access-point-not-found-exception-")))
  (common-lisp:export
   (common-lisp:list 'access-point-not-found-exception
                     'make-access-point-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           access-point-not-found-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          access-point-not-found-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          access-point-not-found-exception))
+   common-lisp:nil))
 (common-lisp:deftype access-point-port () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
-     (add-availability-zones-input (:copier common-lisp:nil))
+     (add-availability-zones-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-add-availability-zones-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (availability-zones (common-lisp:error ":availability-zones is required")
@@ -73,86 +101,145 @@
  (common-lisp:export
   (common-lisp:list 'add-availability-zones-input
                     'make-add-availability-zones-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          add-availability-zones-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           add-availability-zones-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "AvailabilityZones"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'availability-zones))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'availability-zones))
+      (common-lisp:list
+       (common-lisp:cons "AvailabilityZones"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          add-availability-zones-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (add-availability-zones-output (:copier common-lisp:nil))
+     (add-availability-zones-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-add-availability-zones-output-"))
    (availability-zones common-lisp:nil :type
     (common-lisp:or availability-zones common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-availability-zones-output
                     'make-add-availability-zones-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          add-availability-zones-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           add-availability-zones-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AvailabilityZones"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'availability-zones))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'availability-zones))
+      (common-lisp:list
+       (common-lisp:cons "AvailabilityZones"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          add-availability-zones-output))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (add-tags-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (add-tags-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-add-tags-input-"))
    (load-balancer-names (common-lisp:error ":load-balancer-names is required")
     :type (common-lisp:or load-balancer-names common-lisp:null))
    (tags (common-lisp:error ":tags is required") :type
     (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'add-tags-input 'make-add-tags-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape add-tags-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input add-tags-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input add-tags-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerNames"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-names)))
-    (aws-sdk/generator/shape::to-query-params "Tags"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tags))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-names))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "Tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input add-tags-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (add-tags-output (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (add-tags-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-add-tags-output-")))
  (common-lisp:export (common-lisp:list 'add-tags-output 'make-add-tags-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape add-tags-output))
-   (common-lisp:append)))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input add-tags-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input add-tags-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input add-tags-output))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (additional-attribute (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (additional-attribute (:copier common-lisp:nil)
+      (:conc-name "struct-shape-additional-attribute-"))
    (key common-lisp:nil :type
     (common-lisp:or additional-attribute-key common-lisp:null))
    (value common-lisp:nil :type
     (common-lisp:or additional-attribute-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'additional-attribute 'make-additional-attribute))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape additional-attribute))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input additional-attribute))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input additional-attribute))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Key"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'key)))
-    (aws-sdk/generator/shape::to-query-params "Value"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'value))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key))
+      (common-lisp:list
+       (common-lisp:cons "Key"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'value))
+      (common-lisp:list
+       (common-lisp:cons "Value"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input additional-attribute))
+   common-lisp:nil))
 (common-lisp:deftype additional-attribute-key () 'common-lisp:string)
 (common-lisp:deftype additional-attribute-value () 'common-lisp:string)
 (common-lisp:progn
@@ -174,7 +261,8 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct
-     (app-cookie-stickiness-policy (:copier common-lisp:nil))
+     (app-cookie-stickiness-policy (:copier common-lisp:nil)
+      (:conc-name "struct-shape-app-cookie-stickiness-policy-"))
    (policy-name common-lisp:nil :type
     (common-lisp:or policy-name common-lisp:null))
    (cookie-name common-lisp:nil :type
@@ -182,24 +270,40 @@
  (common-lisp:export
   (common-lisp:list 'app-cookie-stickiness-policy
                     'make-app-cookie-stickiness-policy))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          app-cookie-stickiness-policy))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           app-cookie-stickiness-policy))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PolicyName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-name)))
-    (aws-sdk/generator/shape::to-query-params "CookieName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cookie-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-name))
+      (common-lisp:list
+       (common-lisp:cons "PolicyName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cookie-name))
+      (common-lisp:list
+       (common-lisp:cons "CookieName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          app-cookie-stickiness-policy))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (apply-security-groups-to-load-balancer-input (:copier common-lisp:nil))
+     (apply-security-groups-to-load-balancer-input (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-apply-security-groups-to-load-balancer-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (security-groups (common-lisp:error ":security-groups is required") :type
@@ -207,42 +311,71 @@
  (common-lisp:export
   (common-lisp:list 'apply-security-groups-to-load-balancer-input
                     'make-apply-security-groups-to-load-balancer-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          apply-security-groups-to-load-balancer-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           apply-security-groups-to-load-balancer-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "SecurityGroups"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'security-groups))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'security-groups))
+      (common-lisp:list
+       (common-lisp:cons "SecurityGroups"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          apply-security-groups-to-load-balancer-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (apply-security-groups-to-load-balancer-output (:copier common-lisp:nil))
+     (apply-security-groups-to-load-balancer-output (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-apply-security-groups-to-load-balancer-output-"))
    (security-groups common-lisp:nil :type
     (common-lisp:or security-groups common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'apply-security-groups-to-load-balancer-output
                     'make-apply-security-groups-to-load-balancer-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          apply-security-groups-to-load-balancer-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           apply-security-groups-to-load-balancer-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "SecurityGroups"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'security-groups))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'security-groups))
+      (common-lisp:list
+       (common-lisp:cons "SecurityGroups"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          apply-security-groups-to-load-balancer-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (attach-load-balancer-to-subnets-input (:copier common-lisp:nil))
+     (attach-load-balancer-to-subnets-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-attach-load-balancer-to-subnets-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (subnets (common-lisp:error ":subnets is required") :type
@@ -250,38 +383,65 @@
  (common-lisp:export
   (common-lisp:list 'attach-load-balancer-to-subnets-input
                     'make-attach-load-balancer-to-subnets-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          attach-load-balancer-to-subnets-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           attach-load-balancer-to-subnets-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "Subnets"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subnets))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subnets))
+      (common-lisp:list
+       (common-lisp:cons "Subnets"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          attach-load-balancer-to-subnets-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (attach-load-balancer-to-subnets-output (:copier common-lisp:nil))
+     (attach-load-balancer-to-subnets-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-attach-load-balancer-to-subnets-output-"))
    (subnets common-lisp:nil :type (common-lisp:or subnets common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-load-balancer-to-subnets-output
                     'make-attach-load-balancer-to-subnets-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          attach-load-balancer-to-subnets-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           attach-load-balancer-to-subnets-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Subnets"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subnets))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subnets))
+      (common-lisp:list
+       (common-lisp:cons "Subnets"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          attach-load-balancer-to-subnets-output))
+   common-lisp:nil))
 (common-lisp:deftype attribute-name () 'common-lisp:string)
 (common-lisp:deftype attribute-type () 'common-lisp:string)
 (common-lisp:deftype attribute-value () 'common-lisp:string)
@@ -295,7 +455,9 @@
                            (trivial-types:proper-list availability-zone))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (backend-server-description (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (backend-server-description (:copier common-lisp:nil)
+      (:conc-name "struct-shape-backend-server-description-"))
    (instance-port common-lisp:nil :type
     (common-lisp:or instance-port common-lisp:null))
    (policy-names common-lisp:nil :type
@@ -303,21 +465,35 @@
  (common-lisp:export
   (common-lisp:list 'backend-server-description
                     'make-backend-server-description))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          backend-server-description))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           backend-server-description))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "InstancePort"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instance-port)))
-    (aws-sdk/generator/shape::to-query-params "PolicyNames"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-names))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instance-port))
+      (common-lisp:list
+       (common-lisp:cons "InstancePort"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-names))
+      (common-lisp:list
+       (common-lisp:cons "PolicyNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          backend-server-description))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype backend-server-descriptions ()
    '(trivial-types:proper-list backend-server-description))
@@ -330,18 +506,30 @@
 (common-lisp:deftype cardinality () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (certificate-not-found-exception (:copier common-lisp:nil)))
+     (certificate-not-found-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-certificate-not-found-exception-")))
  (common-lisp:export
   (common-lisp:list 'certificate-not-found-exception
                     'make-certificate-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           certificate-not-found-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          certificate-not-found-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          certificate-not-found-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (configure-health-check-input (:copier common-lisp:nil))
+     (configure-health-check-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-configure-health-check-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (health-check (common-lisp:error ":health-check is required") :type
@@ -349,80 +537,131 @@
  (common-lisp:export
   (common-lisp:list 'configure-health-check-input
                     'make-configure-health-check-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          configure-health-check-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           configure-health-check-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "HealthCheck"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'health-check))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'health-check))
+      (common-lisp:list
+       (common-lisp:cons "HealthCheck"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          configure-health-check-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (configure-health-check-output (:copier common-lisp:nil))
+     (configure-health-check-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-configure-health-check-output-"))
    (health-check common-lisp:nil :type
     (common-lisp:or health-check common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'configure-health-check-output
                     'make-configure-health-check-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          configure-health-check-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           configure-health-check-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "HealthCheck"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'health-check))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'health-check))
+      (common-lisp:list
+       (common-lisp:cons "HealthCheck"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          configure-health-check-output))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (connection-draining (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (connection-draining (:copier common-lisp:nil)
+      (:conc-name "struct-shape-connection-draining-"))
    (enabled (common-lisp:error ":enabled is required") :type
     (common-lisp:or connection-draining-enabled common-lisp:null))
    (timeout common-lisp:nil :type
     (common-lisp:or connection-draining-timeout common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'connection-draining 'make-connection-draining))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape connection-draining))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input connection-draining))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input connection-draining))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Enabled"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'enabled)))
-    (aws-sdk/generator/shape::to-query-params "Timeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timeout))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'enabled))
+      (common-lisp:list
+       (common-lisp:cons "Enabled"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timeout))
+      (common-lisp:list
+       (common-lisp:cons "Timeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input connection-draining))
+   common-lisp:nil))
 (common-lisp:deftype connection-draining-enabled () 'common-lisp:boolean)
 (common-lisp:deftype connection-draining-timeout () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (connection-settings (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (connection-settings (:copier common-lisp:nil)
+      (:conc-name "struct-shape-connection-settings-"))
    (idle-timeout (common-lisp:error ":idle-timeout is required") :type
     (common-lisp:or idle-timeout common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'connection-settings 'make-connection-settings))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape connection-settings))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input connection-settings))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input connection-settings))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "IdleTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'idle-timeout))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'idle-timeout))
+      (common-lisp:list
+       (common-lisp:cons "IdleTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input connection-settings))
+   common-lisp:nil))
 (common-lisp:deftype cookie-expiration-period () 'common-lisp:integer)
 (common-lisp:deftype cookie-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (create-access-point-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-access-point-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-access-point-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (listeners (common-lisp:error ":listeners is required") :type
@@ -438,65 +677,104 @@
  (common-lisp:export
   (common-lisp:list 'create-access-point-input
                     'make-create-access-point-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-access-point-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-access-point-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "Listeners"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'listeners)))
-    (aws-sdk/generator/shape::to-query-params "AvailabilityZones"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'availability-zones)))
-    (aws-sdk/generator/shape::to-query-params "Subnets"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subnets)))
-    (aws-sdk/generator/shape::to-query-params "SecurityGroups"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'security-groups)))
-    (aws-sdk/generator/shape::to-query-params "Scheme"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheme)))
-    (aws-sdk/generator/shape::to-query-params "Tags"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tags))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'listeners))
+      (common-lisp:list
+       (common-lisp:cons "Listeners"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'availability-zones))
+      (common-lisp:list
+       (common-lisp:cons "AvailabilityZones"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subnets))
+      (common-lisp:list
+       (common-lisp:cons "Subnets"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'security-groups))
+      (common-lisp:list
+       (common-lisp:cons "SecurityGroups"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheme))
+      (common-lisp:list
+       (common-lisp:cons "Scheme"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "Tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-access-point-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-access-point-output (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-access-point-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-access-point-output-"))
    (dnsname common-lisp:nil :type (common-lisp:or dnsname common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-access-point-output
                     'make-create-access-point-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-access-point-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-access-point-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "DNSName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'dnsname))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'dnsname))
+      (common-lisp:list
+       (common-lisp:cons "DNSName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-access-point-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (create-app-cookie-stickiness-policy-input (:copier common-lisp:nil))
+     (create-app-cookie-stickiness-policy-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-app-cookie-stickiness-policy-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (policy-name (common-lisp:error ":policy-name is required") :type
@@ -506,40 +784,68 @@
  (common-lisp:export
   (common-lisp:list 'create-app-cookie-stickiness-policy-input
                     'make-create-app-cookie-stickiness-policy-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-app-cookie-stickiness-policy-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-app-cookie-stickiness-policy-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "PolicyName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-name)))
-    (aws-sdk/generator/shape::to-query-params "CookieName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cookie-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-name))
+      (common-lisp:list
+       (common-lisp:cons "PolicyName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cookie-name))
+      (common-lisp:list
+       (common-lisp:cons "CookieName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-app-cookie-stickiness-policy-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (create-app-cookie-stickiness-policy-output (:copier common-lisp:nil)))
+     (create-app-cookie-stickiness-policy-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-app-cookie-stickiness-policy-output-")))
  (common-lisp:export
   (common-lisp:list 'create-app-cookie-stickiness-policy-output
                     'make-create-app-cookie-stickiness-policy-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           create-app-cookie-stickiness-policy-output))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-app-cookie-stickiness-policy-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-app-cookie-stickiness-policy-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (create-lbcookie-stickiness-policy-input (:copier common-lisp:nil))
+     (create-lbcookie-stickiness-policy-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-lbcookie-stickiness-policy-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (policy-name (common-lisp:error ":policy-name is required") :type
@@ -549,40 +855,69 @@
  (common-lisp:export
   (common-lisp:list 'create-lbcookie-stickiness-policy-input
                     'make-create-lbcookie-stickiness-policy-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-lbcookie-stickiness-policy-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-lbcookie-stickiness-policy-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "PolicyName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-name)))
-    (aws-sdk/generator/shape::to-query-params "CookieExpirationPeriod"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cookie-expiration-period))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-name))
+      (common-lisp:list
+       (common-lisp:cons "PolicyName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'cookie-expiration-period))
+      (common-lisp:list
+       (common-lisp:cons "CookieExpirationPeriod"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-lbcookie-stickiness-policy-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (create-lbcookie-stickiness-policy-output (:copier common-lisp:nil)))
+     (create-lbcookie-stickiness-policy-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-lbcookie-stickiness-policy-output-")))
  (common-lisp:export
   (common-lisp:list 'create-lbcookie-stickiness-policy-output
                     'make-create-lbcookie-stickiness-policy-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           create-lbcookie-stickiness-policy-output))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-lbcookie-stickiness-policy-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-lbcookie-stickiness-policy-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (create-load-balancer-listener-input (:copier common-lisp:nil))
+     (create-load-balancer-listener-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-load-balancer-listener-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (listeners (common-lisp:error ":listeners is required") :type
@@ -590,35 +925,61 @@
  (common-lisp:export
   (common-lisp:list 'create-load-balancer-listener-input
                     'make-create-load-balancer-listener-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-load-balancer-listener-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-load-balancer-listener-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "Listeners"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'listeners))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'listeners))
+      (common-lisp:list
+       (common-lisp:cons "Listeners"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-load-balancer-listener-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (create-load-balancer-listener-output (:copier common-lisp:nil)))
+     (create-load-balancer-listener-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-load-balancer-listener-output-")))
  (common-lisp:export
   (common-lisp:list 'create-load-balancer-listener-output
                     'make-create-load-balancer-listener-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           create-load-balancer-listener-output))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-load-balancer-listener-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-load-balancer-listener-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (create-load-balancer-policy-input (:copier common-lisp:nil))
+     (create-load-balancer-policy-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-load-balancer-policy-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (policy-name (common-lisp:error ":policy-name is required") :type
@@ -630,93 +991,163 @@
  (common-lisp:export
   (common-lisp:list 'create-load-balancer-policy-input
                     'make-create-load-balancer-policy-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-load-balancer-policy-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-load-balancer-policy-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "PolicyName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-name)))
-    (aws-sdk/generator/shape::to-query-params "PolicyTypeName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-type-name)))
-    (aws-sdk/generator/shape::to-query-params "PolicyAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-attributes))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-name))
+      (common-lisp:list
+       (common-lisp:cons "PolicyName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-type-name))
+      (common-lisp:list
+       (common-lisp:cons "PolicyTypeName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-attributes))
+      (common-lisp:list
+       (common-lisp:cons "PolicyAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-load-balancer-policy-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (create-load-balancer-policy-output (:copier common-lisp:nil)))
+     (create-load-balancer-policy-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-load-balancer-policy-output-")))
  (common-lisp:export
   (common-lisp:list 'create-load-balancer-policy-output
                     'make-create-load-balancer-policy-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           create-load-balancer-policy-output))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-load-balancer-policy-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-load-balancer-policy-output))
+   common-lisp:nil))
 (common-lisp:deftype created-time () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (cross-zone-load-balancing (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (cross-zone-load-balancing (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cross-zone-load-balancing-"))
    (enabled (common-lisp:error ":enabled is required") :type
     (common-lisp:or cross-zone-load-balancing-enabled common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cross-zone-load-balancing
                     'make-cross-zone-load-balancing))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          cross-zone-load-balancing))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           cross-zone-load-balancing))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Enabled"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'enabled))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'enabled))
+      (common-lisp:list
+       (common-lisp:cons "Enabled"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          cross-zone-load-balancing))
+   common-lisp:nil))
 (common-lisp:deftype cross-zone-load-balancing-enabled () 'common-lisp:boolean)
 (common-lisp:deftype dnsname () 'common-lisp:string)
 (common-lisp:deftype default-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (delete-access-point-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (delete-access-point-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-access-point-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-access-point-input
                     'make-delete-access-point-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          delete-access-point-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           delete-access-point-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-access-point-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (delete-access-point-output (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (delete-access-point-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-access-point-output-")))
  (common-lisp:export
   (common-lisp:list 'delete-access-point-output
                     'make-delete-access-point-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           delete-access-point-output))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-access-point-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-access-point-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (delete-load-balancer-listener-input (:copier common-lisp:nil))
+     (delete-load-balancer-listener-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-load-balancer-listener-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (load-balancer-ports (common-lisp:error ":load-balancer-ports is required")
@@ -724,35 +1155,61 @@
  (common-lisp:export
   (common-lisp:list 'delete-load-balancer-listener-input
                     'make-delete-load-balancer-listener-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          delete-load-balancer-listener-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           delete-load-balancer-listener-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerPorts"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-ports))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-ports))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerPorts"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-load-balancer-listener-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (delete-load-balancer-listener-output (:copier common-lisp:nil)))
+     (delete-load-balancer-listener-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-load-balancer-listener-output-")))
  (common-lisp:export
   (common-lisp:list 'delete-load-balancer-listener-output
                     'make-delete-load-balancer-listener-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           delete-load-balancer-listener-output))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-load-balancer-listener-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-load-balancer-listener-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (delete-load-balancer-policy-input (:copier common-lisp:nil))
+     (delete-load-balancer-policy-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-load-balancer-policy-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (policy-name (common-lisp:error ":policy-name is required") :type
@@ -760,45 +1217,83 @@
  (common-lisp:export
   (common-lisp:list 'delete-load-balancer-policy-input
                     'make-delete-load-balancer-policy-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          delete-load-balancer-policy-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           delete-load-balancer-policy-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "PolicyName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-name))
+      (common-lisp:list
+       (common-lisp:cons "PolicyName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-load-balancer-policy-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (delete-load-balancer-policy-output (:copier common-lisp:nil)))
+     (delete-load-balancer-policy-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-load-balancer-policy-output-")))
  (common-lisp:export
   (common-lisp:list 'delete-load-balancer-policy-output
                     'make-delete-load-balancer-policy-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           delete-load-balancer-policy-output))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-load-balancer-policy-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-load-balancer-policy-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (dependency-throttle-exception (:copier common-lisp:nil)))
+     (dependency-throttle-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-dependency-throttle-exception-")))
  (common-lisp:export
   (common-lisp:list 'dependency-throttle-exception
                     'make-dependency-throttle-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           dependency-throttle-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          dependency-throttle-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          dependency-throttle-exception))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (deregister-end-points-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (deregister-end-points-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-deregister-end-points-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (instances (common-lisp:error ":instances is required") :type
@@ -806,42 +1301,70 @@
  (common-lisp:export
   (common-lisp:list 'deregister-end-points-input
                     'make-deregister-end-points-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          deregister-end-points-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           deregister-end-points-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "Instances"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instances))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instances))
+      (common-lisp:list
+       (common-lisp:cons "Instances"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          deregister-end-points-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (deregister-end-points-output (:copier common-lisp:nil))
+     (deregister-end-points-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-deregister-end-points-output-"))
    (instances common-lisp:nil :type
     (common-lisp:or instances common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-end-points-output
                     'make-deregister-end-points-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          deregister-end-points-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           deregister-end-points-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Instances"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instances))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instances))
+      (common-lisp:list
+       (common-lisp:cons "Instances"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          deregister-end-points-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-access-points-input (:copier common-lisp:nil))
+     (describe-access-points-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-access-points-input-"))
    (load-balancer-names common-lisp:nil :type
     (common-lisp:or load-balancer-names common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null))
@@ -850,29 +1373,46 @@
  (common-lisp:export
   (common-lisp:list 'describe-access-points-input
                     'make-describe-access-points-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-access-points-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-access-points-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerNames"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-names)))
-    (aws-sdk/generator/shape::to-query-params "Marker"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'marker)))
-    (aws-sdk/generator/shape::to-query-params "PageSize"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'page-size))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-names))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'marker))
+      (common-lisp:list
+       (common-lisp:cons "Marker"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'page-size))
+      (common-lisp:list
+       (common-lisp:cons "PageSize"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-access-points-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-access-points-output (:copier common-lisp:nil))
+     (describe-access-points-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-access-points-output-"))
    (load-balancer-descriptions common-lisp:nil :type
     (common-lisp:or load-balancer-descriptions common-lisp:null))
    (next-marker common-lisp:nil :type
@@ -880,72 +1420,118 @@
  (common-lisp:export
   (common-lisp:list 'describe-access-points-output
                     'make-describe-access-points-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-access-points-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-access-points-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerDescriptions"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-descriptions)))
-    (aws-sdk/generator/shape::to-query-params "NextMarker"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-marker))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'load-balancer-descriptions))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerDescriptions"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-marker))
+      (common-lisp:list
+       (common-lisp:cons "NextMarker"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-access-points-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-account-limits-input (:copier common-lisp:nil))
+     (describe-account-limits-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-account-limits-input-"))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or page-size common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-account-limits-input
                     'make-describe-account-limits-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-account-limits-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-account-limits-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Marker"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'marker)))
-    (aws-sdk/generator/shape::to-query-params "PageSize"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'page-size))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'marker))
+      (common-lisp:list
+       (common-lisp:cons "Marker"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'page-size))
+      (common-lisp:list
+       (common-lisp:cons "PageSize"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-account-limits-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-account-limits-output (:copier common-lisp:nil))
+     (describe-account-limits-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-account-limits-output-"))
    (limits common-lisp:nil :type (common-lisp:or limits common-lisp:null))
    (next-marker common-lisp:nil :type
     (common-lisp:or marker common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-account-limits-output
                     'make-describe-account-limits-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-account-limits-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-account-limits-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Limits"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'limits)))
-    (aws-sdk/generator/shape::to-query-params "NextMarker"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-marker))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'limits))
+      (common-lisp:list
+       (common-lisp:cons "Limits"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-marker))
+      (common-lisp:list
+       (common-lisp:cons "NextMarker"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-account-limits-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-end-point-state-input (:copier common-lisp:nil))
+     (describe-end-point-state-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-end-point-state-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (instances common-lisp:nil :type
@@ -953,78 +1539,133 @@
  (common-lisp:export
   (common-lisp:list 'describe-end-point-state-input
                     'make-describe-end-point-state-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-end-point-state-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-end-point-state-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "Instances"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instances))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instances))
+      (common-lisp:list
+       (common-lisp:cons "Instances"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-end-point-state-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-end-point-state-output (:copier common-lisp:nil))
+     (describe-end-point-state-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-end-point-state-output-"))
    (instance-states common-lisp:nil :type
     (common-lisp:or instance-states common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-end-point-state-output
                     'make-describe-end-point-state-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-end-point-state-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-end-point-state-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "InstanceStates"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instance-states))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instance-states))
+      (common-lisp:list
+       (common-lisp:cons "InstanceStates"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-end-point-state-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-load-balancer-attributes-input (:copier common-lisp:nil))
+     (describe-load-balancer-attributes-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-load-balancer-attributes-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-load-balancer-attributes-input
                     'make-describe-load-balancer-attributes-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-load-balancer-attributes-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-load-balancer-attributes-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-load-balancer-attributes-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-load-balancer-attributes-output (:copier common-lisp:nil))
+     (describe-load-balancer-attributes-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-load-balancer-attributes-output-"))
    (load-balancer-attributes common-lisp:nil :type
     (common-lisp:or load-balancer-attributes common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-load-balancer-attributes-output
                     'make-describe-load-balancer-attributes-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-load-balancer-attributes-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-load-balancer-attributes-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-attributes))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'load-balancer-attributes))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-load-balancer-attributes-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-load-balancer-policies-input (:copier common-lisp:nil))
+     (describe-load-balancer-policies-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-load-balancer-policies-input-"))
    (load-balancer-name common-lisp:nil :type
     (common-lisp:or access-point-name common-lisp:null))
    (policy-names common-lisp:nil :type
@@ -1032,107 +1673,182 @@
  (common-lisp:export
   (common-lisp:list 'describe-load-balancer-policies-input
                     'make-describe-load-balancer-policies-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-load-balancer-policies-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-load-balancer-policies-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "PolicyNames"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-names))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-names))
+      (common-lisp:list
+       (common-lisp:cons "PolicyNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-load-balancer-policies-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-load-balancer-policies-output (:copier common-lisp:nil))
+     (describe-load-balancer-policies-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-load-balancer-policies-output-"))
    (policy-descriptions common-lisp:nil :type
     (common-lisp:or policy-descriptions common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-load-balancer-policies-output
                     'make-describe-load-balancer-policies-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-load-balancer-policies-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-load-balancer-policies-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PolicyDescriptions"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-descriptions))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-descriptions))
+      (common-lisp:list
+       (common-lisp:cons "PolicyDescriptions"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-load-balancer-policies-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-load-balancer-policy-types-input (:copier common-lisp:nil))
+     (describe-load-balancer-policy-types-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-load-balancer-policy-types-input-"))
    (policy-type-names common-lisp:nil :type
     (common-lisp:or policy-type-names common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-load-balancer-policy-types-input
                     'make-describe-load-balancer-policy-types-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-load-balancer-policy-types-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-load-balancer-policy-types-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PolicyTypeNames"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-type-names))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-type-names))
+      (common-lisp:list
+       (common-lisp:cons "PolicyTypeNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-load-balancer-policy-types-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-load-balancer-policy-types-output (:copier common-lisp:nil))
+     (describe-load-balancer-policy-types-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-load-balancer-policy-types-output-"))
    (policy-type-descriptions common-lisp:nil :type
     (common-lisp:or policy-type-descriptions common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-load-balancer-policy-types-output
                     'make-describe-load-balancer-policy-types-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-load-balancer-policy-types-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-load-balancer-policy-types-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PolicyTypeDescriptions"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-type-descriptions))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'policy-type-descriptions))
+      (common-lisp:list
+       (common-lisp:cons "PolicyTypeDescriptions"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-load-balancer-policy-types-output))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-tags-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-tags-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-tags-input-"))
    (load-balancer-names (common-lisp:error ":load-balancer-names is required")
     :type (common-lisp:or load-balancer-names-max20 common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-tags-input 'make-describe-tags-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape describe-tags-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input describe-tags-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input describe-tags-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerNames"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-names))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-names))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input describe-tags-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-tags-output (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-tags-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-tags-output-"))
    (tag-descriptions common-lisp:nil :type
     (common-lisp:or tag-descriptions common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-tags-output 'make-describe-tags-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape describe-tags-output))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input describe-tags-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input describe-tags-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "TagDescriptions"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-descriptions))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-descriptions))
+      (common-lisp:list
+       (common-lisp:cons "TagDescriptions"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input describe-tags-output))
+   common-lisp:nil))
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (detach-load-balancer-from-subnets-input (:copier common-lisp:nil))
+     (detach-load-balancer-from-subnets-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-detach-load-balancer-from-subnets-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (subnets (common-lisp:error ":subnets is required") :type
@@ -1140,85 +1856,158 @@
  (common-lisp:export
   (common-lisp:list 'detach-load-balancer-from-subnets-input
                     'make-detach-load-balancer-from-subnets-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          detach-load-balancer-from-subnets-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           detach-load-balancer-from-subnets-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "Subnets"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subnets))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subnets))
+      (common-lisp:list
+       (common-lisp:cons "Subnets"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          detach-load-balancer-from-subnets-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (detach-load-balancer-from-subnets-output (:copier common-lisp:nil))
+     (detach-load-balancer-from-subnets-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-detach-load-balancer-from-subnets-output-"))
    (subnets common-lisp:nil :type (common-lisp:or subnets common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-load-balancer-from-subnets-output
                     'make-detach-load-balancer-from-subnets-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          detach-load-balancer-from-subnets-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           detach-load-balancer-from-subnets-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Subnets"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subnets))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subnets))
+      (common-lisp:list
+       (common-lisp:cons "Subnets"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          detach-load-balancer-from-subnets-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (duplicate-access-point-name-exception (:copier common-lisp:nil)))
+     (duplicate-access-point-name-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-duplicate-access-point-name-exception-")))
  (common-lisp:export
   (common-lisp:list 'duplicate-access-point-name-exception
                     'make-duplicate-access-point-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           duplicate-access-point-name-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          duplicate-access-point-name-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          duplicate-access-point-name-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (duplicate-listener-exception (:copier common-lisp:nil)))
+     (duplicate-listener-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-duplicate-listener-exception-")))
  (common-lisp:export
   (common-lisp:list 'duplicate-listener-exception
                     'make-duplicate-listener-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           duplicate-listener-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          duplicate-listener-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          duplicate-listener-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (duplicate-policy-name-exception (:copier common-lisp:nil)))
+     (duplicate-policy-name-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-duplicate-policy-name-exception-")))
  (common-lisp:export
   (common-lisp:list 'duplicate-policy-name-exception
                     'make-duplicate-policy-name-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           duplicate-policy-name-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          duplicate-policy-name-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          duplicate-policy-name-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (duplicate-tag-keys-exception (:copier common-lisp:nil)))
+     (duplicate-tag-keys-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-duplicate-tag-keys-exception-")))
  (common-lisp:export
   (common-lisp:list 'duplicate-tag-keys-exception
                     'make-duplicate-tag-keys-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           duplicate-tag-keys-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          duplicate-tag-keys-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          duplicate-tag-keys-exception))
+   common-lisp:nil))
 (common-lisp:deftype end-point-port () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (health-check (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (health-check (:copier common-lisp:nil)
+      (:conc-name "struct-shape-health-check-"))
    (target (common-lisp:error ":target is required") :type
     (common-lisp:or health-check-target common-lisp:null))
    (interval (common-lisp:error ":interval is required") :type
@@ -1230,56 +2019,83 @@
    (healthy-threshold (common-lisp:error ":healthy-threshold is required")
     :type (common-lisp:or healthy-threshold common-lisp:null)))
  (common-lisp:export (common-lisp:list 'health-check 'make-health-check))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape health-check))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input health-check))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input health-check))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Target"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'target)))
-    (aws-sdk/generator/shape::to-query-params "Interval"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'interval)))
-    (aws-sdk/generator/shape::to-query-params "Timeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timeout)))
-    (aws-sdk/generator/shape::to-query-params "UnhealthyThreshold"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'unhealthy-threshold)))
-    (aws-sdk/generator/shape::to-query-params "HealthyThreshold"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'healthy-threshold))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'target))
+      (common-lisp:list
+       (common-lisp:cons "Target"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'interval))
+      (common-lisp:list
+       (common-lisp:cons "Interval"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timeout))
+      (common-lisp:list
+       (common-lisp:cons "Timeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'unhealthy-threshold))
+      (common-lisp:list
+       (common-lisp:cons "UnhealthyThreshold"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'healthy-threshold))
+      (common-lisp:list
+       (common-lisp:cons "HealthyThreshold"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input health-check))
+   common-lisp:nil))
 (common-lisp:deftype health-check-interval () 'common-lisp:integer)
 (common-lisp:deftype health-check-target () 'common-lisp:string)
 (common-lisp:deftype health-check-timeout () 'common-lisp:integer)
 (common-lisp:deftype healthy-threshold () 'common-lisp:integer)
 (common-lisp:deftype idle-timeout () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (instance (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (instance (:copier common-lisp:nil) (:conc-name "struct-shape-instance-"))
    (instance-id common-lisp:nil :type
     (common-lisp:or instance-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'instance 'make-instance))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape instance))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input instance))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input instance))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "InstanceId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instance-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instance-id))
+      (common-lisp:list
+       (common-lisp:cons "InstanceId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input instance))
+   common-lisp:nil))
 (common-lisp:deftype instance-id () 'common-lisp:string)
 (common-lisp:deftype instance-port () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (instance-state (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (instance-state (:copier common-lisp:nil)
+      (:conc-name "struct-shape-instance-state-"))
    (instance-id common-lisp:nil :type
     (common-lisp:or instance-id common-lisp:null))
    (state common-lisp:nil :type (common-lisp:or state common-lisp:null))
@@ -1288,29 +2104,43 @@
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null)))
  (common-lisp:export (common-lisp:list 'instance-state 'make-instance-state))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape instance-state))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input instance-state))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input instance-state))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "InstanceId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instance-id)))
-    (aws-sdk/generator/shape::to-query-params "State"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'state)))
-    (aws-sdk/generator/shape::to-query-params "ReasonCode"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reason-code)))
-    (aws-sdk/generator/shape::to-query-params "Description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instance-id))
+      (common-lisp:list
+       (common-lisp:cons "InstanceId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'state))
+      (common-lisp:list
+       (common-lisp:cons "State"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reason-code))
+      (common-lisp:list
+       (common-lisp:cons "ReasonCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "Description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input instance-state))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype instance-states ()
    '(trivial-types:proper-list instance-state))
@@ -1328,55 +2158,112 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct
-     (invalid-configuration-request-exception (:copier common-lisp:nil)))
+     (invalid-configuration-request-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-invalid-configuration-request-exception-")))
  (common-lisp:export
   (common-lisp:list 'invalid-configuration-request-exception
                     'make-invalid-configuration-request-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           invalid-configuration-request-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-configuration-request-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-configuration-request-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (invalid-end-point-exception (:copier common-lisp:nil)))
+     (invalid-end-point-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-invalid-end-point-exception-")))
  (common-lisp:export
   (common-lisp:list 'invalid-end-point-exception
                     'make-invalid-end-point-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           invalid-end-point-exception))
-   (common-lisp:append)))
-(common-lisp:progn
- (common-lisp:defstruct (invalid-scheme-exception (:copier common-lisp:nil)))
- (common-lisp:export
-  (common-lisp:list 'invalid-scheme-exception 'make-invalid-scheme-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
                         (
-                         (aws-sdk/generator/shape::shape
-                          invalid-scheme-exception))
-   (common-lisp:append)))
+                         (aws-sdk/generator/shape::input
+                          invalid-end-point-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-end-point-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (invalid-security-group-exception (:copier common-lisp:nil)))
+     (invalid-scheme-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-invalid-scheme-exception-")))
+ (common-lisp:export
+  (common-lisp:list 'invalid-scheme-exception 'make-invalid-scheme-exception))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-scheme-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-scheme-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-scheme-exception))
+   common-lisp:nil))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (invalid-security-group-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-invalid-security-group-exception-")))
  (common-lisp:export
   (common-lisp:list 'invalid-security-group-exception
                     'make-invalid-security-group-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           invalid-security-group-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-security-group-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-security-group-exception))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (invalid-subnet-exception (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (invalid-subnet-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-invalid-subnet-exception-")))
  (common-lisp:export
   (common-lisp:list 'invalid-subnet-exception 'make-invalid-subnet-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           invalid-subnet-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-subnet-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-subnet-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype lbcookie-stickiness-policies ()
    '(trivial-types:proper-list lbcookie-stickiness-policy))
@@ -1387,7 +2274,9 @@
                             lbcookie-stickiness-policy))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (lbcookie-stickiness-policy (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (lbcookie-stickiness-policy (:copier common-lisp:nil)
+      (:conc-name "struct-shape-lbcookie-stickiness-policy-"))
    (policy-name common-lisp:nil :type
     (common-lisp:or policy-name common-lisp:null))
    (cookie-expiration-period common-lisp:nil :type
@@ -1395,39 +2284,65 @@
  (common-lisp:export
   (common-lisp:list 'lbcookie-stickiness-policy
                     'make-lbcookie-stickiness-policy))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          lbcookie-stickiness-policy))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           lbcookie-stickiness-policy))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PolicyName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-name)))
-    (aws-sdk/generator/shape::to-query-params "CookieExpirationPeriod"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cookie-expiration-period))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-name))
+      (common-lisp:list
+       (common-lisp:cons "PolicyName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'cookie-expiration-period))
+      (common-lisp:list
+       (common-lisp:cons "CookieExpirationPeriod"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          lbcookie-stickiness-policy))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (limit (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (limit (:copier common-lisp:nil) (:conc-name "struct-shape-limit-"))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
    (max common-lisp:nil :type (common-lisp:or max common-lisp:null)))
  (common-lisp:export (common-lisp:list 'limit 'make-limit))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape limit))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input limit))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input limit))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "Max"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'max))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "Name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'max))
+      (common-lisp:list
+       (common-lisp:cons "Max"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input limit))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype limits () '(trivial-types:proper-list limit))
  (common-lisp:defun |make-limits|
@@ -1436,7 +2351,8 @@
                            (trivial-types:proper-list limit))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (listener (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (listener (:copier common-lisp:nil) (:conc-name "struct-shape-listener-"))
    (protocol (common-lisp:error ":protocol is required") :type
     (common-lisp:or protocol common-lisp:null))
    (load-balancer-port (common-lisp:error ":load-balancer-port is required")
@@ -1448,54 +2364,82 @@
    (sslcertificate-id common-lisp:nil :type
     (common-lisp:or sslcertificate-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'listener 'make-listener))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape listener))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input listener))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input listener))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Protocol"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'protocol)))
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerPort"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-port)))
-    (aws-sdk/generator/shape::to-query-params "InstanceProtocol"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instance-protocol)))
-    (aws-sdk/generator/shape::to-query-params "InstancePort"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instance-port)))
-    (aws-sdk/generator/shape::to-query-params "SSLCertificateId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'sslcertificate-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'protocol))
+      (common-lisp:list
+       (common-lisp:cons "Protocol"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-port))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerPort"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instance-protocol))
+      (common-lisp:list
+       (common-lisp:cons "InstanceProtocol"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instance-port))
+      (common-lisp:list
+       (common-lisp:cons "InstancePort"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sslcertificate-id))
+      (common-lisp:list
+       (common-lisp:cons "SSLCertificateId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input listener))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (listener-description (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (listener-description (:copier common-lisp:nil)
+      (:conc-name "struct-shape-listener-description-"))
    (listener common-lisp:nil :type (common-lisp:or listener common-lisp:null))
    (policy-names common-lisp:nil :type
     (common-lisp:or policy-names common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'listener-description 'make-listener-description))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape listener-description))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input listener-description))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input listener-description))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Listener"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'listener)))
-    (aws-sdk/generator/shape::to-query-params "PolicyNames"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-names))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'listener))
+      (common-lisp:list
+       (common-lisp:cons "Listener"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-names))
+      (common-lisp:list
+       (common-lisp:cons "PolicyNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input listener-description))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype listener-descriptions ()
    '(trivial-types:proper-list listener-description))
@@ -1506,15 +2450,26 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct
-     (listener-not-found-exception (:copier common-lisp:nil)))
+     (listener-not-found-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-listener-not-found-exception-")))
  (common-lisp:export
   (common-lisp:list 'listener-not-found-exception
                     'make-listener-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           listener-not-found-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          listener-not-found-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          listener-not-found-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype listeners () '(trivial-types:proper-list listener))
  (common-lisp:defun |make-listeners|
@@ -1524,17 +2479,31 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct
-     (load-balancer-attribute-not-found-exception (:copier common-lisp:nil)))
+     (load-balancer-attribute-not-found-exception (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-load-balancer-attribute-not-found-exception-")))
  (common-lisp:export
   (common-lisp:list 'load-balancer-attribute-not-found-exception
                     'make-load-balancer-attribute-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           load-balancer-attribute-not-found-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          load-balancer-attribute-not-found-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          load-balancer-attribute-not-found-exception))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (load-balancer-attributes (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (load-balancer-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-load-balancer-attributes-"))
    (cross-zone-load-balancing common-lisp:nil :type
     (common-lisp:or cross-zone-load-balancing common-lisp:null))
    (access-log common-lisp:nil :type
@@ -1547,38 +2516,62 @@
     (common-lisp:or additional-attributes common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'load-balancer-attributes 'make-load-balancer-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          load-balancer-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           load-balancer-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "CrossZoneLoadBalancing"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cross-zone-load-balancing)))
-    (aws-sdk/generator/shape::to-query-params "AccessLog"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'access-log)))
-    (aws-sdk/generator/shape::to-query-params "ConnectionDraining"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'connection-draining)))
-    (aws-sdk/generator/shape::to-query-params "ConnectionSettings"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'connection-settings)))
-    (aws-sdk/generator/shape::to-query-params "AdditionalAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'additional-attributes))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'cross-zone-load-balancing))
+      (common-lisp:list
+       (common-lisp:cons "CrossZoneLoadBalancing"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'access-log))
+      (common-lisp:list
+       (common-lisp:cons "AccessLog"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'connection-draining))
+      (common-lisp:list
+       (common-lisp:cons "ConnectionDraining"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'connection-settings))
+      (common-lisp:list
+       (common-lisp:cons "ConnectionSettings"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'additional-attributes))
+      (common-lisp:list
+       (common-lisp:cons "AdditionalAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          load-balancer-attributes))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (load-balancer-description (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (load-balancer-description (:copier common-lisp:nil)
+      (:conc-name "struct-shape-load-balancer-description-"))
    (load-balancer-name common-lisp:nil :type
     (common-lisp:or access-point-name common-lisp:null))
    (dnsname common-lisp:nil :type (common-lisp:or dnsname common-lisp:null))
@@ -1610,91 +2603,138 @@
  (common-lisp:export
   (common-lisp:list 'load-balancer-description
                     'make-load-balancer-description))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          load-balancer-description))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           load-balancer-description))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "DNSName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'dnsname)))
-    (aws-sdk/generator/shape::to-query-params "CanonicalHostedZoneName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'canonical-hosted-zone-name)))
-    (aws-sdk/generator/shape::to-query-params "CanonicalHostedZoneNameID"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'canonical-hosted-zone-name-id)))
-    (aws-sdk/generator/shape::to-query-params "ListenerDescriptions"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'listener-descriptions)))
-    (aws-sdk/generator/shape::to-query-params "Policies"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policies)))
-    (aws-sdk/generator/shape::to-query-params "BackendServerDescriptions"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'backend-server-descriptions)))
-    (aws-sdk/generator/shape::to-query-params "AvailabilityZones"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'availability-zones)))
-    (aws-sdk/generator/shape::to-query-params "Subnets"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subnets)))
-    (aws-sdk/generator/shape::to-query-params "VPCId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'vpcid)))
-    (aws-sdk/generator/shape::to-query-params "Instances"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instances)))
-    (aws-sdk/generator/shape::to-query-params "HealthCheck"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'health-check)))
-    (aws-sdk/generator/shape::to-query-params "SourceSecurityGroup"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'source-security-group)))
-    (aws-sdk/generator/shape::to-query-params "SecurityGroups"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'security-groups)))
-    (aws-sdk/generator/shape::to-query-params "CreatedTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'created-time)))
-    (aws-sdk/generator/shape::to-query-params "Scheme"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheme))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'dnsname))
+      (common-lisp:list
+       (common-lisp:cons "DNSName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'canonical-hosted-zone-name))
+      (common-lisp:list
+       (common-lisp:cons "CanonicalHostedZoneName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'canonical-hosted-zone-name-id))
+      (common-lisp:list
+       (common-lisp:cons "CanonicalHostedZoneNameID"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'listener-descriptions))
+      (common-lisp:list
+       (common-lisp:cons "ListenerDescriptions"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policies))
+      (common-lisp:list
+       (common-lisp:cons "Policies"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'backend-server-descriptions))
+      (common-lisp:list
+       (common-lisp:cons "BackendServerDescriptions"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'availability-zones))
+      (common-lisp:list
+       (common-lisp:cons "AvailabilityZones"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subnets))
+      (common-lisp:list
+       (common-lisp:cons "Subnets"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'vpcid))
+      (common-lisp:list
+       (common-lisp:cons "VPCId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instances))
+      (common-lisp:list
+       (common-lisp:cons "Instances"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'health-check))
+      (common-lisp:list
+       (common-lisp:cons "HealthCheck"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'source-security-group))
+      (common-lisp:list
+       (common-lisp:cons "SourceSecurityGroup"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'security-groups))
+      (common-lisp:list
+       (common-lisp:cons "SecurityGroups"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'created-time))
+      (common-lisp:list
+       (common-lisp:cons "CreatedTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheme))
+      (common-lisp:list
+       (common-lisp:cons "Scheme"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          load-balancer-description))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype load-balancer-descriptions ()
    '(trivial-types:proper-list load-balancer-description))
@@ -1725,7 +2765,8 @@
 (common-lisp:deftype max () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (modify-load-balancer-attributes-input (:copier common-lisp:nil))
+     (modify-load-balancer-attributes-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-modify-load-balancer-attributes-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (load-balancer-attributes
@@ -1734,24 +2775,40 @@
  (common-lisp:export
   (common-lisp:list 'modify-load-balancer-attributes-input
                     'make-modify-load-balancer-attributes-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          modify-load-balancer-attributes-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           modify-load-balancer-attributes-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-attributes))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'load-balancer-attributes))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-load-balancer-attributes-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (modify-load-balancer-attributes-output (:copier common-lisp:nil))
+     (modify-load-balancer-attributes-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-modify-load-balancer-attributes-output-"))
    (load-balancer-name common-lisp:nil :type
     (common-lisp:or access-point-name common-lisp:null))
    (load-balancer-attributes common-lisp:nil :type
@@ -1759,25 +2816,41 @@
  (common-lisp:export
   (common-lisp:list 'modify-load-balancer-attributes-output
                     'make-modify-load-balancer-attributes-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          modify-load-balancer-attributes-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           modify-load-balancer-attributes-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-attributes))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'load-balancer-attributes))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          modify-load-balancer-attributes-output))
+   common-lisp:nil))
 (common-lisp:deftype name () 'common-lisp:string)
 (common-lisp:deftype page-size () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (policies (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (policies (:copier common-lisp:nil) (:conc-name "struct-shape-policies-"))
    (app-cookie-stickiness-policies common-lisp:nil :type
     (common-lisp:or app-cookie-stickiness-policies common-lisp:null))
    (lbcookie-stickiness-policies common-lisp:nil :type
@@ -1785,48 +2858,75 @@
    (other-policies common-lisp:nil :type
     (common-lisp:or policy-names common-lisp:null)))
  (common-lisp:export (common-lisp:list 'policies 'make-policies))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape policies))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input policies))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input policies))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AppCookieStickinessPolicies"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'app-cookie-stickiness-policies)))
-    (aws-sdk/generator/shape::to-query-params "LBCookieStickinessPolicies"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'lbcookie-stickiness-policies)))
-    (aws-sdk/generator/shape::to-query-params "OtherPolicies"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'other-policies))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'app-cookie-stickiness-policies))
+      (common-lisp:list
+       (common-lisp:cons "AppCookieStickinessPolicies"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'lbcookie-stickiness-policies))
+      (common-lisp:list
+       (common-lisp:cons "LBCookieStickinessPolicies"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'other-policies))
+      (common-lisp:list
+       (common-lisp:cons "OtherPolicies"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input policies))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (policy-attribute (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (policy-attribute (:copier common-lisp:nil)
+      (:conc-name "struct-shape-policy-attribute-"))
    (attribute-name common-lisp:nil :type
     (common-lisp:or attribute-name common-lisp:null))
    (attribute-value common-lisp:nil :type
     (common-lisp:or attribute-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'policy-attribute 'make-policy-attribute))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape policy-attribute))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input policy-attribute))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input policy-attribute))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AttributeName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'attribute-name)))
-    (aws-sdk/generator/shape::to-query-params "AttributeValue"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'attribute-value))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'attribute-name))
+      (common-lisp:list
+       (common-lisp:cons "AttributeName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'attribute-value))
+      (common-lisp:list
+       (common-lisp:cons "AttributeValue"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input policy-attribute))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (policy-attribute-description (:copier common-lisp:nil))
+     (policy-attribute-description (:copier common-lisp:nil)
+      (:conc-name "struct-shape-policy-attribute-description-"))
    (attribute-name common-lisp:nil :type
     (common-lisp:or attribute-name common-lisp:null))
    (attribute-value common-lisp:nil :type
@@ -1834,21 +2934,35 @@
  (common-lisp:export
   (common-lisp:list 'policy-attribute-description
                     'make-policy-attribute-description))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          policy-attribute-description))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           policy-attribute-description))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AttributeName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'attribute-name)))
-    (aws-sdk/generator/shape::to-query-params "AttributeValue"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'attribute-value))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'attribute-name))
+      (common-lisp:list
+       (common-lisp:cons "AttributeName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'attribute-value))
+      (common-lisp:list
+       (common-lisp:cons "AttributeValue"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          policy-attribute-description))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype policy-attribute-descriptions ()
    '(trivial-types:proper-list policy-attribute-description))
@@ -1860,7 +2974,8 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct
-     (policy-attribute-type-description (:copier common-lisp:nil))
+     (policy-attribute-type-description (:copier common-lisp:nil)
+      (:conc-name "struct-shape-policy-attribute-type-description-"))
    (attribute-name common-lisp:nil :type
     (common-lisp:or attribute-name common-lisp:null))
    (attribute-type common-lisp:nil :type
@@ -1874,36 +2989,56 @@
  (common-lisp:export
   (common-lisp:list 'policy-attribute-type-description
                     'make-policy-attribute-type-description))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          policy-attribute-type-description))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           policy-attribute-type-description))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AttributeName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'attribute-name)))
-    (aws-sdk/generator/shape::to-query-params "AttributeType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'attribute-type)))
-    (aws-sdk/generator/shape::to-query-params "Description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params "DefaultValue"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-value)))
-    (aws-sdk/generator/shape::to-query-params "Cardinality"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cardinality))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'attribute-name))
+      (common-lisp:list
+       (common-lisp:cons "AttributeName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'attribute-type))
+      (common-lisp:list
+       (common-lisp:cons "AttributeType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "Description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'default-value))
+      (common-lisp:list
+       (common-lisp:cons "DefaultValue"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cardinality))
+      (common-lisp:list
+       (common-lisp:cons "Cardinality"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          policy-attribute-type-description))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype policy-attribute-type-descriptions ()
    '(trivial-types:proper-list policy-attribute-type-description))
@@ -1922,7 +3057,9 @@
                            (trivial-types:proper-list policy-attribute))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (policy-description (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (policy-description (:copier common-lisp:nil)
+      (:conc-name "struct-shape-policy-description-"))
    (policy-name common-lisp:nil :type
     (common-lisp:or policy-name common-lisp:null))
    (policy-type-name common-lisp:nil :type
@@ -1931,24 +3068,37 @@
     (common-lisp:or policy-attribute-descriptions common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'policy-description 'make-policy-description))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape policy-description))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input policy-description))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input policy-description))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PolicyName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-name)))
-    (aws-sdk/generator/shape::to-query-params "PolicyTypeName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-type-name)))
-    (aws-sdk/generator/shape::to-query-params "PolicyAttributeDescriptions"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-attribute-descriptions))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-name))
+      (common-lisp:list
+       (common-lisp:cons "PolicyName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-type-name))
+      (common-lisp:list
+       (common-lisp:cons "PolicyTypeName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'policy-attribute-descriptions))
+      (common-lisp:list
+       (common-lisp:cons "PolicyAttributeDescriptions"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input policy-description))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype policy-descriptions ()
    '(trivial-types:proper-list policy-description))
@@ -1966,17 +3116,31 @@
                            (trivial-types:proper-list policy-name))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (policy-not-found-exception (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (policy-not-found-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-policy-not-found-exception-")))
  (common-lisp:export
   (common-lisp:list 'policy-not-found-exception
                     'make-policy-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           policy-not-found-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          policy-not-found-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          policy-not-found-exception))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (policy-type-description (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (policy-type-description (:copier common-lisp:nil)
+      (:conc-name "struct-shape-policy-type-description-"))
    (policy-type-name common-lisp:nil :type
     (common-lisp:or policy-type-name common-lisp:null))
    (description common-lisp:nil :type
@@ -1985,26 +3149,43 @@
     (common-lisp:or policy-attribute-type-descriptions common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'policy-type-description 'make-policy-type-description))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          policy-type-description))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           policy-type-description))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PolicyTypeName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-type-name)))
-    (aws-sdk/generator/shape::to-query-params "Description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params "PolicyAttributeTypeDescriptions"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-attribute-type-descriptions))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-type-name))
+      (common-lisp:list
+       (common-lisp:cons "PolicyTypeName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "Description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'policy-attribute-type-descriptions))
+      (common-lisp:list
+       (common-lisp:cons "PolicyAttributeTypeDescriptions"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          policy-type-description))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype policy-type-descriptions ()
    '(trivial-types:proper-list policy-type-description))
@@ -2024,15 +3205,26 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct
-     (policy-type-not-found-exception (:copier common-lisp:nil)))
+     (policy-type-not-found-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-policy-type-not-found-exception-")))
  (common-lisp:export
   (common-lisp:list 'policy-type-not-found-exception
                     'make-policy-type-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           policy-type-not-found-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          policy-type-not-found-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          policy-type-not-found-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype ports () '(trivial-types:proper-list access-point-port))
  (common-lisp:defun |make-ports|
@@ -2043,7 +3235,9 @@
 (common-lisp:deftype protocol () 'common-lisp:string)
 (common-lisp:deftype reason-code () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (register-end-points-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (register-end-points-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-register-end-points-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (instances (common-lisp:error ":instances is required") :type
@@ -2051,41 +3245,70 @@
  (common-lisp:export
   (common-lisp:list 'register-end-points-input
                     'make-register-end-points-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          register-end-points-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           register-end-points-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "Instances"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instances))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instances))
+      (common-lisp:list
+       (common-lisp:cons "Instances"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          register-end-points-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (register-end-points-output (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (register-end-points-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-register-end-points-output-"))
    (instances common-lisp:nil :type
     (common-lisp:or instances common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-end-points-output
                     'make-register-end-points-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          register-end-points-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           register-end-points-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Instances"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instances))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instances))
+      (common-lisp:list
+       (common-lisp:cons "Instances"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          register-end-points-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (remove-availability-zones-input (:copier common-lisp:nil))
+     (remove-availability-zones-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-remove-availability-zones-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (availability-zones (common-lisp:error ":availability-zones is required")
@@ -2093,67 +3316,114 @@
  (common-lisp:export
   (common-lisp:list 'remove-availability-zones-input
                     'make-remove-availability-zones-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          remove-availability-zones-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           remove-availability-zones-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "AvailabilityZones"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'availability-zones))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'availability-zones))
+      (common-lisp:list
+       (common-lisp:cons "AvailabilityZones"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          remove-availability-zones-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (remove-availability-zones-output (:copier common-lisp:nil))
+     (remove-availability-zones-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-remove-availability-zones-output-"))
    (availability-zones common-lisp:nil :type
     (common-lisp:or availability-zones common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-availability-zones-output
                     'make-remove-availability-zones-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          remove-availability-zones-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           remove-availability-zones-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AvailabilityZones"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'availability-zones))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'availability-zones))
+      (common-lisp:list
+       (common-lisp:cons "AvailabilityZones"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          remove-availability-zones-output))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (remove-tags-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (remove-tags-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-remove-tags-input-"))
    (load-balancer-names (common-lisp:error ":load-balancer-names is required")
     :type (common-lisp:or load-balancer-names common-lisp:null))
    (tags (common-lisp:error ":tags is required") :type
     (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-input 'make-remove-tags-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape remove-tags-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input remove-tags-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input remove-tags-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerNames"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-names)))
-    (aws-sdk/generator/shape::to-query-params "Tags"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tags))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-names))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "Tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input remove-tags-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (remove-tags-output (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (remove-tags-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-remove-tags-output-")))
  (common-lisp:export
   (common-lisp:list 'remove-tags-output 'make-remove-tags-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape remove-tags-output))
-   (common-lisp:append)))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input remove-tags-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input remove-tags-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input remove-tags-output))
+   common-lisp:nil))
 (common-lisp:deftype s3bucket-name () 'common-lisp:string)
 (common-lisp:deftype sslcertificate-id () 'common-lisp:string)
 (common-lisp:deftype security-group-id () 'common-lisp:string)
@@ -2169,8 +3439,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct
-     (set-load-balancer-listener-sslcertificate-input
-      (:copier common-lisp:nil))
+     (set-load-balancer-listener-sslcertificate-input (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-set-load-balancer-listener-sslcertificate-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (load-balancer-port (common-lisp:error ":load-balancer-port is required")
@@ -2180,42 +3451,72 @@
  (common-lisp:export
   (common-lisp:list 'set-load-balancer-listener-sslcertificate-input
                     'make-set-load-balancer-listener-sslcertificate-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          set-load-balancer-listener-sslcertificate-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           set-load-balancer-listener-sslcertificate-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerPort"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-port)))
-    (aws-sdk/generator/shape::to-query-params "SSLCertificateId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'sslcertificate-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-port))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerPort"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sslcertificate-id))
+      (common-lisp:list
+       (common-lisp:cons "SSLCertificateId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          set-load-balancer-listener-sslcertificate-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (set-load-balancer-listener-sslcertificate-output
-      (:copier common-lisp:nil)))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-set-load-balancer-listener-sslcertificate-output-")))
  (common-lisp:export
   (common-lisp:list 'set-load-balancer-listener-sslcertificate-output
                     'make-set-load-balancer-listener-sslcertificate-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           set-load-balancer-listener-sslcertificate-output))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          set-load-balancer-listener-sslcertificate-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          set-load-balancer-listener-sslcertificate-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (set-load-balancer-policies-for-backend-server-input
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-set-load-balancer-policies-for-backend-server-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (instance-port (common-lisp:error ":instance-port is required") :type
@@ -2225,41 +3526,71 @@
  (common-lisp:export
   (common-lisp:list 'set-load-balancer-policies-for-backend-server-input
                     'make-set-load-balancer-policies-for-backend-server-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          set-load-balancer-policies-for-backend-server-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           set-load-balancer-policies-for-backend-server-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "InstancePort"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'instance-port)))
-    (aws-sdk/generator/shape::to-query-params "PolicyNames"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-names))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'instance-port))
+      (common-lisp:list
+       (common-lisp:cons "InstancePort"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-names))
+      (common-lisp:list
+       (common-lisp:cons "PolicyNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          set-load-balancer-policies-for-backend-server-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (set-load-balancer-policies-for-backend-server-output
-      (:copier common-lisp:nil)))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-set-load-balancer-policies-for-backend-server-output-")))
  (common-lisp:export
   (common-lisp:list 'set-load-balancer-policies-for-backend-server-output
                     'make-set-load-balancer-policies-for-backend-server-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           set-load-balancer-policies-for-backend-server-output))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          set-load-balancer-policies-for-backend-server-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          set-load-balancer-policies-for-backend-server-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (set-load-balancer-policies-of-listener-input (:copier common-lisp:nil))
+     (set-load-balancer-policies-of-listener-input (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-set-load-balancer-policies-of-listener-input-"))
    (load-balancer-name (common-lisp:error ":load-balancer-name is required")
     :type (common-lisp:or access-point-name common-lisp:null))
    (load-balancer-port (common-lisp:error ":load-balancer-port is required")
@@ -2269,72 +3600,128 @@
  (common-lisp:export
   (common-lisp:list 'set-load-balancer-policies-of-listener-input
                     'make-set-load-balancer-policies-of-listener-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          set-load-balancer-policies-of-listener-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           set-load-balancer-policies-of-listener-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerPort"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-port)))
-    (aws-sdk/generator/shape::to-query-params "PolicyNames"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'policy-names))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-port))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerPort"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'policy-names))
+      (common-lisp:list
+       (common-lisp:cons "PolicyNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          set-load-balancer-policies-of-listener-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (set-load-balancer-policies-of-listener-output (:copier common-lisp:nil)))
+     (set-load-balancer-policies-of-listener-output (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-set-load-balancer-policies-of-listener-output-")))
  (common-lisp:export
   (common-lisp:list 'set-load-balancer-policies-of-listener-output
                     'make-set-load-balancer-policies-of-listener-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           set-load-balancer-policies-of-listener-output))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          set-load-balancer-policies-of-listener-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          set-load-balancer-policies-of-listener-output))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (source-security-group (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (source-security-group (:copier common-lisp:nil)
+      (:conc-name "struct-shape-source-security-group-"))
    (owner-alias common-lisp:nil :type
     (common-lisp:or security-group-owner-alias common-lisp:null))
    (group-name common-lisp:nil :type
     (common-lisp:or security-group-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'source-security-group 'make-source-security-group))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          source-security-group))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           source-security-group))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "OwnerAlias"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'owner-alias)))
-    (aws-sdk/generator/shape::to-query-params "GroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'group-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'owner-alias))
+      (common-lisp:list
+       (common-lisp:cons "OwnerAlias"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'group-name))
+      (common-lisp:list
+       (common-lisp:cons "GroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          source-security-group))
+   common-lisp:nil))
 (common-lisp:deftype state () 'common-lisp:string)
 (common-lisp:deftype subnet-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (subnet-not-found-exception (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (subnet-not-found-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-subnet-not-found-exception-")))
  (common-lisp:export
   (common-lisp:list 'subnet-not-found-exception
                     'make-subnet-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           subnet-not-found-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          subnet-not-found-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          subnet-not-found-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype subnets () '(trivial-types:proper-list subnet-id))
  (common-lisp:defun |make-subnets|
@@ -2343,43 +3730,66 @@
                            (trivial-types:proper-list subnet-id))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (tag (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
    (key (common-lisp:error ":key is required") :type
     (common-lisp:or tag-key common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape tag))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input tag))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input tag))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Key"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'key)))
-    (aws-sdk/generator/shape::to-query-params "Value"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'value))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key))
+      (common-lisp:list
+       (common-lisp:cons "Key"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'value))
+      (common-lisp:list
+       (common-lisp:cons "Value"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input tag))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (tag-description (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (tag-description (:copier common-lisp:nil)
+      (:conc-name "struct-shape-tag-description-"))
    (load-balancer-name common-lisp:nil :type
     (common-lisp:or access-point-name common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag-description 'make-tag-description))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape tag-description))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input tag-description))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input tag-description))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LoadBalancerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'load-balancer-name)))
-    (aws-sdk/generator/shape::to-query-params "Tags"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tags))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'load-balancer-name))
+      (common-lisp:list
+       (common-lisp:cons "LoadBalancerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "Tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input tag-description))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype tag-descriptions ()
    '(trivial-types:proper-list tag-description))
@@ -2398,17 +3808,27 @@
                            (trivial-types:proper-list tag-key-only))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (tag-key-only (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (tag-key-only (:copier common-lisp:nil)
+      (:conc-name "struct-shape-tag-key-only-"))
    (key common-lisp:nil :type (common-lisp:or tag-key common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag-key-only 'make-tag-key-only))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape tag-key-only))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input tag-key-only))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input tag-key-only))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Key"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'key))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key))
+      (common-lisp:list
+       (common-lisp:cons "Key"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input tag-key-only))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype tag-list () '(trivial-types:proper-list tag))
  (common-lisp:defun |make-tag-list|
@@ -2419,47 +3839,92 @@
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (too-many-access-points-exception (:copier common-lisp:nil)))
+     (too-many-access-points-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-too-many-access-points-exception-")))
  (common-lisp:export
   (common-lisp:list 'too-many-access-points-exception
                     'make-too-many-access-points-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           too-many-access-points-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          too-many-access-points-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          too-many-access-points-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (too-many-policies-exception (:copier common-lisp:nil)))
+     (too-many-policies-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-too-many-policies-exception-")))
  (common-lisp:export
   (common-lisp:list 'too-many-policies-exception
                     'make-too-many-policies-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           too-many-policies-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          too-many-policies-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          too-many-policies-exception))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (too-many-tags-exception (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (too-many-tags-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-too-many-tags-exception-")))
  (common-lisp:export
   (common-lisp:list 'too-many-tags-exception 'make-too-many-tags-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           too-many-tags-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          too-many-tags-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          too-many-tags-exception))
+   common-lisp:nil))
 (common-lisp:deftype unhealthy-threshold () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
-     (unsupported-protocol-exception (:copier common-lisp:nil)))
+     (unsupported-protocol-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-unsupported-protocol-exception-")))
  (common-lisp:export
   (common-lisp:list 'unsupported-protocol-exception
                     'make-unsupported-protocol-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           unsupported-protocol-exception))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          unsupported-protocol-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          unsupported-protocol-exception))
+   common-lisp:nil))
 (common-lisp:deftype vpcid () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun add-tags
@@ -2472,14 +3937,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"AddTags")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "AddTagsOutput" "AddTagsResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "AddTags" "2012-06-01"))
+      common-lisp:nil "AddTagsResult")))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun apply-security-groups-to-load-balancer
@@ -2494,16 +3955,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"ApplySecurityGroupsToLoadBalancer")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "ApplySecurityGroupsToLoadBalancerOutput"
-      "ApplySecurityGroupsToLoadBalancerResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "ApplySecurityGroupsToLoadBalancer" "2012-06-01"))
+      common-lisp:nil "ApplySecurityGroupsToLoadBalancerResult")))
  (common-lisp:export 'apply-security-groups-to-load-balancer))
 (common-lisp:progn
  (common-lisp:defun attach-load-balancer-to-subnets
@@ -2517,15 +3972,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"AttachLoadBalancerToSubnets")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "AttachLoadBalancerToSubnetsOutput"
-      "AttachLoadBalancerToSubnetsResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "AttachLoadBalancerToSubnets" "2012-06-01"))
+      common-lisp:nil "AttachLoadBalancerToSubnetsResult")))
  (common-lisp:export 'attach-load-balancer-to-subnets))
 (common-lisp:progn
  (common-lisp:defun configure-health-check
@@ -2539,14 +3989,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"ConfigureHealthCheck")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "ConfigureHealthCheckOutput" "ConfigureHealthCheckResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "ConfigureHealthCheck" "2012-06-01"))
+      common-lisp:nil "ConfigureHealthCheckResult")))
  (common-lisp:export 'configure-health-check))
 (common-lisp:progn
  (common-lisp:defun create-app-cookie-stickiness-policy
@@ -2562,16 +4008,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"CreateAppCookieStickinessPolicy")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CreateAppCookieStickinessPolicyOutput"
-      "CreateAppCookieStickinessPolicyResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "CreateAppCookieStickinessPolicy" "2012-06-01"))
+      common-lisp:nil "CreateAppCookieStickinessPolicyResult")))
  (common-lisp:export 'create-app-cookie-stickiness-policy))
 (common-lisp:progn
  (common-lisp:defun create-lbcookie-stickiness-policy
@@ -2588,16 +4028,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"CreateLBCookieStickinessPolicy")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CreateLBCookieStickinessPolicyOutput"
-      "CreateLBCookieStickinessPolicyResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "CreateLBCookieStickinessPolicy" "2012-06-01"))
+      common-lisp:nil "CreateLBCookieStickinessPolicyResult")))
  (common-lisp:export 'create-lbcookie-stickiness-policy))
 (common-lisp:progn
  (common-lisp:defun create-load-balancer
@@ -2613,14 +4047,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CreateLoadBalancer")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CreateAccessPointOutput" "CreateLoadBalancerResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "CreateLoadBalancer" "2012-06-01"))
+      common-lisp:nil "CreateLoadBalancerResult")))
  (common-lisp:export 'create-load-balancer))
 (common-lisp:progn
  (common-lisp:defun create-load-balancer-listeners
@@ -2634,14 +4064,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CreateLoadBalancerListeners")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CreateLoadBalancerListenerOutput" "CreateLoadBalancerListenersResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "CreateLoadBalancerListeners" "2012-06-01"))
+      common-lisp:nil "CreateLoadBalancerListenersResult")))
  (common-lisp:export 'create-load-balancer-listeners))
 (common-lisp:progn
  (common-lisp:defun create-load-balancer-policy
@@ -2658,14 +4084,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CreateLoadBalancerPolicy")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CreateLoadBalancerPolicyOutput" "CreateLoadBalancerPolicyResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "CreateLoadBalancerPolicy" "2012-06-01"))
+      common-lisp:nil "CreateLoadBalancerPolicyResult")))
  (common-lisp:export 'create-load-balancer-policy))
 (common-lisp:progn
  (common-lisp:defun delete-load-balancer
@@ -2678,14 +4100,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeleteLoadBalancer")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DeleteAccessPointOutput" "DeleteLoadBalancerResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DeleteLoadBalancer" "2012-06-01"))
+      common-lisp:nil "DeleteLoadBalancerResult")))
  (common-lisp:export 'delete-load-balancer))
 (common-lisp:progn
  (common-lisp:defun delete-load-balancer-listeners
@@ -2700,14 +4118,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeleteLoadBalancerListeners")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DeleteLoadBalancerListenerOutput" "DeleteLoadBalancerListenersResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DeleteLoadBalancerListeners" "2012-06-01"))
+      common-lisp:nil "DeleteLoadBalancerListenersResult")))
  (common-lisp:export 'delete-load-balancer-listeners))
 (common-lisp:progn
  (common-lisp:defun delete-load-balancer-policy
@@ -2721,14 +4135,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeleteLoadBalancerPolicy")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DeleteLoadBalancerPolicyOutput" "DeleteLoadBalancerPolicyResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DeleteLoadBalancerPolicy" "2012-06-01"))
+      common-lisp:nil "DeleteLoadBalancerPolicyResult")))
  (common-lisp:export 'delete-load-balancer-policy))
 (common-lisp:progn
  (common-lisp:defun deregister-instances-from-load-balancer
@@ -2741,16 +4151,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"DeregisterInstancesFromLoadBalancer")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DeregisterEndPointsOutput"
-      "DeregisterInstancesFromLoadBalancerResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DeregisterInstancesFromLoadBalancer" "2012-06-01"))
+      common-lisp:nil "DeregisterInstancesFromLoadBalancerResult")))
  (common-lisp:export 'deregister-instances-from-load-balancer))
 (common-lisp:progn
  (common-lisp:defun describe-account-limits
@@ -2763,14 +4167,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeAccountLimits")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeAccountLimitsOutput" "DescribeAccountLimitsResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DescribeAccountLimits" "2012-06-01"))
+      common-lisp:nil "DescribeAccountLimitsResult")))
  (common-lisp:export 'describe-account-limits))
 (common-lisp:progn
  (common-lisp:defun describe-instance-health
@@ -2783,14 +4183,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeInstanceHealth")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeEndPointStateOutput" "DescribeInstanceHealthResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DescribeInstanceHealth" "2012-06-01"))
+      common-lisp:nil "DescribeInstanceHealthResult")))
  (common-lisp:export 'describe-instance-health))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancer-attributes
@@ -2804,16 +4200,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"DescribeLoadBalancerAttributes")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeLoadBalancerAttributesOutput"
-      "DescribeLoadBalancerAttributesResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DescribeLoadBalancerAttributes" "2012-06-01"))
+      common-lisp:nil "DescribeLoadBalancerAttributesResult")))
  (common-lisp:export 'describe-load-balancer-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancer-policies
@@ -2828,16 +4218,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"DescribeLoadBalancerPolicies")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeLoadBalancerPoliciesOutput"
-      "DescribeLoadBalancerPoliciesResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DescribeLoadBalancerPolicies" "2012-06-01"))
+      common-lisp:nil "DescribeLoadBalancerPoliciesResult")))
  (common-lisp:export 'describe-load-balancer-policies))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancer-policy-types
@@ -2851,16 +4235,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"DescribeLoadBalancerPolicyTypes")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeLoadBalancerPolicyTypesOutput"
-      "DescribeLoadBalancerPolicyTypesResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DescribeLoadBalancerPolicyTypes" "2012-06-01"))
+      common-lisp:nil "DescribeLoadBalancerPolicyTypesResult")))
  (common-lisp:export 'describe-load-balancer-policy-types))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancers
@@ -2874,14 +4252,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeLoadBalancers")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeAccessPointsOutput" "DescribeLoadBalancersResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DescribeLoadBalancers" "2012-06-01"))
+      common-lisp:nil "DescribeLoadBalancersResult")))
  (common-lisp:export 'describe-load-balancers))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -2894,14 +4268,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeTags")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeTagsOutput" "DescribeTagsResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DescribeTags" "2012-06-01"))
+      common-lisp:nil "DescribeTagsResult")))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun detach-load-balancer-from-subnets
@@ -2915,16 +4285,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"DetachLoadBalancerFromSubnets")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DetachLoadBalancerFromSubnetsOutput"
-      "DetachLoadBalancerFromSubnetsResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DetachLoadBalancerFromSubnets" "2012-06-01"))
+      common-lisp:nil "DetachLoadBalancerFromSubnetsResult")))
  (common-lisp:export 'detach-load-balancer-from-subnets))
 (common-lisp:progn
  (common-lisp:defun disable-availability-zones-for-load-balancer
@@ -2938,16 +4302,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"DisableAvailabilityZonesForLoadBalancer")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "RemoveAvailabilityZonesOutput"
-      "DisableAvailabilityZonesForLoadBalancerResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "DisableAvailabilityZonesForLoadBalancer" "2012-06-01"))
+      common-lisp:nil "DisableAvailabilityZonesForLoadBalancerResult")))
  (common-lisp:export 'disable-availability-zones-for-load-balancer))
 (common-lisp:progn
  (common-lisp:defun enable-availability-zones-for-load-balancer
@@ -2961,16 +4319,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"EnableAvailabilityZonesForLoadBalancer")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "AddAvailabilityZonesOutput"
-      "EnableAvailabilityZonesForLoadBalancerResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "EnableAvailabilityZonesForLoadBalancer" "2012-06-01"))
+      common-lisp:nil "EnableAvailabilityZonesForLoadBalancerResult")))
  (common-lisp:export 'enable-availability-zones-for-load-balancer))
 (common-lisp:progn
  (common-lisp:defun modify-load-balancer-attributes
@@ -2986,16 +4338,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"ModifyLoadBalancerAttributes")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "ModifyLoadBalancerAttributesOutput"
-      "ModifyLoadBalancerAttributesResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "ModifyLoadBalancerAttributes" "2012-06-01"))
+      common-lisp:nil "ModifyLoadBalancerAttributesResult")))
  (common-lisp:export 'modify-load-balancer-attributes))
 (common-lisp:progn
  (common-lisp:defun register-instances-with-load-balancer
@@ -3008,15 +4354,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"RegisterInstancesWithLoadBalancer")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "RegisterEndPointsOutput" "RegisterInstancesWithLoadBalancerResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "RegisterInstancesWithLoadBalancer" "2012-06-01"))
+      common-lisp:nil "RegisterInstancesWithLoadBalancerResult")))
  (common-lisp:export 'register-instances-with-load-balancer))
 (common-lisp:progn
  (common-lisp:defun remove-tags
@@ -3029,14 +4370,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"RemoveTags")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "RemoveTagsOutput" "RemoveTagsResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "RemoveTags" "2012-06-01"))
+      common-lisp:nil "RemoveTagsResult")))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
  (common-lisp:defun set-load-balancer-listener-sslcertificate
@@ -3053,16 +4390,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"SetLoadBalancerListenerSSLCertificate")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "SetLoadBalancerListenerSSLCertificateOutput"
-      "SetLoadBalancerListenerSSLCertificateResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "SetLoadBalancerListenerSSLCertificate" "2012-06-01"))
+      common-lisp:nil "SetLoadBalancerListenerSSLCertificateResult")))
  (common-lisp:export 'set-load-balancer-listener-sslcertificate))
 (common-lisp:progn
  (common-lisp:defun set-load-balancer-policies-for-backend-server
@@ -3078,16 +4409,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"SetLoadBalancerPoliciesForBackendServer")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "SetLoadBalancerPoliciesForBackendServerOutput"
-      "SetLoadBalancerPoliciesForBackendServerResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "SetLoadBalancerPoliciesForBackendServer" "2012-06-01"))
+      common-lisp:nil "SetLoadBalancerPoliciesForBackendServerResult")))
  (common-lisp:export 'set-load-balancer-policies-for-backend-server))
 (common-lisp:progn
  (common-lisp:defun set-load-balancer-policies-of-listener
@@ -3103,14 +4428,8 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'elasticloadbalancing-request :method :post
-                                  :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"SetLoadBalancerPoliciesOfListener")
-                                     ("Version" ,@"2012-06-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "SetLoadBalancerPoliciesOfListenerOutput"
-      "SetLoadBalancerPoliciesOfListenerResult")))
+       (aws-sdk/generator/shape:make-request-with-input
+        'elasticloadbalancing-request aws-sdk/generator/operation::input "POST"
+        "/" "SetLoadBalancerPoliciesOfListener" "2012-06-01"))
+      common-lisp:nil "SetLoadBalancerPoliciesOfListenerResult")))
  (common-lisp:export 'set-load-balancer-policies-of-listener))

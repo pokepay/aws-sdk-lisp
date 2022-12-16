@@ -14,7 +14,9 @@
  (common-lisp:export 'swf-request))
 (common-lisp:deftype activity-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (activity-task (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (activity-task (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-task-"))
    (task-token (common-lisp:error ":tasktoken is required") :type
     (common-lisp:or task-token common-lisp:null))
    (activity-id (common-lisp:error ":activityid is required") :type
@@ -27,43 +29,62 @@
     (common-lisp:or activity-type common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export (common-lisp:list 'activity-task 'make-activity-task))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape activity-task))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input activity-task))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input activity-task))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-token)))
-    (aws-sdk/generator/shape::to-query-params "activityId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id)))
-    (aws-sdk/generator/shape::to-query-params "workflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "activityType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-type)))
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-token))
+      (common-lisp:list
+       (common-lisp:cons "taskToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-id))
+      (common-lisp:list
+       (common-lisp:cons "activityId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-type))
+      (common-lisp:list
+       (common-lisp:cons "activityType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input activity-task))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (activity-task-cancel-requested-event-attributes
-      (:copier common-lisp:nil))
+     (activity-task-cancel-requested-event-attributes (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-activity-task-cancel-requested-event-attributes-"))
    (decision-task-completed-event-id
     (common-lisp:error ":decisiontaskcompletedeventid is required") :type
     (common-lisp:or event-id common-lisp:null))
@@ -72,24 +93,40 @@
  (common-lisp:export
   (common-lisp:list 'activity-task-cancel-requested-event-attributes
                     'make-activity-task-cancel-requested-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          activity-task-cancel-requested-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           activity-task-cancel-requested-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id)))
-    (aws-sdk/generator/shape::to-query-params "activityId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-id))
+      (common-lisp:list
+       (common-lisp:cons "activityId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          activity-task-cancel-requested-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (activity-task-canceled-event-attributes (:copier common-lisp:nil))
+     (activity-task-canceled-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-task-canceled-event-attributes-"))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
     :type (common-lisp:or event-id common-lisp:null))
@@ -100,34 +137,54 @@
  (common-lisp:export
   (common-lisp:list 'activity-task-canceled-event-attributes
                     'make-activity-task-canceled-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          activity-task-canceled-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           activity-task-canceled-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details)))
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id)))
-    (aws-sdk/generator/shape::to-query-params "latestCancelRequestedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'latest-cancel-requested-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'latest-cancel-requested-event-id))
+      (common-lisp:list
+       (common-lisp:cons "latestCancelRequestedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          activity-task-canceled-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (activity-task-completed-event-attributes (:copier common-lisp:nil))
+     (activity-task-completed-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-task-completed-event-attributes-"))
    (result common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
     :type (common-lisp:or event-id common-lisp:null))
@@ -136,29 +193,46 @@
  (common-lisp:export
   (common-lisp:list 'activity-task-completed-event-attributes
                     'make-activity-task-completed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          activity-task-completed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           activity-task-completed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "result"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'result)))
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'result))
+      (common-lisp:list
+       (common-lisp:cons "result"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          activity-task-completed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (activity-task-failed-event-attributes (:copier common-lisp:nil))
+     (activity-task-failed-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-task-failed-event-attributes-"))
    (reason common-lisp:nil :type
     (common-lisp:or failure-reason common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
@@ -169,34 +243,53 @@
  (common-lisp:export
   (common-lisp:list 'activity-task-failed-event-attributes
                     'make-activity-task-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          activity-task-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           activity-task-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "reason"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reason)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details)))
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reason))
+      (common-lisp:list
+       (common-lisp:cons "reason"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          activity-task-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (activity-task-scheduled-event-attributes (:copier common-lisp:nil))
+     (activity-task-scheduled-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-task-scheduled-event-attributes-"))
    (activity-type (common-lisp:error ":activitytype is required") :type
     (common-lisp:or activity-type common-lisp:null))
    (activity-id (common-lisp:error ":activityid is required") :type
@@ -221,107 +314,169 @@
  (common-lisp:export
   (common-lisp:list 'activity-task-scheduled-event-attributes
                     'make-activity-task-scheduled-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          activity-task-scheduled-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           activity-task-scheduled-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "activityType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-type)))
-    (aws-sdk/generator/shape::to-query-params "activityId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-id)))
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control)))
-    (aws-sdk/generator/shape::to-query-params "scheduleToStartTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'schedule-to-start-timeout)))
-    (aws-sdk/generator/shape::to-query-params "scheduleToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'schedule-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "startToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list)))
-    (aws-sdk/generator/shape::to-query-params "taskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-priority)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id)))
-    (aws-sdk/generator/shape::to-query-params "heartbeatTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'heartbeat-timeout))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-type))
+      (common-lisp:list
+       (common-lisp:cons "activityType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-id))
+      (common-lisp:list
+       (common-lisp:cons "activityId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'schedule-to-start-timeout))
+      (common-lisp:list
+       (common-lisp:cons "scheduleToStartTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'schedule-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "scheduleToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "startToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-priority))
+      (common-lisp:list
+       (common-lisp:cons "taskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'heartbeat-timeout))
+      (common-lisp:list
+       (common-lisp:cons "heartbeatTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          activity-task-scheduled-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (activity-task-started-event-attributes (:copier common-lisp:nil))
+     (activity-task-started-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-task-started-event-attributes-"))
    (identity common-lisp:nil :type (common-lisp:or identity common-lisp:null))
    (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
     :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'activity-task-started-event-attributes
                     'make-activity-task-started-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          activity-task-started-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           activity-task-started-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "identity"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'identity)))
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'identity))
+      (common-lisp:list
+       (common-lisp:cons "identity"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          activity-task-started-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (activity-task-status (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (activity-task-status (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-task-status-"))
    (cancel-requested (common-lisp:error ":cancelrequested is required") :type
     (common-lisp:or canceled common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'activity-task-status 'make-activity-task-status))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape activity-task-status))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input activity-task-status))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input activity-task-status))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "cancelRequested"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cancel-requested))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cancel-requested))
+      (common-lisp:list
+       (common-lisp:cons "cancelRequested"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input activity-task-status))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (activity-task-timed-out-event-attributes (:copier common-lisp:nil))
+     (activity-task-timed-out-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-task-timed-out-event-attributes-"))
    (timeout-type (common-lisp:error ":timeouttype is required") :type
     (common-lisp:or activity-task-timeout-type common-lisp:null))
    (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
@@ -333,54 +488,86 @@
  (common-lisp:export
   (common-lisp:list 'activity-task-timed-out-event-attributes
                     'make-activity-task-timed-out-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          activity-task-timed-out-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           activity-task-timed-out-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "timeoutType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timeout-type)))
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timeout-type))
+      (common-lisp:list
+       (common-lisp:cons "timeoutType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          activity-task-timed-out-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype activity-task-timeout-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (activity-type (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (activity-type (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-type-"))
    (name (common-lisp:error ":name is required") :type
     (common-lisp:or name common-lisp:null))
    (version (common-lisp:error ":version is required") :type
     (common-lisp:or version common-lisp:null)))
  (common-lisp:export (common-lisp:list 'activity-type 'make-activity-type))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape activity-type))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input activity-type))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input activity-type))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "version"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'version))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'version))
+      (common-lisp:list
+       (common-lisp:cons "version"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input activity-type))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (activity-type-configuration (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (activity-type-configuration (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-type-configuration-"))
    (default-task-start-to-close-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
    (default-task-heartbeat-timeout common-lisp:nil :type
@@ -396,64 +583,105 @@
  (common-lisp:export
   (common-lisp:list 'activity-type-configuration
                     'make-activity-type-configuration))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          activity-type-configuration))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           activity-type-configuration))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "defaultTaskStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "defaultTaskHeartbeatTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-heartbeat-timeout)))
-    (aws-sdk/generator/shape::to-query-params "defaultTaskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-list)))
-    (aws-sdk/generator/shape::to-query-params "defaultTaskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-priority)))
-    (aws-sdk/generator/shape::to-query-params
-     "defaultTaskScheduleToStartTimeout"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'default-task-schedule-to-start-timeout)))
-    (aws-sdk/generator/shape::to-query-params
-     "defaultTaskScheduleToCloseTimeout"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'default-task-schedule-to-close-timeout))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-heartbeat-timeout))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskHeartbeatTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'default-task-list))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-priority))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-schedule-to-start-timeout))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskScheduleToStartTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-schedule-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskScheduleToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          activity-type-configuration))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (activity-type-detail (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (activity-type-detail (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-type-detail-"))
    (type-info (common-lisp:error ":typeinfo is required") :type
     (common-lisp:or activity-type-info common-lisp:null))
    (configuration (common-lisp:error ":configuration is required") :type
     (common-lisp:or activity-type-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'activity-type-detail 'make-activity-type-detail))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape activity-type-detail))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input activity-type-detail))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input activity-type-detail))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "typeInfo"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'type-info)))
-    (aws-sdk/generator/shape::to-query-params "configuration"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'configuration))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type-info))
+      (common-lisp:list
+       (common-lisp:cons "typeInfo"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'configuration))
+      (common-lisp:list
+       (common-lisp:cons "configuration"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input activity-type-detail))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (activity-type-info (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (activity-type-info (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-type-info-"))
    (activity-type (common-lisp:error ":activitytype is required") :type
     (common-lisp:or activity-type common-lisp:null))
    (status (common-lisp:error ":status is required") :type
@@ -466,34 +694,50 @@
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'activity-type-info 'make-activity-type-info))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape activity-type-info))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input activity-type-info))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input activity-type-info))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "activityType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-type)))
-    (aws-sdk/generator/shape::to-query-params "status"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'status)))
-    (aws-sdk/generator/shape::to-query-params "description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params "creationDate"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'creation-date)))
-    (aws-sdk/generator/shape::to-query-params "deprecationDate"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'deprecation-date))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-type))
+      (common-lisp:list
+       (common-lisp:cons "activityType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'status))
+      (common-lisp:list
+       (common-lisp:cons "status"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-date))
+      (common-lisp:list
+       (common-lisp:cons "creationDate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'deprecation-date))
+      (common-lisp:list
+       (common-lisp:cons "deprecationDate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input activity-type-info))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype activity-type-info-list ()
    '(trivial-types:proper-list activity-type-info))
@@ -503,49 +747,75 @@
                            (trivial-types:proper-list activity-type-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (activity-type-infos (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (activity-type-infos (:copier common-lisp:nil)
+      (:conc-name "struct-shape-activity-type-infos-"))
    (type-infos (common-lisp:error ":typeinfos is required") :type
     (common-lisp:or activity-type-info-list common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'activity-type-infos 'make-activity-type-infos))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape activity-type-infos))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input activity-type-infos))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input activity-type-infos))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "typeInfos"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'type-infos)))
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type-infos))
+      (common-lisp:list
+       (common-lisp:cons "typeInfos"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input activity-type-infos))
+   common-lisp:nil))
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (cancel-timer-decision-attributes (:copier common-lisp:nil))
+     (cancel-timer-decision-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cancel-timer-decision-attributes-"))
    (timer-id (common-lisp:error ":timerid is required") :type
     (common-lisp:or timer-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-timer-decision-attributes
                     'make-cancel-timer-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          cancel-timer-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           cancel-timer-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "timerId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timer-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timer-id))
+      (common-lisp:list
+       (common-lisp:cons "timerId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-timer-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype cancel-timer-failed-cause () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (cancel-timer-failed-event-attributes (:copier common-lisp:nil))
+     (cancel-timer-failed-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cancel-timer-failed-event-attributes-"))
    (timer-id (common-lisp:error ":timerid is required") :type
     (common-lisp:or timer-id common-lisp:null))
    (cause (common-lisp:error ":cause is required") :type
@@ -556,49 +826,82 @@
  (common-lisp:export
   (common-lisp:list 'cancel-timer-failed-event-attributes
                     'make-cancel-timer-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          cancel-timer-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           cancel-timer-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "timerId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timer-id)))
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timer-id))
+      (common-lisp:list
+       (common-lisp:cons "timerId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-timer-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (cancel-workflow-execution-decision-attributes (:copier common-lisp:nil))
+     (cancel-workflow-execution-decision-attributes (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-cancel-workflow-execution-decision-attributes-"))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-workflow-execution-decision-attributes
                     'make-cancel-workflow-execution-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          cancel-workflow-execution-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           cancel-workflow-execution-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-workflow-execution-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype cancel-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (cancel-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-cancel-workflow-execution-failed-event-attributes-"))
    (cause (common-lisp:error ":cause is required") :type
     (common-lisp:or cancel-workflow-execution-failed-cause common-lisp:null))
    (decision-task-completed-event-id
@@ -607,28 +910,45 @@
  (common-lisp:export
   (common-lisp:list 'cancel-workflow-execution-failed-event-attributes
                     'make-cancel-workflow-execution-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          cancel-workflow-execution-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           cancel-workflow-execution-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-workflow-execution-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype canceled () 'common-lisp:boolean)
 (common-lisp:deftype cause-message () 'common-lisp:string)
 (common-lisp:deftype child-policy () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (child-workflow-execution-canceled-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-child-workflow-execution-canceled-event-attributes-"))
    (workflow-execution (common-lisp:error ":workflowexecution is required")
     :type (common-lisp:or workflow-execution common-lisp:null))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
@@ -641,40 +961,62 @@
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-canceled-event-attributes
                     'make-child-workflow-execution-canceled-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          child-workflow-execution-canceled-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           child-workflow-execution-canceled-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details)))
-    (aws-sdk/generator/shape::to-query-params "initiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'initiated-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "initiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          child-workflow-execution-canceled-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (child-workflow-execution-completed-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-child-workflow-execution-completed-event-attributes-"))
    (workflow-execution (common-lisp:error ":workflowexecution is required")
     :type (common-lisp:or workflow-execution common-lisp:null))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
@@ -687,40 +1029,62 @@
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-completed-event-attributes
                     'make-child-workflow-execution-completed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          child-workflow-execution-completed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           child-workflow-execution-completed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "result"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'result)))
-    (aws-sdk/generator/shape::to-query-params "initiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'initiated-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'result))
+      (common-lisp:list
+       (common-lisp:cons "result"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "initiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          child-workflow-execution-completed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (child-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-child-workflow-execution-failed-event-attributes-"))
    (workflow-execution (common-lisp:error ":workflowexecution is required")
     :type (common-lisp:or workflow-execution common-lisp:null))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
@@ -735,45 +1099,69 @@
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-failed-event-attributes
                     'make-child-workflow-execution-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          child-workflow-execution-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           child-workflow-execution-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "reason"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reason)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details)))
-    (aws-sdk/generator/shape::to-query-params "initiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'initiated-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reason))
+      (common-lisp:list
+       (common-lisp:cons "reason"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "initiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          child-workflow-execution-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (child-workflow-execution-started-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-child-workflow-execution-started-event-attributes-"))
    (workflow-execution (common-lisp:error ":workflowexecution is required")
     :type (common-lisp:or workflow-execution common-lisp:null))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
@@ -783,30 +1171,48 @@
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-started-event-attributes
                     'make-child-workflow-execution-started-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          child-workflow-execution-started-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           child-workflow-execution-started-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "initiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'initiated-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "initiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          child-workflow-execution-started-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (child-workflow-execution-terminated-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-child-workflow-execution-terminated-event-attributes-"))
    (workflow-execution (common-lisp:error ":workflowexecution is required")
     :type (common-lisp:or workflow-execution common-lisp:null))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
@@ -818,35 +1224,55 @@
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-terminated-event-attributes
                     'make-child-workflow-execution-terminated-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          child-workflow-execution-terminated-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           child-workflow-execution-terminated-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "initiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'initiated-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "initiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          child-workflow-execution-terminated-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (child-workflow-execution-timed-out-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-child-workflow-execution-timed-out-event-attributes-"))
    (workflow-execution (common-lisp:error ":workflowexecution is required")
     :type (common-lisp:or workflow-execution common-lisp:null))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
@@ -860,75 +1286,120 @@
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-timed-out-event-attributes
                     'make-child-workflow-execution-timed-out-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          child-workflow-execution-timed-out-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           child-workflow-execution-timed-out-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "timeoutType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timeout-type)))
-    (aws-sdk/generator/shape::to-query-params "initiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'initiated-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timeout-type))
+      (common-lisp:list
+       (common-lisp:cons "timeoutType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "initiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          child-workflow-execution-timed-out-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype close-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (close-status-filter (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (close-status-filter (:copier common-lisp:nil)
+      (:conc-name "struct-shape-close-status-filter-"))
    (status (common-lisp:error ":status is required") :type
     (common-lisp:or close-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'close-status-filter 'make-close-status-filter))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape close-status-filter))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input close-status-filter))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input close-status-filter))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "status"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'status))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'status))
+      (common-lisp:list
+       (common-lisp:cons "status"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input close-status-filter))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (complete-workflow-execution-decision-attributes
-      (:copier common-lisp:nil))
+     (complete-workflow-execution-decision-attributes (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-complete-workflow-execution-decision-attributes-"))
    (result common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'complete-workflow-execution-decision-attributes
                     'make-complete-workflow-execution-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          complete-workflow-execution-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           complete-workflow-execution-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "result"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'result))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'result))
+      (common-lisp:list
+       (common-lisp:cons "result"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          complete-workflow-execution-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype complete-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (complete-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-complete-workflow-execution-failed-event-attributes-"))
    (cause (common-lisp:error ":cause is required") :type
     (common-lisp:or complete-workflow-execution-failed-cause common-lisp:null))
    (decision-task-completed-event-id
@@ -937,25 +1408,42 @@
  (common-lisp:export
   (common-lisp:list 'complete-workflow-execution-failed-event-attributes
                     'make-complete-workflow-execution-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          complete-workflow-execution-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           complete-workflow-execution-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          complete-workflow-execution-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (continue-as-new-workflow-execution-decision-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-continue-as-new-workflow-execution-decision-attributes-"))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (execution-start-to-close-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
@@ -974,62 +1462,95 @@
  (common-lisp:export
   (common-lisp:list 'continue-as-new-workflow-execution-decision-attributes
                     'make-continue-as-new-workflow-execution-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          continue-as-new-workflow-execution-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           continue-as-new-workflow-execution-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "executionStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list)))
-    (aws-sdk/generator/shape::to-query-params "taskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-priority)))
-    (aws-sdk/generator/shape::to-query-params "taskStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "childPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'child-policy)))
-    (aws-sdk/generator/shape::to-query-params "tagList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-list)))
-    (aws-sdk/generator/shape::to-query-params "workflowTypeVersion"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type-version)))
-    (aws-sdk/generator/shape::to-query-params "lambdaRole"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'lambda-role))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'execution-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "executionStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-priority))
+      (common-lisp:list
+       (common-lisp:cons "taskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'task-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "taskStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'child-policy))
+      (common-lisp:list
+       (common-lisp:cons "childPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-list))
+      (common-lisp:list
+       (common-lisp:cons "tagList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'workflow-type-version))
+      (common-lisp:list
+       (common-lisp:cons "workflowTypeVersion"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'lambda-role))
+      (common-lisp:list
+       (common-lisp:cons "lambdaRole"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          continue-as-new-workflow-execution-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype continue-as-new-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (continue-as-new-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-continue-as-new-workflow-execution-failed-event-attributes-"))
    (cause (common-lisp:error ":cause is required") :type
     (common-lisp:or continue-as-new-workflow-execution-failed-cause
                     common-lisp:null))
@@ -1039,25 +1560,41 @@
  (common-lisp:export
   (common-lisp:list 'continue-as-new-workflow-execution-failed-event-attributes
                     'make-continue-as-new-workflow-execution-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          continue-as-new-workflow-execution-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           continue-as-new-workflow-execution-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          continue-as-new-workflow-execution-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype count () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
-     (count-closed-workflow-executions-input (:copier common-lisp:nil))
+     (count-closed-workflow-executions-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-count-closed-workflow-executions-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (start-time-filter common-lisp:nil :type
@@ -1075,49 +1612,74 @@
  (common-lisp:export
   (common-lisp:list 'count-closed-workflow-executions-input
                     'make-count-closed-workflow-executions-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          count-closed-workflow-executions-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           count-closed-workflow-executions-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "startTimeFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-time-filter)))
-    (aws-sdk/generator/shape::to-query-params "closeTimeFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'close-time-filter)))
-    (aws-sdk/generator/shape::to-query-params "executionFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-filter)))
-    (aws-sdk/generator/shape::to-query-params "typeFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'type-filter)))
-    (aws-sdk/generator/shape::to-query-params "tagFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-filter)))
-    (aws-sdk/generator/shape::to-query-params "closeStatusFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'close-status-filter))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'start-time-filter))
+      (common-lisp:list
+       (common-lisp:cons "startTimeFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'close-time-filter))
+      (common-lisp:list
+       (common-lisp:cons "closeTimeFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution-filter))
+      (common-lisp:list
+       (common-lisp:cons "executionFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type-filter))
+      (common-lisp:list
+       (common-lisp:cons "typeFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-filter))
+      (common-lisp:list
+       (common-lisp:cons "tagFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'close-status-filter))
+      (common-lisp:list
+       (common-lisp:cons "closeStatusFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          count-closed-workflow-executions-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (count-open-workflow-executions-input (:copier common-lisp:nil))
+     (count-open-workflow-executions-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-count-open-workflow-executions-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (start-time-filter (common-lisp:error ":starttimefilter is required") :type
@@ -1131,39 +1693,60 @@
  (common-lisp:export
   (common-lisp:list 'count-open-workflow-executions-input
                     'make-count-open-workflow-executions-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          count-open-workflow-executions-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           count-open-workflow-executions-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "startTimeFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-time-filter)))
-    (aws-sdk/generator/shape::to-query-params "typeFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'type-filter)))
-    (aws-sdk/generator/shape::to-query-params "tagFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-filter)))
-    (aws-sdk/generator/shape::to-query-params "executionFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-filter))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'start-time-filter))
+      (common-lisp:list
+       (common-lisp:cons "startTimeFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type-filter))
+      (common-lisp:list
+       (common-lisp:cons "typeFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-filter))
+      (common-lisp:list
+       (common-lisp:cons "tagFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution-filter))
+      (common-lisp:list
+       (common-lisp:cons "executionFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          count-open-workflow-executions-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (count-pending-activity-tasks-input (:copier common-lisp:nil))
+     (count-pending-activity-tasks-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-count-pending-activity-tasks-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (task-list (common-lisp:error ":tasklist is required") :type
@@ -1171,24 +1754,39 @@
  (common-lisp:export
   (common-lisp:list 'count-pending-activity-tasks-input
                     'make-count-pending-activity-tasks-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          count-pending-activity-tasks-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           count-pending-activity-tasks-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          count-pending-activity-tasks-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (count-pending-decision-tasks-input (:copier common-lisp:nil))
+     (count-pending-decision-tasks-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-count-pending-decision-tasks-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (task-list (common-lisp:error ":tasklist is required") :type
@@ -1196,24 +1794,39 @@
  (common-lisp:export
   (common-lisp:list 'count-pending-decision-tasks-input
                     'make-count-pending-decision-tasks-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          count-pending-decision-tasks-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           count-pending-decision-tasks-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          count-pending-decision-tasks-input))
+   common-lisp:nil))
 (common-lisp:deftype data () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (decision (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (decision (:copier common-lisp:nil) (:conc-name "struct-shape-decision-"))
    (decision-type (common-lisp:error ":decisiontype is required") :type
     (common-lisp:or decision-type common-lisp:null))
    (schedule-activity-task-decision-attributes common-lisp:nil :type
@@ -1257,79 +1870,127 @@
     (common-lisp:or schedule-lambda-function-decision-attributes
                     common-lisp:null)))
  (common-lisp:export (common-lisp:list 'decision 'make-decision))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape decision))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input decision))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input decision))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "decisionType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-type)))
-    (aws-sdk/generator/shape::to-query-params
-     "scheduleActivityTaskDecisionAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'schedule-activity-task-decision-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "requestCancelActivityTaskDecisionAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'request-cancel-activity-task-decision-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "completeWorkflowExecutionDecisionAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'complete-workflow-execution-decision-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "failWorkflowExecutionDecisionAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'fail-workflow-execution-decision-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "cancelWorkflowExecutionDecisionAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'cancel-workflow-execution-decision-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "continueAsNewWorkflowExecutionDecisionAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'continue-as-new-workflow-execution-decision-attributes)))
-    (aws-sdk/generator/shape::to-query-params "recordMarkerDecisionAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'record-marker-decision-attributes)))
-    (aws-sdk/generator/shape::to-query-params "startTimerDecisionAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-timer-decision-attributes)))
-    (aws-sdk/generator/shape::to-query-params "cancelTimerDecisionAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cancel-timer-decision-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "signalExternalWorkflowExecutionDecisionAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'signal-external-workflow-execution-decision-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "requestCancelExternalWorkflowExecutionDecisionAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'request-cancel-external-workflow-execution-decision-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "startChildWorkflowExecutionDecisionAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'start-child-workflow-execution-decision-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "scheduleLambdaFunctionDecisionAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'schedule-lambda-function-decision-attributes))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'decision-type))
+      (common-lisp:list
+       (common-lisp:cons "decisionType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'schedule-activity-task-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons "scheduleActivityTaskDecisionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'request-cancel-activity-task-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons "requestCancelActivityTaskDecisionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'complete-workflow-execution-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons "completeWorkflowExecutionDecisionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'fail-workflow-execution-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons "failWorkflowExecutionDecisionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'cancel-workflow-execution-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons "cancelWorkflowExecutionDecisionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'continue-as-new-workflow-execution-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons "continueAsNewWorkflowExecutionDecisionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'record-marker-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons "recordMarkerDecisionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-timer-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons "startTimerDecisionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'cancel-timer-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons "cancelTimerDecisionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'signal-external-workflow-execution-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons "signalExternalWorkflowExecutionDecisionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'request-cancel-external-workflow-execution-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons
+        "requestCancelExternalWorkflowExecutionDecisionAttributes"
+        (aws-sdk/generator/shape::input-params
+         aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-child-workflow-execution-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons "startChildWorkflowExecutionDecisionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'schedule-lambda-function-decision-attributes))
+      (common-lisp:list
+       (common-lisp:cons "scheduleLambdaFunctionDecisionAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input decision))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype decision-list () '(trivial-types:proper-list decision))
  (common-lisp:defun |make-decision-list|
@@ -1338,7 +1999,9 @@
                            (trivial-types:proper-list decision))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (decision-task (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (decision-task (:copier common-lisp:nil)
+      (:conc-name "struct-shape-decision-task-"))
    (task-token (common-lisp:error ":tasktoken is required") :type
     (common-lisp:or task-token common-lisp:null))
    (started-event-id (common-lisp:error ":startedeventid is required") :type
@@ -1354,47 +2017,69 @@
    (previous-started-event-id common-lisp:nil :type
     (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'decision-task 'make-decision-task))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape decision-task))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input decision-task))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input decision-task))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-token)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id)))
-    (aws-sdk/generator/shape::to-query-params "workflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "events"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'events)))
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token)))
-    (aws-sdk/generator/shape::to-query-params "previousStartedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'previous-started-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-token))
+      (common-lisp:list
+       (common-lisp:cons "taskToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'events))
+      (common-lisp:list
+       (common-lisp:cons "events"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'previous-started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "previousStartedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input decision-task))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (decision-task-completed-event-attributes (:copier common-lisp:nil))
+     (decision-task-completed-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-decision-task-completed-event-attributes-"))
    (execution-context common-lisp:nil :type
     (common-lisp:or data common-lisp:null))
    (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
@@ -1404,29 +2089,46 @@
  (common-lisp:export
   (common-lisp:list 'decision-task-completed-event-attributes
                     'make-decision-task-completed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          decision-task-completed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           decision-task-completed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "executionContext"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-context)))
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution-context))
+      (common-lisp:list
+       (common-lisp:cons "executionContext"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          decision-task-completed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (decision-task-scheduled-event-attributes (:copier common-lisp:nil))
+     (decision-task-scheduled-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-decision-task-scheduled-event-attributes-"))
    (task-list (common-lisp:error ":tasklist is required") :type
     (common-lisp:or task-list common-lisp:null))
    (task-priority common-lisp:nil :type
@@ -1436,53 +2138,86 @@
  (common-lisp:export
   (common-lisp:list 'decision-task-scheduled-event-attributes
                     'make-decision-task-scheduled-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          decision-task-scheduled-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           decision-task-scheduled-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list)))
-    (aws-sdk/generator/shape::to-query-params "taskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-priority)))
-    (aws-sdk/generator/shape::to-query-params "startToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-to-close-timeout))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-priority))
+      (common-lisp:list
+       (common-lisp:cons "taskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "startToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          decision-task-scheduled-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (decision-task-started-event-attributes (:copier common-lisp:nil))
+     (decision-task-started-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-decision-task-started-event-attributes-"))
    (identity common-lisp:nil :type (common-lisp:or identity common-lisp:null))
    (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
     :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'decision-task-started-event-attributes
                     'make-decision-task-started-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          decision-task-started-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           decision-task-started-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "identity"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'identity)))
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'identity))
+      (common-lisp:list
+       (common-lisp:cons "identity"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          decision-task-started-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (decision-task-timed-out-event-attributes (:copier common-lisp:nil))
+     (decision-task-timed-out-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-decision-task-timed-out-event-attributes-"))
    (timeout-type (common-lisp:error ":timeouttype is required") :type
     (common-lisp:or decision-task-timeout-type common-lisp:null))
    (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
@@ -1492,47 +2227,78 @@
  (common-lisp:export
   (common-lisp:list 'decision-task-timed-out-event-attributes
                     'make-decision-task-timed-out-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          decision-task-timed-out-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           decision-task-timed-out-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "timeoutType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timeout-type)))
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timeout-type))
+      (common-lisp:list
+       (common-lisp:cons "timeoutType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          decision-task-timed-out-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype decision-task-timeout-type () 'common-lisp:string)
 (common-lisp:deftype decision-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (default-undefined-fault (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (default-undefined-fault (:copier common-lisp:nil)
+      (:conc-name "struct-shape-default-undefined-fault-"))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'default-undefined-fault 'make-default-undefined-fault))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          default-undefined-fault))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           default-undefined-fault))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          default-undefined-fault))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (deprecate-activity-type-input (:copier common-lisp:nil))
+     (deprecate-activity-type-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-deprecate-activity-type-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (activity-type (common-lisp:error ":activitytype is required") :type
@@ -1540,40 +2306,69 @@
  (common-lisp:export
   (common-lisp:list 'deprecate-activity-type-input
                     'make-deprecate-activity-type-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          deprecate-activity-type-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           deprecate-activity-type-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "activityType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-type))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-type))
+      (common-lisp:list
+       (common-lisp:cons "activityType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          deprecate-activity-type-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (deprecate-domain-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (deprecate-domain-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-deprecate-domain-input-"))
    (name (common-lisp:error ":name is required") :type
     (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deprecate-domain-input 'make-deprecate-domain-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          deprecate-domain-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           deprecate-domain-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          deprecate-domain-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (deprecate-workflow-type-input (:copier common-lisp:nil))
+     (deprecate-workflow-type-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-deprecate-workflow-type-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
@@ -1581,24 +2376,39 @@
  (common-lisp:export
   (common-lisp:list 'deprecate-workflow-type-input
                     'make-deprecate-workflow-type-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          deprecate-workflow-type-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           deprecate-workflow-type-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          deprecate-workflow-type-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-activity-type-input (:copier common-lisp:nil))
+     (describe-activity-type-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-activity-type-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (activity-type (common-lisp:error ":activitytype is required") :type
@@ -1606,40 +2416,69 @@
  (common-lisp:export
   (common-lisp:list 'describe-activity-type-input
                     'make-describe-activity-type-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-activity-type-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-activity-type-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "activityType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-type))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-type))
+      (common-lisp:list
+       (common-lisp:cons "activityType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-activity-type-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-domain-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-domain-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-domain-input-"))
    (name (common-lisp:error ":name is required") :type
     (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-domain-input 'make-describe-domain-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-domain-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-domain-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-domain-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-workflow-execution-input (:copier common-lisp:nil))
+     (describe-workflow-execution-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-workflow-execution-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (execution (common-lisp:error ":execution is required") :type
@@ -1647,24 +2486,39 @@
  (common-lisp:export
   (common-lisp:list 'describe-workflow-execution-input
                     'make-describe-workflow-execution-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-workflow-execution-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-workflow-execution-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "execution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution))
+      (common-lisp:list
+       (common-lisp:cons "execution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-workflow-execution-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-workflow-type-input (:copier common-lisp:nil))
+     (describe-workflow-type-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-workflow-type-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
@@ -1672,92 +2526,159 @@
  (common-lisp:export
   (common-lisp:list 'describe-workflow-type-input
                     'make-describe-workflow-type-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-workflow-type-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-workflow-type-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-workflow-type-input))
+   common-lisp:nil))
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (domain-already-exists-fault (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (domain-already-exists-fault (:copier common-lisp:nil)
+      (:conc-name "struct-shape-domain-already-exists-fault-"))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'domain-already-exists-fault
                     'make-domain-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          domain-already-exists-fault))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           domain-already-exists-fault))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          domain-already-exists-fault))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (domain-configuration (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (domain-configuration (:copier common-lisp:nil)
+      (:conc-name "struct-shape-domain-configuration-"))
    (workflow-execution-retention-period-in-days
     (common-lisp:error ":workflowexecutionretentionperiodindays is required")
     :type (common-lisp:or duration-in-days common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'domain-configuration 'make-domain-configuration))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape domain-configuration))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input domain-configuration))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input domain-configuration))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params
-     "workflowExecutionRetentionPeriodInDays"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'workflow-execution-retention-period-in-days))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'workflow-execution-retention-period-in-days))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecutionRetentionPeriodInDays"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input domain-configuration))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (domain-deprecated-fault (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (domain-deprecated-fault (:copier common-lisp:nil)
+      (:conc-name "struct-shape-domain-deprecated-fault-"))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'domain-deprecated-fault 'make-domain-deprecated-fault))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          domain-deprecated-fault))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           domain-deprecated-fault))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          domain-deprecated-fault))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (domain-detail (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (domain-detail (:copier common-lisp:nil)
+      (:conc-name "struct-shape-domain-detail-"))
    (domain-info (common-lisp:error ":domaininfo is required") :type
     (common-lisp:or domain-info common-lisp:null))
    (configuration (common-lisp:error ":configuration is required") :type
     (common-lisp:or domain-configuration common-lisp:null)))
  (common-lisp:export (common-lisp:list 'domain-detail 'make-domain-detail))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape domain-detail))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input domain-detail))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input domain-detail))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domainInfo"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain-info)))
-    (aws-sdk/generator/shape::to-query-params "configuration"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'configuration))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain-info))
+      (common-lisp:list
+       (common-lisp:cons "domainInfo"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'configuration))
+      (common-lisp:list
+       (common-lisp:cons "configuration"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input domain-detail))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (domain-info (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (domain-info (:copier common-lisp:nil)
+      (:conc-name "struct-shape-domain-info-"))
    (name (common-lisp:error ":name is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (status (common-lisp:error ":status is required") :type
@@ -1765,24 +2686,36 @@
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null)))
  (common-lisp:export (common-lisp:list 'domain-info 'make-domain-info))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape domain-info))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input domain-info))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input domain-info))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "status"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'status)))
-    (aws-sdk/generator/shape::to-query-params "description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'status))
+      (common-lisp:list
+       (common-lisp:cons "status"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input domain-info))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype domain-info-list ()
    '(trivial-types:proper-list domain-info))
@@ -1792,25 +2725,37 @@
                            (trivial-types:proper-list domain-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (domain-infos (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (domain-infos (:copier common-lisp:nil)
+      (:conc-name "struct-shape-domain-infos-"))
    (domain-infos (common-lisp:error ":domaininfos is required") :type
     (common-lisp:or domain-info-list common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export (common-lisp:list 'domain-infos 'make-domain-infos))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape domain-infos))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input domain-infos))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input domain-infos))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domainInfos"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain-infos)))
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain-infos))
+      (common-lisp:list
+       (common-lisp:cons "domainInfos"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input domain-infos))
+   common-lisp:nil))
 (common-lisp:deftype domain-name () 'common-lisp:string)
 (common-lisp:deftype duration-in-days () 'common-lisp:string)
 (common-lisp:deftype duration-in-seconds () 'common-lisp:string)
@@ -1820,32 +2765,50 @@
 (common-lisp:deftype event-type () 'common-lisp:string)
 (common-lisp:deftype execution-status () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (execution-time-filter (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (execution-time-filter (:copier common-lisp:nil)
+      (:conc-name "struct-shape-execution-time-filter-"))
    (oldest-date (common-lisp:error ":oldestdate is required") :type
     (common-lisp:or timestamp common-lisp:null))
    (latest-date common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'execution-time-filter 'make-execution-time-filter))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          execution-time-filter))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           execution-time-filter))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "oldestDate"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'oldest-date)))
-    (aws-sdk/generator/shape::to-query-params "latestDate"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'latest-date))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'oldest-date))
+      (common-lisp:list
+       (common-lisp:cons "oldestDate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'latest-date))
+      (common-lisp:list
+       (common-lisp:cons "latestDate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          execution-time-filter))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (external-workflow-execution-cancel-requested-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-external-workflow-execution-cancel-requested-event-attributes-"))
    (workflow-execution (common-lisp:error ":workflowexecution is required")
     :type (common-lisp:or workflow-execution common-lisp:null))
    (initiated-event-id (common-lisp:error ":initiatedeventid is required")
@@ -1854,25 +2817,41 @@
   (common-lisp:list
    'external-workflow-execution-cancel-requested-event-attributes
    'make-external-workflow-execution-cancel-requested-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          external-workflow-execution-cancel-requested-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           external-workflow-execution-cancel-requested-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "initiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'initiated-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "initiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          external-workflow-execution-cancel-requested-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (external-workflow-execution-signaled-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-external-workflow-execution-signaled-event-attributes-"))
    (workflow-execution (common-lisp:error ":workflowexecution is required")
     :type (common-lisp:or workflow-execution common-lisp:null))
    (initiated-event-id (common-lisp:error ":initiatedeventid is required")
@@ -1880,51 +2859,81 @@
  (common-lisp:export
   (common-lisp:list 'external-workflow-execution-signaled-event-attributes
                     'make-external-workflow-execution-signaled-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          external-workflow-execution-signaled-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           external-workflow-execution-signaled-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "initiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'initiated-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "initiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          external-workflow-execution-signaled-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (fail-workflow-execution-decision-attributes (:copier common-lisp:nil))
+     (fail-workflow-execution-decision-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-fail-workflow-execution-decision-attributes-"))
    (reason common-lisp:nil :type
     (common-lisp:or failure-reason common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'fail-workflow-execution-decision-attributes
                     'make-fail-workflow-execution-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          fail-workflow-execution-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           fail-workflow-execution-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "reason"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reason)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reason))
+      (common-lisp:list
+       (common-lisp:cons "reason"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          fail-workflow-execution-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype fail-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (fail-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil))
+     (fail-workflow-execution-failed-event-attributes (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-fail-workflow-execution-failed-event-attributes-"))
    (cause (common-lisp:error ":cause is required") :type
     (common-lisp:or fail-workflow-execution-failed-cause common-lisp:null))
    (decision-task-completed-event-id
@@ -1933,28 +2942,44 @@
  (common-lisp:export
   (common-lisp:list 'fail-workflow-execution-failed-event-attributes
                     'make-fail-workflow-execution-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          fail-workflow-execution-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           fail-workflow-execution-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          fail-workflow-execution-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype failure-reason () 'common-lisp:string)
 (common-lisp:deftype function-id () 'common-lisp:string)
 (common-lisp:deftype function-input () 'common-lisp:string)
 (common-lisp:deftype function-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (get-workflow-execution-history-input (:copier common-lisp:nil))
+     (get-workflow-execution-history-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-workflow-execution-history-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (execution (common-lisp:error ":execution is required") :type
@@ -1968,58 +2993,91 @@
  (common-lisp:export
   (common-lisp:list 'get-workflow-execution-history-input
                     'make-get-workflow-execution-history-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          get-workflow-execution-history-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           get-workflow-execution-history-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "execution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution)))
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token)))
-    (aws-sdk/generator/shape::to-query-params "maximumPageSize"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'maximum-page-size)))
-    (aws-sdk/generator/shape::to-query-params "reverseOrder"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reverse-order))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution))
+      (common-lisp:list
+       (common-lisp:cons "execution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'maximum-page-size))
+      (common-lisp:list
+       (common-lisp:cons "maximumPageSize"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reverse-order))
+      (common-lisp:list
+       (common-lisp:cons "reverseOrder"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-workflow-execution-history-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (history (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (history (:copier common-lisp:nil) (:conc-name "struct-shape-history-"))
    (events (common-lisp:error ":events is required") :type
     (common-lisp:or history-event-list common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export (common-lisp:list 'history 'make-history))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape history))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input history))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input history))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "events"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'events)))
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'events))
+      (common-lisp:list
+       (common-lisp:cons "events"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input history))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (history-event (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (history-event (:copier common-lisp:nil)
+      (:conc-name "struct-shape-history-event-"))
    (event-timestamp (common-lisp:error ":eventtimestamp is required") :type
     (common-lisp:or timestamp common-lisp:null))
    (event-type (common-lisp:error ":eventtype is required") :type
@@ -2182,294 +3240,472 @@
     (common-lisp:or start-lambda-function-failed-event-attributes
                     common-lisp:null)))
  (common-lisp:export (common-lisp:list 'history-event 'make-history-event))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape history-event))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input history-event))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input history-event))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "eventTimestamp"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'event-timestamp)))
-    (aws-sdk/generator/shape::to-query-params "eventType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'event-type)))
-    (aws-sdk/generator/shape::to-query-params "eventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'event-id)))
-    (aws-sdk/generator/shape::to-query-params
-     "workflowExecutionStartedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'workflow-execution-started-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "workflowExecutionCompletedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'workflow-execution-completed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "completeWorkflowExecutionFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'complete-workflow-execution-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "workflowExecutionFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'workflow-execution-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "failWorkflowExecutionFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'fail-workflow-execution-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "workflowExecutionTimedOutEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'workflow-execution-timed-out-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "workflowExecutionCanceledEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'workflow-execution-canceled-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "cancelWorkflowExecutionFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'cancel-workflow-execution-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "workflowExecutionContinuedAsNewEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'workflow-execution-continued-as-new-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "continueAsNewWorkflowExecutionFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'continue-as-new-workflow-execution-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "workflowExecutionTerminatedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'workflow-execution-terminated-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "workflowExecutionCancelRequestedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'workflow-execution-cancel-requested-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "decisionTaskScheduledEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'decision-task-scheduled-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "decisionTaskStartedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'decision-task-started-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "decisionTaskCompletedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'decision-task-completed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "decisionTaskTimedOutEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'decision-task-timed-out-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "activityTaskScheduledEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'activity-task-scheduled-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "activityTaskStartedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'activity-task-started-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "activityTaskCompletedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'activity-task-completed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "activityTaskFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'activity-task-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "activityTaskTimedOutEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'activity-task-timed-out-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "activityTaskCanceledEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'activity-task-canceled-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "activityTaskCancelRequestedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'activity-task-cancel-requested-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "workflowExecutionSignaledEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'workflow-execution-signaled-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params "markerRecordedEventAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'marker-recorded-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "recordMarkerFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'record-marker-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params "timerStartedEventAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timer-started-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params "timerFiredEventAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timer-fired-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params "timerCanceledEventAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timer-canceled-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "startChildWorkflowExecutionInitiatedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'start-child-workflow-execution-initiated-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "childWorkflowExecutionStartedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'child-workflow-execution-started-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "childWorkflowExecutionCompletedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'child-workflow-execution-completed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "childWorkflowExecutionFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'child-workflow-execution-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "childWorkflowExecutionTimedOutEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'child-workflow-execution-timed-out-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "childWorkflowExecutionCanceledEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'child-workflow-execution-canceled-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "childWorkflowExecutionTerminatedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'child-workflow-execution-terminated-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "signalExternalWorkflowExecutionInitiatedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'signal-external-workflow-execution-initiated-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "externalWorkflowExecutionSignaledEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'external-workflow-execution-signaled-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "signalExternalWorkflowExecutionFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'signal-external-workflow-execution-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "externalWorkflowExecutionCancelRequestedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'external-workflow-execution-cancel-requested-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "requestCancelExternalWorkflowExecutionInitiatedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'request-cancel-external-workflow-execution-initiated-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "requestCancelExternalWorkflowExecutionFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'request-cancel-external-workflow-execution-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "scheduleActivityTaskFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'schedule-activity-task-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "requestCancelActivityTaskFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'request-cancel-activity-task-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params "startTimerFailedEventAttributes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-timer-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "cancelTimerFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'cancel-timer-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "startChildWorkflowExecutionFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'start-child-workflow-execution-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "lambdaFunctionScheduledEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'lambda-function-scheduled-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "lambdaFunctionStartedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'lambda-function-started-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "lambdaFunctionCompletedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'lambda-function-completed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "lambdaFunctionFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'lambda-function-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "lambdaFunctionTimedOutEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'lambda-function-timed-out-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "scheduleLambdaFunctionFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'schedule-lambda-function-failed-event-attributes)))
-    (aws-sdk/generator/shape::to-query-params
-     "startLambdaFunctionFailedEventAttributes"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'start-lambda-function-failed-event-attributes))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'event-timestamp))
+      (common-lisp:list
+       (common-lisp:cons "eventTimestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'event-type))
+      (common-lisp:list
+       (common-lisp:cons "eventType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'event-id))
+      (common-lisp:list
+       (common-lisp:cons "eventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'workflow-execution-started-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecutionStartedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'workflow-execution-completed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecutionCompletedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'complete-workflow-execution-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "completeWorkflowExecutionFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'workflow-execution-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecutionFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'fail-workflow-execution-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "failWorkflowExecutionFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'workflow-execution-timed-out-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecutionTimedOutEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'workflow-execution-canceled-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecutionCanceledEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'cancel-workflow-execution-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "cancelWorkflowExecutionFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'workflow-execution-continued-as-new-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecutionContinuedAsNewEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'continue-as-new-workflow-execution-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "continueAsNewWorkflowExecutionFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'workflow-execution-terminated-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecutionTerminatedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'workflow-execution-cancel-requested-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecutionCancelRequestedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-scheduled-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskScheduledEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-started-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskStartedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-timed-out-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskTimedOutEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'activity-task-scheduled-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "activityTaskScheduledEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'activity-task-started-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "activityTaskStartedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'activity-task-completed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "activityTaskCompletedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'activity-task-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "activityTaskFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'activity-task-timed-out-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "activityTaskTimedOutEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'activity-task-canceled-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "activityTaskCanceledEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'activity-task-cancel-requested-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "activityTaskCancelRequestedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'workflow-execution-signaled-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecutionSignaledEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'marker-recorded-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "markerRecordedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'record-marker-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "recordMarkerFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'timer-started-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "timerStartedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'timer-fired-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "timerFiredEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'timer-canceled-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "timerCanceledEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-child-workflow-execution-initiated-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "startChildWorkflowExecutionInitiatedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'child-workflow-execution-started-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "childWorkflowExecutionStartedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'child-workflow-execution-completed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "childWorkflowExecutionCompletedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'child-workflow-execution-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "childWorkflowExecutionFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'child-workflow-execution-timed-out-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "childWorkflowExecutionTimedOutEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'child-workflow-execution-canceled-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "childWorkflowExecutionCanceledEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'child-workflow-execution-terminated-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "childWorkflowExecutionTerminatedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'signal-external-workflow-execution-initiated-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons
+        "signalExternalWorkflowExecutionInitiatedEventAttributes"
+        (aws-sdk/generator/shape::input-params
+         aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'external-workflow-execution-signaled-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "externalWorkflowExecutionSignaledEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'signal-external-workflow-execution-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "signalExternalWorkflowExecutionFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'external-workflow-execution-cancel-requested-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons
+        "externalWorkflowExecutionCancelRequestedEventAttributes"
+        (aws-sdk/generator/shape::input-params
+         aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'request-cancel-external-workflow-execution-initiated-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons
+        "requestCancelExternalWorkflowExecutionInitiatedEventAttributes"
+        (aws-sdk/generator/shape::input-params
+         aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'request-cancel-external-workflow-execution-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons
+        "requestCancelExternalWorkflowExecutionFailedEventAttributes"
+        (aws-sdk/generator/shape::input-params
+         aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'schedule-activity-task-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "scheduleActivityTaskFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'request-cancel-activity-task-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "requestCancelActivityTaskFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-timer-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "startTimerFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'cancel-timer-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "cancelTimerFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-child-workflow-execution-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "startChildWorkflowExecutionFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'lambda-function-scheduled-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "lambdaFunctionScheduledEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'lambda-function-started-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "lambdaFunctionStartedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'lambda-function-completed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "lambdaFunctionCompletedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'lambda-function-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "lambdaFunctionFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'lambda-function-timed-out-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "lambdaFunctionTimedOutEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'schedule-lambda-function-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "scheduleLambdaFunctionFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-lambda-function-failed-event-attributes))
+      (common-lisp:list
+       (common-lisp:cons "startLambdaFunctionFailedEventAttributes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input history-event))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype history-event-list ()
    '(trivial-types:proper-list history-event))
@@ -2481,7 +3717,8 @@
 (common-lisp:deftype identity () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (lambda-function-completed-event-attributes (:copier common-lisp:nil))
+     (lambda-function-completed-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-lambda-function-completed-event-attributes-"))
    (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
     :type (common-lisp:or event-id common-lisp:null))
    (started-event-id (common-lisp:error ":startedeventid is required") :type
@@ -2490,29 +3727,46 @@
  (common-lisp:export
   (common-lisp:list 'lambda-function-completed-event-attributes
                     'make-lambda-function-completed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          lambda-function-completed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           lambda-function-completed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id)))
-    (aws-sdk/generator/shape::to-query-params "result"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'result))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'result))
+      (common-lisp:list
+       (common-lisp:cons "result"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          lambda-function-completed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (lambda-function-failed-event-attributes (:copier common-lisp:nil))
+     (lambda-function-failed-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-lambda-function-failed-event-attributes-"))
    (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
     :type (common-lisp:or event-id common-lisp:null))
    (started-event-id (common-lisp:error ":startedeventid is required") :type
@@ -2523,34 +3777,53 @@
  (common-lisp:export
   (common-lisp:list 'lambda-function-failed-event-attributes
                     'make-lambda-function-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          lambda-function-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           lambda-function-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id)))
-    (aws-sdk/generator/shape::to-query-params "reason"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reason)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reason))
+      (common-lisp:list
+       (common-lisp:cons "reason"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          lambda-function-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (lambda-function-scheduled-event-attributes (:copier common-lisp:nil))
+     (lambda-function-scheduled-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-lambda-function-scheduled-event-attributes-"))
    (id (common-lisp:error ":id is required") :type
     (common-lisp:or function-id common-lisp:null))
    (name (common-lisp:error ":name is required") :type
@@ -2566,62 +3839,100 @@
  (common-lisp:export
   (common-lisp:list 'lambda-function-scheduled-event-attributes
                     'make-lambda-function-scheduled-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          lambda-function-scheduled-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           lambda-function-scheduled-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "id"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'id)))
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control)))
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "startToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'id))
+      (common-lisp:list
+       (common-lisp:cons "id"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "startToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          lambda-function-scheduled-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (lambda-function-started-event-attributes (:copier common-lisp:nil))
+     (lambda-function-started-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-lambda-function-started-event-attributes-"))
    (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
     :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'lambda-function-started-event-attributes
                     'make-lambda-function-started-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          lambda-function-started-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           lambda-function-started-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          lambda-function-started-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (lambda-function-timed-out-event-attributes (:copier common-lisp:nil))
+     (lambda-function-timed-out-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-lambda-function-timed-out-event-attributes-"))
    (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
     :type (common-lisp:or event-id common-lisp:null))
    (started-event-id (common-lisp:error ":startedeventid is required") :type
@@ -2631,44 +3942,72 @@
  (common-lisp:export
   (common-lisp:list 'lambda-function-timed-out-event-attributes
                     'make-lambda-function-timed-out-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          lambda-function-timed-out-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           lambda-function-timed-out-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id)))
-    (aws-sdk/generator/shape::to-query-params "timeoutType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timeout-type))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timeout-type))
+      (common-lisp:list
+       (common-lisp:cons "timeoutType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          lambda-function-timed-out-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype lambda-function-timeout-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (limit-exceeded-fault (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (limit-exceeded-fault (:copier common-lisp:nil)
+      (:conc-name "struct-shape-limit-exceeded-fault-"))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'limit-exceeded-fault 'make-limit-exceeded-fault))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape limit-exceeded-fault))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input limit-exceeded-fault))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input limit-exceeded-fault))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input limit-exceeded-fault))
+   common-lisp:nil))
 (common-lisp:deftype limited-data () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (list-activity-types-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (list-activity-types-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-activity-types-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
@@ -2683,44 +4022,67 @@
  (common-lisp:export
   (common-lisp:list 'list-activity-types-input
                     'make-list-activity-types-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          list-activity-types-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           list-activity-types-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "registrationStatus"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'registration-status)))
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token)))
-    (aws-sdk/generator/shape::to-query-params "maximumPageSize"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'maximum-page-size)))
-    (aws-sdk/generator/shape::to-query-params "reverseOrder"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reverse-order))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'registration-status))
+      (common-lisp:list
+       (common-lisp:cons "registrationStatus"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'maximum-page-size))
+      (common-lisp:list
+       (common-lisp:cons "maximumPageSize"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reverse-order))
+      (common-lisp:list
+       (common-lisp:cons "reverseOrder"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-activity-types-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (list-closed-workflow-executions-input (:copier common-lisp:nil))
+     (list-closed-workflow-executions-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-closed-workflow-executions-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (start-time-filter common-lisp:nil :type
@@ -2744,63 +4106,95 @@
  (common-lisp:export
   (common-lisp:list 'list-closed-workflow-executions-input
                     'make-list-closed-workflow-executions-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          list-closed-workflow-executions-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           list-closed-workflow-executions-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "startTimeFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-time-filter)))
-    (aws-sdk/generator/shape::to-query-params "closeTimeFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'close-time-filter)))
-    (aws-sdk/generator/shape::to-query-params "executionFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-filter)))
-    (aws-sdk/generator/shape::to-query-params "closeStatusFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'close-status-filter)))
-    (aws-sdk/generator/shape::to-query-params "typeFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'type-filter)))
-    (aws-sdk/generator/shape::to-query-params "tagFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-filter)))
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token)))
-    (aws-sdk/generator/shape::to-query-params "maximumPageSize"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'maximum-page-size)))
-    (aws-sdk/generator/shape::to-query-params "reverseOrder"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reverse-order))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'start-time-filter))
+      (common-lisp:list
+       (common-lisp:cons "startTimeFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'close-time-filter))
+      (common-lisp:list
+       (common-lisp:cons "closeTimeFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution-filter))
+      (common-lisp:list
+       (common-lisp:cons "executionFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'close-status-filter))
+      (common-lisp:list
+       (common-lisp:cons "closeStatusFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type-filter))
+      (common-lisp:list
+       (common-lisp:cons "typeFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-filter))
+      (common-lisp:list
+       (common-lisp:cons "tagFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'maximum-page-size))
+      (common-lisp:list
+       (common-lisp:cons "maximumPageSize"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reverse-order))
+      (common-lisp:list
+       (common-lisp:cons "reverseOrder"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-closed-workflow-executions-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (list-domains-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (list-domains-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-domains-input-"))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null))
    (registration-status (common-lisp:error ":registrationstatus is required")
@@ -2811,32 +4205,47 @@
     (common-lisp:or reverse-order common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-domains-input 'make-list-domains-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape list-domains-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input list-domains-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input list-domains-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token)))
-    (aws-sdk/generator/shape::to-query-params "registrationStatus"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'registration-status)))
-    (aws-sdk/generator/shape::to-query-params "maximumPageSize"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'maximum-page-size)))
-    (aws-sdk/generator/shape::to-query-params "reverseOrder"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reverse-order))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'registration-status))
+      (common-lisp:list
+       (common-lisp:cons "registrationStatus"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'maximum-page-size))
+      (common-lisp:list
+       (common-lisp:cons "maximumPageSize"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reverse-order))
+      (common-lisp:list
+       (common-lisp:cons "reverseOrder"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input list-domains-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (list-open-workflow-executions-input (:copier common-lisp:nil))
+     (list-open-workflow-executions-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-open-workflow-executions-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (start-time-filter (common-lisp:error ":starttimefilter is required") :type
@@ -2856,53 +4265,81 @@
  (common-lisp:export
   (common-lisp:list 'list-open-workflow-executions-input
                     'make-list-open-workflow-executions-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          list-open-workflow-executions-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           list-open-workflow-executions-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "startTimeFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-time-filter)))
-    (aws-sdk/generator/shape::to-query-params "typeFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'type-filter)))
-    (aws-sdk/generator/shape::to-query-params "tagFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-filter)))
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token)))
-    (aws-sdk/generator/shape::to-query-params "maximumPageSize"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'maximum-page-size)))
-    (aws-sdk/generator/shape::to-query-params "reverseOrder"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reverse-order)))
-    (aws-sdk/generator/shape::to-query-params "executionFilter"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-filter))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'start-time-filter))
+      (common-lisp:list
+       (common-lisp:cons "startTimeFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type-filter))
+      (common-lisp:list
+       (common-lisp:cons "typeFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-filter))
+      (common-lisp:list
+       (common-lisp:cons "tagFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'maximum-page-size))
+      (common-lisp:list
+       (common-lisp:cons "maximumPageSize"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reverse-order))
+      (common-lisp:list
+       (common-lisp:cons "reverseOrder"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution-filter))
+      (common-lisp:list
+       (common-lisp:cons "executionFilter"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-open-workflow-executions-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (list-workflow-types-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (list-workflow-types-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-workflow-types-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
@@ -2917,45 +4354,68 @@
  (common-lisp:export
   (common-lisp:list 'list-workflow-types-input
                     'make-list-workflow-types-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          list-workflow-types-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           list-workflow-types-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "registrationStatus"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'registration-status)))
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token)))
-    (aws-sdk/generator/shape::to-query-params "maximumPageSize"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'maximum-page-size)))
-    (aws-sdk/generator/shape::to-query-params "reverseOrder"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reverse-order))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'registration-status))
+      (common-lisp:list
+       (common-lisp:cons "registrationStatus"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'maximum-page-size))
+      (common-lisp:list
+       (common-lisp:cons "maximumPageSize"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reverse-order))
+      (common-lisp:list
+       (common-lisp:cons "reverseOrder"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-workflow-types-input))
+   common-lisp:nil))
 (common-lisp:deftype marker-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (marker-recorded-event-attributes (:copier common-lisp:nil))
+     (marker-recorded-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-marker-recorded-event-attributes-"))
    (marker-name (common-lisp:error ":markername is required") :type
     (common-lisp:or marker-name common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
@@ -2965,72 +4425,115 @@
  (common-lisp:export
   (common-lisp:list 'marker-recorded-event-attributes
                     'make-marker-recorded-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          marker-recorded-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           marker-recorded-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "markerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'marker-name)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'marker-name))
+      (common-lisp:list
+       (common-lisp:cons "markerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          marker-recorded-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype name () 'common-lisp:string)
 (common-lisp:deftype open-decision-tasks-count () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
-     (operation-not-permitted-fault (:copier common-lisp:nil))
+     (operation-not-permitted-fault (:copier common-lisp:nil)
+      (:conc-name "struct-shape-operation-not-permitted-fault-"))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'operation-not-permitted-fault
                     'make-operation-not-permitted-fault))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          operation-not-permitted-fault))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           operation-not-permitted-fault))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          operation-not-permitted-fault))
+   common-lisp:nil))
 (common-lisp:deftype page-size () 'common-lisp:integer)
 (common-lisp:deftype page-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (pending-task-count (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (pending-task-count (:copier common-lisp:nil)
+      (:conc-name "struct-shape-pending-task-count-"))
    (count (common-lisp:error ":count is required") :type
     (common-lisp:or count common-lisp:null))
    (truncated common-lisp:nil :type
     (common-lisp:or truncated common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'pending-task-count 'make-pending-task-count))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape pending-task-count))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input pending-task-count))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input pending-task-count))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "count"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'count)))
-    (aws-sdk/generator/shape::to-query-params "truncated"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'truncated))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'count))
+      (common-lisp:list
+       (common-lisp:cons "count"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'truncated))
+      (common-lisp:list
+       (common-lisp:cons "truncated"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input pending-task-count))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (poll-for-activity-task-input (:copier common-lisp:nil))
+     (poll-for-activity-task-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-poll-for-activity-task-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (task-list (common-lisp:error ":tasklist is required") :type
@@ -3039,29 +4542,46 @@
  (common-lisp:export
   (common-lisp:list 'poll-for-activity-task-input
                     'make-poll-for-activity-task-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          poll-for-activity-task-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           poll-for-activity-task-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list)))
-    (aws-sdk/generator/shape::to-query-params "identity"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'identity))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'identity))
+      (common-lisp:list
+       (common-lisp:cons "identity"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          poll-for-activity-task-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (poll-for-decision-task-input (:copier common-lisp:nil))
+     (poll-for-decision-task-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-poll-for-decision-task-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (task-list (common-lisp:error ":tasklist is required") :type
@@ -3076,44 +4596,67 @@
  (common-lisp:export
   (common-lisp:list 'poll-for-decision-task-input
                     'make-poll-for-decision-task-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          poll-for-decision-task-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           poll-for-decision-task-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list)))
-    (aws-sdk/generator/shape::to-query-params "identity"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'identity)))
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token)))
-    (aws-sdk/generator/shape::to-query-params "maximumPageSize"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'maximum-page-size)))
-    (aws-sdk/generator/shape::to-query-params "reverseOrder"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reverse-order))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'identity))
+      (common-lisp:list
+       (common-lisp:cons "identity"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'maximum-page-size))
+      (common-lisp:list
+       (common-lisp:cons "maximumPageSize"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reverse-order))
+      (common-lisp:list
+       (common-lisp:cons "reverseOrder"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          poll-for-decision-task-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (record-activity-task-heartbeat-input (:copier common-lisp:nil))
+     (record-activity-task-heartbeat-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-record-activity-task-heartbeat-input-"))
    (task-token (common-lisp:error ":tasktoken is required") :type
     (common-lisp:or task-token common-lisp:null))
    (details common-lisp:nil :type
@@ -3121,49 +4664,79 @@
  (common-lisp:export
   (common-lisp:list 'record-activity-task-heartbeat-input
                     'make-record-activity-task-heartbeat-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          record-activity-task-heartbeat-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           record-activity-task-heartbeat-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-token)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-token))
+      (common-lisp:list
+       (common-lisp:cons "taskToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          record-activity-task-heartbeat-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (record-marker-decision-attributes (:copier common-lisp:nil))
+     (record-marker-decision-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-record-marker-decision-attributes-"))
    (marker-name (common-lisp:error ":markername is required") :type
     (common-lisp:or marker-name common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'record-marker-decision-attributes
                     'make-record-marker-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          record-marker-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           record-marker-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "markerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'marker-name)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'marker-name))
+      (common-lisp:list
+       (common-lisp:cons "markerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          record-marker-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype record-marker-failed-cause () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (record-marker-failed-event-attributes (:copier common-lisp:nil))
+     (record-marker-failed-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-record-marker-failed-event-attributes-"))
    (marker-name (common-lisp:error ":markername is required") :type
     (common-lisp:or marker-name common-lisp:null))
    (cause (common-lisp:error ":cause is required") :type
@@ -3174,29 +4747,47 @@
  (common-lisp:export
   (common-lisp:list 'record-marker-failed-event-attributes
                     'make-record-marker-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          record-marker-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           record-marker-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "markerName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'marker-name)))
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'marker-name))
+      (common-lisp:list
+       (common-lisp:cons "markerName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          record-marker-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (register-activity-type-input (:copier common-lisp:nil))
+     (register-activity-type-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-register-activity-type-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (name (common-lisp:error ":name is required") :type
@@ -3220,63 +4811,100 @@
  (common-lisp:export
   (common-lisp:list 'register-activity-type-input
                     'make-register-activity-type-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          register-activity-type-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           register-activity-type-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "version"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'version)))
-    (aws-sdk/generator/shape::to-query-params "description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params "defaultTaskStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "defaultTaskHeartbeatTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-heartbeat-timeout)))
-    (aws-sdk/generator/shape::to-query-params "defaultTaskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-list)))
-    (aws-sdk/generator/shape::to-query-params "defaultTaskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-priority)))
-    (aws-sdk/generator/shape::to-query-params
-     "defaultTaskScheduleToStartTimeout"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'default-task-schedule-to-start-timeout)))
-    (aws-sdk/generator/shape::to-query-params
-     "defaultTaskScheduleToCloseTimeout"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'default-task-schedule-to-close-timeout))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'version))
+      (common-lisp:list
+       (common-lisp:cons "version"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-heartbeat-timeout))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskHeartbeatTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'default-task-list))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-priority))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-schedule-to-start-timeout))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskScheduleToStartTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-schedule-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskScheduleToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          register-activity-type-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (register-domain-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (register-domain-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-register-domain-input-"))
    (name (common-lisp:error ":name is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (description common-lisp:nil :type
@@ -3286,29 +4914,47 @@
     :type (common-lisp:or duration-in-days common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-domain-input 'make-register-domain-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          register-domain-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           register-domain-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params
-     "workflowExecutionRetentionPeriodInDays"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'workflow-execution-retention-period-in-days))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'workflow-execution-retention-period-in-days))
+      (common-lisp:list
+       (common-lisp:cons "workflowExecutionRetentionPeriodInDays"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          register-domain-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (register-workflow-type-input (:copier common-lisp:nil))
+     (register-workflow-type-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-register-workflow-type-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (name (common-lisp:error ":name is required") :type
@@ -3332,87 +4978,137 @@
  (common-lisp:export
   (common-lisp:list 'register-workflow-type-input
                     'make-register-workflow-type-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          register-workflow-type-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           register-workflow-type-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "version"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'version)))
-    (aws-sdk/generator/shape::to-query-params "description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params "defaultTaskStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params
-     "defaultExecutionStartToCloseTimeout"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'default-execution-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "defaultTaskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-list)))
-    (aws-sdk/generator/shape::to-query-params "defaultTaskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-priority)))
-    (aws-sdk/generator/shape::to-query-params "defaultChildPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-child-policy)))
-    (aws-sdk/generator/shape::to-query-params "defaultLambdaRole"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-lambda-role))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'version))
+      (common-lisp:list
+       (common-lisp:cons "version"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-execution-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "defaultExecutionStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'default-task-list))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-priority))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-child-policy))
+      (common-lisp:list
+       (common-lisp:cons "defaultChildPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'default-lambda-role))
+      (common-lisp:list
+       (common-lisp:cons "defaultLambdaRole"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          register-workflow-type-input))
+   common-lisp:nil))
 (common-lisp:deftype registration-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (request-cancel-activity-task-decision-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-request-cancel-activity-task-decision-attributes-"))
    (activity-id (common-lisp:error ":activityid is required") :type
     (common-lisp:or activity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'request-cancel-activity-task-decision-attributes
                     'make-request-cancel-activity-task-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          request-cancel-activity-task-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           request-cancel-activity-task-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "activityId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-id))
+      (common-lisp:list
+       (common-lisp:cons "activityId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          request-cancel-activity-task-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype request-cancel-activity-task-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (request-cancel-activity-task-failed-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-request-cancel-activity-task-failed-event-attributes-"))
    (activity-id (common-lisp:error ":activityid is required") :type
     (common-lisp:or activity-id common-lisp:null))
    (cause (common-lisp:error ":cause is required") :type
@@ -3424,30 +5120,49 @@
  (common-lisp:export
   (common-lisp:list 'request-cancel-activity-task-failed-event-attributes
                     'make-request-cancel-activity-task-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          request-cancel-activity-task-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           request-cancel-activity-task-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "activityId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-id)))
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-id))
+      (common-lisp:list
+       (common-lisp:cons "activityId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          request-cancel-activity-task-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (request-cancel-external-workflow-execution-decision-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-request-cancel-external-workflow-execution-decision-attributes-"))
    (workflow-id (common-lisp:error ":workflowid is required") :type
     (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
@@ -3457,32 +5172,50 @@
   (common-lisp:list
    'request-cancel-external-workflow-execution-decision-attributes
    'make-request-cancel-external-workflow-execution-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          request-cancel-external-workflow-execution-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           request-cancel-external-workflow-execution-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "runId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'run-id)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'run-id))
+      (common-lisp:list
+       (common-lisp:cons "runId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          request-cancel-external-workflow-execution-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype request-cancel-external-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (request-cancel-external-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-request-cancel-external-workflow-execution-failed-event-attributes-"))
    (workflow-id (common-lisp:error ":workflowid is required") :type
     (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
@@ -3500,45 +5233,70 @@
   (common-lisp:list
    'request-cancel-external-workflow-execution-failed-event-attributes
    'make-request-cancel-external-workflow-execution-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          request-cancel-external-workflow-execution-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           request-cancel-external-workflow-execution-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "runId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'run-id)))
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "initiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'initiated-event-id)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'run-id))
+      (common-lisp:list
+       (common-lisp:cons "runId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "initiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          request-cancel-external-workflow-execution-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (request-cancel-external-workflow-execution-initiated-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-request-cancel-external-workflow-execution-initiated-event-attributes-"))
    (workflow-id (common-lisp:error ":workflowid is required") :type
     (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
@@ -3551,34 +5309,54 @@
   (common-lisp:list
    'request-cancel-external-workflow-execution-initiated-event-attributes
    'make-request-cancel-external-workflow-execution-initiated-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          request-cancel-external-workflow-execution-initiated-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           request-cancel-external-workflow-execution-initiated-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "runId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'run-id)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'run-id))
+      (common-lisp:list
+       (common-lisp:cons "runId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          request-cancel-external-workflow-execution-initiated-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (request-cancel-workflow-execution-input (:copier common-lisp:nil))
+     (request-cancel-workflow-execution-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-request-cancel-workflow-execution-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (workflow-id (common-lisp:error ":workflowid is required") :type
@@ -3588,77 +5366,124 @@
  (common-lisp:export
   (common-lisp:list 'request-cancel-workflow-execution-input
                     'make-request-cancel-workflow-execution-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          request-cancel-workflow-execution-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           request-cancel-workflow-execution-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "runId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'run-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'run-id))
+      (common-lisp:list
+       (common-lisp:cons "runId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          request-cancel-workflow-execution-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (respond-activity-task-canceled-input (:copier common-lisp:nil))
+     (respond-activity-task-canceled-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-respond-activity-task-canceled-input-"))
    (task-token (common-lisp:error ":tasktoken is required") :type
     (common-lisp:or task-token common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'respond-activity-task-canceled-input
                     'make-respond-activity-task-canceled-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          respond-activity-task-canceled-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           respond-activity-task-canceled-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-token)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-token))
+      (common-lisp:list
+       (common-lisp:cons "taskToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          respond-activity-task-canceled-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (respond-activity-task-completed-input (:copier common-lisp:nil))
+     (respond-activity-task-completed-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-respond-activity-task-completed-input-"))
    (task-token (common-lisp:error ":tasktoken is required") :type
     (common-lisp:or task-token common-lisp:null))
    (result common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'respond-activity-task-completed-input
                     'make-respond-activity-task-completed-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          respond-activity-task-completed-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           respond-activity-task-completed-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-token)))
-    (aws-sdk/generator/shape::to-query-params "result"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'result))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-token))
+      (common-lisp:list
+       (common-lisp:cons "taskToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'result))
+      (common-lisp:list
+       (common-lisp:cons "result"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          respond-activity-task-completed-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (respond-activity-task-failed-input (:copier common-lisp:nil))
+     (respond-activity-task-failed-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-respond-activity-task-failed-input-"))
    (task-token (common-lisp:error ":tasktoken is required") :type
     (common-lisp:or task-token common-lisp:null))
    (reason common-lisp:nil :type
@@ -3667,29 +5492,46 @@
  (common-lisp:export
   (common-lisp:list 'respond-activity-task-failed-input
                     'make-respond-activity-task-failed-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          respond-activity-task-failed-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           respond-activity-task-failed-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-token)))
-    (aws-sdk/generator/shape::to-query-params "reason"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reason)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-token))
+      (common-lisp:list
+       (common-lisp:cons "taskToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reason))
+      (common-lisp:list
+       (common-lisp:cons "reason"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          respond-activity-task-failed-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (respond-decision-task-completed-input (:copier common-lisp:nil))
+     (respond-decision-task-completed-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-respond-decision-task-completed-input-"))
    (task-token (common-lisp:error ":tasktoken is required") :type
     (common-lisp:or task-token common-lisp:null))
    (decisions common-lisp:nil :type
@@ -3699,43 +5541,69 @@
  (common-lisp:export
   (common-lisp:list 'respond-decision-task-completed-input
                     'make-respond-decision-task-completed-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          respond-decision-task-completed-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           respond-decision-task-completed-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-token)))
-    (aws-sdk/generator/shape::to-query-params "decisions"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decisions)))
-    (aws-sdk/generator/shape::to-query-params "executionContext"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-context))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-token))
+      (common-lisp:list
+       (common-lisp:cons "taskToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'decisions))
+      (common-lisp:list
+       (common-lisp:cons "decisions"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution-context))
+      (common-lisp:list
+       (common-lisp:cons "executionContext"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          respond-decision-task-completed-input))
+   common-lisp:nil))
 (common-lisp:deftype reverse-order () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct (run (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (run (:copier common-lisp:nil) (:conc-name "struct-shape-run-"))
    (run-id common-lisp:nil :type
     (common-lisp:or workflow-run-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'run 'make-run))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape run))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input run))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input run))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "runId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'run-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'run-id))
+      (common-lisp:list
+       (common-lisp:cons "runId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input run))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (schedule-activity-task-decision-attributes (:copier common-lisp:nil))
+     (schedule-activity-task-decision-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-schedule-activity-task-decision-attributes-"))
    (activity-type (common-lisp:error ":activitytype is required") :type
     (common-lisp:or activity-type common-lisp:null))
    (activity-id (common-lisp:error ":activityid is required") :type
@@ -3757,65 +5625,100 @@
  (common-lisp:export
   (common-lisp:list 'schedule-activity-task-decision-attributes
                     'make-schedule-activity-task-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          schedule-activity-task-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           schedule-activity-task-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "activityType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-type)))
-    (aws-sdk/generator/shape::to-query-params "activityId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-id)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control)))
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "scheduleToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'schedule-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list)))
-    (aws-sdk/generator/shape::to-query-params "taskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-priority)))
-    (aws-sdk/generator/shape::to-query-params "scheduleToStartTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'schedule-to-start-timeout)))
-    (aws-sdk/generator/shape::to-query-params "startToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "heartbeatTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'heartbeat-timeout))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-type))
+      (common-lisp:list
+       (common-lisp:cons "activityType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-id))
+      (common-lisp:list
+       (common-lisp:cons "activityId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'schedule-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "scheduleToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-priority))
+      (common-lisp:list
+       (common-lisp:cons "taskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'schedule-to-start-timeout))
+      (common-lisp:list
+       (common-lisp:cons "scheduleToStartTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "startToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'heartbeat-timeout))
+      (common-lisp:list
+       (common-lisp:cons "heartbeatTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          schedule-activity-task-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype schedule-activity-task-failed-cause () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (schedule-activity-task-failed-event-attributes (:copier common-lisp:nil))
+     (schedule-activity-task-failed-event-attributes (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-schedule-activity-task-failed-event-attributes-"))
    (activity-type (common-lisp:error ":activitytype is required") :type
     (common-lisp:or activity-type common-lisp:null))
    (activity-id (common-lisp:error ":activityid is required") :type
@@ -3828,34 +5731,55 @@
  (common-lisp:export
   (common-lisp:list 'schedule-activity-task-failed-event-attributes
                     'make-schedule-activity-task-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          schedule-activity-task-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           schedule-activity-task-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "activityType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-type)))
-    (aws-sdk/generator/shape::to-query-params "activityId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'activity-id)))
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-type))
+      (common-lisp:list
+       (common-lisp:cons "activityType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'activity-id))
+      (common-lisp:list
+       (common-lisp:cons "activityId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          schedule-activity-task-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (schedule-lambda-function-decision-attributes (:copier common-lisp:nil))
+     (schedule-lambda-function-decision-attributes (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-schedule-lambda-function-decision-attributes-"))
    (id (common-lisp:error ":id is required") :type
     (common-lisp:or function-id common-lisp:null))
    (name (common-lisp:error ":name is required") :type
@@ -3868,42 +5792,65 @@
  (common-lisp:export
   (common-lisp:list 'schedule-lambda-function-decision-attributes
                     'make-schedule-lambda-function-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          schedule-lambda-function-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           schedule-lambda-function-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "id"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'id)))
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control)))
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "startToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-to-close-timeout))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'id))
+      (common-lisp:list
+       (common-lisp:cons "id"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "startToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          schedule-lambda-function-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype schedule-lambda-function-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (schedule-lambda-function-failed-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-schedule-lambda-function-failed-event-attributes-"))
    (id (common-lisp:error ":id is required") :type
     (common-lisp:or function-id common-lisp:null))
    (name (common-lisp:error ":name is required") :type
@@ -3916,35 +5863,56 @@
  (common-lisp:export
   (common-lisp:list 'schedule-lambda-function-failed-event-attributes
                     'make-schedule-lambda-function-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          schedule-lambda-function-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           schedule-lambda-function-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "id"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'id)))
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'id))
+      (common-lisp:list
+       (common-lisp:cons "id"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          schedule-lambda-function-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (signal-external-workflow-execution-decision-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-signal-external-workflow-execution-decision-attributes-"))
    (workflow-id (common-lisp:error ":workflowid is required") :type
     (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
@@ -3956,42 +5924,64 @@
  (common-lisp:export
   (common-lisp:list 'signal-external-workflow-execution-decision-attributes
                     'make-signal-external-workflow-execution-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          signal-external-workflow-execution-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           signal-external-workflow-execution-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "runId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'run-id)))
-    (aws-sdk/generator/shape::to-query-params "signalName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'signal-name)))
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'run-id))
+      (common-lisp:list
+       (common-lisp:cons "runId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'signal-name))
+      (common-lisp:list
+       (common-lisp:cons "signalName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          signal-external-workflow-execution-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype signal-external-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (signal-external-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-signal-external-workflow-execution-failed-event-attributes-"))
    (workflow-id (common-lisp:error ":workflowid is required") :type
     (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
@@ -4008,45 +5998,70 @@
  (common-lisp:export
   (common-lisp:list 'signal-external-workflow-execution-failed-event-attributes
                     'make-signal-external-workflow-execution-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          signal-external-workflow-execution-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           signal-external-workflow-execution-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "runId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'run-id)))
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "initiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'initiated-event-id)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'run-id))
+      (common-lisp:list
+       (common-lisp:cons "runId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "initiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          signal-external-workflow-execution-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (signal-external-workflow-execution-initiated-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-signal-external-workflow-execution-initiated-event-attributes-"))
    (workflow-id (common-lisp:error ":workflowid is required") :type
     (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
@@ -4062,45 +6077,69 @@
   (common-lisp:list
    'signal-external-workflow-execution-initiated-event-attributes
    'make-signal-external-workflow-execution-initiated-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          signal-external-workflow-execution-initiated-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           signal-external-workflow-execution-initiated-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "runId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'run-id)))
-    (aws-sdk/generator/shape::to-query-params "signalName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'signal-name)))
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'run-id))
+      (common-lisp:list
+       (common-lisp:cons "runId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'signal-name))
+      (common-lisp:list
+       (common-lisp:cons "signalName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          signal-external-workflow-execution-initiated-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype signal-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (signal-workflow-execution-input (:copier common-lisp:nil))
+     (signal-workflow-execution-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-signal-workflow-execution-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (workflow-id (common-lisp:error ":workflowid is required") :type
@@ -4113,40 +6152,62 @@
  (common-lisp:export
   (common-lisp:list 'signal-workflow-execution-input
                     'make-signal-workflow-execution-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          signal-workflow-execution-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           signal-workflow-execution-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "runId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'run-id)))
-    (aws-sdk/generator/shape::to-query-params "signalName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'signal-name)))
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'run-id))
+      (common-lisp:list
+       (common-lisp:cons "runId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'signal-name))
+      (common-lisp:list
+       (common-lisp:cons "signalName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          signal-workflow-execution-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (start-child-workflow-execution-decision-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-start-child-workflow-execution-decision-attributes-"))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
     (common-lisp:or workflow-type common-lisp:null))
    (workflow-id (common-lisp:error ":workflowid is required") :type
@@ -4168,72 +6229,108 @@
  (common-lisp:export
   (common-lisp:list 'start-child-workflow-execution-decision-attributes
                     'make-start-child-workflow-execution-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          start-child-workflow-execution-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           start-child-workflow-execution-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control)))
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "executionStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list)))
-    (aws-sdk/generator/shape::to-query-params "taskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-priority)))
-    (aws-sdk/generator/shape::to-query-params "taskStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "childPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'child-policy)))
-    (aws-sdk/generator/shape::to-query-params "tagList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-list)))
-    (aws-sdk/generator/shape::to-query-params "lambdaRole"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'lambda-role))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'execution-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "executionStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-priority))
+      (common-lisp:list
+       (common-lisp:cons "taskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'task-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "taskStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'child-policy))
+      (common-lisp:list
+       (common-lisp:cons "childPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-list))
+      (common-lisp:list
+       (common-lisp:cons "tagList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'lambda-role))
+      (common-lisp:list
+       (common-lisp:cons "lambdaRole"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-child-workflow-execution-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype start-child-workflow-execution-failed-cause ()
   'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (start-child-workflow-execution-failed-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-start-child-workflow-execution-failed-event-attributes-"))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
     (common-lisp:or workflow-type common-lisp:null))
    (cause (common-lisp:error ":cause is required") :type
@@ -4250,45 +6347,70 @@
  (common-lisp:export
   (common-lisp:list 'start-child-workflow-execution-failed-event-attributes
                     'make-start-child-workflow-execution-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          start-child-workflow-execution-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           start-child-workflow-execution-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "initiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'initiated-event-id)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "initiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-child-workflow-execution-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (start-child-workflow-execution-initiated-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-start-child-workflow-execution-initiated-event-attributes-"))
    (workflow-id (common-lisp:error ":workflowid is required") :type
     (common-lisp:or workflow-id common-lisp:null))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
@@ -4313,75 +6435,114 @@
  (common-lisp:export
   (common-lisp:list 'start-child-workflow-execution-initiated-event-attributes
                     'make-start-child-workflow-execution-initiated-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          start-child-workflow-execution-initiated-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           start-child-workflow-execution-initiated-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control)))
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "executionStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list)))
-    (aws-sdk/generator/shape::to-query-params "taskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-priority)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id)))
-    (aws-sdk/generator/shape::to-query-params "childPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'child-policy)))
-    (aws-sdk/generator/shape::to-query-params "taskStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "tagList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-list)))
-    (aws-sdk/generator/shape::to-query-params "lambdaRole"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'lambda-role))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'execution-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "executionStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-priority))
+      (common-lisp:list
+       (common-lisp:cons "taskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'child-policy))
+      (common-lisp:list
+       (common-lisp:cons "childPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'task-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "taskStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-list))
+      (common-lisp:list
+       (common-lisp:cons "tagList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'lambda-role))
+      (common-lisp:list
+       (common-lisp:cons "lambdaRole"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-child-workflow-execution-initiated-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype start-lambda-function-failed-cause () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (start-lambda-function-failed-event-attributes (:copier common-lisp:nil))
+     (start-lambda-function-failed-event-attributes (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-start-lambda-function-failed-event-attributes-"))
    (scheduled-event-id common-lisp:nil :type
     (common-lisp:or event-id common-lisp:null))
    (cause common-lisp:nil :type
@@ -4391,29 +6552,46 @@
  (common-lisp:export
   (common-lisp:list 'start-lambda-function-failed-event-attributes
                     'make-start-lambda-function-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          start-lambda-function-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           start-lambda-function-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "scheduledEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'scheduled-event-id)))
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'scheduled-event-id))
+      (common-lisp:list
+       (common-lisp:cons "scheduledEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-lambda-function-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (start-timer-decision-attributes (:copier common-lisp:nil))
+     (start-timer-decision-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-start-timer-decision-attributes-"))
    (timer-id (common-lisp:error ":timerid is required") :type
     (common-lisp:or timer-id common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
@@ -4422,30 +6600,48 @@
  (common-lisp:export
   (common-lisp:list 'start-timer-decision-attributes
                     'make-start-timer-decision-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          start-timer-decision-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           start-timer-decision-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "timerId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timer-id)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control)))
-    (aws-sdk/generator/shape::to-query-params "startToFireTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-to-fire-timeout))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timer-id))
+      (common-lisp:list
+       (common-lisp:cons "timerId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-to-fire-timeout))
+      (common-lisp:list
+       (common-lisp:cons "startToFireTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-timer-decision-attributes))
+   common-lisp:nil))
 (common-lisp:deftype start-timer-failed-cause () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (start-timer-failed-event-attributes (:copier common-lisp:nil))
+     (start-timer-failed-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-start-timer-failed-event-attributes-"))
    (timer-id (common-lisp:error ":timerid is required") :type
     (common-lisp:or timer-id common-lisp:null))
    (cause (common-lisp:error ":cause is required") :type
@@ -4456,29 +6652,47 @@
  (common-lisp:export
   (common-lisp:list 'start-timer-failed-event-attributes
                     'make-start-timer-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          start-timer-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           start-timer-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "timerId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timer-id)))
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timer-id))
+      (common-lisp:list
+       (common-lisp:cons "timerId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-timer-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (start-workflow-execution-input (:copier common-lisp:nil))
+     (start-workflow-execution-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-start-workflow-execution-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (workflow-id (common-lisp:error ":workflowid is required") :type
@@ -4501,80 +6715,124 @@
  (common-lisp:export
   (common-lisp:list 'start-workflow-execution-input
                     'make-start-workflow-execution-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          start-workflow-execution-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           start-workflow-execution-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list)))
-    (aws-sdk/generator/shape::to-query-params "taskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-priority)))
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "executionStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "tagList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-list)))
-    (aws-sdk/generator/shape::to-query-params "taskStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "childPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'child-policy)))
-    (aws-sdk/generator/shape::to-query-params "lambdaRole"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'lambda-role))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-priority))
+      (common-lisp:list
+       (common-lisp:cons "taskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'execution-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "executionStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-list))
+      (common-lisp:list
+       (common-lisp:cons "tagList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'task-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "taskStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'child-policy))
+      (common-lisp:list
+       (common-lisp:cons "childPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'lambda-role))
+      (common-lisp:list
+       (common-lisp:cons "lambdaRole"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-workflow-execution-input))
+   common-lisp:nil))
 (common-lisp:deftype tag () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (tag-filter (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (tag-filter (:copier common-lisp:nil)
+      (:conc-name "struct-shape-tag-filter-"))
    (tag (common-lisp:error ":tag is required") :type
     (common-lisp:or tag common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag-filter 'make-tag-filter))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape tag-filter))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input tag-filter))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input tag-filter))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "tag"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag))
+      (common-lisp:list
+       (common-lisp:cons "tag"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input tag-filter))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype tag-list () '(trivial-types:proper-list tag))
  (common-lisp:defun |make-tag-list|
@@ -4583,24 +6841,35 @@
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (task-list (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (task-list (:copier common-lisp:nil)
+      (:conc-name "struct-shape-task-list-"))
    (name (common-lisp:error ":name is required") :type
     (common-lisp:or name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'task-list 'make-task-list))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape task-list))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input task-list))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input task-list))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input task-list))
+   common-lisp:nil))
 (common-lisp:deftype task-priority () 'common-lisp:string)
 (common-lisp:deftype task-token () 'common-lisp:string)
 (common-lisp:deftype terminate-reason () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (terminate-workflow-execution-input (:copier common-lisp:nil))
+     (terminate-workflow-execution-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-terminate-workflow-execution-input-"))
    (domain (common-lisp:error ":domain is required") :type
     (common-lisp:or domain-name common-lisp:null))
    (workflow-id (common-lisp:error ":workflowid is required") :type
@@ -4615,44 +6884,67 @@
  (common-lisp:export
   (common-lisp:list 'terminate-workflow-execution-input
                     'make-terminate-workflow-execution-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          terminate-workflow-execution-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           terminate-workflow-execution-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "domain"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'domain)))
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "runId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'run-id)))
-    (aws-sdk/generator/shape::to-query-params "reason"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reason)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details)))
-    (aws-sdk/generator/shape::to-query-params "childPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'child-policy))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'domain))
+      (common-lisp:list
+       (common-lisp:cons "domain"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'run-id))
+      (common-lisp:list
+       (common-lisp:cons "runId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reason))
+      (common-lisp:list
+       (common-lisp:cons "reason"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'child-policy))
+      (common-lisp:list
+       (common-lisp:cons "childPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          terminate-workflow-execution-input))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (timer-canceled-event-attributes (:copier common-lisp:nil))
+     (timer-canceled-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-timer-canceled-event-attributes-"))
    (timer-id (common-lisp:error ":timerid is required") :type
     (common-lisp:or timer-id common-lisp:null))
    (started-event-id (common-lisp:error ":startedeventid is required") :type
@@ -4663,29 +6955,47 @@
  (common-lisp:export
   (common-lisp:list 'timer-canceled-event-attributes
                     'make-timer-canceled-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          timer-canceled-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           timer-canceled-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "timerId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timer-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timer-id))
+      (common-lisp:list
+       (common-lisp:cons "timerId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          timer-canceled-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (timer-fired-event-attributes (:copier common-lisp:nil))
+     (timer-fired-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-timer-fired-event-attributes-"))
    (timer-id (common-lisp:error ":timerid is required") :type
     (common-lisp:or timer-id common-lisp:null))
    (started-event-id (common-lisp:error ":startedeventid is required") :type
@@ -4693,25 +7003,40 @@
  (common-lisp:export
   (common-lisp:list 'timer-fired-event-attributes
                     'make-timer-fired-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          timer-fired-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           timer-fired-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "timerId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timer-id)))
-    (aws-sdk/generator/shape::to-query-params "startedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'started-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timer-id))
+      (common-lisp:list
+       (common-lisp:cons "timerId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'started-event-id))
+      (common-lisp:list
+       (common-lisp:cons "startedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          timer-fired-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype timer-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (timer-started-event-attributes (:copier common-lisp:nil))
+     (timer-started-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-timer-started-event-attributes-"))
    (timer-id (common-lisp:error ":timerid is required") :type
     (common-lisp:or timer-id common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
@@ -4723,129 +7048,218 @@
  (common-lisp:export
   (common-lisp:list 'timer-started-event-attributes
                     'make-timer-started-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          timer-started-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           timer-started-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "timerId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timer-id)))
-    (aws-sdk/generator/shape::to-query-params "control"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'control)))
-    (aws-sdk/generator/shape::to-query-params "startToFireTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-to-fire-timeout)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timer-id))
+      (common-lisp:list
+       (common-lisp:cons "timerId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'control))
+      (common-lisp:list
+       (common-lisp:cons "control"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'start-to-fire-timeout))
+      (common-lisp:list
+       (common-lisp:cons "startToFireTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          timer-started-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:deftype truncated () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct (type-already-exists-fault (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (type-already-exists-fault (:copier common-lisp:nil)
+      (:conc-name "struct-shape-type-already-exists-fault-"))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'type-already-exists-fault
                     'make-type-already-exists-fault))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          type-already-exists-fault))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           type-already-exists-fault))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          type-already-exists-fault))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (type-deprecated-fault (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (type-deprecated-fault (:copier common-lisp:nil)
+      (:conc-name "struct-shape-type-deprecated-fault-"))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'type-deprecated-fault 'make-type-deprecated-fault))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          type-deprecated-fault))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           type-deprecated-fault))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          type-deprecated-fault))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (unknown-resource-fault (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (unknown-resource-fault (:copier common-lisp:nil)
+      (:conc-name "struct-shape-unknown-resource-fault-"))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'unknown-resource-fault 'make-unknown-resource-fault))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          unknown-resource-fault))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           unknown-resource-fault))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          unknown-resource-fault))
+   common-lisp:nil))
 (common-lisp:deftype version () 'common-lisp:string)
 (common-lisp:deftype version-optional () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (workflow-execution (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (workflow-execution (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-execution-"))
    (workflow-id (common-lisp:error ":workflowid is required") :type
     (common-lisp:or workflow-id common-lisp:null))
    (run-id (common-lisp:error ":runid is required") :type
     (common-lisp:or workflow-run-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution 'make-workflow-execution))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape workflow-execution))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input workflow-execution))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input workflow-execution))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id)))
-    (aws-sdk/generator/shape::to-query-params "runId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'run-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'run-id))
+      (common-lisp:list
+       (common-lisp:cons "runId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input workflow-execution))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (workflow-execution-already-started-fault (:copier common-lisp:nil))
+     (workflow-execution-already-started-fault (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-execution-already-started-fault-"))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-already-started-fault
                     'make-workflow-execution-already-started-fault))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-already-started-fault))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-already-started-fault))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-already-started-fault))
+   common-lisp:nil))
 (common-lisp:deftype workflow-execution-cancel-requested-cause ()
   'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (workflow-execution-cancel-requested-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-workflow-execution-cancel-requested-event-attributes-"))
    (external-workflow-execution common-lisp:nil :type
     (common-lisp:or workflow-execution common-lisp:null))
    (external-initiated-event-id common-lisp:nil :type
@@ -4856,29 +7270,49 @@
  (common-lisp:export
   (common-lisp:list 'workflow-execution-cancel-requested-event-attributes
                     'make-workflow-execution-cancel-requested-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-cancel-requested-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-cancel-requested-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "externalWorkflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'external-workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "externalInitiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'external-initiated-event-id)))
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'external-workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "externalWorkflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'external-initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "externalInitiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-cancel-requested-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (workflow-execution-canceled-event-attributes (:copier common-lisp:nil))
+     (workflow-execution-canceled-event-attributes (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-workflow-execution-canceled-event-attributes-"))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (decision-task-completed-event-id
     (common-lisp:error ":decisiontaskcompletedeventid is required") :type
@@ -4886,24 +7320,41 @@
  (common-lisp:export
   (common-lisp:list 'workflow-execution-canceled-event-attributes
                     'make-workflow-execution-canceled-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-canceled-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-canceled-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-canceled-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (workflow-execution-completed-event-attributes (:copier common-lisp:nil))
+     (workflow-execution-completed-event-attributes (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-workflow-execution-completed-event-attributes-"))
    (result common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (decision-task-completed-event-id
     (common-lisp:error ":decisiontaskcompletedeventid is required") :type
@@ -4911,24 +7362,40 @@
  (common-lisp:export
   (common-lisp:list 'workflow-execution-completed-event-attributes
                     'make-workflow-execution-completed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-completed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-completed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "result"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'result)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'result))
+      (common-lisp:list
+       (common-lisp:cons "result"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-completed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (workflow-execution-configuration (:copier common-lisp:nil))
+     (workflow-execution-configuration (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-execution-configuration-"))
    (task-start-to-close-timeout
     (common-lisp:error ":taskstarttoclosetimeout is required") :type
     (common-lisp:or duration-in-seconds common-lisp:null))
@@ -4945,45 +7412,71 @@
  (common-lisp:export
   (common-lisp:list 'workflow-execution-configuration
                     'make-workflow-execution-configuration))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-configuration))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-configuration))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "executionStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list)))
-    (aws-sdk/generator/shape::to-query-params "taskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-priority)))
-    (aws-sdk/generator/shape::to-query-params "childPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'child-policy)))
-    (aws-sdk/generator/shape::to-query-params "lambdaRole"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'lambda-role))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'task-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "taskStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'execution-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "executionStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-priority))
+      (common-lisp:list
+       (common-lisp:cons "taskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'child-policy))
+      (common-lisp:list
+       (common-lisp:cons "childPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'lambda-role))
+      (common-lisp:list
+       (common-lisp:cons "lambdaRole"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-configuration))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
      (workflow-execution-continued-as-new-event-attributes
-      (:copier common-lisp:nil))
+      (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-workflow-execution-continued-as-new-event-attributes-"))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (decision-task-completed-event-id
     (common-lisp:error ":decisiontaskcompletedeventid is required") :type
@@ -5007,91 +7500,145 @@
  (common-lisp:export
   (common-lisp:list 'workflow-execution-continued-as-new-event-attributes
                     'make-workflow-execution-continued-as-new-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-continued-as-new-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-continued-as-new-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id)))
-    (aws-sdk/generator/shape::to-query-params "newExecutionRunId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'new-execution-run-id)))
-    (aws-sdk/generator/shape::to-query-params "executionStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list)))
-    (aws-sdk/generator/shape::to-query-params "taskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-priority)))
-    (aws-sdk/generator/shape::to-query-params "taskStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "childPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'child-policy)))
-    (aws-sdk/generator/shape::to-query-params "tagList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-list)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "lambdaRole"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'lambda-role))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'new-execution-run-id))
+      (common-lisp:list
+       (common-lisp:cons "newExecutionRunId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'execution-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "executionStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-priority))
+      (common-lisp:list
+       (common-lisp:cons "taskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'task-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "taskStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'child-policy))
+      (common-lisp:list
+       (common-lisp:cons "childPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-list))
+      (common-lisp:list
+       (common-lisp:cons "tagList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'lambda-role))
+      (common-lisp:list
+       (common-lisp:cons "lambdaRole"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-continued-as-new-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (workflow-execution-count (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (workflow-execution-count (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-execution-count-"))
    (count (common-lisp:error ":count is required") :type
     (common-lisp:or count common-lisp:null))
    (truncated common-lisp:nil :type
     (common-lisp:or truncated common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-count 'make-workflow-execution-count))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-count))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-count))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "count"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'count)))
-    (aws-sdk/generator/shape::to-query-params "truncated"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'truncated))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'count))
+      (common-lisp:list
+       (common-lisp:cons "count"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'truncated))
+      (common-lisp:list
+       (common-lisp:cons "truncated"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-count))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (workflow-execution-detail (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (workflow-execution-detail (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-execution-detail-"))
    (execution-info (common-lisp:error ":executioninfo is required") :type
     (common-lisp:or workflow-execution-info common-lisp:null))
    (execution-configuration
@@ -5106,39 +7653,63 @@
  (common-lisp:export
   (common-lisp:list 'workflow-execution-detail
                     'make-workflow-execution-detail))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-detail))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-detail))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "executionInfo"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-info)))
-    (aws-sdk/generator/shape::to-query-params "executionConfiguration"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-configuration)))
-    (aws-sdk/generator/shape::to-query-params "openCounts"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'open-counts)))
-    (aws-sdk/generator/shape::to-query-params "latestActivityTaskTimestamp"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'latest-activity-task-timestamp)))
-    (aws-sdk/generator/shape::to-query-params "latestExecutionContext"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'latest-execution-context))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution-info))
+      (common-lisp:list
+       (common-lisp:cons "executionInfo"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'execution-configuration))
+      (common-lisp:list
+       (common-lisp:cons "executionConfiguration"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'open-counts))
+      (common-lisp:list
+       (common-lisp:cons "openCounts"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'latest-activity-task-timestamp))
+      (common-lisp:list
+       (common-lisp:cons "latestActivityTaskTimestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'latest-execution-context))
+      (common-lisp:list
+       (common-lisp:cons "latestExecutionContext"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-detail))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (workflow-execution-failed-event-attributes (:copier common-lisp:nil))
+     (workflow-execution-failed-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-execution-failed-event-attributes-"))
    (reason common-lisp:nil :type
     (common-lisp:or failure-reason common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
@@ -5148,45 +7719,78 @@
  (common-lisp:export
   (common-lisp:list 'workflow-execution-failed-event-attributes
                     'make-workflow-execution-failed-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-failed-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-failed-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "reason"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reason)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details)))
-    (aws-sdk/generator/shape::to-query-params "decisionTaskCompletedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'decision-task-completed-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reason))
+      (common-lisp:list
+       (common-lisp:cons "reason"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'decision-task-completed-event-id))
+      (common-lisp:list
+       (common-lisp:cons "decisionTaskCompletedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-failed-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (workflow-execution-filter (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (workflow-execution-filter (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-execution-filter-"))
    (workflow-id (common-lisp:error ":workflowid is required") :type
     (common-lisp:or workflow-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-filter
                     'make-workflow-execution-filter))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-filter))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-filter))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-id))
+      (common-lisp:list
+       (common-lisp:cons "workflowId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-filter))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (workflow-execution-info (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (workflow-execution-info (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-execution-info-"))
    (execution (common-lisp:error ":execution is required") :type
     (common-lisp:or workflow-execution common-lisp:null))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
@@ -5206,56 +7810,84 @@
     (common-lisp:or canceled common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-info 'make-workflow-execution-info))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-info))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-info))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "execution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "startTimestamp"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-timestamp)))
-    (aws-sdk/generator/shape::to-query-params "closeTimestamp"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'close-timestamp)))
-    (aws-sdk/generator/shape::to-query-params "executionStatus"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-status)))
-    (aws-sdk/generator/shape::to-query-params "closeStatus"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'close-status)))
-    (aws-sdk/generator/shape::to-query-params "parent"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'parent)))
-    (aws-sdk/generator/shape::to-query-params "tagList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-list)))
-    (aws-sdk/generator/shape::to-query-params "cancelRequested"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cancel-requested))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution))
+      (common-lisp:list
+       (common-lisp:cons "execution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'start-timestamp))
+      (common-lisp:list
+       (common-lisp:cons "startTimestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'close-timestamp))
+      (common-lisp:list
+       (common-lisp:cons "closeTimestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution-status))
+      (common-lisp:list
+       (common-lisp:cons "executionStatus"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'close-status))
+      (common-lisp:list
+       (common-lisp:cons "closeStatus"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'parent))
+      (common-lisp:list
+       (common-lisp:cons "parent"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-list))
+      (common-lisp:list
+       (common-lisp:cons "tagList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cancel-requested))
+      (common-lisp:list
+       (common-lisp:cons "cancelRequested"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-info))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype workflow-execution-info-list ()
    '(trivial-types:proper-list workflow-execution-info))
@@ -5265,31 +7897,48 @@
                            (trivial-types:proper-list workflow-execution-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (workflow-execution-infos (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (workflow-execution-infos (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-execution-infos-"))
    (execution-infos (common-lisp:error ":executioninfos is required") :type
     (common-lisp:or workflow-execution-info-list common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-infos 'make-workflow-execution-infos))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-infos))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-infos))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "executionInfos"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-infos)))
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution-infos))
+      (common-lisp:list
+       (common-lisp:cons "executionInfos"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-infos))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (workflow-execution-open-counts (:copier common-lisp:nil))
+     (workflow-execution-open-counts (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-execution-open-counts-"))
    (open-activity-tasks (common-lisp:error ":openactivitytasks is required")
     :type (common-lisp:or count common-lisp:null))
    (open-decision-tasks (common-lisp:error ":opendecisiontasks is required")
@@ -5304,39 +7953,63 @@
  (common-lisp:export
   (common-lisp:list 'workflow-execution-open-counts
                     'make-workflow-execution-open-counts))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-open-counts))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-open-counts))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "openActivityTasks"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'open-activity-tasks)))
-    (aws-sdk/generator/shape::to-query-params "openDecisionTasks"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'open-decision-tasks)))
-    (aws-sdk/generator/shape::to-query-params "openTimers"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'open-timers)))
-    (aws-sdk/generator/shape::to-query-params "openChildWorkflowExecutions"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'open-child-workflow-executions)))
-    (aws-sdk/generator/shape::to-query-params "openLambdaFunctions"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'open-lambda-functions))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'open-activity-tasks))
+      (common-lisp:list
+       (common-lisp:cons "openActivityTasks"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'open-decision-tasks))
+      (common-lisp:list
+       (common-lisp:cons "openDecisionTasks"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'open-timers))
+      (common-lisp:list
+       (common-lisp:cons "openTimers"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'open-child-workflow-executions))
+      (common-lisp:list
+       (common-lisp:cons "openChildWorkflowExecutions"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'open-lambda-functions))
+      (common-lisp:list
+       (common-lisp:cons "openLambdaFunctions"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-open-counts))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (workflow-execution-signaled-event-attributes (:copier common-lisp:nil))
+     (workflow-execution-signaled-event-attributes (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-workflow-execution-signaled-event-attributes-"))
    (signal-name (common-lisp:error ":signalname is required") :type
     (common-lisp:or signal-name common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
@@ -5347,34 +8020,55 @@
  (common-lisp:export
   (common-lisp:list 'workflow-execution-signaled-event-attributes
                     'make-workflow-execution-signaled-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-signaled-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-signaled-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "signalName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'signal-name)))
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "externalWorkflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'external-workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "externalInitiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'external-initiated-event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'signal-name))
+      (common-lisp:list
+       (common-lisp:cons "signalName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'external-workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "externalWorkflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'external-initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "externalInitiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-signaled-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (workflow-execution-started-event-attributes (:copier common-lisp:nil))
+     (workflow-execution-started-event-attributes (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-execution-started-event-attributes-"))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (execution-start-to-close-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
@@ -5399,75 +8093,116 @@
  (common-lisp:export
   (common-lisp:list 'workflow-execution-started-event-attributes
                     'make-workflow-execution-started-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-started-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-started-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "input"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'input)))
-    (aws-sdk/generator/shape::to-query-params "executionStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "taskStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "childPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'child-policy)))
-    (aws-sdk/generator/shape::to-query-params "taskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-list)))
-    (aws-sdk/generator/shape::to-query-params "taskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-priority)))
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "tagList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-list)))
-    (aws-sdk/generator/shape::to-query-params "continuedExecutionRunId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'continued-execution-run-id)))
-    (aws-sdk/generator/shape::to-query-params "parentWorkflowExecution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'parent-workflow-execution)))
-    (aws-sdk/generator/shape::to-query-params "parentInitiatedEventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'parent-initiated-event-id)))
-    (aws-sdk/generator/shape::to-query-params "lambdaRole"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'lambda-role))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'input))
+      (common-lisp:list
+       (common-lisp:cons "input"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'execution-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "executionStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'task-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "taskStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'child-policy))
+      (common-lisp:list
+       (common-lisp:cons "childPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-list))
+      (common-lisp:list
+       (common-lisp:cons "taskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-priority))
+      (common-lisp:list
+       (common-lisp:cons "taskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-list))
+      (common-lisp:list
+       (common-lisp:cons "tagList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'continued-execution-run-id))
+      (common-lisp:list
+       (common-lisp:cons "continuedExecutionRunId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'parent-workflow-execution))
+      (common-lisp:list
+       (common-lisp:cons "parentWorkflowExecution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'parent-initiated-event-id))
+      (common-lisp:list
+       (common-lisp:cons "parentInitiatedEventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'lambda-role))
+      (common-lisp:list
+       (common-lisp:cons "lambdaRole"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-started-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype workflow-execution-terminated-cause () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (workflow-execution-terminated-event-attributes (:copier common-lisp:nil))
+     (workflow-execution-terminated-event-attributes (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-workflow-execution-terminated-event-attributes-"))
    (reason common-lisp:nil :type
     (common-lisp:or terminate-reason common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
@@ -5478,34 +8213,54 @@
  (common-lisp:export
   (common-lisp:list 'workflow-execution-terminated-event-attributes
                     'make-workflow-execution-terminated-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-terminated-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-terminated-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "reason"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'reason)))
-    (aws-sdk/generator/shape::to-query-params "details"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'details)))
-    (aws-sdk/generator/shape::to-query-params "childPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'child-policy)))
-    (aws-sdk/generator/shape::to-query-params "cause"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cause))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'reason))
+      (common-lisp:list
+       (common-lisp:cons "reason"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'details))
+      (common-lisp:list
+       (common-lisp:cons "details"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'child-policy))
+      (common-lisp:list
+       (common-lisp:cons "childPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cause))
+      (common-lisp:list
+       (common-lisp:cons "cause"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-terminated-event-attributes))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (workflow-execution-timed-out-event-attributes (:copier common-lisp:nil))
+     (workflow-execution-timed-out-event-attributes (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-workflow-execution-timed-out-event-attributes-"))
    (timeout-type (common-lisp:error ":timeouttype is required") :type
     (common-lisp:or workflow-execution-timeout-type common-lisp:null))
    (child-policy (common-lisp:error ":childpolicy is required") :type
@@ -5513,47 +8268,75 @@
  (common-lisp:export
   (common-lisp:list 'workflow-execution-timed-out-event-attributes
                     'make-workflow-execution-timed-out-event-attributes))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-timed-out-event-attributes))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-execution-timed-out-event-attributes))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "timeoutType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timeout-type)))
-    (aws-sdk/generator/shape::to-query-params "childPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'child-policy))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timeout-type))
+      (common-lisp:list
+       (common-lisp:cons "timeoutType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'child-policy))
+      (common-lisp:list
+       (common-lisp:cons "childPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-execution-timed-out-event-attributes))
+   common-lisp:nil))
 (common-lisp:deftype workflow-execution-timeout-type () 'common-lisp:string)
 (common-lisp:deftype workflow-id () 'common-lisp:string)
 (common-lisp:deftype workflow-run-id () 'common-lisp:string)
 (common-lisp:deftype workflow-run-id-optional () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (workflow-type (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (workflow-type (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-type-"))
    (name (common-lisp:error ":name is required") :type
     (common-lisp:or name common-lisp:null))
    (version (common-lisp:error ":version is required") :type
     (common-lisp:or version common-lisp:null)))
  (common-lisp:export (common-lisp:list 'workflow-type 'make-workflow-type))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape workflow-type))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input workflow-type))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input workflow-type))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "version"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'version))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'version))
+      (common-lisp:list
+       (common-lisp:cons "version"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input workflow-type))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (workflow-type-configuration (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (workflow-type-configuration (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-type-configuration-"))
    (default-task-start-to-close-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
    (default-execution-start-to-close-timeout common-lisp:nil :type
@@ -5569,85 +8352,137 @@
  (common-lisp:export
   (common-lisp:list 'workflow-type-configuration
                     'make-workflow-type-configuration))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          workflow-type-configuration))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           workflow-type-configuration))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "defaultTaskStartToCloseTimeout"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params
-     "defaultExecutionStartToCloseTimeout"
-     (aws-sdk/generator/shape:shape-to-params
-      (common-lisp:slot-value aws-sdk/generator/shape::shape
-                              'default-execution-start-to-close-timeout)))
-    (aws-sdk/generator/shape::to-query-params "defaultTaskList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-list)))
-    (aws-sdk/generator/shape::to-query-params "defaultTaskPriority"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-task-priority)))
-    (aws-sdk/generator/shape::to-query-params "defaultChildPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-child-policy)))
-    (aws-sdk/generator/shape::to-query-params "defaultLambdaRole"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-lambda-role))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-execution-start-to-close-timeout))
+      (common-lisp:list
+       (common-lisp:cons "defaultExecutionStartToCloseTimeout"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'default-task-list))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-task-priority))
+      (common-lisp:list
+       (common-lisp:cons "defaultTaskPriority"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'default-child-policy))
+      (common-lisp:list
+       (common-lisp:cons "defaultChildPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'default-lambda-role))
+      (common-lisp:list
+       (common-lisp:cons "defaultLambdaRole"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          workflow-type-configuration))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (workflow-type-detail (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (workflow-type-detail (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-type-detail-"))
    (type-info (common-lisp:error ":typeinfo is required") :type
     (common-lisp:or workflow-type-info common-lisp:null))
    (configuration (common-lisp:error ":configuration is required") :type
     (common-lisp:or workflow-type-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-type-detail 'make-workflow-type-detail))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape workflow-type-detail))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input workflow-type-detail))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input workflow-type-detail))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "typeInfo"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'type-info)))
-    (aws-sdk/generator/shape::to-query-params "configuration"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'configuration))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type-info))
+      (common-lisp:list
+       (common-lisp:cons "typeInfo"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'configuration))
+      (common-lisp:list
+       (common-lisp:cons "configuration"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input workflow-type-detail))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (workflow-type-filter (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (workflow-type-filter (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-type-filter-"))
    (name (common-lisp:error ":name is required") :type
     (common-lisp:or name common-lisp:null))
    (version common-lisp:nil :type
     (common-lisp:or version-optional common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-type-filter 'make-workflow-type-filter))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape workflow-type-filter))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input workflow-type-filter))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input workflow-type-filter))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "version"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'version))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'version))
+      (common-lisp:list
+       (common-lisp:cons "version"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input workflow-type-filter))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (workflow-type-info (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (workflow-type-info (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-type-info-"))
    (workflow-type (common-lisp:error ":workflowtype is required") :type
     (common-lisp:or workflow-type common-lisp:null))
    (status (common-lisp:error ":status is required") :type
@@ -5660,34 +8495,50 @@
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-type-info 'make-workflow-type-info))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape workflow-type-info))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input workflow-type-info))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input workflow-type-info))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "workflowType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'workflow-type)))
-    (aws-sdk/generator/shape::to-query-params "status"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'status)))
-    (aws-sdk/generator/shape::to-query-params "description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params "creationDate"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'creation-date)))
-    (aws-sdk/generator/shape::to-query-params "deprecationDate"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'deprecation-date))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'workflow-type))
+      (common-lisp:list
+       (common-lisp:cons "workflowType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'status))
+      (common-lisp:list
+       (common-lisp:cons "status"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-date))
+      (common-lisp:list
+       (common-lisp:cons "creationDate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'deprecation-date))
+      (common-lisp:list
+       (common-lisp:cons "deprecationDate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input workflow-type-info))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype workflow-type-info-list ()
    '(trivial-types:proper-list workflow-type-info))
@@ -5697,26 +8548,38 @@
                            (trivial-types:proper-list workflow-type-info))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (workflow-type-infos (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (workflow-type-infos (:copier common-lisp:nil)
+      (:conc-name "struct-shape-workflow-type-infos-"))
    (type-infos (common-lisp:error ":typeinfos is required") :type
     (common-lisp:or workflow-type-info-list common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-type-infos 'make-workflow-type-infos))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape workflow-type-infos))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input workflow-type-infos))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input workflow-type-infos))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "typeInfos"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'type-infos)))
-    (aws-sdk/generator/shape::to-query-params "nextPageToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-page-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'type-infos))
+      (common-lisp:list
+       (common-lisp:cons "typeInfos"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-page-token))
+      (common-lisp:list
+       (common-lisp:cons "nextPageToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input workflow-type-infos))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defun count-closed-workflow-executions
                     (
@@ -5733,14 +8596,12 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"CountClosedWorkflowExecutions")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "WorkflowExecutionCount" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CountClosedWorkflowExecutions"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'count-closed-workflow-executions))
 (common-lisp:progn
  (common-lisp:defun count-open-workflow-executions
@@ -5757,13 +8618,12 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CountOpenWorkflowExecutions")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "WorkflowExecutionCount" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CountOpenWorkflowExecutions"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'count-open-workflow-executions))
 (common-lisp:progn
  (common-lisp:defun count-pending-activity-tasks
@@ -5777,13 +8637,12 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CountPendingActivityTasks")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "PendingTaskCount" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CountPendingActivityTasks"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'count-pending-activity-tasks))
 (common-lisp:progn
  (common-lisp:defun count-pending-decision-tasks
@@ -5797,13 +8656,12 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CountPendingDecisionTasks")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "PendingTaskCount" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CountPendingDecisionTasks"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'count-pending-decision-tasks))
 (common-lisp:progn
  (common-lisp:defun deprecate-activity-type
@@ -5816,12 +8674,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeprecateActivityType")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeprecateActivityType"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'deprecate-activity-type))
 (common-lisp:progn
@@ -5835,12 +8692,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeprecateDomain")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeprecateDomain"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'deprecate-domain))
 (common-lisp:progn
@@ -5854,12 +8710,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeprecateWorkflowType")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeprecateWorkflowType"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'deprecate-workflow-type))
 (common-lisp:progn
@@ -5873,13 +8728,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeActivityType")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "ActivityTypeDetail" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeActivityType"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'describe-activity-type))
 (common-lisp:progn
  (common-lisp:defun describe-domain
@@ -5892,13 +8746,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeDomain")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DomainDetail" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeDomain"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'describe-domain))
 (common-lisp:progn
  (common-lisp:defun describe-workflow-execution
@@ -5912,13 +8765,12 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeWorkflowExecution")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "WorkflowExecutionDetail" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeWorkflowExecution"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'describe-workflow-execution))
 (common-lisp:progn
  (common-lisp:defun describe-workflow-type
@@ -5931,13 +8783,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeWorkflowType")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "WorkflowTypeDetail" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeWorkflowType"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'describe-workflow-type))
 (common-lisp:progn
  (common-lisp:defun get-workflow-execution-history
@@ -5954,13 +8805,12 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"GetWorkflowExecutionHistory")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "History" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "GetWorkflowExecutionHistory"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'get-workflow-execution-history))
 (common-lisp:progn
  (common-lisp:defun list-activity-types
@@ -5976,13 +8826,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"ListActivityTypes")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "ActivityTypeInfos" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ListActivityTypes"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'list-activity-types))
 (common-lisp:progn
  (common-lisp:defun list-closed-workflow-executions
@@ -6002,14 +8851,12 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"ListClosedWorkflowExecutions")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "WorkflowExecutionInfos" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ListClosedWorkflowExecutions"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'list-closed-workflow-executions))
 (common-lisp:progn
  (common-lisp:defun list-domains
@@ -6025,13 +8872,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"ListDomains")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DomainInfos" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ListDomains"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'list-domains))
 (common-lisp:progn
  (common-lisp:defun list-open-workflow-executions
@@ -6049,13 +8895,12 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"ListOpenWorkflowExecutions")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "WorkflowExecutionInfos" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ListOpenWorkflowExecutions"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'list-open-workflow-executions))
 (common-lisp:progn
  (common-lisp:defun list-workflow-types
@@ -6071,13 +8916,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"ListWorkflowTypes")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "WorkflowTypeInfos" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ListWorkflowTypes"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'list-workflow-types))
 (common-lisp:progn
  (common-lisp:defun poll-for-activity-task
@@ -6090,13 +8934,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"PollForActivityTask")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "ActivityTask" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "PollForActivityTask"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'poll-for-activity-task))
 (common-lisp:progn
  (common-lisp:defun poll-for-decision-task
@@ -6112,13 +8955,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"PollForDecisionTask")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DecisionTask" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "PollForDecisionTask"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'poll-for-decision-task))
 (common-lisp:progn
  (common-lisp:defun record-activity-task-heartbeat
@@ -6132,13 +8974,12 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"RecordActivityTaskHeartbeat")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "ActivityTaskStatus" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "RecordActivityTaskHeartbeat"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'record-activity-task-heartbeat))
 (common-lisp:progn
  (common-lisp:defun register-activity-type
@@ -6161,12 +9002,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"RegisterActivityType")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "RegisterActivityType"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'register-activity-type))
 (common-lisp:progn
@@ -6183,12 +9023,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"RegisterDomain")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "RegisterDomain"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'register-domain))
 (common-lisp:progn
@@ -6210,12 +9049,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"RegisterWorkflowType")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "RegisterWorkflowType"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'register-workflow-type))
 (common-lisp:progn
@@ -6230,13 +9068,11 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"RequestCancelWorkflowExecution")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "RequestCancelWorkflowExecution"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'request-cancel-workflow-execution))
 (common-lisp:progn
@@ -6251,12 +9087,11 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"RespondActivityTaskCanceled")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "RespondActivityTaskCanceled"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'respond-activity-task-canceled))
 (common-lisp:progn
@@ -6271,13 +9106,11 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"RespondActivityTaskCompleted")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "RespondActivityTaskCompleted"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'respond-activity-task-completed))
 (common-lisp:progn
@@ -6292,12 +9125,11 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"RespondActivityTaskFailed")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "RespondActivityTaskFailed"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'respond-activity-task-failed))
 (common-lisp:progn
@@ -6313,13 +9145,11 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"RespondDecisionTaskCompleted")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "RespondDecisionTaskCompleted"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'respond-decision-task-completed))
 (common-lisp:progn
@@ -6335,12 +9165,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"SignalWorkflowExecution")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "SignalWorkflowExecution"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'signal-workflow-execution))
 (common-lisp:progn
@@ -6360,13 +9189,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"StartWorkflowExecution")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "Run" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "StartWorkflowExecution"
+                                                        "2012-01-25"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'start-workflow-execution))
 (common-lisp:progn
  (common-lisp:defun terminate-workflow-execution
@@ -6383,11 +9211,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'swf-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"TerminateWorkflowExecution")
-                                     ("Version" ,@"2012-01-25"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
+       (aws-sdk/generator/shape:make-request-with-input 'swf-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "TerminateWorkflowExecution"
+                                                        "2012-01-25"))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'terminate-workflow-execution))

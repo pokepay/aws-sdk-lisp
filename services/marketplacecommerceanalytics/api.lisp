@@ -14,12 +14,14 @@
                        (:default-initargs :service
                         "marketplacecommerceanalytics"))
  (common-lisp:export 'marketplacecommerceanalytics-request))
-(common-lisp:defstruct
-    (customer-defined-values
-     (:constructor |make-customer-defined-values|
-      (aws-sdk/generator/shape::key aws-sdk/generator/shape::value)))
-  aws-sdk/generator/shape::key
-  aws-sdk/generator/shape::value)
+(common-lisp:progn
+ (common-lisp:deftype customer-defined-values () 'common-lisp:hash-table)
+ (common-lisp:defun |make-customer-defined-values|
+                    (aws-sdk/generator/shape::key-values)
+   (common-lisp:etypecase aws-sdk/generator/shape::key-values
+     (common-lisp:hash-table aws-sdk/generator/shape::key-values)
+     (common-lisp:list
+      (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype data-set-publication-date () 'common-lisp:string)
 (common-lisp:deftype data-set-request-id () 'common-lisp:string)
 (common-lisp:deftype data-set-type () 'common-lisp:string)
@@ -28,7 +30,9 @@
 (common-lisp:deftype exception-message () 'common-lisp:string)
 (common-lisp:deftype from-date () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (generate-data-set-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (generate-data-set-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-generate-data-set-request-"))
    (data-set-type (common-lisp:error ":datasettype is required") :type
     (common-lisp:or data-set-type common-lisp:null))
    (data-set-publication-date
@@ -48,87 +52,143 @@
  (common-lisp:export
   (common-lisp:list 'generate-data-set-request
                     'make-generate-data-set-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          generate-data-set-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           generate-data-set-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "dataSetType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'data-set-type)))
-    (aws-sdk/generator/shape::to-query-params "dataSetPublicationDate"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'data-set-publication-date)))
-    (aws-sdk/generator/shape::to-query-params "roleNameArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'role-name-arn)))
-    (aws-sdk/generator/shape::to-query-params "destinationS3BucketName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-s3bucket-name)))
-    (aws-sdk/generator/shape::to-query-params "destinationS3Prefix"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-s3prefix)))
-    (aws-sdk/generator/shape::to-query-params "snsTopicArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'sns-topic-arn)))
-    (aws-sdk/generator/shape::to-query-params "customerDefinedValues"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'customer-defined-values))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'data-set-type))
+      (common-lisp:list
+       (common-lisp:cons "dataSetType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'data-set-publication-date))
+      (common-lisp:list
+       (common-lisp:cons "dataSetPublicationDate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'role-name-arn))
+      (common-lisp:list
+       (common-lisp:cons "roleNameArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'destination-s3bucket-name))
+      (common-lisp:list
+       (common-lisp:cons "destinationS3BucketName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'destination-s3prefix))
+      (common-lisp:list
+       (common-lisp:cons "destinationS3Prefix"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sns-topic-arn))
+      (common-lisp:list
+       (common-lisp:cons "snsTopicArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'customer-defined-values))
+      (common-lisp:list
+       (common-lisp:cons "customerDefinedValues"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          generate-data-set-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (generate-data-set-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (generate-data-set-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-generate-data-set-result-"))
    (data-set-request-id common-lisp:nil :type
     (common-lisp:or data-set-request-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'generate-data-set-result 'make-generate-data-set-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          generate-data-set-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           generate-data-set-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "dataSetRequestId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'data-set-request-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'data-set-request-id))
+      (common-lisp:list
+       (common-lisp:cons "dataSetRequestId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          generate-data-set-result))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (marketplace-commerce-analytics-exception (:copier common-lisp:nil))
+     (marketplace-commerce-analytics-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-marketplace-commerce-analytics-exception-"))
    (message common-lisp:nil :type
     (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'marketplace-commerce-analytics-exception
                     'make-marketplace-commerce-analytics-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          marketplace-commerce-analytics-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           marketplace-commerce-analytics-exception))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          marketplace-commerce-analytics-exception))
+   common-lisp:nil))
 (common-lisp:deftype optional-key () 'common-lisp:string)
 (common-lisp:deftype optional-value () 'common-lisp:string)
 (common-lisp:deftype role-name-arn () 'common-lisp:string)
 (common-lisp:deftype sns-topic-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (start-support-data-export-request (:copier common-lisp:nil))
+     (start-support-data-export-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-start-support-data-export-request-"))
    (data-set-type (common-lisp:error ":datasettype is required") :type
     (common-lisp:or support-data-set-type common-lisp:null))
    (from-date (common-lisp:error ":fromdate is required") :type
@@ -147,64 +207,104 @@
  (common-lisp:export
   (common-lisp:list 'start-support-data-export-request
                     'make-start-support-data-export-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          start-support-data-export-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           start-support-data-export-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "dataSetType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'data-set-type)))
-    (aws-sdk/generator/shape::to-query-params "fromDate"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'from-date)))
-    (aws-sdk/generator/shape::to-query-params "roleNameArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'role-name-arn)))
-    (aws-sdk/generator/shape::to-query-params "destinationS3BucketName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-s3bucket-name)))
-    (aws-sdk/generator/shape::to-query-params "destinationS3Prefix"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-s3prefix)))
-    (aws-sdk/generator/shape::to-query-params "snsTopicArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'sns-topic-arn)))
-    (aws-sdk/generator/shape::to-query-params "customerDefinedValues"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'customer-defined-values))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'data-set-type))
+      (common-lisp:list
+       (common-lisp:cons "dataSetType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'from-date))
+      (common-lisp:list
+       (common-lisp:cons "fromDate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'role-name-arn))
+      (common-lisp:list
+       (common-lisp:cons "roleNameArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'destination-s3bucket-name))
+      (common-lisp:list
+       (common-lisp:cons "destinationS3BucketName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'destination-s3prefix))
+      (common-lisp:list
+       (common-lisp:cons "destinationS3Prefix"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sns-topic-arn))
+      (common-lisp:list
+       (common-lisp:cons "snsTopicArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'customer-defined-values))
+      (common-lisp:list
+       (common-lisp:cons "customerDefinedValues"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-support-data-export-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (start-support-data-export-result (:copier common-lisp:nil))
+     (start-support-data-export-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-start-support-data-export-result-"))
    (data-set-request-id common-lisp:nil :type
     (common-lisp:or data-set-request-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-support-data-export-result
                     'make-start-support-data-export-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          start-support-data-export-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           start-support-data-export-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "dataSetRequestId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'data-set-request-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'data-set-request-id))
+      (common-lisp:list
+       (common-lisp:cons "dataSetRequestId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          start-support-data-export-result))
+   common-lisp:nil))
 (common-lisp:deftype support-data-set-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun generate-data-set
@@ -223,14 +323,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'marketplacecommerceanalytics-request :method
-                                  :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"GenerateDataSet")
-                                     ("Version" ,@"2015-07-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "GenerateDataSetResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input
+        'marketplacecommerceanalytics-request
+        aws-sdk/generator/operation::input "POST" "/" "GenerateDataSet"
+        "2015-07-01"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'generate-data-set))
 (common-lisp:progn
  (common-lisp:defun start-support-data-export
@@ -249,12 +346,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'marketplacecommerceanalytics-request :method
-                                  :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"StartSupportDataExport")
-                                     ("Version" ,@"2015-07-01"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "StartSupportDataExportResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input
+        'marketplacecommerceanalytics-request
+        aws-sdk/generator/operation::input "POST" "/" "StartSupportDataExport"
+        "2015-07-01"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'start-support-data-export))

@@ -14,7 +14,8 @@
  (common-lisp:export 'budgets-request))
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (budget (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (budget (:copier common-lisp:nil) (:conc-name "struct-shape-budget-"))
    (budget-name (common-lisp:error ":budget-name is required") :type
     (common-lisp:or budget-name common-lisp:null))
    (budget-limit (common-lisp:error ":budget-limit is required") :type
@@ -32,49 +33,71 @@
    (budget-type (common-lisp:error ":budget-type is required") :type
     (common-lisp:or budget-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'budget 'make-budget))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape budget))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input budget))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input budget))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "BudgetName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-name)))
-    (aws-sdk/generator/shape::to-query-params "BudgetLimit"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-limit)))
-    (aws-sdk/generator/shape::to-query-params "CostFilters"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cost-filters)))
-    (aws-sdk/generator/shape::to-query-params "CostTypes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cost-types)))
-    (aws-sdk/generator/shape::to-query-params "TimeUnit"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'time-unit)))
-    (aws-sdk/generator/shape::to-query-params "TimePeriod"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'time-period)))
-    (aws-sdk/generator/shape::to-query-params "CalculatedSpend"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'calculated-spend)))
-    (aws-sdk/generator/shape::to-query-params "BudgetType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-type))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-name))
+      (common-lisp:list
+       (common-lisp:cons "BudgetName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-limit))
+      (common-lisp:list
+       (common-lisp:cons "BudgetLimit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cost-filters))
+      (common-lisp:list
+       (common-lisp:cons "CostFilters"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cost-types))
+      (common-lisp:list
+       (common-lisp:cons "CostTypes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'time-unit))
+      (common-lisp:list
+       (common-lisp:cons "TimeUnit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'time-period))
+      (common-lisp:list
+       (common-lisp:cons "TimePeriod"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'calculated-spend))
+      (common-lisp:list
+       (common-lisp:cons "CalculatedSpend"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-type))
+      (common-lisp:list
+       (common-lisp:cons "BudgetType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input budget))
+   common-lisp:nil))
 (common-lisp:deftype budget-name () 'common-lisp:string)
 (common-lisp:deftype budget-type () 'common-lisp:string)
 (common-lisp:progn
@@ -85,35 +108,50 @@
                            (trivial-types:proper-list budget))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (calculated-spend (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (calculated-spend (:copier common-lisp:nil)
+      (:conc-name "struct-shape-calculated-spend-"))
    (actual-spend (common-lisp:error ":actual-spend is required") :type
     (common-lisp:or spend common-lisp:null))
    (forecasted-spend common-lisp:nil :type
     (common-lisp:or spend common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'calculated-spend 'make-calculated-spend))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape calculated-spend))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input calculated-spend))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input calculated-spend))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ActualSpend"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'actual-spend)))
-    (aws-sdk/generator/shape::to-query-params "ForecastedSpend"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'forecasted-spend))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'actual-spend))
+      (common-lisp:list
+       (common-lisp:cons "ActualSpend"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'forecasted-spend))
+      (common-lisp:list
+       (common-lisp:cons "ForecastedSpend"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input calculated-spend))
+   common-lisp:nil))
 (common-lisp:deftype comparison-operator () 'common-lisp:string)
-(common-lisp:defstruct
-    (cost-filters
-     (:constructor |make-cost-filters|
-      (aws-sdk/generator/shape::key aws-sdk/generator/shape::value)))
-  aws-sdk/generator/shape::key
-  aws-sdk/generator/shape::value)
 (common-lisp:progn
- (common-lisp:defstruct (cost-types (:copier common-lisp:nil))
+ (common-lisp:deftype cost-filters () 'common-lisp:hash-table)
+ (common-lisp:defun |make-cost-filters| (aws-sdk/generator/shape::key-values)
+   (common-lisp:etypecase aws-sdk/generator/shape::key-values
+     (common-lisp:hash-table aws-sdk/generator/shape::key-values)
+     (common-lisp:list
+      (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (cost-types (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cost-types-"))
    (include-tax (common-lisp:error ":include-tax is required") :type
     (common-lisp:or generic-boolean common-lisp:null))
    (include-subscription
@@ -122,26 +160,41 @@
    (use-blended (common-lisp:error ":use-blended is required") :type
     (common-lisp:or generic-boolean common-lisp:null)))
  (common-lisp:export (common-lisp:list 'cost-types 'make-cost-types))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape cost-types))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input cost-types))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input cost-types))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "IncludeTax"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'include-tax)))
-    (aws-sdk/generator/shape::to-query-params "IncludeSubscription"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'include-subscription)))
-    (aws-sdk/generator/shape::to-query-params "UseBlended"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'use-blended))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'include-tax))
+      (common-lisp:list
+       (common-lisp:cons "IncludeTax"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'include-subscription))
+      (common-lisp:list
+       (common-lisp:cons "IncludeSubscription"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'use-blended))
+      (common-lisp:list
+       (common-lisp:cons "UseBlended"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input cost-types))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-budget-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-budget-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-budget-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (budget (common-lisp:error ":budget is required") :type
@@ -150,37 +203,68 @@
     (common-lisp:or notification-with-subscribers-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-budget-request 'make-create-budget-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-budget-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-budget-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "Budget"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget)))
-    (aws-sdk/generator/shape::to-query-params "NotificationsWithSubscribers"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notifications-with-subscribers))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget))
+      (common-lisp:list
+       (common-lisp:cons "Budget"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'notifications-with-subscribers))
+      (common-lisp:list
+       (common-lisp:cons "NotificationsWithSubscribers"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-budget-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-budget-response (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (create-budget-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-budget-response-")))
  (common-lisp:export
   (common-lisp:list 'create-budget-response 'make-create-budget-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           create-budget-response))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-budget-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-budget-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-notification-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-notification-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-notification-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (budget-name (common-lisp:error ":budget-name is required") :type
@@ -192,44 +276,75 @@
  (common-lisp:export
   (common-lisp:list 'create-notification-request
                     'make-create-notification-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-notification-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-notification-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "BudgetName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-name)))
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification)))
-    (aws-sdk/generator/shape::to-query-params "Subscribers"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subscribers))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-name))
+      (common-lisp:list
+       (common-lisp:cons "BudgetName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subscribers))
+      (common-lisp:list
+       (common-lisp:cons "Subscribers"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-notification-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (create-notification-response (:copier common-lisp:nil)))
+     (create-notification-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-notification-response-")))
  (common-lisp:export
   (common-lisp:list 'create-notification-response
                     'make-create-notification-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           create-notification-response))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-notification-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-notification-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-subscriber-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-subscriber-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-subscriber-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (budget-name (common-lisp:error ":budget-name is required") :type
@@ -241,93 +356,166 @@
  (common-lisp:export
   (common-lisp:list 'create-subscriber-request
                     'make-create-subscriber-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-subscriber-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-subscriber-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "BudgetName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-name)))
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification)))
-    (aws-sdk/generator/shape::to-query-params "Subscriber"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subscriber))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-name))
+      (common-lisp:list
+       (common-lisp:cons "BudgetName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subscriber))
+      (common-lisp:list
+       (common-lisp:cons "Subscriber"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-subscriber-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-subscriber-response (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (create-subscriber-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-subscriber-response-")))
  (common-lisp:export
   (common-lisp:list 'create-subscriber-response
                     'make-create-subscriber-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           create-subscriber-response))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-subscriber-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-subscriber-response))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (creation-limit-exceeded-exception (:copier common-lisp:nil))
+     (creation-limit-exceeded-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-creation-limit-exceeded-exception-"))
    (message common-lisp:nil :type
     (common-lisp:or |errorMessage| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'creation-limit-exceeded-exception
                     'make-creation-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          creation-limit-exceeded-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           creation-limit-exceeded-exception))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "Message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          creation-limit-exceeded-exception))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (delete-budget-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (delete-budget-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-budget-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (budget-name (common-lisp:error ":budget-name is required") :type
     (common-lisp:or budget-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-budget-request 'make-delete-budget-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          delete-budget-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           delete-budget-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "BudgetName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-name))
+      (common-lisp:list
+       (common-lisp:cons "BudgetName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-budget-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (delete-budget-response (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (delete-budget-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-budget-response-")))
  (common-lisp:export
   (common-lisp:list 'delete-budget-response 'make-delete-budget-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           delete-budget-response))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-budget-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-budget-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (delete-notification-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (delete-notification-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-notification-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (budget-name (common-lisp:error ":budget-name is required") :type
@@ -337,39 +525,68 @@
  (common-lisp:export
   (common-lisp:list 'delete-notification-request
                     'make-delete-notification-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          delete-notification-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           delete-notification-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "BudgetName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-name)))
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-name))
+      (common-lisp:list
+       (common-lisp:cons "BudgetName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-notification-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (delete-notification-response (:copier common-lisp:nil)))
+     (delete-notification-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-notification-response-")))
  (common-lisp:export
   (common-lisp:list 'delete-notification-response
                     'make-delete-notification-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           delete-notification-response))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-notification-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-notification-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (delete-subscriber-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (delete-subscriber-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-subscriber-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (budget-name (common-lisp:error ":budget-name is required") :type
@@ -381,81 +598,143 @@
  (common-lisp:export
   (common-lisp:list 'delete-subscriber-request
                     'make-delete-subscriber-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          delete-subscriber-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           delete-subscriber-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "BudgetName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-name)))
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification)))
-    (aws-sdk/generator/shape::to-query-params "Subscriber"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subscriber))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-name))
+      (common-lisp:list
+       (common-lisp:cons "BudgetName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subscriber))
+      (common-lisp:list
+       (common-lisp:cons "Subscriber"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-subscriber-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (delete-subscriber-response (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (delete-subscriber-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-subscriber-response-")))
  (common-lisp:export
   (common-lisp:list 'delete-subscriber-response
                     'make-delete-subscriber-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           delete-subscriber-response))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-subscriber-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-subscriber-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-budget-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-budget-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-budget-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (budget-name (common-lisp:error ":budget-name is required") :type
     (common-lisp:or budget-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-budget-request 'make-describe-budget-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-budget-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-budget-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "BudgetName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-name))
+      (common-lisp:list
+       (common-lisp:cons "BudgetName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-budget-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-budget-response (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-budget-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-budget-response-"))
    (budget common-lisp:nil :type (common-lisp:or budget common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-budget-response 'make-describe-budget-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-budget-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-budget-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Budget"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget))
+      (common-lisp:list
+       (common-lisp:cons "Budget"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-budget-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-budgets-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-budgets-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-budgets-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (max-results common-lisp:nil :type
@@ -464,52 +743,85 @@
     (common-lisp:or generic-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-budgets-request 'make-describe-budgets-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-budgets-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-budgets-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'max-results)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'max-results))
+      (common-lisp:list
+       (common-lisp:cons "MaxResults"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-budgets-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-budgets-response (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-budgets-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-budgets-response-"))
    (budgets common-lisp:nil :type (common-lisp:or budgets common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or generic-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-budgets-response
                     'make-describe-budgets-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-budgets-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-budgets-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Budgets"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budgets)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budgets))
+      (common-lisp:list
+       (common-lisp:cons "Budgets"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-budgets-response))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-notifications-for-budget-request (:copier common-lisp:nil))
+     (describe-notifications-for-budget-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-notifications-for-budget-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (budget-name (common-lisp:error ":budget-name is required") :type
@@ -521,34 +833,53 @@
  (common-lisp:export
   (common-lisp:list 'describe-notifications-for-budget-request
                     'make-describe-notifications-for-budget-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-notifications-for-budget-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-notifications-for-budget-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "BudgetName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-name)))
-    (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'max-results)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-name))
+      (common-lisp:list
+       (common-lisp:cons "BudgetName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'max-results))
+      (common-lisp:list
+       (common-lisp:cons "MaxResults"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-notifications-for-budget-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-notifications-for-budget-response (:copier common-lisp:nil))
+     (describe-notifications-for-budget-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-notifications-for-budget-response-"))
    (notifications common-lisp:nil :type
     (common-lisp:or notifications common-lisp:null))
    (next-token common-lisp:nil :type
@@ -556,24 +887,40 @@
  (common-lisp:export
   (common-lisp:list 'describe-notifications-for-budget-response
                     'make-describe-notifications-for-budget-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-notifications-for-budget-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-notifications-for-budget-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Notifications"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notifications)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notifications))
+      (common-lisp:list
+       (common-lisp:cons "Notifications"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-notifications-for-budget-response))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-subscribers-for-notification-request (:copier common-lisp:nil))
+     (describe-subscribers-for-notification-request (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-describe-subscribers-for-notification-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (budget-name (common-lisp:error ":budget-name is required") :type
@@ -587,39 +934,61 @@
  (common-lisp:export
   (common-lisp:list 'describe-subscribers-for-notification-request
                     'make-describe-subscribers-for-notification-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-subscribers-for-notification-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-subscribers-for-notification-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "BudgetName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-name)))
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification)))
-    (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'max-results)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-name))
+      (common-lisp:list
+       (common-lisp:cons "BudgetName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'max-results))
+      (common-lisp:list
+       (common-lisp:cons "MaxResults"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-subscribers-for-notification-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-subscribers-for-notification-response (:copier common-lisp:nil))
+     (describe-subscribers-for-notification-response (:copier common-lisp:nil)
+      (:conc-name
+       "struct-shape-describe-subscribers-for-notification-response-"))
    (subscribers common-lisp:nil :type
     (common-lisp:or subscribers common-lisp:null))
    (next-token common-lisp:nil :type
@@ -627,21 +996,35 @@
  (common-lisp:export
   (common-lisp:list 'describe-subscribers-for-notification-response
                     'make-describe-subscribers-for-notification-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-subscribers-for-notification-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-subscribers-for-notification-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Subscribers"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subscribers)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subscribers))
+      (common-lisp:list
+       (common-lisp:cons "Subscribers"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-subscribers-for-notification-response))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype dimension-values ()
    '(trivial-types:proper-list generic-string))
@@ -651,111 +1034,191 @@
                            (trivial-types:proper-list generic-string))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (duplicate-record-exception (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (duplicate-record-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-duplicate-record-exception-"))
    (message common-lisp:nil :type
     (common-lisp:or |errorMessage| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'duplicate-record-exception
                     'make-duplicate-record-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          duplicate-record-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           duplicate-record-exception))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "Message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          duplicate-record-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (expired-next-token-exception (:copier common-lisp:nil))
+     (expired-next-token-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-expired-next-token-exception-"))
    (message common-lisp:nil :type
     (common-lisp:or |errorMessage| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'expired-next-token-exception
                     'make-expired-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          expired-next-token-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           expired-next-token-exception))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "Message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          expired-next-token-exception))
+   common-lisp:nil))
 (common-lisp:deftype generic-boolean () 'common-lisp:boolean)
 (common-lisp:deftype generic-string () 'common-lisp:string)
 (common-lisp:deftype generic-timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (internal-error-exception (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (internal-error-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-internal-error-exception-"))
    (message common-lisp:nil :type
     (common-lisp:or |errorMessage| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'internal-error-exception 'make-internal-error-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          internal-error-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           internal-error-exception))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "Message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          internal-error-exception))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil))
+     (invalid-next-token-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-invalid-next-token-exception-"))
    (message common-lisp:nil :type
     (common-lisp:or |errorMessage| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'invalid-next-token-exception
                     'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          invalid-next-token-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           invalid-next-token-exception))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "Message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-next-token-exception))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (invalid-parameter-exception (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (invalid-parameter-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-invalid-parameter-exception-"))
    (message common-lisp:nil :type
     (common-lisp:or |errorMessage| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-exception
                     'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          invalid-parameter-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           invalid-parameter-exception))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "Message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-parameter-exception))
+   common-lisp:nil))
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (not-found-exception (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (not-found-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-not-found-exception-"))
    (message common-lisp:nil :type
     (common-lisp:or |errorMessage| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'not-found-exception 'make-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape not-found-exception))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input not-found-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input not-found-exception))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "Message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input not-found-exception))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (notification (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (notification (:copier common-lisp:nil)
+      (:conc-name "struct-shape-notification-"))
    (notification-type (common-lisp:error ":notification-type is required")
     :type (common-lisp:or notification-type common-lisp:null))
    (comparison-operator (common-lisp:error ":comparison-operator is required")
@@ -763,29 +1226,42 @@
    (threshold (common-lisp:error ":threshold is required") :type
     (common-lisp:or notification-threshold common-lisp:null)))
  (common-lisp:export (common-lisp:list 'notification 'make-notification))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape notification))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input notification))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input notification))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "NotificationType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification-type)))
-    (aws-sdk/generator/shape::to-query-params "ComparisonOperator"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'comparison-operator)))
-    (aws-sdk/generator/shape::to-query-params "Threshold"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'threshold))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification-type))
+      (common-lisp:list
+       (common-lisp:cons "NotificationType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'comparison-operator))
+      (common-lisp:list
+       (common-lisp:cons "ComparisonOperator"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'threshold))
+      (common-lisp:list
+       (common-lisp:cons "Threshold"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input notification))
+   common-lisp:nil))
 (common-lisp:deftype notification-threshold () 'common-lisp:double-float)
 (common-lisp:deftype notification-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (notification-with-subscribers (:copier common-lisp:nil))
+     (notification-with-subscribers (:copier common-lisp:nil)
+      (:conc-name "struct-shape-notification-with-subscribers-"))
    (notification (common-lisp:error ":notification is required") :type
     (common-lisp:or notification common-lisp:null))
    (subscribers (common-lisp:error ":subscribers is required") :type
@@ -793,21 +1269,35 @@
  (common-lisp:export
   (common-lisp:list 'notification-with-subscribers
                     'make-notification-with-subscribers))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          notification-with-subscribers))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           notification-with-subscribers))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification)))
-    (aws-sdk/generator/shape::to-query-params "Subscribers"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subscribers))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subscribers))
+      (common-lisp:list
+       (common-lisp:cons "Subscribers"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          notification-with-subscribers))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype notification-with-subscribers-list ()
    '(trivial-types:proper-list notification-with-subscribers))
@@ -827,45 +1317,68 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype numeric-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (spend (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (spend (:copier common-lisp:nil) (:conc-name "struct-shape-spend-"))
    (amount (common-lisp:error ":amount is required") :type
     (common-lisp:or numeric-value common-lisp:null))
    (unit (common-lisp:error ":unit is required") :type
     (common-lisp:or unit-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'spend 'make-spend))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape spend))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input spend))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input spend))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Amount"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'amount)))
-    (aws-sdk/generator/shape::to-query-params "Unit"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'unit))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'amount))
+      (common-lisp:list
+       (common-lisp:cons "Amount"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'unit))
+      (common-lisp:list
+       (common-lisp:cons "Unit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input spend))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (subscriber (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (subscriber (:copier common-lisp:nil)
+      (:conc-name "struct-shape-subscriber-"))
    (subscription-type (common-lisp:error ":subscription-type is required")
     :type (common-lisp:or subscription-type common-lisp:null))
    (address (common-lisp:error ":address is required") :type
     (common-lisp:or generic-string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'subscriber 'make-subscriber))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape subscriber))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input subscriber))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input subscriber))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "SubscriptionType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subscription-type)))
-    (aws-sdk/generator/shape::to-query-params "Address"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'address))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'subscription-type))
+      (common-lisp:list
+       (common-lisp:cons "SubscriptionType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'address))
+      (common-lisp:list
+       (common-lisp:cons "Address"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input subscriber))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype subscribers () '(trivial-types:proper-list subscriber))
  (common-lisp:defun |make-subscribers|
@@ -875,61 +1388,103 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype subscription-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (time-period (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (time-period (:copier common-lisp:nil)
+      (:conc-name "struct-shape-time-period-"))
    (start (common-lisp:error ":start is required") :type
     (common-lisp:or generic-timestamp common-lisp:null))
    (end (common-lisp:error ":end is required") :type
     (common-lisp:or generic-timestamp common-lisp:null)))
  (common-lisp:export (common-lisp:list 'time-period 'make-time-period))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape time-period))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input time-period))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input time-period))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Start"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start)))
-    (aws-sdk/generator/shape::to-query-params "End"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'end))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'start))
+      (common-lisp:list
+       (common-lisp:cons "Start"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'end))
+      (common-lisp:list
+       (common-lisp:cons "End"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input time-period))
+   common-lisp:nil))
 (common-lisp:deftype time-unit () 'common-lisp:string)
 (common-lisp:deftype unit-value () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (update-budget-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (update-budget-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-update-budget-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (new-budget (common-lisp:error ":new-budget is required") :type
     (common-lisp:or budget common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-budget-request 'make-update-budget-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          update-budget-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           update-budget-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "NewBudget"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'new-budget))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'new-budget))
+      (common-lisp:list
+       (common-lisp:cons "NewBudget"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-budget-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (update-budget-response (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (update-budget-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-update-budget-response-")))
  (common-lisp:export
   (common-lisp:list 'update-budget-response 'make-update-budget-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           update-budget-response))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-budget-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-budget-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (update-notification-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (update-notification-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-update-notification-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (budget-name (common-lisp:error ":budget-name is required") :type
@@ -941,44 +1496,75 @@
  (common-lisp:export
   (common-lisp:list 'update-notification-request
                     'make-update-notification-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          update-notification-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           update-notification-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "BudgetName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-name)))
-    (aws-sdk/generator/shape::to-query-params "OldNotification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'old-notification)))
-    (aws-sdk/generator/shape::to-query-params "NewNotification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'new-notification))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-name))
+      (common-lisp:list
+       (common-lisp:cons "BudgetName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'old-notification))
+      (common-lisp:list
+       (common-lisp:cons "OldNotification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'new-notification))
+      (common-lisp:list
+       (common-lisp:cons "NewNotification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-notification-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (update-notification-response (:copier common-lisp:nil)))
+     (update-notification-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-update-notification-response-")))
  (common-lisp:export
   (common-lisp:list 'update-notification-response
                     'make-update-notification-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           update-notification-response))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-notification-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-notification-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (update-subscriber-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (update-subscriber-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-update-subscriber-request-"))
    (account-id (common-lisp:error ":account-id is required") :type
     (common-lisp:or account-id common-lisp:null))
    (budget-name (common-lisp:error ":budget-name is required") :type
@@ -992,46 +1578,78 @@
  (common-lisp:export
   (common-lisp:list 'update-subscriber-request
                     'make-update-subscriber-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          update-subscriber-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           update-subscriber-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AccountId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'account-id)))
-    (aws-sdk/generator/shape::to-query-params "BudgetName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'budget-name)))
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification)))
-    (aws-sdk/generator/shape::to-query-params "OldSubscriber"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'old-subscriber)))
-    (aws-sdk/generator/shape::to-query-params "NewSubscriber"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'new-subscriber))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'account-id))
+      (common-lisp:list
+       (common-lisp:cons "AccountId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'budget-name))
+      (common-lisp:list
+       (common-lisp:cons "BudgetName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'old-subscriber))
+      (common-lisp:list
+       (common-lisp:cons "OldSubscriber"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'new-subscriber))
+      (common-lisp:list
+       (common-lisp:cons "NewSubscriber"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-subscriber-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (update-subscriber-response (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (update-subscriber-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-update-subscriber-response-")))
  (common-lisp:export
   (common-lisp:list 'update-subscriber-response
                     'make-update-subscriber-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           update-subscriber-response))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-subscriber-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-subscriber-response))
+   common-lisp:nil))
 (common-lisp:deftype |errorMessage| () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun create-budget
@@ -1046,13 +1664,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CreateBudget")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CreateBudgetResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CreateBudget"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'create-budget))
 (common-lisp:progn
  (common-lisp:defun create-notification
@@ -1067,13 +1684,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CreateNotification")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CreateNotificationResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CreateNotification"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'create-notification))
 (common-lisp:progn
  (common-lisp:defun create-subscriber
@@ -1088,13 +1704,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CreateSubscriber")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CreateSubscriberResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CreateSubscriber"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'create-subscriber))
 (common-lisp:progn
  (common-lisp:defun delete-budget
@@ -1107,13 +1722,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeleteBudget")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DeleteBudgetResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeleteBudget"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-budget))
 (common-lisp:progn
  (common-lisp:defun delete-notification
@@ -1127,13 +1741,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeleteNotification")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DeleteNotificationResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeleteNotification"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-notification))
 (common-lisp:progn
  (common-lisp:defun delete-subscriber
@@ -1148,13 +1761,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeleteSubscriber")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DeleteSubscriberResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeleteSubscriber"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-subscriber))
 (common-lisp:progn
  (common-lisp:defun describe-budget
@@ -1167,13 +1779,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeBudget")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeBudgetResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeBudget"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'describe-budget))
 (common-lisp:progn
  (common-lisp:defun describe-budgets
@@ -1187,13 +1798,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeBudgets")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeBudgetsResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeBudgets"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'describe-budgets))
 (common-lisp:progn
  (common-lisp:defun describe-notifications-for-budget
@@ -1209,14 +1819,12 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"DescribeNotificationsForBudget")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeNotificationsForBudgetResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeNotificationsForBudget"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'describe-notifications-for-budget))
 (common-lisp:progn
  (common-lisp:defun describe-subscribers-for-notification
@@ -1233,14 +1841,12 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action"
-                                      ,@"DescribeSubscribersForNotification")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeSubscribersForNotificationResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeSubscribersForNotification"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'describe-subscribers-for-notification))
 (common-lisp:progn
  (common-lisp:defun update-budget
@@ -1253,13 +1859,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"UpdateBudget")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "UpdateBudgetResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "UpdateBudget"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-budget))
 (common-lisp:progn
  (common-lisp:defun update-notification
@@ -1275,13 +1880,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"UpdateNotification")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "UpdateNotificationResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "UpdateNotification"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-notification))
 (common-lisp:progn
  (common-lisp:defun update-subscriber
@@ -1297,11 +1901,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'budgets-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"UpdateSubscriber")
-                                     ("Version" ,@"2016-10-20"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "UpdateSubscriberResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'budgets-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "UpdateSubscriber"
+                                                        "2016-10-20"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-subscriber))

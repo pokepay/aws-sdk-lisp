@@ -17,14 +17,18 @@
 (common-lisp:deftype error-code () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:deftype exception-message () 'common-lisp:string)
-(common-lisp:defstruct
-    (failed-resources-map
-     (:constructor |make-failed-resources-map|
-      (aws-sdk/generator/shape::key aws-sdk/generator/shape::value)))
-  aws-sdk/generator/shape::key
-  aws-sdk/generator/shape::value)
 (common-lisp:progn
- (common-lisp:defstruct (failure-info (:copier common-lisp:nil))
+ (common-lisp:deftype failed-resources-map () 'common-lisp:hash-table)
+ (common-lisp:defun |make-failed-resources-map|
+                    (aws-sdk/generator/shape::key-values)
+   (common-lisp:etypecase aws-sdk/generator/shape::key-values
+     (common-lisp:hash-table aws-sdk/generator/shape::key-values)
+     (common-lisp:list
+      (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (failure-info (:copier common-lisp:nil)
+      (:conc-name "struct-shape-failure-info-"))
    (status-code common-lisp:nil :type
     (common-lisp:or status-code common-lisp:null))
    (error-code common-lisp:nil :type
@@ -32,26 +36,40 @@
    (error-message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export (common-lisp:list 'failure-info 'make-failure-info))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape failure-info))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input failure-info))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input failure-info))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "StatusCode"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'status-code)))
-    (aws-sdk/generator/shape::to-query-params "ErrorCode"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'error-code)))
-    (aws-sdk/generator/shape::to-query-params "ErrorMessage"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'error-message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'status-code))
+      (common-lisp:list
+       (common-lisp:cons "StatusCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'error-code))
+      (common-lisp:list
+       (common-lisp:cons "ErrorCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'error-message))
+      (common-lisp:list
+       (common-lisp:cons "ErrorMessage"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input failure-info))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (get-resources-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-resources-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-resources-input-"))
    (pagination-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
    (tag-filters common-lisp:nil :type
@@ -64,187 +82,308 @@
     (common-lisp:or resource-type-filter-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-resources-input 'make-get-resources-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape get-resources-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input get-resources-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input get-resources-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'pagination-token)))
-    (aws-sdk/generator/shape::to-query-params "TagFilters"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-filters)))
-    (aws-sdk/generator/shape::to-query-params "ResourcesPerPage"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'resources-per-page)))
-    (aws-sdk/generator/shape::to-query-params "TagsPerPage"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tags-per-page)))
-    (aws-sdk/generator/shape::to-query-params "ResourceTypeFilters"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'resource-type-filters))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'pagination-token))
+      (common-lisp:list
+       (common-lisp:cons "PaginationToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-filters))
+      (common-lisp:list
+       (common-lisp:cons "TagFilters"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resources-per-page))
+      (common-lisp:list
+       (common-lisp:cons "ResourcesPerPage"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags-per-page))
+      (common-lisp:list
+       (common-lisp:cons "TagsPerPage"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'resource-type-filters))
+      (common-lisp:list
+       (common-lisp:cons "ResourceTypeFilters"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input get-resources-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (get-resources-output (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-resources-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-resources-output-"))
    (pagination-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
    (resource-tag-mapping-list common-lisp:nil :type
     (common-lisp:or resource-tag-mapping-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-resources-output 'make-get-resources-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape get-resources-output))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input get-resources-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input get-resources-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'pagination-token)))
-    (aws-sdk/generator/shape::to-query-params "ResourceTagMappingList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'resource-tag-mapping-list))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'pagination-token))
+      (common-lisp:list
+       (common-lisp:cons "PaginationToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'resource-tag-mapping-list))
+      (common-lisp:list
+       (common-lisp:cons "ResourceTagMappingList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input get-resources-output))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (get-tag-keys-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-tag-keys-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-tag-keys-input-"))
    (pagination-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-tag-keys-input 'make-get-tag-keys-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape get-tag-keys-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input get-tag-keys-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input get-tag-keys-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'pagination-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'pagination-token))
+      (common-lisp:list
+       (common-lisp:cons "PaginationToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input get-tag-keys-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (get-tag-keys-output (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-tag-keys-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-tag-keys-output-"))
    (pagination-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
    (tag-keys common-lisp:nil :type
     (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-tag-keys-output 'make-get-tag-keys-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape get-tag-keys-output))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input get-tag-keys-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input get-tag-keys-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'pagination-token)))
-    (aws-sdk/generator/shape::to-query-params "TagKeys"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-keys))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'pagination-token))
+      (common-lisp:list
+       (common-lisp:cons "PaginationToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-keys))
+      (common-lisp:list
+       (common-lisp:cons "TagKeys"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input get-tag-keys-output))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (get-tag-values-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-tag-values-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-tag-values-input-"))
    (pagination-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
    (key (common-lisp:error ":key is required") :type
     (common-lisp:or tag-key common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-tag-values-input 'make-get-tag-values-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape get-tag-values-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input get-tag-values-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input get-tag-values-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'pagination-token)))
-    (aws-sdk/generator/shape::to-query-params "Key"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'key))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'pagination-token))
+      (common-lisp:list
+       (common-lisp:cons "PaginationToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key))
+      (common-lisp:list
+       (common-lisp:cons "Key"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input get-tag-values-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (get-tag-values-output (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-tag-values-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-tag-values-output-"))
    (pagination-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
    (tag-values common-lisp:nil :type
     (common-lisp:or tag-values-output-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-tag-values-output 'make-get-tag-values-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          get-tag-values-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           get-tag-values-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'pagination-token)))
-    (aws-sdk/generator/shape::to-query-params "TagValues"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-values))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'pagination-token))
+      (common-lisp:list
+       (common-lisp:cons "PaginationToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-values))
+      (common-lisp:list
+       (common-lisp:cons "TagValues"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-tag-values-output))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (internal-service-exception (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (internal-service-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-internal-service-exception-"))
    (message common-lisp:nil :type
     (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'internal-service-exception
                     'make-internal-service-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          internal-service-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           internal-service-exception))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "Message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          internal-service-exception))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (invalid-parameter-exception (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (invalid-parameter-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-invalid-parameter-exception-"))
    (message common-lisp:nil :type
     (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-exception
                     'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          invalid-parameter-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           invalid-parameter-exception))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "Message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          invalid-parameter-exception))
+   common-lisp:nil))
 (common-lisp:deftype pagination-token () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
-     (pagination-token-expired-exception (:copier common-lisp:nil))
+     (pagination-token-expired-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-pagination-token-expired-exception-"))
    (message common-lisp:nil :type
     (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'pagination-token-expired-exception
                     'make-pagination-token-expired-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          pagination-token-expired-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           pagination-token-expired-exception))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "Message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          pagination-token-expired-exception))
+   common-lisp:nil))
 (common-lisp:deftype resource-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype resource-arnlist ()
@@ -255,25 +394,37 @@
                            (trivial-types:proper-list resource-arn))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (resource-tag-mapping (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (resource-tag-mapping (:copier common-lisp:nil)
+      (:conc-name "struct-shape-resource-tag-mapping-"))
    (resource-arn common-lisp:nil :type
     (common-lisp:or resource-arn common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'resource-tag-mapping 'make-resource-tag-mapping))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape resource-tag-mapping))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input resource-tag-mapping))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input resource-tag-mapping))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ResourceARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'resource-arn)))
-    (aws-sdk/generator/shape::to-query-params "Tags"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tags))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resource-arn))
+      (common-lisp:list
+       (common-lisp:cons "ResourceARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "Tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input resource-tag-mapping))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype resource-tag-mapping-list ()
    '(trivial-types:proper-list resource-tag-mapping))
@@ -293,44 +444,67 @@
 (common-lisp:deftype resources-per-page () 'common-lisp:integer)
 (common-lisp:deftype status-code () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (tag (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (tag (:copier common-lisp:nil) (:conc-name "struct-shape-tag-"))
    (key (common-lisp:error ":key is required") :type
     (common-lisp:or tag-key common-lisp:null))
    (value (common-lisp:error ":value is required") :type
     (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape tag))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input tag))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input tag))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Key"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'key)))
-    (aws-sdk/generator/shape::to-query-params "Value"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'value))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key))
+      (common-lisp:list
+       (common-lisp:cons "Key"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'value))
+      (common-lisp:list
+       (common-lisp:cons "Value"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input tag))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (tag-filter (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (tag-filter (:copier common-lisp:nil)
+      (:conc-name "struct-shape-tag-filter-"))
    (key common-lisp:nil :type (common-lisp:or tag-key common-lisp:null))
    (values common-lisp:nil :type
     (common-lisp:or tag-value-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag-filter 'make-tag-filter))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape tag-filter))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input tag-filter))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input tag-filter))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Key"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'key)))
-    (aws-sdk/generator/shape::to-query-params "Values"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'values))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key))
+      (common-lisp:list
+       (common-lisp:cons "Key"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'values))
+      (common-lisp:list
+       (common-lisp:cons "Values"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input tag-filter))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype tag-filter-list ()
    '(trivial-types:proper-list tag-filter))
@@ -362,47 +536,71 @@
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list tag))
    aws-sdk/generator/shape::members))
-(common-lisp:defstruct
-    (tag-map
-     (:constructor |make-tag-map|
-      (aws-sdk/generator/shape::key aws-sdk/generator/shape::value)))
-  aws-sdk/generator/shape::key
-  aws-sdk/generator/shape::value)
 (common-lisp:progn
- (common-lisp:defstruct (tag-resources-input (:copier common-lisp:nil))
+ (common-lisp:deftype tag-map () 'common-lisp:hash-table)
+ (common-lisp:defun |make-tag-map| (aws-sdk/generator/shape::key-values)
+   (common-lisp:etypecase aws-sdk/generator/shape::key-values
+     (common-lisp:hash-table aws-sdk/generator/shape::key-values)
+     (common-lisp:list
+      (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (tag-resources-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-tag-resources-input-"))
    (resource-arnlist (common-lisp:error ":resource-arnlist is required") :type
     (common-lisp:or resource-arnlist common-lisp:null))
    (tags (common-lisp:error ":tags is required") :type
     (common-lisp:or tag-map common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-resources-input 'make-tag-resources-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape tag-resources-input))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input tag-resources-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input tag-resources-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ResourceARNList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'resource-arnlist)))
-    (aws-sdk/generator/shape::to-query-params "Tags"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tags))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resource-arnlist))
+      (common-lisp:list
+       (common-lisp:cons "ResourceARNList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "Tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input tag-resources-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (tag-resources-output (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (tag-resources-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-tag-resources-output-"))
    (failed-resources-map common-lisp:nil :type
     (common-lisp:or failed-resources-map common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-resources-output 'make-tag-resources-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape tag-resources-output))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input tag-resources-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input tag-resources-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "FailedResourcesMap"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'failed-resources-map))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'failed-resources-map))
+      (common-lisp:list
+       (common-lisp:cons "FailedResourcesMap"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input tag-resources-output))
+   common-lisp:nil))
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype tag-value-list () '(trivial-types:proper-list tag-value))
@@ -421,58 +619,99 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype tags-per-page () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (throttled-exception (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (throttled-exception (:copier common-lisp:nil)
+      (:conc-name "struct-shape-throttled-exception-"))
    (message common-lisp:nil :type
     (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'throttled-exception 'make-throttled-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape throttled-exception))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input throttled-exception))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input throttled-exception))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "Message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input throttled-exception))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (untag-resources-input (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (untag-resources-input (:copier common-lisp:nil)
+      (:conc-name "struct-shape-untag-resources-input-"))
    (resource-arnlist (common-lisp:error ":resource-arnlist is required") :type
     (common-lisp:or resource-arnlist common-lisp:null))
    (tag-keys (common-lisp:error ":tag-keys is required") :type
     (common-lisp:or tag-key-list-for-untag common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-resources-input 'make-untag-resources-input))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          untag-resources-input))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           untag-resources-input))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ResourceARNList"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'resource-arnlist)))
-    (aws-sdk/generator/shape::to-query-params "TagKeys"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tag-keys))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resource-arnlist))
+      (common-lisp:list
+       (common-lisp:cons "ResourceARNList"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tag-keys))
+      (common-lisp:list
+       (common-lisp:cons "TagKeys"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          untag-resources-input))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (untag-resources-output (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (untag-resources-output (:copier common-lisp:nil)
+      (:conc-name "struct-shape-untag-resources-output-"))
    (failed-resources-map common-lisp:nil :type
     (common-lisp:or failed-resources-map common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-resources-output 'make-untag-resources-output))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          untag-resources-output))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           untag-resources-output))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "FailedResourcesMap"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'failed-resources-map))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'failed-resources-map))
+      (common-lisp:list
+       (common-lisp:cons "FailedResourcesMap"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          untag-resources-output))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defun get-resources
                     (
@@ -487,14 +726,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'resourcegroupstaggingapi-request :method
-                                  :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"GetResources")
-                                     ("Version" ,@"2017-01-26"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "GetResourcesOutput" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input
+        'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
+        "POST" "/" "GetResources" "2017-01-26"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'get-resources))
 (common-lisp:progn
  (common-lisp:defun get-tag-keys
@@ -507,14 +742,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'resourcegroupstaggingapi-request :method
-                                  :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"GetTagKeys")
-                                     ("Version" ,@"2017-01-26"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "GetTagKeysOutput" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input
+        'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
+        "POST" "/" "GetTagKeys" "2017-01-26"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'get-tag-keys))
 (common-lisp:progn
  (common-lisp:defun get-tag-values
@@ -527,14 +758,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'resourcegroupstaggingapi-request :method
-                                  :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"GetTagValues")
-                                     ("Version" ,@"2017-01-26"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "GetTagValuesOutput" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input
+        'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
+        "POST" "/" "GetTagValues" "2017-01-26"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'get-tag-values))
 (common-lisp:progn
  (common-lisp:defun tag-resources
@@ -547,14 +774,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'resourcegroupstaggingapi-request :method
-                                  :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"TagResources")
-                                     ("Version" ,@"2017-01-26"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "TagResourcesOutput" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input
+        'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
+        "POST" "/" "TagResources" "2017-01-26"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'tag-resources))
 (common-lisp:progn
  (common-lisp:defun untag-resources
@@ -567,12 +790,8 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'resourcegroupstaggingapi-request :method
-                                  :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"UntagResources")
-                                     ("Version" ,@"2017-01-26"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "UntagResourcesOutput" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input
+        'resourcegroupstaggingapi-request aws-sdk/generator/operation::input
+        "POST" "/" "UntagResources" "2017-01-26"))
+      common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'untag-resources))
