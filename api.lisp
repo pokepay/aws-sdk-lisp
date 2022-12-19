@@ -47,7 +47,11 @@
                                :method (request-method req)
                                :host (request-host req region)
                                :path (request-path req)
-                               :params (request-params req)
+                               :params (mapcar (lambda (kv)
+                                                 (if (null (cdr kv))
+                                                     (cons (car kv) "")
+                                                     kv))
+                                               (request-params req))
                                :headers headers
                                :payload (or payload ""))
         (dex:request (request-endpoint req region)

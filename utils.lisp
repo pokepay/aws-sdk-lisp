@@ -6,7 +6,8 @@
                 #:ascii-string-to-byte-array)
   (:import-from #:kebab
                 #:to-lisp-case)
-  (:export #:lispify))
+  (:export #:lispify
+           #:gethash+))
 (in-package #:aws-sdk/utils)
 
 (defun lispify (value &optional (package *package*))
@@ -28,3 +29,10 @@
        (ironclad:digest-sequence :sha256 value))
       (pathname
        (ironclad:digest-file :sha256 value)))))
+
+(defun gethash+ (keys hash)
+  (reduce (lambda (hash key)
+            (when hash
+              (gethash key hash)))
+          keys
+          :initial-value hash))

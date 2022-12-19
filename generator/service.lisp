@@ -6,6 +6,8 @@
   (:import-from #:aws-sdk/request
                 #:request)
   (:import-from #:yason)
+  (:import-from #:alexandria
+                #:when-let*)
   (:export #:dump-service
            #:load-service
            #:generate-service
@@ -36,24 +38,37 @@
     (let ((hash (yason:parse
                  (uiop:read-file-string json))))
       (loop for name being each hash-key of (gethash "shapes" hash)
-              using (hash-value options)
+            using (hash-value options)
             do (format stream "~&~S~%" (compile-shape name options)))
 
       (loop for action being each hash-key of (gethash "operations" hash)
-              using (hash-value options)
+            using (hash-value options)
             for input = (gethash "input" options)
+            for output = (gethash "output" options)
             do (format stream "~&~S~%"
                        (compile-operation
                          service
                          action
-                         (gethash "apiVersion"
-                                  (gethash "metadata" hash))
+                         (gethash+ '("metadata" "apiVersion") hash)
                          options
-                        (and input
-                             (loop for key being each hash-key of (gethash "members"
-                                                                           (gethash (gethash "shape" input)
-                                                                                    (gethash "shapes" hash)))
-                                   collect (lispify key))))))
+                         (and input
+                              (loop for key being each hash-key of (gethash+ `("shapes" ,(gethash "shape" input) "members")
+                                                                             hash)
+                                    collect (lispify key)))
+                         (and output
+                              (when-let* ((payload-shape
+                                            (gethash+ `("shapes" ,(gethash "shape" output) "payload") hash))
+                                          (payload-shape (gethash+ `("shapes"
+                                                                     ,(gethash "shape" output)
+                                                                     "members"
+                                                                     ,payload-shape)
+                                                                   hash)))
+                                (labels ((find-output-type (shape)
+                                           (and shape
+                                                (or (gethash "type" shape)
+                                                    (find-output-type
+                                                      (gethash+ `("shapes" ,(gethash "shape" shape)) hash))))))
+                                  (find-output-type payload-shape)))))))
       (force-output stream))))
 
 (defun dump-service-base-file-to-stream (service service-dir &optional (stream *standard-output*))

@@ -11,6 +11,8 @@
   (:import-from #:cl-ppcre
                 #:regex-replace-all
                 #:do-matches-as-strings)
+  (:import-from #:babel
+                #:octets-to-string)
   (:import-from #:assoc-utils
                 #:aget)
   (:import-from #:xmls)
@@ -28,15 +30,22 @@
 (defun xmls-to-alist (xmls)
   (list (%xmls-to-alist xmls)))
 
-(defun parse-response (response response-name wrapper-name)
-  (when (and response response-name)
-    (let* ((output (xmls-to-alist (xmls:parse-to-list response)))
-           (output ;; Unwrap the root element
-             (cdr (first output))))
-      (if wrapper-name
-          (values (aget output wrapper-name)
-                  (aget output "ResponseMetadata"))
-          output))))
+(defun ensure-string (value)
+  (if (stringp value)
+      value
+      (babel:octets-to-string value)))
+
+(defun parse-response (body body-type wrapper-name)
+  (if (equal body-type "blob")
+      body
+      (when (and body (/= 0 (length body)))
+        (let* ((output (xmls-to-alist (xmls:parse-to-list (ensure-string body))))
+               (output ;; Unwrap the root element
+                 (cdr (first output))))
+          (if wrapper-name
+              (values (aget output wrapper-name)
+                      (aget output "ResponseMetadata"))
+              output)))))
 
 (defun compile-path-pattern (path-pattern)
   (when path-pattern
@@ -58,7 +67,7 @@
                      ,@slots))
           path-pattern))))
 
-(defun compile-operation (service name version options params)
+(defun compile-operation (service name version options params body-type)
   (let* ((output (gethash "output" options))
          (method (gethash "method" (gethash "http" options)))
          (request-uri (gethash "requestUri" (gethash "http" options))))
@@ -73,8 +82,7 @@
                     (make-request-with-input
                       ',(intern (format nil "~:@(~A-REQUEST~)" service))
                       input ,method ,(compile-path-pattern request-uri) ,name ,version))
-                  ,(and output
-                        (gethash "shape" output))
+                  ,body-type
                   ,(and output
                         (gethash "resultWrapper" output)))))
              (export ',(lispify name))))
@@ -86,8 +94,7 @@
                                 :method ,method
                                 :path ,request-uri
                                 :params `(("Action" . ,,name) ("Version" . ,,version))))
-              ,(and output
-                    (gethash "shape" output))
+              ,body-type
               ,(and output
                     (gethash "resultWrapper" output))))
            (export ',(lispify name))))))
