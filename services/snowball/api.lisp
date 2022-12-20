@@ -6,14 +6,21 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/snowball/api)
 (common-lisp:progn
  (common-lisp:defclass snowball-request (aws-sdk/request:request)
                        common-lisp:nil (:default-initargs :service "snowball"))
  (common-lisp:export 'snowball-request))
 (common-lisp:progn
- (common-lisp:defstruct (address (:copier common-lisp:nil))
+ (common-lisp:define-condition snowball-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'snowball-error))
+(common-lisp:progn
+ (common-lisp:defstruct
+     (address (:copier common-lisp:nil) (:conc-name "struct-shape-address-"))
    (address-id common-lisp:nil :type
     (common-lisp:or address-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -34,79 +41,114 @@
    (is-restricted common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export (common-lisp:list 'address 'make-address))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape address))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input address))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input address))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'address-id)))
-    (aws-sdk/generator/shape::to-query-params "Name"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'name)))
-    (aws-sdk/generator/shape::to-query-params "Company"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'company)))
-    (aws-sdk/generator/shape::to-query-params "Street1"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'street1)))
-    (aws-sdk/generator/shape::to-query-params "Street2"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'street2)))
-    (aws-sdk/generator/shape::to-query-params "Street3"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'street3)))
-    (aws-sdk/generator/shape::to-query-params "City"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'city)))
-    (aws-sdk/generator/shape::to-query-params "StateOrProvince"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'state-or-province)))
-    (aws-sdk/generator/shape::to-query-params "PrefectureOrDistrict"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'prefecture-or-district)))
-    (aws-sdk/generator/shape::to-query-params "Landmark"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'landmark)))
-    (aws-sdk/generator/shape::to-query-params "Country"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'country)))
-    (aws-sdk/generator/shape::to-query-params "PostalCode"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'postal-code)))
-    (aws-sdk/generator/shape::to-query-params "PhoneNumber"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'phone-number)))
-    (aws-sdk/generator/shape::to-query-params "IsRestricted"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'is-restricted))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'address-id))
+      (common-lisp:list
+       (common-lisp:cons "AddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'name))
+      (common-lisp:list
+       (common-lisp:cons "Name"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'company))
+      (common-lisp:list
+       (common-lisp:cons "Company"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'street1))
+      (common-lisp:list
+       (common-lisp:cons "Street1"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'street2))
+      (common-lisp:list
+       (common-lisp:cons "Street2"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'street3))
+      (common-lisp:list
+       (common-lisp:cons "Street3"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'city))
+      (common-lisp:list
+       (common-lisp:cons "City"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'state-or-province))
+      (common-lisp:list
+       (common-lisp:cons "StateOrProvince"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'prefecture-or-district))
+      (common-lisp:list
+       (common-lisp:cons "PrefectureOrDistrict"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'landmark))
+      (common-lisp:list
+       (common-lisp:cons "Landmark"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'country))
+      (common-lisp:list
+       (common-lisp:cons "Country"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'postal-code))
+      (common-lisp:list
+       (common-lisp:cons "PostalCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'phone-number))
+      (common-lisp:list
+       (common-lisp:cons "PhoneNumber"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'is-restricted))
+      (common-lisp:list
+       (common-lisp:cons "IsRestricted"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input address))
+   common-lisp:nil))
 (common-lisp:deftype address-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype address-list () '(trivial-types:proper-list address))
@@ -117,71 +159,108 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct (cancel-cluster-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (cancel-cluster-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cancel-cluster-request-"))
    (cluster-id (common-lisp:error ":cluster-id is required") :type
     (common-lisp:or cluster-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-cluster-request 'make-cancel-cluster-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          cancel-cluster-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           cancel-cluster-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ClusterId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-id))
+      (common-lisp:list
+       (common-lisp:cons "ClusterId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-cluster-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (cancel-cluster-result (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (cancel-cluster-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cancel-cluster-result-")))
  (common-lisp:export
   (common-lisp:list 'cancel-cluster-result 'make-cancel-cluster-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           cancel-cluster-result))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-cluster-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-cluster-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (cancel-job-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (cancel-job-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cancel-job-request-"))
    (job-id (common-lisp:error ":job-id is required") :type
     (common-lisp:or job-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-job-request 'make-cancel-job-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape cancel-job-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input cancel-job-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input cancel-job-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-id))))))
-(common-lisp:progn
- (common-lisp:defstruct (cancel-job-result (:copier common-lisp:nil)))
- (common-lisp:export
-  (common-lisp:list 'cancel-job-result 'make-cancel-job-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape cancel-job-result))
-   (common-lisp:append)))
-(common-lisp:deftype cluster-id () 'common-lisp:string)
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-id))
+      (common-lisp:list
+       (common-lisp:cons "JobId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input cancel-job-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (cluster-limit-exceeded-exception (:copier common-lisp:nil))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+     (cancel-job-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cancel-job-result-")))
+ (common-lisp:export
+  (common-lisp:list 'cancel-job-result 'make-cancel-job-result))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input cancel-job-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input cancel-job-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input cancel-job-result))
+   common-lisp:nil))
+(common-lisp:deftype cluster-id () 'common-lisp:string)
+(common-lisp:progn
+ (common-lisp:define-condition cluster-limit-exceeded-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       cluster-limit-exceeded-exception-message)))
  (common-lisp:export
   (common-lisp:list 'cluster-limit-exceeded-exception
-                    'make-cluster-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          cluster-limit-exceeded-exception))
-   (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+                    'cluster-limit-exceeded-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct (cluster-list-entry (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (cluster-list-entry (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cluster-list-entry-"))
    (cluster-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (cluster-state common-lisp:nil :type
     (common-lisp:or cluster-state common-lisp:null))
@@ -191,29 +270,43 @@
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cluster-list-entry 'make-cluster-list-entry))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape cluster-list-entry))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input cluster-list-entry))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input cluster-list-entry))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ClusterId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-id)))
-    (aws-sdk/generator/shape::to-query-params "ClusterState"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-state)))
-    (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'creation-date)))
-    (aws-sdk/generator/shape::to-query-params "Description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-id))
+      (common-lisp:list
+       (common-lisp:cons "ClusterId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-state))
+      (common-lisp:list
+       (common-lisp:cons "ClusterState"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-date))
+      (common-lisp:list
+       (common-lisp:cons "CreationDate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "Description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input cluster-list-entry))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype cluster-list-entry-list ()
    '(trivial-types:proper-list cluster-list-entry))
@@ -223,7 +316,9 @@
                            (trivial-types:proper-list cluster-list-entry))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (cluster-metadata (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (cluster-metadata (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cluster-metadata-"))
    (cluster-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (kms-key-arn common-lisp:nil :type
@@ -248,108 +343,171 @@
     (common-lisp:or address-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cluster-metadata 'make-cluster-metadata))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape cluster-metadata))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input cluster-metadata))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input cluster-metadata))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ClusterId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-id)))
-    (aws-sdk/generator/shape::to-query-params "Description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params "KmsKeyARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'kms-key-arn)))
-    (aws-sdk/generator/shape::to-query-params "RoleARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'role-arn)))
-    (aws-sdk/generator/shape::to-query-params "ClusterState"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-state)))
-    (aws-sdk/generator/shape::to-query-params "JobType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-type)))
-    (aws-sdk/generator/shape::to-query-params "SnowballType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'snowball-type)))
-    (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'creation-date)))
-    (aws-sdk/generator/shape::to-query-params "Resources"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'resources)))
-    (aws-sdk/generator/shape::to-query-params "AddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'address-id)))
-    (aws-sdk/generator/shape::to-query-params "ShippingOption"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'shipping-option)))
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification)))
-    (aws-sdk/generator/shape::to-query-params "ForwardingAddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'forwarding-address-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-id))
+      (common-lisp:list
+       (common-lisp:cons "ClusterId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "Description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'kms-key-arn))
+      (common-lisp:list
+       (common-lisp:cons "KmsKeyARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'role-arn))
+      (common-lisp:list
+       (common-lisp:cons "RoleARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-state))
+      (common-lisp:list
+       (common-lisp:cons "ClusterState"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-type))
+      (common-lisp:list
+       (common-lisp:cons "JobType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'snowball-type))
+      (common-lisp:list
+       (common-lisp:cons "SnowballType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-date))
+      (common-lisp:list
+       (common-lisp:cons "CreationDate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resources))
+      (common-lisp:list
+       (common-lisp:cons "Resources"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'address-id))
+      (common-lisp:list
+       (common-lisp:cons "AddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'shipping-option))
+      (common-lisp:list
+       (common-lisp:cons "ShippingOption"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'forwarding-address-id))
+      (common-lisp:list
+       (common-lisp:cons "ForwardingAddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input cluster-metadata))
+   common-lisp:nil))
 (common-lisp:deftype cluster-state () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (create-address-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-address-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-address-request-"))
    (address (common-lisp:error ":address is required") :type
     (common-lisp:or address common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-address-request 'make-create-address-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-address-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-address-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Address"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'address))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'address))
+      (common-lisp:list
+       (common-lisp:cons "Address"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-address-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-address-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-address-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-address-result-"))
    (address-id common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-address-result 'make-create-address-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-address-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-address-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'address-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'address-id))
+      (common-lisp:list
+       (common-lisp:cons "AddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-address-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-cluster-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-cluster-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-cluster-request-"))
    (job-type (common-lisp:error ":job-type is required") :type
     (common-lisp:or job-type common-lisp:null))
    (resources (common-lisp:error ":resources is required") :type
@@ -371,79 +529,126 @@
     (common-lisp:or address-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-cluster-request 'make-create-cluster-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-cluster-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-cluster-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-type)))
-    (aws-sdk/generator/shape::to-query-params "Resources"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'resources)))
-    (aws-sdk/generator/shape::to-query-params "Description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params "AddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'address-id)))
-    (aws-sdk/generator/shape::to-query-params "KmsKeyARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'kms-key-arn)))
-    (aws-sdk/generator/shape::to-query-params "RoleARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'role-arn)))
-    (aws-sdk/generator/shape::to-query-params "SnowballType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'snowball-type)))
-    (aws-sdk/generator/shape::to-query-params "ShippingOption"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'shipping-option)))
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification)))
-    (aws-sdk/generator/shape::to-query-params "ForwardingAddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'forwarding-address-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-type))
+      (common-lisp:list
+       (common-lisp:cons "JobType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resources))
+      (common-lisp:list
+       (common-lisp:cons "Resources"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "Description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'address-id))
+      (common-lisp:list
+       (common-lisp:cons "AddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'kms-key-arn))
+      (common-lisp:list
+       (common-lisp:cons "KmsKeyARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'role-arn))
+      (common-lisp:list
+       (common-lisp:cons "RoleARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'snowball-type))
+      (common-lisp:list
+       (common-lisp:cons "SnowballType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'shipping-option))
+      (common-lisp:list
+       (common-lisp:cons "ShippingOption"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'forwarding-address-id))
+      (common-lisp:list
+       (common-lisp:cons "ForwardingAddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-cluster-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-cluster-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-cluster-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-cluster-result-"))
    (cluster-id common-lisp:nil :type
     (common-lisp:or cluster-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-cluster-result 'make-create-cluster-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-cluster-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-cluster-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ClusterId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-id))
+      (common-lisp:list
+       (common-lisp:cons "ClusterId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-cluster-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-job-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-job-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-job-request-"))
    (job-type common-lisp:nil :type (common-lisp:or job-type common-lisp:null))
    (resources common-lisp:nil :type
     (common-lisp:or job-resource common-lisp:null))
@@ -467,84 +672,128 @@
     (common-lisp:or address-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-job-request 'make-create-job-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape create-job-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input create-job-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input create-job-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-type)))
-    (aws-sdk/generator/shape::to-query-params "Resources"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'resources)))
-    (aws-sdk/generator/shape::to-query-params "Description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params "AddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'address-id)))
-    (aws-sdk/generator/shape::to-query-params "KmsKeyARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'kms-key-arn)))
-    (aws-sdk/generator/shape::to-query-params "RoleARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'role-arn)))
-    (aws-sdk/generator/shape::to-query-params "SnowballCapacityPreference"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'snowball-capacity-preference)))
-    (aws-sdk/generator/shape::to-query-params "ShippingOption"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'shipping-option)))
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification)))
-    (aws-sdk/generator/shape::to-query-params "ClusterId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-id)))
-    (aws-sdk/generator/shape::to-query-params "SnowballType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'snowball-type)))
-    (aws-sdk/generator/shape::to-query-params "ForwardingAddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'forwarding-address-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-type))
+      (common-lisp:list
+       (common-lisp:cons "JobType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resources))
+      (common-lisp:list
+       (common-lisp:cons "Resources"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "Description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'address-id))
+      (common-lisp:list
+       (common-lisp:cons "AddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'kms-key-arn))
+      (common-lisp:list
+       (common-lisp:cons "KmsKeyARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'role-arn))
+      (common-lisp:list
+       (common-lisp:cons "RoleARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'snowball-capacity-preference))
+      (common-lisp:list
+       (common-lisp:cons "SnowballCapacityPreference"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'shipping-option))
+      (common-lisp:list
+       (common-lisp:cons "ShippingOption"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-id))
+      (common-lisp:list
+       (common-lisp:cons "ClusterId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'snowball-type))
+      (common-lisp:list
+       (common-lisp:cons "SnowballType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'forwarding-address-id))
+      (common-lisp:list
+       (common-lisp:cons "ForwardingAddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input create-job-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-job-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-job-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-job-result-"))
    (job-id common-lisp:nil :type (common-lisp:or job-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-job-result 'make-create-job-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape create-job-result))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input create-job-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input create-job-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-id))
+      (common-lisp:list
+       (common-lisp:cons "JobId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input create-job-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (data-transfer (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (data-transfer (:copier common-lisp:nil)
+      (:conc-name "struct-shape-data-transfer-"))
    (bytes-transferred common-lisp:nil :type
     (common-lisp:or long common-lisp:null))
    (objects-transferred common-lisp:nil :type
@@ -553,189 +802,327 @@
    (total-objects common-lisp:nil :type
     (common-lisp:or long common-lisp:null)))
  (common-lisp:export (common-lisp:list 'data-transfer 'make-data-transfer))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape data-transfer))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input data-transfer))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input data-transfer))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "BytesTransferred"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'bytes-transferred)))
-    (aws-sdk/generator/shape::to-query-params "ObjectsTransferred"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'objects-transferred)))
-    (aws-sdk/generator/shape::to-query-params "TotalBytes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'total-bytes)))
-    (aws-sdk/generator/shape::to-query-params "TotalObjects"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'total-objects))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'bytes-transferred))
+      (common-lisp:list
+       (common-lisp:cons "BytesTransferred"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'objects-transferred))
+      (common-lisp:list
+       (common-lisp:cons "ObjectsTransferred"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'total-bytes))
+      (common-lisp:list
+       (common-lisp:cons "TotalBytes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'total-objects))
+      (common-lisp:list
+       (common-lisp:cons "TotalObjects"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input data-transfer))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-address-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-address-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-address-request-"))
    (address-id (common-lisp:error ":address-id is required") :type
     (common-lisp:or address-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-address-request 'make-describe-address-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-address-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-address-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "AddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'address-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'address-id))
+      (common-lisp:list
+       (common-lisp:cons "AddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-address-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-address-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-address-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-address-result-"))
    (address common-lisp:nil :type (common-lisp:or address common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-address-result 'make-describe-address-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-address-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-address-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Address"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'address))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'address))
+      (common-lisp:list
+       (common-lisp:cons "Address"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-address-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-addresses-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-addresses-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-addresses-request-"))
    (max-results common-lisp:nil :type
     (common-lisp:or list-limit common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-addresses-request
                     'make-describe-addresses-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-addresses-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-addresses-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'max-results)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'max-results))
+      (common-lisp:list
+       (common-lisp:cons "MaxResults"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-addresses-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-addresses-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-addresses-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-addresses-result-"))
    (addresses common-lisp:nil :type
     (common-lisp:or address-list common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-addresses-result
                     'make-describe-addresses-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-addresses-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-addresses-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Addresses"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'addresses)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'addresses))
+      (common-lisp:list
+       (common-lisp:cons "Addresses"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-addresses-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-cluster-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-cluster-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-cluster-request-"))
    (cluster-id (common-lisp:error ":cluster-id is required") :type
     (common-lisp:or cluster-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-cluster-request 'make-describe-cluster-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-cluster-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-cluster-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ClusterId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-id))
+      (common-lisp:list
+       (common-lisp:cons "ClusterId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-cluster-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-cluster-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-cluster-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-cluster-result-"))
    (cluster-metadata common-lisp:nil :type
     (common-lisp:or cluster-metadata common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-cluster-result 'make-describe-cluster-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-cluster-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-cluster-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ClusterMetadata"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-metadata))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-metadata))
+      (common-lisp:list
+       (common-lisp:cons "ClusterMetadata"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-cluster-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-job-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-job-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-job-request-"))
    (job-id (common-lisp:error ":job-id is required") :type
     (common-lisp:or job-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-job-request 'make-describe-job-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape describe-job-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input describe-job-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input describe-job-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-id))
+      (common-lisp:list
+       (common-lisp:cons "JobId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input describe-job-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (describe-job-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-job-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-job-result-"))
    (job-metadata common-lisp:nil :type
     (common-lisp:or job-metadata common-lisp:null))
    (sub-job-metadata common-lisp:nil :type
     (common-lisp:or job-metadata-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-job-result 'make-describe-job-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape describe-job-result))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input describe-job-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input describe-job-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobMetadata"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-metadata)))
-    (aws-sdk/generator/shape::to-query-params "SubJobMetadata"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'sub-job-metadata))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-metadata))
+      (common-lisp:list
+       (common-lisp:cons "JobMetadata"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sub-job-metadata))
+      (common-lisp:list
+       (common-lisp:cons "SubJobMetadata"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input describe-job-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (event-trigger-definition (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (event-trigger-definition (:copier common-lisp:nil)
+      (:conc-name "struct-shape-event-trigger-definition-"))
    (event-resource-arn common-lisp:nil :type
     (common-lisp:or resource-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'event-trigger-definition 'make-event-trigger-definition))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          event-trigger-definition))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           event-trigger-definition))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "EventResourceARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'event-resource-arn))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'event-resource-arn))
+      (common-lisp:list
+       (common-lisp:cons "EventResourceARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          event-trigger-definition))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype event-trigger-definition-list ()
    '(trivial-types:proper-list event-trigger-definition))
@@ -746,83 +1133,153 @@
                             event-trigger-definition))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (get-job-manifest-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-job-manifest-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-job-manifest-request-"))
    (job-id (common-lisp:error ":job-id is required") :type
     (common-lisp:or job-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-job-manifest-request 'make-get-job-manifest-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          get-job-manifest-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           get-job-manifest-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-id))
+      (common-lisp:list
+       (common-lisp:cons "JobId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-job-manifest-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (get-job-manifest-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-job-manifest-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-job-manifest-result-"))
    (manifest-uri common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-job-manifest-result 'make-get-job-manifest-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          get-job-manifest-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           get-job-manifest-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ManifestURI"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'manifest-uri))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'manifest-uri))
+      (common-lisp:list
+       (common-lisp:cons "ManifestURI"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-job-manifest-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (get-job-unlock-code-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-job-unlock-code-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-job-unlock-code-request-"))
    (job-id (common-lisp:error ":job-id is required") :type
     (common-lisp:or job-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-job-unlock-code-request
                     'make-get-job-unlock-code-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          get-job-unlock-code-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           get-job-unlock-code-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-id))
+      (common-lisp:list
+       (common-lisp:cons "JobId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-job-unlock-code-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (get-job-unlock-code-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-job-unlock-code-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-job-unlock-code-result-"))
    (unlock-code common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-job-unlock-code-result
                     'make-get-job-unlock-code-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          get-job-unlock-code-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           get-job-unlock-code-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "UnlockCode"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'unlock-code))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'unlock-code))
+      (common-lisp:list
+       (common-lisp:cons "UnlockCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-job-unlock-code-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (get-snowball-usage-request (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (get-snowball-usage-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-snowball-usage-request-")))
  (common-lisp:export
   (common-lisp:list 'get-snowball-usage-request
                     'make-get-snowball-usage-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           get-snowball-usage-request))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-snowball-usage-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-snowball-usage-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (get-snowball-usage-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-snowball-usage-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-snowball-usage-result-"))
    (snowball-limit common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
    (snowballs-in-use common-lisp:nil :type
@@ -830,107 +1287,81 @@
  (common-lisp:export
   (common-lisp:list 'get-snowball-usage-result
                     'make-get-snowball-usage-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          get-snowball-usage-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           get-snowball-usage-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "SnowballLimit"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'snowball-limit)))
-    (aws-sdk/generator/shape::to-query-params "SnowballsInUse"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'snowballs-in-use))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'snowball-limit))
+      (common-lisp:list
+       (common-lisp:cons "SnowballLimit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'snowballs-in-use))
+      (common-lisp:list
+       (common-lisp:cons "SnowballsInUse"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-snowball-usage-result))
+   common-lisp:nil))
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (invalid-address-exception (:copier common-lisp:nil))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-address-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-address-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-address-exception
-                    'make-invalid-address-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          invalid-address-exception))
-   (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+                    'invalid-address-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-input-combination-exception (:copier common-lisp:nil))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-input-combination-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-input-combination-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-input-combination-exception
-                    'make-invalid-input-combination-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          invalid-input-combination-exception))
-   (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+                    'invalid-input-combination-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct (invalid-job-state-exception (:copier common-lisp:nil))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-job-state-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-job-state-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-job-state-exception
-                    'make-invalid-job-state-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          invalid-job-state-exception))
-   (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+                    'invalid-job-state-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-next-token-exception (:copier common-lisp:nil))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-next-token-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-next-token-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-next-token-exception
-                    'make-invalid-next-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          invalid-next-token-exception))
-   (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+                    'invalid-next-token-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct (invalid-resource-exception (:copier common-lisp:nil))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition invalid-resource-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       invalid-resource-exception-message)))
  (common-lisp:export
   (common-lisp:list 'invalid-resource-exception
-                    'make-invalid-resource-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          invalid-resource-exception))
-   (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+                    'invalid-resource-exception-message)))
 (common-lisp:deftype job-id () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (job-list-entry (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (job-list-entry (:copier common-lisp:nil)
+      (:conc-name "struct-shape-job-list-entry-"))
    (job-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (job-state common-lisp:nil :type
     (common-lisp:or job-state common-lisp:null))
@@ -943,44 +1374,64 @@
    (description common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'job-list-entry 'make-job-list-entry))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape job-list-entry))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input job-list-entry))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input job-list-entry))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-id)))
-    (aws-sdk/generator/shape::to-query-params "JobState"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-state)))
-    (aws-sdk/generator/shape::to-query-params "IsMaster"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'is-master)))
-    (aws-sdk/generator/shape::to-query-params "JobType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-type)))
-    (aws-sdk/generator/shape::to-query-params "SnowballType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'snowball-type)))
-    (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'creation-date)))
-    (aws-sdk/generator/shape::to-query-params "Description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-id))
+      (common-lisp:list
+       (common-lisp:cons "JobId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-state))
+      (common-lisp:list
+       (common-lisp:cons "JobState"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'is-master))
+      (common-lisp:list
+       (common-lisp:cons "IsMaster"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-type))
+      (common-lisp:list
+       (common-lisp:cons "JobType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'snowball-type))
+      (common-lisp:list
+       (common-lisp:cons "SnowballType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-date))
+      (common-lisp:list
+       (common-lisp:cons "CreationDate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "Description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input job-list-entry))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype job-list-entry-list ()
    '(trivial-types:proper-list job-list-entry))
@@ -990,7 +1441,8 @@
                            (trivial-types:proper-list job-list-entry))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (job-logs (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (job-logs (:copier common-lisp:nil) (:conc-name "struct-shape-job-logs-"))
    (job-completion-report-uri common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (job-success-log-uri common-lisp:nil :type
@@ -998,26 +1450,41 @@
    (job-failure-log-uri common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'job-logs 'make-job-logs))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape job-logs))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input job-logs))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input job-logs))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobCompletionReportURI"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-completion-report-uri)))
-    (aws-sdk/generator/shape::to-query-params "JobSuccessLogURI"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-success-log-uri)))
-    (aws-sdk/generator/shape::to-query-params "JobFailureLogURI"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-failure-log-uri))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'job-completion-report-uri))
+      (common-lisp:list
+       (common-lisp:cons "JobCompletionReportURI"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-success-log-uri))
+      (common-lisp:list
+       (common-lisp:cons "JobSuccessLogURI"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-failure-log-uri))
+      (common-lisp:list
+       (common-lisp:cons "JobFailureLogURI"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input job-logs))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (job-metadata (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (job-metadata (:copier common-lisp:nil)
+      (:conc-name "struct-shape-job-metadata-"))
    (job-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (job-state common-lisp:nil :type
     (common-lisp:or job-state common-lisp:null))
@@ -1048,94 +1515,137 @@
    (forwarding-address-id common-lisp:nil :type
     (common-lisp:or address-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'job-metadata 'make-job-metadata))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape job-metadata))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input job-metadata))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input job-metadata))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-id)))
-    (aws-sdk/generator/shape::to-query-params "JobState"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-state)))
-    (aws-sdk/generator/shape::to-query-params "JobType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-type)))
-    (aws-sdk/generator/shape::to-query-params "SnowballType"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'snowball-type)))
-    (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'creation-date)))
-    (aws-sdk/generator/shape::to-query-params "Resources"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'resources)))
-    (aws-sdk/generator/shape::to-query-params "Description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params "KmsKeyARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'kms-key-arn)))
-    (aws-sdk/generator/shape::to-query-params "RoleARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'role-arn)))
-    (aws-sdk/generator/shape::to-query-params "AddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'address-id)))
-    (aws-sdk/generator/shape::to-query-params "ShippingDetails"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'shipping-details)))
-    (aws-sdk/generator/shape::to-query-params "SnowballCapacityPreference"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'snowball-capacity-preference)))
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification)))
-    (aws-sdk/generator/shape::to-query-params "DataTransferProgress"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'data-transfer-progress)))
-    (aws-sdk/generator/shape::to-query-params "JobLogInfo"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-log-info)))
-    (aws-sdk/generator/shape::to-query-params "ClusterId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-id)))
-    (aws-sdk/generator/shape::to-query-params "ForwardingAddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'forwarding-address-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-id))
+      (common-lisp:list
+       (common-lisp:cons "JobId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-state))
+      (common-lisp:list
+       (common-lisp:cons "JobState"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-type))
+      (common-lisp:list
+       (common-lisp:cons "JobType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'snowball-type))
+      (common-lisp:list
+       (common-lisp:cons "SnowballType"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-date))
+      (common-lisp:list
+       (common-lisp:cons "CreationDate"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resources))
+      (common-lisp:list
+       (common-lisp:cons "Resources"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "Description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'kms-key-arn))
+      (common-lisp:list
+       (common-lisp:cons "KmsKeyARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'role-arn))
+      (common-lisp:list
+       (common-lisp:cons "RoleARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'address-id))
+      (common-lisp:list
+       (common-lisp:cons "AddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'shipping-details))
+      (common-lisp:list
+       (common-lisp:cons "ShippingDetails"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'snowball-capacity-preference))
+      (common-lisp:list
+       (common-lisp:cons "SnowballCapacityPreference"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'data-transfer-progress))
+      (common-lisp:list
+       (common-lisp:cons "DataTransferProgress"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-log-info))
+      (common-lisp:list
+       (common-lisp:cons "JobLogInfo"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-id))
+      (common-lisp:list
+       (common-lisp:cons "ClusterId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'forwarding-address-id))
+      (common-lisp:list
+       (common-lisp:cons "ForwardingAddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input job-metadata))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype job-metadata-list ()
    '(trivial-types:proper-list job-metadata))
@@ -1145,25 +1655,37 @@
                            (trivial-types:proper-list job-metadata))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (job-resource (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (job-resource (:copier common-lisp:nil)
+      (:conc-name "struct-shape-job-resource-"))
    (s3resources common-lisp:nil :type
     (common-lisp:or s3resource-list common-lisp:null))
    (lambda-resources common-lisp:nil :type
     (common-lisp:or lambda-resource-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'job-resource 'make-job-resource))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape job-resource))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input job-resource))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input job-resource))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "S3Resources"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                's3resources)))
-    (aws-sdk/generator/shape::to-query-params "LambdaResources"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'lambda-resources))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 's3resources))
+      (common-lisp:list
+       (common-lisp:cons "S3Resources"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'lambda-resources))
+      (common-lisp:list
+       (common-lisp:cons "LambdaResources"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input job-resource))
+   common-lisp:nil))
 (common-lisp:deftype job-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype job-state-list () '(trivial-types:proper-list job-state))
@@ -1174,61 +1696,77 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype job-type () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (kmsrequest-failed-exception (:copier common-lisp:nil))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition kmsrequest-failed-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       kmsrequest-failed-exception-message)))
  (common-lisp:export
   (common-lisp:list 'kmsrequest-failed-exception
-                    'make-kmsrequest-failed-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          kmsrequest-failed-exception))
-   (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+                    'kmsrequest-failed-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct (key-range (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (key-range (:copier common-lisp:nil)
+      (:conc-name "struct-shape-key-range-"))
    (begin-marker common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (end-marker common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'key-range 'make-key-range))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape key-range))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input key-range))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input key-range))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "BeginMarker"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'begin-marker)))
-    (aws-sdk/generator/shape::to-query-params "EndMarker"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'end-marker))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'begin-marker))
+      (common-lisp:list
+       (common-lisp:cons "BeginMarker"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'end-marker))
+      (common-lisp:list
+       (common-lisp:cons "EndMarker"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input key-range))
+   common-lisp:nil))
 (common-lisp:deftype kms-key-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (lambda-resource (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (lambda-resource (:copier common-lisp:nil)
+      (:conc-name "struct-shape-lambda-resource-"))
    (lambda-arn common-lisp:nil :type
     (common-lisp:or resource-arn common-lisp:null))
    (event-triggers common-lisp:nil :type
     (common-lisp:or event-trigger-definition-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'lambda-resource 'make-lambda-resource))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape lambda-resource))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input lambda-resource))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input lambda-resource))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "LambdaArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'lambda-arn)))
-    (aws-sdk/generator/shape::to-query-params "EventTriggers"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'event-triggers))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'lambda-arn))
+      (common-lisp:list
+       (common-lisp:cons "LambdaArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'event-triggers))
+      (common-lisp:list
+       (common-lisp:cons "EventTriggers"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input lambda-resource))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype lambda-resource-list ()
    '(trivial-types:proper-list lambda-resource))
@@ -1238,7 +1776,9 @@
                            (trivial-types:proper-list lambda-resource))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (list-cluster-jobs-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (list-cluster-jobs-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-cluster-jobs-request-"))
    (cluster-id (common-lisp:error ":cluster-id is required") :type
     (common-lisp:or cluster-id common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1247,134 +1787,221 @@
  (common-lisp:export
   (common-lisp:list 'list-cluster-jobs-request
                     'make-list-cluster-jobs-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          list-cluster-jobs-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           list-cluster-jobs-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ClusterId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-id)))
-    (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'max-results)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-id))
+      (common-lisp:list
+       (common-lisp:cons "ClusterId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'max-results))
+      (common-lisp:list
+       (common-lisp:cons "MaxResults"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-cluster-jobs-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (list-cluster-jobs-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (list-cluster-jobs-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-cluster-jobs-result-"))
    (job-list-entries common-lisp:nil :type
     (common-lisp:or job-list-entry-list common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-cluster-jobs-result 'make-list-cluster-jobs-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          list-cluster-jobs-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           list-cluster-jobs-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobListEntries"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-list-entries)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-list-entries))
+      (common-lisp:list
+       (common-lisp:cons "JobListEntries"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-cluster-jobs-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (list-clusters-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (list-clusters-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-clusters-request-"))
    (max-results common-lisp:nil :type
     (common-lisp:or list-limit common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-clusters-request 'make-list-clusters-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          list-clusters-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           list-clusters-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'max-results)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'max-results))
+      (common-lisp:list
+       (common-lisp:cons "MaxResults"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-clusters-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (list-clusters-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (list-clusters-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-clusters-result-"))
    (cluster-list-entries common-lisp:nil :type
     (common-lisp:or cluster-list-entry-list common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-clusters-result 'make-list-clusters-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape list-clusters-result))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input list-clusters-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input list-clusters-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ClusterListEntries"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-list-entries)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'cluster-list-entries))
+      (common-lisp:list
+       (common-lisp:cons "ClusterListEntries"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input list-clusters-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (list-jobs-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (list-jobs-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-jobs-request-"))
    (max-results common-lisp:nil :type
     (common-lisp:or list-limit common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-jobs-request 'make-list-jobs-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape list-jobs-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input list-jobs-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input list-jobs-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'max-results)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'max-results))
+      (common-lisp:list
+       (common-lisp:cons "MaxResults"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input list-jobs-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (list-jobs-result (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (list-jobs-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-jobs-result-"))
    (job-list-entries common-lisp:nil :type
     (common-lisp:or job-list-entry-list common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-jobs-result 'make-list-jobs-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape list-jobs-result))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input list-jobs-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input list-jobs-result))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobListEntries"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-list-entries)))
-    (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-list-entries))
+      (common-lisp:list
+       (common-lisp:cons "JobListEntries"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "NextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input list-jobs-result))
+   common-lisp:nil))
 (common-lisp:deftype list-limit () 'common-lisp:integer)
 (common-lisp:deftype long () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (notification (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (notification (:copier common-lisp:nil)
+      (:conc-name "struct-shape-notification-"))
    (sns-topic-arn common-lisp:nil :type
     (common-lisp:or sns-topic-arn common-lisp:null))
    (job-states-to-notify common-lisp:nil :type
@@ -1382,46 +2009,71 @@
    (notify-all common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export (common-lisp:list 'notification 'make-notification))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape notification))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input notification))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input notification))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "SnsTopicARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'sns-topic-arn)))
-    (aws-sdk/generator/shape::to-query-params "JobStatesToNotify"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-states-to-notify)))
-    (aws-sdk/generator/shape::to-query-params "NotifyAll"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notify-all))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sns-topic-arn))
+      (common-lisp:list
+       (common-lisp:cons "SnsTopicARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'job-states-to-notify))
+      (common-lisp:list
+       (common-lisp:cons "JobStatesToNotify"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notify-all))
+      (common-lisp:list
+       (common-lisp:cons "NotifyAll"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input notification))
+   common-lisp:nil))
 (common-lisp:deftype resource-arn () 'common-lisp:string)
 (common-lisp:deftype role-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (s3resource (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (s3resource (:copier common-lisp:nil)
+      (:conc-name "struct-shape-s3resource-"))
    (bucket-arn common-lisp:nil :type
     (common-lisp:or resource-arn common-lisp:null))
    (key-range common-lisp:nil :type
     (common-lisp:or key-range common-lisp:null)))
  (common-lisp:export (common-lisp:list 's3resource 'make-s3resource))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape s3resource))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input s3resource))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input s3resource))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "BucketArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'bucket-arn)))
-    (aws-sdk/generator/shape::to-query-params "KeyRange"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'key-range))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'bucket-arn))
+      (common-lisp:list
+       (common-lisp:cons "BucketArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'key-range))
+      (common-lisp:list
+       (common-lisp:cons "KeyRange"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input s3resource))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype s3resource-list ()
    '(trivial-types:proper-list s3resource))
@@ -1431,26 +2083,39 @@
                            (trivial-types:proper-list s3resource))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (shipment (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (shipment (:copier common-lisp:nil) (:conc-name "struct-shape-shipment-"))
    (status common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (tracking-number common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'shipment 'make-shipment))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape shipment))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input shipment))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input shipment))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Status"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'status)))
-    (aws-sdk/generator/shape::to-query-params "TrackingNumber"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tracking-number))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'status))
+      (common-lisp:list
+       (common-lisp:cons "Status"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tracking-number))
+      (common-lisp:list
+       (common-lisp:cons "TrackingNumber"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input shipment))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (shipping-details (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (shipping-details (:copier common-lisp:nil)
+      (:conc-name "struct-shape-shipping-details-"))
    (shipping-option common-lisp:nil :type
     (common-lisp:or shipping-option common-lisp:null))
    (inbound-shipment common-lisp:nil :type
@@ -1459,24 +2124,36 @@
     (common-lisp:or shipment common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'shipping-details 'make-shipping-details))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape shipping-details))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input shipping-details))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input shipping-details))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ShippingOption"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'shipping-option)))
-    (aws-sdk/generator/shape::to-query-params "InboundShipment"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'inbound-shipment)))
-    (aws-sdk/generator/shape::to-query-params "OutboundShipment"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'outbound-shipment))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'shipping-option))
+      (common-lisp:list
+       (common-lisp:cons "ShippingOption"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'inbound-shipment))
+      (common-lisp:list
+       (common-lisp:cons "InboundShipment"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'outbound-shipment))
+      (common-lisp:list
+       (common-lisp:cons "OutboundShipment"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input shipping-details))
+   common-lisp:nil))
 (common-lisp:deftype shipping-option () 'common-lisp:string)
 (common-lisp:deftype snowball-capacity () 'common-lisp:string)
 (common-lisp:deftype snowball-type () 'common-lisp:string)
@@ -1484,24 +2161,17 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (unsupported-address-exception (:copier common-lisp:nil))
-   (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
+ (common-lisp:define-condition unsupported-address-exception
+     (snowball-error)
+     ((message :initarg :message :initform common-lisp:nil :reader
+       unsupported-address-exception-message)))
  (common-lisp:export
   (common-lisp:list 'unsupported-address-exception
-                    'make-unsupported-address-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          unsupported-address-exception))
-   (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "Message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+                    'unsupported-address-exception-message)))
 (common-lisp:progn
- (common-lisp:defstruct (update-cluster-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (update-cluster-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-update-cluster-request-"))
    (cluster-id (common-lisp:error ":cluster-id is required") :type
     (common-lisp:or cluster-id common-lisp:null))
    (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
@@ -1518,62 +2188,103 @@
     (common-lisp:or address-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-cluster-request 'make-update-cluster-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          update-cluster-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           update-cluster-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "ClusterId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'cluster-id)))
-    (aws-sdk/generator/shape::to-query-params "RoleARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'role-arn)))
-    (aws-sdk/generator/shape::to-query-params "Description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params "Resources"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'resources)))
-    (aws-sdk/generator/shape::to-query-params "AddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'address-id)))
-    (aws-sdk/generator/shape::to-query-params "ShippingOption"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'shipping-option)))
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification)))
-    (aws-sdk/generator/shape::to-query-params "ForwardingAddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'forwarding-address-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'cluster-id))
+      (common-lisp:list
+       (common-lisp:cons "ClusterId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'role-arn))
+      (common-lisp:list
+       (common-lisp:cons "RoleARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "Description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resources))
+      (common-lisp:list
+       (common-lisp:cons "Resources"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'address-id))
+      (common-lisp:list
+       (common-lisp:cons "AddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'shipping-option))
+      (common-lisp:list
+       (common-lisp:cons "ShippingOption"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'forwarding-address-id))
+      (common-lisp:list
+       (common-lisp:cons "ForwardingAddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-cluster-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (update-cluster-result (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (update-cluster-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-update-cluster-result-")))
  (common-lisp:export
   (common-lisp:list 'update-cluster-result 'make-update-cluster-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
                           update-cluster-result))
-   (common-lisp:append)))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-cluster-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          update-cluster-result))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (update-job-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (update-job-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-update-job-request-"))
    (job-id (common-lisp:error ":job-id is required") :type
     (common-lisp:or job-id common-lisp:null))
    (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
@@ -1592,61 +2303,95 @@
     (common-lisp:or address-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-job-request 'make-update-job-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape update-job-request))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input update-job-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input update-job-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "JobId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'job-id)))
-    (aws-sdk/generator/shape::to-query-params "RoleARN"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'role-arn)))
-    (aws-sdk/generator/shape::to-query-params "Notification"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'notification)))
-    (aws-sdk/generator/shape::to-query-params "Resources"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'resources)))
-    (aws-sdk/generator/shape::to-query-params "AddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'address-id)))
-    (aws-sdk/generator/shape::to-query-params "ShippingOption"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'shipping-option)))
-    (aws-sdk/generator/shape::to-query-params "Description"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'description)))
-    (aws-sdk/generator/shape::to-query-params "SnowballCapacityPreference"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'snowball-capacity-preference)))
-    (aws-sdk/generator/shape::to-query-params "ForwardingAddressId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'forwarding-address-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'job-id))
+      (common-lisp:list
+       (common-lisp:cons "JobId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'role-arn))
+      (common-lisp:list
+       (common-lisp:cons "RoleARN"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'notification))
+      (common-lisp:list
+       (common-lisp:cons "Notification"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'resources))
+      (common-lisp:list
+       (common-lisp:cons "Resources"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'address-id))
+      (common-lisp:list
+       (common-lisp:cons "AddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'shipping-option))
+      (common-lisp:list
+       (common-lisp:cons "ShippingOption"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'description))
+      (common-lisp:list
+       (common-lisp:cons "Description"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'snowball-capacity-preference))
+      (common-lisp:list
+       (common-lisp:cons "SnowballCapacityPreference"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'forwarding-address-id))
+      (common-lisp:list
+       (common-lisp:cons "ForwardingAddressId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input update-job-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (update-job-result (:copier common-lisp:nil)))
+ (common-lisp:defstruct
+     (update-job-result (:copier common-lisp:nil)
+      (:conc-name "struct-shape-update-job-result-")))
  (common-lisp:export
   (common-lisp:list 'update-job-result 'make-update-job-result))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape update-job-result))
-   (common-lisp:append)))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input update-job-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input update-job-result))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input update-job-result))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defun cancel-cluster
                     (
@@ -1658,13 +2403,15 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CancelCluster")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CancelClusterResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CancelCluster"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("KMSRequestFailedException" . kmsrequest-failed-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidResourceException" . invalid-resource-exception)))))
  (common-lisp:export 'cancel-cluster))
 (common-lisp:progn
  (common-lisp:defun cancel-job
@@ -1677,13 +2424,14 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CancelJob")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CancelJobResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/" "CancelJob"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("KMSRequestFailedException" . kmsrequest-failed-exception)))))
  (common-lisp:export 'cancel-job))
 (common-lisp:progn
  (common-lisp:defun create-address
@@ -1696,13 +2444,14 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CreateAddress")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CreateAddressResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CreateAddress"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidAddressException" . invalid-address-exception)
+        ("UnsupportedAddressException" . unsupported-address-exception)))))
  (common-lisp:export 'create-address))
 (common-lisp:progn
  (common-lisp:defun create-cluster
@@ -1720,13 +2469,16 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CreateCluster")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CreateClusterResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CreateCluster"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("KMSRequestFailedException" . kmsrequest-failed-exception)
+        ("InvalidInputCombinationException"
+         . invalid-input-combination-exception)))))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
  (common-lisp:defun create-job
@@ -1745,13 +2497,17 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CreateJob")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CreateJobResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/" "CreateJob"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("KMSRequestFailedException" . kmsrequest-failed-exception)
+        ("InvalidInputCombinationException"
+         . invalid-input-combination-exception)
+        ("ClusterLimitExceededException"
+         . cluster-limit-exceeded-exception)))))
  (common-lisp:export 'create-job))
 (common-lisp:progn
  (common-lisp:defun describe-address
@@ -1764,13 +2520,13 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeAddress")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeAddressResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeAddress"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)))))
  (common-lisp:export 'describe-address))
 (common-lisp:progn
  (common-lisp:defun describe-addresses
@@ -1783,13 +2539,14 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeAddresses")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeAddressesResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeAddresses"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'describe-addresses))
 (common-lisp:progn
  (common-lisp:defun describe-cluster
@@ -1802,13 +2559,13 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeCluster")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeClusterResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeCluster"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)))))
  (common-lisp:export 'describe-cluster))
 (common-lisp:progn
  (common-lisp:defun describe-job
@@ -1821,13 +2578,13 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeJob")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeJobResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeJob"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)))))
  (common-lisp:export 'describe-job))
 (common-lisp:progn
  (common-lisp:defun get-job-manifest
@@ -1840,13 +2597,14 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"GetJobManifest")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "GetJobManifestResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "GetJobManifest"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)))))
  (common-lisp:export 'get-job-manifest))
 (common-lisp:progn
  (common-lisp:defun get-job-unlock-code
@@ -1859,22 +2617,24 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"GetJobUnlockCode")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "GetJobUnlockCodeResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "GetJobUnlockCode"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)))))
  (common-lisp:export 'get-job-unlock-code))
 (common-lisp:progn
  (common-lisp:defun get-snowball-usage ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request
-     (common-lisp:make-instance 'snowball-request :method :post :params
-                                (common-lisp:cons "Action"
-                                                  "GetSnowballUsage")))
-    "GetSnowballUsageResult" common-lisp:nil))
+     (common-lisp:make-instance 'snowball-request :method "POST" :path "/"
+                                :params
+                                `(("Action" ,@"GetSnowballUsage")
+                                  ("Version" ,@"2016-06-30"))))
+    common-lisp:nil common-lisp:nil 'common-lisp:nil))
  (common-lisp:export 'get-snowball-usage))
 (common-lisp:progn
  (common-lisp:defun list-cluster-jobs
@@ -1888,13 +2648,14 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"ListClusterJobs")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "ListClusterJobsResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ListClusterJobs"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-cluster-jobs))
 (common-lisp:progn
  (common-lisp:defun list-clusters
@@ -1907,13 +2668,13 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"ListClusters")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "ListClustersResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ListClusters"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-clusters))
 (common-lisp:progn
  (common-lisp:defun list-jobs
@@ -1926,13 +2687,12 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"ListJobs")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "ListJobsResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/" "ListJobs"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidNextTokenException" . invalid-next-token-exception)))))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
  (common-lisp:defun update-cluster
@@ -1949,13 +2709,17 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"UpdateCluster")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "UpdateClusterResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "UpdateCluster"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("KMSRequestFailedException" . kmsrequest-failed-exception)
+        ("InvalidInputCombinationException"
+         . invalid-input-combination-exception)))))
  (common-lisp:export 'update-cluster))
 (common-lisp:progn
  (common-lisp:defun update-job
@@ -1973,11 +2737,16 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'snowball-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"UpdateJob")
-                                     ("Version" ,@"2016-06-30"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "UpdateJobResult" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'snowball-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/" "UpdateJob"
+                                                        "2016-06-30"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidResourceException" . invalid-resource-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("KMSRequestFailedException" . kmsrequest-failed-exception)
+        ("InvalidInputCombinationException"
+         . invalid-input-combination-exception)
+        ("ClusterLimitExceededException"
+         . cluster-limit-exceeded-exception)))))
  (common-lisp:export 'update-job))

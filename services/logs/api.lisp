@@ -6,33 +6,55 @@
   (:import-from #:aws-sdk/generator/shape)
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api)
-  (:import-from #:aws-sdk/request))
+  (:import-from #:aws-sdk/request)
+  (:import-from #:aws-sdk/error))
 (common-lisp:in-package #:aws-sdk/services/logs/api)
 (common-lisp:progn
  (common-lisp:defclass logs-request (aws-sdk/request:request) common-lisp:nil
                        (:default-initargs :service "logs"))
  (common-lisp:export 'logs-request))
+(common-lisp:progn
+ (common-lisp:define-condition logs-error
+     (aws-sdk/error:aws-error)
+     common-lisp:nil)
+ (common-lisp:export 'logs-error))
 (common-lisp:deftype access-policy () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (cancel-export-task-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (cancel-export-task-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-cancel-export-task-request-"))
    (task-id (common-lisp:error ":taskid is required") :type
     (common-lisp:or export-task-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-export-task-request
                     'make-cancel-export-task-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          cancel-export-task-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           cancel-export-task-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-id))
+      (common-lisp:list
+       (common-lisp:cons "taskId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          cancel-export-task-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-export-task-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-export-task-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-export-task-request-"))
    (task-name common-lisp:nil :type
     (common-lisp:or export-task-name common-lisp:null))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
@@ -50,87 +72,144 @@
  (common-lisp:export
   (common-lisp:list 'create-export-task-request
                     'make-create-export-task-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-export-task-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-export-task-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-name)))
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "logStreamNamePrefix"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-stream-name-prefix)))
-    (aws-sdk/generator/shape::to-query-params "from"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'from)))
-    (aws-sdk/generator/shape::to-query-params "to"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'to)))
-    (aws-sdk/generator/shape::to-query-params "destination"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination)))
-    (aws-sdk/generator/shape::to-query-params "destinationPrefix"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-prefix))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-name))
+      (common-lisp:list
+       (common-lisp:cons "taskName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'log-stream-name-prefix))
+      (common-lisp:list
+       (common-lisp:cons "logStreamNamePrefix"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'from))
+      (common-lisp:list
+       (common-lisp:cons "from"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'to))
+      (common-lisp:list
+       (common-lisp:cons "to"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination))
+      (common-lisp:list
+       (common-lisp:cons "destination"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination-prefix))
+      (common-lisp:list
+       (common-lisp:cons "destinationPrefix"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-export-task-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-export-task-response (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-export-task-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-export-task-response-"))
    (task-id common-lisp:nil :type
     (common-lisp:or export-task-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-export-task-response
                     'make-create-export-task-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-export-task-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-export-task-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-id))
+      (common-lisp:list
+       (common-lisp:cons "taskId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-export-task-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-log-group-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-log-group-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-log-group-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-log-group-request 'make-create-log-group-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-log-group-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-log-group-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "tags"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tags))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-log-group-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (create-log-stream-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (create-log-stream-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-create-log-stream-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (log-stream-name (common-lisp:error ":logstreamname is required") :type
@@ -138,76 +217,111 @@
  (common-lisp:export
   (common-lisp:list 'create-log-stream-request
                     'make-create-log-stream-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          create-log-stream-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           create-log-stream-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-stream-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-stream-name))
+      (common-lisp:list
+       (common-lisp:cons "logStreamName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          create-log-stream-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (data-already-accepted-exception (:copier common-lisp:nil))
-   (expected-sequence-token common-lisp:nil :type
-    (common-lisp:or sequence-token common-lisp:null)))
+ (common-lisp:define-condition data-already-accepted-exception
+     (logs-error)
+     ((expected-sequence-token :initarg :expected-sequence-token :initform
+       common-lisp:nil :reader
+       data-already-accepted-exception-expected-sequence-token)))
  (common-lisp:export
   (common-lisp:list 'data-already-accepted-exception
-                    'make-data-already-accepted-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          data-already-accepted-exception))
-   (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "expectedSequenceToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'expected-sequence-token))))))
+                    'data-already-accepted-exception-expected-sequence-token)))
 (common-lisp:deftype days () 'common-lisp:integer)
 (common-lisp:deftype default-value () 'common-lisp:double-float)
 (common-lisp:progn
- (common-lisp:defstruct (delete-destination-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (delete-destination-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-destination-request-"))
    (destination-name (common-lisp:error ":destinationname is required") :type
     (common-lisp:or destination-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-destination-request
                     'make-delete-destination-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          delete-destination-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           delete-destination-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "destinationName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination-name))
+      (common-lisp:list
+       (common-lisp:cons "destinationName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-destination-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (delete-log-group-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (delete-log-group-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-log-group-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-log-group-request 'make-delete-log-group-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          delete-log-group-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           delete-log-group-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-log-group-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (delete-log-stream-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (delete-log-stream-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-log-stream-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (log-stream-name (common-lisp:error ":logstreamname is required") :type
@@ -215,24 +329,39 @@
  (common-lisp:export
   (common-lisp:list 'delete-log-stream-request
                     'make-delete-log-stream-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          delete-log-stream-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           delete-log-stream-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-stream-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-stream-name))
+      (common-lisp:list
+       (common-lisp:cons "logStreamName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-log-stream-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (delete-metric-filter-request (:copier common-lisp:nil))
+     (delete-metric-filter-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-metric-filter-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (filter-name (common-lisp:error ":filtername is required") :type
@@ -240,42 +369,70 @@
  (common-lisp:export
   (common-lisp:list 'delete-metric-filter-request
                     'make-delete-metric-filter-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          delete-metric-filter-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           delete-metric-filter-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "filterName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-name))
+      (common-lisp:list
+       (common-lisp:cons "filterName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-metric-filter-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (delete-retention-policy-request (:copier common-lisp:nil))
+     (delete-retention-policy-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-retention-policy-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-retention-policy-request
                     'make-delete-retention-policy-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          delete-retention-policy-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           delete-retention-policy-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-retention-policy-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (delete-subscription-filter-request (:copier common-lisp:nil))
+     (delete-subscription-filter-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-delete-subscription-filter-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (filter-name (common-lisp:error ":filtername is required") :type
@@ -283,25 +440,40 @@
  (common-lisp:export
   (common-lisp:list 'delete-subscription-filter-request
                     'make-delete-subscription-filter-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          delete-subscription-filter-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           delete-subscription-filter-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "filterName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-name))
+      (common-lisp:list
+       (common-lisp:cons "filterName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          delete-subscription-filter-request))
+   common-lisp:nil))
 (common-lisp:deftype descending () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-destinations-request (:copier common-lisp:nil))
+     (describe-destinations-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-destinations-request-"))
    (destination-name-prefix common-lisp:nil :type
     (common-lisp:or destination-name common-lisp:null))
    (next-token common-lisp:nil :type
@@ -311,29 +483,47 @@
  (common-lisp:export
   (common-lisp:list 'describe-destinations-request
                     'make-describe-destinations-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-destinations-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-destinations-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "DestinationNamePrefix"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-name-prefix)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token)))
-    (aws-sdk/generator/shape::to-query-params "limit"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'limit))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'destination-name-prefix))
+      (common-lisp:list
+       (common-lisp:cons "DestinationNamePrefix"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'limit))
+      (common-lisp:list
+       (common-lisp:cons "limit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-destinations-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-destinations-response (:copier common-lisp:nil))
+     (describe-destinations-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-destinations-response-"))
    (destinations common-lisp:nil :type
     (common-lisp:or destinations common-lisp:null))
    (next-token common-lisp:nil :type
@@ -341,24 +531,39 @@
  (common-lisp:export
   (common-lisp:list 'describe-destinations-response
                     'make-describe-destinations-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-destinations-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-destinations-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "destinations"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destinations)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destinations))
+      (common-lisp:list
+       (common-lisp:cons "destinations"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-destinations-response))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-export-tasks-request (:copier common-lisp:nil))
+     (describe-export-tasks-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-export-tasks-request-"))
    (task-id common-lisp:nil :type
     (common-lisp:or export-task-id common-lisp:null))
    (status-code common-lisp:nil :type
@@ -370,34 +575,53 @@
  (common-lisp:export
   (common-lisp:list 'describe-export-tasks-request
                     'make-describe-export-tasks-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-export-tasks-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-export-tasks-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-id)))
-    (aws-sdk/generator/shape::to-query-params "statusCode"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'status-code)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token)))
-    (aws-sdk/generator/shape::to-query-params "limit"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'limit))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-id))
+      (common-lisp:list
+       (common-lisp:cons "taskId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'status-code))
+      (common-lisp:list
+       (common-lisp:cons "statusCode"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'limit))
+      (common-lisp:list
+       (common-lisp:cons "limit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-export-tasks-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-export-tasks-response (:copier common-lisp:nil))
+     (describe-export-tasks-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-export-tasks-response-"))
    (export-tasks common-lisp:nil :type
     (common-lisp:or export-tasks common-lisp:null))
    (next-token common-lisp:nil :type
@@ -405,24 +629,40 @@
  (common-lisp:export
   (common-lisp:list 'describe-export-tasks-response
                     'make-describe-export-tasks-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-export-tasks-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-export-tasks-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "exportTasks"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'export-tasks)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'export-tasks))
+      (common-lisp:list
+       (common-lisp:cons "exportTasks"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-export-tasks-response))
+   common-lisp:nil))
 (common-lisp:deftype describe-limit () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (describe-log-groups-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (describe-log-groups-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-log-groups-request-"))
    (log-group-name-prefix common-lisp:nil :type
     (common-lisp:or log-group-name common-lisp:null))
    (next-token common-lisp:nil :type
@@ -432,29 +672,47 @@
  (common-lisp:export
   (common-lisp:list 'describe-log-groups-request
                     'make-describe-log-groups-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-log-groups-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-log-groups-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupNamePrefix"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name-prefix)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token)))
-    (aws-sdk/generator/shape::to-query-params "limit"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'limit))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'log-group-name-prefix))
+      (common-lisp:list
+       (common-lisp:cons "logGroupNamePrefix"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'limit))
+      (common-lisp:list
+       (common-lisp:cons "limit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-log-groups-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-log-groups-response (:copier common-lisp:nil))
+     (describe-log-groups-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-log-groups-response-"))
    (log-groups common-lisp:nil :type
     (common-lisp:or log-groups common-lisp:null))
    (next-token common-lisp:nil :type
@@ -462,24 +720,39 @@
  (common-lisp:export
   (common-lisp:list 'describe-log-groups-response
                     'make-describe-log-groups-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-log-groups-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-log-groups-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroups"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-groups)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-groups))
+      (common-lisp:list
+       (common-lisp:cons "logGroups"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-log-groups-response))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-log-streams-request (:copier common-lisp:nil))
+     (describe-log-streams-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-log-streams-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (log-stream-name-prefix common-lisp:nil :type
@@ -494,44 +767,68 @@
  (common-lisp:export
   (common-lisp:list 'describe-log-streams-request
                     'make-describe-log-streams-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-log-streams-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-log-streams-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "logStreamNamePrefix"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-stream-name-prefix)))
-    (aws-sdk/generator/shape::to-query-params "orderBy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'order-by)))
-    (aws-sdk/generator/shape::to-query-params "descending"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'descending)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token)))
-    (aws-sdk/generator/shape::to-query-params "limit"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'limit))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'log-stream-name-prefix))
+      (common-lisp:list
+       (common-lisp:cons "logStreamNamePrefix"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'order-by))
+      (common-lisp:list
+       (common-lisp:cons "orderBy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'descending))
+      (common-lisp:list
+       (common-lisp:cons "descending"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'limit))
+      (common-lisp:list
+       (common-lisp:cons "limit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-log-streams-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-log-streams-response (:copier common-lisp:nil))
+     (describe-log-streams-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-log-streams-response-"))
    (log-streams common-lisp:nil :type
     (common-lisp:or log-streams common-lisp:null))
    (next-token common-lisp:nil :type
@@ -539,24 +836,39 @@
  (common-lisp:export
   (common-lisp:list 'describe-log-streams-response
                     'make-describe-log-streams-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-log-streams-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-log-streams-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logStreams"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-streams)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-streams))
+      (common-lisp:list
+       (common-lisp:cons "logStreams"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-log-streams-response))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-metric-filters-request (:copier common-lisp:nil))
+     (describe-metric-filters-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-metric-filters-request-"))
    (log-group-name common-lisp:nil :type
     (common-lisp:or log-group-name common-lisp:null))
    (filter-name-prefix common-lisp:nil :type
@@ -572,44 +884,67 @@
  (common-lisp:export
   (common-lisp:list 'describe-metric-filters-request
                     'make-describe-metric-filters-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-metric-filters-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-metric-filters-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "filterNamePrefix"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-name-prefix)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token)))
-    (aws-sdk/generator/shape::to-query-params "limit"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'limit)))
-    (aws-sdk/generator/shape::to-query-params "metricName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'metric-name)))
-    (aws-sdk/generator/shape::to-query-params "metricNamespace"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'metric-namespace))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-name-prefix))
+      (common-lisp:list
+       (common-lisp:cons "filterNamePrefix"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'limit))
+      (common-lisp:list
+       (common-lisp:cons "limit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'metric-name))
+      (common-lisp:list
+       (common-lisp:cons "metricName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'metric-namespace))
+      (common-lisp:list
+       (common-lisp:cons "metricNamespace"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-metric-filters-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-metric-filters-response (:copier common-lisp:nil))
+     (describe-metric-filters-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-metric-filters-response-"))
    (metric-filters common-lisp:nil :type
     (common-lisp:or metric-filters common-lisp:null))
    (next-token common-lisp:nil :type
@@ -617,24 +952,39 @@
  (common-lisp:export
   (common-lisp:list 'describe-metric-filters-response
                     'make-describe-metric-filters-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-metric-filters-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-metric-filters-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "metricFilters"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'metric-filters)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'metric-filters))
+      (common-lisp:list
+       (common-lisp:cons "metricFilters"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-metric-filters-response))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-subscription-filters-request (:copier common-lisp:nil))
+     (describe-subscription-filters-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-subscription-filters-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (filter-name-prefix common-lisp:nil :type
@@ -646,34 +996,53 @@
  (common-lisp:export
   (common-lisp:list 'describe-subscription-filters-request
                     'make-describe-subscription-filters-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-subscription-filters-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-subscription-filters-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "filterNamePrefix"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-name-prefix)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token)))
-    (aws-sdk/generator/shape::to-query-params "limit"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'limit))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-name-prefix))
+      (common-lisp:list
+       (common-lisp:cons "filterNamePrefix"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'limit))
+      (common-lisp:list
+       (common-lisp:cons "limit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-subscription-filters-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (describe-subscription-filters-response (:copier common-lisp:nil))
+     (describe-subscription-filters-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-describe-subscription-filters-response-"))
    (subscription-filters common-lisp:nil :type
     (common-lisp:or subscription-filters common-lisp:null))
    (next-token common-lisp:nil :type
@@ -681,23 +1050,40 @@
  (common-lisp:export
   (common-lisp:list 'describe-subscription-filters-response
                     'make-describe-subscription-filters-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          describe-subscription-filters-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           describe-subscription-filters-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "subscriptionFilters"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'subscription-filters)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'subscription-filters))
+      (common-lisp:list
+       (common-lisp:cons "subscriptionFilters"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          describe-subscription-filters-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (destination (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (destination (:copier common-lisp:nil)
+      (:conc-name "struct-shape-destination-"))
    (destination-name common-lisp:nil :type
     (common-lisp:or destination-name common-lisp:null))
    (target-arn common-lisp:nil :type
@@ -709,39 +1095,57 @@
    (creation-time common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export (common-lisp:list 'destination 'make-destination))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape destination))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input destination))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input destination))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "destinationName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-name)))
-    (aws-sdk/generator/shape::to-query-params "targetArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'target-arn)))
-    (aws-sdk/generator/shape::to-query-params "roleArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'role-arn)))
-    (aws-sdk/generator/shape::to-query-params "accessPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'access-policy)))
-    (aws-sdk/generator/shape::to-query-params "arn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'arn)))
-    (aws-sdk/generator/shape::to-query-params "creationTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'creation-time))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination-name))
+      (common-lisp:list
+       (common-lisp:cons "destinationName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'target-arn))
+      (common-lisp:list
+       (common-lisp:cons "targetArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'role-arn))
+      (common-lisp:list
+       (common-lisp:cons "roleArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'access-policy))
+      (common-lisp:list
+       (common-lisp:cons "accessPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'arn))
+      (common-lisp:list
+       (common-lisp:cons "arn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-time))
+      (common-lisp:list
+       (common-lisp:cons "creationTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input destination))
+   common-lisp:nil))
 (common-lisp:deftype destination-arn () 'common-lisp:string)
 (common-lisp:deftype destination-name () 'common-lisp:string)
 (common-lisp:progn
@@ -759,7 +1163,9 @@
 (common-lisp:deftype export-destination-bucket () 'common-lisp:string)
 (common-lisp:deftype export-destination-prefix () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (export-task (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (export-task (:copier common-lisp:nil)
+      (:conc-name "struct-shape-export-task-"))
    (task-id common-lisp:nil :type
     (common-lisp:or export-task-id common-lisp:null))
    (task-name common-lisp:nil :type
@@ -777,56 +1183,82 @@
    (execution-info common-lisp:nil :type
     (common-lisp:or export-task-execution-info common-lisp:null)))
  (common-lisp:export (common-lisp:list 'export-task 'make-export-task))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape export-task))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input export-task))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input export-task))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "taskId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-id)))
-    (aws-sdk/generator/shape::to-query-params "taskName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'task-name)))
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "from"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'from)))
-    (aws-sdk/generator/shape::to-query-params "to"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'to)))
-    (aws-sdk/generator/shape::to-query-params "destination"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination)))
-    (aws-sdk/generator/shape::to-query-params "destinationPrefix"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-prefix)))
-    (aws-sdk/generator/shape::to-query-params "status"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'status)))
-    (aws-sdk/generator/shape::to-query-params "executionInfo"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'execution-info))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-id))
+      (common-lisp:list
+       (common-lisp:cons "taskId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'task-name))
+      (common-lisp:list
+       (common-lisp:cons "taskName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'from))
+      (common-lisp:list
+       (common-lisp:cons "from"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'to))
+      (common-lisp:list
+       (common-lisp:cons "to"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination))
+      (common-lisp:list
+       (common-lisp:cons "destination"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination-prefix))
+      (common-lisp:list
+       (common-lisp:cons "destinationPrefix"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'status))
+      (common-lisp:list
+       (common-lisp:cons "status"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'execution-info))
+      (common-lisp:list
+       (common-lisp:cons "executionInfo"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input export-task))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (export-task-execution-info (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (export-task-execution-info (:copier common-lisp:nil)
+      (:conc-name "struct-shape-export-task-execution-info-"))
    (creation-time common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
    (completion-time common-lisp:nil :type
@@ -834,44 +1266,70 @@
  (common-lisp:export
   (common-lisp:list 'export-task-execution-info
                     'make-export-task-execution-info))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          export-task-execution-info))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           export-task-execution-info))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "creationTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'creation-time)))
-    (aws-sdk/generator/shape::to-query-params "completionTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'completion-time))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-time))
+      (common-lisp:list
+       (common-lisp:cons "creationTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'completion-time))
+      (common-lisp:list
+       (common-lisp:cons "completionTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          export-task-execution-info))
+   common-lisp:nil))
 (common-lisp:deftype export-task-id () 'common-lisp:string)
 (common-lisp:deftype export-task-name () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (export-task-status (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (export-task-status (:copier common-lisp:nil)
+      (:conc-name "struct-shape-export-task-status-"))
    (code common-lisp:nil :type
     (common-lisp:or export-task-status-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or export-task-status-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'export-task-status 'make-export-task-status))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape export-task-status))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input export-task-status))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input export-task-status))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "code"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'code)))
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'code))
+      (common-lisp:list
+       (common-lisp:cons "code"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input export-task-status))
+   common-lisp:nil))
 (common-lisp:deftype export-task-status-code () 'common-lisp:string)
 (common-lisp:deftype export-task-status-message () 'common-lisp:string)
 (common-lisp:progn
@@ -881,15 +1339,19 @@
    (common-lisp:check-type aws-sdk/generator/shape::members
                            (trivial-types:proper-list export-task))
    aws-sdk/generator/shape::members))
-(common-lisp:defstruct
-    (extracted-values
-     (:constructor |make-extracted-values|
-      (aws-sdk/generator/shape::key aws-sdk/generator/shape::value)))
-  aws-sdk/generator/shape::key
-  aws-sdk/generator/shape::value)
+(common-lisp:progn
+ (common-lisp:deftype extracted-values () 'common-lisp:hash-table)
+ (common-lisp:defun |make-extracted-values|
+                    (aws-sdk/generator/shape::key-values)
+   (common-lisp:etypecase aws-sdk/generator/shape::key-values
+     (common-lisp:hash-table aws-sdk/generator/shape::key-values)
+     (common-lisp:list
+      (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype filter-count () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (filter-log-events-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (filter-log-events-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-filter-log-events-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (log-stream-names common-lisp:nil :type
@@ -907,53 +1369,81 @@
  (common-lisp:export
   (common-lisp:list 'filter-log-events-request
                     'make-filter-log-events-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          filter-log-events-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           filter-log-events-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "logStreamNames"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-stream-names)))
-    (aws-sdk/generator/shape::to-query-params "startTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-time)))
-    (aws-sdk/generator/shape::to-query-params "endTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'end-time)))
-    (aws-sdk/generator/shape::to-query-params "filterPattern"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-pattern)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token)))
-    (aws-sdk/generator/shape::to-query-params "limit"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'limit)))
-    (aws-sdk/generator/shape::to-query-params "interleaved"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'interleaved))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-stream-names))
+      (common-lisp:list
+       (common-lisp:cons "logStreamNames"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'start-time))
+      (common-lisp:list
+       (common-lisp:cons "startTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'end-time))
+      (common-lisp:list
+       (common-lisp:cons "endTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-pattern))
+      (common-lisp:list
+       (common-lisp:cons "filterPattern"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'limit))
+      (common-lisp:list
+       (common-lisp:cons "limit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'interleaved))
+      (common-lisp:list
+       (common-lisp:cons "interleaved"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          filter-log-events-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (filter-log-events-response (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (filter-log-events-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-filter-log-events-response-"))
    (events common-lisp:nil :type
     (common-lisp:or filtered-log-events common-lisp:null))
    (searched-log-streams common-lisp:nil :type
@@ -963,30 +1453,49 @@
  (common-lisp:export
   (common-lisp:list 'filter-log-events-response
                     'make-filter-log-events-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          filter-log-events-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           filter-log-events-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "events"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'events)))
-    (aws-sdk/generator/shape::to-query-params "searchedLogStreams"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'searched-log-streams)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'events))
+      (common-lisp:list
+       (common-lisp:cons "events"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'searched-log-streams))
+      (common-lisp:list
+       (common-lisp:cons "searchedLogStreams"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          filter-log-events-response))
+   common-lisp:nil))
 (common-lisp:deftype filter-name () 'common-lisp:string)
 (common-lisp:deftype filter-pattern () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (filtered-log-event (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (filtered-log-event (:copier common-lisp:nil)
+      (:conc-name "struct-shape-filtered-log-event-"))
    (log-stream-name common-lisp:nil :type
     (common-lisp:or log-stream-name common-lisp:null))
    (timestamp common-lisp:nil :type
@@ -998,34 +1507,50 @@
    (event-id common-lisp:nil :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'filtered-log-event 'make-filtered-log-event))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape filtered-log-event))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input filtered-log-event))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input filtered-log-event))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-stream-name)))
-    (aws-sdk/generator/shape::to-query-params "timestamp"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timestamp)))
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message)))
-    (aws-sdk/generator/shape::to-query-params "ingestionTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'ingestion-time)))
-    (aws-sdk/generator/shape::to-query-params "eventId"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'event-id))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-stream-name))
+      (common-lisp:list
+       (common-lisp:cons "logStreamName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timestamp))
+      (common-lisp:list
+       (common-lisp:cons "timestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'ingestion-time))
+      (common-lisp:list
+       (common-lisp:cons "ingestionTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'event-id))
+      (common-lisp:list
+       (common-lisp:cons "eventId"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input filtered-log-event))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype filtered-log-events ()
    '(trivial-types:proper-list filtered-log-event))
@@ -1035,7 +1560,9 @@
                            (trivial-types:proper-list filtered-log-event))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (get-log-events-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-log-events-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-log-events-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (log-stream-name (common-lisp:error ":logstreamname is required") :type
@@ -1050,48 +1577,74 @@
     (common-lisp:or start-from-head common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-log-events-request 'make-get-log-events-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          get-log-events-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           get-log-events-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-stream-name)))
-    (aws-sdk/generator/shape::to-query-params "startTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-time)))
-    (aws-sdk/generator/shape::to-query-params "endTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'end-time)))
-    (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-token)))
-    (aws-sdk/generator/shape::to-query-params "limit"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'limit)))
-    (aws-sdk/generator/shape::to-query-params "startFromHead"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'start-from-head))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-stream-name))
+      (common-lisp:list
+       (common-lisp:cons "logStreamName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'start-time))
+      (common-lisp:list
+       (common-lisp:cons "startTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'end-time))
+      (common-lisp:list
+       (common-lisp:cons "endTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-token))
+      (common-lisp:list
+       (common-lisp:cons "nextToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'limit))
+      (common-lisp:list
+       (common-lisp:cons "limit"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'start-from-head))
+      (common-lisp:list
+       (common-lisp:cons "startFromHead"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-log-events-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (get-log-events-response (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (get-log-events-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-get-log-events-response-"))
    (events common-lisp:nil :type
     (common-lisp:or output-log-events common-lisp:null))
    (next-forward-token common-lisp:nil :type
@@ -1100,46 +1653,74 @@
     (common-lisp:or next-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-log-events-response 'make-get-log-events-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          get-log-events-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           get-log-events-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "events"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'events)))
-    (aws-sdk/generator/shape::to-query-params "nextForwardToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-forward-token)))
-    (aws-sdk/generator/shape::to-query-params "nextBackwardToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-backward-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'events))
+      (common-lisp:list
+       (common-lisp:cons "events"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-forward-token))
+      (common-lisp:list
+       (common-lisp:cons "nextForwardToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-backward-token))
+      (common-lisp:list
+       (common-lisp:cons "nextBackwardToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          get-log-events-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (input-log-event (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (input-log-event (:copier common-lisp:nil)
+      (:conc-name "struct-shape-input-log-event-"))
    (timestamp (common-lisp:error ":string is required") :type
     (common-lisp:or timestamp common-lisp:null))
    (message (common-lisp:error ":message is required") :type
     (common-lisp:or event-message common-lisp:null)))
  (common-lisp:export (common-lisp:list 'input-log-event 'make-input-log-event))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape input-log-event))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input input-log-event))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input input-log-event))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "timestamp"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timestamp)))
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timestamp))
+      (common-lisp:list
+       (common-lisp:cons "timestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input input-log-event))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype input-log-events ()
    '(trivial-types:proper-list input-log-event))
@@ -1158,91 +1739,95 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype interleaved () 'common-lisp:boolean)
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-operation-exception (:copier common-lisp:nil)))
- (common-lisp:export
-  (common-lisp:list 'invalid-operation-exception
-                    'make-invalid-operation-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          invalid-operation-exception))
-   (common-lisp:append)))
+ (common-lisp:define-condition invalid-operation-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-operation-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-parameter-exception (:copier common-lisp:nil)))
- (common-lisp:export
-  (common-lisp:list 'invalid-parameter-exception
-                    'make-invalid-parameter-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          invalid-parameter-exception))
-   (common-lisp:append)))
+ (common-lisp:define-condition invalid-parameter-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'invalid-parameter-exception)))
 (common-lisp:progn
- (common-lisp:defstruct
-     (invalid-sequence-token-exception (:copier common-lisp:nil))
-   (expected-sequence-token common-lisp:nil :type
-    (common-lisp:or sequence-token common-lisp:null)))
+ (common-lisp:define-condition invalid-sequence-token-exception
+     (logs-error)
+     ((expected-sequence-token :initarg :expected-sequence-token :initform
+       common-lisp:nil :reader
+       invalid-sequence-token-exception-expected-sequence-token)))
  (common-lisp:export
   (common-lisp:list 'invalid-sequence-token-exception
-                    'make-invalid-sequence-token-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          invalid-sequence-token-exception))
-   (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "expectedSequenceToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'expected-sequence-token))))))
+                    'invalid-sequence-token-exception-expected-sequence-token)))
 (common-lisp:progn
- (common-lisp:defstruct (limit-exceeded-exception (:copier common-lisp:nil)))
- (common-lisp:export
-  (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          limit-exceeded-exception))
-   (common-lisp:append)))
+ (common-lisp:define-condition limit-exceeded-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'limit-exceeded-exception)))
 (common-lisp:progn
- (common-lisp:defstruct (list-tags-log-group-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (list-tags-log-group-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-tags-log-group-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-log-group-request
                     'make-list-tags-log-group-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          list-tags-log-group-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           list-tags-log-group-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-tags-log-group-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (list-tags-log-group-response (:copier common-lisp:nil))
+     (list-tags-log-group-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-list-tags-log-group-response-"))
    (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-log-group-response
                     'make-list-tags-log-group-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          list-tags-log-group-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           list-tags-log-group-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "tags"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tags))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          list-tags-log-group-response))
+   common-lisp:nil))
 (common-lisp:deftype log-event-index () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (log-group (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (log-group (:copier common-lisp:nil)
+      (:conc-name "struct-shape-log-group-"))
    (log-group-name common-lisp:nil :type
     (common-lisp:or log-group-name common-lisp:null))
    (creation-time common-lisp:nil :type
@@ -1255,39 +1840,57 @@
    (stored-bytes common-lisp:nil :type
     (common-lisp:or stored-bytes common-lisp:null)))
  (common-lisp:export (common-lisp:list 'log-group 'make-log-group))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape log-group))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input log-group))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input log-group))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "creationTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'creation-time)))
-    (aws-sdk/generator/shape::to-query-params "retentionInDays"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'retention-in-days)))
-    (aws-sdk/generator/shape::to-query-params "metricFilterCount"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'metric-filter-count)))
-    (aws-sdk/generator/shape::to-query-params "arn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'arn)))
-    (aws-sdk/generator/shape::to-query-params "storedBytes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'stored-bytes))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-time))
+      (common-lisp:list
+       (common-lisp:cons "creationTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'retention-in-days))
+      (common-lisp:list
+       (common-lisp:cons "retentionInDays"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'metric-filter-count))
+      (common-lisp:list
+       (common-lisp:cons "metricFilterCount"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'arn))
+      (common-lisp:list
+       (common-lisp:cons "arn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'stored-bytes))
+      (common-lisp:list
+       (common-lisp:cons "storedBytes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input log-group))
+   common-lisp:nil))
 (common-lisp:deftype log-group-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype log-groups () '(trivial-types:proper-list log-group))
@@ -1297,7 +1900,9 @@
                            (trivial-types:proper-list log-group))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (log-stream (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (log-stream (:copier common-lisp:nil)
+      (:conc-name "struct-shape-log-stream-"))
    (log-stream-name common-lisp:nil :type
     (common-lisp:or log-stream-name common-lisp:null))
    (creation-time common-lisp:nil :type
@@ -1314,49 +1919,74 @@
    (stored-bytes common-lisp:nil :type
     (common-lisp:or stored-bytes common-lisp:null)))
  (common-lisp:export (common-lisp:list 'log-stream 'make-log-stream))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape log-stream))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input log-stream))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input log-stream))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-stream-name)))
-    (aws-sdk/generator/shape::to-query-params "creationTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'creation-time)))
-    (aws-sdk/generator/shape::to-query-params "firstEventTimestamp"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'first-event-timestamp)))
-    (aws-sdk/generator/shape::to-query-params "lastEventTimestamp"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'last-event-timestamp)))
-    (aws-sdk/generator/shape::to-query-params "lastIngestionTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'last-ingestion-time)))
-    (aws-sdk/generator/shape::to-query-params "uploadSequenceToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'upload-sequence-token)))
-    (aws-sdk/generator/shape::to-query-params "arn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'arn)))
-    (aws-sdk/generator/shape::to-query-params "storedBytes"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'stored-bytes))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-stream-name))
+      (common-lisp:list
+       (common-lisp:cons "logStreamName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-time))
+      (common-lisp:list
+       (common-lisp:cons "creationTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'first-event-timestamp))
+      (common-lisp:list
+       (common-lisp:cons "firstEventTimestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'last-event-timestamp))
+      (common-lisp:list
+       (common-lisp:cons "lastEventTimestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'last-ingestion-time))
+      (common-lisp:list
+       (common-lisp:cons "lastIngestionTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'upload-sequence-token))
+      (common-lisp:list
+       (common-lisp:cons "uploadSequenceToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'arn))
+      (common-lisp:list
+       (common-lisp:cons "arn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'stored-bytes))
+      (common-lisp:list
+       (common-lisp:cons "storedBytes"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input log-stream))
+   common-lisp:nil))
 (common-lisp:deftype log-stream-name () 'common-lisp:string)
 (common-lisp:deftype log-stream-searched-completely () 'common-lisp:boolean)
 (common-lisp:progn
@@ -1367,7 +1997,9 @@
                            (trivial-types:proper-list log-stream))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (metric-filter (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (metric-filter (:copier common-lisp:nil)
+      (:conc-name "struct-shape-metric-filter-"))
    (filter-name common-lisp:nil :type
     (common-lisp:or filter-name common-lisp:null))
    (filter-pattern common-lisp:nil :type
@@ -1379,36 +2011,55 @@
    (log-group-name common-lisp:nil :type
     (common-lisp:or log-group-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'metric-filter 'make-metric-filter))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape metric-filter))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input metric-filter))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input metric-filter))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "filterName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-name)))
-    (aws-sdk/generator/shape::to-query-params "filterPattern"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-pattern)))
-    (aws-sdk/generator/shape::to-query-params "metricTransformations"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'metric-transformations)))
-    (aws-sdk/generator/shape::to-query-params "creationTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'creation-time)))
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-name))
+      (common-lisp:list
+       (common-lisp:cons "filterName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-pattern))
+      (common-lisp:list
+       (common-lisp:cons "filterPattern"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'metric-transformations))
+      (common-lisp:list
+       (common-lisp:cons "metricTransformations"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-time))
+      (common-lisp:list
+       (common-lisp:cons "creationTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input metric-filter))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (metric-filter-match-record (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (metric-filter-match-record (:copier common-lisp:nil)
+      (:conc-name "struct-shape-metric-filter-match-record-"))
    (event-number common-lisp:nil :type
     (common-lisp:or event-number common-lisp:null))
    (event-message common-lisp:nil :type
@@ -1418,26 +2069,42 @@
  (common-lisp:export
   (common-lisp:list 'metric-filter-match-record
                     'make-metric-filter-match-record))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          metric-filter-match-record))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           metric-filter-match-record))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "eventNumber"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'event-number)))
-    (aws-sdk/generator/shape::to-query-params "eventMessage"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'event-message)))
-    (aws-sdk/generator/shape::to-query-params "extractedValues"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'extracted-values))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'event-number))
+      (common-lisp:list
+       (common-lisp:cons "eventNumber"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'event-message))
+      (common-lisp:list
+       (common-lisp:cons "eventMessage"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'extracted-values))
+      (common-lisp:list
+       (common-lisp:cons "extractedValues"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          metric-filter-match-record))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype metric-filter-matches ()
    '(trivial-types:proper-list metric-filter-match-record))
@@ -1458,7 +2125,9 @@
 (common-lisp:deftype metric-name () 'common-lisp:string)
 (common-lisp:deftype metric-namespace () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (metric-transformation (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (metric-transformation (:copier common-lisp:nil)
+      (:conc-name "struct-shape-metric-transformation-"))
    (metric-name (common-lisp:error ":metricname is required") :type
     (common-lisp:or metric-name common-lisp:null))
    (metric-namespace (common-lisp:error ":metricnamespace is required") :type
@@ -1469,31 +2138,49 @@
     (common-lisp:or default-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'metric-transformation 'make-metric-transformation))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          metric-transformation))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           metric-transformation))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "metricName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'metric-name)))
-    (aws-sdk/generator/shape::to-query-params "metricNamespace"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'metric-namespace)))
-    (aws-sdk/generator/shape::to-query-params "metricValue"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'metric-value)))
-    (aws-sdk/generator/shape::to-query-params "defaultValue"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'default-value))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'metric-name))
+      (common-lisp:list
+       (common-lisp:cons "metricName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'metric-namespace))
+      (common-lisp:list
+       (common-lisp:cons "metricNamespace"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'metric-value))
+      (common-lisp:list
+       (common-lisp:cons "metricValue"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'default-value))
+      (common-lisp:list
+       (common-lisp:cons "defaultValue"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          metric-transformation))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype metric-transformations ()
    '(trivial-types:proper-list metric-transformation))
@@ -1505,19 +2192,15 @@
 (common-lisp:deftype metric-value () 'common-lisp:string)
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (operation-aborted-exception (:copier common-lisp:nil)))
- (common-lisp:export
-  (common-lisp:list 'operation-aborted-exception
-                    'make-operation-aborted-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          operation-aborted-exception))
-   (common-lisp:append)))
+ (common-lisp:define-condition operation-aborted-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'operation-aborted-exception)))
 (common-lisp:deftype order-by () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (output-log-event (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (output-log-event (:copier common-lisp:nil)
+      (:conc-name "struct-shape-output-log-event-"))
    (timestamp common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
    (message common-lisp:nil :type
@@ -1526,24 +2209,36 @@
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'output-log-event 'make-output-log-event))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape output-log-event))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input output-log-event))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input output-log-event))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "timestamp"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'timestamp)))
-    (aws-sdk/generator/shape::to-query-params "message"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'message)))
-    (aws-sdk/generator/shape::to-query-params "ingestionTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'ingestion-time))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'timestamp))
+      (common-lisp:list
+       (common-lisp:cons "timestamp"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'message))
+      (common-lisp:list
+       (common-lisp:cons "message"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'ingestion-time))
+      (common-lisp:list
+       (common-lisp:cons "ingestionTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input output-log-event))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype output-log-events ()
    '(trivial-types:proper-list output-log-event))
@@ -1554,7 +2249,8 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct
-     (put-destination-policy-request (:copier common-lisp:nil))
+     (put-destination-policy-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-put-destination-policy-request-"))
    (destination-name (common-lisp:error ":destinationname is required") :type
     (common-lisp:or destination-name common-lisp:null))
    (access-policy (common-lisp:error ":accesspolicy is required") :type
@@ -1562,23 +2258,39 @@
  (common-lisp:export
   (common-lisp:list 'put-destination-policy-request
                     'make-put-destination-policy-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          put-destination-policy-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           put-destination-policy-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "destinationName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-name)))
-    (aws-sdk/generator/shape::to-query-params "accessPolicy"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'access-policy))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination-name))
+      (common-lisp:list
+       (common-lisp:cons "destinationName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'access-policy))
+      (common-lisp:list
+       (common-lisp:cons "accessPolicy"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          put-destination-policy-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (put-destination-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (put-destination-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-put-destination-request-"))
    (destination-name (common-lisp:error ":destinationname is required") :type
     (common-lisp:or destination-name common-lisp:null))
    (target-arn (common-lisp:error ":targetarn is required") :type
@@ -1587,44 +2299,76 @@
     (common-lisp:or role-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-destination-request 'make-put-destination-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          put-destination-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           put-destination-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "destinationName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-name)))
-    (aws-sdk/generator/shape::to-query-params "targetArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'target-arn)))
-    (aws-sdk/generator/shape::to-query-params "roleArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'role-arn))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination-name))
+      (common-lisp:list
+       (common-lisp:cons "destinationName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'target-arn))
+      (common-lisp:list
+       (common-lisp:cons "targetArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'role-arn))
+      (common-lisp:list
+       (common-lisp:cons "roleArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          put-destination-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (put-destination-response (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (put-destination-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-put-destination-response-"))
    (destination common-lisp:nil :type
     (common-lisp:or destination common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-destination-response 'make-put-destination-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          put-destination-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           put-destination-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "destination"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination))
+      (common-lisp:list
+       (common-lisp:cons "destination"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          put-destination-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (put-log-events-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (put-log-events-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-put-log-events-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (log-stream-name (common-lisp:error ":logstreamname is required") :type
@@ -1635,56 +2379,93 @@
     (common-lisp:or sequence-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-log-events-request 'make-put-log-events-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          put-log-events-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           put-log-events-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-stream-name)))
-    (aws-sdk/generator/shape::to-query-params "logEvents"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-events)))
-    (aws-sdk/generator/shape::to-query-params "sequenceToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'sequence-token))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-stream-name))
+      (common-lisp:list
+       (common-lisp:cons "logStreamName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-events))
+      (common-lisp:list
+       (common-lisp:cons "logEvents"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'sequence-token))
+      (common-lisp:list
+       (common-lisp:cons "sequenceToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          put-log-events-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (put-log-events-response (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (put-log-events-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-put-log-events-response-"))
    (next-sequence-token common-lisp:nil :type
     (common-lisp:or sequence-token common-lisp:null))
    (rejected-log-events-info common-lisp:nil :type
     (common-lisp:or rejected-log-events-info common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-log-events-response 'make-put-log-events-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          put-log-events-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           put-log-events-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "nextSequenceToken"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'next-sequence-token)))
-    (aws-sdk/generator/shape::to-query-params "rejectedLogEventsInfo"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'rejected-log-events-info))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'next-sequence-token))
+      (common-lisp:list
+       (common-lisp:cons "nextSequenceToken"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'rejected-log-events-info))
+      (common-lisp:list
+       (common-lisp:cons "rejectedLogEventsInfo"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          put-log-events-response))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (put-metric-filter-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (put-metric-filter-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-put-metric-filter-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (filter-name (common-lisp:error ":filtername is required") :type
@@ -1697,34 +2478,54 @@
  (common-lisp:export
   (common-lisp:list 'put-metric-filter-request
                     'make-put-metric-filter-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          put-metric-filter-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           put-metric-filter-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "filterName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-name)))
-    (aws-sdk/generator/shape::to-query-params "filterPattern"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-pattern)))
-    (aws-sdk/generator/shape::to-query-params "metricTransformations"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'metric-transformations))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-name))
+      (common-lisp:list
+       (common-lisp:cons "filterName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-pattern))
+      (common-lisp:list
+       (common-lisp:cons "filterPattern"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'metric-transformations))
+      (common-lisp:list
+       (common-lisp:cons "metricTransformations"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          put-metric-filter-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (put-retention-policy-request (:copier common-lisp:nil))
+     (put-retention-policy-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-put-retention-policy-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (retention-in-days (common-lisp:error ":retentionindays is required") :type
@@ -1732,24 +2533,39 @@
  (common-lisp:export
   (common-lisp:list 'put-retention-policy-request
                     'make-put-retention-policy-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          put-retention-policy-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           put-retention-policy-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "retentionInDays"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'retention-in-days))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'retention-in-days))
+      (common-lisp:list
+       (common-lisp:cons "retentionInDays"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          put-retention-policy-request))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:defstruct
-     (put-subscription-filter-request (:copier common-lisp:nil))
+     (put-subscription-filter-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-put-subscription-filter-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (filter-name (common-lisp:error ":filtername is required") :type
@@ -1764,43 +2580,67 @@
  (common-lisp:export
   (common-lisp:list 'put-subscription-filter-request
                     'make-put-subscription-filter-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          put-subscription-filter-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           put-subscription-filter-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "filterName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-name)))
-    (aws-sdk/generator/shape::to-query-params "filterPattern"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-pattern)))
-    (aws-sdk/generator/shape::to-query-params "destinationArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-arn)))
-    (aws-sdk/generator/shape::to-query-params "roleArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'role-arn)))
-    (aws-sdk/generator/shape::to-query-params "distribution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'distribution))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-name))
+      (common-lisp:list
+       (common-lisp:cons "filterName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-pattern))
+      (common-lisp:list
+       (common-lisp:cons "filterPattern"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination-arn))
+      (common-lisp:list
+       (common-lisp:cons "destinationArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'role-arn))
+      (common-lisp:list
+       (common-lisp:cons "roleArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'distribution))
+      (common-lisp:list
+       (common-lisp:cons "distribution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          put-subscription-filter-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (rejected-log-events-info (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (rejected-log-events-info (:copier common-lisp:nil)
+      (:conc-name "struct-shape-rejected-log-events-info-"))
    (too-new-log-event-start-index common-lisp:nil :type
     (common-lisp:or log-event-index common-lisp:null))
    (too-old-log-event-end-index common-lisp:nil :type
@@ -1809,70 +2649,89 @@
     (common-lisp:or log-event-index common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'rejected-log-events-info 'make-rejected-log-events-info))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          rejected-log-events-info))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           rejected-log-events-info))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "tooNewLogEventStartIndex"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'too-new-log-event-start-index)))
-    (aws-sdk/generator/shape::to-query-params "tooOldLogEventEndIndex"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'too-old-log-event-end-index)))
-    (aws-sdk/generator/shape::to-query-params "expiredLogEventEndIndex"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'expired-log-event-end-index))))))
-(common-lisp:progn
- (common-lisp:defstruct
-     (resource-already-exists-exception (:copier common-lisp:nil)))
- (common-lisp:export
-  (common-lisp:list 'resource-already-exists-exception
-                    'make-resource-already-exists-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'too-new-log-event-start-index))
+      (common-lisp:list
+       (common-lisp:cons "tooNewLogEventStartIndex"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'too-old-log-event-end-index))
+      (common-lisp:list
+       (common-lisp:cons "tooOldLogEventEndIndex"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input
+                           'expired-log-event-end-index))
+      (common-lisp:list
+       (common-lisp:cons "expiredLogEventEndIndex"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
                         (
-                         (aws-sdk/generator/shape::shape
-                          resource-already-exists-exception))
-   (common-lisp:append)))
+                         (aws-sdk/generator/shape::input
+                          rejected-log-events-info))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct
-     (resource-not-found-exception (:copier common-lisp:nil)))
- (common-lisp:export
-  (common-lisp:list 'resource-not-found-exception
-                    'make-resource-not-found-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          resource-not-found-exception))
-   (common-lisp:append)))
+ (common-lisp:define-condition resource-already-exists-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-already-exists-exception)))
+(common-lisp:progn
+ (common-lisp:define-condition resource-not-found-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'resource-not-found-exception)))
 (common-lisp:deftype role-arn () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (searched-log-stream (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (searched-log-stream (:copier common-lisp:nil)
+      (:conc-name "struct-shape-searched-log-stream-"))
    (log-stream-name common-lisp:nil :type
     (common-lisp:or log-stream-name common-lisp:null))
    (searched-completely common-lisp:nil :type
     (common-lisp:or log-stream-searched-completely common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'searched-log-stream 'make-searched-log-stream))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape searched-log-stream))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input searched-log-stream))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input searched-log-stream))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-stream-name)))
-    (aws-sdk/generator/shape::to-query-params "searchedCompletely"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'searched-completely))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-stream-name))
+      (common-lisp:list
+       (common-lisp:cons "logStreamName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'searched-completely))
+      (common-lisp:list
+       (common-lisp:cons "searchedCompletely"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input searched-log-stream))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype searched-log-streams ()
    '(trivial-types:proper-list searched-log-stream))
@@ -1883,20 +2742,16 @@
    aws-sdk/generator/shape::members))
 (common-lisp:deftype sequence-token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct
-     (service-unavailable-exception (:copier common-lisp:nil)))
- (common-lisp:export
-  (common-lisp:list 'service-unavailable-exception
-                    'make-service-unavailable-exception))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        (
-                         (aws-sdk/generator/shape::shape
-                          service-unavailable-exception))
-   (common-lisp:append)))
+ (common-lisp:define-condition service-unavailable-exception
+     (logs-error)
+     common-lisp:nil)
+ (common-lisp:export (common-lisp:list 'service-unavailable-exception)))
 (common-lisp:deftype start-from-head () 'common-lisp:boolean)
 (common-lisp:deftype stored-bytes () 'common-lisp:integer)
 (common-lisp:progn
- (common-lisp:defstruct (subscription-filter (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (subscription-filter (:copier common-lisp:nil)
+      (:conc-name "struct-shape-subscription-filter-"))
    (filter-name common-lisp:nil :type
     (common-lisp:or filter-name common-lisp:null))
    (log-group-name common-lisp:nil :type
@@ -1912,44 +2767,64 @@
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'subscription-filter 'make-subscription-filter))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
-                        ((aws-sdk/generator/shape::shape subscription-filter))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
+                        ((aws-sdk/generator/shape::input subscription-filter))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        ((aws-sdk/generator/shape::input subscription-filter))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "filterName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-name)))
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "filterPattern"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-pattern)))
-    (aws-sdk/generator/shape::to-query-params "destinationArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'destination-arn)))
-    (aws-sdk/generator/shape::to-query-params "roleArn"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'role-arn)))
-    (aws-sdk/generator/shape::to-query-params "distribution"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'distribution)))
-    (aws-sdk/generator/shape::to-query-params "creationTime"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'creation-time))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-name))
+      (common-lisp:list
+       (common-lisp:cons "filterName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-pattern))
+      (common-lisp:list
+       (common-lisp:cons "filterPattern"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'destination-arn))
+      (common-lisp:list
+       (common-lisp:cons "destinationArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'role-arn))
+      (common-lisp:list
+       (common-lisp:cons "roleArn"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'distribution))
+      (common-lisp:list
+       (common-lisp:cons "distribution"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'creation-time))
+      (common-lisp:list
+       (common-lisp:cons "creationTime"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        ((aws-sdk/generator/shape::input subscription-filter))
+   common-lisp:nil))
 (common-lisp:progn
  (common-lisp:deftype subscription-filters ()
    '(trivial-types:proper-list subscription-filter))
@@ -1967,35 +2842,52 @@
                            (trivial-types:proper-list tag-key))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (tag-log-group-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (tag-log-group-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-tag-log-group-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (tags (common-lisp:error ":tags is required") :type
     (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-log-group-request 'make-tag-log-group-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          tag-log-group-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           tag-log-group-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "tags"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tags))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          tag-log-group-request))
+   common-lisp:nil))
 (common-lisp:deftype tag-value () 'common-lisp:string)
-(common-lisp:defstruct
-    (tags
-     (:constructor |make-tags|
-      (aws-sdk/generator/shape::key aws-sdk/generator/shape::value)))
-  aws-sdk/generator/shape::key
-  aws-sdk/generator/shape::value)
+(common-lisp:progn
+ (common-lisp:deftype tags () 'common-lisp:hash-table)
+ (common-lisp:defun |make-tags| (aws-sdk/generator/shape::key-values)
+   (common-lisp:etypecase aws-sdk/generator/shape::key-values
+     (common-lisp:hash-table aws-sdk/generator/shape::key-values)
+     (common-lisp:list
+      (alexandria:alist-hash-table aws-sdk/generator/shape::key-values)))))
 (common-lisp:deftype target-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype test-event-messages ()
@@ -2006,7 +2898,9 @@
                            (trivial-types:proper-list event-message))
    aws-sdk/generator/shape::members))
 (common-lisp:progn
- (common-lisp:defstruct (test-metric-filter-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (test-metric-filter-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-test-metric-filter-request-"))
    (filter-pattern (common-lisp:error ":filterpattern is required") :type
     (common-lisp:or filter-pattern common-lisp:null))
    (log-event-messages (common-lisp:error ":logeventmessages is required")
@@ -2014,63 +2908,107 @@
  (common-lisp:export
   (common-lisp:list 'test-metric-filter-request
                     'make-test-metric-filter-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          test-metric-filter-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           test-metric-filter-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "filterPattern"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'filter-pattern)))
-    (aws-sdk/generator/shape::to-query-params "logEventMessages"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-event-messages))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'filter-pattern))
+      (common-lisp:list
+       (common-lisp:cons "filterPattern"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-event-messages))
+      (common-lisp:list
+       (common-lisp:cons "logEventMessages"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          test-metric-filter-request))
+   common-lisp:nil))
 (common-lisp:progn
- (common-lisp:defstruct (test-metric-filter-response (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (test-metric-filter-response (:copier common-lisp:nil)
+      (:conc-name "struct-shape-test-metric-filter-response-"))
    (matches common-lisp:nil :type
     (common-lisp:or metric-filter-matches common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'test-metric-filter-response
                     'make-test-metric-filter-response))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          test-metric-filter-response))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           test-metric-filter-response))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "matches"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'matches))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'matches))
+      (common-lisp:list
+       (common-lisp:cons "matches"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          test-metric-filter-response))
+   common-lisp:nil))
 (common-lisp:deftype timestamp () 'common-lisp:integer)
 (common-lisp:deftype token () 'common-lisp:string)
 (common-lisp:progn
- (common-lisp:defstruct (untag-log-group-request (:copier common-lisp:nil))
+ (common-lisp:defstruct
+     (untag-log-group-request (:copier common-lisp:nil)
+      (:conc-name "struct-shape-untag-log-group-request-"))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
     (common-lisp:or log-group-name common-lisp:null))
    (tags (common-lisp:error ":tags is required") :type
     (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-log-group-request 'make-untag-log-group-request))
- (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
+ (common-lisp:defmethod aws-sdk/generator/shape::input-headers
                         (
-                         (aws-sdk/generator/shape::shape
+                         (aws-sdk/generator/shape::input
+                          untag-log-group-request))
+   (common-lisp:append))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-params
+                        (
+                         (aws-sdk/generator/shape::input
                           untag-log-group-request))
    (common-lisp:append
-    (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'log-group-name)))
-    (aws-sdk/generator/shape::to-query-params "tags"
-                                              (aws-sdk/generator/shape:shape-to-params
-                                               (common-lisp:slot-value
-                                                aws-sdk/generator/shape::shape
-                                                'tags))))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'log-group-name))
+      (common-lisp:list
+       (common-lisp:cons "logGroupName"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))
+    (alexandria:when-let (aws-sdk/generator/shape::value
+                          (common-lisp:slot-value
+                           aws-sdk/generator/shape::input 'tags))
+      (common-lisp:list
+       (common-lisp:cons "tags"
+                         (aws-sdk/generator/shape::input-params
+                          aws-sdk/generator/shape::value))))))
+ (common-lisp:defmethod aws-sdk/generator/shape::input-payload
+                        (
+                         (aws-sdk/generator/shape::input
+                          untag-log-group-request))
+   common-lisp:nil))
 (common-lisp:deftype value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun cancel-export-task
@@ -2083,13 +3021,16 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CancelExportTask")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CancelExportTask"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'cancel-export-task))
 (common-lisp:progn
  (common-lisp:defun create-export-task
@@ -2106,13 +3047,19 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CreateExportTask")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "CreateExportTaskResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CreateExportTask"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceAlreadyExistsException"
+         . resource-already-exists-exception)))))
  (common-lisp:export 'create-export-task))
 (common-lisp:progn
  (common-lisp:defun create-log-group
@@ -2125,13 +3072,17 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CreateLogGroup")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CreateLogGroup"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-log-group))
 (common-lisp:progn
  (common-lisp:defun create-log-stream
@@ -2144,13 +3095,16 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"CreateLogStream")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "CreateLogStream"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-log-stream))
 (common-lisp:progn
  (common-lisp:defun delete-destination
@@ -2163,13 +3117,16 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeleteDestination")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeleteDestination"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-destination))
 (common-lisp:progn
  (common-lisp:defun delete-log-group
@@ -2182,13 +3139,16 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeleteLogGroup")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeleteLogGroup"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-log-group))
 (common-lisp:progn
  (common-lisp:defun delete-log-stream
@@ -2201,13 +3161,16 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeleteLogStream")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeleteLogStream"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-log-stream))
 (common-lisp:progn
  (common-lisp:defun delete-metric-filter
@@ -2220,13 +3183,16 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeleteMetricFilter")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeleteMetricFilter"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-metric-filter))
 (common-lisp:progn
  (common-lisp:defun delete-retention-policy
@@ -2239,13 +3205,16 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeleteRetentionPolicy")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeleteRetentionPolicy"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-retention-policy))
 (common-lisp:progn
  (common-lisp:defun delete-subscription-filter
@@ -2259,13 +3228,16 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DeleteSubscriptionFilter")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DeleteSubscriptionFilter"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-subscription-filter))
 (common-lisp:progn
  (common-lisp:defun describe-destinations
@@ -2279,13 +3251,14 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeDestinations")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeDestinationsResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeDestinations"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-destinations))
 (common-lisp:progn
  (common-lisp:defun describe-export-tasks
@@ -2299,13 +3272,14 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeExportTasks")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeExportTasksResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeExportTasks"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-export-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-log-groups
@@ -2319,13 +3293,14 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeLogGroups")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeLogGroupsResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeLogGroups"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-log-groups))
 (common-lisp:progn
  (common-lisp:defun describe-log-streams
@@ -2341,13 +3316,15 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeLogStreams")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeLogStreamsResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeLogStreams"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-log-streams))
 (common-lisp:progn
  (common-lisp:defun describe-metric-filters
@@ -2363,13 +3340,15 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeMetricFilters")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeMetricFiltersResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeMetricFilters"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-metric-filters))
 (common-lisp:progn
  (common-lisp:defun describe-subscription-filters
@@ -2385,13 +3364,15 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"DescribeSubscriptionFilters")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "DescribeSubscriptionFiltersResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "DescribeSubscriptionFilters"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-subscription-filters))
 (common-lisp:progn
  (common-lisp:defun filter-log-events
@@ -2408,13 +3389,15 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"FilterLogEvents")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "FilterLogEventsResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "FilterLogEvents"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'filter-log-events))
 (common-lisp:progn
  (common-lisp:defun get-log-events
@@ -2430,13 +3413,15 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"GetLogEvents")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "GetLogEventsResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "GetLogEvents"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-log-events))
 (common-lisp:progn
  (common-lisp:defun list-tags-log-group
@@ -2449,13 +3434,14 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"ListTagsLogGroup")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "ListTagsLogGroupResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "ListTagsLogGroup"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-tags-log-group))
 (common-lisp:progn
  (common-lisp:defun put-destination
@@ -2469,13 +3455,15 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"PutDestination")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "PutDestinationResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "PutDestination"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-destination))
 (common-lisp:progn
  (common-lisp:defun put-destination-policy
@@ -2488,13 +3476,15 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"PutDestinationPolicy")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "PutDestinationPolicy"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-destination-policy))
 (common-lisp:progn
  (common-lisp:defun put-log-events
@@ -2510,13 +3500,17 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"PutLogEvents")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "PutLogEventsResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "PutLogEvents"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-log-events))
 (common-lisp:progn
  (common-lisp:defun put-metric-filter
@@ -2532,13 +3526,17 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"PutMetricFilter")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "PutMetricFilter"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-metric-filter))
 (common-lisp:progn
  (common-lisp:defun put-retention-policy
@@ -2552,13 +3550,16 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"PutRetentionPolicy")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "PutRetentionPolicy"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-retention-policy))
 (common-lisp:progn
  (common-lisp:defun put-subscription-filter
@@ -2574,13 +3575,17 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"PutSubscriptionFilter")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "PutSubscriptionFilter"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-subscription-filter))
 (common-lisp:progn
  (common-lisp:defun tag-log-group
@@ -2593,13 +3598,14 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"TagLogGroup")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "TagLogGroup"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)))))
  (common-lisp:export 'tag-log-group))
 (common-lisp:progn
  (common-lisp:defun test-metric-filter
@@ -2613,13 +3619,14 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"TestMetricFilter")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      "TestMetricFilterResponse" common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "TestMetricFilter"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("InvalidParameterException" . invalid-parameter-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'test-metric-filter))
 (common-lisp:progn
  (common-lisp:defun untag-log-group
@@ -2632,11 +3639,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request
-       (common-lisp:make-instance 'logs-request :method :post :params
-                                  (common-lisp:append
-                                   `(("Action" ,@"UntagLogGroup")
-                                     ("Version" ,@"2014-03-28"))
-                                   (aws-sdk/generator/shape:shape-to-params
-                                    aws-sdk/generator/operation::input))))
-      common-lisp:nil common-lisp:nil)))
+       (aws-sdk/generator/shape:make-request-with-input 'logs-request
+                                                        aws-sdk/generator/operation::input
+                                                        "POST" "/"
+                                                        "UntagLogGroup"
+                                                        "2014-03-28"))
+      common-lisp:nil common-lisp:nil
+      '(("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'untag-log-group))

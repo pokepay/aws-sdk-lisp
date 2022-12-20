@@ -3,11 +3,11 @@
         #:trivial-types
         #:aws-sdk/utils)
   (:import-from #:alexandria
-                #:ensure-car)
-  (:import-from #:assoc-utils
-                #:alistp)
+                #:ensure-car
+                #:alist-hash-table
+                #:when-let)
   (:export #:compile-shape
-           #:shape-to-params))
+           #:make-request-with-input))
 (in-package #:aws-sdk/generator/shape)
 
 (defun composite-type-p (type-name)
@@ -33,47 +33,88 @@
       (let ((*package* package))
         (lisp-native-type value))))
 
-(defgeneric shape-to-params (shape)
-  (:method (shape) shape))
+(defgeneric input-params (input)
+  (:method (input) input))
+(defgeneric input-headers (input))
+(defgeneric input-payload (input))
 
-(defun to-query-params (key value)
-  (typecase value
-    (null)
-    (cons
-     (if (alistp value)
-         (mapcar (lambda (kv)
-                   (cons
-                    (format nil "~A.~A" key (car kv))
-                    (cdr kv)))
-                 (loop for (k . v) in value
-                       append (to-query-params k v)))
-         (loop for i from 1
-               for v in value
-               collect (cons (format nil "~A.member.~A" key i) v))))
-    (boolean
-     (list (cons key
-		 (if value
-		     "true"
-		     "false"))))
-    (otherwise (list (cons key value)))))
+(defun make-request-with-input (request-class input method path-conversion action version)
+  (make-instance request-class
+                 :method method
+                 :path (etypecase path-conversion
+                         (string path-conversion)
+                         (function (funcall path-conversion input))
+                         (null "/"))
+                 :params (append `(("Action" . ,action) ("Version" . ,version))
+                                 (input-params input))
+                 :headers (input-headers input)
+                 :payload (input-payload input)))
 
-(defun compile-structure-shape (name &key required members)
-  `(progn
-     (defstruct (,(lispify* name) (:copier nil))
-       ,@(loop for key being each hash-key of members
+(defun filter-member (key value members)
+  (loop for member-name being each hash-key of members
+        using (hash-value member-options)
+        if (equal (gethash key member-options) value)
+        collect (cons member-name member-options)))
+
+(defun compile-structure-shape (name &key required members payload)
+  (let ((shape-name (lispify* name)))
+    `(progn
+       (defstruct (,shape-name (:copier nil) (:conc-name ,(format nil "struct-shape-~A-" shape-name)))
+         ,@(loop for key being each hash-key of members
                  using (hash-value value)
-               collect `(,(lispify key)
-                         ,(if (find key required :test #'string=)
-                              `(error ,(format nil ":~A is required" (lispify* key)))
-                              nil)
-                         :type (or ,(lispify* (gethash "shape" value)) null))))
-     (export (list ',(lispify* name)
-                   ',(intern (format nil "~:@(~A-~A~)" '#:make (lispify* name)))))
-     (defmethod shape-to-params ((shape ,(lispify* name)))
-       (append
-        ,@(loop for key being each hash-key of members
-                collect `(to-query-params ,key
-                                          (shape-to-params (slot-value shape ',(lispify key)))))))))
+                 collect `(,(lispify key)
+                            ,(if (find key required :test #'string=)
+                                 `(error ,(format nil ":~A is required" (lispify* key)))
+                                 nil)
+                            :type (or ,(lispify* (gethash "shape" value))
+                                      ,@(when (gethash "streaming" value)
+                                          '(stream pathname string))
+                                      null))))
+       (export (list ',shape-name
+                     ',(intern (format nil "~:@(~A-~A~)" '#:make shape-name))))
+       (defmethod input-headers ((input ,shape-name))
+         (append
+           ,@(mapcar
+               (lambda (key-value)
+                 (destructuring-bind (key . value) key-value
+                   `(when-let (value (slot-value input ',(lispify key)))
+                      (cons ,(gethash "locationName" value) value))))
+               (filter-member "location" "header" members))
+           ,@(mapcar
+               (lambda (key-value)
+                 (destructuring-bind (key . value) key-value
+                   `(when (slot-value input ',(lispify key))
+                      (loop for key being each hash-key of (slot-value input ',(lispify key))
+                            using (hash-value value)
+                            collect (cons (format nil "~A~A" ,(gethash "locationName" value) key)
+                                          value)))))
+               (filter-member "location" "headers" members))))
+       (defmethod input-params ((input ,shape-name))
+         (append
+           ,@(loop for key being each hash-key of members
+                   using (hash-value value)
+                   if (not (or (gethash "location" value)
+                               (gethash "streaming" value)))
+                   collect `(when-let (value (slot-value input ',(lispify key)))
+                              (list (cons ,key (input-params value)))))))
+       (defmethod input-payload ((input ,shape-name))
+         ,(if payload
+              `(slot-value input ',(lispify payload))
+              'nil)))))
+
+(defun compile-exception-shape (name &key members exception)
+  (let ((condition-name (lispify* name)))
+    `(progn
+       (define-condition ,condition-name (,exception)
+         ,(loop for member-name being each hash-key of members
+                using (hash-value member-options)
+                for slot-name = (lispify member-name)
+                collect `(,(lispify member-name) :initarg ,(lispify member-name :keyword)
+                                                 :initform nil
+                                                 :reader ,(lispify (format nil "~A-~A" condition-name slot-name)))))
+       (export (list ',condition-name
+                     ,@(loop for member-name being each hash-key of members
+                             collect `',(lispify (format nil "~A-~A" condition-name (lispify member-name)))))))))
 
 (defun compile-list-shape (name member)
   `(progn
@@ -83,11 +124,12 @@
        members)))
 
 (defun compile-map-shape (name)
-  `(defstruct (,(lispify* name) (:constructor
-                                    ,(intern (format nil "~A-~A" '#:make (lispify* name)))
-                                    (key value)))
-     key
-     value))
+  `(progn
+     (deftype ,(lispify* name) () 'hash-table)
+     (defun ,(intern (format nil "~A-~A" '#:make (lispify* name))) (key-values)
+       (etypecase key-values
+         (hash-table key-values)
+         (list (alist-hash-table key-values))))))
 
 (defun compile-otherwise (name type)
   (when (or (composite-type-p name)
@@ -99,7 +141,7 @@
              (lispify type)
              (lisp-native-type type)))))
 
-(defun compile-shape (name options)
+(defun compile-shape (name options exception-name)
   (let ((type (gethash "type" options)))
     (cond
       ((string= type "map")
@@ -109,8 +151,13 @@
          (assert member-type)
          (compile-list-shape name member-type)))
       ((string= type "structure")
-       (compile-structure-shape name
-                                :required (gethash "required" options)
-                                :members (gethash "members" options)))
+       (if (gethash "exception" options)
+           (compile-exception-shape name
+                                    :members (gethash "members" options)
+                                    :exception exception-name)
+           (compile-structure-shape name
+                                    :required (gethash "required" options)
+                                    :members (gethash "members" options)
+                                    :payload (gethash "payload" options))))
       (t
        (compile-otherwise name type)))))

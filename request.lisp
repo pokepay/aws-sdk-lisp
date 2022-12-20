@@ -6,6 +6,8 @@
                 #:url-encode-params
                 #:make-uri
                 #:render-uri)
+  (:import-from #:assoc-utils
+                #:alistp)
   (:export #:request
            #:request-service
            #:request-method
@@ -40,6 +42,37 @@
    (session :initarg :session
             :initform *session*
             :reader request-session)))
+
+(defmethod initialize-instance :after ((req request) &rest args &key path params &allow-other-keys)
+  (declare (ignore args))
+  (let ((uri (quri:uri path)))
+    (setf (slot-value req 'path) (quri:uri-path uri))
+    (setf (slot-value req 'params)
+          (append
+            (quri:uri-query-params uri)
+            (loop for (k . v) in params
+                  append (to-query-params k v))))))
+
+(defun to-query-params (key value)
+  (typecase value
+    (null)
+    (cons
+     (if (alistp value)
+         (mapcar (lambda (kv)
+                   (cons
+                    (format nil "~A.~A" key (car kv))
+                    (cdr kv)))
+                 (loop for (k . v) in value
+                       append (to-query-params k v)))
+         (loop for i from 1
+               for v in value
+               collect (cons (format nil "~A.member.~A" key i) v))))
+    (boolean
+     (list (cons key
+                 (if value
+                     "true"
+                     "false"))))
+    (otherwise (list (cons key value)))))
 
 (defgeneric request-host (request region)
   (:method ((req request) region)
