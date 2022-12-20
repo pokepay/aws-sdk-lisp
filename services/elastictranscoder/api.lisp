@@ -3649,12 +3649,13 @@
                                 aws-sdk/generator/operation::input 'id))))
         "CancelJob" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("ResourceInUseException" . resource-in-use-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'cancel-job))
 (common-lisp:progn
  (common-lisp:defun create-job
@@ -3674,12 +3675,13 @@
         'elastictranscoder-request aws-sdk/generator/operation::input "POST"
         "/2012-09-25/jobs" "CreateJob" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-job))
 (common-lisp:progn
  (common-lisp:defun create-pipeline
@@ -3700,12 +3702,13 @@
         'elastictranscoder-request aws-sdk/generator/operation::input "POST"
         "/2012-09-25/pipelines" "CreatePipeline" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-pipeline))
 (common-lisp:progn
  (common-lisp:defun create-preset
@@ -3724,11 +3727,13 @@
         'elastictranscoder-request aws-sdk/generator/operation::input "POST"
         "/2012-09-25/presets" "CreatePreset" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
-        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-preset))
 (common-lisp:progn
  (common-lisp:defun delete-pipeline
@@ -3750,12 +3755,13 @@
                                 aws-sdk/generator/operation::input 'id))))
         "DeletePipeline" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("ResourceInUseException" . resource-in-use-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-pipeline))
 (common-lisp:progn
  (common-lisp:defun delete-preset
@@ -3777,11 +3783,13 @@
                                 aws-sdk/generator/operation::input 'id))))
         "DeletePreset" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-preset))
 (common-lisp:progn
  (common-lisp:defun list-jobs-by-pipeline
@@ -3805,11 +3813,13 @@
                                 'pipeline-id))))
         "ListJobsByPipeline" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-jobs-by-pipeline))
 (common-lisp:progn
  (common-lisp:defun list-jobs-by-status
@@ -3831,11 +3841,13 @@
                                 aws-sdk/generator/operation::input 'status))))
         "ListJobsByStatus" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-jobs-by-status))
 (common-lisp:progn
  (common-lisp:defun list-pipelines
@@ -3852,10 +3864,13 @@
         'elastictranscoder-request aws-sdk/generator/operation::input "GET"
         "/2012-09-25/pipelines" "ListPipelines" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-pipelines))
 (common-lisp:progn
  (common-lisp:defun list-presets
@@ -3872,10 +3887,13 @@
         'elastictranscoder-request aws-sdk/generator/operation::input "GET"
         "/2012-09-25/presets" "ListPresets" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-presets))
 (common-lisp:progn
  (common-lisp:defun read-job
@@ -3897,11 +3915,13 @@
                                 aws-sdk/generator/operation::input 'id))))
         "ReadJob" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'read-job))
 (common-lisp:progn
  (common-lisp:defun read-pipeline
@@ -3923,11 +3943,13 @@
                                 aws-sdk/generator/operation::input 'id))))
         "ReadPipeline" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'read-pipeline))
 (common-lisp:progn
  (common-lisp:defun read-preset
@@ -3949,11 +3971,13 @@
                                 aws-sdk/generator/operation::input 'id))))
         "ReadPreset" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'read-preset))
 (common-lisp:progn
  (common-lisp:defun test-role
@@ -3971,11 +3995,13 @@
         'elastictranscoder-request aws-sdk/generator/operation::input "POST"
         "/2012-09-25/roleTests" "TestRole" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'test-role))
 (common-lisp:progn
  (common-lisp:defun update-pipeline
@@ -4000,12 +4026,13 @@
                                 aws-sdk/generator/operation::input 'id))))
         "UpdatePipeline" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
-        ("AccessDeniedException" . access-denied-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-pipeline))
 (common-lisp:progn
  (common-lisp:defun update-pipeline-notifications
@@ -4029,12 +4056,13 @@
                                 aws-sdk/generator/operation::input 'id))))
         "UpdatePipelineNotifications" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("ResourceInUseException" . resource-in-use-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-pipeline-notifications))
 (common-lisp:progn
  (common-lisp:defun update-pipeline-status
@@ -4056,10 +4084,11 @@
                                 aws-sdk/generator/operation::input 'id))))
         "UpdatePipelineStatus" "2012-09-25"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("IncompatibleVersionException" . incompatible-version-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("ResourceInUseException" . resource-in-use-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-pipeline-status))

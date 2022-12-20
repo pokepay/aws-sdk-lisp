@@ -14572,12 +14572,113 @@
                                                         "AddRoleToDBCluster"
                                                         "2014-10-31"))
       common-lisp:nil common-lisp:nil
-      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
         ("DBClusterRoleAlreadyExistsFault"
          . dbcluster-role-already-exists-fault)
-        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
         ("DBClusterRoleQuotaExceededFault"
-         . dbcluster-role-quota-exceeded-fault)))))
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'add-role-to-dbcluster))
 (common-lisp:progn
  (common-lisp:defun add-source-identifier-to-subscription
@@ -14598,8 +14699,113 @@
                                                         "AddSourceIdentifierToSubscription"
                                                         "2014-10-31"))
       common-lisp:nil "AddSourceIdentifierToSubscriptionResult"
-      '(("SubscriptionNotFoundFault" . subscription-not-found-fault)
-        ("SourceNotFoundFault" . source-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'add-source-identifier-to-subscription))
 (common-lisp:progn
  (common-lisp:defun add-tags-to-resource
@@ -14618,9 +14824,113 @@
                                                         "AddTagsToResource"
                                                         "2014-10-31"))
       common-lisp:nil common-lisp:nil
-      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
         ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
-        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)))))
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
  (common-lisp:defun apply-pending-maintenance-action
@@ -14642,7 +14952,113 @@
                                                         "ApplyPendingMaintenanceAction"
                                                         "2014-10-31"))
       common-lisp:nil "ApplyPendingMaintenanceActionResult"
-      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'apply-pending-maintenance-action))
 (common-lisp:progn
  (common-lisp:defun authorize-dbsecurity-group-ingress
@@ -14666,13 +15082,113 @@
                                                         "AuthorizeDBSecurityGroupIngress"
                                                         "2014-10-31"))
       common-lisp:nil "AuthorizeDBSecurityGroupIngressResult"
-      '(("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
         ("InvalidDBSecurityGroupStateFault"
          . invalid-dbsecurity-group-state-fault)
-        ("AuthorizationAlreadyExistsFault"
-         . authorization-already-exists-fault)
-        ("AuthorizationQuotaExceededFault"
-         . authorization-quota-exceeded-fault)))))
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'authorize-dbsecurity-group-ingress))
 (common-lisp:progn
  (common-lisp:defun copy-dbcluster-parameter-group
@@ -14698,11 +15214,113 @@
                                                         "CopyDBClusterParameterGroup"
                                                         "2014-10-31"))
       common-lisp:nil "CopyDBClusterParameterGroupResult"
-      '(("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
         ("DBParameterGroupQuotaExceededFault"
          . dbparameter-group-quota-exceeded-fault)
-        ("DBParameterGroupAlreadyExistsFault"
-         . dbparameter-group-already-exists-fault)))))
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'copy-dbcluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun copy-dbcluster-snapshot
@@ -14726,14 +15344,113 @@
                                                         "CopyDBClusterSnapshot"
                                                         "2014-10-31"))
       common-lisp:nil "CopyDBClusterSnapshotResult"
-      '(("DBClusterSnapshotAlreadyExistsFault"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
          . dbcluster-snapshot-already-exists-fault)
         ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
-        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
         ("InvalidDBClusterSnapshotStateFault"
          . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
         ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)))))
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'copy-dbcluster-snapshot))
 (common-lisp:progn
  (common-lisp:defun copy-dbparameter-group
@@ -14757,11 +15474,113 @@
                                                         "CopyDBParameterGroup"
                                                         "2014-10-31"))
       common-lisp:nil "CopyDBParameterGroupResult"
-      '(("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
         ("DBParameterGroupAlreadyExistsFault"
          . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
         ("DBParameterGroupQuotaExceededFault"
-         . dbparameter-group-quota-exceeded-fault)))))
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'copy-dbparameter-group))
 (common-lisp:progn
  (common-lisp:defun copy-dbsnapshot
@@ -14785,11 +15604,113 @@
                                                         "CopyDBSnapshot"
                                                         "2014-10-31"))
       common-lisp:nil "CopyDBSnapshotResult"
-      '(("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
         ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
         ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
         ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)))))
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'copy-dbsnapshot))
 (common-lisp:progn
  (common-lisp:defun copy-option-group
@@ -14812,10 +15733,113 @@
                                                         "CopyOptionGroup"
                                                         "2014-10-31"))
       common-lisp:nil "CopyOptionGroupResult"
-      '(("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
         ("OptionGroupNotFoundFault" . option-group-not-found-fault)
-        ("OptionGroupQuotaExceededFault"
-         . option-group-quota-exceeded-fault)))))
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'copy-option-group))
 (common-lisp:progn
  (common-lisp:defun create-dbcluster
@@ -14849,24 +15873,113 @@
                                                         "CreateDBCluster"
                                                         "2014-10-31"))
       common-lisp:nil "CreateDBClusterResult"
-      '(("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
-        ("InsufficientStorageClusterCapacityFault"
-         . insufficient-storage-cluster-capacity-fault)
-        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
-        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
-        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
         ("DBClusterParameterGroupNotFoundFault"
          . dbcluster-parameter-group-not-found-fault)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
         ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
         ("DBSubnetGroupDoesNotCoverEnoughAZs"
-         . dbsubnet-group-does-not-cover-enough-azs)))))
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'create-dbcluster))
 (common-lisp:progn
  (common-lisp:defun create-dbcluster-parameter-group
@@ -14889,10 +16002,113 @@
                                                         "CreateDBClusterParameterGroup"
                                                         "2014-10-31"))
       common-lisp:nil "CreateDBClusterParameterGroupResult"
-      '(("DBParameterGroupQuotaExceededFault"
-         . dbparameter-group-quota-exceeded-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
         ("DBParameterGroupAlreadyExistsFault"
-         . dbparameter-group-already-exists-fault)))))
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'create-dbcluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun create-dbcluster-snapshot
@@ -14915,13 +16131,113 @@
                                                         "CreateDBClusterSnapshot"
                                                         "2014-10-31"))
       common-lisp:nil "CreateDBClusterSnapshotResult"
-      '(("DBClusterSnapshotAlreadyExistsFault"
-         . dbcluster-snapshot-already-exists-fault)
-        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
         ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
-        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
         ("InvalidDBClusterSnapshotStateFault"
-         . invalid-dbcluster-snapshot-state-fault)))))
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'create-dbcluster-snapshot))
 (common-lisp:progn
  (common-lisp:defun create-dbinstance
@@ -14965,27 +16281,113 @@
                                                         "CreateDBInstance"
                                                         "2014-10-31"))
       common-lisp:nil "CreateDBInstanceResult"
-      '(("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
-        ("InsufficientDBInstanceCapacityFault"
-         . insufficient-dbinstance-capacity-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
         ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
         ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
-        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
         ("DBSubnetGroupDoesNotCoverEnoughAZs"
          . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
         ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
         ("InvalidSubnet" . invalid-subnet)
         ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
         ("ProvisionedIopsNotAvailableInAZFault"
          . provisioned-iops-not-available-in-azfault)
-        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
-        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
         ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
-        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("DomainNotFoundFault" . domain-not-found-fault)))))
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'create-dbinstance))
 (common-lisp:progn
  (common-lisp:defun create-dbinstance-read-replica
@@ -15016,27 +16418,113 @@
                                                         "CreateDBInstanceReadReplica"
                                                         "2014-10-31"))
       common-lisp:nil "CreateDBInstanceReadReplicaResult"
-      '(("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
-        ("InsufficientDBInstanceCapacityFault"
-         . insufficient-dbinstance-capacity-fault)
-        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
-        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
-        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
         ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
-        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
-        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
         ("DBSubnetGroupDoesNotCoverEnoughAZs"
          . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
         ("InvalidSubnet" . invalid-subnet)
         ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
         ("ProvisionedIopsNotAvailableInAZFault"
          . provisioned-iops-not-available-in-azfault)
-        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
-        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
-        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
         ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)))))
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'create-dbinstance-read-replica))
 (common-lisp:progn
  (common-lisp:defun create-dbparameter-group
@@ -15058,10 +16546,113 @@
                                                         "CreateDBParameterGroup"
                                                         "2014-10-31"))
       common-lisp:nil "CreateDBParameterGroupResult"
-      '(("DBParameterGroupQuotaExceededFault"
-         . dbparameter-group-quota-exceeded-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
         ("DBParameterGroupAlreadyExistsFault"
-         . dbparameter-group-already-exists-fault)))))
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'create-dbparameter-group))
 (common-lisp:progn
  (common-lisp:defun create-dbsecurity-group
@@ -15083,12 +16674,113 @@
                                                         "CreateDBSecurityGroup"
                                                         "2014-10-31"))
       common-lisp:nil "CreateDBSecurityGroupResult"
-      '(("DBSecurityGroupAlreadyExistsFault"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
          . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
         ("DBSecurityGroupQuotaExceededFault"
          . dbsecurity-group-quota-exceeded-fault)
-        ("DBSecurityGroupNotSupportedFault"
-         . dbsecurity-group-not-supported-fault)))))
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'create-dbsecurity-group))
 (common-lisp:progn
  (common-lisp:defun create-dbsnapshot
@@ -15109,10 +16801,113 @@
                                                         "CreateDBSnapshot"
                                                         "2014-10-31"))
       common-lisp:nil "CreateDBSnapshotResult"
-      '(("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
-        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
         ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
-        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)))))
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'create-dbsnapshot))
 (common-lisp:progn
  (common-lisp:defun create-dbsubnet-group
@@ -15134,14 +16929,113 @@
                                                         "CreateDBSubnetGroup"
                                                         "2014-10-31"))
       common-lisp:nil "CreateDBSubnetGroupResult"
-      '(("DBSubnetGroupAlreadyExistsFault"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
          . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
         ("DBSubnetGroupQuotaExceededFault"
          . dbsubnet-group-quota-exceeded-fault)
         ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
-        ("DBSubnetGroupDoesNotCoverEnoughAZs"
-         . dbsubnet-group-does-not-cover-enough-azs)
-        ("InvalidSubnet" . invalid-subnet)))))
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'create-dbsubnet-group))
 (common-lisp:progn
  (common-lisp:defun create-event-subscription
@@ -15164,15 +17058,113 @@
                                                         "CreateEventSubscription"
                                                         "2014-10-31"))
       common-lisp:nil "CreateEventSubscriptionResult"
-      '(("EventSubscriptionQuotaExceededFault"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
          . event-subscription-quota-exceeded-fault)
-        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
         ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
         ("SNSNoAuthorizationFault" . snsno-authorization-fault)
         ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
         ("SubscriptionCategoryNotFoundFault"
          . subscription-category-not-found-fault)
-        ("SourceNotFoundFault" . source-not-found-fault)))))
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'create-event-subscription))
 (common-lisp:progn
  (common-lisp:defun create-option-group
@@ -15194,9 +17186,113 @@
                                                         "CreateOptionGroup"
                                                         "2014-10-31"))
       common-lisp:nil "CreateOptionGroupResult"
-      '(("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
-        ("OptionGroupQuotaExceededFault"
-         . option-group-quota-exceeded-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'create-option-group))
 (common-lisp:progn
  (common-lisp:defun delete-dbcluster
@@ -15218,13 +17314,113 @@
                                                         "DeleteDBCluster"
                                                         "2014-10-31"))
       common-lisp:nil "DeleteDBClusterResult"
-      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)
-        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
         ("DBClusterSnapshotAlreadyExistsFault"
          . dbcluster-snapshot-already-exists-fault)
-        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
         ("InvalidDBClusterSnapshotStateFault"
-         . invalid-dbcluster-snapshot-state-fault)))))
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'delete-dbcluster))
 (common-lisp:progn
  (common-lisp:defun delete-dbcluster-parameter-group
@@ -15244,10 +17440,113 @@
                                                         "DeleteDBClusterParameterGroup"
                                                         "2014-10-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidDBParameterGroupStateFault"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
          . invalid-dbparameter-group-state-fault)
-        ("DBParameterGroupNotFoundFault"
-         . dbparameter-group-not-found-fault)))))
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'delete-dbcluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun delete-dbcluster-snapshot
@@ -15267,10 +17566,113 @@
                                                         "DeleteDBClusterSnapshot"
                                                         "2014-10-31"))
       common-lisp:nil "DeleteDBClusterSnapshotResult"
-      '(("InvalidDBClusterSnapshotStateFault"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
          . invalid-dbcluster-snapshot-state-fault)
-        ("DBClusterSnapshotNotFoundFault"
-         . dbcluster-snapshot-not-found-fault)))))
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'delete-dbcluster-snapshot))
 (common-lisp:progn
  (common-lisp:defun delete-dbinstance
@@ -15292,11 +17694,113 @@
                                                         "DeleteDBInstance"
                                                         "2014-10-31"))
       common-lisp:nil "DeleteDBInstanceResult"
-      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
-        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
         ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
         ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
-        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)))))
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'delete-dbinstance))
 (common-lisp:progn
  (common-lisp:defun delete-dbparameter-group
@@ -15315,10 +17819,113 @@
                                                         "DeleteDBParameterGroup"
                                                         "2014-10-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidDBParameterGroupStateFault"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
          . invalid-dbparameter-group-state-fault)
-        ("DBParameterGroupNotFoundFault"
-         . dbparameter-group-not-found-fault)))))
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'delete-dbparameter-group))
 (common-lisp:progn
  (common-lisp:defun delete-dbsecurity-group
@@ -15337,9 +17944,113 @@
                                                         "DeleteDBSecurityGroup"
                                                         "2014-10-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidDBSecurityGroupStateFault"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
          . invalid-dbsecurity-group-state-fault)
-        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)))))
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'delete-dbsecurity-group))
 (common-lisp:progn
  (common-lisp:defun delete-dbsnapshot
@@ -15358,8 +18069,113 @@
                                                         "DeleteDBSnapshot"
                                                         "2014-10-31"))
       common-lisp:nil "DeleteDBSnapshotResult"
-      '(("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
-        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'delete-dbsnapshot))
 (common-lisp:progn
  (common-lisp:defun delete-dbsubnet-group
@@ -15378,9 +18194,113 @@
                                                         "DeleteDBSubnetGroup"
                                                         "2014-10-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
         ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
-        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)))))
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'delete-dbsubnet-group))
 (common-lisp:progn
  (common-lisp:defun delete-event-subscription
@@ -15400,9 +18320,113 @@
                                                         "DeleteEventSubscription"
                                                         "2014-10-31"))
       common-lisp:nil "DeleteEventSubscriptionResult"
-      '(("SubscriptionNotFoundFault" . subscription-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
         ("InvalidEventSubscriptionStateFault"
-         . invalid-event-subscription-state-fault)))))
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'delete-event-subscription))
 (common-lisp:progn
  (common-lisp:defun delete-option-group
@@ -15421,8 +18445,113 @@
                                                         "DeleteOptionGroup"
                                                         "2014-10-31"))
       common-lisp:nil common-lisp:nil
-      '(("OptionGroupNotFoundFault" . option-group-not-found-fault)
-        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'delete-option-group))
 (common-lisp:progn
  (common-lisp:defun describe-account-attributes ()
@@ -15431,7 +18560,106 @@
      (common-lisp:make-instance 'rds-request :method "POST" :path "/" :params
                                 `(("Action" ,@"DescribeAccountAttributes")
                                   ("Version" ,@"2014-10-31"))))
-    common-lisp:nil "DescribeAccountAttributesResult" 'common-lisp:nil))
+    common-lisp:nil "DescribeAccountAttributesResult"
+    '(("AuthorizationAlreadyExistsFault" . authorization-already-exists-fault)
+      ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+      ("AuthorizationQuotaExceededFault" . authorization-quota-exceeded-fault)
+      ("CertificateNotFoundFault" . certificate-not-found-fault)
+      ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+      ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+      ("DBClusterParameterGroupNotFoundFault"
+       . dbcluster-parameter-group-not-found-fault)
+      ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+      ("DBClusterRoleAlreadyExistsFault" . dbcluster-role-already-exists-fault)
+      ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+      ("DBClusterRoleQuotaExceededFault" . dbcluster-role-quota-exceeded-fault)
+      ("DBClusterSnapshotAlreadyExistsFault"
+       . dbcluster-snapshot-already-exists-fault)
+      ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+      ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+      ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+      ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+      ("DBParameterGroupAlreadyExistsFault"
+       . dbparameter-group-already-exists-fault)
+      ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+      ("DBParameterGroupQuotaExceededFault"
+       . dbparameter-group-quota-exceeded-fault)
+      ("DBSecurityGroupAlreadyExistsFault"
+       . dbsecurity-group-already-exists-fault)
+      ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+      ("DBSecurityGroupNotSupportedFault"
+       . dbsecurity-group-not-supported-fault)
+      ("DBSecurityGroupQuotaExceededFault"
+       . dbsecurity-group-quota-exceeded-fault)
+      ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+      ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+      ("DBSubnetGroupAlreadyExistsFault" . dbsubnet-group-already-exists-fault)
+      ("DBSubnetGroupDoesNotCoverEnoughAZs"
+       . dbsubnet-group-does-not-cover-enough-azs)
+      ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+      ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+      ("DBSubnetGroupQuotaExceededFault" . dbsubnet-group-quota-exceeded-fault)
+      ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+      ("DBUpgradeDependencyFailureFault" . dbupgrade-dependency-failure-fault)
+      ("DomainNotFoundFault" . domain-not-found-fault)
+      ("EventSubscriptionQuotaExceededFault"
+       . event-subscription-quota-exceeded-fault)
+      ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+      ("InsufficientDBClusterCapacityFault"
+       . insufficient-dbcluster-capacity-fault)
+      ("InsufficientDBInstanceCapacityFault"
+       . insufficient-dbinstance-capacity-fault)
+      ("InsufficientStorageClusterCapacityFault"
+       . insufficient-storage-cluster-capacity-fault)
+      ("InvalidDBClusterSnapshotStateFault"
+       . invalid-dbcluster-snapshot-state-fault)
+      ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+      ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+      ("InvalidDBParameterGroupStateFault"
+       . invalid-dbparameter-group-state-fault)
+      ("InvalidDBSecurityGroupStateFault"
+       . invalid-dbsecurity-group-state-fault)
+      ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+      ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+      ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+      ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+      ("InvalidEventSubscriptionStateFault"
+       . invalid-event-subscription-state-fault)
+      ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+      ("InvalidRestoreFault" . invalid-restore-fault)
+      ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+      ("InvalidSubnet" . invalid-subnet)
+      ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+      ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+      ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+      ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+      ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+      ("PointInTimeRestoreNotEnabledFault"
+       . point-in-time-restore-not-enabled-fault)
+      ("ProvisionedIopsNotAvailableInAZFault"
+       . provisioned-iops-not-available-in-azfault)
+      ("ReservedDBInstanceAlreadyExistsFault"
+       . reserved-dbinstance-already-exists-fault)
+      ("ReservedDBInstanceNotFoundFault" . reserved-dbinstance-not-found-fault)
+      ("ReservedDBInstanceQuotaExceededFault"
+       . reserved-dbinstance-quota-exceeded-fault)
+      ("ReservedDBInstancesOfferingNotFoundFault"
+       . reserved-dbinstances-offering-not-found-fault)
+      ("ResourceNotFoundFault" . resource-not-found-fault)
+      ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+      ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+      ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+      ("SharedSnapshotQuotaExceededFault"
+       . shared-snapshot-quota-exceeded-fault)
+      ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+      ("SourceNotFoundFault" . source-not-found-fault)
+      ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+      ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+      ("SubnetAlreadyInUse" . subnet-already-in-use)
+      ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+      ("SubscriptionCategoryNotFoundFault"
+       . subscription-category-not-found-fault)
+      ("SubscriptionNotFoundFault" . subscription-not-found-fault))))
  (common-lisp:export 'describe-account-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-certificates
@@ -15452,7 +18680,113 @@
                                                         "DescribeCertificates"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeCertificatesResult"
-      '(("CertificateNotFoundFault" . certificate-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-certificates))
 (common-lisp:progn
  (common-lisp:defun describe-dbcluster-parameter-groups
@@ -15475,8 +18809,113 @@
                                                         "DescribeDBClusterParameterGroups"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBClusterParameterGroupsResult"
-      '(("DBParameterGroupNotFoundFault"
-         . dbparameter-group-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbcluster-parameter-groups))
 (common-lisp:progn
  (common-lisp:defun describe-dbcluster-parameters
@@ -15499,8 +18938,113 @@
                                                         "DescribeDBClusterParameters"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBClusterParametersResult"
-      '(("DBParameterGroupNotFoundFault"
-         . dbparameter-group-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbcluster-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-dbcluster-snapshot-attributes
@@ -15520,8 +19064,113 @@
                                                         "DescribeDBClusterSnapshotAttributes"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBClusterSnapshotAttributesResult"
-      '(("DBClusterSnapshotNotFoundFault"
-         . dbcluster-snapshot-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbcluster-snapshot-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-dbcluster-snapshots
@@ -15545,8 +19194,113 @@
                                                         "DescribeDBClusterSnapshots"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBClusterSnapshotsResult"
-      '(("DBClusterSnapshotNotFoundFault"
-         . dbcluster-snapshot-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbcluster-snapshots))
 (common-lisp:progn
  (common-lisp:defun describe-dbclusters
@@ -15567,7 +19321,113 @@
                                                         "DescribeDBClusters"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBClustersResult"
-      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbclusters))
 (common-lisp:progn
  (common-lisp:defun describe-dbengine-versions
@@ -15592,7 +19452,114 @@
                                                         "POST" "/"
                                                         "DescribeDBEngineVersions"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeDBEngineVersionsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeDBEngineVersionsResult"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbengine-versions))
 (common-lisp:progn
  (common-lisp:defun describe-dbinstances
@@ -15613,7 +19580,113 @@
                                                         "DescribeDBInstances"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBInstancesResult"
-      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbinstances))
 (common-lisp:progn
  (common-lisp:defun describe-dblog-files
@@ -15635,7 +19708,113 @@
                                                         "DescribeDBLogFiles"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBLogFilesResult"
-      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dblog-files))
 (common-lisp:progn
  (common-lisp:defun describe-dbparameter-groups
@@ -15657,8 +19836,113 @@
                                                         "DescribeDBParameterGroups"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBParameterGroupsResult"
-      '(("DBParameterGroupNotFoundFault"
-         . dbparameter-group-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbparameter-groups))
 (common-lisp:progn
  (common-lisp:defun describe-dbparameters
@@ -15680,8 +19964,113 @@
                                                         "DescribeDBParameters"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBParametersResult"
-      '(("DBParameterGroupNotFoundFault"
-         . dbparameter-group-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbparameters))
 (common-lisp:progn
  (common-lisp:defun describe-dbsecurity-groups
@@ -15703,7 +20092,113 @@
                                                         "DescribeDBSecurityGroups"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBSecurityGroupsResult"
-      '(("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbsecurity-groups))
 (common-lisp:progn
  (common-lisp:defun describe-dbsnapshot-attributes
@@ -15723,7 +20218,113 @@
                                                         "DescribeDBSnapshotAttributes"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBSnapshotAttributesResult"
-      '(("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbsnapshot-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-dbsnapshots
@@ -15746,7 +20347,113 @@
                                                         "DescribeDBSnapshots"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBSnapshotsResult"
-      '(("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbsnapshots))
 (common-lisp:progn
  (common-lisp:defun describe-dbsubnet-groups
@@ -15767,7 +20474,113 @@
                                                         "DescribeDBSubnetGroups"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeDBSubnetGroupsResult"
-      '(("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-dbsubnet-groups))
 (common-lisp:progn
  (common-lisp:defun describe-engine-default-cluster-parameters
@@ -15790,7 +20603,113 @@
                                                         "DescribeEngineDefaultClusterParameters"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeEngineDefaultClusterParametersResult"
-      'common-lisp:nil)))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-engine-default-cluster-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-engine-default-parameters
@@ -15813,7 +20732,113 @@
                                                         "DescribeEngineDefaultParameters"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeEngineDefaultParametersResult"
-      'common-lisp:nil)))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-engine-default-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-event-categories
@@ -15832,7 +20857,114 @@
                                                         "POST" "/"
                                                         "DescribeEventCategories"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeEventCategoriesResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeEventCategoriesResult"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-event-categories))
 (common-lisp:progn
  (common-lisp:defun describe-event-subscriptions
@@ -15854,7 +20986,113 @@
                                                         "DescribeEventSubscriptions"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeEventSubscriptionsResult"
-      '(("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-event-subscriptions))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -15876,7 +21114,114 @@
                                                         "POST" "/"
                                                         "DescribeEvents"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeEventsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeEventsResult"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
  (common-lisp:defun describe-option-group-options
@@ -15898,7 +21243,114 @@
                                                         "POST" "/"
                                                         "DescribeOptionGroupOptions"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeOptionGroupOptionsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeOptionGroupOptionsResult"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-option-group-options))
 (common-lisp:progn
  (common-lisp:defun describe-option-groups
@@ -15920,7 +21372,113 @@
                                                         "DescribeOptionGroups"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeOptionGroupsResult"
-      '(("OptionGroupNotFoundFault" . option-group-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-option-groups))
 (common-lisp:progn
  (common-lisp:defun describe-orderable-dbinstance-options
@@ -15943,7 +21501,113 @@
                                                         "DescribeOrderableDBInstanceOptions"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeOrderableDBInstanceOptionsResult"
-      'common-lisp:nil)))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-orderable-dbinstance-options))
 (common-lisp:progn
  (common-lisp:defun describe-pending-maintenance-actions
@@ -15965,7 +21629,113 @@
                                                         "DescribePendingMaintenanceActions"
                                                         "2014-10-31"))
       common-lisp:nil "DescribePendingMaintenanceActionsResult"
-      '(("ResourceNotFoundFault" . resource-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-pending-maintenance-actions))
 (common-lisp:progn
  (common-lisp:defun describe-reserved-dbinstances
@@ -15991,8 +21761,113 @@
                                                         "DescribeReservedDBInstances"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeReservedDBInstancesResult"
-      '(("ReservedDBInstanceNotFoundFault"
-         . reserved-dbinstance-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-reserved-dbinstances))
 (common-lisp:progn
  (common-lisp:defun describe-reserved-dbinstances-offerings
@@ -16017,8 +21892,113 @@
                                                         "DescribeReservedDBInstancesOfferings"
                                                         "2014-10-31"))
       common-lisp:nil "DescribeReservedDBInstancesOfferingsResult"
-      '(("ReservedDBInstancesOfferingNotFoundFault"
-         . reserved-dbinstances-offering-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-reserved-dbinstances-offerings))
 (common-lisp:progn
  (common-lisp:defun describe-source-regions
@@ -16037,7 +22017,114 @@
                                                         "POST" "/"
                                                         "DescribeSourceRegions"
                                                         "2014-10-31"))
-      common-lisp:nil "DescribeSourceRegionsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeSourceRegionsResult"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'describe-source-regions))
 (common-lisp:progn
  (common-lisp:defun download-dblog-file-portion
@@ -16060,8 +22147,113 @@
                                                         "DownloadDBLogFilePortion"
                                                         "2014-10-31"))
       common-lisp:nil "DownloadDBLogFilePortionResult"
-      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
-        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'download-dblog-file-portion))
 (common-lisp:progn
  (common-lisp:defun failover-dbcluster
@@ -16082,9 +22274,113 @@
                                                         "FailoverDBCluster"
                                                         "2014-10-31"))
       common-lisp:nil "FailoverDBClusterResult"
-      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
         ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
-        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)))))
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'failover-dbcluster))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -16103,9 +22399,113 @@
                                                         "ListTagsForResource"
                                                         "2014-10-31"))
       common-lisp:nil "ListTagsForResourceResult"
-      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
         ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
-        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)))))
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun modify-dbcluster
@@ -16135,19 +22535,113 @@
                                                         "ModifyDBCluster"
                                                         "2014-10-31"))
       common-lisp:nil "ModifyDBClusterResult"
-      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)
-        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
-        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
         ("DBClusterParameterGroupNotFoundFault"
          . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
         ("InvalidDBSecurityGroupStateFault"
          . invalid-dbsecurity-group-state-fault)
-        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
-        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)))))
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'modify-dbcluster))
 (common-lisp:progn
  (common-lisp:defun modify-dbcluster-parameter-group
@@ -16169,9 +22663,113 @@
                                                         "ModifyDBClusterParameterGroup"
                                                         "2014-10-31"))
       common-lisp:nil "ModifyDBClusterParameterGroupResult"
-      '(("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
         ("InvalidDBParameterGroupStateFault"
-         . invalid-dbparameter-group-state-fault)))))
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'modify-dbcluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun modify-dbcluster-snapshot-attribute
@@ -16194,11 +22792,113 @@
                                                         "ModifyDBClusterSnapshotAttribute"
                                                         "2014-10-31"))
       common-lisp:nil "ModifyDBClusterSnapshotAttributeResult"
-      '(("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
         ("InvalidDBClusterSnapshotStateFault"
          . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
         ("SharedSnapshotQuotaExceededFault"
-         . shared-snapshot-quota-exceeded-fault)))))
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'modify-dbcluster-snapshot-attribute))
 (common-lisp:progn
  (common-lisp:defun modify-dbinstance
@@ -16241,26 +22941,113 @@
                                                         "ModifyDBInstance"
                                                         "2014-10-31"))
       common-lisp:nil "ModifyDBInstanceResult"
-      '(("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
-        ("InvalidDBSecurityGroupStateFault"
-         . invalid-dbsecurity-group-state-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
         ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
         ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
-        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
         ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
-        ("InsufficientDBInstanceCapacityFault"
-         . insufficient-dbinstance-capacity-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
-        ("ProvisionedIopsNotAvailableInAZFault"
-         . provisioned-iops-not-available-in-azfault)
-        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
         ("DBUpgradeDependencyFailureFault"
          . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
         ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
-        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
-        ("CertificateNotFoundFault" . certificate-not-found-fault)
-        ("DomainNotFoundFault" . domain-not-found-fault)))))
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'modify-dbinstance))
 (common-lisp:progn
  (common-lisp:defun modify-dbparameter-group
@@ -16280,9 +23067,113 @@
                                                         "ModifyDBParameterGroup"
                                                         "2014-10-31"))
       common-lisp:nil "ModifyDBParameterGroupResult"
-      '(("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
         ("InvalidDBParameterGroupStateFault"
-         . invalid-dbparameter-group-state-fault)))))
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'modify-dbparameter-group))
 (common-lisp:progn
  (common-lisp:defun modify-dbsnapshot
@@ -16302,7 +23193,113 @@
                                                         "ModifyDBSnapshot"
                                                         "2014-10-31"))
       common-lisp:nil "ModifyDBSnapshotResult"
-      '(("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'modify-dbsnapshot))
 (common-lisp:progn
  (common-lisp:defun modify-dbsnapshot-attribute
@@ -16325,10 +23322,113 @@
                                                         "ModifyDBSnapshotAttribute"
                                                         "2014-10-31"))
       common-lisp:nil "ModifyDBSnapshotAttributeResult"
-      '(("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
         ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
         ("SharedSnapshotQuotaExceededFault"
-         . shared-snapshot-quota-exceeded-fault)))))
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'modify-dbsnapshot-attribute))
 (common-lisp:progn
  (common-lisp:defun modify-dbsubnet-group
@@ -16350,12 +23450,113 @@
                                                         "ModifyDBSubnetGroup"
                                                         "2014-10-31"))
       common-lisp:nil "ModifyDBSubnetGroupResult"
-      '(("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
-        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
         ("DBSubnetGroupDoesNotCoverEnoughAZs"
          . dbsubnet-group-does-not-cover-enough-azs)
-        ("InvalidSubnet" . invalid-subnet)))))
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'modify-dbsubnet-group))
 (common-lisp:progn
  (common-lisp:defun modify-event-subscription
@@ -16378,14 +23579,113 @@
                                                         "ModifyEventSubscription"
                                                         "2014-10-31"))
       common-lisp:nil "ModifyEventSubscriptionResult"
-      '(("EventSubscriptionQuotaExceededFault"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
          . event-subscription-quota-exceeded-fault)
-        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
         ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
         ("SNSNoAuthorizationFault" . snsno-authorization-fault)
         ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
         ("SubscriptionCategoryNotFoundFault"
-         . subscription-category-not-found-fault)))))
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'modify-event-subscription))
 (common-lisp:progn
  (common-lisp:defun modify-option-group
@@ -16407,8 +23707,113 @@
                                                         "ModifyOptionGroup"
                                                         "2014-10-31"))
       common-lisp:nil "ModifyOptionGroupResult"
-      '(("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
-        ("OptionGroupNotFoundFault" . option-group-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'modify-option-group))
 (common-lisp:progn
  (common-lisp:defun promote-read-replica
@@ -16430,8 +23835,113 @@
                                                         "PromoteReadReplica"
                                                         "2014-10-31"))
       common-lisp:nil "PromoteReadReplicaResult"
-      '(("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
-        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'promote-read-replica))
 (common-lisp:progn
  (common-lisp:defun promote-read-replica-dbcluster
@@ -16451,8 +23961,113 @@
                                                         "PromoteReadReplicaDBCluster"
                                                         "2014-10-31"))
       common-lisp:nil "PromoteReadReplicaDBClusterResult"
-      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)
-        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'promote-read-replica-dbcluster))
 (common-lisp:progn
  (common-lisp:defun purchase-reserved-dbinstances-offering
@@ -16475,12 +24090,113 @@
                                                         "PurchaseReservedDBInstancesOffering"
                                                         "2014-10-31"))
       common-lisp:nil "PurchaseReservedDBInstancesOfferingResult"
-      '(("ReservedDBInstancesOfferingNotFoundFault"
-         . reserved-dbinstances-offering-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
         ("ReservedDBInstanceAlreadyExistsFault"
          . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
         ("ReservedDBInstanceQuotaExceededFault"
-         . reserved-dbinstance-quota-exceeded-fault)))))
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'purchase-reserved-dbinstances-offering))
 (common-lisp:progn
  (common-lisp:defun reboot-dbinstance
@@ -16500,8 +24216,113 @@
                                                         "RebootDBInstance"
                                                         "2014-10-31"))
       common-lisp:nil "RebootDBInstanceResult"
-      '(("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
-        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'reboot-dbinstance))
 (common-lisp:progn
  (common-lisp:defun remove-role-from-dbcluster
@@ -16521,9 +24342,113 @@
                                                         "RemoveRoleFromDBCluster"
                                                         "2014-10-31"))
       common-lisp:nil common-lisp:nil
-      '(("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
         ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
-        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)))))
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'remove-role-from-dbcluster))
 (common-lisp:progn
  (common-lisp:defun remove-source-identifier-from-subscription
@@ -16544,8 +24469,113 @@
                                                         "RemoveSourceIdentifierFromSubscription"
                                                         "2014-10-31"))
       common-lisp:nil "RemoveSourceIdentifierFromSubscriptionResult"
-      '(("SubscriptionNotFoundFault" . subscription-not-found-fault)
-        ("SourceNotFoundFault" . source-not-found-fault)))))
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'remove-source-identifier-from-subscription))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-resource
@@ -16565,9 +24595,113 @@
                                                         "RemoveTagsFromResource"
                                                         "2014-10-31"))
       common-lisp:nil common-lisp:nil
-      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
         ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
-        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)))))
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'remove-tags-from-resource))
 (common-lisp:progn
  (common-lisp:defun reset-dbcluster-parameter-group
@@ -16590,10 +24724,113 @@
                                                         "ResetDBClusterParameterGroup"
                                                         "2014-10-31"))
       common-lisp:nil "ResetDBClusterParameterGroupResult"
-      '(("InvalidDBParameterGroupStateFault"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
          . invalid-dbparameter-group-state-fault)
-        ("DBParameterGroupNotFoundFault"
-         . dbparameter-group-not-found-fault)))))
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'reset-dbcluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun reset-dbparameter-group
@@ -16615,10 +24852,113 @@
                                                         "ResetDBParameterGroup"
                                                         "2014-10-31"))
       common-lisp:nil "ResetDBParameterGroupResult"
-      '(("InvalidDBParameterGroupStateFault"
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
          . invalid-dbparameter-group-state-fault)
-        ("DBParameterGroupNotFoundFault"
-         . dbparameter-group-not-found-fault)))))
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'reset-dbparameter-group))
 (common-lisp:progn
  (common-lisp:defun restore-dbcluster-from-s3
@@ -16654,21 +24994,113 @@
                                                         "RestoreDBClusterFromS3"
                                                         "2014-10-31"))
       common-lisp:nil "RestoreDBClusterFromS3Result"
-      '(("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
-        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
-        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
-        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
         ("DBClusterParameterGroupNotFoundFault"
          . dbcluster-parameter-group-not-found-fault)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
         ("InsufficientStorageClusterCapacityFault"
-         . insufficient-storage-cluster-capacity-fault)))))
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'restore-dbcluster-from-s3))
 (common-lisp:progn
  (common-lisp:defun restore-dbcluster-from-snapshot
@@ -16696,26 +25128,113 @@
                                                         "RestoreDBClusterFromSnapshot"
                                                         "2014-10-31"))
       common-lisp:nil "RestoreDBClusterFromSnapshotResult"
-      '(("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
         ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
-        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
         ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
         ("InsufficientDBClusterCapacityFault"
          . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
         ("InsufficientStorageClusterCapacityFault"
          . insufficient-storage-cluster-capacity-fault)
-        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
         ("InvalidDBClusterSnapshotStateFault"
          . invalid-dbcluster-snapshot-state-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
         ("InvalidRestoreFault" . invalid-restore-fault)
-        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
         ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
         ("OptionGroupNotFoundFault" . option-group-not-found-fault)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)))))
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'restore-dbcluster-from-snapshot))
 (common-lisp:progn
  (common-lisp:defun restore-dbcluster-to-point-in-time
@@ -16743,25 +25262,113 @@
                                                         "RestoreDBClusterToPointInTime"
                                                         "2014-10-31"))
       common-lisp:nil "RestoreDBClusterToPointInTimeResult"
-      '(("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
         ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
         ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
         ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
         ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
         ("InsufficientDBClusterCapacityFault"
          . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
         ("InsufficientStorageClusterCapacityFault"
          . insufficient-storage-cluster-capacity-fault)
         ("InvalidDBClusterSnapshotStateFault"
          . invalid-dbcluster-snapshot-state-fault)
         ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
         ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
         ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
         ("InvalidSubnet" . invalid-subnet)
         ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
         ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
         ("OptionGroupNotFoundFault" . option-group-not-found-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)))))
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'restore-dbcluster-to-point-in-time))
 (common-lisp:progn
  (common-lisp:defun restore-dbinstance-from-dbsnapshot
@@ -16794,27 +25401,113 @@
                                                         "RestoreDBInstanceFromDBSnapshot"
                                                         "2014-10-31"))
       common-lisp:nil "RestoreDBInstanceFromDBSnapshotResult"
-      '(("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
         ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
-        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
-        ("InsufficientDBInstanceCapacityFault"
-         . insufficient-dbinstance-capacity-fault)
-        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
-        ("InvalidRestoreFault" . invalid-restore-fault)
-        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
         ("DBSubnetGroupDoesNotCoverEnoughAZs"
          . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
         ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
         ("ProvisionedIopsNotAvailableInAZFault"
          . provisioned-iops-not-available-in-azfault)
-        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
         ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
-        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
-        ("DomainNotFoundFault" . domain-not-found-fault)))))
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'restore-dbinstance-from-dbsnapshot))
 (common-lisp:progn
  (common-lisp:defun restore-dbinstance-to-point-in-time
@@ -16849,29 +25542,113 @@
                                                         "RestoreDBInstanceToPointInTime"
                                                         "2014-10-31"))
       common-lisp:nil "RestoreDBInstanceToPointInTimeResult"
-      '(("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
         ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
-        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
-        ("InsufficientDBInstanceCapacityFault"
-         . insufficient-dbinstance-capacity-fault)
-        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
-        ("PointInTimeRestoreNotEnabledFault"
-         . point-in-time-restore-not-enabled-fault)
-        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
-        ("InvalidRestoreFault" . invalid-restore-fault)
-        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
         ("DBSubnetGroupDoesNotCoverEnoughAZs"
          . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
         ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
         ("ProvisionedIopsNotAvailableInAZFault"
          . provisioned-iops-not-available-in-azfault)
-        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
         ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
-        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
-        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
-        ("DomainNotFoundFault" . domain-not-found-fault)))))
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'restore-dbinstance-to-point-in-time))
 (common-lisp:progn
  (common-lisp:defun revoke-dbsecurity-group-ingress
@@ -16895,10 +25672,113 @@
                                                         "RevokeDBSecurityGroupIngress"
                                                         "2014-10-31"))
       common-lisp:nil "RevokeDBSecurityGroupIngressResult"
-      '(("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
         ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
         ("InvalidDBSecurityGroupStateFault"
-         . invalid-dbsecurity-group-state-fault)))))
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'revoke-dbsecurity-group-ingress))
 (common-lisp:progn
  (common-lisp:defun start-dbinstance
@@ -16917,19 +25797,113 @@
                                                         "StartDBInstance"
                                                         "2014-10-31"))
       common-lisp:nil "StartDBInstanceResult"
-      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
-        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
-        ("InsufficientDBInstanceCapacityFault"
-         . insufficient-dbinstance-capacity-fault)
-        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
+        ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
         ("DBSubnetGroupDoesNotCoverEnoughAZs"
          . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
         ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
         ("InvalidSubnet" . invalid-subnet)
         ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
-        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
-        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
-        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)))))
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'start-dbinstance))
 (common-lisp:progn
  (common-lisp:defun stop-dbinstance
@@ -16950,9 +25924,111 @@
                                                         "StopDBInstance"
                                                         "2014-10-31"))
       common-lisp:nil "StopDBInstanceResult"
-      '(("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
-        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+      '(("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("CertificateNotFoundFault" . certificate-not-found-fault)
+        ("DBClusterAlreadyExistsFault" . dbcluster-already-exists-fault)
+        ("DBClusterNotFoundFault" . dbcluster-not-found-fault)
+        ("DBClusterParameterGroupNotFoundFault"
+         . dbcluster-parameter-group-not-found-fault)
+        ("DBClusterQuotaExceededFault" . dbcluster-quota-exceeded-fault)
+        ("DBClusterRoleAlreadyExistsFault"
+         . dbcluster-role-already-exists-fault)
+        ("DBClusterRoleNotFoundFault" . dbcluster-role-not-found-fault)
+        ("DBClusterRoleQuotaExceededFault"
+         . dbcluster-role-quota-exceeded-fault)
+        ("DBClusterSnapshotAlreadyExistsFault"
+         . dbcluster-snapshot-already-exists-fault)
+        ("DBClusterSnapshotNotFoundFault" . dbcluster-snapshot-not-found-fault)
+        ("DBInstanceAlreadyExistsFault" . dbinstance-already-exists-fault)
+        ("DBInstanceNotFoundFault" . dbinstance-not-found-fault)
+        ("DBLogFileNotFoundFault" . dblog-file-not-found-fault)
+        ("DBParameterGroupAlreadyExistsFault"
+         . dbparameter-group-already-exists-fault)
+        ("DBParameterGroupNotFoundFault" . dbparameter-group-not-found-fault)
+        ("DBParameterGroupQuotaExceededFault"
+         . dbparameter-group-quota-exceeded-fault)
+        ("DBSecurityGroupAlreadyExistsFault"
+         . dbsecurity-group-already-exists-fault)
+        ("DBSecurityGroupNotFoundFault" . dbsecurity-group-not-found-fault)
+        ("DBSecurityGroupNotSupportedFault"
+         . dbsecurity-group-not-supported-fault)
+        ("DBSecurityGroupQuotaExceededFault"
+         . dbsecurity-group-quota-exceeded-fault)
         ("DBSnapshotAlreadyExistsFault" . dbsnapshot-already-exists-fault)
+        ("DBSnapshotNotFoundFault" . dbsnapshot-not-found-fault)
+        ("DBSubnetGroupAlreadyExistsFault"
+         . dbsubnet-group-already-exists-fault)
+        ("DBSubnetGroupDoesNotCoverEnoughAZs"
+         . dbsubnet-group-does-not-cover-enough-azs)
+        ("DBSubnetGroupNotAllowedFault" . dbsubnet-group-not-allowed-fault)
+        ("DBSubnetGroupNotFoundFault" . dbsubnet-group-not-found-fault)
+        ("DBSubnetGroupQuotaExceededFault"
+         . dbsubnet-group-quota-exceeded-fault)
+        ("DBSubnetQuotaExceededFault" . dbsubnet-quota-exceeded-fault)
+        ("DBUpgradeDependencyFailureFault"
+         . dbupgrade-dependency-failure-fault)
+        ("DomainNotFoundFault" . domain-not-found-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("InstanceQuotaExceededFault" . instance-quota-exceeded-fault)
+        ("InsufficientDBClusterCapacityFault"
+         . insufficient-dbcluster-capacity-fault)
+        ("InsufficientDBInstanceCapacityFault"
+         . insufficient-dbinstance-capacity-fault)
+        ("InsufficientStorageClusterCapacityFault"
+         . insufficient-storage-cluster-capacity-fault)
+        ("InvalidDBClusterSnapshotStateFault"
+         . invalid-dbcluster-snapshot-state-fault)
+        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)
+        ("InvalidDBInstanceStateFault" . invalid-dbinstance-state-fault)
+        ("InvalidDBParameterGroupStateFault"
+         . invalid-dbparameter-group-state-fault)
+        ("InvalidDBSecurityGroupStateFault"
+         . invalid-dbsecurity-group-state-fault)
+        ("InvalidDBSnapshotStateFault" . invalid-dbsnapshot-state-fault)
+        ("InvalidDBSubnetGroupFault" . invalid-dbsubnet-group-fault)
+        ("InvalidDBSubnetGroupStateFault" . invalid-dbsubnet-group-state-fault)
+        ("InvalidDBSubnetStateFault" . invalid-dbsubnet-state-fault)
+        ("InvalidEventSubscriptionStateFault"
+         . invalid-event-subscription-state-fault)
+        ("InvalidOptionGroupStateFault" . invalid-option-group-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketFault" . invalid-s3bucket-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("KMSKeyNotAccessibleFault" . kmskey-not-accessible-fault)
+        ("OptionGroupAlreadyExistsFault" . option-group-already-exists-fault)
+        ("OptionGroupNotFoundFault" . option-group-not-found-fault)
+        ("OptionGroupQuotaExceededFault" . option-group-quota-exceeded-fault)
+        ("PointInTimeRestoreNotEnabledFault"
+         . point-in-time-restore-not-enabled-fault)
+        ("ProvisionedIopsNotAvailableInAZFault"
+         . provisioned-iops-not-available-in-azfault)
+        ("ReservedDBInstanceAlreadyExistsFault"
+         . reserved-dbinstance-already-exists-fault)
+        ("ReservedDBInstanceNotFoundFault"
+         . reserved-dbinstance-not-found-fault)
+        ("ReservedDBInstanceQuotaExceededFault"
+         . reserved-dbinstance-quota-exceeded-fault)
+        ("ReservedDBInstancesOfferingNotFoundFault"
+         . reserved-dbinstances-offering-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SharedSnapshotQuotaExceededFault"
+         . shared-snapshot-quota-exceeded-fault)
         ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
-        ("InvalidDBClusterStateFault" . invalid-dbcluster-state-fault)))))
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("StorageQuotaExceededFault" . storage-quota-exceeded-fault)
+        ("StorageTypeNotSupportedFault" . storage-type-not-supported-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
  (common-lisp:export 'stop-dbinstance))

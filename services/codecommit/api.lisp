@@ -1951,11 +1951,15 @@ common-lisp:nil
                                                         "BatchGetRepositories"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNamesRequiredException"
-         . repository-names-required-exception)
-        ("MaximumRepositoryNamesExceededException"
-         . maximum-repository-names-exceeded-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -1963,7 +1967,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'batch-get-repositories))
 (common-lisp:progn
  (common-lisp:defun create-branch
@@ -1983,17 +2039,15 @@ common-lisp:nil
                                                         "CreateBranch"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
-        ("RepositoryDoesNotExistException"
-         . repository-does-not-exist-exception)
-        ("BranchNameRequiredException" . branch-name-required-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
         ("BranchNameExistsException" . branch-name-exists-exception)
-        ("InvalidBranchNameException" . invalid-branch-name-exception)
-        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
         ("CommitDoesNotExistException" . commit-does-not-exist-exception)
-        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2001,7 +2055,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'create-branch))
 (common-lisp:progn
  (common-lisp:defun create-repository
@@ -2021,14 +2127,15 @@ common-lisp:nil
                                                         "CreateRepository"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNameExistsException" . repository-name-exists-exception)
-        ("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
-        ("InvalidRepositoryDescriptionException"
-         . invalid-repository-description-exception)
-        ("RepositoryLimitExceededException"
-         . repository-limit-exceeded-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2036,7 +2143,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'create-repository))
 (common-lisp:progn
  (common-lisp:defun delete-repository
@@ -2055,9 +2214,15 @@ common-lisp:nil
                                                         "DeleteRepository"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2065,7 +2230,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'delete-repository))
 (common-lisp:progn
  (common-lisp:defun get-blob
@@ -2083,14 +2300,15 @@ common-lisp:nil
                                                         "POST" "/" "GetBlob"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
-        ("RepositoryDoesNotExistException"
-         . repository-does-not-exist-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
         ("BlobIdRequiredException" . blob-id-required-exception)
-        ("InvalidBlobIdException" . invalid-blob-id-exception)
-        ("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2099,7 +2317,58 @@ common-lisp:nil
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
          . encryption-key-unavailable-exception)
-        ("FileTooLargeException" . file-too-large-exception)))))
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'get-blob))
 (common-lisp:progn
  (common-lisp:defun get-branch
@@ -2117,14 +2386,15 @@ common-lisp:nil
                                                         "POST" "/" "GetBranch"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("RepositoryDoesNotExistException"
-         . repository-does-not-exist-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
-        ("BranchNameRequiredException" . branch-name-required-exception)
-        ("InvalidBranchNameException" . invalid-branch-name-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
         ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2132,7 +2402,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'get-branch))
 (common-lisp:progn
  (common-lisp:defun get-commit
@@ -2150,14 +2472,15 @@ common-lisp:nil
                                                         "POST" "/" "GetCommit"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
-        ("RepositoryDoesNotExistException"
-         . repository-does-not-exist-exception)
-        ("CommitIdRequiredException" . commit-id-required-exception)
-        ("InvalidCommitIdException" . invalid-commit-id-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
         ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2165,7 +2488,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'get-commit))
 (common-lisp:progn
  (common-lisp:defun get-differences
@@ -2188,20 +2563,15 @@ common-lisp:nil
                                                         "GetDifferences"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("RepositoryDoesNotExistException"
-         . repository-does-not-exist-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
-        ("InvalidContinuationTokenException"
-         . invalid-continuation-token-exception)
-        ("InvalidMaxResultsException" . invalid-max-results-exception)
-        ("InvalidCommitIdException" . invalid-commit-id-exception)
-        ("CommitRequiredException" . commit-required-exception)
-        ("InvalidCommitException" . invalid-commit-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
         ("CommitDoesNotExistException" . commit-does-not-exist-exception)
-        ("InvalidPathException" . invalid-path-exception)
-        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2209,7 +2579,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'get-differences))
 (common-lisp:progn
  (common-lisp:defun get-repository
@@ -2228,11 +2650,15 @@ common-lisp:nil
                                                         "GetRepository"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("RepositoryDoesNotExistException"
-         . repository-does-not-exist-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2240,7 +2666,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'get-repository))
 (common-lisp:progn
  (common-lisp:defun get-repository-triggers
@@ -2259,11 +2737,15 @@ common-lisp:nil
                                                         "GetRepositoryTriggers"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
-        ("RepositoryDoesNotExistException"
-         . repository-does-not-exist-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2271,7 +2753,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'get-repository-triggers))
 (common-lisp:progn
  (common-lisp:defun list-branches
@@ -2290,11 +2824,15 @@ common-lisp:nil
                                                         "ListBranches"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("RepositoryDoesNotExistException"
-         . repository-does-not-exist-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2303,8 +2841,58 @@ common-lisp:nil
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
          . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
         ("InvalidContinuationTokenException"
-         . invalid-continuation-token-exception)))))
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'list-branches))
 (common-lisp:progn
  (common-lisp:defun list-repositories
@@ -2323,10 +2911,75 @@ common-lisp:nil
                                                         "ListRepositories"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidSortByException" . invalid-sort-by-exception)
-        ("InvalidOrderException" . invalid-order-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
         ("InvalidContinuationTokenException"
-         . invalid-continuation-token-exception)))))
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'list-repositories))
 (common-lisp:progn
  (common-lisp:defun put-repository-triggers
@@ -2345,37 +2998,15 @@ common-lisp:nil
                                                         "PutRepositoryTriggers"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryDoesNotExistException"
-         . repository-does-not-exist-exception)
-        ("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
-        ("RepositoryTriggersListRequiredException"
-         . repository-triggers-list-required-exception)
-        ("MaximumRepositoryTriggersExceededException"
-         . maximum-repository-triggers-exceeded-exception)
-        ("InvalidRepositoryTriggerNameException"
-         . invalid-repository-trigger-name-exception)
-        ("InvalidRepositoryTriggerDestinationArnException"
-         . invalid-repository-trigger-destination-arn-exception)
-        ("InvalidRepositoryTriggerRegionException"
-         . invalid-repository-trigger-region-exception)
-        ("InvalidRepositoryTriggerCustomDataException"
-         . invalid-repository-trigger-custom-data-exception)
-        ("MaximumBranchesExceededException"
-         . maximum-branches-exceeded-exception)
-        ("InvalidRepositoryTriggerBranchNameException"
-         . invalid-repository-trigger-branch-name-exception)
-        ("InvalidRepositoryTriggerEventsException"
-         . invalid-repository-trigger-events-exception)
-        ("RepositoryTriggerNameRequiredException"
-         . repository-trigger-name-required-exception)
-        ("RepositoryTriggerDestinationArnRequiredException"
-         . repository-trigger-destination-arn-required-exception)
-        ("RepositoryTriggerBranchNameListRequiredException"
-         . repository-trigger-branch-name-list-required-exception)
-        ("RepositoryTriggerEventsListRequiredException"
-         . repository-trigger-events-list-required-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2383,7 +3014,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'put-repository-triggers))
 (common-lisp:progn
  (common-lisp:defun test-repository-triggers
@@ -2402,37 +3085,15 @@ common-lisp:nil
                                                         "TestRepositoryTriggers"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryDoesNotExistException"
-         . repository-does-not-exist-exception)
-        ("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
-        ("RepositoryTriggersListRequiredException"
-         . repository-triggers-list-required-exception)
-        ("MaximumRepositoryTriggersExceededException"
-         . maximum-repository-triggers-exceeded-exception)
-        ("InvalidRepositoryTriggerNameException"
-         . invalid-repository-trigger-name-exception)
-        ("InvalidRepositoryTriggerDestinationArnException"
-         . invalid-repository-trigger-destination-arn-exception)
-        ("InvalidRepositoryTriggerRegionException"
-         . invalid-repository-trigger-region-exception)
-        ("InvalidRepositoryTriggerCustomDataException"
-         . invalid-repository-trigger-custom-data-exception)
-        ("MaximumBranchesExceededException"
-         . maximum-branches-exceeded-exception)
-        ("InvalidRepositoryTriggerBranchNameException"
-         . invalid-repository-trigger-branch-name-exception)
-        ("InvalidRepositoryTriggerEventsException"
-         . invalid-repository-trigger-events-exception)
-        ("RepositoryTriggerNameRequiredException"
-         . repository-trigger-name-required-exception)
-        ("RepositoryTriggerDestinationArnRequiredException"
-         . repository-trigger-destination-arn-required-exception)
-        ("RepositoryTriggerBranchNameListRequiredException"
-         . repository-trigger-branch-name-list-required-exception)
-        ("RepositoryTriggerEventsListRequiredException"
-         . repository-trigger-events-list-required-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2440,7 +3101,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'test-repository-triggers))
 (common-lisp:progn
  (common-lisp:defun update-default-branch
@@ -2460,14 +3173,15 @@ common-lisp:nil
                                                         "UpdateDefaultBranch"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("RepositoryDoesNotExistException"
-         . repository-does-not-exist-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
-        ("BranchNameRequiredException" . branch-name-required-exception)
-        ("InvalidBranchNameException" . invalid-branch-name-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
         ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2475,7 +3189,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'update-default-branch))
 (common-lisp:progn
  (common-lisp:defun update-repository-description
@@ -2496,13 +3262,15 @@ common-lisp:nil
                                                         "UpdateRepositoryDescription"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryNameRequiredException"
-         . repository-name-required-exception)
-        ("RepositoryDoesNotExistException"
-         . repository-does-not-exist-exception)
-        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
-        ("InvalidRepositoryDescriptionException"
-         . invalid-repository-description-exception)
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
         ("EncryptionIntegrityChecksFailedException"
          . encryption-integrity-checks-failed-exception)
         ("EncryptionKeyAccessDeniedException"
@@ -2510,7 +3278,59 @@ common-lisp:nil
         ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
         ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
         ("EncryptionKeyUnavailableException"
-         . encryption-key-unavailable-exception)))))
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
+         . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
+        ("RepositoryNameExistsException" . repository-name-exists-exception)
+        ("RepositoryNameRequiredException"
+         . repository-name-required-exception)
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'update-repository-description))
 (common-lisp:progn
  (common-lisp:defun update-repository-name
@@ -2529,11 +3349,73 @@ common-lisp:nil
                                                         "UpdateRepositoryName"
                                                         "2015-04-13"))
       common-lisp:nil common-lisp:nil
-      '(("RepositoryDoesNotExistException"
+      '(("BlobIdDoesNotExistException" . blob-id-does-not-exist-exception)
+        ("BlobIdRequiredException" . blob-id-required-exception)
+        ("BranchDoesNotExistException" . branch-does-not-exist-exception)
+        ("BranchNameExistsException" . branch-name-exists-exception)
+        ("BranchNameRequiredException" . branch-name-required-exception)
+        ("CommitDoesNotExistException" . commit-does-not-exist-exception)
+        ("CommitIdDoesNotExistException" . commit-id-does-not-exist-exception)
+        ("CommitIdRequiredException" . commit-id-required-exception)
+        ("CommitRequiredException" . commit-required-exception)
+        ("EncryptionIntegrityChecksFailedException"
+         . encryption-integrity-checks-failed-exception)
+        ("EncryptionKeyAccessDeniedException"
+         . encryption-key-access-denied-exception)
+        ("EncryptionKeyDisabledException" . encryption-key-disabled-exception)
+        ("EncryptionKeyNotFoundException" . encryption-key-not-found-exception)
+        ("EncryptionKeyUnavailableException"
+         . encryption-key-unavailable-exception)
+        ("FileTooLargeException" . file-too-large-exception)
+        ("InvalidBlobIdException" . invalid-blob-id-exception)
+        ("InvalidBranchNameException" . invalid-branch-name-exception)
+        ("InvalidCommitException" . invalid-commit-exception)
+        ("InvalidCommitIdException" . invalid-commit-id-exception)
+        ("InvalidContinuationTokenException"
+         . invalid-continuation-token-exception)
+        ("InvalidMaxResultsException" . invalid-max-results-exception)
+        ("InvalidOrderException" . invalid-order-exception)
+        ("InvalidPathException" . invalid-path-exception)
+        ("InvalidRepositoryDescriptionException"
+         . invalid-repository-description-exception)
+        ("InvalidRepositoryNameException" . invalid-repository-name-exception)
+        ("InvalidRepositoryTriggerBranchNameException"
+         . invalid-repository-trigger-branch-name-exception)
+        ("InvalidRepositoryTriggerCustomDataException"
+         . invalid-repository-trigger-custom-data-exception)
+        ("InvalidRepositoryTriggerDestinationArnException"
+         . invalid-repository-trigger-destination-arn-exception)
+        ("InvalidRepositoryTriggerEventsException"
+         . invalid-repository-trigger-events-exception)
+        ("InvalidRepositoryTriggerNameException"
+         . invalid-repository-trigger-name-exception)
+        ("InvalidRepositoryTriggerRegionException"
+         . invalid-repository-trigger-region-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("MaximumBranchesExceededException"
+         . maximum-branches-exceeded-exception)
+        ("MaximumRepositoryNamesExceededException"
+         . maximum-repository-names-exceeded-exception)
+        ("MaximumRepositoryTriggersExceededException"
+         . maximum-repository-triggers-exceeded-exception)
+        ("PathDoesNotExistException" . path-does-not-exist-exception)
+        ("RepositoryDoesNotExistException"
          . repository-does-not-exist-exception)
+        ("RepositoryLimitExceededException"
+         . repository-limit-exceeded-exception)
         ("RepositoryNameExistsException" . repository-name-exists-exception)
         ("RepositoryNameRequiredException"
          . repository-name-required-exception)
-        ("InvalidRepositoryNameException"
-         . invalid-repository-name-exception)))))
+        ("RepositoryNamesRequiredException"
+         . repository-names-required-exception)
+        ("RepositoryTriggerBranchNameListRequiredException"
+         . repository-trigger-branch-name-list-required-exception)
+        ("RepositoryTriggerDestinationArnRequiredException"
+         . repository-trigger-destination-arn-required-exception)
+        ("RepositoryTriggerEventsListRequiredException"
+         . repository-trigger-events-list-required-exception)
+        ("RepositoryTriggerNameRequiredException"
+         . repository-trigger-name-required-exception)
+        ("RepositoryTriggersListRequiredException"
+         . repository-triggers-list-required-exception)))))
  (common-lisp:export 'update-repository-name))

@@ -2618,9 +2618,13 @@ common-lisp:nil
                                                         "AbortMultipartUpload"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'abort-multipart-upload))
 (common-lisp:progn
@@ -2654,9 +2658,13 @@ common-lisp:nil
                                                         "AbortVaultLock"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'abort-vault-lock))
 (common-lisp:progn
@@ -2690,10 +2698,13 @@ common-lisp:nil
                                                         "AddTagsToVault"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("MissingParameterValueException" . missing-parameter-value-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'add-tags-to-vault))
 (common-lisp:progn
@@ -2734,9 +2745,13 @@ common-lisp:nil
                                                         "CompleteMultipartUpload"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'complete-multipart-upload))
 (common-lisp:progn
@@ -2774,9 +2789,13 @@ common-lisp:nil
                                                         "CompleteVaultLock"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'complete-vault-lock))
 (common-lisp:progn
@@ -2810,10 +2829,14 @@ common-lisp:nil
                                                         "CreateVault"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-vault))
 (common-lisp:progn
  (common-lisp:defun delete-archive
@@ -2851,9 +2874,13 @@ common-lisp:nil
                                                         "DeleteArchive"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-archive))
 (common-lisp:progn
@@ -2887,9 +2914,13 @@ common-lisp:nil
                                                         "DeleteVault"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-vault))
 (common-lisp:progn
@@ -2923,9 +2954,13 @@ common-lisp:nil
                                                         "DeleteVaultAccessPolicy"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-vault-access-policy))
 (common-lisp:progn
@@ -2959,9 +2994,13 @@ common-lisp:nil
                                                         "DeleteVaultNotifications"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-vault-notifications))
 (common-lisp:progn
@@ -2999,9 +3038,13 @@ common-lisp:nil
                                                         "DescribeJob"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-job))
 (common-lisp:progn
@@ -3035,9 +3078,13 @@ common-lisp:nil
                                                         "DescribeVault"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-vault))
 (common-lisp:progn
@@ -3067,8 +3114,13 @@ common-lisp:nil
                                                         "GetDataRetrievalPolicy"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-data-retrieval-policy))
 (common-lisp:progn
@@ -3107,9 +3159,13 @@ common-lisp:nil
                                                         "GetJobOutput"
                                                         "2012-06-01"))
       "blob" common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-job-output))
 (common-lisp:progn
@@ -3143,9 +3199,13 @@ common-lisp:nil
                                                         "GetVaultAccessPolicy"
                                                         "2012-06-01"))
       "structure" common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-vault-access-policy))
 (common-lisp:progn
@@ -3179,9 +3239,13 @@ common-lisp:nil
                                                         "GetVaultLock"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-vault-lock))
 (common-lisp:progn
@@ -3215,9 +3279,13 @@ common-lisp:nil
                                                         "GetVaultNotifications"
                                                         "2012-06-01"))
       "structure" common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-vault-notifications))
 (common-lisp:progn
@@ -3252,11 +3320,13 @@ common-lisp:nil
                                                         "InitiateJob"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("PolicyEnforcedException" . policy-enforced-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
-        ("InsufficientCapacityException" . insufficient-capacity-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'initiate-job))
 (common-lisp:progn
@@ -3293,9 +3363,13 @@ common-lisp:nil
                                                         "InitiateMultipartUpload"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'initiate-multipart-upload))
 (common-lisp:progn
@@ -3329,9 +3403,13 @@ common-lisp:nil
                                                         "InitiateVaultLock"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'initiate-vault-lock))
 (common-lisp:progn
@@ -3368,9 +3446,13 @@ common-lisp:nil
                                                         "ListJobs"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
@@ -3405,9 +3487,13 @@ common-lisp:nil
                                                         "ListMultipartUploads"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-multipart-uploads))
 (common-lisp:progn
@@ -3447,9 +3533,13 @@ common-lisp:nil
                                                         "ListParts"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-parts))
 (common-lisp:progn
@@ -3479,8 +3569,13 @@ common-lisp:nil
                                                         "ListProvisionedCapacity"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-provisioned-capacity))
 (common-lisp:progn
@@ -3514,8 +3609,12 @@ common-lisp:nil
                                                         "ListTagsForVault"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-tags-for-vault))
@@ -3546,9 +3645,13 @@ common-lisp:nil
                                                         "ListVaults"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-vaults))
 (common-lisp:progn
@@ -3579,9 +3682,13 @@ common-lisp:nil
                                                         "PurchaseProvisionedCapacity"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("MissingParameterValueException" . missing-parameter-value-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'purchase-provisioned-capacity))
 (common-lisp:progn
@@ -3615,8 +3722,12 @@ common-lisp:nil
                                                         "RemoveTagsFromVault"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'remove-tags-from-vault))
@@ -3647,8 +3758,13 @@ common-lisp:nil
                                                         "SetDataRetrievalPolicy"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'set-data-retrieval-policy))
 (common-lisp:progn
@@ -3682,9 +3798,13 @@ common-lisp:nil
                                                         "SetVaultAccessPolicy"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'set-vault-access-policy))
 (common-lisp:progn
@@ -3720,9 +3840,13 @@ common-lisp:nil
                                                         "SetVaultNotifications"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'set-vault-notifications))
 (common-lisp:progn
@@ -3759,10 +3883,13 @@ common-lisp:nil
                                                         "UploadArchive"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
         ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'upload-archive))
 (common-lisp:progn
@@ -3803,9 +3930,12 @@ common-lisp:nil
                                                         "UploadMultipartPart"
                                                         "2012-06-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("InsufficientCapacityException" . insufficient-capacity-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MissingParameterValueException" . missing-parameter-value-exception)
+        ("PolicyEnforcedException" . policy-enforced-exception)
         ("RequestTimeoutException" . request-timeout-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'upload-multipart-part))

@@ -991,7 +991,13 @@
                                                         "POST" "/" "AssumeRole"
                                                         "2011-06-15"))
       common-lisp:nil "AssumeRoleResult"
-      '(("MalformedPolicyDocumentException"
+      '(("ExpiredTokenException" . expired-token-exception)
+        ("IDPCommunicationErrorException" . idpcommunication-error-exception)
+        ("IDPRejectedClaimException" . idprejected-claim-exception)
+        ("InvalidAuthorizationMessageException"
+         . invalid-authorization-message-exception)
+        ("InvalidIdentityTokenException" . invalid-identity-token-exception)
+        ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
         ("PackedPolicyTooLargeException" . packed-policy-too-large-exception)
         ("RegionDisabledException" . region-disabled-exception)))))
@@ -1016,12 +1022,15 @@
                                                         "AssumeRoleWithSAML"
                                                         "2011-06-15"))
       common-lisp:nil "AssumeRoleWithSAMLResult"
-      '(("MalformedPolicyDocumentException"
+      '(("ExpiredTokenException" . expired-token-exception)
+        ("IDPCommunicationErrorException" . idpcommunication-error-exception)
+        ("IDPRejectedClaimException" . idprejected-claim-exception)
+        ("InvalidAuthorizationMessageException"
+         . invalid-authorization-message-exception)
+        ("InvalidIdentityTokenException" . invalid-identity-token-exception)
+        ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
         ("PackedPolicyTooLargeException" . packed-policy-too-large-exception)
-        ("IDPRejectedClaimException" . idprejected-claim-exception)
-        ("InvalidIdentityTokenException" . invalid-identity-token-exception)
-        ("ExpiredTokenException" . expired-token-exception)
         ("RegionDisabledException" . region-disabled-exception)))))
  (common-lisp:export 'assume-role-with-saml))
 (common-lisp:progn
@@ -1045,13 +1054,15 @@
                                                         "AssumeRoleWithWebIdentity"
                                                         "2011-06-15"))
       common-lisp:nil "AssumeRoleWithWebIdentityResult"
-      '(("MalformedPolicyDocumentException"
+      '(("ExpiredTokenException" . expired-token-exception)
+        ("IDPCommunicationErrorException" . idpcommunication-error-exception)
+        ("IDPRejectedClaimException" . idprejected-claim-exception)
+        ("InvalidAuthorizationMessageException"
+         . invalid-authorization-message-exception)
+        ("InvalidIdentityTokenException" . invalid-identity-token-exception)
+        ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
         ("PackedPolicyTooLargeException" . packed-policy-too-large-exception)
-        ("IDPRejectedClaimException" . idprejected-claim-exception)
-        ("IDPCommunicationErrorException" . idpcommunication-error-exception)
-        ("InvalidIdentityTokenException" . invalid-identity-token-exception)
-        ("ExpiredTokenException" . expired-token-exception)
         ("RegionDisabledException" . region-disabled-exception)))))
  (common-lisp:export 'assume-role-with-web-identity))
 (common-lisp:progn
@@ -1072,8 +1083,16 @@
                                                         "DecodeAuthorizationMessage"
                                                         "2011-06-15"))
       common-lisp:nil "DecodeAuthorizationMessageResult"
-      '(("InvalidAuthorizationMessageException"
-         . invalid-authorization-message-exception)))))
+      '(("ExpiredTokenException" . expired-token-exception)
+        ("IDPCommunicationErrorException" . idpcommunication-error-exception)
+        ("IDPRejectedClaimException" . idprejected-claim-exception)
+        ("InvalidAuthorizationMessageException"
+         . invalid-authorization-message-exception)
+        ("InvalidIdentityTokenException" . invalid-identity-token-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("PackedPolicyTooLargeException" . packed-policy-too-large-exception)
+        ("RegionDisabledException" . region-disabled-exception)))))
  (common-lisp:export 'decode-authorization-message))
 (common-lisp:progn
  (common-lisp:defun get-caller-identity ()
@@ -1082,7 +1101,17 @@
      (common-lisp:make-instance 'sts-request :method "POST" :path "/" :params
                                 `(("Action" ,@"GetCallerIdentity")
                                   ("Version" ,@"2011-06-15"))))
-    common-lisp:nil "GetCallerIdentityResult" 'common-lisp:nil))
+    common-lisp:nil "GetCallerIdentityResult"
+    '(("ExpiredTokenException" . expired-token-exception)
+      ("IDPCommunicationErrorException" . idpcommunication-error-exception)
+      ("IDPRejectedClaimException" . idprejected-claim-exception)
+      ("InvalidAuthorizationMessageException"
+       . invalid-authorization-message-exception)
+      ("InvalidIdentityTokenException" . invalid-identity-token-exception)
+      ("MalformedPolicyDocumentException"
+       . malformed-policy-document-exception)
+      ("PackedPolicyTooLargeException" . packed-policy-too-large-exception)
+      ("RegionDisabledException" . region-disabled-exception))))
  (common-lisp:export 'get-caller-identity))
 (common-lisp:progn
  (common-lisp:defun get-federation-token
@@ -1101,7 +1130,13 @@
                                                         "GetFederationToken"
                                                         "2011-06-15"))
       common-lisp:nil "GetFederationTokenResult"
-      '(("MalformedPolicyDocumentException"
+      '(("ExpiredTokenException" . expired-token-exception)
+        ("IDPCommunicationErrorException" . idpcommunication-error-exception)
+        ("IDPRejectedClaimException" . idprejected-claim-exception)
+        ("InvalidAuthorizationMessageException"
+         . invalid-authorization-message-exception)
+        ("InvalidIdentityTokenException" . invalid-identity-token-exception)
+        ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
         ("PackedPolicyTooLargeException" . packed-policy-too-large-exception)
         ("RegionDisabledException" . region-disabled-exception)))))
@@ -1125,5 +1160,14 @@
                                                         "GetSessionToken"
                                                         "2011-06-15"))
       common-lisp:nil "GetSessionTokenResult"
-      '(("RegionDisabledException" . region-disabled-exception)))))
+      '(("ExpiredTokenException" . expired-token-exception)
+        ("IDPCommunicationErrorException" . idpcommunication-error-exception)
+        ("IDPRejectedClaimException" . idprejected-claim-exception)
+        ("InvalidAuthorizationMessageException"
+         . invalid-authorization-message-exception)
+        ("InvalidIdentityTokenException" . invalid-identity-token-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("PackedPolicyTooLargeException" . packed-policy-too-large-exception)
+        ("RegionDisabledException" . region-disabled-exception)))))
  (common-lisp:export 'get-session-token))

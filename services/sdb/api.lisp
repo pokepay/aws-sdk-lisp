@@ -1101,7 +1101,25 @@
                                                         "POST" "/"
                                                         "BatchDeleteAttributes"
                                                         "2009-04-15"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AttributeDoesNotExist" . attribute-does-not-exist)
+        ("DuplicateItemName" . duplicate-item-name)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNumberPredicates" . invalid-number-predicates)
+        ("InvalidNumberValueTests" . invalid-number-value-tests)
+        ("InvalidParameterValue" . invalid-parameter-value)
+        ("InvalidQueryExpression" . invalid-query-expression)
+        ("MissingParameter" . missing-parameter)
+        ("NoSuchDomain" . no-such-domain)
+        ("NumberDomainAttributesExceeded" . number-domain-attributes-exceeded)
+        ("NumberDomainBytesExceeded" . number-domain-bytes-exceeded)
+        ("NumberDomainsExceeded" . number-domains-exceeded)
+        ("NumberItemAttributesExceeded" . number-item-attributes-exceeded)
+        ("NumberSubmittedAttributesExceeded"
+         . number-submitted-attributes-exceeded)
+        ("NumberSubmittedItemsExceeded" . number-submitted-items-exceeded)
+        ("RequestTimeout" . request-timeout)
+        ("TooManyRequestedAttributes" . too-many-requested-attributes)))))
  (common-lisp:export 'batch-delete-attributes))
 (common-lisp:progn
  (common-lisp:defun batch-put-attributes
@@ -1120,16 +1138,24 @@
                                                         "BatchPutAttributes"
                                                         "2009-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("DuplicateItemName" . duplicate-item-name)
+      '(("AttributeDoesNotExist" . attribute-does-not-exist)
+        ("DuplicateItemName" . duplicate-item-name)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNumberPredicates" . invalid-number-predicates)
+        ("InvalidNumberValueTests" . invalid-number-value-tests)
         ("InvalidParameterValue" . invalid-parameter-value)
+        ("InvalidQueryExpression" . invalid-query-expression)
         ("MissingParameter" . missing-parameter)
         ("NoSuchDomain" . no-such-domain)
-        ("NumberItemAttributesExceeded" . number-item-attributes-exceeded)
         ("NumberDomainAttributesExceeded" . number-domain-attributes-exceeded)
         ("NumberDomainBytesExceeded" . number-domain-bytes-exceeded)
-        ("NumberSubmittedItemsExceeded" . number-submitted-items-exceeded)
+        ("NumberDomainsExceeded" . number-domains-exceeded)
+        ("NumberItemAttributesExceeded" . number-item-attributes-exceeded)
         ("NumberSubmittedAttributesExceeded"
-         . number-submitted-attributes-exceeded)))))
+         . number-submitted-attributes-exceeded)
+        ("NumberSubmittedItemsExceeded" . number-submitted-items-exceeded)
+        ("RequestTimeout" . request-timeout)
+        ("TooManyRequestedAttributes" . too-many-requested-attributes)))))
  (common-lisp:export 'batch-put-attributes))
 (common-lisp:progn
  (common-lisp:defun create-domain
@@ -1148,9 +1174,24 @@
                                                         "CreateDomain"
                                                         "2009-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValue" . invalid-parameter-value)
+      '(("AttributeDoesNotExist" . attribute-does-not-exist)
+        ("DuplicateItemName" . duplicate-item-name)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNumberPredicates" . invalid-number-predicates)
+        ("InvalidNumberValueTests" . invalid-number-value-tests)
+        ("InvalidParameterValue" . invalid-parameter-value)
+        ("InvalidQueryExpression" . invalid-query-expression)
         ("MissingParameter" . missing-parameter)
-        ("NumberDomainsExceeded" . number-domains-exceeded)))))
+        ("NoSuchDomain" . no-such-domain)
+        ("NumberDomainAttributesExceeded" . number-domain-attributes-exceeded)
+        ("NumberDomainBytesExceeded" . number-domain-bytes-exceeded)
+        ("NumberDomainsExceeded" . number-domains-exceeded)
+        ("NumberItemAttributesExceeded" . number-item-attributes-exceeded)
+        ("NumberSubmittedAttributesExceeded"
+         . number-submitted-attributes-exceeded)
+        ("NumberSubmittedItemsExceeded" . number-submitted-items-exceeded)
+        ("RequestTimeout" . request-timeout)
+        ("TooManyRequestedAttributes" . too-many-requested-attributes)))))
  (common-lisp:export 'create-domain))
 (common-lisp:progn
  (common-lisp:defun delete-attributes
@@ -1171,10 +1212,24 @@
                                                         "DeleteAttributes"
                                                         "2009-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValue" . invalid-parameter-value)
+      '(("AttributeDoesNotExist" . attribute-does-not-exist)
+        ("DuplicateItemName" . duplicate-item-name)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNumberPredicates" . invalid-number-predicates)
+        ("InvalidNumberValueTests" . invalid-number-value-tests)
+        ("InvalidParameterValue" . invalid-parameter-value)
+        ("InvalidQueryExpression" . invalid-query-expression)
         ("MissingParameter" . missing-parameter)
         ("NoSuchDomain" . no-such-domain)
-        ("AttributeDoesNotExist" . attribute-does-not-exist)))))
+        ("NumberDomainAttributesExceeded" . number-domain-attributes-exceeded)
+        ("NumberDomainBytesExceeded" . number-domain-bytes-exceeded)
+        ("NumberDomainsExceeded" . number-domains-exceeded)
+        ("NumberItemAttributesExceeded" . number-item-attributes-exceeded)
+        ("NumberSubmittedAttributesExceeded"
+         . number-submitted-attributes-exceeded)
+        ("NumberSubmittedItemsExceeded" . number-submitted-items-exceeded)
+        ("RequestTimeout" . request-timeout)
+        ("TooManyRequestedAttributes" . too-many-requested-attributes)))))
  (common-lisp:export 'delete-attributes))
 (common-lisp:progn
  (common-lisp:defun delete-domain
@@ -1193,7 +1248,24 @@
                                                         "DeleteDomain"
                                                         "2009-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("MissingParameter" . missing-parameter)))))
+      '(("AttributeDoesNotExist" . attribute-does-not-exist)
+        ("DuplicateItemName" . duplicate-item-name)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNumberPredicates" . invalid-number-predicates)
+        ("InvalidNumberValueTests" . invalid-number-value-tests)
+        ("InvalidParameterValue" . invalid-parameter-value)
+        ("InvalidQueryExpression" . invalid-query-expression)
+        ("MissingParameter" . missing-parameter)
+        ("NoSuchDomain" . no-such-domain)
+        ("NumberDomainAttributesExceeded" . number-domain-attributes-exceeded)
+        ("NumberDomainBytesExceeded" . number-domain-bytes-exceeded)
+        ("NumberDomainsExceeded" . number-domains-exceeded)
+        ("NumberItemAttributesExceeded" . number-item-attributes-exceeded)
+        ("NumberSubmittedAttributesExceeded"
+         . number-submitted-attributes-exceeded)
+        ("NumberSubmittedItemsExceeded" . number-submitted-items-exceeded)
+        ("RequestTimeout" . request-timeout)
+        ("TooManyRequestedAttributes" . too-many-requested-attributes)))))
  (common-lisp:export 'delete-domain))
 (common-lisp:progn
  (common-lisp:defun domain-metadata
@@ -1212,8 +1284,24 @@
                                                         "DomainMetadata"
                                                         "2009-04-15"))
       common-lisp:nil "DomainMetadataResult"
-      '(("MissingParameter" . missing-parameter)
-        ("NoSuchDomain" . no-such-domain)))))
+      '(("AttributeDoesNotExist" . attribute-does-not-exist)
+        ("DuplicateItemName" . duplicate-item-name)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNumberPredicates" . invalid-number-predicates)
+        ("InvalidNumberValueTests" . invalid-number-value-tests)
+        ("InvalidParameterValue" . invalid-parameter-value)
+        ("InvalidQueryExpression" . invalid-query-expression)
+        ("MissingParameter" . missing-parameter)
+        ("NoSuchDomain" . no-such-domain)
+        ("NumberDomainAttributesExceeded" . number-domain-attributes-exceeded)
+        ("NumberDomainBytesExceeded" . number-domain-bytes-exceeded)
+        ("NumberDomainsExceeded" . number-domains-exceeded)
+        ("NumberItemAttributesExceeded" . number-item-attributes-exceeded)
+        ("NumberSubmittedAttributesExceeded"
+         . number-submitted-attributes-exceeded)
+        ("NumberSubmittedItemsExceeded" . number-submitted-items-exceeded)
+        ("RequestTimeout" . request-timeout)
+        ("TooManyRequestedAttributes" . too-many-requested-attributes)))))
  (common-lisp:export 'domain-metadata))
 (common-lisp:progn
  (common-lisp:defun get-attributes
@@ -1235,9 +1323,24 @@
                                                         "GetAttributes"
                                                         "2009-04-15"))
       common-lisp:nil "GetAttributesResult"
-      '(("InvalidParameterValue" . invalid-parameter-value)
+      '(("AttributeDoesNotExist" . attribute-does-not-exist)
+        ("DuplicateItemName" . duplicate-item-name)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNumberPredicates" . invalid-number-predicates)
+        ("InvalidNumberValueTests" . invalid-number-value-tests)
+        ("InvalidParameterValue" . invalid-parameter-value)
+        ("InvalidQueryExpression" . invalid-query-expression)
         ("MissingParameter" . missing-parameter)
-        ("NoSuchDomain" . no-such-domain)))))
+        ("NoSuchDomain" . no-such-domain)
+        ("NumberDomainAttributesExceeded" . number-domain-attributes-exceeded)
+        ("NumberDomainBytesExceeded" . number-domain-bytes-exceeded)
+        ("NumberDomainsExceeded" . number-domains-exceeded)
+        ("NumberItemAttributesExceeded" . number-item-attributes-exceeded)
+        ("NumberSubmittedAttributesExceeded"
+         . number-submitted-attributes-exceeded)
+        ("NumberSubmittedItemsExceeded" . number-submitted-items-exceeded)
+        ("RequestTimeout" . request-timeout)
+        ("TooManyRequestedAttributes" . too-many-requested-attributes)))))
  (common-lisp:export 'get-attributes))
 (common-lisp:progn
  (common-lisp:defun list-domains
@@ -1257,8 +1360,24 @@
                                                         "ListDomains"
                                                         "2009-04-15"))
       common-lisp:nil "ListDomainsResult"
-      '(("InvalidParameterValue" . invalid-parameter-value)
-        ("InvalidNextToken" . invalid-next-token)))))
+      '(("AttributeDoesNotExist" . attribute-does-not-exist)
+        ("DuplicateItemName" . duplicate-item-name)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNumberPredicates" . invalid-number-predicates)
+        ("InvalidNumberValueTests" . invalid-number-value-tests)
+        ("InvalidParameterValue" . invalid-parameter-value)
+        ("InvalidQueryExpression" . invalid-query-expression)
+        ("MissingParameter" . missing-parameter)
+        ("NoSuchDomain" . no-such-domain)
+        ("NumberDomainAttributesExceeded" . number-domain-attributes-exceeded)
+        ("NumberDomainBytesExceeded" . number-domain-bytes-exceeded)
+        ("NumberDomainsExceeded" . number-domains-exceeded)
+        ("NumberItemAttributesExceeded" . number-item-attributes-exceeded)
+        ("NumberSubmittedAttributesExceeded"
+         . number-submitted-attributes-exceeded)
+        ("NumberSubmittedItemsExceeded" . number-submitted-items-exceeded)
+        ("RequestTimeout" . request-timeout)
+        ("TooManyRequestedAttributes" . too-many-requested-attributes)))))
  (common-lisp:export 'list-domains))
 (common-lisp:progn
  (common-lisp:defun put-attributes
@@ -1279,13 +1398,24 @@
                                                         "PutAttributes"
                                                         "2009-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValue" . invalid-parameter-value)
+      '(("AttributeDoesNotExist" . attribute-does-not-exist)
+        ("DuplicateItemName" . duplicate-item-name)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNumberPredicates" . invalid-number-predicates)
+        ("InvalidNumberValueTests" . invalid-number-value-tests)
+        ("InvalidParameterValue" . invalid-parameter-value)
+        ("InvalidQueryExpression" . invalid-query-expression)
         ("MissingParameter" . missing-parameter)
         ("NoSuchDomain" . no-such-domain)
         ("NumberDomainAttributesExceeded" . number-domain-attributes-exceeded)
         ("NumberDomainBytesExceeded" . number-domain-bytes-exceeded)
+        ("NumberDomainsExceeded" . number-domains-exceeded)
         ("NumberItemAttributesExceeded" . number-item-attributes-exceeded)
-        ("AttributeDoesNotExist" . attribute-does-not-exist)))))
+        ("NumberSubmittedAttributesExceeded"
+         . number-submitted-attributes-exceeded)
+        ("NumberSubmittedItemsExceeded" . number-submitted-items-exceeded)
+        ("RequestTimeout" . request-timeout)
+        ("TooManyRequestedAttributes" . too-many-requested-attributes)))))
  (common-lisp:export 'put-attributes))
 (common-lisp:progn
  (common-lisp:defun select
@@ -1305,12 +1435,22 @@
                                                         "POST" "/" "Select"
                                                         "2009-04-15"))
       common-lisp:nil "SelectResult"
-      '(("InvalidParameterValue" . invalid-parameter-value)
+      '(("AttributeDoesNotExist" . attribute-does-not-exist)
+        ("DuplicateItemName" . duplicate-item-name)
         ("InvalidNextToken" . invalid-next-token)
         ("InvalidNumberPredicates" . invalid-number-predicates)
         ("InvalidNumberValueTests" . invalid-number-value-tests)
+        ("InvalidParameterValue" . invalid-parameter-value)
         ("InvalidQueryExpression" . invalid-query-expression)
         ("MissingParameter" . missing-parameter)
-        ("NoSuchDomain" . no-such-domain) ("RequestTimeout" . request-timeout)
+        ("NoSuchDomain" . no-such-domain)
+        ("NumberDomainAttributesExceeded" . number-domain-attributes-exceeded)
+        ("NumberDomainBytesExceeded" . number-domain-bytes-exceeded)
+        ("NumberDomainsExceeded" . number-domains-exceeded)
+        ("NumberItemAttributesExceeded" . number-item-attributes-exceeded)
+        ("NumberSubmittedAttributesExceeded"
+         . number-submitted-attributes-exceeded)
+        ("NumberSubmittedItemsExceeded" . number-submitted-items-exceeded)
+        ("RequestTimeout" . request-timeout)
         ("TooManyRequestedAttributes" . too-many-requested-attributes)))))
  (common-lisp:export 'select))

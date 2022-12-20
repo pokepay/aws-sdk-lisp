@@ -2672,8 +2672,22 @@
                                                         "CreateActivity"
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
-      '(("ActivityLimitExceeded" . activity-limit-exceeded)
-        ("InvalidName" . invalid-name)))))
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'create-activity))
 (common-lisp:progn
  (common-lisp:defun create-state-machine
@@ -2692,11 +2706,22 @@
                                                         "CreateStateMachine"
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
-        ("InvalidName" . invalid-name)
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
         ("StateMachineAlreadyExists" . state-machine-already-exists)
         ("StateMachineDeleting" . state-machine-deleting)
-        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)))))
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'create-state-machine))
 (common-lisp:progn
  (common-lisp:defun delete-activity
@@ -2714,7 +2739,23 @@
                                                         "POST" "/"
                                                         "DeleteActivity"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil '(("InvalidArn" . invalid-arn)))))
+      common-lisp:nil common-lisp:nil
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'delete-activity))
 (common-lisp:progn
  (common-lisp:defun delete-state-machine
@@ -2732,7 +2773,23 @@
                                                         "POST" "/"
                                                         "DeleteStateMachine"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil '(("InvalidArn" . invalid-arn)))))
+      common-lisp:nil common-lisp:nil
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'delete-state-machine))
 (common-lisp:progn
  (common-lisp:defun describe-activity
@@ -2752,7 +2809,21 @@
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
       '(("ActivityDoesNotExist" . activity-does-not-exist)
-        ("InvalidArn" . invalid-arn)))))
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'describe-activity))
 (common-lisp:progn
  (common-lisp:defun describe-execution
@@ -2771,8 +2842,22 @@
                                                         "DescribeExecution"
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
-      '(("ExecutionDoesNotExist" . execution-does-not-exist)
-        ("InvalidArn" . invalid-arn)))))
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'describe-execution))
 (common-lisp:progn
  (common-lisp:defun describe-state-machine
@@ -2791,8 +2876,22 @@
                                                         "DescribeStateMachine"
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidArn" . invalid-arn)
-        ("StateMachineDoesNotExist" . state-machine-does-not-exist)))))
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'describe-state-machine))
 (common-lisp:progn
  (common-lisp:defun get-activity-task
@@ -2812,8 +2911,21 @@
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
       '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
         ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
-        ("InvalidArn" . invalid-arn)))))
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'get-activity-task))
 (common-lisp:progn
  (common-lisp:defun get-execution-history
@@ -2834,8 +2946,22 @@
                                                         "GetExecutionHistory"
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
-      '(("ExecutionDoesNotExist" . execution-does-not-exist)
-        ("InvalidArn" . invalid-arn) ("InvalidToken" . invalid-token)))))
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'get-execution-history))
 (common-lisp:progn
  (common-lisp:defun list-activities
@@ -2853,7 +2979,23 @@
                                                         "POST" "/"
                                                         "ListActivities"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil '(("InvalidToken" . invalid-token)))))
+      common-lisp:nil common-lisp:nil
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'list-activities))
 (common-lisp:progn
  (common-lisp:defun list-executions
@@ -2875,8 +3017,22 @@
                                                         "ListExecutions"
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidArn" . invalid-arn) ("InvalidToken" . invalid-token)
-        ("StateMachineDoesNotExist" . state-machine-does-not-exist)))))
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'list-executions))
 (common-lisp:progn
  (common-lisp:defun list-state-machines
@@ -2894,7 +3050,23 @@
                                                         "POST" "/"
                                                         "ListStateMachines"
                                                         "2016-11-23"))
-      common-lisp:nil common-lisp:nil '(("InvalidToken" . invalid-token)))))
+      common-lisp:nil common-lisp:nil
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'list-state-machines))
 (common-lisp:progn
  (common-lisp:defun send-task-failure
@@ -2913,8 +3085,22 @@
                                                         "SendTaskFailure"
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
-      '(("TaskDoesNotExist" . task-does-not-exist)
-        ("InvalidToken" . invalid-token) ("TaskTimedOut" . task-timed-out)))))
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'send-task-failure))
 (common-lisp:progn
  (common-lisp:defun send-task-heartbeat
@@ -2933,8 +3119,22 @@
                                                         "SendTaskHeartbeat"
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
-      '(("TaskDoesNotExist" . task-does-not-exist)
-        ("InvalidToken" . invalid-token) ("TaskTimedOut" . task-timed-out)))))
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'send-task-heartbeat))
 (common-lisp:progn
  (common-lisp:defun send-task-success
@@ -2953,8 +3153,21 @@
                                                         "SendTaskSuccess"
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
-      '(("TaskDoesNotExist" . task-does-not-exist)
-        ("InvalidOutput" . invalid-output) ("InvalidToken" . invalid-token)
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
         ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'send-task-success))
 (common-lisp:progn
@@ -2974,13 +3187,22 @@
                                                         "StartExecution"
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
-      '(("ExecutionLimitExceeded" . execution-limit-exceeded)
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
         ("ExecutionAlreadyExists" . execution-already-exists)
-        ("InvalidArn" . invalid-arn)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
         ("InvalidExecutionInput" . invalid-execution-input)
-        ("InvalidName" . invalid-name)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
         ("StateMachineDoesNotExist" . state-machine-does-not-exist)
-        ("StateMachineDeleting" . state-machine-deleting)))))
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'start-execution))
 (common-lisp:progn
  (common-lisp:defun stop-execution
@@ -2999,6 +3221,20 @@
                                                         "StopExecution"
                                                         "2016-11-23"))
       common-lisp:nil common-lisp:nil
-      '(("ExecutionDoesNotExist" . execution-does-not-exist)
-        ("InvalidArn" . invalid-arn)))))
+      '(("ActivityDoesNotExist" . activity-does-not-exist)
+        ("ActivityLimitExceeded" . activity-limit-exceeded)
+        ("ActivityWorkerLimitExceeded" . activity-worker-limit-exceeded)
+        ("ExecutionAlreadyExists" . execution-already-exists)
+        ("ExecutionDoesNotExist" . execution-does-not-exist)
+        ("ExecutionLimitExceeded" . execution-limit-exceeded)
+        ("InvalidArn" . invalid-arn) ("InvalidDefinition" . invalid-definition)
+        ("InvalidExecutionInput" . invalid-execution-input)
+        ("InvalidName" . invalid-name) ("InvalidOutput" . invalid-output)
+        ("InvalidToken" . invalid-token)
+        ("StateMachineAlreadyExists" . state-machine-already-exists)
+        ("StateMachineDeleting" . state-machine-deleting)
+        ("StateMachineDoesNotExist" . state-machine-does-not-exist)
+        ("StateMachineLimitExceeded" . state-machine-limit-exceeded)
+        ("TaskDoesNotExist" . task-does-not-exist)
+        ("TaskTimedOut" . task-timed-out)))))
  (common-lisp:export 'stop-execution))

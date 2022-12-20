@@ -3408,11 +3408,19 @@
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "AddApplicationCloudWatchLoggingOption" "2015-08-14"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
+      '(("CodeValidationException" . code-validation-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
         ("InvalidArgumentException" . invalid-argument-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'add-application-cloud-watch-logging-option))
 (common-lisp:progn
  (common-lisp:defun add-application-input
@@ -3432,11 +3440,19 @@
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "AddApplicationInput" "2015-08-14"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
+      '(("CodeValidationException" . code-validation-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("CodeValidationException" . code-validation-exception)))))
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'add-application-input))
 (common-lisp:progn
  (common-lisp:defun add-application-output
@@ -3456,11 +3472,19 @@
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "AddApplicationOutput" "2015-08-14"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
+      '(("CodeValidationException" . code-validation-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
         ("InvalidArgumentException" . invalid-argument-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'add-application-output))
 (common-lisp:progn
  (common-lisp:defun add-application-reference-data-source
@@ -3481,11 +3505,19 @@
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "AddApplicationReferenceDataSource" "2015-08-14"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
+      '(("CodeValidationException" . code-validation-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
         ("InvalidArgumentException" . invalid-argument-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'add-application-reference-data-source))
 (common-lisp:progn
  (common-lisp:defun create-application
@@ -3507,9 +3539,18 @@
         "CreateApplication" "2015-08-14"))
       common-lisp:nil common-lisp:nil
       '(("CodeValidationException" . code-validation-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)))))
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'create-application))
 (common-lisp:progn
  (common-lisp:defun delete-application
@@ -3527,9 +3568,19 @@
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteApplication" "2015-08-14"))
       common-lisp:nil common-lisp:nil
-      '(("ConcurrentModificationException" . concurrent-modification-exception)
+      '(("CodeValidationException" . code-validation-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceInUseException" . resource-in-use-exception)))))
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'delete-application))
 (common-lisp:progn
  (common-lisp:defun delete-application-cloud-watch-logging-option
@@ -3551,11 +3602,19 @@
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteApplicationCloudWatchLoggingOption" "2015-08-14"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
+      '(("CodeValidationException" . code-validation-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
         ("InvalidArgumentException" . invalid-argument-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'delete-application-cloud-watch-logging-option))
 (common-lisp:progn
  (common-lisp:defun delete-application-output
@@ -3576,11 +3635,19 @@
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteApplicationOutput" "2015-08-14"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
+      '(("CodeValidationException" . code-validation-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
         ("InvalidArgumentException" . invalid-argument-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'delete-application-output))
 (common-lisp:progn
  (common-lisp:defun delete-application-reference-data-source
@@ -3601,11 +3668,19 @@
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteApplicationReferenceDataSource" "2015-08-14"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
+      '(("CodeValidationException" . code-validation-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
         ("InvalidArgumentException" . invalid-argument-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'delete-application-reference-data-source))
 (common-lisp:progn
  (common-lisp:defun describe-application
@@ -3622,7 +3697,19 @@
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeApplication" "2015-08-14"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("CodeValidationException" . code-validation-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'describe-application))
 (common-lisp:progn
  (common-lisp:defun discover-input-schema
@@ -3642,11 +3729,19 @@
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "DiscoverInputSchema" "2015-08-14"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidArgumentException" . invalid-argument-exception)
-        ("UnableToDetectSchemaException" . unable-to-detect-schema-exception)
+      '(("CodeValidationException" . code-validation-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ResourceProvisionedThroughputExceededException"
          . resource-provisioned-throughput-exceeded-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'discover-input-schema))
 (common-lisp:progn
  (common-lisp:defun list-applications
@@ -3663,7 +3758,20 @@
        (aws-sdk/generator/shape:make-request-with-input
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "ListApplications" "2015-08-14"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CodeValidationException" . code-validation-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'list-applications))
 (common-lisp:progn
  (common-lisp:defun start-application
@@ -3681,11 +3789,19 @@
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "StartApplication" "2015-08-14"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("InvalidArgumentException" . invalid-argument-exception)
+      '(("CodeValidationException" . code-validation-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
         ("InvalidApplicationConfigurationException"
-         . invalid-application-configuration-exception)))))
+         . invalid-application-configuration-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'start-application))
 (common-lisp:progn
  (common-lisp:defun stop-application
@@ -3702,8 +3818,19 @@
         'kinesisanalytics-request aws-sdk/generator/operation::input "POST" "/"
         "StopApplication" "2015-08-14"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceInUseException" . resource-in-use-exception)))))
+      '(("CodeValidationException" . code-validation-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'stop-application))
 (common-lisp:progn
  (common-lisp:defun update-application
@@ -3724,9 +3851,16 @@
         "UpdateApplication" "2015-08-14"))
       common-lisp:nil common-lisp:nil
       '(("CodeValidationException" . code-validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidApplicationConfigurationException"
+         . invalid-application-configuration-exception)
         ("InvalidArgumentException" . invalid-argument-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ResourceProvisionedThroughputExceededException"
+         . resource-provisioned-throughput-exceeded-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnableToDetectSchemaException"
+         . unable-to-detect-schema-exception)))))
  (common-lisp:export 'update-application))

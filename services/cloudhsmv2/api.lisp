@@ -1238,15 +1238,14 @@
                                                         "CreateCluster"
                                                         "2017-04-28"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmInternalFailureException"
+      '(("CloudHsmAccessDeniedException" . cloud-hsm-access-denied-exception)
+        ("CloudHsmInternalFailureException"
          . cloud-hsm-internal-failure-exception)
-        ("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmResourceNotFoundException"
-         . cloud-hsm-resource-not-found-exception)
         ("CloudHsmInvalidRequestException"
          . cloud-hsm-invalid-request-exception)
-        ("CloudHsmAccessDeniedException"
-         . cloud-hsm-access-denied-exception)))))
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)))))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
  (common-lisp:defun create-hsm
@@ -1265,15 +1264,14 @@
                                                         "POST" "/" "CreateHsm"
                                                         "2017-04-28"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmInternalFailureException"
+      '(("CloudHsmAccessDeniedException" . cloud-hsm-access-denied-exception)
+        ("CloudHsmInternalFailureException"
          . cloud-hsm-internal-failure-exception)
-        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("CloudHsmInvalidRequestException"
          . cloud-hsm-invalid-request-exception)
         ("CloudHsmResourceNotFoundException"
          . cloud-hsm-resource-not-found-exception)
-        ("CloudHsmAccessDeniedException"
-         . cloud-hsm-access-denied-exception)))))
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)))))
  (common-lisp:export 'create-hsm))
 (common-lisp:progn
  (common-lisp:defun delete-cluster
@@ -1292,15 +1290,14 @@
                                                         "DeleteCluster"
                                                         "2017-04-28"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmInternalFailureException"
+      '(("CloudHsmAccessDeniedException" . cloud-hsm-access-denied-exception)
+        ("CloudHsmInternalFailureException"
          . cloud-hsm-internal-failure-exception)
-        ("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmResourceNotFoundException"
-         . cloud-hsm-resource-not-found-exception)
         ("CloudHsmInvalidRequestException"
          . cloud-hsm-invalid-request-exception)
-        ("CloudHsmAccessDeniedException"
-         . cloud-hsm-access-denied-exception)))))
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)))))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
  (common-lisp:defun delete-hsm
@@ -1319,15 +1316,14 @@
                                                         "POST" "/" "DeleteHsm"
                                                         "2017-04-28"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmInternalFailureException"
+      '(("CloudHsmAccessDeniedException" . cloud-hsm-access-denied-exception)
+        ("CloudHsmInternalFailureException"
          . cloud-hsm-internal-failure-exception)
-        ("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmResourceNotFoundException"
-         . cloud-hsm-resource-not-found-exception)
         ("CloudHsmInvalidRequestException"
          . cloud-hsm-invalid-request-exception)
-        ("CloudHsmAccessDeniedException"
-         . cloud-hsm-access-denied-exception)))))
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)))))
  (common-lisp:export 'delete-hsm))
 (common-lisp:progn
  (common-lisp:defun describe-backups
@@ -1346,15 +1342,14 @@
                                                         "DescribeBackups"
                                                         "2017-04-28"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmInternalFailureException"
+      '(("CloudHsmAccessDeniedException" . cloud-hsm-access-denied-exception)
+        ("CloudHsmInternalFailureException"
          . cloud-hsm-internal-failure-exception)
-        ("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmResourceNotFoundException"
-         . cloud-hsm-resource-not-found-exception)
         ("CloudHsmInvalidRequestException"
          . cloud-hsm-invalid-request-exception)
-        ("CloudHsmAccessDeniedException"
-         . cloud-hsm-access-denied-exception)))))
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)))))
  (common-lisp:export 'describe-backups))
 (common-lisp:progn
  (common-lisp:defun describe-clusters
@@ -1373,13 +1368,14 @@
                                                         "DescribeClusters"
                                                         "2017-04-28"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmInternalFailureException"
+      '(("CloudHsmAccessDeniedException" . cloud-hsm-access-denied-exception)
+        ("CloudHsmInternalFailureException"
          . cloud-hsm-internal-failure-exception)
-        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("CloudHsmInvalidRequestException"
          . cloud-hsm-invalid-request-exception)
-        ("CloudHsmAccessDeniedException"
-         . cloud-hsm-access-denied-exception)))))
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)))))
  (common-lisp:export 'describe-clusters))
 (common-lisp:progn
  (common-lisp:defun initialize-cluster
@@ -1399,15 +1395,14 @@
                                                         "InitializeCluster"
                                                         "2017-04-28"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmInternalFailureException"
+      '(("CloudHsmAccessDeniedException" . cloud-hsm-access-denied-exception)
+        ("CloudHsmInternalFailureException"
          . cloud-hsm-internal-failure-exception)
-        ("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmResourceNotFoundException"
-         . cloud-hsm-resource-not-found-exception)
         ("CloudHsmInvalidRequestException"
          . cloud-hsm-invalid-request-exception)
-        ("CloudHsmAccessDeniedException"
-         . cloud-hsm-access-denied-exception)))))
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)))))
  (common-lisp:export 'initialize-cluster))
 (common-lisp:progn
  (common-lisp:defun list-tags
@@ -1426,15 +1421,14 @@
                                                         "POST" "/" "ListTags"
                                                         "2017-04-28"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmInternalFailureException"
+      '(("CloudHsmAccessDeniedException" . cloud-hsm-access-denied-exception)
+        ("CloudHsmInternalFailureException"
          . cloud-hsm-internal-failure-exception)
-        ("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmResourceNotFoundException"
-         . cloud-hsm-resource-not-found-exception)
         ("CloudHsmInvalidRequestException"
          . cloud-hsm-invalid-request-exception)
-        ("CloudHsmAccessDeniedException"
-         . cloud-hsm-access-denied-exception)))))
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)))))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -1453,15 +1447,14 @@
                                                         "TagResource"
                                                         "2017-04-28"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmInternalFailureException"
+      '(("CloudHsmAccessDeniedException" . cloud-hsm-access-denied-exception)
+        ("CloudHsmInternalFailureException"
          . cloud-hsm-internal-failure-exception)
-        ("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmResourceNotFoundException"
-         . cloud-hsm-resource-not-found-exception)
         ("CloudHsmInvalidRequestException"
          . cloud-hsm-invalid-request-exception)
-        ("CloudHsmAccessDeniedException"
-         . cloud-hsm-access-denied-exception)))))
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)))))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -1480,13 +1473,12 @@
                                                         "UntagResource"
                                                         "2017-04-28"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmInternalFailureException"
+      '(("CloudHsmAccessDeniedException" . cloud-hsm-access-denied-exception)
+        ("CloudHsmInternalFailureException"
          . cloud-hsm-internal-failure-exception)
-        ("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmResourceNotFoundException"
-         . cloud-hsm-resource-not-found-exception)
         ("CloudHsmInvalidRequestException"
          . cloud-hsm-invalid-request-exception)
-        ("CloudHsmAccessDeniedException"
-         . cloud-hsm-access-denied-exception)))))
+        ("CloudHsmResourceNotFoundException"
+         . cloud-hsm-resource-not-found-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)))))
  (common-lisp:export 'untag-resource))

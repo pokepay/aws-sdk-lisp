@@ -1776,12 +1776,20 @@
                                                         "BulkPublish"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalErrorException" . internal-error-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
         ("DuplicateRequestException" . duplicate-request-exception)
-        ("AlreadyStreamedException" . already-streamed-exception)))))
+        ("InternalErrorException" . internal-error-exception)
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'bulk-publish))
 (common-lisp:progn
  (common-lisp:defun delete-dataset
@@ -1820,12 +1828,20 @@
                                                         "DeleteDataset"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("ResourceConflictException" . resource-conflict-exception)))))
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-dataset))
 (common-lisp:progn
  (common-lisp:defun describe-dataset
@@ -1864,10 +1880,19 @@
                                                         "DescribeDataset"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-dataset))
 (common-lisp:progn
@@ -1898,10 +1923,19 @@
                                                         "DescribeIdentityPoolUsage"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-identity-pool-usage))
 (common-lisp:progn
@@ -1935,10 +1969,19 @@
                                                         "DescribeIdentityUsage"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-identity-usage))
 (common-lisp:progn
@@ -1968,10 +2011,20 @@
                                                         "GetBulkPublishDetails"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
         ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalErrorException" . internal-error-exception)))))
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-bulk-publish-details))
 (common-lisp:progn
  (common-lisp:defun get-cognito-events
@@ -2000,10 +2053,19 @@
                                                         "GetCognitoEvents"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-cognito-events))
 (common-lisp:progn
@@ -2034,10 +2096,19 @@
                                                         "GetIdentityPoolConfiguration"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-identity-pool-configuration))
 (common-lisp:progn
@@ -2074,9 +2145,19 @@
                                                         "ListDatasets"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-datasets))
 (common-lisp:progn
@@ -2096,9 +2177,19 @@
                                                         "ListIdentityPoolUsage"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-identity-pool-usage))
 (common-lisp:progn
@@ -2139,10 +2230,20 @@
                                                         "ListRecords"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotAuthorizedException" . not-authorized-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("InternalErrorException" . internal-error-exception)))))
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-records))
 (common-lisp:progn
  (common-lisp:defun register-device
@@ -2177,11 +2278,19 @@
                                                         "RegisterDevice"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
         ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'register-device))
 (common-lisp:progn
@@ -2211,10 +2320,19 @@
                                                         "SetCognitoEvents"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'set-cognito-events))
 (common-lisp:progn
@@ -2247,13 +2365,20 @@
                                                         "SetIdentityPoolConfiguration"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+        ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'set-identity-pool-configuration))
 (common-lisp:progn
  (common-lisp:defun subscribe-to-dataset
@@ -2297,11 +2422,19 @@
                                                         "SubscribeToDataset"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
         ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'subscribe-to-dataset))
 (common-lisp:progn
@@ -2346,11 +2479,19 @@
                                                         "UnsubscribeFromDataset"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("NotAuthorizedException" . not-authorized-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
         ("InternalErrorException" . internal-error-exception)
         ("InvalidConfigurationException" . invalid-configuration-exception)
+        ("InvalidLambdaFunctionOutputException"
+         . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("LambdaThrottledException" . lambda-throttled-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'unsubscribe-from-dataset))
 (common-lisp:progn
@@ -2392,14 +2533,18 @@
                                                         "UpdateRecords"
                                                         "2014-06-30"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("NotAuthorizedException" . not-authorized-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
+      '(("AlreadyStreamedException" . already-streamed-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("DuplicateRequestException" . duplicate-request-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("InvalidConfigurationException" . invalid-configuration-exception)
         ("InvalidLambdaFunctionOutputException"
          . invalid-lambda-function-output-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
         ("LambdaThrottledException" . lambda-throttled-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("InternalErrorException" . internal-error-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotAuthorizedException" . not-authorized-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-records))

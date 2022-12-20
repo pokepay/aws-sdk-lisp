@@ -10527,10 +10527,38 @@
                                                         "AddClientIDToOpenIDConnectProvider"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'add-client-idto-open-idconnect-provider))
 (common-lisp:progn
  (common-lisp:defun add-role-to-instance-profile
@@ -10551,11 +10579,38 @@
                                                         "AddRoleToInstanceProfile"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
         ("UnmodifiableEntityException" . unmodifiable-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'add-role-to-instance-profile))
 (common-lisp:progn
  (common-lisp:defun add-user-to-group
@@ -10574,9 +10629,38 @@
                                                         "AddUserToGroup"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'add-user-to-group))
 (common-lisp:progn
  (common-lisp:defun attach-group-policy
@@ -10595,10 +10679,38 @@
                                                         "AttachGroupPolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'attach-group-policy))
 (common-lisp:progn
  (common-lisp:defun attach-role-policy
@@ -10617,11 +10729,38 @@
                                                         "AttachRolePolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
         ("UnmodifiableEntityException" . unmodifiable-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'attach-role-policy))
 (common-lisp:progn
  (common-lisp:defun attach-user-policy
@@ -10640,10 +10779,38 @@
                                                         "AttachUserPolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'attach-user-policy))
 (common-lisp:progn
  (common-lisp:defun change-password
@@ -10662,14 +10829,38 @@
                                                         "ChangePassword"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("InvalidUserTypeException" . invalid-user-type-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
         ("EntityTemporarilyUnmodifiableException"
          . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
         ("PasswordPolicyViolationException"
          . password-policy-violation-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'change-password))
 (common-lisp:progn
  (common-lisp:defun create-access-key
@@ -10688,9 +10879,38 @@
                                                         "CreateAccessKey"
                                                         "2010-05-08"))
       common-lisp:nil "CreateAccessKeyResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-access-key))
 (common-lisp:progn
  (common-lisp:defun create-account-alias
@@ -10709,9 +10929,38 @@
                                                         "CreateAccountAlias"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-account-alias))
 (common-lisp:progn
  (common-lisp:defun create-group
@@ -10730,10 +10979,38 @@
                                                         "CreateGroup"
                                                         "2010-05-08"))
       common-lisp:nil "CreateGroupResult"
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-group))
 (common-lisp:progn
  (common-lisp:defun create-instance-profile
@@ -10752,9 +11029,38 @@
                                                         "CreateInstanceProfile"
                                                         "2010-05-08"))
       common-lisp:nil "CreateInstanceProfileResult"
-      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-instance-profile))
 (common-lisp:progn
  (common-lisp:defun create-login-profile
@@ -10775,12 +11081,38 @@
                                                         "CreateLoginProfile"
                                                         "2010-05-08"))
       common-lisp:nil "CreateLoginProfileResult"
-      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
         ("PasswordPolicyViolationException"
          . password-policy-violation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-login-profile))
 (common-lisp:progn
  (common-lisp:defun create-open-idconnect-provider
@@ -10801,10 +11133,38 @@
                                                         "CreateOpenIDConnectProvider"
                                                         "2010-05-08"))
       common-lisp:nil "CreateOpenIDConnectProviderResult"
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-open-idconnect-provider))
 (common-lisp:progn
  (common-lisp:defun create-policy
@@ -10825,12 +11185,38 @@
                                                         "CreatePolicy"
                                                         "2010-05-08"))
       common-lisp:nil "CreatePolicyResult"
-      '(("InvalidInputException" . invalid-input-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
         ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-policy))
 (common-lisp:progn
  (common-lisp:defun create-policy-version
@@ -10851,12 +11237,38 @@
                                                         "CreatePolicyVersion"
                                                         "2010-05-08"))
       common-lisp:nil "CreatePolicyVersionResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
         ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
-        ("InvalidInputException" . invalid-input-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-policy-version))
 (common-lisp:progn
  (common-lisp:defun create-role
@@ -10877,12 +11289,38 @@
                                                         "POST" "/" "CreateRole"
                                                         "2010-05-08"))
       common-lisp:nil "CreateRoleResult"
-      '(("LimitExceededException" . limit-exceeded-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
         ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-role))
 (common-lisp:progn
  (common-lisp:defun create-samlprovider
@@ -10901,10 +11339,38 @@
                                                         "CreateSAMLProvider"
                                                         "2010-05-08"))
       common-lisp:nil "CreateSAMLProviderResult"
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-samlprovider))
 (common-lisp:progn
  (common-lisp:defun create-service-linked-role
@@ -10926,10 +11392,38 @@
                                                         "CreateServiceLinkedRole"
                                                         "2010-05-08"))
       common-lisp:nil "CreateServiceLinkedRoleResult"
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-service-linked-role))
 (common-lisp:progn
  (common-lisp:defun create-service-specific-credential
@@ -10949,9 +11443,38 @@
                                                         "CreateServiceSpecificCredential"
                                                         "2010-05-08"))
       common-lisp:nil "CreateServiceSpecificCredentialResult"
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceNotSupportedException" . service-not-supported-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-service-specific-credential))
 (common-lisp:progn
  (common-lisp:defun create-user
@@ -10969,10 +11492,38 @@
                                                         "POST" "/" "CreateUser"
                                                         "2010-05-08"))
       common-lisp:nil "CreateUserResult"
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-user))
 (common-lisp:progn
  (common-lisp:defun create-virtual-mfadevice
@@ -10991,9 +11542,38 @@
                                                         "CreateVirtualMFADevice"
                                                         "2010-05-08"))
       common-lisp:nil "CreateVirtualMFADeviceResult"
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'create-virtual-mfadevice))
 (common-lisp:progn
  (common-lisp:defun deactivate-mfadevice
@@ -11012,11 +11592,38 @@
                                                         "DeactivateMFADevice"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("EntityTemporarilyUnmodifiableException"
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
          . entity-temporarily-unmodifiable-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'deactivate-mfadevice))
 (common-lisp:progn
  (common-lisp:defun delete-access-key
@@ -11035,9 +11642,38 @@
                                                         "DeleteAccessKey"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-access-key))
 (common-lisp:progn
  (common-lisp:defun delete-account-alias
@@ -11056,9 +11692,38 @@
                                                         "DeleteAccountAlias"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-account-alias))
 (common-lisp:progn
  (common-lisp:defun delete-account-password-policy ()
@@ -11068,9 +11733,38 @@
                                 `(("Action" ,@"DeleteAccountPasswordPolicy")
                                   ("Version" ,@"2010-05-08"))))
     common-lisp:nil common-lisp:nil
-    '(("NoSuchEntityException" . no-such-entity-exception)
+    '(("CredentialReportExpiredException"
+       . credential-report-expired-exception)
+      ("CredentialReportNotPresentException"
+       . credential-report-not-present-exception)
+      ("CredentialReportNotReadyException"
+       . credential-report-not-ready-exception)
+      ("DeleteConflictException" . delete-conflict-exception)
+      ("DuplicateCertificateException" . duplicate-certificate-exception)
+      ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+      ("EntityAlreadyExistsException" . entity-already-exists-exception)
+      ("EntityTemporarilyUnmodifiableException"
+       . entity-temporarily-unmodifiable-exception)
+      ("InvalidAuthenticationCodeException"
+       . invalid-authentication-code-exception)
+      ("InvalidCertificateException" . invalid-certificate-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("InvalidPublicKeyException" . invalid-public-key-exception)
+      ("InvalidUserTypeException" . invalid-user-type-exception)
+      ("KeyPairMismatchException" . key-pair-mismatch-exception)
       ("LimitExceededException" . limit-exceeded-exception)
-      ("ServiceFailureException" . service-failure-exception))))
+      ("MalformedCertificateException" . malformed-certificate-exception)
+      ("MalformedPolicyDocumentException"
+       . malformed-policy-document-exception)
+      ("NoSuchEntityException" . no-such-entity-exception)
+      ("PasswordPolicyViolationException"
+       . password-policy-violation-exception)
+      ("PolicyEvaluationException" . policy-evaluation-exception)
+      ("ServiceFailureException" . service-failure-exception)
+      ("ServiceNotSupportedException" . service-not-supported-exception)
+      ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+      ("UnrecognizedPublicKeyEncodingException"
+       . unrecognized-public-key-encoding-exception))))
  (common-lisp:export 'delete-account-password-policy))
 (common-lisp:progn
  (common-lisp:defun delete-group
@@ -11089,10 +11783,38 @@
                                                         "DeleteGroup"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
         ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-group))
 (common-lisp:progn
  (common-lisp:defun delete-group-policy
@@ -11111,9 +11833,38 @@
                                                         "DeleteGroupPolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-group-policy))
 (common-lisp:progn
  (common-lisp:defun delete-instance-profile
@@ -11132,10 +11883,38 @@
                                                         "DeleteInstanceProfile"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
         ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-instance-profile))
 (common-lisp:progn
  (common-lisp:defun delete-login-profile
@@ -11154,11 +11933,38 @@
                                                         "DeleteLoginProfile"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("EntityTemporarilyUnmodifiableException"
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
          . entity-temporarily-unmodifiable-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-login-profile))
 (common-lisp:progn
  (common-lisp:defun delete-open-idconnect-provider
@@ -11178,9 +11984,38 @@
                                                         "DeleteOpenIDConnectProvider"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-open-idconnect-provider))
 (common-lisp:progn
  (common-lisp:defun delete-policy
@@ -11199,11 +12034,38 @@
                                                         "DeletePolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
         ("DeleteConflictException" . delete-conflict-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-policy))
 (common-lisp:progn
  (common-lisp:defun delete-policy-version
@@ -11222,11 +12084,38 @@
                                                         "DeletePolicyVersion"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
         ("DeleteConflictException" . delete-conflict-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-policy-version))
 (common-lisp:progn
  (common-lisp:defun delete-role
@@ -11244,11 +12133,38 @@
                                                         "POST" "/" "DeleteRole"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
         ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
         ("UnmodifiableEntityException" . unmodifiable-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-role))
 (common-lisp:progn
  (common-lisp:defun delete-role-policy
@@ -11267,10 +12183,38 @@
                                                         "DeleteRolePolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
         ("UnmodifiableEntityException" . unmodifiable-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-role-policy))
 (common-lisp:progn
  (common-lisp:defun delete-samlprovider
@@ -11289,10 +12233,38 @@
                                                         "DeleteSAMLProvider"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-samlprovider))
 (common-lisp:progn
  (common-lisp:defun delete-sshpublic-key
@@ -11311,7 +12283,38 @@
                                                         "DeleteSSHPublicKey"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-sshpublic-key))
 (common-lisp:progn
  (common-lisp:defun delete-server-certificate
@@ -11331,10 +12334,38 @@
                                                         "DeleteServerCertificate"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
         ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-server-certificate))
 (common-lisp:progn
  (common-lisp:defun delete-service-specific-credential
@@ -11355,7 +12386,38 @@
                                                         "DeleteServiceSpecificCredential"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-service-specific-credential))
 (common-lisp:progn
  (common-lisp:defun delete-signing-certificate
@@ -11375,9 +12437,38 @@
                                                         "DeleteSigningCertificate"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-signing-certificate))
 (common-lisp:progn
  (common-lisp:defun delete-user
@@ -11395,10 +12486,38 @@
                                                         "POST" "/" "DeleteUser"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
         ("DeleteConflictException" . delete-conflict-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-user))
 (common-lisp:progn
  (common-lisp:defun delete-user-policy
@@ -11417,9 +12536,38 @@
                                                         "DeleteUserPolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-user-policy))
 (common-lisp:progn
  (common-lisp:defun delete-virtual-mfadevice
@@ -11438,10 +12586,38 @@
                                                         "DeleteVirtualMFADevice"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
         ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'delete-virtual-mfadevice))
 (common-lisp:progn
  (common-lisp:defun detach-group-policy
@@ -11460,10 +12636,38 @@
                                                         "DetachGroupPolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'detach-group-policy))
 (common-lisp:progn
  (common-lisp:defun detach-role-policy
@@ -11482,11 +12686,38 @@
                                                         "DetachRolePolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
         ("UnmodifiableEntityException" . unmodifiable-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'detach-role-policy))
 (common-lisp:progn
  (common-lisp:defun detach-user-policy
@@ -11505,10 +12736,38 @@
                                                         "DetachUserPolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'detach-user-policy))
 (common-lisp:progn
  (common-lisp:defun enable-mfadevice
@@ -11530,14 +12789,38 @@
                                                         "EnableMFADevice"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
         ("EntityTemporarilyUnmodifiableException"
          . entity-temporarily-unmodifiable-exception)
         ("InvalidAuthenticationCodeException"
          . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'enable-mfadevice))
 (common-lisp:progn
  (common-lisp:defun generate-credential-report ()
@@ -11547,8 +12830,38 @@
                                 `(("Action" ,@"GenerateCredentialReport")
                                   ("Version" ,@"2010-05-08"))))
     common-lisp:nil "GenerateCredentialReportResult"
-    '(("LimitExceededException" . limit-exceeded-exception)
-      ("ServiceFailureException" . service-failure-exception))))
+    '(("CredentialReportExpiredException"
+       . credential-report-expired-exception)
+      ("CredentialReportNotPresentException"
+       . credential-report-not-present-exception)
+      ("CredentialReportNotReadyException"
+       . credential-report-not-ready-exception)
+      ("DeleteConflictException" . delete-conflict-exception)
+      ("DuplicateCertificateException" . duplicate-certificate-exception)
+      ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+      ("EntityAlreadyExistsException" . entity-already-exists-exception)
+      ("EntityTemporarilyUnmodifiableException"
+       . entity-temporarily-unmodifiable-exception)
+      ("InvalidAuthenticationCodeException"
+       . invalid-authentication-code-exception)
+      ("InvalidCertificateException" . invalid-certificate-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("InvalidPublicKeyException" . invalid-public-key-exception)
+      ("InvalidUserTypeException" . invalid-user-type-exception)
+      ("KeyPairMismatchException" . key-pair-mismatch-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MalformedCertificateException" . malformed-certificate-exception)
+      ("MalformedPolicyDocumentException"
+       . malformed-policy-document-exception)
+      ("NoSuchEntityException" . no-such-entity-exception)
+      ("PasswordPolicyViolationException"
+       . password-policy-violation-exception)
+      ("PolicyEvaluationException" . policy-evaluation-exception)
+      ("ServiceFailureException" . service-failure-exception)
+      ("ServiceNotSupportedException" . service-not-supported-exception)
+      ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+      ("UnrecognizedPublicKeyEncodingException"
+       . unrecognized-public-key-encoding-exception))))
  (common-lisp:export 'generate-credential-report))
 (common-lisp:progn
  (common-lisp:defun get-access-key-last-used
@@ -11567,7 +12880,38 @@
                                                         "GetAccessKeyLastUsed"
                                                         "2010-05-08"))
       common-lisp:nil "GetAccessKeyLastUsedResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-access-key-last-used))
 (common-lisp:progn
  (common-lisp:defun get-account-authorization-details
@@ -11587,7 +12931,38 @@
                                                         "GetAccountAuthorizationDetails"
                                                         "2010-05-08"))
       common-lisp:nil "GetAccountAuthorizationDetailsResult"
-      '(("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-account-authorization-details))
 (common-lisp:progn
  (common-lisp:defun get-account-password-policy ()
@@ -11597,8 +12972,38 @@
                                 `(("Action" ,@"GetAccountPasswordPolicy")
                                   ("Version" ,@"2010-05-08"))))
     common-lisp:nil "GetAccountPasswordPolicyResult"
-    '(("NoSuchEntityException" . no-such-entity-exception)
-      ("ServiceFailureException" . service-failure-exception))))
+    '(("CredentialReportExpiredException"
+       . credential-report-expired-exception)
+      ("CredentialReportNotPresentException"
+       . credential-report-not-present-exception)
+      ("CredentialReportNotReadyException"
+       . credential-report-not-ready-exception)
+      ("DeleteConflictException" . delete-conflict-exception)
+      ("DuplicateCertificateException" . duplicate-certificate-exception)
+      ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+      ("EntityAlreadyExistsException" . entity-already-exists-exception)
+      ("EntityTemporarilyUnmodifiableException"
+       . entity-temporarily-unmodifiable-exception)
+      ("InvalidAuthenticationCodeException"
+       . invalid-authentication-code-exception)
+      ("InvalidCertificateException" . invalid-certificate-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("InvalidPublicKeyException" . invalid-public-key-exception)
+      ("InvalidUserTypeException" . invalid-user-type-exception)
+      ("KeyPairMismatchException" . key-pair-mismatch-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MalformedCertificateException" . malformed-certificate-exception)
+      ("MalformedPolicyDocumentException"
+       . malformed-policy-document-exception)
+      ("NoSuchEntityException" . no-such-entity-exception)
+      ("PasswordPolicyViolationException"
+       . password-policy-violation-exception)
+      ("PolicyEvaluationException" . policy-evaluation-exception)
+      ("ServiceFailureException" . service-failure-exception)
+      ("ServiceNotSupportedException" . service-not-supported-exception)
+      ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+      ("UnrecognizedPublicKeyEncodingException"
+       . unrecognized-public-key-encoding-exception))))
  (common-lisp:export 'get-account-password-policy))
 (common-lisp:progn
  (common-lisp:defun get-account-summary ()
@@ -11608,7 +13013,38 @@
                                 `(("Action" ,@"GetAccountSummary")
                                   ("Version" ,@"2010-05-08"))))
     common-lisp:nil "GetAccountSummaryResult"
-    '(("ServiceFailureException" . service-failure-exception))))
+    '(("CredentialReportExpiredException"
+       . credential-report-expired-exception)
+      ("CredentialReportNotPresentException"
+       . credential-report-not-present-exception)
+      ("CredentialReportNotReadyException"
+       . credential-report-not-ready-exception)
+      ("DeleteConflictException" . delete-conflict-exception)
+      ("DuplicateCertificateException" . duplicate-certificate-exception)
+      ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+      ("EntityAlreadyExistsException" . entity-already-exists-exception)
+      ("EntityTemporarilyUnmodifiableException"
+       . entity-temporarily-unmodifiable-exception)
+      ("InvalidAuthenticationCodeException"
+       . invalid-authentication-code-exception)
+      ("InvalidCertificateException" . invalid-certificate-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("InvalidPublicKeyException" . invalid-public-key-exception)
+      ("InvalidUserTypeException" . invalid-user-type-exception)
+      ("KeyPairMismatchException" . key-pair-mismatch-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MalformedCertificateException" . malformed-certificate-exception)
+      ("MalformedPolicyDocumentException"
+       . malformed-policy-document-exception)
+      ("NoSuchEntityException" . no-such-entity-exception)
+      ("PasswordPolicyViolationException"
+       . password-policy-violation-exception)
+      ("PolicyEvaluationException" . policy-evaluation-exception)
+      ("ServiceFailureException" . service-failure-exception)
+      ("ServiceNotSupportedException" . service-not-supported-exception)
+      ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+      ("UnrecognizedPublicKeyEncodingException"
+       . unrecognized-public-key-encoding-exception))))
  (common-lisp:export 'get-account-summary))
 (common-lisp:progn
  (common-lisp:defun get-context-keys-for-custom-policy
@@ -11628,7 +13064,38 @@
                                                         "GetContextKeysForCustomPolicy"
                                                         "2010-05-08"))
       common-lisp:nil "GetContextKeysForCustomPolicyResult"
-      '(("InvalidInputException" . invalid-input-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-context-keys-for-custom-policy))
 (common-lisp:progn
  (common-lisp:defun get-context-keys-for-principal-policy
@@ -11649,8 +13116,38 @@
                                                         "GetContextKeysForPrincipalPolicy"
                                                         "2010-05-08"))
       common-lisp:nil "GetContextKeysForPrincipalPolicyResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("InvalidInputException" . invalid-input-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-context-keys-for-principal-policy))
 (common-lisp:progn
  (common-lisp:defun get-credential-report ()
@@ -11660,13 +13157,38 @@
                                 `(("Action" ,@"GetCredentialReport")
                                   ("Version" ,@"2010-05-08"))))
     common-lisp:nil "GetCredentialReportResult"
-    '(("CredentialReportNotPresentException"
-       . credential-report-not-present-exception)
-      ("CredentialReportExpiredException"
+    '(("CredentialReportExpiredException"
        . credential-report-expired-exception)
+      ("CredentialReportNotPresentException"
+       . credential-report-not-present-exception)
       ("CredentialReportNotReadyException"
        . credential-report-not-ready-exception)
-      ("ServiceFailureException" . service-failure-exception))))
+      ("DeleteConflictException" . delete-conflict-exception)
+      ("DuplicateCertificateException" . duplicate-certificate-exception)
+      ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+      ("EntityAlreadyExistsException" . entity-already-exists-exception)
+      ("EntityTemporarilyUnmodifiableException"
+       . entity-temporarily-unmodifiable-exception)
+      ("InvalidAuthenticationCodeException"
+       . invalid-authentication-code-exception)
+      ("InvalidCertificateException" . invalid-certificate-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("InvalidPublicKeyException" . invalid-public-key-exception)
+      ("InvalidUserTypeException" . invalid-user-type-exception)
+      ("KeyPairMismatchException" . key-pair-mismatch-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MalformedCertificateException" . malformed-certificate-exception)
+      ("MalformedPolicyDocumentException"
+       . malformed-policy-document-exception)
+      ("NoSuchEntityException" . no-such-entity-exception)
+      ("PasswordPolicyViolationException"
+       . password-policy-violation-exception)
+      ("PolicyEvaluationException" . policy-evaluation-exception)
+      ("ServiceFailureException" . service-failure-exception)
+      ("ServiceNotSupportedException" . service-not-supported-exception)
+      ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+      ("UnrecognizedPublicKeyEncodingException"
+       . unrecognized-public-key-encoding-exception))))
  (common-lisp:export 'get-credential-report))
 (common-lisp:progn
  (common-lisp:defun get-group
@@ -11684,8 +13206,38 @@
                                                         "POST" "/" "GetGroup"
                                                         "2010-05-08"))
       common-lisp:nil "GetGroupResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-group))
 (common-lisp:progn
  (common-lisp:defun get-group-policy
@@ -11704,8 +13256,38 @@
                                                         "GetGroupPolicy"
                                                         "2010-05-08"))
       common-lisp:nil "GetGroupPolicyResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-group-policy))
 (common-lisp:progn
  (common-lisp:defun get-instance-profile
@@ -11724,8 +13306,38 @@
                                                         "GetInstanceProfile"
                                                         "2010-05-08"))
       common-lisp:nil "GetInstanceProfileResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-instance-profile))
 (common-lisp:progn
  (common-lisp:defun get-login-profile
@@ -11744,8 +13356,38 @@
                                                         "GetLoginProfile"
                                                         "2010-05-08"))
       common-lisp:nil "GetLoginProfileResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-login-profile))
 (common-lisp:progn
  (common-lisp:defun get-open-idconnect-provider
@@ -11765,9 +13407,38 @@
                                                         "GetOpenIDConnectProvider"
                                                         "2010-05-08"))
       common-lisp:nil "GetOpenIDConnectProviderResult"
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-open-idconnect-provider))
 (common-lisp:progn
  (common-lisp:defun get-policy
@@ -11785,9 +13456,38 @@
                                                         "POST" "/" "GetPolicy"
                                                         "2010-05-08"))
       common-lisp:nil "GetPolicyResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-policy))
 (common-lisp:progn
  (common-lisp:defun get-policy-version
@@ -11806,9 +13506,38 @@
                                                         "GetPolicyVersion"
                                                         "2010-05-08"))
       common-lisp:nil "GetPolicyVersionResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-policy-version))
 (common-lisp:progn
  (common-lisp:defun get-role
@@ -11826,8 +13555,38 @@
                                                         "POST" "/" "GetRole"
                                                         "2010-05-08"))
       common-lisp:nil "GetRoleResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-role))
 (common-lisp:progn
  (common-lisp:defun get-role-policy
@@ -11846,8 +13605,38 @@
                                                         "GetRolePolicy"
                                                         "2010-05-08"))
       common-lisp:nil "GetRolePolicyResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-role-policy))
 (common-lisp:progn
  (common-lisp:defun get-samlprovider
@@ -11866,9 +13655,38 @@
                                                         "GetSAMLProvider"
                                                         "2010-05-08"))
       common-lisp:nil "GetSAMLProviderResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-samlprovider))
 (common-lisp:progn
  (common-lisp:defun get-sshpublic-key
@@ -11888,7 +13706,36 @@
                                                         "GetSSHPublicKey"
                                                         "2010-05-08"))
       common-lisp:nil "GetSSHPublicKeyResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
         ("UnrecognizedPublicKeyEncodingException"
          . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-sshpublic-key))
@@ -11909,8 +13756,38 @@
                                                         "GetServerCertificate"
                                                         "2010-05-08"))
       common-lisp:nil "GetServerCertificateResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-server-certificate))
 (common-lisp:progn
  (common-lisp:defun get-user
@@ -11928,8 +13805,38 @@
                                                         "POST" "/" "GetUser"
                                                         "2010-05-08"))
       common-lisp:nil "GetUserResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-user))
 (common-lisp:progn
  (common-lisp:defun get-user-policy
@@ -11948,8 +13855,38 @@
                                                         "GetUserPolicy"
                                                         "2010-05-08"))
       common-lisp:nil "GetUserPolicyResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'get-user-policy))
 (common-lisp:progn
  (common-lisp:defun list-access-keys
@@ -11968,8 +13905,38 @@
                                                         "ListAccessKeys"
                                                         "2010-05-08"))
       common-lisp:nil "ListAccessKeysResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-access-keys))
 (common-lisp:progn
  (common-lisp:defun list-account-aliases
@@ -11988,7 +13955,38 @@
                                                         "ListAccountAliases"
                                                         "2010-05-08"))
       common-lisp:nil "ListAccountAliasesResult"
-      '(("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-account-aliases))
 (common-lisp:progn
  (common-lisp:defun list-attached-group-policies
@@ -12009,9 +14007,38 @@
                                                         "ListAttachedGroupPolicies"
                                                         "2010-05-08"))
       common-lisp:nil "ListAttachedGroupPoliciesResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-attached-group-policies))
 (common-lisp:progn
  (common-lisp:defun list-attached-role-policies
@@ -12032,9 +14059,38 @@
                                                         "ListAttachedRolePolicies"
                                                         "2010-05-08"))
       common-lisp:nil "ListAttachedRolePoliciesResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-attached-role-policies))
 (common-lisp:progn
  (common-lisp:defun list-attached-user-policies
@@ -12055,9 +14111,38 @@
                                                         "ListAttachedUserPolicies"
                                                         "2010-05-08"))
       common-lisp:nil "ListAttachedUserPoliciesResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-attached-user-policies))
 (common-lisp:progn
  (common-lisp:defun list-entities-for-policy
@@ -12079,9 +14164,38 @@
                                                         "ListEntitiesForPolicy"
                                                         "2010-05-08"))
       common-lisp:nil "ListEntitiesForPolicyResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-entities-for-policy))
 (common-lisp:progn
  (common-lisp:defun list-group-policies
@@ -12100,8 +14214,38 @@
                                                         "ListGroupPolicies"
                                                         "2010-05-08"))
       common-lisp:nil "ListGroupPoliciesResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-group-policies))
 (common-lisp:progn
  (common-lisp:defun list-groups
@@ -12119,7 +14263,38 @@
                                                         "POST" "/" "ListGroups"
                                                         "2010-05-08"))
       common-lisp:nil "ListGroupsResult"
-      '(("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-groups))
 (common-lisp:progn
  (common-lisp:defun list-groups-for-user
@@ -12138,8 +14313,38 @@
                                                         "ListGroupsForUser"
                                                         "2010-05-08"))
       common-lisp:nil "ListGroupsForUserResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-groups-for-user))
 (common-lisp:progn
  (common-lisp:defun list-instance-profiles
@@ -12158,7 +14363,38 @@
                                                         "ListInstanceProfiles"
                                                         "2010-05-08"))
       common-lisp:nil "ListInstanceProfilesResult"
-      '(("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-instance-profiles))
 (common-lisp:progn
  (common-lisp:defun list-instance-profiles-for-role
@@ -12178,8 +14414,38 @@
                                                         "ListInstanceProfilesForRole"
                                                         "2010-05-08"))
       common-lisp:nil "ListInstanceProfilesForRoleResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-instance-profiles-for-role))
 (common-lisp:progn
  (common-lisp:defun list-mfadevices
@@ -12198,8 +14464,38 @@
                                                         "ListMFADevices"
                                                         "2010-05-08"))
       common-lisp:nil "ListMFADevicesResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-mfadevices))
 (common-lisp:progn
  (common-lisp:defun list-open-idconnect-providers ()
@@ -12209,7 +14505,38 @@
                                 `(("Action" ,@"ListOpenIDConnectProviders")
                                   ("Version" ,@"2010-05-08"))))
     common-lisp:nil "ListOpenIDConnectProvidersResult"
-    '(("ServiceFailureException" . service-failure-exception))))
+    '(("CredentialReportExpiredException"
+       . credential-report-expired-exception)
+      ("CredentialReportNotPresentException"
+       . credential-report-not-present-exception)
+      ("CredentialReportNotReadyException"
+       . credential-report-not-ready-exception)
+      ("DeleteConflictException" . delete-conflict-exception)
+      ("DuplicateCertificateException" . duplicate-certificate-exception)
+      ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+      ("EntityAlreadyExistsException" . entity-already-exists-exception)
+      ("EntityTemporarilyUnmodifiableException"
+       . entity-temporarily-unmodifiable-exception)
+      ("InvalidAuthenticationCodeException"
+       . invalid-authentication-code-exception)
+      ("InvalidCertificateException" . invalid-certificate-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("InvalidPublicKeyException" . invalid-public-key-exception)
+      ("InvalidUserTypeException" . invalid-user-type-exception)
+      ("KeyPairMismatchException" . key-pair-mismatch-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MalformedCertificateException" . malformed-certificate-exception)
+      ("MalformedPolicyDocumentException"
+       . malformed-policy-document-exception)
+      ("NoSuchEntityException" . no-such-entity-exception)
+      ("PasswordPolicyViolationException"
+       . password-policy-violation-exception)
+      ("PolicyEvaluationException" . policy-evaluation-exception)
+      ("ServiceFailureException" . service-failure-exception)
+      ("ServiceNotSupportedException" . service-not-supported-exception)
+      ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+      ("UnrecognizedPublicKeyEncodingException"
+       . unrecognized-public-key-encoding-exception))))
  (common-lisp:export 'list-open-idconnect-providers))
 (common-lisp:progn
  (common-lisp:defun list-policies
@@ -12230,7 +14557,38 @@
                                                         "ListPolicies"
                                                         "2010-05-08"))
       common-lisp:nil "ListPoliciesResult"
-      '(("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-policies))
 (common-lisp:progn
  (common-lisp:defun list-policy-versions
@@ -12249,9 +14607,38 @@
                                                         "ListPolicyVersions"
                                                         "2010-05-08"))
       common-lisp:nil "ListPolicyVersionsResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-policy-versions))
 (common-lisp:progn
  (common-lisp:defun list-role-policies
@@ -12270,8 +14657,38 @@
                                                         "ListRolePolicies"
                                                         "2010-05-08"))
       common-lisp:nil "ListRolePoliciesResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-role-policies))
 (common-lisp:progn
  (common-lisp:defun list-roles
@@ -12289,7 +14706,38 @@
                                                         "POST" "/" "ListRoles"
                                                         "2010-05-08"))
       common-lisp:nil "ListRolesResult"
-      '(("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-roles))
 (common-lisp:progn
  (common-lisp:defun list-samlproviders ()
@@ -12299,7 +14747,38 @@
                                 `(("Action" ,@"ListSAMLProviders")
                                   ("Version" ,@"2010-05-08"))))
     common-lisp:nil "ListSAMLProvidersResult"
-    '(("ServiceFailureException" . service-failure-exception))))
+    '(("CredentialReportExpiredException"
+       . credential-report-expired-exception)
+      ("CredentialReportNotPresentException"
+       . credential-report-not-present-exception)
+      ("CredentialReportNotReadyException"
+       . credential-report-not-ready-exception)
+      ("DeleteConflictException" . delete-conflict-exception)
+      ("DuplicateCertificateException" . duplicate-certificate-exception)
+      ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+      ("EntityAlreadyExistsException" . entity-already-exists-exception)
+      ("EntityTemporarilyUnmodifiableException"
+       . entity-temporarily-unmodifiable-exception)
+      ("InvalidAuthenticationCodeException"
+       . invalid-authentication-code-exception)
+      ("InvalidCertificateException" . invalid-certificate-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("InvalidPublicKeyException" . invalid-public-key-exception)
+      ("InvalidUserTypeException" . invalid-user-type-exception)
+      ("KeyPairMismatchException" . key-pair-mismatch-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MalformedCertificateException" . malformed-certificate-exception)
+      ("MalformedPolicyDocumentException"
+       . malformed-policy-document-exception)
+      ("NoSuchEntityException" . no-such-entity-exception)
+      ("PasswordPolicyViolationException"
+       . password-policy-violation-exception)
+      ("PolicyEvaluationException" . policy-evaluation-exception)
+      ("ServiceFailureException" . service-failure-exception)
+      ("ServiceNotSupportedException" . service-not-supported-exception)
+      ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+      ("UnrecognizedPublicKeyEncodingException"
+       . unrecognized-public-key-encoding-exception))))
  (common-lisp:export 'list-samlproviders))
 (common-lisp:progn
  (common-lisp:defun list-sshpublic-keys
@@ -12318,7 +14797,38 @@
                                                         "ListSSHPublicKeys"
                                                         "2010-05-08"))
       common-lisp:nil "ListSSHPublicKeysResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-sshpublic-keys))
 (common-lisp:progn
  (common-lisp:defun list-server-certificates
@@ -12337,7 +14847,38 @@
                                                         "ListServerCertificates"
                                                         "2010-05-08"))
       common-lisp:nil "ListServerCertificatesResult"
-      '(("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-server-certificates))
 (common-lisp:progn
  (common-lisp:defun list-service-specific-credentials
@@ -12357,8 +14898,38 @@
                                                         "ListServiceSpecificCredentials"
                                                         "2010-05-08"))
       common-lisp:nil "ListServiceSpecificCredentialsResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceNotSupportedException" . service-not-supported-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-service-specific-credentials))
 (common-lisp:progn
  (common-lisp:defun list-signing-certificates
@@ -12378,8 +14949,38 @@
                                                         "ListSigningCertificates"
                                                         "2010-05-08"))
       common-lisp:nil "ListSigningCertificatesResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-signing-certificates))
 (common-lisp:progn
  (common-lisp:defun list-user-policies
@@ -12398,8 +14999,38 @@
                                                         "ListUserPolicies"
                                                         "2010-05-08"))
       common-lisp:nil "ListUserPoliciesResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-user-policies))
 (common-lisp:progn
  (common-lisp:defun list-users
@@ -12417,7 +15048,38 @@
                                                         "POST" "/" "ListUsers"
                                                         "2010-05-08"))
       common-lisp:nil "ListUsersResult"
-      '(("ServiceFailureException" . service-failure-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-users))
 (common-lisp:progn
  (common-lisp:defun list-virtual-mfadevices
@@ -12436,7 +15098,39 @@
                                                         "POST" "/"
                                                         "ListVirtualMFADevices"
                                                         "2010-05-08"))
-      common-lisp:nil "ListVirtualMFADevicesResult" 'common-lisp:nil)))
+      common-lisp:nil "ListVirtualMFADevicesResult"
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'list-virtual-mfadevices))
 (common-lisp:progn
  (common-lisp:defun put-group-policy
@@ -12456,11 +15150,38 @@
                                                         "PutGroupPolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
         ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'put-group-policy))
 (common-lisp:progn
  (common-lisp:defun put-role-policy
@@ -12480,12 +15201,38 @@
                                                         "PutRolePolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
         ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
         ("UnmodifiableEntityException" . unmodifiable-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'put-role-policy))
 (common-lisp:progn
  (common-lisp:defun put-user-policy
@@ -12505,11 +15252,38 @@
                                                         "PutUserPolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
         ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'put-user-policy))
 (common-lisp:progn
  (common-lisp:defun remove-client-idfrom-open-idconnect-provider
@@ -12530,9 +15304,38 @@
                                                         "RemoveClientIDFromOpenIDConnectProvider"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'remove-client-idfrom-open-idconnect-provider))
 (common-lisp:progn
  (common-lisp:defun remove-role-from-instance-profile
@@ -12553,10 +15356,38 @@
                                                         "RemoveRoleFromInstanceProfile"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
         ("UnmodifiableEntityException" . unmodifiable-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'remove-role-from-instance-profile))
 (common-lisp:progn
  (common-lisp:defun remove-user-from-group
@@ -12575,9 +15406,38 @@
                                                         "RemoveUserFromGroup"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'remove-user-from-group))
 (common-lisp:progn
  (common-lisp:defun reset-service-specific-credential
@@ -12598,7 +15458,38 @@
                                                         "ResetServiceSpecificCredential"
                                                         "2010-05-08"))
       common-lisp:nil "ResetServiceSpecificCredentialResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'reset-service-specific-credential))
 (common-lisp:progn
  (common-lisp:defun resync-mfadevice
@@ -12620,11 +15511,38 @@
                                                         "ResyncMFADevice"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidAuthenticationCodeException"
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
          . invalid-authentication-code-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'resync-mfadevice))
 (common-lisp:progn
  (common-lisp:defun set-default-policy-version
@@ -12644,10 +15562,38 @@
                                                         "SetDefaultPolicyVersion"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'set-default-policy-version))
 (common-lisp:progn
  (common-lisp:defun simulate-custom-policy
@@ -12671,8 +15617,38 @@
                                                         "SimulateCustomPolicy"
                                                         "2010-05-08"))
       common-lisp:nil "SimulateCustomPolicyResult"
-      '(("InvalidInputException" . invalid-input-exception)
-        ("PolicyEvaluationException" . policy-evaluation-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'simulate-custom-policy))
 (common-lisp:progn
  (common-lisp:defun simulate-principal-policy
@@ -12698,9 +15674,38 @@
                                                         "SimulatePrincipalPolicy"
                                                         "2010-05-08"))
       common-lisp:nil "SimulatePrincipalPolicyResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("PolicyEvaluationException" . policy-evaluation-exception)))))
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'simulate-principal-policy))
 (common-lisp:progn
  (common-lisp:defun update-access-key
@@ -12719,9 +15724,38 @@
                                                         "UpdateAccessKey"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-access-key))
 (common-lisp:progn
  (common-lisp:defun update-account-password-policy
@@ -12749,11 +15783,38 @@
                                                         "UpdateAccountPasswordPolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
         ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-account-password-policy))
 (common-lisp:progn
  (common-lisp:defun update-assume-role-policy
@@ -12773,12 +15834,38 @@
                                                         "UpdateAssumeRolePolicy"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
         ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
         ("UnmodifiableEntityException" . unmodifiable-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-assume-role-policy))
 (common-lisp:progn
  (common-lisp:defun update-group
@@ -12798,10 +15885,38 @@
                                                         "UpdateGroup"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-group))
 (common-lisp:progn
  (common-lisp:defun update-login-profile
@@ -12822,13 +15937,38 @@
                                                         "UpdateLoginProfile"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("EntityTemporarilyUnmodifiableException"
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
          . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
         ("PasswordPolicyViolationException"
          . password-policy-violation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-login-profile))
 (common-lisp:progn
  (common-lisp:defun update-open-idconnect-provider-thumbprint
@@ -12850,9 +15990,38 @@
                                                         "UpdateOpenIDConnectProviderThumbprint"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-open-idconnect-provider-thumbprint))
 (common-lisp:progn
  (common-lisp:defun update-role-description
@@ -12871,9 +16040,38 @@
                                                         "UpdateRoleDescription"
                                                         "2010-05-08"))
       common-lisp:nil "UpdateRoleDescriptionResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
         ("UnmodifiableEntityException" . unmodifiable-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-role-description))
 (common-lisp:progn
  (common-lisp:defun update-samlprovider
@@ -12893,10 +16091,38 @@
                                                         "UpdateSAMLProvider"
                                                         "2010-05-08"))
       common-lisp:nil "UpdateSAMLProviderResult"
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-samlprovider))
 (common-lisp:progn
  (common-lisp:defun update-sshpublic-key
@@ -12916,7 +16142,38 @@
                                                         "UpdateSSHPublicKey"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-sshpublic-key))
 (common-lisp:progn
  (common-lisp:defun update-server-certificate
@@ -12939,10 +16196,38 @@
                                                         "UpdateServerCertificate"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-server-certificate))
 (common-lisp:progn
  (common-lisp:defun update-service-specific-credential
@@ -12964,7 +16249,38 @@
                                                         "UpdateServiceSpecificCredential"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)))))
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-service-specific-credential))
 (common-lisp:progn
  (common-lisp:defun update-signing-certificate
@@ -12985,9 +16301,38 @@
                                                         "UpdateSigningCertificate"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-signing-certificate))
 (common-lisp:progn
  (common-lisp:defun update-user
@@ -13006,12 +16351,38 @@
                                                         "POST" "/" "UpdateUser"
                                                         "2010-05-08"))
       common-lisp:nil common-lisp:nil
-      '(("NoSuchEntityException" . no-such-entity-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
         ("EntityTemporarilyUnmodifiableException"
          . entity-temporarily-unmodifiable-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'update-user))
 (common-lisp:progn
  (common-lisp:defun upload-sshpublic-key
@@ -13030,10 +16401,36 @@
                                                         "UploadSSHPublicKey"
                                                         "2010-05-08"))
       common-lisp:nil "UploadSSHPublicKeyResult"
-      '(("LimitExceededException" . limit-exceeded-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)
-        ("InvalidPublicKeyException" . invalid-public-key-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
         ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
         ("UnrecognizedPublicKeyEncodingException"
          . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'upload-sshpublic-key))
@@ -13058,11 +16455,38 @@
                                                         "UploadServerCertificate"
                                                         "2010-05-08"))
       common-lisp:nil "UploadServerCertificateResult"
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
         ("KeyPairMismatchException" . key-pair-mismatch-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'upload-server-certificate))
 (common-lisp:progn
  (common-lisp:defun upload-signing-certificate
@@ -13082,11 +16506,36 @@
                                                         "UploadSigningCertificate"
                                                         "2010-05-08"))
       common-lisp:nil "UploadSigningCertificateResult"
-      '(("LimitExceededException" . limit-exceeded-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("MalformedCertificateException" . malformed-certificate-exception)
-        ("InvalidCertificateException" . invalid-certificate-exception)
+      '(("CredentialReportExpiredException"
+         . credential-report-expired-exception)
+        ("CredentialReportNotPresentException"
+         . credential-report-not-present-exception)
+        ("CredentialReportNotReadyException"
+         . credential-report-not-ready-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
         ("DuplicateCertificateException" . duplicate-certificate-exception)
+        ("DuplicateSSHPublicKeyException" . duplicate-sshpublic-key-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityTemporarilyUnmodifiableException"
+         . entity-temporarily-unmodifiable-exception)
+        ("InvalidAuthenticationCodeException"
+         . invalid-authentication-code-exception)
+        ("InvalidCertificateException" . invalid-certificate-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidPublicKeyException" . invalid-public-key-exception)
+        ("InvalidUserTypeException" . invalid-user-type-exception)
+        ("KeyPairMismatchException" . key-pair-mismatch-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedCertificateException" . malformed-certificate-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("NoSuchEntityException" . no-such-entity-exception)
-        ("ServiceFailureException" . service-failure-exception)))))
+        ("PasswordPolicyViolationException"
+         . password-policy-violation-exception)
+        ("PolicyEvaluationException" . policy-evaluation-exception)
+        ("ServiceFailureException" . service-failure-exception)
+        ("ServiceNotSupportedException" . service-not-supported-exception)
+        ("UnmodifiableEntityException" . unmodifiable-entity-exception)
+        ("UnrecognizedPublicKeyEncodingException"
+         . unrecognized-public-key-encoding-exception)))))
  (common-lisp:export 'upload-signing-certificate))

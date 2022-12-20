@@ -1493,17 +1493,22 @@
                                                         "CreateReplicationJob"
                                                         "2016-10-24"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("InternalError" . internal-error)
+        ("InvalidParameterException" . invalid-parameter-exception)
         ("MissingRequiredParameterException"
          . missing-required-parameter-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("NoConnectorsAvailableException" . no-connectors-available-exception)
         ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("ServerCannotBeReplicatedException"
-         . server-cannot-be-replicated-exception)
         ("ReplicationJobAlreadyExistsException"
          . replication-job-already-exists-exception)
-        ("NoConnectorsAvailableException" . no-connectors-available-exception)
-        ("InternalError" . internal-error)))))
+        ("ReplicationJobNotFoundException"
+         . replication-job-not-found-exception)
+        ("ReplicationRunLimitExceededException"
+         . replication-run-limit-exceeded-exception)
+        ("ServerCannotBeReplicatedException"
+         . server-cannot-be-replicated-exception)
+        ("UnauthorizedOperationException"
+         . unauthorized-operation-exception)))))
  (common-lisp:export 'create-replication-job))
 (common-lisp:progn
  (common-lisp:defun delete-replication-job
@@ -1522,13 +1527,22 @@
                                                         "DeleteReplicationJob"
                                                         "2016-10-24"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("InternalError" . internal-error)
+        ("InvalidParameterException" . invalid-parameter-exception)
         ("MissingRequiredParameterException"
          . missing-required-parameter-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("NoConnectorsAvailableException" . no-connectors-available-exception)
         ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ReplicationJobAlreadyExistsException"
+         . replication-job-already-exists-exception)
         ("ReplicationJobNotFoundException"
-         . replication-job-not-found-exception)))))
+         . replication-job-not-found-exception)
+        ("ReplicationRunLimitExceededException"
+         . replication-run-limit-exceeded-exception)
+        ("ServerCannotBeReplicatedException"
+         . server-cannot-be-replicated-exception)
+        ("UnauthorizedOperationException"
+         . unauthorized-operation-exception)))))
  (common-lisp:export 'delete-replication-job))
 (common-lisp:progn
  (common-lisp:defun delete-server-catalog ()
@@ -1538,11 +1552,20 @@
                                 `(("Action" ,@"DeleteServerCatalog")
                                   ("Version" ,@"2016-10-24"))))
     common-lisp:nil common-lisp:nil
-    '(("UnauthorizedOperationException" . unauthorized-operation-exception)
-      ("OperationNotPermittedException" . operation-not-permitted-exception)
+    '(("InternalError" . internal-error)
       ("InvalidParameterException" . invalid-parameter-exception)
       ("MissingRequiredParameterException"
-       . missing-required-parameter-exception))))
+       . missing-required-parameter-exception)
+      ("NoConnectorsAvailableException" . no-connectors-available-exception)
+      ("OperationNotPermittedException" . operation-not-permitted-exception)
+      ("ReplicationJobAlreadyExistsException"
+       . replication-job-already-exists-exception)
+      ("ReplicationJobNotFoundException" . replication-job-not-found-exception)
+      ("ReplicationRunLimitExceededException"
+       . replication-run-limit-exceeded-exception)
+      ("ServerCannotBeReplicatedException"
+       . server-cannot-be-replicated-exception)
+      ("UnauthorizedOperationException" . unauthorized-operation-exception))))
  (common-lisp:export 'delete-server-catalog))
 (common-lisp:progn
  (common-lisp:defun disassociate-connector
@@ -1561,11 +1584,22 @@
                                                         "DisassociateConnector"
                                                         "2016-10-24"))
       common-lisp:nil common-lisp:nil
-      '(("MissingRequiredParameterException"
+      '(("InternalError" . internal-error)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("MissingRequiredParameterException"
          . missing-required-parameter-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("NoConnectorsAvailableException" . no-connectors-available-exception)
         ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)))))
+        ("ReplicationJobAlreadyExistsException"
+         . replication-job-already-exists-exception)
+        ("ReplicationJobNotFoundException"
+         . replication-job-not-found-exception)
+        ("ReplicationRunLimitExceededException"
+         . replication-run-limit-exceeded-exception)
+        ("ServerCannotBeReplicatedException"
+         . server-cannot-be-replicated-exception)
+        ("UnauthorizedOperationException"
+         . unauthorized-operation-exception)))))
  (common-lisp:export 'disassociate-connector))
 (common-lisp:progn
  (common-lisp:defun get-connectors
@@ -1584,7 +1618,21 @@
                                                         "GetConnectors"
                                                         "2016-10-24"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedOperationException"
+      '(("InternalError" . internal-error)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("MissingRequiredParameterException"
+         . missing-required-parameter-exception)
+        ("NoConnectorsAvailableException" . no-connectors-available-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ReplicationJobAlreadyExistsException"
+         . replication-job-already-exists-exception)
+        ("ReplicationJobNotFoundException"
+         . replication-job-not-found-exception)
+        ("ReplicationRunLimitExceededException"
+         . replication-run-limit-exceeded-exception)
+        ("ServerCannotBeReplicatedException"
+         . server-cannot-be-replicated-exception)
+        ("UnauthorizedOperationException"
          . unauthorized-operation-exception)))))
  (common-lisp:export 'get-connectors))
 (common-lisp:progn
@@ -1606,9 +1654,20 @@
                                                         "GetReplicationJobs"
                                                         "2016-10-24"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("InternalError" . internal-error)
+        ("InvalidParameterException" . invalid-parameter-exception)
         ("MissingRequiredParameterException"
          . missing-required-parameter-exception)
+        ("NoConnectorsAvailableException" . no-connectors-available-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ReplicationJobAlreadyExistsException"
+         . replication-job-already-exists-exception)
+        ("ReplicationJobNotFoundException"
+         . replication-job-not-found-exception)
+        ("ReplicationRunLimitExceededException"
+         . replication-run-limit-exceeded-exception)
+        ("ServerCannotBeReplicatedException"
+         . server-cannot-be-replicated-exception)
         ("UnauthorizedOperationException"
          . unauthorized-operation-exception)))))
  (common-lisp:export 'get-replication-jobs))
@@ -1631,9 +1690,20 @@
                                                         "GetReplicationRuns"
                                                         "2016-10-24"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("InternalError" . internal-error)
+        ("InvalidParameterException" . invalid-parameter-exception)
         ("MissingRequiredParameterException"
          . missing-required-parameter-exception)
+        ("NoConnectorsAvailableException" . no-connectors-available-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ReplicationJobAlreadyExistsException"
+         . replication-job-already-exists-exception)
+        ("ReplicationJobNotFoundException"
+         . replication-job-not-found-exception)
+        ("ReplicationRunLimitExceededException"
+         . replication-run-limit-exceeded-exception)
+        ("ServerCannotBeReplicatedException"
+         . server-cannot-be-replicated-exception)
         ("UnauthorizedOperationException"
          . unauthorized-operation-exception)))))
  (common-lisp:export 'get-replication-runs))
@@ -1653,7 +1723,21 @@
                                                         "POST" "/" "GetServers"
                                                         "2016-10-24"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedOperationException"
+      '(("InternalError" . internal-error)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("MissingRequiredParameterException"
+         . missing-required-parameter-exception)
+        ("NoConnectorsAvailableException" . no-connectors-available-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ReplicationJobAlreadyExistsException"
+         . replication-job-already-exists-exception)
+        ("ReplicationJobNotFoundException"
+         . replication-job-not-found-exception)
+        ("ReplicationRunLimitExceededException"
+         . replication-run-limit-exceeded-exception)
+        ("ServerCannotBeReplicatedException"
+         . server-cannot-be-replicated-exception)
+        ("UnauthorizedOperationException"
          . unauthorized-operation-exception)))))
  (common-lisp:export 'get-servers))
 (common-lisp:progn
@@ -1664,12 +1748,20 @@
                                 `(("Action" ,@"ImportServerCatalog")
                                   ("Version" ,@"2016-10-24"))))
     common-lisp:nil common-lisp:nil
-    '(("UnauthorizedOperationException" . unauthorized-operation-exception)
-      ("OperationNotPermittedException" . operation-not-permitted-exception)
+    '(("InternalError" . internal-error)
       ("InvalidParameterException" . invalid-parameter-exception)
       ("MissingRequiredParameterException"
        . missing-required-parameter-exception)
-      ("NoConnectorsAvailableException" . no-connectors-available-exception))))
+      ("NoConnectorsAvailableException" . no-connectors-available-exception)
+      ("OperationNotPermittedException" . operation-not-permitted-exception)
+      ("ReplicationJobAlreadyExistsException"
+       . replication-job-already-exists-exception)
+      ("ReplicationJobNotFoundException" . replication-job-not-found-exception)
+      ("ReplicationRunLimitExceededException"
+       . replication-run-limit-exceeded-exception)
+      ("ServerCannotBeReplicatedException"
+       . server-cannot-be-replicated-exception)
+      ("UnauthorizedOperationException" . unauthorized-operation-exception))))
  (common-lisp:export 'import-server-catalog))
 (common-lisp:progn
  (common-lisp:defun start-on-demand-replication-run
@@ -1689,13 +1781,22 @@
                                                         "StartOnDemandReplicationRun"
                                                         "2016-10-24"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("InternalError" . internal-error)
+        ("InvalidParameterException" . invalid-parameter-exception)
         ("MissingRequiredParameterException"
          . missing-required-parameter-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
+        ("NoConnectorsAvailableException" . no-connectors-available-exception)
         ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ReplicationJobAlreadyExistsException"
+         . replication-job-already-exists-exception)
+        ("ReplicationJobNotFoundException"
+         . replication-job-not-found-exception)
         ("ReplicationRunLimitExceededException"
-         . replication-run-limit-exceeded-exception)))))
+         . replication-run-limit-exceeded-exception)
+        ("ServerCannotBeReplicatedException"
+         . server-cannot-be-replicated-exception)
+        ("UnauthorizedOperationException"
+         . unauthorized-operation-exception)))))
  (common-lisp:export 'start-on-demand-replication-run))
 (common-lisp:progn
  (common-lisp:defun update-replication-job
@@ -1718,14 +1819,20 @@
                                                         "UpdateReplicationJob"
                                                         "2016-10-24"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("InternalError" . internal-error)
+        ("InvalidParameterException" . invalid-parameter-exception)
         ("MissingRequiredParameterException"
          . missing-required-parameter-exception)
+        ("NoConnectorsAvailableException" . no-connectors-available-exception)
         ("OperationNotPermittedException" . operation-not-permitted-exception)
-        ("UnauthorizedOperationException" . unauthorized-operation-exception)
-        ("ServerCannotBeReplicatedException"
-         . server-cannot-be-replicated-exception)
+        ("ReplicationJobAlreadyExistsException"
+         . replication-job-already-exists-exception)
         ("ReplicationJobNotFoundException"
          . replication-job-not-found-exception)
-        ("InternalError" . internal-error)))))
+        ("ReplicationRunLimitExceededException"
+         . replication-run-limit-exceeded-exception)
+        ("ServerCannotBeReplicatedException"
+         . server-cannot-be-replicated-exception)
+        ("UnauthorizedOperationException"
+         . unauthorized-operation-exception)))))
  (common-lisp:export 'update-replication-job))

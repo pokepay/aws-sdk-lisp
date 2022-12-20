@@ -3027,9 +3027,14 @@
                                                         "CancelExportTask"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
         ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'cancel-export-task))
 (common-lisp:progn
@@ -3053,13 +3058,15 @@
                                                         "CreateExportTask"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
         ("LimitExceededException" . limit-exceeded-exception)
         ("OperationAbortedException" . operation-aborted-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceAlreadyExistsException"
-         . resource-already-exists-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-export-task))
 (common-lisp:progn
  (common-lisp:defun create-log-group
@@ -3078,10 +3085,14 @@
                                                         "CreateLogGroup"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
         ("LimitExceededException" . limit-exceeded-exception)
         ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-log-group))
 (common-lisp:progn
@@ -3101,7 +3112,12 @@
                                                         "CreateLogStream"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
         ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
@@ -3123,9 +3139,14 @@
                                                         "DeleteDestination"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-destination))
 (common-lisp:progn
@@ -3145,9 +3166,14 @@
                                                         "DeleteLogGroup"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-log-group))
 (common-lisp:progn
@@ -3167,9 +3193,14 @@
                                                         "DeleteLogStream"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-log-stream))
 (common-lisp:progn
@@ -3189,9 +3220,14 @@
                                                         "DeleteMetricFilter"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-metric-filter))
 (common-lisp:progn
@@ -3211,9 +3247,14 @@
                                                         "DeleteRetentionPolicy"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-retention-policy))
 (common-lisp:progn
@@ -3234,9 +3275,14 @@
                                                         "DeleteSubscriptionFilter"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-subscription-filter))
 (common-lisp:progn
@@ -3257,7 +3303,14 @@
                                                         "DescribeDestinations"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-destinations))
 (common-lisp:progn
@@ -3278,7 +3331,14 @@
                                                         "DescribeExportTasks"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-export-tasks))
 (common-lisp:progn
@@ -3299,7 +3359,14 @@
                                                         "DescribeLogGroups"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-log-groups))
 (common-lisp:progn
@@ -3322,7 +3389,13 @@
                                                         "DescribeLogStreams"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-log-streams))
@@ -3346,7 +3419,13 @@
                                                         "DescribeMetricFilters"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-metric-filters))
@@ -3370,7 +3449,13 @@
                                                         "DescribeSubscriptionFilters"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-subscription-filters))
@@ -3395,7 +3480,13 @@
                                                         "FilterLogEvents"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'filter-log-events))
@@ -3419,7 +3510,13 @@
                                                         "GetLogEvents"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-log-events))
@@ -3440,7 +3537,14 @@
                                                         "ListTagsLogGroup"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-tags-log-group))
 (common-lisp:progn
@@ -3461,8 +3565,14 @@
                                                         "PutDestination"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-destination))
 (common-lisp:progn
@@ -3482,8 +3592,14 @@
                                                         "PutDestinationPolicy"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-destination-policy))
 (common-lisp:progn
@@ -3506,9 +3622,13 @@
                                                         "PutLogEvents"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
         ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
-        ("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-log-events))
@@ -3532,10 +3652,14 @@
                                                         "PutMetricFilter"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("OperationAbortedException" . operation-aborted-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-metric-filter))
 (common-lisp:progn
@@ -3556,9 +3680,14 @@
                                                         "PutRetentionPolicy"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-retention-policy))
 (common-lisp:progn
@@ -3581,10 +3710,14 @@
                                                         "PutSubscriptionFilter"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("OperationAbortedException" . operation-aborted-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-subscription-filter))
 (common-lisp:progn
@@ -3604,8 +3737,15 @@
                                                         "TagLogGroup"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)))))
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'tag-log-group))
 (common-lisp:progn
  (common-lisp:defun test-metric-filter
@@ -3625,7 +3765,14 @@
                                                         "TestMetricFilter"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'test-metric-filter))
 (common-lisp:progn
@@ -3645,5 +3792,13 @@
                                                         "UntagLogGroup"
                                                         "2014-03-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("DataAlreadyAcceptedException" . data-already-accepted-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidSequenceTokenException" . invalid-sequence-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationAbortedException" . operation-aborted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'untag-log-group))

@@ -2810,24 +2810,38 @@
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
       '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
-        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
-        ("InsufficientClusterCapacityFault"
-         . insufficient-cluster-capacity-fault)
-        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
-        ("InvalidParameterGroupStateFault"
-         . invalid-parameter-group-state-fault)
-        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
         ("ClusterQuotaForCustomerExceededFault"
          . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
         ("NodeQuotaForClusterExceededFault"
          . node-quota-for-cluster-exceeded-fault)
         ("NodeQuotaForCustomerExceededFault"
          . node-quota-for-customer-exceeded-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
-        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
  (common-lisp:defun create-parameter-group
@@ -2847,15 +2861,39 @@
                                                         "CreateParameterGroup"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ParameterGroupQuotaExceededFault"
-         . parameter-group-quota-exceeded-fault)
-        ("ParameterGroupAlreadyExistsFault"
-         . parameter-group-already-exists-fault)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
         ("InvalidParameterGroupStateFault"
          . invalid-parameter-group-state-fault)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'create-parameter-group))
 (common-lisp:progn
  (common-lisp:defun create-subnet-group
@@ -2875,10 +2913,39 @@
                                                         "CreateSubnetGroup"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
         ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
         ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
-        ("InvalidSubnet" . invalid-subnet)))))
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'create-subnet-group))
 (common-lisp:progn
  (common-lisp:defun decrease-replication-factor
@@ -2901,12 +2968,39 @@
                                                         "DecreaseReplicationFactor"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
-        ("NodeNotFoundFault" . node-not-found-fault)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
         ("InvalidClusterStateFault" . invalid-cluster-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'decrease-replication-factor))
 (common-lisp:progn
  (common-lisp:defun delete-cluster
@@ -2925,11 +3019,39 @@
                                                         "DeleteCluster"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
         ("InvalidClusterStateFault" . invalid-cluster-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
  (common-lisp:defun delete-parameter-group
@@ -2948,12 +3070,39 @@
                                                         "DeleteParameterGroup"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterGroupStateFault"
-         . invalid-parameter-group-state-fault)
-        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'delete-parameter-group))
 (common-lisp:progn
  (common-lisp:defun delete-subnet-group
@@ -2972,8 +3121,39 @@
                                                         "DeleteSubnetGroup"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("SubnetGroupInUseFault" . subnet-group-in-use-fault)
-        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)))))
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'delete-subnet-group))
 (common-lisp:progn
  (common-lisp:defun describe-clusters
@@ -2993,10 +3173,39 @@
                                                         "DescribeClusters"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'describe-clusters))
 (common-lisp:progn
  (common-lisp:defun describe-default-parameters
@@ -3016,9 +3225,39 @@
                                                         "DescribeDefaultParameters"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'describe-default-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -3040,9 +3279,39 @@
                                                         "DescribeEvents"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
  (common-lisp:defun describe-parameter-groups
@@ -3064,10 +3333,39 @@
                                                         "DescribeParameterGroups"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'describe-parameter-groups))
 (common-lisp:progn
  (common-lisp:defun describe-parameters
@@ -3088,10 +3386,39 @@
                                                         "DescribeParameters"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'describe-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-subnet-groups
@@ -3112,7 +3439,39 @@
                                                         "DescribeSubnetGroups"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)))))
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'describe-subnet-groups))
 (common-lisp:progn
  (common-lisp:defun increase-replication-factor
@@ -3135,18 +3494,39 @@
                                                         "IncreaseReplicationFactor"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
-        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
         ("InsufficientClusterCapacityFault"
          . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
         ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
         ("NodeQuotaForClusterExceededFault"
          . node-quota-for-cluster-exceeded-fault)
         ("NodeQuotaForCustomerExceededFault"
          . node-quota-for-customer-exceeded-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'increase-replication-factor))
 (common-lisp:progn
  (common-lisp:defun list-tags
@@ -3164,12 +3544,39 @@
                                                         "POST" "/" "ListTags"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
         ("InvalidARNFault" . invalid-arnfault)
         ("InvalidClusterStateFault" . invalid-cluster-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
  (common-lisp:defun reboot-node
@@ -3187,12 +3594,39 @@
                                                         "POST" "/" "RebootNode"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
-        ("NodeNotFoundFault" . node-not-found-fault)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
         ("InvalidClusterStateFault" . invalid-cluster-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'reboot-node))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -3211,13 +3645,39 @@
                                                         "TagResource"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
-        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
         ("InvalidARNFault" . invalid-arnfault)
         ("InvalidClusterStateFault" . invalid-cluster-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -3236,13 +3696,39 @@
                                                         "UntagResource"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
         ("InvalidARNFault" . invalid-arnfault)
-        ("TagNotFoundFault" . tag-not-found-fault)
         ("InvalidClusterStateFault" . invalid-cluster-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-cluster
@@ -3267,14 +3753,39 @@
                                                         "UpdateCluster"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidClusterStateFault" . invalid-cluster-state-fault)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
         ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
         ("InvalidParameterGroupStateFault"
          . invalid-parameter-group-state-fault)
-        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'update-cluster))
 (common-lisp:progn
  (common-lisp:defun update-parameter-group
@@ -3295,12 +3806,39 @@
                                                         "UpdateParameterGroup"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterGroupStateFault"
-         . invalid-parameter-group-state-fault)
-        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'update-parameter-group))
 (common-lisp:progn
  (common-lisp:defun update-subnet-group
@@ -3320,7 +3858,37 @@
                                                         "UpdateSubnetGroup"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterGroupStateFault"
+         . invalid-parameter-group-state-fault)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeNotFoundFault" . node-not-found-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ParameterGroupAlreadyExistsFault"
+         . parameter-group-already-exists-fault)
+        ("ParameterGroupNotFoundFault" . parameter-group-not-found-fault)
+        ("ParameterGroupQuotaExceededFault"
+         . parameter-group-quota-exceeded-fault)
+        ("SubnetGroupAlreadyExistsFault" . subnet-group-already-exists-fault)
+        ("SubnetGroupInUseFault" . subnet-group-in-use-fault)
+        ("SubnetGroupNotFoundFault" . subnet-group-not-found-fault)
+        ("SubnetGroupQuotaExceededFault" . subnet-group-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
         ("SubnetQuotaExceededFault" . subnet-quota-exceeded-fault)
-        ("SubnetInUse" . subnet-in-use) ("InvalidSubnet" . invalid-subnet)))))
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)))))
  (common-lisp:export 'update-subnet-group))

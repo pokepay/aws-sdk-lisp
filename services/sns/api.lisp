@@ -2184,10 +2184,18 @@ common-lisp:nil
                                                         "AddPermission"
                                                         "2010-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'add-permission))
 (common-lisp:progn
  (common-lisp:defun check-if-phone-number-is-opted-out
@@ -2207,10 +2215,18 @@ common-lisp:nil
                                                         "CheckIfPhoneNumberIsOptedOut"
                                                         "2010-03-31"))
       common-lisp:nil "CheckIfPhoneNumberIsOptedOutResult"
-      '(("ThrottledException" . throttled-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'check-if-phone-number-is-opted-out))
 (common-lisp:progn
  (common-lisp:defun confirm-subscription
@@ -2231,12 +2247,18 @@ common-lisp:nil
                                                         "ConfirmSubscription"
                                                         "2010-03-31"))
       common-lisp:nil "ConfirmSubscriptionResult"
-      '(("SubscriptionLimitExceededException"
-         . subscription-limit-exceeded-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'confirm-subscription))
 (common-lisp:progn
  (common-lisp:defun create-platform-application
@@ -2256,9 +2278,18 @@ common-lisp:nil
                                                         "CreatePlatformApplication"
                                                         "2010-03-31"))
       common-lisp:nil "CreatePlatformApplicationResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'create-platform-application))
 (common-lisp:progn
  (common-lisp:defun create-platform-endpoint
@@ -2280,10 +2311,18 @@ common-lisp:nil
                                                         "CreatePlatformEndpoint"
                                                         "2010-03-31"))
       common-lisp:nil "CreatePlatformEndpointResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'create-platform-endpoint))
 (common-lisp:progn
  (common-lisp:defun create-topic
@@ -2302,10 +2341,18 @@ common-lisp:nil
                                                         "CreateTopic"
                                                         "2010-03-31"))
       common-lisp:nil "CreateTopicResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("TopicLimitExceededException" . topic-limit-exceeded-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'create-topic))
 (common-lisp:progn
  (common-lisp:defun delete-endpoint
@@ -2324,9 +2371,18 @@ common-lisp:nil
                                                         "DeleteEndpoint"
                                                         "2010-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'delete-endpoint))
 (common-lisp:progn
  (common-lisp:defun delete-platform-application
@@ -2346,9 +2402,18 @@ common-lisp:nil
                                                         "DeletePlatformApplication"
                                                         "2010-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'delete-platform-application))
 (common-lisp:progn
  (common-lisp:defun delete-topic
@@ -2367,10 +2432,18 @@ common-lisp:nil
                                                         "DeleteTopic"
                                                         "2010-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'delete-topic))
 (common-lisp:progn
  (common-lisp:defun get-endpoint-attributes
@@ -2389,10 +2462,18 @@ common-lisp:nil
                                                         "GetEndpointAttributes"
                                                         "2010-03-31"))
       common-lisp:nil "GetEndpointAttributesResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'get-endpoint-attributes))
 (common-lisp:progn
  (common-lisp:defun get-platform-application-attributes
@@ -2412,10 +2493,18 @@ common-lisp:nil
                                                         "GetPlatformApplicationAttributes"
                                                         "2010-03-31"))
       common-lisp:nil "GetPlatformApplicationAttributesResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'get-platform-application-attributes))
 (common-lisp:progn
  (common-lisp:defun get-smsattributes
@@ -2434,10 +2523,18 @@ common-lisp:nil
                                                         "GetSMSAttributes"
                                                         "2010-03-31"))
       common-lisp:nil "GetSMSAttributesResult"
-      '(("ThrottledException" . throttled-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'get-smsattributes))
 (common-lisp:progn
  (common-lisp:defun get-subscription-attributes
@@ -2457,10 +2554,18 @@ common-lisp:nil
                                                         "GetSubscriptionAttributes"
                                                         "2010-03-31"))
       common-lisp:nil "GetSubscriptionAttributesResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("NotFoundException" . not-found-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'get-subscription-attributes))
 (common-lisp:progn
  (common-lisp:defun get-topic-attributes
@@ -2479,10 +2584,18 @@ common-lisp:nil
                                                         "GetTopicAttributes"
                                                         "2010-03-31"))
       common-lisp:nil "GetTopicAttributesResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("NotFoundException" . not-found-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'get-topic-attributes))
 (common-lisp:progn
  (common-lisp:defun list-endpoints-by-platform-application
@@ -2503,10 +2616,18 @@ common-lisp:nil
                                                         "ListEndpointsByPlatformApplication"
                                                         "2010-03-31"))
       common-lisp:nil "ListEndpointsByPlatformApplicationResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'list-endpoints-by-platform-application))
 (common-lisp:progn
  (common-lisp:defun list-phone-numbers-opted-out
@@ -2526,10 +2647,18 @@ common-lisp:nil
                                                         "ListPhoneNumbersOptedOut"
                                                         "2010-03-31"))
       common-lisp:nil "ListPhoneNumbersOptedOutResult"
-      '(("ThrottledException" . throttled-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'list-phone-numbers-opted-out))
 (common-lisp:progn
  (common-lisp:defun list-platform-applications
@@ -2548,9 +2677,18 @@ common-lisp:nil
                                                         "ListPlatformApplications"
                                                         "2010-03-31"))
       common-lisp:nil "ListPlatformApplicationsResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'list-platform-applications))
 (common-lisp:progn
  (common-lisp:defun list-subscriptions
@@ -2569,9 +2707,18 @@ common-lisp:nil
                                                         "ListSubscriptions"
                                                         "2010-03-31"))
       common-lisp:nil "ListSubscriptionsResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'list-subscriptions))
 (common-lisp:progn
  (common-lisp:defun list-subscriptions-by-topic
@@ -2591,10 +2738,18 @@ common-lisp:nil
                                                         "ListSubscriptionsByTopic"
                                                         "2010-03-31"))
       common-lisp:nil "ListSubscriptionsByTopicResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("NotFoundException" . not-found-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'list-subscriptions-by-topic))
 (common-lisp:progn
  (common-lisp:defun list-topics
@@ -2612,9 +2767,18 @@ common-lisp:nil
                                                         "POST" "/" "ListTopics"
                                                         "2010-03-31"))
       common-lisp:nil "ListTopicsResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'list-topics))
 (common-lisp:progn
  (common-lisp:defun opt-in-phone-number
@@ -2633,10 +2797,18 @@ common-lisp:nil
                                                         "OptInPhoneNumber"
                                                         "2010-03-31"))
       common-lisp:nil "OptInPhoneNumberResult"
-      '(("ThrottledException" . throttled-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'opt-in-phone-number))
 (common-lisp:progn
  (common-lisp:defun publish
@@ -2657,14 +2829,18 @@ common-lisp:nil
                                                         "POST" "/" "Publish"
                                                         "2010-03-31"))
       common-lisp:nil "PublishResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InternalErrorException" . internal-error-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
         ("EndpointDisabledException" . endpoint-disabled-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
         ("PlatformApplicationDisabledException"
          . platform-application-disabled-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'publish))
 (common-lisp:progn
  (common-lisp:defun remove-permission
@@ -2683,10 +2859,18 @@ common-lisp:nil
                                                         "RemovePermission"
                                                         "2010-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'remove-permission))
 (common-lisp:progn
  (common-lisp:defun set-endpoint-attributes
@@ -2705,10 +2889,18 @@ common-lisp:nil
                                                         "SetEndpointAttributes"
                                                         "2010-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'set-endpoint-attributes))
 (common-lisp:progn
  (common-lisp:defun set-platform-application-attributes
@@ -2729,10 +2921,18 @@ common-lisp:nil
                                                         "SetPlatformApplicationAttributes"
                                                         "2010-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'set-platform-application-attributes))
 (common-lisp:progn
  (common-lisp:defun set-smsattributes
@@ -2751,10 +2951,18 @@ common-lisp:nil
                                                         "SetSMSAttributes"
                                                         "2010-03-31"))
       common-lisp:nil "SetSMSAttributesResult"
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ThrottledException" . throttled-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'set-smsattributes))
 (common-lisp:progn
  (common-lisp:defun set-subscription-attributes
@@ -2776,10 +2984,18 @@ common-lisp:nil
                                                         "SetSubscriptionAttributes"
                                                         "2010-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("NotFoundException" . not-found-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'set-subscription-attributes))
 (common-lisp:progn
  (common-lisp:defun set-topic-attributes
@@ -2799,10 +3015,18 @@ common-lisp:nil
                                                         "SetTopicAttributes"
                                                         "2010-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("NotFoundException" . not-found-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'set-topic-attributes))
 (common-lisp:progn
  (common-lisp:defun subscribe
@@ -2820,12 +3044,18 @@ common-lisp:nil
                                                         "POST" "/" "Subscribe"
                                                         "2010-03-31"))
       common-lisp:nil "SubscribeResult"
-      '(("SubscriptionLimitExceededException"
-         . subscription-limit-exceeded-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("NotFoundException" . not-found-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)))))
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'subscribe))
 (common-lisp:progn
  (common-lisp:defun unsubscribe
@@ -2844,8 +3074,16 @@ common-lisp:nil
                                                         "Unsubscribe"
                                                         "2010-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthorizationErrorException" . authorization-error-exception)
+        ("EndpointDisabledException" . endpoint-disabled-exception)
         ("InternalErrorException" . internal-error-exception)
-        ("AuthorizationErrorException" . authorization-error-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PlatformApplicationDisabledException"
+         . platform-application-disabled-exception)
+        ("SubscriptionLimitExceededException"
+         . subscription-limit-exceeded-exception)
+        ("ThrottledException" . throttled-exception)
+        ("TopicLimitExceededException" . topic-limit-exceeded-exception)))))
  (common-lisp:export 'unsubscribe))

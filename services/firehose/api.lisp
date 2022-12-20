@@ -3029,9 +3029,13 @@
                                                         "CreateDeliveryStream"
                                                         "2015-08-04"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidArgumentException" . invalid-argument-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("InvalidStreamTypeException" . invalid-stream-type-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceInUseException" . resource-in-use-exception)))))
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'create-delivery-stream))
 (common-lisp:progn
  (common-lisp:defun delete-delivery-stream
@@ -3050,8 +3054,13 @@
                                                         "DeleteDeliveryStream"
                                                         "2015-08-04"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("InvalidStreamTypeException" . invalid-stream-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'delete-delivery-stream))
 (common-lisp:progn
  (common-lisp:defun describe-delivery-stream
@@ -3073,7 +3082,13 @@
                                                         "DescribeDeliveryStream"
                                                         "2015-08-04"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("InvalidStreamTypeException" . invalid-stream-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'describe-delivery-stream))
 (common-lisp:progn
  (common-lisp:defun get-kinesis-stream
@@ -3092,9 +3107,13 @@
                                                         "GetKinesisStream"
                                                         "2015-08-04"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
         ("InvalidArgumentException" . invalid-argument-exception)
-        ("InvalidStreamTypeException" . invalid-stream-type-exception)))))
+        ("InvalidStreamTypeException" . invalid-stream-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'get-kinesis-stream))
 (common-lisp:progn
  (common-lisp:defun list-delivery-streams
@@ -3115,7 +3134,14 @@
                                                         "POST" "/"
                                                         "ListDeliveryStreams"
                                                         "2015-08-04"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("InvalidStreamTypeException" . invalid-stream-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'list-delivery-streams))
 (common-lisp:progn
  (common-lisp:defun put-record
@@ -3133,8 +3159,12 @@
                                                         "POST" "/" "PutRecord"
                                                         "2015-08-04"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
         ("InvalidArgumentException" . invalid-argument-exception)
+        ("InvalidStreamTypeException" . invalid-stream-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-record))
 (common-lisp:progn
@@ -3154,8 +3184,12 @@
                                                         "PutRecordBatch"
                                                         "2015-08-04"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
         ("InvalidArgumentException" . invalid-argument-exception)
+        ("InvalidStreamTypeException" . invalid-stream-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'put-record-batch))
 (common-lisp:progn
@@ -3183,9 +3217,11 @@
                                                         "UpdateDestination"
                                                         "2015-08-04"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidArgumentException" . invalid-argument-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InvalidArgumentException" . invalid-argument-exception)
+        ("InvalidStreamTypeException" . invalid-stream-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)))))
  (common-lisp:export 'update-destination))

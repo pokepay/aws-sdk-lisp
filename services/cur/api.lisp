@@ -397,7 +397,9 @@
                                                         "DeleteReportDefinition"
                                                         "2017-01-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalErrorException" . internal-error-exception)
+      '(("DuplicateReportNameException" . duplicate-report-name-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("ReportLimitReachedException" . report-limit-reached-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-report-definition))
 (common-lisp:progn
@@ -418,7 +420,10 @@
                                                         "DescribeReportDefinitions"
                                                         "2017-01-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalErrorException" . internal-error-exception)))))
+      '(("DuplicateReportNameException" . duplicate-report-name-exception)
+        ("InternalErrorException" . internal-error-exception)
+        ("ReportLimitReachedException" . report-limit-reached-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-report-definitions))
 (common-lisp:progn
  (common-lisp:defun put-report-definition
@@ -438,7 +443,7 @@
                                                         "2017-01-06"))
       common-lisp:nil common-lisp:nil
       '(("DuplicateReportNameException" . duplicate-report-name-exception)
-        ("ReportLimitReachedException" . report-limit-reached-exception)
         ("InternalErrorException" . internal-error-exception)
+        ("ReportLimitReachedException" . report-limit-reached-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'put-report-definition))
