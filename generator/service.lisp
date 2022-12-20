@@ -49,34 +49,41 @@
               using (hash-value options)
               do (format stream "~&~S~%" (compile-shape name options exception-name)))
 
-        (loop for action being each hash-key of (gethash "operations" hash)
-              using (hash-value options)
-              for input = (gethash "input" options)
-              for output = (gethash "output" options)
-              do (format stream "~&~S~%"
-                         (compile-operation
-                           service
-                           action
-                           (gethash+ '("metadata" "apiVersion") hash)
-                           options
-                           (and input
-                                (loop for key being each hash-key of (gethash+ `("shapes" ,(gethash "shape" input) "members")
-                                                                               hash)
-                                      collect (lispify key)))
-                           (and output
-                                (when-let* ((payload-shape
-                                              (gethash+ `("shapes" ,(gethash "shape" output) "payload") hash))
-                                            (payload-shape (gethash+ `("shapes"
-                                                                       ,(gethash "shape" output)
-                                                                       "members"
-                                                                       ,payload-shape)
-                                                                     hash)))
-                                  (labels ((find-output-type (shape)
-                                             (and shape
-                                                  (or (gethash "type" shape)
-                                                      (find-output-type
-                                                        (gethash+ `("shapes" ,(gethash "shape" shape)) hash))))))
-                                    (find-output-type payload-shape)))))))
+        (let ((error-map
+                (loop for name being each hash-key of (gethash "shapes" hash)
+                      using (hash-value options)
+                      if (gethash "exception" options)
+                      collect (cons name (lispify name)))))
+
+          (loop for action being each hash-key of (gethash "operations" hash)
+                using (hash-value options)
+                for input = (gethash "input" options)
+                for output = (gethash "output" options)
+                do (format stream "~&~S~%"
+                           (compile-operation
+                             service
+                             action
+                             (gethash+ '("metadata" "apiVersion") hash)
+                             options
+                             (and input
+                                  (loop for key being each hash-key of (gethash+ `("shapes" ,(gethash "shape" input) "members")
+                                                                                 hash)
+                                        collect (lispify key)))
+                             (and output
+                                  (when-let* ((payload-shape
+                                       (gethash+ `("shapes" ,(gethash "shape" output) "payload") hash))
+                                     (payload-shape (gethash+ `("shapes"
+                                                                ,(gethash "shape" output)
+                                                                "members"
+                                                                ,payload-shape)
+                                                              hash)))
+                                    (labels ((find-output-type (shape)
+                                               (and shape
+                                                    (or (gethash "type" shape)
+                                                        (find-output-type
+                                                          (gethash+ `("shapes" ,(gethash "shape" shape)) hash))))))
+                                      (find-output-type payload-shape))))
+                             error-map))))
         (force-output stream)))))
 
 (defun dump-service-base-file-to-stream (service service-dir &optional (stream *standard-output*))
