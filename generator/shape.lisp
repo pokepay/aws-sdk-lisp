@@ -102,6 +102,20 @@
               `(slot-value input ',(lispify payload))
               'nil)))))
 
+(defun compile-exception-shape (name &key members exception)
+  (let ((condition-name (lispify* name)))
+    `(progn
+       (define-condition ,condition-name (,exception)
+         ,(loop for member-name being each hash-key of members
+                using (hash-value member-options)
+                for slot-name = (lispify member-name)
+                collect `(,(lispify member-name) :initarg ,(lispify member-name :keyword)
+                                                 :initform nil
+                                                 :reader ,(lispify (format nil "~A-~A" condition-name slot-name)))))
+       (export (list ',condition-name
+                     ,@(loop for member-name being each hash-key of members
+                             collect `',(lispify (format nil "~A-~A" condition-name (lispify member-name)))))))))
+
 (defun compile-list-shape (name member)
   `(progn
      (deftype ,(lispify* name) () '(proper-list ,(lispify* member)))
@@ -127,7 +141,7 @@
              (lispify type)
              (lisp-native-type type)))))
 
-(defun compile-shape (name options)
+(defun compile-shape (name options exception-name)
   (let ((type (gethash "type" options)))
     (cond
       ((string= type "map")
@@ -137,9 +151,13 @@
          (assert member-type)
          (compile-list-shape name member-type)))
       ((string= type "structure")
-       (compile-structure-shape name
-                                :required (gethash "required" options)
-                                :members (gethash "members" options)
-                                :payload (gethash "payload" options)))
+       (if (gethash "exception" options)
+           (compile-exception-shape name
+                                    :members (gethash "members" options)
+                                    :exception exception-name)
+           (compile-structure-shape name
+                                    :required (gethash "required" options)
+                                    :members (gethash "members" options)
+                                    :payload (gethash "payload" options))))
       (t
        (compile-otherwise name type)))))

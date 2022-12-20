@@ -15,6 +15,9 @@
                 #:octets-to-string)
   (:import-from #:assoc-utils
                 #:aget)
+  (:import-from #:alexandria
+                #:when-let
+                #:ensure-car)
   (:import-from #:xmls)
   (:export #:compile-operation))
 (in-package #:aws-sdk/generator/operation)
@@ -23,9 +26,9 @@
   (unless (consp xmls)
     (return-from %xmls-to-alist xmls))
 
-  (destructuring-bind ((name &rest ignore) attrs &rest contents) xmls
-    (declare (ignore ignore attrs))
-    (cons name
+  (destructuring-bind (name-and-ns attrs &rest contents) xmls
+    (declare (ignore attrs))
+    (cons (ensure-car name-and-ns)
           (mapcar #'%xmls-to-alist contents))))
 (defun xmls-to-alist (xmls)
   (list (%xmls-to-alist xmls)))
@@ -35,17 +38,29 @@
       value
       (babel:octets-to-string value)))
 
-(defun parse-response (body body-type wrapper-name)
-  (if (equal body-type "blob")
-      body
-      (when (and body (/= 0 (length body)))
-        (let* ((output (xmls-to-alist (xmls:parse-to-list (ensure-string body))))
-               (output ;; Unwrap the root element
-                 (cdr (first output))))
-          (if wrapper-name
-              (values (aget output wrapper-name)
-                      (aget output "ResponseMetadata"))
-              output)))))
+(defun parse-response (response body-type wrapper-name error-map)
+  (destructuring-bind (body status headers &rest ignore-args)
+      response
+    (declare (ignore ignore-args headers))
+    (if (<= 400 status 599)
+        (when (and body (/= 0 (length body)))
+          (let* ((output (xmls-to-alist (xmls:parse-to-list (ensure-string body))))
+                 (error-alist (aget output "Error")))
+            (when-let ((error-class (aget error-map (first (aget error-alist "Code")))))
+              (error error-class
+                     :message (first (aget error-alist "Message"))
+                     :status status
+                     :body body))))
+        (if (equal body-type "blob")
+            body
+            (when (and body (/= 0 (length body)))
+              (let* ((output (xmls-to-alist (xmls:parse-to-list (ensure-string body))))
+                     (output ;; Unwrap the root element
+                       (cdr (first output))))
+                (if wrapper-name
+                    (values (aget output wrapper-name)
+                            (aget output "ResponseMetadata"))
+                    output)))))))
 
 (defun compile-path-pattern (path-pattern)
   (when path-pattern
@@ -70,7 +85,8 @@
 (defun compile-operation (service name version options params body-type)
   (let* ((output (gethash "output" options))
          (method (gethash "method" (gethash "http" options)))
-         (request-uri (gethash "requestUri" (gethash "http" options))))
+         (request-uri (gethash "requestUri" (gethash "http" options)))
+         (errors (gethash "errors" options)))
     (if params
         (let ((input-shape-name (lispify (gethash "shape" (gethash "input" options)))))
           `(progn
@@ -84,7 +100,10 @@
                       input ,method ,(compile-path-pattern request-uri) ,name ,version))
                   ,body-type
                   ,(and output
-                        (gethash "resultWrapper" output)))))
+                        (gethash "resultWrapper" output))
+                  ',(mapcar (lambda (error)
+                              (cons (gethash "shape" error) (lispify (gethash "shape" error))))
+                            errors))))
              (export ',(lispify name))))
         `(progn
            (defun ,(lispify name) ()
@@ -96,5 +115,8 @@
                                 :params `(("Action" . ,,name) ("Version" . ,,version))))
               ,body-type
               ,(and output
-                    (gethash "resultWrapper" output))))
+                    (gethash "resultWrapper" output))
+              ',(mapcar (lambda (error)
+                          (cons (gethash "shape" error) (lispify (gethash "shape" error))))
+                        errors)))
            (export ',(lispify name))))))
