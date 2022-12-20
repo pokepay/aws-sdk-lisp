@@ -5,6 +5,8 @@
                 #:shape-to-params)
   (:import-from #:aws-sdk/api
                 #:aws-request)
+  (:import-from #:aws-sdk/request
+                #:request)
   (:import-from #:assoc-utils
                 #:aget)
   (:import-from #:xmls)
@@ -41,10 +43,11 @@
                (declare (ignorable ,@params))
                (let ((input (apply ',(intern (format nil "~:@(~A-~A~)" :make input-shape-name)) args)))
                  (parse-response
-                  (aws-request :service ,service
-                               :method ,(intern (gethash "method" (gethash "http" options)) :keyword)
-                               :params (append `(("Action" . ,,name) ("Version" . ,,version))
-                                               (shape-to-params input)))
+                  (aws-request
+                    (make-instance ',(intern (format nil "~:@(~A-REQUEST~)" service))
+                                   :method ,(intern (gethash "method" (gethash "http" options)) :keyword)
+                                   :params (append `(("Action" . ,,name) ("Version" . ,,version))
+                                                   (shape-to-params input))))
                   ,(and output
                         (gethash "shape" output))
                   ,(and output
@@ -53,9 +56,10 @@
         `(progn
            (defun ,(lispify name) ()
              (parse-response
-              (aws-request :service ,service
-                           :method ,(intern (gethash "method" (gethash "http" options)) :keyword)
-                           :params (cons "Action" ,name))
+               (aws-request
+                 (make-instance ',(intern (format nil "~:@(~A-REQUEST~)" service))
+                                :method ,(intern (gethash "method" (gethash "http" options)) :keyword)
+                                :params (cons "Action" ,name)))
               ,(and output
                     (gethash "shape" output))
               ,(and output
