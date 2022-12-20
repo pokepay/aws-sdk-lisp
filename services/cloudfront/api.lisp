@@ -5272,13 +5272,73 @@ common-lisp:nil
                                                         "CreateCloudFrontOriginAccessIdentity"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("CloudFrontOriginAccessIdentityAlreadyExists"
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
          . cloud-front-origin-access-identity-already-exists)
-        ("MissingBody" . missing-body)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
         ("TooManyCloudFrontOriginAccessIdentities"
          . too-many-cloud-front-origin-access-identities)
-        ("InvalidArgument" . invalid-argument)
-        ("InconsistentQuantities" . inconsistent-quantities)))))
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'create-cloud-front-origin-access-identity))
 (common-lisp:progn
  (common-lisp:defun create-distribution
@@ -5298,50 +5358,73 @@ common-lisp:nil
                                                         "CreateDistribution"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("CNAMEAlreadyExists" . cnamealready-exists)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
         ("DistributionAlreadyExists" . distribution-already-exists)
-        ("InvalidOrigin" . invalid-origin)
-        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
-        ("AccessDenied" . access-denied)
-        ("TooManyTrustedSigners" . too-many-trusted-signers)
-        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)
-        ("InvalidViewerCertificate" . invalid-viewer-certificate)
-        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
-        ("MissingBody" . missing-body)
-        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
-        ("TooManyDistributions" . too-many-distributions)
-        ("InvalidDefaultRootObject" . invalid-default-root-object)
-        ("InvalidRelativePath" . invalid-relative-path)
-        ("InvalidErrorCode" . invalid-error-code)
-        ("InvalidResponseCode" . invalid-response-code)
-        ("InvalidArgument" . invalid-argument)
-        ("InvalidRequiredProtocol" . invalid-required-protocol)
-        ("NoSuchOrigin" . no-such-origin) ("TooManyOrigins" . too-many-origins)
-        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
-        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
-        ("InvalidForwardCookies" . invalid-forward-cookies)
-        ("TooManyHeadersInForwardedValues"
-         . too-many-headers-in-forwarded-values)
-        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
         ("InconsistentQuantities" . inconsistent-quantities)
-        ("TooManyCertificates" . too-many-certificates)
-        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
         ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
-        ("InvalidProtocolSettings" . invalid-protocol-settings)
-        ("InvalidTTLOrder" . invalid-ttlorder)
-        ("InvalidWebACLId" . invalid-web-aclid)
-        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
-        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
-        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
-        ("TooManyDistributionsWithLambdaAssociations"
-         . too-many-distributions-with-lambda-associations)
-        ("TooManyLambdaFunctionAssociations"
-         . too-many-lambda-function-associations)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
         ("InvalidLambdaFunctionAssociation"
          . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
         ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
-        ("InvalidOriginKeepaliveTimeout"
-         . invalid-origin-keepalive-timeout)))))
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'create-distribution))
 (common-lisp:progn
  (common-lisp:defun create-distribution-with-tags
@@ -5362,51 +5445,73 @@ common-lisp:nil
                                                         "CreateDistributionWithTags"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("CNAMEAlreadyExists" . cnamealready-exists)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
         ("DistributionAlreadyExists" . distribution-already-exists)
-        ("InvalidOrigin" . invalid-origin)
-        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
-        ("AccessDenied" . access-denied)
-        ("TooManyTrustedSigners" . too-many-trusted-signers)
-        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)
-        ("InvalidViewerCertificate" . invalid-viewer-certificate)
-        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
-        ("MissingBody" . missing-body)
-        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
-        ("TooManyDistributions" . too-many-distributions)
-        ("InvalidDefaultRootObject" . invalid-default-root-object)
-        ("InvalidRelativePath" . invalid-relative-path)
-        ("InvalidErrorCode" . invalid-error-code)
-        ("InvalidResponseCode" . invalid-response-code)
-        ("InvalidArgument" . invalid-argument)
-        ("InvalidRequiredProtocol" . invalid-required-protocol)
-        ("NoSuchOrigin" . no-such-origin) ("TooManyOrigins" . too-many-origins)
-        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
-        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
-        ("InvalidForwardCookies" . invalid-forward-cookies)
-        ("TooManyHeadersInForwardedValues"
-         . too-many-headers-in-forwarded-values)
-        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
         ("InconsistentQuantities" . inconsistent-quantities)
-        ("TooManyCertificates" . too-many-certificates)
-        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
         ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
-        ("InvalidProtocolSettings" . invalid-protocol-settings)
-        ("InvalidTTLOrder" . invalid-ttlorder)
-        ("InvalidWebACLId" . invalid-web-aclid)
-        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
-        ("InvalidTagging" . invalid-tagging)
-        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
-        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
-        ("TooManyDistributionsWithLambdaAssociations"
-         . too-many-distributions-with-lambda-associations)
-        ("TooManyLambdaFunctionAssociations"
-         . too-many-lambda-function-associations)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
         ("InvalidLambdaFunctionAssociation"
          . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
         ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
-        ("InvalidOriginKeepaliveTimeout"
-         . invalid-origin-keepalive-timeout)))))
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'create-distribution-with-tags))
 (common-lisp:progn
  (common-lisp:defun create-invalidation
@@ -5436,12 +5541,73 @@ common-lisp:nil
                                                         "CreateInvalidation"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("AccessDenied" . access-denied) ("MissingBody" . missing-body)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
         ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
         ("NoSuchDistribution" . no-such-distribution)
-        ("BatchTooLarge" . batch-too-large)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
         ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
-        ("InconsistentQuantities" . inconsistent-quantities)))))
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'create-invalidation))
 (common-lisp:progn
  (common-lisp:defun create-streaming-distribution
@@ -5462,20 +5628,73 @@ common-lisp:nil
                                                         "CreateStreamingDistribution"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("CNAMEAlreadyExists" . cnamealready-exists)
-        ("StreamingDistributionAlreadyExists"
-         . streaming-distribution-already-exists)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
         ("InvalidOrigin" . invalid-origin)
         ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
-        ("AccessDenied" . access-denied)
-        ("TooManyTrustedSigners" . too-many-trusted-signers)
-        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)
-        ("MissingBody" . missing-body)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
         ("TooManyStreamingDistributionCNAMEs"
          . too-many-streaming-distribution-cnames)
         ("TooManyStreamingDistributions" . too-many-streaming-distributions)
-        ("InvalidArgument" . invalid-argument)
-        ("InconsistentQuantities" . inconsistent-quantities)))))
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'create-streaming-distribution))
 (common-lisp:progn
  (common-lisp:defun create-streaming-distribution-with-tags
@@ -5497,21 +5716,73 @@ common-lisp:nil
                                                         "CreateStreamingDistributionWithTags"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("CNAMEAlreadyExists" . cnamealready-exists)
-        ("StreamingDistributionAlreadyExists"
-         . streaming-distribution-already-exists)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
         ("InvalidOrigin" . invalid-origin)
         ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
-        ("AccessDenied" . access-denied)
-        ("TooManyTrustedSigners" . too-many-trusted-signers)
-        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)
-        ("MissingBody" . missing-body)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
         ("TooManyStreamingDistributionCNAMEs"
          . too-many-streaming-distribution-cnames)
         ("TooManyStreamingDistributions" . too-many-streaming-distributions)
-        ("InvalidArgument" . invalid-argument)
-        ("InconsistentQuantities" . inconsistent-quantities)
-        ("InvalidTagging" . invalid-tagging)))))
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'create-streaming-distribution-with-tags))
 (common-lisp:progn
  (common-lisp:defun delete-cloud-front-origin-access-identity
@@ -5541,13 +5812,73 @@ common-lisp:nil
                                                         "DeleteCloudFrontOriginAccessIdentity"
                                                         "2017-03-25"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDenied" . access-denied)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
         ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
         ("NoSuchCloudFrontOriginAccessIdentity"
          . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
         ("PreconditionFailed" . precondition-failed)
-        ("CloudFrontOriginAccessIdentityInUse"
-         . cloud-front-origin-access-identity-in-use)))))
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'delete-cloud-front-origin-access-identity))
 (common-lisp:progn
  (common-lisp:defun delete-distribution
@@ -5576,11 +5907,73 @@ common-lisp:nil
                                                         "DeleteDistribution"
                                                         "2017-03-25"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDenied" . access-denied)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
         ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
         ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
         ("NoSuchDistribution" . no-such-distribution)
-        ("PreconditionFailed" . precondition-failed)))))
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'delete-distribution))
 (common-lisp:progn
  (common-lisp:defun delete-streaming-distribution
@@ -5610,12 +6003,73 @@ common-lisp:nil
                                                         "DeleteStreamingDistribution"
                                                         "2017-03-25"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDenied" . access-denied)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
         ("StreamingDistributionNotDisabled"
          . streaming-distribution-not-disabled)
-        ("InvalidIfMatchVersion" . invalid-if-match-version)
-        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
-        ("PreconditionFailed" . precondition-failed)))))
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'delete-streaming-distribution))
 (common-lisp:progn
  (common-lisp:defun get-cloud-front-origin-access-identity
@@ -5645,9 +6099,73 @@ common-lisp:nil
                                                         "GetCloudFrontOriginAccessIdentity"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("NoSuchCloudFrontOriginAccessIdentity"
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
          . no-such-cloud-front-origin-access-identity)
-        ("AccessDenied" . access-denied)))))
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'get-cloud-front-origin-access-identity))
 (common-lisp:progn
  (common-lisp:defun get-cloud-front-origin-access-identity-config
@@ -5677,9 +6195,73 @@ common-lisp:nil
                                                         "GetCloudFrontOriginAccessIdentityConfig"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("NoSuchCloudFrontOriginAccessIdentity"
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
          . no-such-cloud-front-origin-access-identity)
-        ("AccessDenied" . access-denied)))))
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'get-cloud-front-origin-access-identity-config))
 (common-lisp:progn
  (common-lisp:defun get-distribution
@@ -5708,8 +6290,73 @@ common-lisp:nil
                                                         "GetDistribution"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("NoSuchDistribution" . no-such-distribution)
-        ("AccessDenied" . access-denied)))))
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'get-distribution))
 (common-lisp:progn
  (common-lisp:defun get-distribution-config
@@ -5738,8 +6385,73 @@ common-lisp:nil
                                                         "GetDistributionConfig"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("NoSuchDistribution" . no-such-distribution)
-        ("AccessDenied" . access-denied)))))
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'get-distribution-config))
 (common-lisp:progn
  (common-lisp:defun get-invalidation
@@ -5772,9 +6484,73 @@ common-lisp:nil
                                                         "GetInvalidation"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("NoSuchInvalidation" . no-such-invalidation)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
         ("NoSuchDistribution" . no-such-distribution)
-        ("AccessDenied" . access-denied)))))
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'get-invalidation))
 (common-lisp:progn
  (common-lisp:defun get-streaming-distribution
@@ -5804,8 +6580,73 @@ common-lisp:nil
                                                         "GetStreamingDistribution"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("NoSuchStreamingDistribution" . no-such-streaming-distribution)
-        ("AccessDenied" . access-denied)))))
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'get-streaming-distribution))
 (common-lisp:progn
  (common-lisp:defun get-streaming-distribution-config
@@ -5835,8 +6676,73 @@ common-lisp:nil
                                                         "GetStreamingDistributionConfig"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("NoSuchStreamingDistribution" . no-such-streaming-distribution)
-        ("AccessDenied" . access-denied)))))
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'get-streaming-distribution-config))
 (common-lisp:progn
  (common-lisp:defun list-cloud-front-origin-access-identities
@@ -5856,7 +6762,74 @@ common-lisp:nil
                                                         "/2017-03-25/origin-access-identity/cloudfront"
                                                         "ListCloudFrontOriginAccessIdentities"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil '(("InvalidArgument" . invalid-argument)))))
+      "structure" common-lisp:nil
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'list-cloud-front-origin-access-identities))
 (common-lisp:progn
  (common-lisp:defun list-distributions
@@ -5875,7 +6848,74 @@ common-lisp:nil
                                                         "/2017-03-25/distribution"
                                                         "ListDistributions"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil '(("InvalidArgument" . invalid-argument)))))
+      "structure" common-lisp:nil
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'list-distributions))
 (common-lisp:progn
  (common-lisp:defun list-distributions-by-web-aclid
@@ -5905,8 +6945,73 @@ common-lisp:nil
                                                         "ListDistributionsByWebACLId"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("InvalidArgument" . invalid-argument)
-        ("InvalidWebACLId" . invalid-web-aclid)))))
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'list-distributions-by-web-aclid))
 (common-lisp:progn
  (common-lisp:defun list-invalidations
@@ -5936,9 +7041,73 @@ common-lisp:nil
                                                         "ListInvalidations"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("InvalidArgument" . invalid-argument)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
         ("NoSuchDistribution" . no-such-distribution)
-        ("AccessDenied" . access-denied)))))
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'list-invalidations))
 (common-lisp:progn
  (common-lisp:defun list-streaming-distributions
@@ -5958,7 +7127,74 @@ common-lisp:nil
                                                         "/2017-03-25/streaming-distribution"
                                                         "ListStreamingDistributions"
                                                         "2017-03-25"))
-      "structure" common-lisp:nil '(("InvalidArgument" . invalid-argument)))))
+      "structure" common-lisp:nil
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'list-streaming-distributions))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -5978,9 +7214,73 @@ common-lisp:nil
                                                         "ListTagsForResource"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("AccessDenied" . access-denied) ("InvalidArgument" . invalid-argument)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
         ("InvalidTagging" . invalid-tagging)
-        ("NoSuchResource" . no-such-resource)))))
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -6000,9 +7300,73 @@ common-lisp:nil
                                                         "TagResource"
                                                         "2017-03-25"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDenied" . access-denied) ("InvalidArgument" . invalid-argument)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
         ("InvalidTagging" . invalid-tagging)
-        ("NoSuchResource" . no-such-resource)))))
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -6022,9 +7386,73 @@ common-lisp:nil
                                                         "UntagResource"
                                                         "2017-03-25"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDenied" . access-denied) ("InvalidArgument" . invalid-argument)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
         ("InvalidTagging" . invalid-tagging)
-        ("NoSuchResource" . no-such-resource)))))
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-cloud-front-origin-access-identity
@@ -6057,14 +7485,73 @@ common-lisp:nil
                                                         "UpdateCloudFrontOriginAccessIdentity"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("AccessDenied" . access-denied) ("IllegalUpdate" . illegal-update)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
+        ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
+        ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
         ("InvalidIfMatchVersion" . invalid-if-match-version)
-        ("MissingBody" . missing-body)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
         ("NoSuchCloudFrontOriginAccessIdentity"
          . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
         ("PreconditionFailed" . precondition-failed)
-        ("InvalidArgument" . invalid-argument)
-        ("InconsistentQuantities" . inconsistent-quantities)))))
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'update-cloud-front-origin-access-identity))
 (common-lisp:progn
  (common-lisp:defun update-distribution
@@ -6094,50 +7581,73 @@ common-lisp:nil
                                                         "UpdateDistribution"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("AccessDenied" . access-denied)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
         ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
         ("IllegalUpdate" . illegal-update)
-        ("InvalidIfMatchVersion" . invalid-if-match-version)
-        ("MissingBody" . missing-body)
-        ("NoSuchDistribution" . no-such-distribution)
-        ("PreconditionFailed" . precondition-failed)
-        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
-        ("InvalidDefaultRootObject" . invalid-default-root-object)
-        ("InvalidRelativePath" . invalid-relative-path)
-        ("InvalidErrorCode" . invalid-error-code)
-        ("InvalidResponseCode" . invalid-response-code)
-        ("InvalidArgument" . invalid-argument)
-        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
-        ("TooManyTrustedSigners" . too-many-trusted-signers)
-        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)
-        ("InvalidViewerCertificate" . invalid-viewer-certificate)
-        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
-        ("InvalidRequiredProtocol" . invalid-required-protocol)
-        ("NoSuchOrigin" . no-such-origin) ("TooManyOrigins" . too-many-origins)
-        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
-        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
-        ("InvalidForwardCookies" . invalid-forward-cookies)
-        ("TooManyHeadersInForwardedValues"
-         . too-many-headers-in-forwarded-values)
-        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
         ("InconsistentQuantities" . inconsistent-quantities)
-        ("TooManyCertificates" . too-many-certificates)
-        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
         ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
-        ("InvalidTTLOrder" . invalid-ttlorder)
-        ("InvalidWebACLId" . invalid-web-aclid)
-        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
-        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
-        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
-        ("TooManyDistributionsWithLambdaAssociations"
-         . too-many-distributions-with-lambda-associations)
-        ("TooManyLambdaFunctionAssociations"
-         . too-many-lambda-function-associations)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
+        ("InvalidIfMatchVersion" . invalid-if-match-version)
         ("InvalidLambdaFunctionAssociation"
          . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
         ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
-        ("InvalidOriginKeepaliveTimeout"
-         . invalid-origin-keepalive-timeout)))))
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
+        ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
+        ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
+        ("TooManyStreamingDistributionCNAMEs"
+         . too-many-streaming-distribution-cnames)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
+        ("TooManyTrustedSigners" . too-many-trusted-signers)
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'update-distribution))
 (common-lisp:progn
  (common-lisp:defun update-streaming-distribution
@@ -6169,18 +7679,71 @@ common-lisp:nil
                                                         "UpdateStreamingDistribution"
                                                         "2017-03-25"))
       "structure" common-lisp:nil
-      '(("AccessDenied" . access-denied)
+      '(("AccessDenied" . access-denied) ("BatchTooLarge" . batch-too-large)
         ("CNAMEAlreadyExists" . cnamealready-exists)
+        ("CloudFrontOriginAccessIdentityAlreadyExists"
+         . cloud-front-origin-access-identity-already-exists)
+        ("CloudFrontOriginAccessIdentityInUse"
+         . cloud-front-origin-access-identity-in-use)
+        ("DistributionAlreadyExists" . distribution-already-exists)
+        ("DistributionNotDisabled" . distribution-not-disabled)
         ("IllegalUpdate" . illegal-update)
+        ("InconsistentQuantities" . inconsistent-quantities)
+        ("InvalidArgument" . invalid-argument)
+        ("InvalidDefaultRootObject" . invalid-default-root-object)
+        ("InvalidErrorCode" . invalid-error-code)
+        ("InvalidForwardCookies" . invalid-forward-cookies)
+        ("InvalidGeoRestrictionParameter" . invalid-geo-restriction-parameter)
+        ("InvalidHeadersForS3Origin" . invalid-headers-for-s3origin)
         ("InvalidIfMatchVersion" . invalid-if-match-version)
-        ("MissingBody" . missing-body)
+        ("InvalidLambdaFunctionAssociation"
+         . invalid-lambda-function-association)
+        ("InvalidLocationCode" . invalid-location-code)
+        ("InvalidMinimumProtocolVersion" . invalid-minimum-protocol-version)
+        ("InvalidOrigin" . invalid-origin)
+        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("InvalidOriginKeepaliveTimeout" . invalid-origin-keepalive-timeout)
+        ("InvalidOriginReadTimeout" . invalid-origin-read-timeout)
+        ("InvalidProtocolSettings" . invalid-protocol-settings)
+        ("InvalidQueryStringParameters" . invalid-query-string-parameters)
+        ("InvalidRelativePath" . invalid-relative-path)
+        ("InvalidRequiredProtocol" . invalid-required-protocol)
+        ("InvalidResponseCode" . invalid-response-code)
+        ("InvalidTTLOrder" . invalid-ttlorder)
+        ("InvalidTagging" . invalid-tagging)
+        ("InvalidViewerCertificate" . invalid-viewer-certificate)
+        ("InvalidWebACLId" . invalid-web-aclid) ("MissingBody" . missing-body)
+        ("NoSuchCloudFrontOriginAccessIdentity"
+         . no-such-cloud-front-origin-access-identity)
+        ("NoSuchDistribution" . no-such-distribution)
+        ("NoSuchInvalidation" . no-such-invalidation)
+        ("NoSuchOrigin" . no-such-origin) ("NoSuchResource" . no-such-resource)
         ("NoSuchStreamingDistribution" . no-such-streaming-distribution)
         ("PreconditionFailed" . precondition-failed)
+        ("StreamingDistributionAlreadyExists"
+         . streaming-distribution-already-exists)
+        ("StreamingDistributionNotDisabled"
+         . streaming-distribution-not-disabled)
+        ("TooManyCacheBehaviors" . too-many-cache-behaviors)
+        ("TooManyCertificates" . too-many-certificates)
+        ("TooManyCloudFrontOriginAccessIdentities"
+         . too-many-cloud-front-origin-access-identities)
+        ("TooManyCookieNamesInWhiteList" . too-many-cookie-names-in-white-list)
+        ("TooManyDistributionCNAMEs" . too-many-distribution-cnames)
+        ("TooManyDistributions" . too-many-distributions)
+        ("TooManyDistributionsWithLambdaAssociations"
+         . too-many-distributions-with-lambda-associations)
+        ("TooManyHeadersInForwardedValues"
+         . too-many-headers-in-forwarded-values)
+        ("TooManyInvalidationsInProgress" . too-many-invalidations-in-progress)
+        ("TooManyLambdaFunctionAssociations"
+         . too-many-lambda-function-associations)
+        ("TooManyOriginCustomHeaders" . too-many-origin-custom-headers)
+        ("TooManyOrigins" . too-many-origins)
+        ("TooManyQueryStringParameters" . too-many-query-string-parameters)
         ("TooManyStreamingDistributionCNAMEs"
          . too-many-streaming-distribution-cnames)
-        ("InvalidArgument" . invalid-argument)
-        ("InvalidOriginAccessIdentity" . invalid-origin-access-identity)
+        ("TooManyStreamingDistributions" . too-many-streaming-distributions)
         ("TooManyTrustedSigners" . too-many-trusted-signers)
-        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)
-        ("InconsistentQuantities" . inconsistent-quantities)))))
+        ("TrustedSignerDoesNotExist" . trusted-signer-does-not-exist)))))
  (common-lisp:export 'update-streaming-distribution))

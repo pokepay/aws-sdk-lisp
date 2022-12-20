@@ -9524,7 +9524,14 @@
                                                             'key)))
                                                         "AbortMultipartUpload"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil '(("NoSuchUpload" . no-such-upload)))))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'abort-multipart-upload))
 (common-lisp:progn
  (common-lisp:defun complete-multipart-upload
@@ -9559,7 +9566,14 @@
                                                             'key)))
                                                         "CompleteMultipartUpload"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'complete-multipart-upload))
 (common-lisp:progn
  (common-lisp:defun copy-object
@@ -9613,7 +9627,13 @@
                                                         "CopyObject"
                                                         "2006-03-01"))
       "structure" common-lisp:nil
-      '(("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'copy-object))
 (common-lisp:progn
  (common-lisp:defun create-bucket
@@ -9647,7 +9667,12 @@
                                                         "2006-03-01"))
       common-lisp:nil common-lisp:nil
       '(("BucketAlreadyExists" . bucket-already-exists)
-        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)))))
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'create-bucket))
 (common-lisp:progn
  (common-lisp:defun create-multipart-upload
@@ -9691,7 +9716,14 @@
                                                             'key)))
                                                         "CreateMultipartUpload"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'create-multipart-upload))
 (common-lisp:progn
  (common-lisp:defun delete-bucket
@@ -9719,7 +9751,14 @@
                                                              'bucket))))
                                                         "DeleteBucket"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-bucket))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-analytics-configuration
@@ -9748,7 +9787,14 @@
                                                              'bucket))))
                                                         "DeleteBucketAnalyticsConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-bucket-analytics-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-cors
@@ -9776,7 +9822,14 @@
                                                              'bucket))))
                                                         "DeleteBucketCors"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-bucket-cors))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-inventory-configuration
@@ -9805,7 +9858,14 @@
                                                              'bucket))))
                                                         "DeleteBucketInventoryConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-bucket-inventory-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-lifecycle
@@ -9833,7 +9893,14 @@
                                                              'bucket))))
                                                         "DeleteBucketLifecycle"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-bucket-lifecycle))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-metrics-configuration
@@ -9862,7 +9929,14 @@
                                                              'bucket))))
                                                         "DeleteBucketMetricsConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-bucket-metrics-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-policy
@@ -9890,7 +9964,14 @@
                                                              'bucket))))
                                                         "DeleteBucketPolicy"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-bucket-policy))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-replication
@@ -9919,7 +10000,14 @@
                                                              'bucket))))
                                                         "DeleteBucketReplication"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-bucket-replication))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-tagging
@@ -9947,7 +10035,14 @@
                                                              'bucket))))
                                                         "DeleteBucketTagging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-bucket-tagging))
 (common-lisp:progn
  (common-lisp:defun delete-bucket-website
@@ -9975,7 +10070,14 @@
                                                              'bucket))))
                                                         "DeleteBucketWebsite"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-bucket-website))
 (common-lisp:progn
  (common-lisp:defun delete-object
@@ -10007,7 +10109,14 @@
                                                             'key)))
                                                         "DeleteObject"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-object))
 (common-lisp:progn
  (common-lisp:defun delete-object-tagging
@@ -10038,7 +10147,14 @@
                                                             'key)))
                                                         "DeleteObjectTagging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-object-tagging))
 (common-lisp:progn
  (common-lisp:defun delete-objects
@@ -10067,7 +10183,14 @@
                                                              'bucket))))
                                                         "DeleteObjects"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'delete-objects))
 (common-lisp:progn
  (common-lisp:defun get-bucket-accelerate-configuration
@@ -10096,7 +10219,14 @@
                                                              'bucket))))
                                                         "GetBucketAccelerateConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-accelerate-configuration))
 (common-lisp:progn
  (common-lisp:defun get-bucket-acl
@@ -10124,7 +10254,14 @@
                                                              'bucket))))
                                                         "GetBucketAcl"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-acl))
 (common-lisp:progn
  (common-lisp:defun get-bucket-analytics-configuration
@@ -10153,7 +10290,14 @@
                                                              'bucket))))
                                                         "GetBucketAnalyticsConfiguration"
                                                         "2006-03-01"))
-      "structure" common-lisp:nil 'common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-analytics-configuration))
 (common-lisp:progn
  (common-lisp:defun get-bucket-cors
@@ -10181,7 +10325,14 @@
                                                              'bucket))))
                                                         "GetBucketCors"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-cors))
 (common-lisp:progn
  (common-lisp:defun get-bucket-inventory-configuration
@@ -10210,7 +10361,14 @@
                                                              'bucket))))
                                                         "GetBucketInventoryConfiguration"
                                                         "2006-03-01"))
-      "structure" common-lisp:nil 'common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-inventory-configuration))
 (common-lisp:progn
  (common-lisp:defun get-bucket-lifecycle
@@ -10238,7 +10396,14 @@
                                                              'bucket))))
                                                         "GetBucketLifecycle"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-lifecycle))
 (common-lisp:progn
  (common-lisp:defun get-bucket-lifecycle-configuration
@@ -10267,7 +10432,14 @@
                                                              'bucket))))
                                                         "GetBucketLifecycleConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-lifecycle-configuration))
 (common-lisp:progn
  (common-lisp:defun get-bucket-location
@@ -10295,7 +10467,14 @@
                                                              'bucket))))
                                                         "GetBucketLocation"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-location))
 (common-lisp:progn
  (common-lisp:defun get-bucket-logging
@@ -10323,7 +10502,14 @@
                                                              'bucket))))
                                                         "GetBucketLogging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-logging))
 (common-lisp:progn
  (common-lisp:defun get-bucket-metrics-configuration
@@ -10352,7 +10538,14 @@
                                                              'bucket))))
                                                         "GetBucketMetricsConfiguration"
                                                         "2006-03-01"))
-      "structure" common-lisp:nil 'common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-metrics-configuration))
 (common-lisp:progn
  (common-lisp:defun get-bucket-notification
@@ -10381,7 +10574,14 @@
                                                              'bucket))))
                                                         "GetBucketNotification"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-notification))
 (common-lisp:progn
  (common-lisp:defun get-bucket-notification-configuration
@@ -10410,7 +10610,14 @@
                                                              'bucket))))
                                                         "GetBucketNotificationConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-notification-configuration))
 (common-lisp:progn
  (common-lisp:defun get-bucket-policy
@@ -10438,7 +10645,14 @@
                                                              'bucket))))
                                                         "GetBucketPolicy"
                                                         "2006-03-01"))
-      "string" common-lisp:nil 'common-lisp:nil)))
+      "string" common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-policy))
 (common-lisp:progn
  (common-lisp:defun get-bucket-replication
@@ -10466,7 +10680,14 @@
                                                              'bucket))))
                                                         "GetBucketReplication"
                                                         "2006-03-01"))
-      "structure" common-lisp:nil 'common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-replication))
 (common-lisp:progn
  (common-lisp:defun get-bucket-request-payment
@@ -10495,7 +10716,14 @@
                                                              'bucket))))
                                                         "GetBucketRequestPayment"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-request-payment))
 (common-lisp:progn
  (common-lisp:defun get-bucket-tagging
@@ -10523,7 +10751,14 @@
                                                              'bucket))))
                                                         "GetBucketTagging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-tagging))
 (common-lisp:progn
  (common-lisp:defun get-bucket-versioning
@@ -10551,7 +10786,14 @@
                                                              'bucket))))
                                                         "GetBucketVersioning"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-versioning))
 (common-lisp:progn
  (common-lisp:defun get-bucket-website
@@ -10579,7 +10821,14 @@
                                                              'bucket))))
                                                         "GetBucketWebsite"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-bucket-website))
 (common-lisp:progn
  (common-lisp:defun get-object
@@ -10622,7 +10871,14 @@
                                                             'key)))
                                                         "GetObject"
                                                         "2006-03-01"))
-      "blob" common-lisp:nil '(("NoSuchKey" . no-such-key)))))
+      "blob" common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-object))
 (common-lisp:progn
  (common-lisp:defun get-object-acl
@@ -10654,7 +10910,14 @@
                                                             'key)))
                                                         "GetObjectAcl"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil '(("NoSuchKey" . no-such-key)))))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-object-acl))
 (common-lisp:progn
  (common-lisp:defun get-object-tagging
@@ -10685,7 +10948,14 @@
                                                             'key)))
                                                         "GetObjectTagging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-object-tagging))
 (common-lisp:progn
  (common-lisp:defun get-object-torrent
@@ -10716,7 +10986,14 @@
                                                             'key)))
                                                         "GetObjectTorrent"
                                                         "2006-03-01"))
-      "blob" common-lisp:nil 'common-lisp:nil)))
+      "blob" common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'get-object-torrent))
 (common-lisp:progn
  (common-lisp:defun head-bucket
@@ -10744,7 +11021,14 @@
                                                              'bucket))))
                                                         "HeadBucket"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil '(("NoSuchBucket" . no-such-bucket)))))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'head-bucket))
 (common-lisp:progn
  (common-lisp:defun head-object
@@ -10781,7 +11065,14 @@
                                                             'key)))
                                                         "HeadObject"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil '(("NoSuchKey" . no-such-key)))))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'head-object))
 (common-lisp:progn
  (common-lisp:defun list-bucket-analytics-configurations
@@ -10810,7 +11101,14 @@
                                                              'bucket))))
                                                         "ListBucketAnalyticsConfigurations"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'list-bucket-analytics-configurations))
 (common-lisp:progn
  (common-lisp:defun list-bucket-inventory-configurations
@@ -10839,7 +11137,14 @@
                                                              'bucket))))
                                                         "ListBucketInventoryConfigurations"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'list-bucket-inventory-configurations))
 (common-lisp:progn
  (common-lisp:defun list-bucket-metrics-configurations
@@ -10868,7 +11173,14 @@
                                                              'bucket))))
                                                         "ListBucketMetricsConfigurations"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'list-bucket-metrics-configurations))
 (common-lisp:progn
  (common-lisp:defun list-buckets ()
@@ -10877,7 +11189,13 @@
      (common-lisp:make-instance 's3-request :method "GET" :path "/" :params
                                 `(("Action" ,@"ListBuckets")
                                   ("Version" ,@"2006-03-01"))))
-    common-lisp:nil common-lisp:nil 'common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("BucketAlreadyExists" . bucket-already-exists)
+      ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+      ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+      ("NoSuchUpload" . no-such-upload)
+      ("ObjectAlreadyInActiveTierError" . object-already-in-active-tier-error)
+      ("ObjectNotInActiveTierError" . object-not-in-active-tier-error))))
  (common-lisp:export 'list-buckets))
 (common-lisp:progn
  (common-lisp:defun list-multipart-uploads
@@ -10908,7 +11226,14 @@
                                                              'bucket))))
                                                         "ListMultipartUploads"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'list-multipart-uploads))
 (common-lisp:progn
  (common-lisp:defun list-object-versions
@@ -10939,7 +11264,14 @@
                                                              'bucket))))
                                                         "ListObjectVersions"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'list-object-versions))
 (common-lisp:progn
  (common-lisp:defun list-objects
@@ -10970,7 +11302,14 @@
                                                              'bucket))))
                                                         "ListObjects"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil '(("NoSuchBucket" . no-such-bucket)))))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'list-objects))
 (common-lisp:progn
  (common-lisp:defun list-objects-v2
@@ -11002,7 +11341,14 @@
                                                              'bucket))))
                                                         "ListObjectsV2"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil '(("NoSuchBucket" . no-such-bucket)))))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'list-objects-v2))
 (common-lisp:progn
  (common-lisp:defun list-parts
@@ -11036,7 +11382,14 @@
                                                             'key)))
                                                         "ListParts"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'list-parts))
 (common-lisp:progn
  (common-lisp:defun put-bucket-accelerate-configuration
@@ -11066,7 +11419,14 @@
                                                              'bucket))))
                                                         "PutBucketAccelerateConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-accelerate-configuration))
 (common-lisp:progn
  (common-lisp:defun put-bucket-acl
@@ -11098,7 +11458,14 @@
                                                              'bucket))))
                                                         "PutBucketAcl"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-acl))
 (common-lisp:progn
  (common-lisp:defun put-bucket-analytics-configuration
@@ -11128,7 +11495,14 @@
                                                              'bucket))))
                                                         "PutBucketAnalyticsConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-analytics-configuration))
 (common-lisp:progn
  (common-lisp:defun put-bucket-cors
@@ -11157,7 +11531,14 @@
                                                              'bucket))))
                                                         "PutBucketCors"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-cors))
 (common-lisp:progn
  (common-lisp:defun put-bucket-inventory-configuration
@@ -11187,7 +11568,14 @@
                                                              'bucket))))
                                                         "PutBucketInventoryConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-inventory-configuration))
 (common-lisp:progn
  (common-lisp:defun put-bucket-lifecycle
@@ -11217,7 +11605,14 @@
                                                              'bucket))))
                                                         "PutBucketLifecycle"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-lifecycle))
 (common-lisp:progn
  (common-lisp:defun put-bucket-lifecycle-configuration
@@ -11246,7 +11641,14 @@
                                                              'bucket))))
                                                         "PutBucketLifecycleConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-lifecycle-configuration))
 (common-lisp:progn
  (common-lisp:defun put-bucket-logging
@@ -11275,7 +11677,14 @@
                                                              'bucket))))
                                                         "PutBucketLogging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-logging))
 (common-lisp:progn
  (common-lisp:defun put-bucket-metrics-configuration
@@ -11305,7 +11714,14 @@
                                                              'bucket))))
                                                         "PutBucketMetricsConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-metrics-configuration))
 (common-lisp:progn
  (common-lisp:defun put-bucket-notification
@@ -11335,7 +11751,14 @@
                                                              'bucket))))
                                                         "PutBucketNotification"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-notification))
 (common-lisp:progn
  (common-lisp:defun put-bucket-notification-configuration
@@ -11365,7 +11788,14 @@
                                                              'bucket))))
                                                         "PutBucketNotificationConfiguration"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-notification-configuration))
 (common-lisp:progn
  (common-lisp:defun put-bucket-policy
@@ -11393,7 +11823,14 @@
                                                              'bucket))))
                                                         "PutBucketPolicy"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-policy))
 (common-lisp:progn
  (common-lisp:defun put-bucket-replication
@@ -11423,7 +11860,14 @@
                                                              'bucket))))
                                                         "PutBucketReplication"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-replication))
 (common-lisp:progn
  (common-lisp:defun put-bucket-request-payment
@@ -11454,7 +11898,14 @@
                                                              'bucket))))
                                                         "PutBucketRequestPayment"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-request-payment))
 (common-lisp:progn
  (common-lisp:defun put-bucket-tagging
@@ -11482,7 +11933,14 @@
                                                              'bucket))))
                                                         "PutBucketTagging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-tagging))
 (common-lisp:progn
  (common-lisp:defun put-bucket-versioning
@@ -11512,7 +11970,14 @@
                                                              'bucket))))
                                                         "PutBucketVersioning"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-versioning))
 (common-lisp:progn
  (common-lisp:defun put-bucket-website
@@ -11541,7 +12006,14 @@
                                                              'bucket))))
                                                         "PutBucketWebsite"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-bucket-website))
 (common-lisp:progn
  (common-lisp:defun put-object
@@ -11585,7 +12057,14 @@
                                                             'key)))
                                                         "PutObject"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-object))
 (common-lisp:progn
  (common-lisp:defun put-object-acl
@@ -11621,7 +12100,14 @@
                                                             'key)))
                                                         "PutObjectAcl"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil '(("NoSuchKey" . no-such-key)))))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-object-acl))
 (common-lisp:progn
  (common-lisp:defun put-object-tagging
@@ -11654,7 +12140,14 @@
                                                             'key)))
                                                         "PutObjectTagging"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'put-object-tagging))
 (common-lisp:progn
  (common-lisp:defun restore-object
@@ -11689,8 +12182,13 @@
                                                         "RestoreObject"
                                                         "2006-03-01"))
       common-lisp:nil common-lisp:nil
-      '(("ObjectAlreadyInActiveTierError"
-         . object-already-in-active-tier-error)))))
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'restore-object))
 (common-lisp:progn
  (common-lisp:defun upload-part
@@ -11726,7 +12224,14 @@
                                                             'key)))
                                                         "UploadPart"
                                                         "2006-03-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'upload-part))
 (common-lisp:progn
  (common-lisp:defun upload-part-copy
@@ -11770,5 +12275,12 @@
                                                             'key)))
                                                         "UploadPartCopy"
                                                         "2006-03-01"))
-      "structure" common-lisp:nil 'common-lisp:nil)))
+      "structure" common-lisp:nil
+      '(("BucketAlreadyExists" . bucket-already-exists)
+        ("BucketAlreadyOwnedByYou" . bucket-already-owned-by-you)
+        ("NoSuchBucket" . no-such-bucket) ("NoSuchKey" . no-such-key)
+        ("NoSuchUpload" . no-such-upload)
+        ("ObjectAlreadyInActiveTierError"
+         . object-already-in-active-tier-error)
+        ("ObjectNotInActiveTierError" . object-not-in-active-tier-error)))))
  (common-lisp:export 'upload-part-copy))

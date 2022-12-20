@@ -5869,7 +5869,25 @@
                                                         "CancelUpdateStack"
                                                         "2010-05-15"))
       common-lisp:nil common-lisp:nil
-      '(("TokenAlreadyExistsException" . token-already-exists-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'cancel-update-stack))
 (common-lisp:progn
  (common-lisp:defun continue-update-rollback
@@ -5891,7 +5909,25 @@
                                                         "ContinueUpdateRollback"
                                                         "2010-05-15"))
       common-lisp:nil "ContinueUpdateRollbackResult"
-      '(("TokenAlreadyExistsException" . token-already-exists-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'continue-update-rollback))
 (common-lisp:progn
  (common-lisp:defun create-change-set
@@ -5918,9 +5954,24 @@
                                                         "2010-05-15"))
       common-lisp:nil "CreateChangeSetResult"
       '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
         ("InsufficientCapabilitiesException"
          . insufficient-capabilities-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'create-change-set))
 (common-lisp:progn
  (common-lisp:defun create-stack
@@ -5947,11 +5998,25 @@
                                                         "CreateStack"
                                                         "2010-05-15"))
       common-lisp:nil "CreateStackResult"
-      '(("LimitExceededException" . limit-exceeded-exception)
-        ("AlreadyExistsException" . already-exists-exception)
-        ("TokenAlreadyExistsException" . token-already-exists-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
         ("InsufficientCapabilitiesException"
-         . insufficient-capabilities-exception)))))
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'create-stack))
 (common-lisp:progn
  (common-lisp:defun create-stack-instances
@@ -5973,13 +6038,25 @@
                                                         "CreateStackInstances"
                                                         "2010-05-15"))
       common-lisp:nil "CreateStackInstancesResult"
-      '(("StackSetNotFoundException" . stack-set-not-found-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
         ("OperationIdAlreadyExistsException"
          . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
         ("StaleRequestException" . stale-request-exception)
-        ("InvalidOperationException" . invalid-operation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'create-stack-instances))
 (common-lisp:progn
  (common-lisp:defun create-stack-set
@@ -6002,9 +6079,25 @@
                                                         "CreateStackSet"
                                                         "2010-05-15"))
       common-lisp:nil "CreateStackSetResult"
-      '(("NameAlreadyExistsException" . name-already-exists-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
         ("CreatedButModifiedException" . created-but-modified-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'create-stack-set))
 (common-lisp:progn
  (common-lisp:defun delete-change-set
@@ -6023,8 +6116,25 @@
                                                         "DeleteChangeSet"
                                                         "2010-05-15"))
       common-lisp:nil "DeleteChangeSetResult"
-      '(("InvalidChangeSetStatusException"
-         . invalid-change-set-status-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'delete-change-set))
 (common-lisp:progn
  (common-lisp:defun delete-stack
@@ -6046,7 +6156,25 @@
                                                         "DeleteStack"
                                                         "2010-05-15"))
       common-lisp:nil common-lisp:nil
-      '(("TokenAlreadyExistsException" . token-already-exists-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'delete-stack))
 (common-lisp:progn
  (common-lisp:defun delete-stack-instances
@@ -6068,12 +6196,25 @@
                                                         "DeleteStackInstances"
                                                         "2010-05-15"))
       common-lisp:nil "DeleteStackInstancesResult"
-      '(("StackSetNotFoundException" . stack-set-not-found-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
         ("OperationIdAlreadyExistsException"
          . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
         ("StaleRequestException" . stale-request-exception)
-        ("InvalidOperationException" . invalid-operation-exception)))))
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'delete-stack-instances))
 (common-lisp:progn
  (common-lisp:defun delete-stack-set
@@ -6092,8 +6233,25 @@
                                                         "DeleteStackSet"
                                                         "2010-05-15"))
       common-lisp:nil "DeleteStackSetResult"
-      '(("StackSetNotEmptyException" . stack-set-not-empty-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'delete-stack-set))
 (common-lisp:progn
  (common-lisp:defun describe-account-limits
@@ -6111,7 +6269,26 @@
                                                         "POST" "/"
                                                         "DescribeAccountLimits"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeAccountLimitsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeAccountLimitsResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'describe-account-limits))
 (common-lisp:progn
  (common-lisp:defun describe-change-set
@@ -6131,7 +6308,25 @@
                                                         "DescribeChangeSet"
                                                         "2010-05-15"))
       common-lisp:nil "DescribeChangeSetResult"
-      '(("ChangeSetNotFoundException" . change-set-not-found-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'describe-change-set))
 (common-lisp:progn
  (common-lisp:defun describe-stack-events
@@ -6149,7 +6344,26 @@
                                                         "POST" "/"
                                                         "DescribeStackEvents"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeStackEventsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeStackEventsResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'describe-stack-events))
 (common-lisp:progn
  (common-lisp:defun describe-stack-instance
@@ -6171,9 +6385,25 @@
                                                         "DescribeStackInstance"
                                                         "2010-05-15"))
       common-lisp:nil "DescribeStackInstanceResult"
-      '(("StackSetNotFoundException" . stack-set-not-found-exception)
-        ("StackInstanceNotFoundException"
-         . stack-instance-not-found-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'describe-stack-instance))
 (common-lisp:progn
  (common-lisp:defun describe-stack-resource
@@ -6191,7 +6421,26 @@
                                                         "POST" "/"
                                                         "DescribeStackResource"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeStackResourceResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeStackResourceResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'describe-stack-resource))
 (common-lisp:progn
  (common-lisp:defun describe-stack-resources
@@ -6212,7 +6461,26 @@
                                                         "POST" "/"
                                                         "DescribeStackResources"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeStackResourcesResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeStackResourcesResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'describe-stack-resources))
 (common-lisp:progn
  (common-lisp:defun describe-stack-set
@@ -6231,7 +6499,25 @@
                                                         "DescribeStackSet"
                                                         "2010-05-15"))
       common-lisp:nil "DescribeStackSetResult"
-      '(("StackSetNotFoundException" . stack-set-not-found-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'describe-stack-set))
 (common-lisp:progn
  (common-lisp:defun describe-stack-set-operation
@@ -6251,8 +6537,25 @@
                                                         "DescribeStackSetOperation"
                                                         "2010-05-15"))
       common-lisp:nil "DescribeStackSetOperationResult"
-      '(("StackSetNotFoundException" . stack-set-not-found-exception)
-        ("OperationNotFoundException" . operation-not-found-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'describe-stack-set-operation))
 (common-lisp:progn
  (common-lisp:defun describe-stacks
@@ -6270,7 +6573,26 @@
                                                         "POST" "/"
                                                         "DescribeStacks"
                                                         "2010-05-15"))
-      common-lisp:nil "DescribeStacksResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeStacksResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'describe-stacks))
 (common-lisp:progn
  (common-lisp:defun estimate-template-cost
@@ -6289,7 +6611,26 @@
                                                         "POST" "/"
                                                         "EstimateTemplateCost"
                                                         "2010-05-15"))
-      common-lisp:nil "EstimateTemplateCostResult" 'common-lisp:nil)))
+      common-lisp:nil "EstimateTemplateCostResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'estimate-template-cost))
 (common-lisp:progn
  (common-lisp:defun execute-change-set
@@ -6310,11 +6651,24 @@
                                                         "ExecuteChangeSet"
                                                         "2010-05-15"))
       common-lisp:nil "ExecuteChangeSetResult"
-      '(("InvalidChangeSetStatusException"
-         . invalid-change-set-status-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
         ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
         ("InsufficientCapabilitiesException"
          . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
         ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'execute-change-set))
 (common-lisp:progn
@@ -6333,7 +6687,26 @@
                                                         "POST" "/"
                                                         "GetStackPolicy"
                                                         "2010-05-15"))
-      common-lisp:nil "GetStackPolicyResult" 'common-lisp:nil)))
+      common-lisp:nil "GetStackPolicyResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'get-stack-policy))
 (common-lisp:progn
  (common-lisp:defun get-template
@@ -6354,7 +6727,25 @@
                                                         "GetTemplate"
                                                         "2010-05-15"))
       common-lisp:nil "GetTemplateResult"
-      '(("ChangeSetNotFoundException" . change-set-not-found-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'get-template))
 (common-lisp:progn
  (common-lisp:defun get-template-summary
@@ -6376,7 +6767,25 @@
                                                         "GetTemplateSummary"
                                                         "2010-05-15"))
       common-lisp:nil "GetTemplateSummaryResult"
-      '(("StackSetNotFoundException" . stack-set-not-found-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'get-template-summary))
 (common-lisp:progn
  (common-lisp:defun list-change-sets
@@ -6394,7 +6803,26 @@
                                                         "POST" "/"
                                                         "ListChangeSets"
                                                         "2010-05-15"))
-      common-lisp:nil "ListChangeSetsResult" 'common-lisp:nil)))
+      common-lisp:nil "ListChangeSetsResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'list-change-sets))
 (common-lisp:progn
  (common-lisp:defun list-exports
@@ -6412,7 +6840,26 @@
                                                         "POST" "/"
                                                         "ListExports"
                                                         "2010-05-15"))
-      common-lisp:nil "ListExportsResult" 'common-lisp:nil)))
+      common-lisp:nil "ListExportsResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'list-exports))
 (common-lisp:progn
  (common-lisp:defun list-imports
@@ -6430,7 +6877,26 @@
                                                         "POST" "/"
                                                         "ListImports"
                                                         "2010-05-15"))
-      common-lisp:nil "ListImportsResult" 'common-lisp:nil)))
+      common-lisp:nil "ListImportsResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'list-imports))
 (common-lisp:progn
  (common-lisp:defun list-stack-instances
@@ -6452,7 +6918,25 @@
                                                         "ListStackInstances"
                                                         "2010-05-15"))
       common-lisp:nil "ListStackInstancesResult"
-      '(("StackSetNotFoundException" . stack-set-not-found-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'list-stack-instances))
 (common-lisp:progn
  (common-lisp:defun list-stack-resources
@@ -6470,7 +6954,26 @@
                                                         "POST" "/"
                                                         "ListStackResources"
                                                         "2010-05-15"))
-      common-lisp:nil "ListStackResourcesResult" 'common-lisp:nil)))
+      common-lisp:nil "ListStackResourcesResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'list-stack-resources))
 (common-lisp:progn
  (common-lisp:defun list-stack-set-operation-results
@@ -6492,8 +6995,25 @@
                                                         "ListStackSetOperationResults"
                                                         "2010-05-15"))
       common-lisp:nil "ListStackSetOperationResultsResult"
-      '(("StackSetNotFoundException" . stack-set-not-found-exception)
-        ("OperationNotFoundException" . operation-not-found-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'list-stack-set-operation-results))
 (common-lisp:progn
  (common-lisp:defun list-stack-set-operations
@@ -6513,7 +7033,25 @@
                                                         "ListStackSetOperations"
                                                         "2010-05-15"))
       common-lisp:nil "ListStackSetOperationsResult"
-      '(("StackSetNotFoundException" . stack-set-not-found-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'list-stack-set-operations))
 (common-lisp:progn
  (common-lisp:defun list-stack-sets
@@ -6531,7 +7069,26 @@
                                                         "POST" "/"
                                                         "ListStackSets"
                                                         "2010-05-15"))
-      common-lisp:nil "ListStackSetsResult" 'common-lisp:nil)))
+      common-lisp:nil "ListStackSetsResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'list-stack-sets))
 (common-lisp:progn
  (common-lisp:defun list-stacks
@@ -6548,7 +7105,26 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListStacks"
                                                         "2010-05-15"))
-      common-lisp:nil "ListStacksResult" 'common-lisp:nil)))
+      common-lisp:nil "ListStacksResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'list-stacks))
 (common-lisp:progn
  (common-lisp:defun set-stack-policy
@@ -6568,7 +7144,26 @@
                                                         "POST" "/"
                                                         "SetStackPolicy"
                                                         "2010-05-15"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'set-stack-policy))
 (common-lisp:progn
  (common-lisp:defun signal-resource
@@ -6588,7 +7183,26 @@
                                                         "POST" "/"
                                                         "SignalResource"
                                                         "2010-05-15"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'signal-resource))
 (common-lisp:progn
  (common-lisp:defun stop-stack-set-operation
@@ -6607,9 +7221,25 @@
                                                         "StopStackSetOperation"
                                                         "2010-05-15"))
       common-lisp:nil "StopStackSetOperationResult"
-      '(("StackSetNotFoundException" . stack-set-not-found-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
         ("OperationNotFoundException" . operation-not-found-exception)
-        ("InvalidOperationException" . invalid-operation-exception)))))
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'stop-stack-set-operation))
 (common-lisp:progn
  (common-lisp:defun update-stack
@@ -6637,8 +7267,24 @@
                                                         "UpdateStack"
                                                         "2010-05-15"))
       common-lisp:nil "UpdateStackResult"
-      '(("InsufficientCapabilitiesException"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
          . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
         ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'update-stack))
 (common-lisp:progn
@@ -6663,12 +7309,25 @@
                                                         "UpdateStackSet"
                                                         "2010-05-15"))
       common-lisp:nil "UpdateStackSetResult"
-      '(("StackSetNotFoundException" . stack-set-not-found-exception)
-        ("OperationInProgressException" . operation-in-progress-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
         ("OperationIdAlreadyExistsException"
          . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
         ("StaleRequestException" . stale-request-exception)
-        ("InvalidOperationException" . invalid-operation-exception)))))
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'update-stack-set))
 (common-lisp:progn
  (common-lisp:defun validate-template
@@ -6686,5 +7345,24 @@
                                                         "POST" "/"
                                                         "ValidateTemplate"
                                                         "2010-05-15"))
-      common-lisp:nil "ValidateTemplateResult" 'common-lisp:nil)))
+      common-lisp:nil "ValidateTemplateResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("ChangeSetNotFoundException" . change-set-not-found-exception)
+        ("CreatedButModifiedException" . created-but-modified-exception)
+        ("InsufficientCapabilitiesException"
+         . insufficient-capabilities-exception)
+        ("InvalidChangeSetStatusException"
+         . invalid-change-set-status-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NameAlreadyExistsException" . name-already-exists-exception)
+        ("OperationIdAlreadyExistsException"
+         . operation-id-already-exists-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("OperationNotFoundException" . operation-not-found-exception)
+        ("StackInstanceNotFoundException" . stack-instance-not-found-exception)
+        ("StackSetNotEmptyException" . stack-set-not-empty-exception)
+        ("StackSetNotFoundException" . stack-set-not-found-exception)
+        ("StaleRequestException" . stale-request-exception)
+        ("TokenAlreadyExistsException" . token-already-exists-exception)))))
  (common-lisp:export 'validate-template))

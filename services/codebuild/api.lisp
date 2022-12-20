@@ -1821,7 +1821,10 @@
                                                         "BatchGetBuilds"
                                                         "2016-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)))))
+      '(("AccountLimitExceededException" . account-limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'batch-get-builds))
 (common-lisp:progn
  (common-lisp:defun batch-get-projects
@@ -1840,7 +1843,10 @@
                                                         "BatchGetProjects"
                                                         "2016-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)))))
+      '(("AccountLimitExceededException" . account-limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'batch-get-projects))
 (common-lisp:progn
  (common-lisp:defun create-project
@@ -1863,10 +1869,10 @@
                                                         "CreateProject"
                                                         "2016-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccountLimitExceededException" . account-limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
         ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("AccountLimitExceededException"
-         . account-limit-exceeded-exception)))))
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'create-project))
 (common-lisp:progn
  (common-lisp:defun delete-project
@@ -1885,7 +1891,10 @@
                                                         "DeleteProject"
                                                         "2016-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)))))
+      '(("AccountLimitExceededException" . account-limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-project))
 (common-lisp:progn
  (common-lisp:defun list-builds
@@ -1903,7 +1912,10 @@
                                                         "POST" "/" "ListBuilds"
                                                         "2016-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)))))
+      '(("AccountLimitExceededException" . account-limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-builds))
 (common-lisp:progn
  (common-lisp:defun list-builds-for-project
@@ -1923,7 +1935,9 @@
                                                         "ListBuildsForProject"
                                                         "2016-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccountLimitExceededException" . account-limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-builds-for-project))
 (common-lisp:progn
@@ -1934,7 +1948,11 @@
                                 :params
                                 `(("Action" ,@"ListCuratedEnvironmentImages")
                                   ("Version" ,@"2016-10-06"))))
-    common-lisp:nil common-lisp:nil 'common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("AccountLimitExceededException" . account-limit-exceeded-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+      ("ResourceNotFoundException" . resource-not-found-exception))))
  (common-lisp:export 'list-curated-environment-images))
 (common-lisp:progn
  (common-lisp:defun list-projects
@@ -1953,7 +1971,10 @@
                                                         "ListProjects"
                                                         "2016-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)))))
+      '(("AccountLimitExceededException" . account-limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-projects))
 (common-lisp:progn
  (common-lisp:defun start-build
@@ -1976,10 +1997,10 @@
                                                         "POST" "/" "StartBuild"
                                                         "2016-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("AccountLimitExceededException"
-         . account-limit-exceeded-exception)))))
+      '(("AccountLimitExceededException" . account-limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'start-build))
 (common-lisp:progn
  (common-lisp:defun stop-build
@@ -1997,7 +2018,9 @@
                                                         "POST" "/" "StopBuild"
                                                         "2016-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccountLimitExceededException" . account-limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'stop-build))
 (common-lisp:progn
@@ -2021,6 +2044,8 @@
                                                         "UpdateProject"
                                                         "2016-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccountLimitExceededException" . account-limit-exceeded-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'update-project))

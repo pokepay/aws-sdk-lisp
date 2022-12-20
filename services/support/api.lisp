@@ -2232,11 +2232,16 @@
                                                         "AddAttachmentsToSet"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
         ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
         ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
-        ("AttachmentLimitExceeded" . attachment-limit-exceeded)))))
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'add-attachments-to-set))
 (common-lisp:progn
  (common-lisp:defun add-communication-to-case
@@ -2259,10 +2264,16 @@
                                                         "AddCommunicationToCase"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("CaseIdNotFound" . case-id-not-found)
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
         ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
-        ("AttachmentSetExpired" . attachment-set-expired)))))
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'add-communication-to-case))
 (common-lisp:progn
  (common-lisp:defun create-case
@@ -2285,10 +2296,16 @@
                                                         "POST" "/" "CreateCase"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
         ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
-        ("AttachmentSetExpired" . attachment-set-expired)))))
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'create-case))
 (common-lisp:progn
  (common-lisp:defun describe-attachment
@@ -2307,10 +2324,16 @@
                                                         "DescribeAttachment"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
         ("DescribeAttachmentLimitExceeded"
          . describe-attachment-limit-exceeded)
-        ("AttachmentIdNotFound" . attachment-id-not-found)))))
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-attachment))
 (common-lisp:progn
  (common-lisp:defun describe-cases
@@ -2334,8 +2357,16 @@
                                                         "DescribeCases"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("CaseIdNotFound" . case-id-not-found)))))
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-cases))
 (common-lisp:progn
  (common-lisp:defun describe-communications
@@ -2357,8 +2388,16 @@
                                                         "DescribeCommunications"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("CaseIdNotFound" . case-id-not-found)))))
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-communications))
 (common-lisp:progn
  (common-lisp:defun describe-services
@@ -2377,7 +2416,16 @@
                                                         "DescribeServices"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-services))
 (common-lisp:progn
  (common-lisp:defun describe-severity-levels
@@ -2396,7 +2444,16 @@
                                                         "DescribeSeverityLevels"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-severity-levels))
 (common-lisp:progn
  (common-lisp:defun describe-trusted-advisor-check-refresh-statuses
@@ -2416,7 +2473,16 @@
                                                         "DescribeTrustedAdvisorCheckRefreshStatuses"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-trusted-advisor-check-refresh-statuses))
 (common-lisp:progn
  (common-lisp:defun describe-trusted-advisor-check-result
@@ -2436,7 +2502,16 @@
                                                         "DescribeTrustedAdvisorCheckResult"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-trusted-advisor-check-result))
 (common-lisp:progn
  (common-lisp:defun describe-trusted-advisor-check-summaries
@@ -2456,7 +2531,16 @@
                                                         "DescribeTrustedAdvisorCheckSummaries"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-trusted-advisor-check-summaries))
 (common-lisp:progn
  (common-lisp:defun describe-trusted-advisor-checks
@@ -2476,7 +2560,16 @@
                                                         "DescribeTrustedAdvisorChecks"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'describe-trusted-advisor-checks))
 (common-lisp:progn
  (common-lisp:defun refresh-trusted-advisor-check
@@ -2496,7 +2589,16 @@
                                                         "RefreshTrustedAdvisorCheck"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'refresh-trusted-advisor-check))
 (common-lisp:progn
  (common-lisp:defun resolve-case
@@ -2515,6 +2617,14 @@
                                                         "ResolveCase"
                                                         "2013-04-15"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("CaseIdNotFound" . case-id-not-found)))))
+      '(("AttachmentIdNotFound" . attachment-id-not-found)
+        ("AttachmentLimitExceeded" . attachment-limit-exceeded)
+        ("AttachmentSetExpired" . attachment-set-expired)
+        ("AttachmentSetIdNotFound" . attachment-set-id-not-found)
+        ("AttachmentSetSizeLimitExceeded" . attachment-set-size-limit-exceeded)
+        ("CaseCreationLimitExceeded" . case-creation-limit-exceeded)
+        ("CaseIdNotFound" . case-id-not-found)
+        ("DescribeAttachmentLimitExceeded"
+         . describe-attachment-limit-exceeded)
+        ("InternalServerError" . internal-server-error)))))
  (common-lisp:export 'resolve-case))

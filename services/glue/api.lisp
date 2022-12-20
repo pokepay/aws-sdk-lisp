@@ -9516,13 +9516,28 @@
                                                         "BatchCreatePartition"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
         ("ResourceNumberLimitExceededException"
          . resource-number-limit-exceeded-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'batch-create-partition))
 (common-lisp:progn
  (common-lisp:defun batch-delete-connection
@@ -9542,8 +9557,28 @@
                                                         "BatchDeleteConnection"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'batch-delete-connection))
 (common-lisp:progn
  (common-lisp:defun batch-delete-partition
@@ -9565,10 +9600,28 @@
                                                         "BatchDeletePartition"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'batch-delete-partition))
 (common-lisp:progn
  (common-lisp:defun batch-delete-table
@@ -9589,10 +9642,28 @@
                                                         "BatchDeleteTable"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'batch-delete-table))
 (common-lisp:progn
  (common-lisp:defun batch-get-partition
@@ -9614,10 +9685,28 @@
                                                         "BatchGetPartition"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'batch-get-partition))
 (common-lisp:progn
  (common-lisp:defun create-classifier
@@ -9636,9 +9725,28 @@
                                                         "CreateClassifier"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'create-classifier))
 (common-lisp:progn
  (common-lisp:defun create-connection
@@ -9657,9 +9765,28 @@
                                                         "CreateConnection"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'create-connection))
 (common-lisp:progn
  (common-lisp:defun create-crawler
@@ -9682,11 +9809,28 @@
                                                         "CreateCrawler"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
         ("ResourceNumberLimitExceededException"
-         . resource-number-limit-exceeded-exception)))))
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'create-crawler))
 (common-lisp:progn
  (common-lisp:defun create-database
@@ -9705,12 +9849,28 @@
                                                         "CreateDatabase"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
         ("ResourceNumberLimitExceededException"
          . resource-number-limit-exceeded-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'create-database))
 (common-lisp:progn
  (common-lisp:defun create-dev-endpoint
@@ -9735,14 +9895,26 @@
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
         ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
         ("IdempotentParameterMismatchException"
          . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ValidationException" . validation-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
         ("ResourceNumberLimitExceededException"
-         . resource-number-limit-exceeded-exception)))))
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'create-dev-endpoint))
 (common-lisp:progn
  (common-lisp:defun create-job
@@ -9764,14 +9936,28 @@
                                                         "POST" "/" "CreateJob"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
         ("IdempotentParameterMismatchException"
          . idempotent-parameter-mismatch-exception)
-        ("AlreadyExistsException" . already-exists-exception)
         ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
         ("ResourceNumberLimitExceededException"
-         . resource-number-limit-exceeded-exception)))))
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'create-job))
 (common-lisp:progn
  (common-lisp:defun create-partition
@@ -9793,13 +9979,28 @@
                                                         "CreatePartition"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
         ("ResourceNumberLimitExceededException"
          . resource-number-limit-exceeded-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'create-partition))
 (common-lisp:progn
  (common-lisp:defun create-script
@@ -9818,9 +10019,28 @@
                                                         "CreateScript"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'create-script))
 (common-lisp:progn
  (common-lisp:defun create-table
@@ -9840,13 +10060,28 @@
                                                         "CreateTable"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
         ("ResourceNumberLimitExceededException"
          . resource-number-limit-exceeded-exception)
-        ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'create-table))
 (common-lisp:progn
  (common-lisp:defun create-trigger
@@ -9867,12 +10102,28 @@
                                                         "CreateTrigger"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
         ("ResourceNumberLimitExceededException"
-         . resource-number-limit-exceeded-exception)))))
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'create-trigger))
 (common-lisp:progn
  (common-lisp:defun create-user-defined-function
@@ -9893,11 +10144,28 @@
                                                         "CreateUserDefinedFunction"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("AlreadyExistsException" . already-exists-exception)
-        ("InvalidInputException" . invalid-input-exception)
-        ("InternalServiceException" . internal-service-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'create-user-defined-function))
 (common-lisp:progn
  (common-lisp:defun delete-classifier
@@ -9916,8 +10184,28 @@
                                                         "DeleteClassifier"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'delete-classifier))
 (common-lisp:progn
  (common-lisp:defun delete-connection
@@ -9936,8 +10224,28 @@
                                                         "DeleteConnection"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'delete-connection))
 (common-lisp:progn
  (common-lisp:defun delete-crawler
@@ -9956,10 +10264,28 @@
                                                         "DeleteCrawler"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
         ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
         ("SchedulerTransitioningException" . scheduler-transitioning-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'delete-crawler))
 (common-lisp:progn
  (common-lisp:defun delete-database
@@ -9978,10 +10304,28 @@
                                                         "DeleteDatabase"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'delete-database))
 (common-lisp:progn
  (common-lisp:defun delete-dev-endpoint
@@ -10000,10 +10344,28 @@
                                                         "DeleteDevEndpoint"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
-        ("InvalidInputException" . invalid-input-exception)))))
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'delete-dev-endpoint))
 (common-lisp:progn
  (common-lisp:defun delete-job
@@ -10021,9 +10383,28 @@
                                                         "POST" "/" "DeleteJob"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'delete-job))
 (common-lisp:progn
  (common-lisp:defun delete-partition
@@ -10045,10 +10426,28 @@
                                                         "DeletePartition"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'delete-partition))
 (common-lisp:progn
  (common-lisp:defun delete-table
@@ -10067,10 +10466,28 @@
                                                         "DeleteTable"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'delete-table))
 (common-lisp:progn
  (common-lisp:defun delete-trigger
@@ -10089,9 +10506,28 @@
                                                         "DeleteTrigger"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'delete-trigger))
 (common-lisp:progn
  (common-lisp:defun delete-user-defined-function
@@ -10112,10 +10548,28 @@
                                                         "DeleteUserDefinedFunction"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'delete-user-defined-function))
 (common-lisp:progn
  (common-lisp:defun get-catalog-import-status
@@ -10135,8 +10589,28 @@
                                                         "GetCatalogImportStatus"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-catalog-import-status))
 (common-lisp:progn
  (common-lisp:defun get-classifier
@@ -10155,8 +10629,28 @@
                                                         "GetClassifier"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-classifier))
 (common-lisp:progn
  (common-lisp:defun get-classifiers
@@ -10175,7 +10669,28 @@
                                                         "GetClassifiers"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("OperationTimeoutException" . operation-timeout-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-classifiers))
 (common-lisp:progn
  (common-lisp:defun get-connection
@@ -10194,8 +10709,28 @@
                                                         "GetConnection"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-connection))
 (common-lisp:progn
  (common-lisp:defun get-connections
@@ -10215,8 +10750,28 @@
                                                         "GetConnections"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-connections))
 (common-lisp:progn
  (common-lisp:defun get-crawler
@@ -10234,8 +10789,28 @@
                                                         "POST" "/" "GetCrawler"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-crawler))
 (common-lisp:progn
  (common-lisp:defun get-crawler-metrics
@@ -10255,7 +10830,28 @@
                                                         "GetCrawlerMetrics"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("OperationTimeoutException" . operation-timeout-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-crawler-metrics))
 (common-lisp:progn
  (common-lisp:defun get-crawlers
@@ -10274,7 +10870,28 @@
                                                         "GetCrawlers"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("OperationTimeoutException" . operation-timeout-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-crawlers))
 (common-lisp:progn
  (common-lisp:defun get-database
@@ -10293,10 +10910,28 @@
                                                         "GetDatabase"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-database))
 (common-lisp:progn
  (common-lisp:defun get-databases
@@ -10316,9 +10951,28 @@
                                                         "GetDatabases"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-databases))
 (common-lisp:progn
  (common-lisp:defun get-dataflow-graph
@@ -10337,9 +10991,28 @@
                                                         "GetDataflowGraph"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-dataflow-graph))
 (common-lisp:progn
  (common-lisp:defun get-dev-endpoint
@@ -10358,10 +11031,28 @@
                                                         "GetDevEndpoint"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
-        ("InvalidInputException" . invalid-input-exception)))))
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-dev-endpoint))
 (common-lisp:progn
  (common-lisp:defun get-dev-endpoints
@@ -10380,10 +11071,28 @@
                                                         "GetDevEndpoints"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
-        ("InvalidInputException" . invalid-input-exception)))))
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-dev-endpoints))
 (common-lisp:progn
  (common-lisp:defun get-job
@@ -10401,10 +11110,28 @@
                                                         "POST" "/" "GetJob"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-job))
 (common-lisp:progn
  (common-lisp:defun get-job-run
@@ -10423,10 +11150,28 @@
                                                         "POST" "/" "GetJobRun"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-job-run))
 (common-lisp:progn
  (common-lisp:defun get-job-runs
@@ -10445,10 +11190,28 @@
                                                         "POST" "/" "GetJobRuns"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-job-runs))
 (common-lisp:progn
  (common-lisp:defun get-jobs
@@ -10466,10 +11229,28 @@
                                                         "POST" "/" "GetJobs"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-jobs))
 (common-lisp:progn
  (common-lisp:defun get-mapping
@@ -10487,9 +11268,28 @@
                                                         "POST" "/" "GetMapping"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-mapping))
 (common-lisp:progn
  (common-lisp:defun get-partition
@@ -10511,10 +11311,28 @@
                                                         "GetPartition"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-partition))
 (common-lisp:progn
  (common-lisp:defun get-partitions
@@ -10536,10 +11354,28 @@
                                                         "GetPartitions"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-partitions))
 (common-lisp:progn
  (common-lisp:defun get-plan
@@ -10557,9 +11393,28 @@
                                                         "POST" "/" "GetPlan"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-plan))
 (common-lisp:progn
  (common-lisp:defun get-table
@@ -10577,10 +11432,28 @@
                                                         "POST" "/" "GetTable"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-table))
 (common-lisp:progn
  (common-lisp:defun get-table-versions
@@ -10602,10 +11475,28 @@
                                                         "GetTableVersions"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-table-versions))
 (common-lisp:progn
  (common-lisp:defun get-tables
@@ -10626,10 +11517,28 @@
                                                         "POST" "/" "GetTables"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-tables))
 (common-lisp:progn
  (common-lisp:defun get-trigger
@@ -10647,10 +11556,28 @@
                                                         "POST" "/" "GetTrigger"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-trigger))
 (common-lisp:progn
  (common-lisp:defun get-triggers
@@ -10671,10 +11598,28 @@
                                                         "GetTriggers"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-triggers))
 (common-lisp:progn
  (common-lisp:defun get-user-defined-function
@@ -10695,10 +11640,28 @@
                                                         "GetUserDefinedFunction"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-user-defined-function))
 (common-lisp:progn
  (common-lisp:defun get-user-defined-functions
@@ -10721,10 +11684,28 @@
                                                         "GetUserDefinedFunctions"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'get-user-defined-functions))
 (common-lisp:progn
  (common-lisp:defun import-catalog-to-glue
@@ -10743,8 +11724,28 @@
                                                         "ImportCatalogToGlue"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'import-catalog-to-glue))
 (common-lisp:progn
  (common-lisp:defun reset-job-bookmark
@@ -10763,10 +11764,28 @@
                                                         "ResetJobBookmark"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'reset-job-bookmark))
 (common-lisp:progn
  (common-lisp:defun start-crawler
@@ -10785,9 +11804,28 @@
                                                         "StartCrawler"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
         ("CrawlerRunningException" . crawler-running-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'start-crawler))
 (common-lisp:progn
  (common-lisp:defun start-crawler-schedule
@@ -10806,11 +11844,28 @@
                                                         "StartCrawlerSchedule"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
         ("SchedulerRunningException" . scheduler-running-exception)
         ("SchedulerTransitioningException" . scheduler-transitioning-exception)
-        ("NoScheduleException" . no-schedule-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'start-crawler-schedule))
 (common-lisp:progn
  (common-lisp:defun start-job-run
@@ -10831,14 +11886,28 @@
                                                         "StartJobRun"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
         ("ResourceNumberLimitExceededException"
          . resource-number-limit-exceeded-exception)
-        ("ConcurrentRunsExceededException"
-         . concurrent-runs-exceeded-exception)))))
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'start-job-run))
 (common-lisp:progn
  (common-lisp:defun start-trigger
@@ -10857,14 +11926,28 @@
                                                         "StartTrigger"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
-        ("InternalServiceException" . internal-service-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
         ("ResourceNumberLimitExceededException"
          . resource-number-limit-exceeded-exception)
-        ("ConcurrentRunsExceededException"
-         . concurrent-runs-exceeded-exception)))))
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'start-trigger))
 (common-lisp:progn
  (common-lisp:defun stop-crawler
@@ -10883,10 +11966,28 @@
                                                         "StopCrawler"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
         ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
         ("CrawlerStoppingException" . crawler-stopping-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'stop-crawler))
 (common-lisp:progn
  (common-lisp:defun stop-crawler-schedule
@@ -10905,10 +12006,28 @@
                                                         "StopCrawlerSchedule"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
         ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
         ("SchedulerTransitioningException" . scheduler-transitioning-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'stop-crawler-schedule))
 (common-lisp:progn
  (common-lisp:defun stop-trigger
@@ -10927,10 +12046,28 @@
                                                         "StopTrigger"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
-        ("InternalServiceException" . internal-service-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'stop-trigger))
 (common-lisp:progn
  (common-lisp:defun update-classifier
@@ -10949,10 +12086,28 @@
                                                         "UpdateClassifier"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
-        ("VersionMismatchException" . version-mismatch-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'update-classifier))
 (common-lisp:progn
  (common-lisp:defun update-connection
@@ -10972,9 +12127,28 @@
                                                         "UpdateConnection"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'update-connection))
 (common-lisp:progn
  (common-lisp:defun update-crawler
@@ -10997,11 +12171,28 @@
                                                         "UpdateCrawler"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
-        ("VersionMismatchException" . version-mismatch-exception)
-        ("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
         ("CrawlerRunningException" . crawler-running-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'update-crawler))
 (common-lisp:progn
  (common-lisp:defun update-crawler-schedule
@@ -11020,11 +12211,28 @@
                                                         "UpdateCrawlerSchedule"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("VersionMismatchException" . version-mismatch-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
         ("SchedulerTransitioningException" . scheduler-transitioning-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'update-crawler-schedule))
 (common-lisp:progn
  (common-lisp:defun update-database
@@ -11043,10 +12251,28 @@
                                                         "UpdateDatabase"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'update-database))
 (common-lisp:progn
  (common-lisp:defun update-dev-endpoint
@@ -11067,11 +12293,28 @@
                                                         "UpdateDevEndpoint"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ValidationException" . validation-exception)))))
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'update-dev-endpoint))
 (common-lisp:progn
  (common-lisp:defun update-job
@@ -11089,10 +12332,28 @@
                                                         "POST" "/" "UpdateJob"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'update-job))
 (common-lisp:progn
  (common-lisp:defun update-partition
@@ -11114,10 +12375,28 @@
                                                         "UpdatePartition"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'update-partition))
 (common-lisp:progn
  (common-lisp:defun update-table
@@ -11137,12 +12416,28 @@
                                                         "UpdateTable"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
         ("OperationTimeoutException" . operation-timeout-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'update-table))
 (common-lisp:progn
  (common-lisp:defun update-trigger
@@ -11161,10 +12456,28 @@
                                                         "UpdateTrigger"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
-        ("InternalServiceException" . internal-service-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
         ("EntityNotFoundException" . entity-not-found-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'update-trigger))
 (common-lisp:progn
  (common-lisp:defun update-user-defined-function
@@ -11187,8 +12500,26 @@
                                                         "UpdateUserDefinedFunction"
                                                         "2017-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("EntityNotFoundException" . entity-not-found-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AlreadyExistsException" . already-exists-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConcurrentRunsExceededException"
+         . concurrent-runs-exceeded-exception)
+        ("CrawlerNotRunningException" . crawler-not-running-exception)
+        ("CrawlerRunningException" . crawler-running-exception)
+        ("CrawlerStoppingException" . crawler-stopping-exception)
+        ("EntityNotFoundException" . entity-not-found-exception)
+        ("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServiceException" . internal-service-exception)
-        ("OperationTimeoutException" . operation-timeout-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("NoScheduleException" . no-schedule-exception)
+        ("OperationTimeoutException" . operation-timeout-exception)
+        ("ResourceNumberLimitExceededException"
+         . resource-number-limit-exceeded-exception)
+        ("SchedulerNotRunningException" . scheduler-not-running-exception)
+        ("SchedulerRunningException" . scheduler-running-exception)
+        ("SchedulerTransitioningException" . scheduler-transitioning-exception)
+        ("ValidationException" . validation-exception)
+        ("VersionMismatchException" . version-mismatch-exception)))))
  (common-lisp:export 'update-user-defined-function))

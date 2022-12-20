@@ -7,6 +7,8 @@
                 #:aws-request)
   (:import-from #:aws-sdk/request
                 #:request)
+  (:import-from #:aws-sdk/error
+                #:aws-error)
   (:import-from #:quri)
   (:import-from #:cl-ppcre
                 #:regex-replace-all
@@ -45,12 +47,14 @@
     (if (<= 400 status 599)
         (when (and body (/= 0 (length body)))
           (let* ((output (xmls-to-alist (xmls:parse-to-list (ensure-string body))))
-                 (error-alist (aget output "Error")))
-            (when-let ((error-class (aget error-map (first (aget error-alist "Code")))))
-              (error error-class
-                     :message (first (aget error-alist "Message"))
-                     :status status
-                     :body body))))
+                 (error-alist (aget output "Error"))
+                 (error-class (or (aget error-map (first (aget error-alist "Code")))
+                                  'aws-error)))
+            (error error-class
+                   :code (first (aget error-alist "Code"))
+                   :message (first (aget error-alist "Message"))
+                   :status status
+                   :body body)))
         (if (equal body-type "blob")
             body
             (when (and body (/= 0 (length body)))
@@ -82,11 +86,10 @@
                      ,@slots))
           path-pattern))))
 
-(defun compile-operation (service name version options params body-type)
+(defun compile-operation (service name version options params body-type error-map)
   (let* ((output (gethash "output" options))
          (method (gethash "method" (gethash "http" options)))
-         (request-uri (gethash "requestUri" (gethash "http" options)))
-         (errors (gethash "errors" options)))
+         (request-uri (gethash "requestUri" (gethash "http" options))))
     (if params
         (let ((input-shape-name (lispify (gethash "shape" (gethash "input" options)))))
           `(progn
@@ -101,9 +104,7 @@
                   ,body-type
                   ,(and output
                         (gethash "resultWrapper" output))
-                  ',(mapcar (lambda (error)
-                              (cons (gethash "shape" error) (lispify (gethash "shape" error))))
-                            errors))))
+                  ',error-map)))
              (export ',(lispify name))))
         `(progn
            (defun ,(lispify name) ()
@@ -116,7 +117,5 @@
               ,body-type
               ,(and output
                     (gethash "resultWrapper" output))
-              ',(mapcar (lambda (error)
-                          (cons (gethash "shape" error) (lispify (gethash "shape" error))))
-                        errors)))
+              ',error-map))
            (export ',(lispify name))))))

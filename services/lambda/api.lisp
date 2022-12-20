@@ -2661,12 +2661,32 @@
                                                         "AddPermission"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
         ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'add-permission))
 (common-lisp:progn
  (common-lisp:defun create-alias
@@ -2697,11 +2717,32 @@
                                                         "CreateAlias"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceConflictException" . resource-conflict-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'create-alias))
 (common-lisp:progn
  (common-lisp:defun create-event-source-mapping
@@ -2725,11 +2766,32 @@
                                                         "CreateEventSourceMapping"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
         ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'create-event-source-mapping))
 (common-lisp:progn
  (common-lisp:defun create-function
@@ -2755,12 +2817,32 @@
                                                         "CreateFunction"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
         ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("CodeStorageExceededException" . code-storage-exceeded-exception)))))
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'create-function))
 (common-lisp:progn
  (common-lisp:defun delete-alias
@@ -2793,9 +2875,32 @@
                                                         "DeleteAlias"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'delete-alias))
 (common-lisp:progn
  (common-lisp:defun delete-event-source-mapping
@@ -2825,10 +2930,32 @@
                                                         "DeleteEventSourceMapping"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'delete-event-source-mapping))
 (common-lisp:progn
  (common-lisp:defun delete-function
@@ -2857,11 +2984,32 @@
                                                         "DeleteFunction"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("ResourceConflictException" . resource-conflict-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'delete-function))
 (common-lisp:progn
  (common-lisp:defun get-account-settings ()
@@ -2872,8 +3020,30 @@
                                 `(("Action" ,@"GetAccountSettings")
                                   ("Version" ,@"2015-03-31"))))
     common-lisp:nil common-lisp:nil
-    '(("TooManyRequestsException" . too-many-requests-exception)
-      ("ServiceException" . service-exception))))
+    '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+      ("EC2AccessDeniedException" . ec2access-denied-exception)
+      ("EC2ThrottledException" . ec2throttled-exception)
+      ("EC2UnexpectedException" . ec2unexpected-exception)
+      ("ENILimitReachedException" . enilimit-reached-exception)
+      ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      ("InvalidRequestContentException" . invalid-request-content-exception)
+      ("InvalidRuntimeException" . invalid-runtime-exception)
+      ("InvalidSecurityGroupIDException" . invalid-security-group-idexception)
+      ("InvalidSubnetIDException" . invalid-subnet-idexception)
+      ("InvalidZipFileException" . invalid-zip-file-exception)
+      ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+      ("KMSDisabledException" . kmsdisabled-exception)
+      ("KMSInvalidStateException" . kmsinvalid-state-exception)
+      ("KMSNotFoundException" . kmsnot-found-exception)
+      ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+      ("RequestTooLargeException" . request-too-large-exception)
+      ("ResourceConflictException" . resource-conflict-exception)
+      ("ResourceNotFoundException" . resource-not-found-exception)
+      ("ServiceException" . service-exception)
+      ("SubnetIPAddressLimitReachedException"
+       . subnet-ipaddress-limit-reached-exception)
+      ("TooManyRequestsException" . too-many-requests-exception)
+      ("UnsupportedMediaTypeException" . unsupported-media-type-exception))))
  (common-lisp:export 'get-account-settings))
 (common-lisp:progn
  (common-lisp:defun get-alias
@@ -2906,10 +3076,32 @@
                                                         "GetAlias"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'get-alias))
 (common-lisp:progn
  (common-lisp:defun get-event-source-mapping
@@ -2938,10 +3130,32 @@
                                                         "GetEventSourceMapping"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'get-event-source-mapping))
 (common-lisp:progn
  (common-lisp:defun get-function
@@ -2970,11 +3184,32 @@
                                                         "GetFunction"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("InvalidParameterValueException"
-         . invalid-parameter-value-exception)))))
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'get-function))
 (common-lisp:progn
  (common-lisp:defun get-function-configuration
@@ -3004,11 +3239,32 @@
                                                         "GetFunctionConfiguration"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("InvalidParameterValueException"
-         . invalid-parameter-value-exception)))))
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'get-function-configuration))
 (common-lisp:progn
  (common-lisp:defun get-policy
@@ -3037,11 +3293,32 @@
                                                         "GetPolicy"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("InvalidParameterValueException"
-         . invalid-parameter-value-exception)))))
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'get-policy))
 (common-lisp:progn
  (common-lisp:defun invoke
@@ -3072,28 +3349,32 @@
                                                              'function-name))))
                                                         "Invoke" "2015-03-31"))
       "blob" common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InvalidRequestContentException" . invalid-request-content-exception)
-        ("RequestTooLargeException" . request-too-large-exception)
-        ("UnsupportedMediaTypeException" . unsupported-media-type-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("EC2UnexpectedException" . ec2unexpected-exception)
-        ("SubnetIPAddressLimitReachedException"
-         . subnet-ipaddress-limit-reached-exception)
-        ("ENILimitReachedException" . enilimit-reached-exception)
-        ("EC2ThrottledException" . ec2throttled-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
         ("EC2AccessDeniedException" . ec2access-denied-exception)
-        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
         ("InvalidSecurityGroupIDException"
          . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
         ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
         ("KMSDisabledException" . kmsdisabled-exception)
         ("KMSInvalidStateException" . kmsinvalid-state-exception)
-        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
         ("KMSNotFoundException" . kmsnot-found-exception)
-        ("InvalidRuntimeException" . invalid-runtime-exception)))))
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'invoke))
 (common-lisp:progn
  (common-lisp:defun invoke-async
@@ -3122,10 +3403,32 @@
                                                         "InvokeAsync"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("InvalidRequestContentException" . invalid-request-content-exception)
-        ("InvalidRuntimeException" . invalid-runtime-exception)))))
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'invoke-async))
 (common-lisp:progn
  (common-lisp:defun list-aliases
@@ -3156,10 +3459,32 @@
                                                         "ListAliases"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'list-aliases))
 (common-lisp:progn
  (common-lisp:defun list-event-source-mappings
@@ -3182,10 +3507,32 @@
                                                         "ListEventSourceMappings"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'list-event-source-mappings))
 (common-lisp:progn
  (common-lisp:defun list-functions
@@ -3207,10 +3554,32 @@
                                                         "ListFunctions"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("InvalidParameterValueException"
-         . invalid-parameter-value-exception)))))
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'list-functions))
 (common-lisp:progn
  (common-lisp:defun list-tags
@@ -3239,10 +3608,32 @@
                                                         "ListTags"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
  (common-lisp:defun list-versions-by-function
@@ -3272,10 +3663,32 @@
                                                         "ListVersionsByFunction"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'list-versions-by-function))
 (common-lisp:progn
  (common-lisp:defun publish-version
@@ -3305,11 +3718,32 @@
                                                         "PublishVersion"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("CodeStorageExceededException" . code-storage-exceeded-exception)))))
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'publish-version))
 (common-lisp:progn
  (common-lisp:defun remove-permission
@@ -3343,10 +3777,32 @@
                                                         "RemovePermission"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'remove-permission))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -3375,10 +3831,32 @@
                                                         "TagResource"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -3407,10 +3885,32 @@
                                                         "UntagResource"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-alias
@@ -3445,10 +3945,32 @@
                                                         "UpdateAlias"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'update-alias))
 (common-lisp:progn
  (common-lisp:defun update-event-source-mapping
@@ -3479,11 +4001,32 @@
                                                         "UpdateEventSourceMapping"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ResourceConflictException" . resource-conflict-exception)))))
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'update-event-source-mapping))
 (common-lisp:progn
  (common-lisp:defun update-function-code
@@ -3515,11 +4058,32 @@
                                                         "UpdateFunctionCode"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("CodeStorageExceededException" . code-storage-exceeded-exception)))))
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'update-function-code))
 (common-lisp:progn
  (common-lisp:defun update-function-configuration
@@ -3554,9 +4118,30 @@
                                                         "UpdateFunctionConfiguration"
                                                         "2015-03-31"))
       common-lisp:nil common-lisp:nil
-      '(("ServiceException" . service-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CodeStorageExceededException" . code-storage-exceeded-exception)
+        ("EC2AccessDeniedException" . ec2access-denied-exception)
+        ("EC2ThrottledException" . ec2throttled-exception)
+        ("EC2UnexpectedException" . ec2unexpected-exception)
+        ("ENILimitReachedException" . enilimit-reached-exception)
         ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidRequestContentException" . invalid-request-content-exception)
+        ("InvalidRuntimeException" . invalid-runtime-exception)
+        ("InvalidSecurityGroupIDException"
+         . invalid-security-group-idexception)
+        ("InvalidSubnetIDException" . invalid-subnet-idexception)
+        ("InvalidZipFileException" . invalid-zip-file-exception)
+        ("KMSAccessDeniedException" . kmsaccess-denied-exception)
+        ("KMSDisabledException" . kmsdisabled-exception)
+        ("KMSInvalidStateException" . kmsinvalid-state-exception)
+        ("KMSNotFoundException" . kmsnot-found-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("RequestTooLargeException" . request-too-large-exception)
+        ("ResourceConflictException" . resource-conflict-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SubnetIPAddressLimitReachedException"
+         . subnet-ipaddress-limit-reached-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ResourceConflictException" . resource-conflict-exception)))))
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'update-function-configuration))

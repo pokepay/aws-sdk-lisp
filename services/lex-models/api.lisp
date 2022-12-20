@@ -4145,12 +4145,13 @@
                                                         "CreateBotVersion"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("PreconditionFailedException" . precondition-failed-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'create-bot-version))
 (common-lisp:progn
  (common-lisp:defun create-intent-version
@@ -4179,12 +4180,13 @@
                                                         "CreateIntentVersion"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("PreconditionFailedException" . precondition-failed-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'create-intent-version))
 (common-lisp:progn
  (common-lisp:defun create-slot-type-version
@@ -4213,12 +4215,13 @@
                                                         "CreateSlotTypeVersion"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("PreconditionFailedException" . precondition-failed-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'create-slot-type-version))
 (common-lisp:progn
  (common-lisp:defun delete-bot
@@ -4247,11 +4250,12 @@
                                                         "DeleteBot"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
         ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-bot))
 (common-lisp:progn
@@ -4285,11 +4289,12 @@
                                                         "DeleteBotAlias"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
         ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-bot-alias))
 (common-lisp:progn
@@ -4328,11 +4333,13 @@
                                                         "DeleteBotChannelAssociation"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-bot-channel-association))
 (common-lisp:progn
  (common-lisp:defun delete-bot-version
@@ -4365,11 +4372,12 @@
                                                         "DeleteBotVersion"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
         ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-bot-version))
 (common-lisp:progn
@@ -4399,11 +4407,12 @@
                                                         "DeleteIntent"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
         ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-intent))
 (common-lisp:progn
@@ -4437,11 +4446,12 @@
                                                         "DeleteIntentVersion"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
         ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-intent-version))
 (common-lisp:progn
@@ -4471,11 +4481,12 @@
                                                         "DeleteSlotType"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
         ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-slot-type))
 (common-lisp:progn
@@ -4509,11 +4520,12 @@
                                                         "DeleteSlotTypeVersion"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
         ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-slot-type-version))
 (common-lisp:progn
@@ -4547,10 +4559,13 @@
                                                         "DeleteUtterances"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'delete-utterances))
 (common-lisp:progn
  (common-lisp:defun get-bot
@@ -4582,10 +4597,13 @@
                                                              'versionoralias))))
                                                         "GetBot" "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-bot))
 (common-lisp:progn
  (common-lisp:defun get-bot-alias
@@ -4618,10 +4636,13 @@
                                                         "GetBotAlias"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-bot-alias))
 (common-lisp:progn
  (common-lisp:defun get-bot-aliases
@@ -4652,9 +4673,13 @@
                                                         "GetBotAliases"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-bot-aliases))
 (common-lisp:progn
  (common-lisp:defun get-bot-channel-association
@@ -4692,10 +4717,13 @@
                                                         "GetBotChannelAssociation"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-bot-channel-association))
 (common-lisp:progn
  (common-lisp:defun get-bot-channel-associations
@@ -4732,9 +4760,13 @@
                                                         "GetBotChannelAssociations"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-bot-channel-associations))
 (common-lisp:progn
  (common-lisp:defun get-bot-versions
@@ -4763,10 +4795,13 @@
                                                         "GetBotVersions"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-bot-versions))
 (common-lisp:progn
  (common-lisp:defun get-bots
@@ -4786,10 +4821,13 @@
                                                         "GetBots"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-bots))
 (common-lisp:progn
  (common-lisp:defun get-builtin-intent
@@ -4818,10 +4856,13 @@
                                                         "GetBuiltinIntent"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-builtin-intent))
 (common-lisp:progn
  (common-lisp:defun get-builtin-intents
@@ -4843,9 +4884,13 @@
                                                         "GetBuiltinIntents"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-builtin-intents))
 (common-lisp:progn
  (common-lisp:defun get-builtin-slot-types
@@ -4867,9 +4912,13 @@
                                                         "GetBuiltinSlotTypes"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-builtin-slot-types))
 (common-lisp:progn
  (common-lisp:defun get-intent
@@ -4902,10 +4951,13 @@
                                                         "GetIntent"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-intent))
 (common-lisp:progn
  (common-lisp:defun get-intent-versions
@@ -4934,10 +4986,13 @@
                                                         "GetIntentVersions"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-intent-versions))
 (common-lisp:progn
  (common-lisp:defun get-intents
@@ -4957,10 +5012,13 @@
                                                         "GetIntents"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-intents))
 (common-lisp:progn
  (common-lisp:defun get-slot-type
@@ -4993,10 +5051,13 @@
                                                         "GetSlotType"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-slot-type))
 (common-lisp:progn
  (common-lisp:defun get-slot-type-versions
@@ -5025,10 +5086,13 @@
                                                         "GetSlotTypeVersions"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-slot-type-versions))
 (common-lisp:progn
  (common-lisp:defun get-slot-types
@@ -5048,10 +5112,13 @@
                                                         "GetSlotTypes"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-slot-types))
 (common-lisp:progn
  (common-lisp:defun get-utterances-view
@@ -5081,9 +5148,13 @@
                                                         "GetUtterancesView"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'get-utterances-view))
 (common-lisp:progn
  (common-lisp:defun put-bot
@@ -5117,11 +5188,13 @@
                                                              'name))))
                                                         "PutBot" "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("PreconditionFailedException" . precondition-failed-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'put-bot))
 (common-lisp:progn
  (common-lisp:defun put-bot-alias
@@ -5156,11 +5229,13 @@
                                                         "PutBotAlias"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("PreconditionFailedException" . precondition-failed-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'put-bot-alias))
 (common-lisp:progn
  (common-lisp:defun put-intent
@@ -5196,11 +5271,13 @@
                                                         "PutIntent"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("PreconditionFailedException" . precondition-failed-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'put-intent))
 (common-lisp:progn
  (common-lisp:defun put-slot-type
@@ -5231,9 +5308,11 @@
                                                         "PutSlotType"
                                                         "2017-04-19"))
       common-lisp:nil common-lisp:nil
-      '(("ConflictException" . conflict-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("PreconditionFailedException" . precondition-failed-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("PreconditionFailedException" . precondition-failed-exception)
+        ("ResourceInUseException" . resource-in-use-exception)))))
  (common-lisp:export 'put-slot-type))

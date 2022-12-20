@@ -7064,12 +7064,13 @@
                                                         "CreateApiKey"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-api-key))
 (common-lisp:progn
  (common-lisp:defun create-authorizer
@@ -7105,10 +7106,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-authorizer))
 (common-lisp:progn
  (common-lisp:defun create-base-path-mapping
@@ -7138,11 +7141,13 @@
                                                         "CreateBasePathMapping"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-base-path-mapping))
 (common-lisp:progn
  (common-lisp:defun create-deployment
@@ -7175,13 +7180,13 @@
                                                         "CreateDeployment"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-deployment))
 (common-lisp:progn
  (common-lisp:defun create-documentation-part
@@ -7214,10 +7219,11 @@
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-documentation-part))
 (common-lisp:progn
  (common-lisp:defun create-documentation-version
@@ -7252,10 +7258,11 @@
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-documentation-version))
 (common-lisp:progn
  (common-lisp:defun create-domain-name
@@ -7278,10 +7285,13 @@
                                                         "CreateDomainName"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("BadRequestException" . bad-request-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-domain-name))
 (common-lisp:progn
  (common-lisp:defun create-model
@@ -7313,11 +7323,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
         ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-model))
 (common-lisp:progn
  (common-lisp:defun create-request-validator
@@ -7350,10 +7361,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-request-validator))
 (common-lisp:progn
  (common-lisp:defun create-resource
@@ -7387,12 +7400,13 @@
                                                         "CreateResource"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-resource))
 (common-lisp:progn
  (common-lisp:defun create-rest-api
@@ -7414,10 +7428,13 @@
                                                         "CreateRestApi"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-rest-api))
 (common-lisp:progn
  (common-lisp:defun create-stage
@@ -7450,12 +7467,13 @@
                                                         "CreateStage"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-stage))
 (common-lisp:progn
  (common-lisp:defun create-usage-plan
@@ -7477,11 +7495,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("ConflictException" . conflict-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-usage-plan))
 (common-lisp:progn
  (common-lisp:defun create-usage-plan-key
@@ -7512,9 +7531,11 @@
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'create-usage-plan-key))
 (common-lisp:progn
  (common-lisp:defun delete-api-key
@@ -7543,9 +7564,13 @@
                                                         "DeleteApiKey"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-api-key))
 (common-lisp:progn
  (common-lisp:defun delete-authorizer
@@ -7578,11 +7603,13 @@
                                                         "DeleteAuthorizer"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-authorizer))
 (common-lisp:progn
  (common-lisp:defun delete-base-path-mapping
@@ -7615,9 +7642,13 @@
                                                         "DeleteBasePathMapping"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-base-path-mapping))
 (common-lisp:progn
  (common-lisp:defun delete-client-certificate
@@ -7647,10 +7678,13 @@
                                                         "DeleteClientCertificate"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-client-certificate))
 (common-lisp:progn
  (common-lisp:defun delete-deployment
@@ -7683,10 +7717,13 @@
                                                         "DeleteDeployment"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-deployment))
 (common-lisp:progn
  (common-lisp:defun delete-documentation-part
@@ -7721,11 +7758,13 @@
                                                         "DeleteDocumentationPart"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-documentation-part))
 (common-lisp:progn
  (common-lisp:defun delete-documentation-version
@@ -7760,11 +7799,13 @@
                                                         "DeleteDocumentationVersion"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-documentation-version))
 (common-lisp:progn
  (common-lisp:defun delete-domain-name
@@ -7793,9 +7834,13 @@
                                                         "DeleteDomainName"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-domain-name))
 (common-lisp:progn
  (common-lisp:defun delete-gateway-response
@@ -7828,11 +7873,13 @@
                                                         "DeleteGatewayResponse"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-gateway-response))
 (common-lisp:progn
  (common-lisp:defun delete-integration
@@ -7870,10 +7917,13 @@
                                                         "DeleteIntegration"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-integration))
 (common-lisp:progn
  (common-lisp:defun delete-integration-response
@@ -7917,11 +7967,13 @@
                                                         "DeleteIntegrationResponse"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-integration-response))
 (common-lisp:progn
  (common-lisp:defun delete-method
@@ -7959,10 +8011,13 @@
                                                         "DeleteMethod"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-method))
 (common-lisp:progn
  (common-lisp:defun delete-method-response
@@ -8005,11 +8060,13 @@
                                                         "DeleteMethodResponse"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-method-response))
 (common-lisp:progn
  (common-lisp:defun delete-model
@@ -8042,11 +8099,13 @@
                                                         "DeleteModel"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-model))
 (common-lisp:progn
  (common-lisp:defun delete-request-validator
@@ -8080,11 +8139,13 @@
                                                         "DeleteRequestValidator"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-request-validator))
 (common-lisp:progn
  (common-lisp:defun delete-resource
@@ -8117,11 +8178,13 @@
                                                         "DeleteResource"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-resource))
 (common-lisp:progn
  (common-lisp:defun delete-rest-api
@@ -8150,10 +8213,13 @@
                                                         "DeleteRestApi"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-rest-api))
 (common-lisp:progn
  (common-lisp:defun delete-stage
@@ -8186,10 +8252,13 @@
                                                         "DeleteStage"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-stage))
 (common-lisp:progn
  (common-lisp:defun delete-usage-plan
@@ -8218,10 +8287,13 @@
                                                         "DeleteUsagePlan"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-usage-plan))
 (common-lisp:progn
  (common-lisp:defun delete-usage-plan-key
@@ -8256,9 +8328,11 @@
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'delete-usage-plan-key))
 (common-lisp:progn
  (common-lisp:defun flush-stage-authorizers-cache
@@ -8292,10 +8366,13 @@
                                                         "FlushStageAuthorizersCache"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'flush-stage-authorizers-cache))
 (common-lisp:progn
  (common-lisp:defun flush-stage-cache
@@ -8328,10 +8405,13 @@
                                                         "FlushStageCache"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'flush-stage-cache))
 (common-lisp:progn
  (common-lisp:defun generate-client-certificate
@@ -8352,9 +8432,13 @@
                                                         "GenerateClientCertificate"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'generate-client-certificate))
 (common-lisp:progn
  (common-lisp:defun get-account ()
@@ -8365,9 +8449,13 @@
                                 `(("Action" ,@"GetAccount")
                                   ("Version" ,@"2015-07-09"))))
     common-lisp:nil common-lisp:nil
-    '(("UnauthorizedException" . unauthorized-exception)
+    '(("BadRequestException" . bad-request-exception)
+      ("ConflictException" . conflict-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
       ("NotFoundException" . not-found-exception)
-      ("TooManyRequestsException" . too-many-requests-exception))))
+      ("ServiceUnavailableException" . service-unavailable-exception)
+      ("TooManyRequestsException" . too-many-requests-exception)
+      ("UnauthorizedException" . unauthorized-exception))))
  (common-lisp:export 'get-account))
 (common-lisp:progn
  (common-lisp:defun get-api-key
@@ -8396,9 +8484,13 @@
                                                         "GetApiKey"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-api-key))
 (common-lisp:progn
  (common-lisp:defun get-api-keys
@@ -8421,8 +8513,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-api-keys))
 (common-lisp:progn
  (common-lisp:defun get-authorizer
@@ -8455,9 +8551,13 @@
                                                         "GetAuthorizer"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-authorizer))
 (common-lisp:progn
  (common-lisp:defun get-authorizers
@@ -8487,9 +8587,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-authorizers))
 (common-lisp:progn
  (common-lisp:defun get-base-path-mapping
@@ -8522,9 +8625,13 @@
                                                         "GetBasePathMapping"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-base-path-mapping))
 (common-lisp:progn
  (common-lisp:defun get-base-path-mappings
@@ -8553,9 +8660,13 @@
                                                         "GetBasePathMappings"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-base-path-mappings))
 (common-lisp:progn
  (common-lisp:defun get-client-certificate
@@ -8584,9 +8695,13 @@
                                                         "GetClientCertificate"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-client-certificate))
 (common-lisp:progn
  (common-lisp:defun get-client-certificates
@@ -8607,8 +8722,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-client-certificates))
 (common-lisp:progn
  (common-lisp:defun get-deployment
@@ -8642,10 +8761,13 @@
                                                         "GetDeployment"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-deployment))
 (common-lisp:progn
  (common-lisp:defun get-deployments
@@ -8675,9 +8797,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-deployments))
 (common-lisp:progn
  (common-lisp:defun get-documentation-part
@@ -8711,9 +8836,13 @@
                                                         "GetDocumentationPart"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-documentation-part))
 (common-lisp:progn
  (common-lisp:defun get-documentation-parts
@@ -8745,9 +8874,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-documentation-parts))
 (common-lisp:progn
  (common-lisp:defun get-documentation-version
@@ -8782,9 +8914,13 @@
                                                         "GetDocumentationVersion"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-documentation-version))
 (common-lisp:progn
  (common-lisp:defun get-documentation-versions
@@ -8815,9 +8951,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-documentation-versions))
 (common-lisp:progn
  (common-lisp:defun get-domain-name
@@ -8846,10 +8985,13 @@
                                                         "GetDomainName"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-domain-name))
 (common-lisp:progn
  (common-lisp:defun get-domain-names
@@ -8869,8 +9011,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-domain-names))
 (common-lisp:progn
  (common-lisp:defun get-export
@@ -8910,11 +9056,13 @@
                                                         "GetExport"
                                                         "2015-07-09"))
       "blob" common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-export))
 (common-lisp:progn
  (common-lisp:defun get-gateway-response
@@ -8947,9 +9095,13 @@
                                                         "GetGatewayResponse"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-gateway-response))
 (common-lisp:progn
  (common-lisp:defun get-gateway-responses
@@ -8979,9 +9131,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-gateway-responses))
 (common-lisp:progn
  (common-lisp:defun get-integration
@@ -9019,9 +9174,13 @@
                                                         "GetIntegration"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-integration))
 (common-lisp:progn
  (common-lisp:defun get-integration-response
@@ -9064,9 +9223,13 @@
                                                         "GetIntegrationResponse"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-integration-response))
 (common-lisp:progn
  (common-lisp:defun get-method
@@ -9104,9 +9267,13 @@
                                                         "GetMethod"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-method))
 (common-lisp:progn
  (common-lisp:defun get-method-response
@@ -9149,9 +9316,13 @@
                                                         "GetMethodResponse"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-method-response))
 (common-lisp:progn
  (common-lisp:defun get-model
@@ -9184,9 +9355,13 @@
                                                         "GetModel"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-model))
 (common-lisp:progn
  (common-lisp:defun get-model-template
@@ -9219,10 +9394,13 @@
                                                         "GetModelTemplate"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-model-template))
 (common-lisp:progn
  (common-lisp:defun get-models
@@ -9252,9 +9430,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-models))
 (common-lisp:progn
  (common-lisp:defun get-request-validator
@@ -9288,9 +9469,13 @@
                                                         "GetRequestValidator"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-request-validator))
 (common-lisp:progn
  (common-lisp:defun get-request-validators
@@ -9320,9 +9505,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-request-validators))
 (common-lisp:progn
  (common-lisp:defun get-resource
@@ -9355,9 +9543,13 @@
                                                         "GetResource"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-resource))
 (common-lisp:progn
  (common-lisp:defun get-resources
@@ -9388,9 +9580,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-resources))
 (common-lisp:progn
  (common-lisp:defun get-rest-api
@@ -9419,9 +9614,13 @@
                                                         "GetRestApi"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-rest-api))
 (common-lisp:progn
  (common-lisp:defun get-rest-apis
@@ -9441,8 +9640,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-rest-apis))
 (common-lisp:progn
  (common-lisp:defun get-sdk
@@ -9480,11 +9683,13 @@
                                                              'sdk-type))))
                                                         "GetSdk" "2015-07-09"))
       "blob" common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-sdk))
 (common-lisp:progn
  (common-lisp:defun get-sdk-type
@@ -9513,9 +9718,13 @@
                                                         "GetSdkType"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-sdk-type))
 (common-lisp:progn
  (common-lisp:defun get-sdk-types
@@ -9534,8 +9743,13 @@
                                                         "GetSdkTypes"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-sdk-types))
 (common-lisp:progn
  (common-lisp:defun get-stage
@@ -9568,9 +9782,13 @@
                                                         "GetStage"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-stage))
 (common-lisp:progn
  (common-lisp:defun get-stages
@@ -9599,9 +9817,13 @@
                                                         "GetStages"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-stages))
 (common-lisp:progn
  (common-lisp:defun get-usage
@@ -9634,9 +9856,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-usage))
 (common-lisp:progn
  (common-lisp:defun get-usage-plan
@@ -9666,9 +9891,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-usage-plan))
 (common-lisp:progn
  (common-lisp:defun get-usage-plan-key
@@ -9702,9 +9930,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-usage-plan-key))
 (common-lisp:progn
  (common-lisp:defun get-usage-plan-keys
@@ -9735,9 +9966,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-usage-plan-keys))
 (common-lisp:progn
  (common-lisp:defun get-usage-plans
@@ -9757,10 +9991,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
         ("ConflictException" . conflict-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'get-usage-plans))
 (common-lisp:progn
  (common-lisp:defun import-api-keys
@@ -9780,12 +10016,13 @@
                                                         "ImportApiKeys"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'import-api-keys))
 (common-lisp:progn
  (common-lisp:defun import-documentation-parts
@@ -9816,11 +10053,13 @@
                                                         "ImportDocumentationParts"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'import-documentation-parts))
 (common-lisp:progn
  (common-lisp:defun import-rest-api
@@ -9841,11 +10080,13 @@
                                                         "ImportRestApi"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'import-rest-api))
 (common-lisp:progn
  (common-lisp:defun put-gateway-response
@@ -9882,10 +10123,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+        ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'put-gateway-response))
 (common-lisp:progn
  (common-lisp:defun put-integration
@@ -9929,11 +10172,13 @@
                                                         "PutIntegration"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("BadRequestException" . bad-request-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'put-integration))
 (common-lisp:progn
  (common-lisp:defun put-integration-response
@@ -9979,12 +10224,13 @@
                                                         "PutIntegrationResponse"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'put-integration-response))
 (common-lisp:progn
  (common-lisp:defun put-method
@@ -10028,11 +10274,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
         ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'put-method))
 (common-lisp:progn
  (common-lisp:defun put-method-response
@@ -10076,12 +10323,13 @@
                                                         "PutMethodResponse"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'put-method-response))
 (common-lisp:progn
  (common-lisp:defun put-rest-api
@@ -10112,12 +10360,13 @@
                                                         "PutRestApi"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'put-rest-api))
 (common-lisp:progn
  (common-lisp:defun test-invoke-authorizer
@@ -10155,9 +10404,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'test-invoke-authorizer))
 (common-lisp:progn
  (common-lisp:defun test-invoke-method
@@ -10200,9 +10452,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'test-invoke-method))
 (common-lisp:progn
  (common-lisp:defun update-account
@@ -10221,10 +10476,13 @@
                                                         "UpdateAccount"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("BadRequestException" . bad-request-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-account))
 (common-lisp:progn
  (common-lisp:defun update-api-key
@@ -10253,11 +10511,13 @@
                                                         "UpdateApiKey"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-api-key))
 (common-lisp:progn
  (common-lisp:defun update-authorizer
@@ -10292,10 +10552,13 @@
                                                         "UpdateAuthorizer"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-authorizer))
 (common-lisp:progn
  (common-lisp:defun update-base-path-mapping
@@ -10329,11 +10592,13 @@
                                                         "UpdateBasePathMapping"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-base-path-mapping))
 (common-lisp:progn
  (common-lisp:defun update-client-certificate
@@ -10364,10 +10629,13 @@
                                                         "UpdateClientCertificate"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-client-certificate))
 (common-lisp:progn
  (common-lisp:defun update-deployment
@@ -10402,11 +10670,13 @@
                                                         "UpdateDeployment"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-deployment))
 (common-lisp:progn
  (common-lisp:defun update-documentation-part
@@ -10443,11 +10713,12 @@
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
         ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-documentation-part))
 (common-lisp:progn
  (common-lisp:defun update-documentation-version
@@ -10483,11 +10754,13 @@
                                                         "UpdateDocumentationVersion"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-documentation-version))
 (common-lisp:progn
  (common-lisp:defun update-domain-name
@@ -10516,11 +10789,13 @@
                                                         "UpdateDomainName"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-domain-name))
 (common-lisp:progn
  (common-lisp:defun update-gateway-response
@@ -10555,10 +10830,13 @@
                                                         "UpdateGatewayResponse"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-gateway-response))
 (common-lisp:progn
  (common-lisp:defun update-integration
@@ -10598,11 +10876,13 @@
                                                         "UpdateIntegration"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-integration))
 (common-lisp:progn
  (common-lisp:defun update-integration-response
@@ -10647,11 +10927,13 @@
                                                         "UpdateIntegrationResponse"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-integration-response))
 (common-lisp:progn
  (common-lisp:defun update-method
@@ -10691,11 +10973,13 @@
                                                         "UpdateMethod"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-method))
 (common-lisp:progn
  (common-lisp:defun update-method-response
@@ -10739,12 +11023,13 @@
                                                         "UpdateMethodResponse"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-method-response))
 (common-lisp:progn
  (common-lisp:defun update-model
@@ -10778,11 +11063,13 @@
                                                         "UpdateModel"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-model))
 (common-lisp:progn
  (common-lisp:defun update-request-validator
@@ -10817,10 +11104,13 @@
                                                         "UpdateRequestValidator"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-request-validator))
 (common-lisp:progn
  (common-lisp:defun update-resource
@@ -10854,11 +11144,13 @@
                                                         "UpdateResource"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-resource))
 (common-lisp:progn
  (common-lisp:defun update-rest-api
@@ -10887,11 +11179,13 @@
                                                         "UpdateRestApi"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-rest-api))
 (common-lisp:progn
  (common-lisp:defun update-stage
@@ -10925,11 +11219,13 @@
                                                         "UpdateStage"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("NotFoundException" . not-found-exception)
+      '(("BadRequestException" . bad-request-exception)
         ("ConflictException" . conflict-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-stage))
 (common-lisp:progn
  (common-lisp:defun update-usage
@@ -10963,10 +11259,13 @@
                                                         "UpdateUsage"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotFoundException" . not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)
-        ("NotFoundException" . not-found-exception)))))
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-usage))
 (common-lisp:progn
  (common-lisp:defun update-usage-plan
@@ -10995,9 +11294,11 @@
                                                         "UpdateUsagePlan"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("UnauthorizedException" . unauthorized-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("BadRequestException" . bad-request-exception)
+      '(("BadRequestException" . bad-request-exception)
+        ("ConflictException" . conflict-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("NotFoundException" . not-found-exception)
-        ("ConflictException" . conflict-exception)))))
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)
+        ("UnauthorizedException" . unauthorized-exception)))))
  (common-lisp:export 'update-usage-plan))

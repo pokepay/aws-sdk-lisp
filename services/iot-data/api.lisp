@@ -329,13 +329,15 @@
                                                         "DeleteThingShadow"
                                                         "2015-05-28"))
       "blob" common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("ConflictException" . conflict-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
+        ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("RequestEntityTooLargeException" . request-entity-too-large-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("ThrottlingException" . throttling-exception)
         ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)
-        ("MethodNotAllowedException" . method-not-allowed-exception)
         ("UnsupportedDocumentEncodingException"
          . unsupported-document-encoding-exception)))))
  (common-lisp:export 'delete-thing-shadow))
@@ -366,13 +368,15 @@
                                                         "GetThingShadow"
                                                         "2015-05-28"))
       "blob" common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
+      '(("ConflictException" . conflict-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("RequestEntityTooLargeException" . request-entity-too-large-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("ThrottlingException" . throttling-exception)
         ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)
-        ("MethodNotAllowedException" . method-not-allowed-exception)
         ("UnsupportedDocumentEncodingException"
          . unsupported-document-encoding-exception)))))
  (common-lisp:export 'get-thing-shadow))
@@ -403,10 +407,17 @@
                                                         "Publish"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InternalFailureException" . internal-failure-exception)
+      '(("ConflictException" . conflict-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
+        ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("RequestEntityTooLargeException" . request-entity-too-large-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("ThrottlingException" . throttling-exception)
         ("UnauthorizedException" . unauthorized-exception)
-        ("MethodNotAllowedException" . method-not-allowed-exception)))))
+        ("UnsupportedDocumentEncodingException"
+         . unsupported-document-encoding-exception)))))
  (common-lisp:export 'publish))
 (common-lisp:progn
  (common-lisp:defun update-thing-shadow
@@ -436,13 +447,14 @@
                                                         "2015-05-28"))
       "blob" common-lisp:nil
       '(("ConflictException" . conflict-exception)
-        ("RequestEntityTooLargeException" . request-entity-too-large-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
+        ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("RequestEntityTooLargeException" . request-entity-too-large-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
         ("ThrottlingException" . throttling-exception)
         ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)
-        ("MethodNotAllowedException" . method-not-allowed-exception)
         ("UnsupportedDocumentEncodingException"
          . unsupported-document-encoding-exception)))))
  (common-lisp:export 'update-thing-shadow))

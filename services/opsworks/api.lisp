@@ -8681,8 +8681,8 @@
                                                         "AssignInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'assign-instance))
 (common-lisp:progn
  (common-lisp:defun assign-volume
@@ -8701,8 +8701,8 @@
                                                         "AssignVolume"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'assign-volume))
 (common-lisp:progn
  (common-lisp:defun associate-elastic-ip
@@ -8721,8 +8721,8 @@
                                                         "AssociateElasticIp"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'associate-elastic-ip))
 (common-lisp:progn
  (common-lisp:defun attach-elastic-load-balancer
@@ -8743,8 +8743,8 @@
                                                         "AttachElasticLoadBalancer"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'attach-elastic-load-balancer))
 (common-lisp:progn
  (common-lisp:defun clone-stack
@@ -8775,8 +8775,8 @@
                                                         "POST" "/" "CloneStack"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'clone-stack))
 (common-lisp:progn
  (common-lisp:defun create-app
@@ -8799,8 +8799,8 @@
                                                         "POST" "/" "CreateApp"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-app))
 (common-lisp:progn
  (common-lisp:defun create-deployment
@@ -8822,8 +8822,8 @@
                                                         "CreateDeployment"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-deployment))
 (common-lisp:progn
  (common-lisp:defun create-instance
@@ -8851,8 +8851,8 @@
                                                         "CreateInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-instance))
 (common-lisp:progn
  (common-lisp:defun create-layer
@@ -8883,8 +8883,8 @@
                                                         "CreateLayer"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-layer))
 (common-lisp:progn
  (common-lisp:defun create-stack
@@ -8915,7 +8915,8 @@
                                                         "CreateStack"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-stack))
 (common-lisp:progn
  (common-lisp:defun create-user-profile
@@ -8937,7 +8938,8 @@
                                                         "CreateUserProfile"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-user-profile))
 (common-lisp:progn
  (common-lisp:defun delete-app
@@ -8955,8 +8957,8 @@
                                                         "POST" "/" "DeleteApp"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-app))
 (common-lisp:progn
  (common-lisp:defun delete-instance
@@ -8977,8 +8979,8 @@
                                                         "DeleteInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-instance))
 (common-lisp:progn
  (common-lisp:defun delete-layer
@@ -8997,8 +8999,8 @@
                                                         "DeleteLayer"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-layer))
 (common-lisp:progn
  (common-lisp:defun delete-stack
@@ -9017,8 +9019,8 @@
                                                         "DeleteStack"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-stack))
 (common-lisp:progn
  (common-lisp:defun delete-user-profile
@@ -9037,8 +9039,8 @@
                                                         "DeleteUserProfile"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-user-profile))
 (common-lisp:progn
  (common-lisp:defun deregister-ecs-cluster
@@ -9057,8 +9059,8 @@
                                                         "DeregisterEcsCluster"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'deregister-ecs-cluster))
 (common-lisp:progn
  (common-lisp:defun deregister-elastic-ip
@@ -9077,8 +9079,8 @@
                                                         "DeregisterElasticIp"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'deregister-elastic-ip))
 (common-lisp:progn
  (common-lisp:defun deregister-instance
@@ -9097,8 +9099,8 @@
                                                         "DeregisterInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'deregister-instance))
 (common-lisp:progn
  (common-lisp:defun deregister-rds-db-instance
@@ -9118,8 +9120,8 @@
                                                         "DeregisterRdsDbInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'deregister-rds-db-instance))
 (common-lisp:progn
  (common-lisp:defun deregister-volume
@@ -9138,8 +9140,8 @@
                                                         "DeregisterVolume"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'deregister-volume))
 (common-lisp:progn
  (common-lisp:defun describe-agent-versions
@@ -9158,8 +9160,8 @@
                                                         "DescribeAgentVersions"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-agent-versions))
 (common-lisp:progn
  (common-lisp:defun describe-apps
@@ -9178,8 +9180,8 @@
                                                         "DescribeApps"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-apps))
 (common-lisp:progn
  (common-lisp:defun describe-commands
@@ -9199,8 +9201,8 @@
                                                         "DescribeCommands"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-commands))
 (common-lisp:progn
  (common-lisp:defun describe-deployments
@@ -9219,8 +9221,8 @@
                                                         "DescribeDeployments"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-deployments))
 (common-lisp:progn
  (common-lisp:defun describe-ecs-clusters
@@ -9241,8 +9243,8 @@
                                                         "DescribeEcsClusters"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-ecs-clusters))
 (common-lisp:progn
  (common-lisp:defun describe-elastic-ips
@@ -9261,8 +9263,8 @@
                                                         "DescribeElasticIps"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-elastic-ips))
 (common-lisp:progn
  (common-lisp:defun describe-elastic-load-balancers
@@ -9282,8 +9284,8 @@
                                                         "DescribeElasticLoadBalancers"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-elastic-load-balancers))
 (common-lisp:progn
  (common-lisp:defun describe-instances
@@ -9302,8 +9304,8 @@
                                                         "DescribeInstances"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-instances))
 (common-lisp:progn
  (common-lisp:defun describe-layers
@@ -9322,8 +9324,8 @@
                                                         "DescribeLayers"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-layers))
 (common-lisp:progn
  (common-lisp:defun describe-load-based-auto-scaling
@@ -9343,8 +9345,8 @@
                                                         "DescribeLoadBasedAutoScaling"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-load-based-auto-scaling))
 (common-lisp:progn
  (common-lisp:defun describe-my-user-profile ()
@@ -9354,7 +9356,9 @@
                                 :params
                                 `(("Action" ,@"DescribeMyUserProfile")
                                   ("Version" ,@"2013-02-18"))))
-    common-lisp:nil common-lisp:nil 'common-lisp:nil))
+    common-lisp:nil common-lisp:nil
+    '(("ResourceNotFoundException" . resource-not-found-exception)
+      ("ValidationException" . validation-exception))))
  (common-lisp:export 'describe-my-user-profile))
 (common-lisp:progn
  (common-lisp:defun describe-permissions
@@ -9373,8 +9377,8 @@
                                                         "DescribePermissions"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-permissions))
 (common-lisp:progn
  (common-lisp:defun describe-raid-arrays
@@ -9394,8 +9398,8 @@
                                                         "DescribeRaidArrays"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-raid-arrays))
 (common-lisp:progn
  (common-lisp:defun describe-rds-db-instances
@@ -9415,8 +9419,8 @@
                                                         "DescribeRdsDbInstances"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-rds-db-instances))
 (common-lisp:progn
  (common-lisp:defun describe-service-errors
@@ -9436,8 +9440,8 @@
                                                         "DescribeServiceErrors"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-service-errors))
 (common-lisp:progn
  (common-lisp:defun describe-stack-provisioning-parameters
@@ -9457,8 +9461,8 @@
                                                         "DescribeStackProvisioningParameters"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-stack-provisioning-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-stack-summary
@@ -9477,8 +9481,8 @@
                                                         "DescribeStackSummary"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-stack-summary))
 (common-lisp:progn
  (common-lisp:defun describe-stacks
@@ -9497,8 +9501,8 @@
                                                         "DescribeStacks"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-stacks))
 (common-lisp:progn
  (common-lisp:defun describe-time-based-auto-scaling
@@ -9518,8 +9522,8 @@
                                                         "DescribeTimeBasedAutoScaling"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-time-based-auto-scaling))
 (common-lisp:progn
  (common-lisp:defun describe-user-profiles
@@ -9538,8 +9542,8 @@
                                                         "DescribeUserProfiles"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-user-profiles))
 (common-lisp:progn
  (common-lisp:defun describe-volumes
@@ -9560,8 +9564,8 @@
                                                         "DescribeVolumes"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-volumes))
 (common-lisp:progn
  (common-lisp:defun detach-elastic-load-balancer
@@ -9582,7 +9586,8 @@
                                                         "DetachElasticLoadBalancer"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'detach-elastic-load-balancer))
 (common-lisp:progn
  (common-lisp:defun disassociate-elastic-ip
@@ -9601,8 +9606,8 @@
                                                         "DisassociateElasticIp"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'disassociate-elastic-ip))
 (common-lisp:progn
  (common-lisp:defun get-hostname-suggestion
@@ -9621,8 +9626,8 @@
                                                         "GetHostnameSuggestion"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'get-hostname-suggestion))
 (common-lisp:progn
  (common-lisp:defun grant-access
@@ -9642,8 +9647,8 @@
                                                         "GrantAccess"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'grant-access))
 (common-lisp:progn
  (common-lisp:defun list-tags
@@ -9662,8 +9667,8 @@
                                                         "POST" "/" "ListTags"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
  (common-lisp:defun reboot-instance
@@ -9682,8 +9687,8 @@
                                                         "RebootInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'reboot-instance))
 (common-lisp:progn
  (common-lisp:defun register-ecs-cluster
@@ -9702,8 +9707,8 @@
                                                         "RegisterEcsCluster"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'register-ecs-cluster))
 (common-lisp:progn
  (common-lisp:defun register-elastic-ip
@@ -9722,8 +9727,8 @@
                                                         "RegisterElasticIp"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'register-elastic-ip))
 (common-lisp:progn
  (common-lisp:defun register-instance
@@ -9746,8 +9751,8 @@
                                                         "RegisterInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'register-instance))
 (common-lisp:progn
  (common-lisp:defun register-rds-db-instance
@@ -9768,8 +9773,8 @@
                                                         "RegisterRdsDbInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'register-rds-db-instance))
 (common-lisp:progn
  (common-lisp:defun register-volume
@@ -9788,8 +9793,8 @@
                                                         "RegisterVolume"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'register-volume))
 (common-lisp:progn
  (common-lisp:defun set-load-based-auto-scaling
@@ -9810,8 +9815,8 @@
                                                         "SetLoadBasedAutoScaling"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'set-load-based-auto-scaling))
 (common-lisp:progn
  (common-lisp:defun set-permission
@@ -9832,8 +9837,8 @@
                                                         "SetPermission"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'set-permission))
 (common-lisp:progn
  (common-lisp:defun set-time-based-auto-scaling
@@ -9854,8 +9859,8 @@
                                                         "SetTimeBasedAutoScaling"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'set-time-based-auto-scaling))
 (common-lisp:progn
  (common-lisp:defun start-instance
@@ -9874,8 +9879,8 @@
                                                         "StartInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'start-instance))
 (common-lisp:progn
  (common-lisp:defun start-stack
@@ -9893,8 +9898,8 @@
                                                         "POST" "/" "StartStack"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'start-stack))
 (common-lisp:progn
  (common-lisp:defun stop-instance
@@ -9913,8 +9918,8 @@
                                                         "StopInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'stop-instance))
 (common-lisp:progn
  (common-lisp:defun stop-stack
@@ -9932,8 +9937,8 @@
                                                         "POST" "/" "StopStack"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'stop-stack))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -9952,8 +9957,8 @@
                                                         "TagResource"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun unassign-instance
@@ -9972,8 +9977,8 @@
                                                         "UnassignInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'unassign-instance))
 (common-lisp:progn
  (common-lisp:defun unassign-volume
@@ -9992,8 +9997,8 @@
                                                         "UnassignVolume"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'unassign-volume))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -10012,8 +10017,8 @@
                                                         "UntagResource"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-app
@@ -10035,8 +10040,8 @@
                                                         "POST" "/" "UpdateApp"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-app))
 (common-lisp:progn
  (common-lisp:defun update-elastic-ip
@@ -10055,8 +10060,8 @@
                                                         "UpdateElasticIp"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-elastic-ip))
 (common-lisp:progn
  (common-lisp:defun update-instance
@@ -10081,8 +10086,8 @@
                                                         "UpdateInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-instance))
 (common-lisp:progn
  (common-lisp:defun update-layer
@@ -10113,8 +10118,8 @@
                                                         "UpdateLayer"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-layer))
 (common-lisp:progn
  (common-lisp:defun update-my-user-profile
@@ -10133,7 +10138,8 @@
                                                         "UpdateMyUserProfile"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-my-user-profile))
 (common-lisp:progn
  (common-lisp:defun update-rds-db-instance
@@ -10153,8 +10159,8 @@
                                                         "UpdateRdsDbInstance"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-rds-db-instance))
 (common-lisp:progn
  (common-lisp:defun update-stack
@@ -10185,8 +10191,8 @@
                                                         "UpdateStack"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-stack))
 (common-lisp:progn
  (common-lisp:defun update-user-profile
@@ -10208,8 +10214,8 @@
                                                         "UpdateUserProfile"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-user-profile))
 (common-lisp:progn
  (common-lisp:defun update-volume
@@ -10228,6 +10234,6 @@
                                                         "UpdateVolume"
                                                         "2013-02-18"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-volume))

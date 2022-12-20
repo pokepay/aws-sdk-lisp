@@ -1924,9 +1924,13 @@
                                                         "2015-01-01"))
       common-lisp:nil common-lisp:nil
       '(("BaseException" . base-exception)
+        ("DisabledOperationException" . disabled-operation-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ValidationException" . validation-exception)
-        ("InternalException" . internal-exception)))))
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun create-elasticsearch-domain
@@ -1958,6 +1962,7 @@
         ("InvalidTypeException" . invalid-type-exception)
         ("LimitExceededException" . limit-exceeded-exception)
         ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-elasticsearch-domain))
 (common-lisp:progn
@@ -1989,7 +1994,11 @@
                                                         "2015-01-01"))
       common-lisp:nil common-lisp:nil
       '(("BaseException" . base-exception)
+        ("DisabledOperationException" . disabled-operation-exception)
         ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-elasticsearch-domain))
@@ -2022,7 +2031,11 @@
                                                         "2015-01-01"))
       common-lisp:nil common-lisp:nil
       '(("BaseException" . base-exception)
+        ("DisabledOperationException" . disabled-operation-exception)
         ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-elasticsearch-domain))
@@ -2055,7 +2068,11 @@
                                                         "2015-01-01"))
       common-lisp:nil common-lisp:nil
       '(("BaseException" . base-exception)
+        ("DisabledOperationException" . disabled-operation-exception)
         ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-elasticsearch-domain-config))
@@ -2079,7 +2096,12 @@
                                                         "2015-01-01"))
       common-lisp:nil common-lisp:nil
       '(("BaseException" . base-exception)
+        ("DisabledOperationException" . disabled-operation-exception)
         ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-elasticsearch-domains))
 (common-lisp:progn
@@ -2117,9 +2139,11 @@
                                                         "2015-01-01"))
       common-lisp:nil common-lisp:nil
       '(("BaseException" . base-exception)
+        ("DisabledOperationException" . disabled-operation-exception)
         ("InternalException" . internal-exception)
         ("InvalidTypeException" . invalid-type-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-elasticsearch-instance-type-limits))
@@ -2133,6 +2157,12 @@
                                   ("Version" ,@"2015-01-01"))))
     common-lisp:nil common-lisp:nil
     '(("BaseException" . base-exception)
+      ("DisabledOperationException" . disabled-operation-exception)
+      ("InternalException" . internal-exception)
+      ("InvalidTypeException" . invalid-type-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+      ("ResourceNotFoundException" . resource-not-found-exception)
       ("ValidationException" . validation-exception))))
  (common-lisp:export 'list-domain-names))
 (common-lisp:progn
@@ -2167,7 +2197,11 @@
                                                         "2015-01-01"))
       common-lisp:nil common-lisp:nil
       '(("BaseException" . base-exception)
+        ("DisabledOperationException" . disabled-operation-exception)
         ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-elasticsearch-instance-types))
@@ -2191,7 +2225,11 @@
                                                         "2015-01-01"))
       common-lisp:nil common-lisp:nil
       '(("BaseException" . base-exception)
+        ("DisabledOperationException" . disabled-operation-exception)
         ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-elasticsearch-versions))
@@ -2214,9 +2252,13 @@
                                                         "2015-01-01"))
       common-lisp:nil common-lisp:nil
       '(("BaseException" . base-exception)
+        ("DisabledOperationException" . disabled-operation-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ValidationException" . validation-exception)
-        ("InternalException" . internal-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
  (common-lisp:defun remove-tags
@@ -2237,8 +2279,13 @@
                                                         "2015-01-01"))
       common-lisp:nil common-lisp:nil
       '(("BaseException" . base-exception)
-        ("ValidationException" . validation-exception)
-        ("InternalException" . internal-exception)))))
+        ("DisabledOperationException" . disabled-operation-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidTypeException" . invalid-type-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
  (common-lisp:defun update-elasticsearch-domain-config
@@ -2273,9 +2320,11 @@
                                                         "2015-01-01"))
       common-lisp:nil common-lisp:nil
       '(("BaseException" . base-exception)
+        ("DisabledOperationException" . disabled-operation-exception)
         ("InternalException" . internal-exception)
         ("InvalidTypeException" . invalid-type-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-elasticsearch-domain-config))

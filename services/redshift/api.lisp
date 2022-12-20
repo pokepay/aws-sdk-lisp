@@ -9229,14 +9229,134 @@
                                                         "AuthorizeClusterSecurityGroupIngress"
                                                         "2012-12-01"))
       common-lisp:nil "AuthorizeClusterSecurityGroupIngressResult"
-      '(("ClusterSecurityGroupNotFoundFault"
-         . cluster-security-group-not-found-fault)
-        ("InvalidClusterSecurityGroupStateFault"
-         . invalid-cluster-security-group-state-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
         ("AuthorizationAlreadyExistsFault"
          . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
         ("AuthorizationQuotaExceededFault"
-         . authorization-quota-exceeded-fault)))))
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'authorize-cluster-security-group-ingress))
 (common-lisp:progn
  (common-lisp:defun authorize-snapshot-access
@@ -9259,16 +9379,134 @@
                                                         "AuthorizeSnapshotAccess"
                                                         "2012-12-01"))
       common-lisp:nil "AuthorizeSnapshotAccessResult"
-      '(("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
         ("AuthorizationAlreadyExistsFault"
          . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
         ("AuthorizationQuotaExceededFault"
          . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
         ("DependentServiceRequestThrottlingFault"
          . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
         ("InvalidClusterSnapshotStateFault"
          . invalid-cluster-snapshot-state-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)))))
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'authorize-snapshot-access))
 (common-lisp:progn
  (common-lisp:defun copy-cluster-snapshot
@@ -9291,13 +9529,134 @@
                                                         "CopyClusterSnapshot"
                                                         "2012-12-01"))
       common-lisp:nil "CopyClusterSnapshotResult"
-      '(("ClusterSnapshotAlreadyExistsFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
          . cluster-snapshot-already-exists-fault)
         ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
         ("InvalidClusterSnapshotStateFault"
          . invalid-cluster-snapshot-state-fault)
-        ("ClusterSnapshotQuotaExceededFault"
-         . cluster-snapshot-quota-exceeded-fault)))))
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'copy-cluster-snapshot))
 (common-lisp:progn
  (common-lisp:defun create-cluster
@@ -9333,34 +9692,134 @@
                                                         "CreateCluster"
                                                         "2012-12-01"))
       common-lisp:nil "CreateClusterResult"
-      '(("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
-        ("InsufficientClusterCapacityFault"
-         . insufficient-cluster-capacity-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
         ("ClusterParameterGroupNotFoundFault"
          . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
         ("ClusterSecurityGroupNotFoundFault"
          . cluster-security-group-not-found-fault)
-        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
-        ("NumberOfNodesQuotaExceededFault"
-         . number-of-nodes-quota-exceeded-fault)
-        ("NumberOfNodesPerClusterLimitExceededFault"
-         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
         ("ClusterSubnetGroupNotFoundFault"
          . cluster-subnet-group-not-found-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
-        ("InvalidClusterSubnetGroupStateFault"
-         . invalid-cluster-subnet-group-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("UnauthorizedOperation" . unauthorized-operation)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
         ("HsmClientCertificateNotFoundFault"
          . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
         ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
         ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
-        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
         ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
         ("LimitExceededFault" . limit-exceeded-fault)
-        ("DependentServiceRequestThrottlingFault"
-         . dependent-service-request-throttling-fault)))))
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
  (common-lisp:defun create-cluster-parameter-group
@@ -9383,12 +9842,134 @@
                                                         "CreateClusterParameterGroup"
                                                         "2012-12-01"))
       common-lisp:nil "CreateClusterParameterGroupResult"
-      '(("ClusterParameterGroupQuotaExceededFault"
-         . cluster-parameter-group-quota-exceeded-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
         ("ClusterParameterGroupAlreadyExistsFault"
          . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
         ("TagLimitExceededFault" . tag-limit-exceeded-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'create-cluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun create-cluster-security-group
@@ -9410,12 +9991,134 @@
                                                         "CreateClusterSecurityGroup"
                                                         "2012-12-01"))
       common-lisp:nil "CreateClusterSecurityGroupResult"
-      '(("ClusterSecurityGroupAlreadyExistsFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
          . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
         ("ClusterSecurityGroupQuotaExceededFault"
          . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
         ("TagLimitExceededFault" . tag-limit-exceeded-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'create-cluster-security-group))
 (common-lisp:progn
  (common-lisp:defun create-cluster-snapshot
@@ -9436,14 +10139,134 @@
                                                         "CreateClusterSnapshot"
                                                         "2012-12-01"))
       common-lisp:nil "CreateClusterSnapshotResult"
-      '(("ClusterSnapshotAlreadyExistsFault"
-         . cluster-snapshot-already-exists-fault)
-        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
         ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
         ("ClusterSnapshotQuotaExceededFault"
          . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
         ("TagLimitExceededFault" . tag-limit-exceeded-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'create-cluster-snapshot))
 (common-lisp:progn
  (common-lisp:defun create-cluster-subnet-group
@@ -9466,18 +10289,134 @@
                                                         "CreateClusterSubnetGroup"
                                                         "2012-12-01"))
       common-lisp:nil "CreateClusterSubnetGroupResult"
-      '(("ClusterSubnetGroupAlreadyExistsFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
          . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
         ("ClusterSubnetGroupQuotaExceededFault"
          . cluster-subnet-group-quota-exceeded-fault)
         ("ClusterSubnetQuotaExceededFault"
          . cluster-subnet-quota-exceeded-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("UnauthorizedOperation" . unauthorized-operation)
-        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
-        ("InvalidTagFault" . invalid-tag-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
         ("DependentServiceRequestThrottlingFault"
-         . dependent-service-request-throttling-fault)))))
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'create-cluster-subnet-group))
 (common-lisp:progn
  (common-lisp:defun create-event-subscription
@@ -9501,21 +10440,134 @@
                                                         "CreateEventSubscription"
                                                         "2012-12-01"))
       common-lisp:nil "CreateEventSubscriptionResult"
-      '(("EventSubscriptionQuotaExceededFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
          . event-subscription-quota-exceeded-fault)
-        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
         ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
         ("SNSNoAuthorizationFault" . snsno-authorization-fault)
         ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
-        ("SubscriptionEventIdNotFoundFault"
-         . subscription-event-id-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
         ("SubscriptionCategoryNotFoundFault"
          . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
         ("SubscriptionSeverityNotFoundFault"
          . subscription-severity-not-found-fault)
-        ("SourceNotFoundFault" . source-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
         ("TagLimitExceededFault" . tag-limit-exceeded-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'create-event-subscription))
 (common-lisp:progn
  (common-lisp:defun create-hsm-client-certificate
@@ -9536,12 +10588,134 @@
                                                         "CreateHsmClientCertificate"
                                                         "2012-12-01"))
       common-lisp:nil "CreateHsmClientCertificateResult"
-      '(("HsmClientCertificateAlreadyExistsFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
          . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
         ("HsmClientCertificateQuotaExceededFault"
          . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
         ("TagLimitExceededFault" . tag-limit-exceeded-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'create-hsm-client-certificate))
 (common-lisp:progn
  (common-lisp:defun create-hsm-configuration
@@ -9565,12 +10739,134 @@
                                                         "CreateHsmConfiguration"
                                                         "2012-12-01"))
       common-lisp:nil "CreateHsmConfigurationResult"
-      '(("HsmConfigurationAlreadyExistsFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
          . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
         ("HsmConfigurationQuotaExceededFault"
          . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
         ("TagLimitExceededFault" . tag-limit-exceeded-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'create-hsm-configuration))
 (common-lisp:progn
  (common-lisp:defun create-snapshot-copy-grant
@@ -9591,15 +10887,134 @@
                                                         "CreateSnapshotCopyGrant"
                                                         "2012-12-01"))
       common-lisp:nil "CreateSnapshotCopyGrantResult"
-      '(("SnapshotCopyGrantAlreadyExistsFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
          . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
         ("SnapshotCopyGrantQuotaExceededFault"
          . snapshot-copy-grant-quota-exceeded-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
         ("TagLimitExceededFault" . tag-limit-exceeded-fault)
-        ("InvalidTagFault" . invalid-tag-fault)
-        ("DependentServiceRequestThrottlingFault"
-         . dependent-service-request-throttling-fault)))))
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'create-snapshot-copy-grant))
 (common-lisp:progn
  (common-lisp:defun create-tags
@@ -9617,9 +11032,134 @@
                                                         "POST" "/" "CreateTags"
                                                         "2012-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("TagLimitExceededFault" . tag-limit-exceeded-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
         ("ResourceNotFoundFault" . resource-not-found-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
  (common-lisp:defun delete-cluster
@@ -9642,12 +11182,134 @@
                                                         "DeleteCluster"
                                                         "2012-12-01"))
       common-lisp:nil "DeleteClusterResult"
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
-        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
         ("ClusterSnapshotAlreadyExistsFault"
          . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
         ("ClusterSnapshotQuotaExceededFault"
-         . cluster-snapshot-quota-exceeded-fault)))))
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
  (common-lisp:defun delete-cluster-parameter-group
@@ -9667,10 +11329,134 @@
                                                         "DeleteClusterParameterGroup"
                                                         "2012-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidClusterParameterGroupStateFault"
-         . invalid-cluster-parameter-group-state-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
         ("ClusterParameterGroupNotFoundFault"
-         . cluster-parameter-group-not-found-fault)))))
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'delete-cluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun delete-cluster-security-group
@@ -9690,10 +11476,134 @@
                                                         "DeleteClusterSecurityGroup"
                                                         "2012-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidClusterSecurityGroupStateFault"
-         . invalid-cluster-security-group-state-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
         ("ClusterSecurityGroupNotFoundFault"
-         . cluster-security-group-not-found-fault)))))
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'delete-cluster-security-group))
 (common-lisp:progn
  (common-lisp:defun delete-cluster-snapshot
@@ -9714,9 +11624,134 @@
                                                         "DeleteClusterSnapshot"
                                                         "2012-12-01"))
       common-lisp:nil "DeleteClusterSnapshotResult"
-      '(("InvalidClusterSnapshotStateFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
          . invalid-cluster-snapshot-state-fault)
-        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)))))
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'delete-cluster-snapshot))
 (common-lisp:progn
  (common-lisp:defun delete-cluster-subnet-group
@@ -9736,11 +11771,134 @@
                                                         "DeleteClusterSubnetGroup"
                                                         "2012-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidClusterSubnetGroupStateFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
          . invalid-cluster-subnet-group-state-fault)
         ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
-        ("ClusterSubnetGroupNotFoundFault"
-         . cluster-subnet-group-not-found-fault)))))
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'delete-cluster-subnet-group))
 (common-lisp:progn
  (common-lisp:defun delete-event-subscription
@@ -9760,9 +11918,134 @@
                                                         "DeleteEventSubscription"
                                                         "2012-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("SubscriptionNotFoundFault" . subscription-not-found-fault)
-        ("InvalidSubscriptionStateFault"
-         . invalid-subscription-state-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'delete-event-subscription))
 (common-lisp:progn
  (common-lisp:defun delete-hsm-client-certificate
@@ -9783,10 +12066,134 @@
                                                         "DeleteHsmClientCertificate"
                                                         "2012-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidHsmClientCertificateStateFault"
-         . invalid-hsm-client-certificate-state-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
         ("HsmClientCertificateNotFoundFault"
-         . hsm-client-certificate-not-found-fault)))))
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'delete-hsm-client-certificate))
 (common-lisp:progn
  (common-lisp:defun delete-hsm-configuration
@@ -9805,10 +12212,134 @@
                                                         "DeleteHsmConfiguration"
                                                         "2012-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidHsmConfigurationStateFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
          . invalid-hsm-configuration-state-fault)
-        ("HsmConfigurationNotFoundFault"
-         . hsm-configuration-not-found-fault)))))
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'delete-hsm-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-snapshot-copy-grant
@@ -9828,10 +12359,134 @@
                                                         "DeleteSnapshotCopyGrant"
                                                         "2012-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidSnapshotCopyGrantStateFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
          . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
         ("SnapshotCopyGrantNotFoundFault"
-         . snapshot-copy-grant-not-found-fault)))))
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'delete-snapshot-copy-grant))
 (common-lisp:progn
  (common-lisp:defun delete-tags
@@ -9849,8 +12504,134 @@
                                                         "POST" "/" "DeleteTags"
                                                         "2012-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundFault" . resource-not-found-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
  (common-lisp:defun describe-cluster-parameter-groups
@@ -9873,9 +12654,134 @@
                                                         "DescribeClusterParameterGroups"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeClusterParameterGroupsResult"
-      '(("ClusterParameterGroupNotFoundFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
          . cluster-parameter-group-not-found-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-cluster-parameter-groups))
 (common-lisp:progn
  (common-lisp:defun describe-cluster-parameters
@@ -9897,8 +12803,134 @@
                                                         "DescribeClusterParameters"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeClusterParametersResult"
-      '(("ClusterParameterGroupNotFoundFault"
-         . cluster-parameter-group-not-found-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-cluster-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-cluster-security-groups
@@ -9921,9 +12953,134 @@
                                                         "DescribeClusterSecurityGroups"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeClusterSecurityGroupsResult"
-      '(("ClusterSecurityGroupNotFoundFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
          . cluster-security-group-not-found-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-cluster-security-groups))
 (common-lisp:progn
  (common-lisp:defun describe-cluster-snapshots
@@ -9947,8 +13104,134 @@
                                                         "DescribeClusterSnapshots"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeClusterSnapshotsResult"
-      '(("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-cluster-snapshots))
 (common-lisp:progn
  (common-lisp:defun describe-cluster-subnet-groups
@@ -9971,9 +13254,134 @@
                                                         "DescribeClusterSubnetGroups"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeClusterSubnetGroupsResult"
-      '(("ClusterSubnetGroupNotFoundFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
          . cluster-subnet-group-not-found-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-cluster-subnet-groups))
 (common-lisp:progn
  (common-lisp:defun describe-cluster-versions
@@ -9995,7 +13403,135 @@
                                                         "POST" "/"
                                                         "DescribeClusterVersions"
                                                         "2012-12-01"))
-      common-lisp:nil "DescribeClusterVersionsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeClusterVersionsResult"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-cluster-versions))
 (common-lisp:progn
  (common-lisp:defun describe-clusters
@@ -10017,8 +13553,134 @@
                                                         "DescribeClusters"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeClustersResult"
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-clusters))
 (common-lisp:progn
  (common-lisp:defun describe-default-cluster-parameters
@@ -10040,7 +13702,134 @@
                                                         "DescribeDefaultClusterParameters"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeDefaultClusterParametersResult"
-      'common-lisp:nil)))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-default-cluster-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-event-categories
@@ -10059,7 +13848,135 @@
                                                         "POST" "/"
                                                         "DescribeEventCategories"
                                                         "2012-12-01"))
-      common-lisp:nil "DescribeEventCategoriesResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeEventCategoriesResult"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-event-categories))
 (common-lisp:progn
  (common-lisp:defun describe-event-subscriptions
@@ -10080,7 +13997,134 @@
                                                         "DescribeEventSubscriptions"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeEventSubscriptionsResult"
-      '(("SubscriptionNotFoundFault" . subscription-not-found-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-event-subscriptions))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -10101,7 +14145,135 @@
                                                         "POST" "/"
                                                         "DescribeEvents"
                                                         "2012-12-01"))
-      common-lisp:nil "DescribeEventsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeEventsResult"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
  (common-lisp:defun describe-hsm-client-certificates
@@ -10124,9 +14296,134 @@
                                                         "DescribeHsmClientCertificates"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeHsmClientCertificatesResult"
-      '(("HsmClientCertificateNotFoundFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
          . hsm-client-certificate-not-found-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-hsm-client-certificates))
 (common-lisp:progn
  (common-lisp:defun describe-hsm-configurations
@@ -10149,8 +14446,134 @@
                                                         "DescribeHsmConfigurations"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeHsmConfigurationsResult"
-      '(("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-hsm-configurations))
 (common-lisp:progn
  (common-lisp:defun describe-logging-status
@@ -10169,7 +14592,134 @@
                                                         "DescribeLoggingStatus"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeLoggingStatusResult"
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-logging-status))
 (common-lisp:progn
  (common-lisp:defun describe-orderable-cluster-options
@@ -10191,7 +14741,134 @@
                                                         "DescribeOrderableClusterOptions"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeOrderableClusterOptionsResult"
-      'common-lisp:nil)))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-orderable-cluster-options))
 (common-lisp:progn
  (common-lisp:defun describe-reserved-node-offerings
@@ -10213,11 +14890,134 @@
                                                         "DescribeReservedNodeOfferings"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeReservedNodeOfferingsResult"
-      '(("ReservedNodeOfferingNotFoundFault"
-         . reserved-node-offering-not-found-fault)
-        ("UnsupportedOperationFault" . unsupported-operation-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
         ("DependentServiceUnavailableFault"
-         . dependent-service-unavailable-fault)))))
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-reserved-node-offerings))
 (common-lisp:progn
  (common-lisp:defun describe-reserved-nodes
@@ -10237,9 +15037,134 @@
                                                         "DescribeReservedNodes"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeReservedNodesResult"
-      '(("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
         ("DependentServiceUnavailableFault"
-         . dependent-service-unavailable-fault)))))
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-reserved-nodes))
 (common-lisp:progn
  (common-lisp:defun describe-resize
@@ -10258,8 +15183,134 @@
                                                         "DescribeResize"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeResizeResult"
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
-        ("ResizeNotFoundFault" . resize-not-found-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-resize))
 (common-lisp:progn
  (common-lisp:defun describe-snapshot-copy-grants
@@ -10282,9 +15333,134 @@
                                                         "DescribeSnapshotCopyGrants"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeSnapshotCopyGrantsResult"
-      '(("SnapshotCopyGrantNotFoundFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
          . snapshot-copy-grant-not-found-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-snapshot-copy-grants))
 (common-lisp:progn
  (common-lisp:defun describe-table-restore-status
@@ -10307,8 +15483,134 @@
                                                         "DescribeTableRestoreStatus"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeTableRestoreStatusResult"
-      '(("TableRestoreNotFoundFault" . table-restore-not-found-fault)
-        ("ClusterNotFoundFault" . cluster-not-found-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-table-restore-status))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -10330,8 +15632,134 @@
                                                         "DescribeTags"
                                                         "2012-12-01"))
       common-lisp:nil "DescribeTagsResult"
-      '(("ResourceNotFoundFault" . resource-not-found-fault)
-        ("InvalidTagFault" . invalid-tag-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun disable-logging
@@ -10350,7 +15778,134 @@
                                                         "DisableLogging"
                                                         "2012-12-01"))
       common-lisp:nil "DisableLoggingResult"
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'disable-logging))
 (common-lisp:progn
  (common-lisp:defun disable-snapshot-copy
@@ -10369,11 +15924,134 @@
                                                         "DisableSnapshotCopy"
                                                         "2012-12-01"))
       common-lisp:nil "DisableSnapshotCopyResult"
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
         ("SnapshotCopyAlreadyDisabledFault"
          . snapshot-copy-already-disabled-fault)
-        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
-        ("UnauthorizedOperation" . unauthorized-operation)))))
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'disable-snapshot-copy))
 (common-lisp:progn
  (common-lisp:defun enable-logging
@@ -10394,12 +16072,134 @@
                                                         "EnableLogging"
                                                         "2012-12-01"))
       common-lisp:nil "EnableLoggingResult"
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
         ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
         ("InsufficientS3BucketPolicyFault"
          . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
         ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
-        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)))))
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'enable-logging))
 (common-lisp:progn
  (common-lisp:defun enable-snapshot-copy
@@ -10421,19 +16221,134 @@
                                                         "EnableSnapshotCopy"
                                                         "2012-12-01"))
       common-lisp:nil "EnableSnapshotCopyResult"
-      '(("IncompatibleOrderableOptions" . incompatible-orderable-options)
-        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
         ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
         ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
         ("SnapshotCopyAlreadyEnabledFault"
          . snapshot-copy-already-enabled-fault)
-        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
-        ("UnauthorizedOperation" . unauthorized-operation)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
         ("SnapshotCopyGrantNotFoundFault"
          . snapshot-copy-grant-not-found-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
-        ("DependentServiceRequestThrottlingFault"
-         . dependent-service-request-throttling-fault)))))
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'enable-snapshot-copy))
 (common-lisp:progn
  (common-lisp:defun get-cluster-credentials
@@ -10455,8 +16370,134 @@
                                                         "GetClusterCredentials"
                                                         "2012-12-01"))
       common-lisp:nil "GetClusterCredentialsResult"
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
-        ("UnsupportedOperationFault" . unsupported-operation-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'get-cluster-credentials))
 (common-lisp:progn
  (common-lisp:defun modify-cluster
@@ -10490,30 +16531,134 @@
                                                         "ModifyCluster"
                                                         "2012-12-01"))
       common-lisp:nil "ModifyClusterResult"
-      '(("InvalidClusterStateFault" . invalid-cluster-state-fault)
-        ("InvalidClusterSecurityGroupStateFault"
-         . invalid-cluster-security-group-state-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
         ("ClusterNotFoundFault" . cluster-not-found-fault)
-        ("NumberOfNodesQuotaExceededFault"
-         . number-of-nodes-quota-exceeded-fault)
-        ("NumberOfNodesPerClusterLimitExceededFault"
-         . number-of-nodes-per-cluster-limit-exceeded-fault)
-        ("ClusterSecurityGroupNotFoundFault"
-         . cluster-security-group-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
         ("ClusterParameterGroupNotFoundFault"
          . cluster-parameter-group-not-found-fault)
-        ("InsufficientClusterCapacityFault"
-         . insufficient-cluster-capacity-fault)
-        ("UnsupportedOptionFault" . unsupported-option-fault)
-        ("UnauthorizedOperation" . unauthorized-operation)
-        ("HsmClientCertificateNotFoundFault"
-         . hsm-client-certificate-not-found-fault)
-        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
-        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
         ("DependentServiceRequestThrottlingFault"
          . dependent-service-request-throttling-fault)
-        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)))))
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'modify-cluster))
 (common-lisp:progn
  (common-lisp:defun modify-cluster-iam-roles
@@ -10534,8 +16679,134 @@
                                                         "ModifyClusterIamRoles"
                                                         "2012-12-01"))
       common-lisp:nil "ModifyClusterIamRolesResult"
-      '(("InvalidClusterStateFault" . invalid-cluster-state-fault)
-        ("ClusterNotFoundFault" . cluster-not-found-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'modify-cluster-iam-roles))
 (common-lisp:progn
  (common-lisp:defun modify-cluster-parameter-group
@@ -10556,10 +16827,134 @@
                                                         "ModifyClusterParameterGroup"
                                                         "2012-12-01"))
       common-lisp:nil "ModifyClusterParameterGroupResult"
-      '(("ClusterParameterGroupNotFoundFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
          . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
         ("InvalidClusterParameterGroupStateFault"
-         . invalid-cluster-parameter-group-state-fault)))))
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'modify-cluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun modify-cluster-subnet-group
@@ -10581,15 +16976,134 @@
                                                         "ModifyClusterSubnetGroup"
                                                         "2012-12-01"))
       common-lisp:nil "ModifyClusterSubnetGroupResult"
-      '(("ClusterSubnetGroupNotFoundFault"
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
          . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
         ("ClusterSubnetQuotaExceededFault"
          . cluster-subnet-quota-exceeded-fault)
-        ("SubnetAlreadyInUse" . subnet-already-in-use)
-        ("InvalidSubnet" . invalid-subnet)
-        ("UnauthorizedOperation" . unauthorized-operation)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
         ("DependentServiceRequestThrottlingFault"
-         . dependent-service-request-throttling-fault)))))
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'modify-cluster-subnet-group))
 (common-lisp:progn
  (common-lisp:defun modify-event-subscription
@@ -10612,19 +17126,134 @@
                                                         "ModifyEventSubscription"
                                                         "2012-12-01"))
       common-lisp:nil "ModifyEventSubscriptionResult"
-      '(("SubscriptionNotFoundFault" . subscription-not-found-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
         ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
         ("SNSNoAuthorizationFault" . snsno-authorization-fault)
         ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
-        ("SubscriptionEventIdNotFoundFault"
-         . subscription-event-id-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
         ("SubscriptionCategoryNotFoundFault"
          . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
         ("SubscriptionSeverityNotFoundFault"
          . subscription-severity-not-found-fault)
-        ("SourceNotFoundFault" . source-not-found-fault)
-        ("InvalidSubscriptionStateFault"
-         . invalid-subscription-state-fault)))))
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'modify-event-subscription))
 (common-lisp:progn
  (common-lisp:defun modify-snapshot-copy-retention-period
@@ -10645,10 +17274,134 @@
                                                         "ModifySnapshotCopyRetentionPeriod"
                                                         "2012-12-01"))
       common-lisp:nil "ModifySnapshotCopyRetentionPeriodResult"
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
         ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
         ("UnauthorizedOperation" . unauthorized-operation)
-        ("InvalidClusterStateFault" . invalid-cluster-state-fault)))))
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'modify-snapshot-copy-retention-period))
 (common-lisp:progn
  (common-lisp:defun purchase-reserved-node-offering
@@ -10669,11 +17422,134 @@
                                                         "PurchaseReservedNodeOffering"
                                                         "2012-12-01"))
       common-lisp:nil "PurchaseReservedNodeOfferingResult"
-      '(("ReservedNodeOfferingNotFoundFault"
-         . reserved-node-offering-not-found-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
         ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
         ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
-        ("UnsupportedOperationFault" . unsupported-operation-fault)))))
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'purchase-reserved-node-offering))
 (common-lisp:progn
  (common-lisp:defun reboot-cluster
@@ -10692,8 +17568,134 @@
                                                         "RebootCluster"
                                                         "2012-12-01"))
       common-lisp:nil "RebootClusterResult"
-      '(("InvalidClusterStateFault" . invalid-cluster-state-fault)
-        ("ClusterNotFoundFault" . cluster-not-found-fault)))))
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'reboot-cluster))
 (common-lisp:progn
  (common-lisp:defun reset-cluster-parameter-group
@@ -10716,10 +17718,134 @@
                                                         "ResetClusterParameterGroup"
                                                         "2012-12-01"))
       common-lisp:nil "ResetClusterParameterGroupResult"
-      '(("InvalidClusterParameterGroupStateFault"
-         . invalid-cluster-parameter-group-state-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
         ("ClusterParameterGroupNotFoundFault"
-         . cluster-parameter-group-not-found-fault)))))
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'reset-cluster-parameter-group))
 (common-lisp:progn
  (common-lisp:defun restore-from-cluster-snapshot
@@ -10757,36 +17883,133 @@
                                                         "2012-12-01"))
       common-lisp:nil "RestoreFromClusterSnapshotResult"
       '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
         ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
-        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
-        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
-        ("InsufficientClusterCapacityFault"
-         . insufficient-cluster-capacity-fault)
-        ("InvalidClusterSnapshotStateFault"
-         . invalid-cluster-snapshot-state-fault)
-        ("InvalidRestoreFault" . invalid-restore-fault)
-        ("NumberOfNodesQuotaExceededFault"
-         . number-of-nodes-quota-exceeded-fault)
-        ("NumberOfNodesPerClusterLimitExceededFault"
-         . number-of-nodes-per-cluster-limit-exceeded-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
-        ("InvalidClusterSubnetGroupStateFault"
-         . invalid-cluster-subnet-group-state-fault)
-        ("InvalidSubnet" . invalid-subnet)
-        ("ClusterSubnetGroupNotFoundFault"
-         . cluster-subnet-group-not-found-fault)
-        ("UnauthorizedOperation" . unauthorized-operation)
-        ("HsmClientCertificateNotFoundFault"
-         . hsm-client-certificate-not-found-fault)
-        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
-        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
         ("ClusterParameterGroupNotFoundFault"
          . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
         ("ClusterSecurityGroupNotFoundFault"
          . cluster-security-group-not-found-fault)
-        ("LimitExceededFault" . limit-exceeded-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
         ("DependentServiceRequestThrottlingFault"
-         . dependent-service-request-throttling-fault)))))
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'restore-from-cluster-snapshot))
 (common-lisp:progn
  (common-lisp:defun restore-table-from-cluster-snapshot
@@ -10811,16 +18034,134 @@
                                                         "RestoreTableFromClusterSnapshot"
                                                         "2012-12-01"))
       common-lisp:nil "RestoreTableFromClusterSnapshotResult"
-      '(("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
         ("InProgressTableRestoreQuotaExceededFault"
          . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
         ("InvalidClusterSnapshotStateFault"
          . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
         ("InvalidTableRestoreArgumentFault"
          . invalid-table-restore-argument-fault)
-        ("ClusterNotFoundFault" . cluster-not-found-fault)
-        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
-        ("UnsupportedOperationFault" . unsupported-operation-fault)))))
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'restore-table-from-cluster-snapshot))
 (common-lisp:progn
  (common-lisp:defun revoke-cluster-security-group-ingress
@@ -10843,11 +18184,134 @@
                                                         "RevokeClusterSecurityGroupIngress"
                                                         "2012-12-01"))
       common-lisp:nil "RevokeClusterSecurityGroupIngressResult"
-      '(("ClusterSecurityGroupNotFoundFault"
-         . cluster-security-group-not-found-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
         ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
         ("InvalidClusterSecurityGroupStateFault"
-         . invalid-cluster-security-group-state-fault)))))
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'revoke-cluster-security-group-ingress))
 (common-lisp:progn
  (common-lisp:defun revoke-snapshot-access
@@ -10870,8 +18334,133 @@
                                                         "2012-12-01"))
       common-lisp:nil "RevokeSnapshotAccessResult"
       '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
         ("AuthorizationNotFoundFault" . authorization-not-found-fault)
-        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)))))
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
+        ("DependentServiceRequestThrottlingFault"
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'revoke-snapshot-access))
 (common-lisp:progn
  (common-lisp:defun rotate-encryption-key
@@ -10890,8 +18479,132 @@
                                                         "RotateEncryptionKey"
                                                         "2012-12-01"))
       common-lisp:nil "RotateEncryptionKeyResult"
-      '(("ClusterNotFoundFault" . cluster-not-found-fault)
-        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+      '(("AccessToSnapshotDeniedFault" . access-to-snapshot-denied-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("AuthorizationQuotaExceededFault"
+         . authorization-quota-exceeded-fault)
+        ("BucketNotFoundFault" . bucket-not-found-fault)
+        ("ClusterAlreadyExistsFault" . cluster-already-exists-fault)
+        ("ClusterNotFoundFault" . cluster-not-found-fault)
+        ("ClusterParameterGroupAlreadyExistsFault"
+         . cluster-parameter-group-already-exists-fault)
+        ("ClusterParameterGroupNotFoundFault"
+         . cluster-parameter-group-not-found-fault)
+        ("ClusterParameterGroupQuotaExceededFault"
+         . cluster-parameter-group-quota-exceeded-fault)
+        ("ClusterQuotaExceededFault" . cluster-quota-exceeded-fault)
+        ("ClusterSecurityGroupAlreadyExistsFault"
+         . cluster-security-group-already-exists-fault)
+        ("ClusterSecurityGroupNotFoundFault"
+         . cluster-security-group-not-found-fault)
+        ("ClusterSecurityGroupQuotaExceededFault"
+         . cluster-security-group-quota-exceeded-fault)
+        ("ClusterSnapshotAlreadyExistsFault"
+         . cluster-snapshot-already-exists-fault)
+        ("ClusterSnapshotNotFoundFault" . cluster-snapshot-not-found-fault)
+        ("ClusterSnapshotQuotaExceededFault"
+         . cluster-snapshot-quota-exceeded-fault)
+        ("ClusterSubnetGroupAlreadyExistsFault"
+         . cluster-subnet-group-already-exists-fault)
+        ("ClusterSubnetGroupNotFoundFault"
+         . cluster-subnet-group-not-found-fault)
+        ("ClusterSubnetGroupQuotaExceededFault"
+         . cluster-subnet-group-quota-exceeded-fault)
+        ("ClusterSubnetQuotaExceededFault"
+         . cluster-subnet-quota-exceeded-fault)
+        ("CopyToRegionDisabledFault" . copy-to-region-disabled-fault)
         ("DependentServiceRequestThrottlingFault"
-         . dependent-service-request-throttling-fault)))))
+         . dependent-service-request-throttling-fault)
+        ("DependentServiceUnavailableFault"
+         . dependent-service-unavailable-fault)
+        ("EventSubscriptionQuotaExceededFault"
+         . event-subscription-quota-exceeded-fault)
+        ("HsmClientCertificateAlreadyExistsFault"
+         . hsm-client-certificate-already-exists-fault)
+        ("HsmClientCertificateNotFoundFault"
+         . hsm-client-certificate-not-found-fault)
+        ("HsmClientCertificateQuotaExceededFault"
+         . hsm-client-certificate-quota-exceeded-fault)
+        ("HsmConfigurationAlreadyExistsFault"
+         . hsm-configuration-already-exists-fault)
+        ("HsmConfigurationNotFoundFault" . hsm-configuration-not-found-fault)
+        ("HsmConfigurationQuotaExceededFault"
+         . hsm-configuration-quota-exceeded-fault)
+        ("InProgressTableRestoreQuotaExceededFault"
+         . in-progress-table-restore-quota-exceeded-fault)
+        ("IncompatibleOrderableOptions" . incompatible-orderable-options)
+        ("InsufficientClusterCapacityFault"
+         . insufficient-cluster-capacity-fault)
+        ("InsufficientS3BucketPolicyFault"
+         . insufficient-s3bucket-policy-fault)
+        ("InvalidClusterParameterGroupStateFault"
+         . invalid-cluster-parameter-group-state-fault)
+        ("InvalidClusterSecurityGroupStateFault"
+         . invalid-cluster-security-group-state-fault)
+        ("InvalidClusterSnapshotStateFault"
+         . invalid-cluster-snapshot-state-fault)
+        ("InvalidClusterStateFault" . invalid-cluster-state-fault)
+        ("InvalidClusterSubnetGroupStateFault"
+         . invalid-cluster-subnet-group-state-fault)
+        ("InvalidClusterSubnetStateFault" . invalid-cluster-subnet-state-fault)
+        ("InvalidElasticIpFault" . invalid-elastic-ip-fault)
+        ("InvalidHsmClientCertificateStateFault"
+         . invalid-hsm-client-certificate-state-fault)
+        ("InvalidHsmConfigurationStateFault"
+         . invalid-hsm-configuration-state-fault)
+        ("InvalidRestoreFault" . invalid-restore-fault)
+        ("InvalidS3BucketNameFault" . invalid-s3bucket-name-fault)
+        ("InvalidS3KeyPrefixFault" . invalid-s3key-prefix-fault)
+        ("InvalidSnapshotCopyGrantStateFault"
+         . invalid-snapshot-copy-grant-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidSubscriptionStateFault" . invalid-subscription-state-fault)
+        ("InvalidTableRestoreArgumentFault"
+         . invalid-table-restore-argument-fault)
+        ("InvalidTagFault" . invalid-tag-fault)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("LimitExceededFault" . limit-exceeded-fault)
+        ("NumberOfNodesPerClusterLimitExceededFault"
+         . number-of-nodes-per-cluster-limit-exceeded-fault)
+        ("NumberOfNodesQuotaExceededFault"
+         . number-of-nodes-quota-exceeded-fault)
+        ("ReservedNodeAlreadyExistsFault" . reserved-node-already-exists-fault)
+        ("ReservedNodeNotFoundFault" . reserved-node-not-found-fault)
+        ("ReservedNodeOfferingNotFoundFault"
+         . reserved-node-offering-not-found-fault)
+        ("ReservedNodeQuotaExceededFault" . reserved-node-quota-exceeded-fault)
+        ("ResizeNotFoundFault" . resize-not-found-fault)
+        ("ResourceNotFoundFault" . resource-not-found-fault)
+        ("SNSInvalidTopicFault" . snsinvalid-topic-fault)
+        ("SNSNoAuthorizationFault" . snsno-authorization-fault)
+        ("SNSTopicArnNotFoundFault" . snstopic-arn-not-found-fault)
+        ("SnapshotCopyAlreadyDisabledFault"
+         . snapshot-copy-already-disabled-fault)
+        ("SnapshotCopyAlreadyEnabledFault"
+         . snapshot-copy-already-enabled-fault)
+        ("SnapshotCopyDisabledFault" . snapshot-copy-disabled-fault)
+        ("SnapshotCopyGrantAlreadyExistsFault"
+         . snapshot-copy-grant-already-exists-fault)
+        ("SnapshotCopyGrantNotFoundFault"
+         . snapshot-copy-grant-not-found-fault)
+        ("SnapshotCopyGrantQuotaExceededFault"
+         . snapshot-copy-grant-quota-exceeded-fault)
+        ("SourceNotFoundFault" . source-not-found-fault)
+        ("SubnetAlreadyInUse" . subnet-already-in-use)
+        ("SubscriptionAlreadyExistFault" . subscription-already-exist-fault)
+        ("SubscriptionCategoryNotFoundFault"
+         . subscription-category-not-found-fault)
+        ("SubscriptionEventIdNotFoundFault"
+         . subscription-event-id-not-found-fault)
+        ("SubscriptionNotFoundFault" . subscription-not-found-fault)
+        ("SubscriptionSeverityNotFoundFault"
+         . subscription-severity-not-found-fault)
+        ("TableRestoreNotFoundFault" . table-restore-not-found-fault)
+        ("TagLimitExceededFault" . tag-limit-exceeded-fault)
+        ("UnauthorizedOperation" . unauthorized-operation)
+        ("UnknownSnapshotCopyRegionFault" . unknown-snapshot-copy-region-fault)
+        ("UnsupportedOperationFault" . unsupported-operation-fault)
+        ("UnsupportedOptionFault" . unsupported-option-fault)))))
  (common-lisp:export 'rotate-encryption-key))

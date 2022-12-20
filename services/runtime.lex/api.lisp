@@ -557,17 +557,18 @@
                                                         "PostContent"
                                                         "2016-11-28"))
       "blob" common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadGatewayException" . bad-gateway-exception)
         ("BadRequestException" . bad-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("InternalFailureException" . internal-failure-exception)
         ("ConflictException" . conflict-exception)
-        ("UnsupportedMediaTypeException" . unsupported-media-type-exception)
-        ("NotAcceptableException" . not-acceptable-exception)
-        ("RequestTimeoutException" . request-timeout-exception)
         ("DependencyFailedException" . dependency-failed-exception)
-        ("BadGatewayException" . bad-gateway-exception)
-        ("LoopDetectedException" . loop-detected-exception)))))
+        ("InternalFailureException" . internal-failure-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("LoopDetectedException" . loop-detected-exception)
+        ("NotAcceptableException" . not-acceptable-exception)
+        ("NotFoundException" . not-found-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'post-content))
 (common-lisp:progn
  (common-lisp:defun post-text
@@ -607,12 +608,16 @@
                                                         "PostText"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("NotFoundException" . not-found-exception)
+      '(("BadGatewayException" . bad-gateway-exception)
         ("BadRequestException" . bad-request-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("InternalFailureException" . internal-failure-exception)
         ("ConflictException" . conflict-exception)
         ("DependencyFailedException" . dependency-failed-exception)
-        ("BadGatewayException" . bad-gateway-exception)
-        ("LoopDetectedException" . loop-detected-exception)))))
+        ("InternalFailureException" . internal-failure-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("LoopDetectedException" . loop-detected-exception)
+        ("NotAcceptableException" . not-acceptable-exception)
+        ("NotFoundException" . not-found-exception)
+        ("RequestTimeoutException" . request-timeout-exception)
+        ("UnsupportedMediaTypeException"
+         . unsupported-media-type-exception)))))
  (common-lisp:export 'post-text))

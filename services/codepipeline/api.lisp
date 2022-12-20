@@ -4203,9 +4203,36 @@
                                                         "AcknowledgeJob"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
         ("InvalidNonceException" . invalid-nonce-exception)
-        ("JobNotFoundException" . job-not-found-exception)))))
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'acknowledge-job))
 (common-lisp:progn
  (common-lisp:defun acknowledge-third-party-job
@@ -4225,10 +4252,36 @@
                                                         "AcknowledgeThirdPartyJob"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
         ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
         ("JobNotFoundException" . job-not-found-exception)
-        ("InvalidClientTokenException" . invalid-client-token-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'acknowledge-third-party-job))
 (common-lisp:progn
  (common-lisp:defun create-custom-action-type
@@ -4251,8 +4304,36 @@
                                                         "CreateCustomActionType"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-custom-action-type))
 (common-lisp:progn
  (common-lisp:defun create-pipeline
@@ -4271,16 +4352,36 @@
                                                         "CreatePipeline"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
-        ("InvalidStageDeclarationException"
-         . invalid-stage-declaration-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
         ("InvalidActionDeclarationException"
          . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
         ("InvalidBlockerDeclarationException"
          . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
         ("InvalidStructureException" . invalid-structure-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'create-pipeline))
 (common-lisp:progn
  (common-lisp:defun delete-custom-action-type
@@ -4299,7 +4400,36 @@
                                                         "DeleteCustomActionType"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)))))
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-custom-action-type))
 (common-lisp:progn
  (common-lisp:defun delete-pipeline
@@ -4318,7 +4448,36 @@
                                                         "DeletePipeline"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)))))
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-pipeline))
 (common-lisp:progn
  (common-lisp:defun disable-stage-transition
@@ -4339,9 +4498,36 @@
                                                         "DisableStageTransition"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
         ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("StageNotFoundException" . stage-not-found-exception)))))
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'disable-stage-transition))
 (common-lisp:progn
  (common-lisp:defun enable-stage-transition
@@ -4361,9 +4547,36 @@
                                                         "EnableStageTransition"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
         ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("StageNotFoundException" . stage-not-found-exception)))))
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'enable-stage-transition))
 (common-lisp:progn
  (common-lisp:defun get-job-details
@@ -4382,8 +4595,36 @@
                                                         "GetJobDetails"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("JobNotFoundException" . job-not-found-exception)))))
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'get-job-details))
 (common-lisp:progn
  (common-lisp:defun get-pipeline
@@ -4402,10 +4643,36 @@
                                                         "GetPipeline"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
         ("PipelineNotFoundException" . pipeline-not-found-exception)
         ("PipelineVersionNotFoundException"
-         . pipeline-version-not-found-exception)))))
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'get-pipeline))
 (common-lisp:progn
  (common-lisp:defun get-pipeline-execution
@@ -4425,10 +4692,36 @@
                                                         "GetPipelineExecution"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
         ("PipelineExecutionNotFoundException"
-         . pipeline-execution-not-found-exception)))))
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'get-pipeline-execution))
 (common-lisp:progn
  (common-lisp:defun get-pipeline-state
@@ -4447,8 +4740,36 @@
                                                         "GetPipelineState"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)))))
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'get-pipeline-state))
 (common-lisp:progn
  (common-lisp:defun get-third-party-job-details
@@ -4468,10 +4789,36 @@
                                                         "GetThirdPartyJobDetails"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("JobNotFoundException" . job-not-found-exception)
-        ("ValidationException" . validation-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
         ("InvalidClientTokenException" . invalid-client-token-exception)
-        ("InvalidJobException" . invalid-job-exception)))))
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'get-third-party-job-details))
 (common-lisp:progn
  (common-lisp:defun list-action-types
@@ -4490,8 +4837,36 @@
                                                         "ListActionTypes"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)))))
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-action-types))
 (common-lisp:progn
  (common-lisp:defun list-pipeline-executions
@@ -4511,9 +4886,36 @@
                                                         "ListPipelineExecutions"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
         ("PipelineNotFoundException" . pipeline-not-found-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)))))
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-pipeline-executions))
 (common-lisp:progn
  (common-lisp:defun list-pipelines
@@ -4532,7 +4934,36 @@
                                                         "ListPipelines"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)))))
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'list-pipelines))
 (common-lisp:progn
  (common-lisp:defun poll-for-jobs
@@ -4553,8 +4984,36 @@
                                                         "PollForJobs"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("ActionTypeNotFoundException" . action-type-not-found-exception)))))
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'poll-for-jobs))
 (common-lisp:progn
  (common-lisp:defun poll-for-third-party-jobs
@@ -4573,7 +5032,35 @@
                                                         "PollForThirdPartyJobs"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ActionTypeNotFoundException" . action-type-not-found-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'poll-for-third-party-jobs))
 (common-lisp:progn
@@ -4596,9 +5083,35 @@
                                                         "PutActionRevision"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("PipelineNotFoundException" . pipeline-not-found-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
         ("StageNotFoundException" . stage-not-found-exception)
-        ("ActionNotFoundException" . action-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'put-action-revision))
 (common-lisp:progn
@@ -4620,12 +5133,35 @@
                                                         "PutApprovalResult"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidApprovalTokenException" . invalid-approval-token-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
         ("ApprovalAlreadyCompletedException"
          . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
         ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
         ("StageNotFoundException" . stage-not-found-exception)
-        ("ActionNotFoundException" . action-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
         ("ValidationException" . validation-exception)))))
  (common-lisp:export 'put-approval-result))
 (common-lisp:progn
@@ -4645,9 +5181,36 @@
                                                         "PutJobFailureResult"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
         ("JobNotFoundException" . job-not-found-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'put-job-failure-result))
 (common-lisp:progn
  (common-lisp:defun put-job-success-result
@@ -4669,9 +5232,36 @@
                                                         "PutJobSuccessResult"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
         ("JobNotFoundException" . job-not-found-exception)
-        ("InvalidJobStateException" . invalid-job-state-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'put-job-success-result))
 (common-lisp:progn
  (common-lisp:defun put-third-party-job-failure-result
@@ -4692,10 +5282,36 @@
                                                         "PutThirdPartyJobFailureResult"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("JobNotFoundException" . job-not-found-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
         ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidClientTokenException" . invalid-client-token-exception)))))
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'put-third-party-job-failure-result))
 (common-lisp:progn
  (common-lisp:defun put-third-party-job-success-result
@@ -4718,10 +5334,36 @@
                                                         "PutThirdPartyJobSuccessResult"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("JobNotFoundException" . job-not-found-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
         ("InvalidJobStateException" . invalid-job-state-exception)
-        ("InvalidClientTokenException" . invalid-client-token-exception)))))
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'put-third-party-job-success-result))
 (common-lisp:progn
  (common-lisp:defun retry-stage-execution
@@ -4743,12 +5385,36 @@
                                                         "RetryStageExecution"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
         ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
         ("StageNotFoundException" . stage-not-found-exception)
         ("StageNotRetryableException" . stage-not-retryable-exception)
-        ("NotLatestPipelineExecutionException"
-         . not-latest-pipeline-execution-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'retry-stage-execution))
 (common-lisp:progn
  (common-lisp:defun start-pipeline-execution
@@ -4767,8 +5433,36 @@
                                                         "StartPipelineExecution"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("PipelineNotFoundException" . pipeline-not-found-exception)))))
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
+        ("InvalidActionDeclarationException"
+         . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
+        ("InvalidBlockerDeclarationException"
+         . invalid-blocker-declaration-exception)
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'start-pipeline-execution))
 (common-lisp:progn
  (common-lisp:defun update-pipeline
@@ -4787,12 +5481,34 @@
                                                         "UpdatePipeline"
                                                         "2015-07-09"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
-        ("InvalidStageDeclarationException"
-         . invalid-stage-declaration-exception)
+      '(("ActionNotFoundException" . action-not-found-exception)
+        ("ActionTypeNotFoundException" . action-type-not-found-exception)
+        ("ApprovalAlreadyCompletedException"
+         . approval-already-completed-exception)
         ("InvalidActionDeclarationException"
          . invalid-action-declaration-exception)
+        ("InvalidApprovalTokenException" . invalid-approval-token-exception)
         ("InvalidBlockerDeclarationException"
          . invalid-blocker-declaration-exception)
-        ("InvalidStructureException" . invalid-structure-exception)))))
+        ("InvalidClientTokenException" . invalid-client-token-exception)
+        ("InvalidJobException" . invalid-job-exception)
+        ("InvalidJobStateException" . invalid-job-state-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidNonceException" . invalid-nonce-exception)
+        ("InvalidStageDeclarationException"
+         . invalid-stage-declaration-exception)
+        ("InvalidStructureException" . invalid-structure-exception)
+        ("JobNotFoundException" . job-not-found-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotLatestPipelineExecutionException"
+         . not-latest-pipeline-execution-exception)
+        ("PipelineExecutionNotFoundException"
+         . pipeline-execution-not-found-exception)
+        ("PipelineNameInUseException" . pipeline-name-in-use-exception)
+        ("PipelineNotFoundException" . pipeline-not-found-exception)
+        ("PipelineVersionNotFoundException"
+         . pipeline-version-not-found-exception)
+        ("StageNotFoundException" . stage-not-found-exception)
+        ("StageNotRetryableException" . stage-not-retryable-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'update-pipeline))

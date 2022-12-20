@@ -1589,7 +1589,8 @@
                                                         "2017-05-18"))
       common-lisp:nil common-lisp:nil
       '(("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'batch-get-named-query))
 (common-lisp:progn
  (common-lisp:defun batch-get-query-execution
@@ -1609,7 +1610,8 @@
                                                         "2017-05-18"))
       common-lisp:nil common-lisp:nil
       '(("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'batch-get-query-execution))
 (common-lisp:progn
  (common-lisp:defun create-named-query
@@ -1632,7 +1634,8 @@
                                                         "2017-05-18"))
       common-lisp:nil common-lisp:nil
       '(("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-named-query))
 (common-lisp:progn
  (common-lisp:defun delete-named-query
@@ -1652,7 +1655,8 @@
                                                         "2017-05-18"))
       common-lisp:nil common-lisp:nil
       '(("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-named-query))
 (common-lisp:progn
  (common-lisp:defun get-named-query
@@ -1672,7 +1676,8 @@
                                                         "2017-05-18"))
       common-lisp:nil common-lisp:nil
       '(("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-named-query))
 (common-lisp:progn
  (common-lisp:defun get-query-execution
@@ -1692,7 +1697,8 @@
                                                         "2017-05-18"))
       common-lisp:nil common-lisp:nil
       '(("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-query-execution))
 (common-lisp:progn
  (common-lisp:defun get-query-results
@@ -1714,7 +1720,8 @@
                                                         "2017-05-18"))
       common-lisp:nil common-lisp:nil
       '(("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-query-results))
 (common-lisp:progn
  (common-lisp:defun list-named-queries
@@ -1734,7 +1741,8 @@
                                                         "2017-05-18"))
       common-lisp:nil common-lisp:nil
       '(("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-named-queries))
 (common-lisp:progn
  (common-lisp:defun list-query-executions
@@ -1754,7 +1762,8 @@
                                                         "2017-05-18"))
       common-lisp:nil common-lisp:nil
       '(("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-query-executions))
 (common-lisp:progn
  (common-lisp:defun start-query-execution
@@ -1798,5 +1807,6 @@
                                                         "2017-05-18"))
       common-lisp:nil common-lisp:nil
       '(("InternalServerException" . internal-server-exception)
-        ("InvalidRequestException" . invalid-request-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'stop-query-execution))

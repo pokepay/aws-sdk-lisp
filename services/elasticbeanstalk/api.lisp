@@ -6725,8 +6725,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "AbortEnvironmentUpdate" "2010-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("InsufficientPrivilegesException"
-         . insufficient-privileges-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'abort-environment-update))
 (common-lisp:progn
  (common-lisp:defun apply-environment-managed-action
@@ -6746,10 +6767,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "ApplyEnvironmentManagedAction" "2010-12-01"))
       common-lisp:nil "ApplyEnvironmentManagedActionResult"
-      '(("ElasticBeanstalkServiceException"
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
          . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
         ("ManagedActionInvalidStateException"
-         . managed-action-invalid-state-exception)))))
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'apply-environment-managed-action))
 (common-lisp:progn
  (common-lisp:defun check-dnsavailability
@@ -6765,7 +6805,30 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "CheckDNSAvailability" "2010-12-01"))
-      common-lisp:nil "CheckDNSAvailabilityResult" 'common-lisp:nil)))
+      common-lisp:nil "CheckDNSAvailabilityResult"
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'check-dnsavailability))
 (common-lisp:progn
  (common-lisp:defun compose-environments
@@ -6784,9 +6847,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "ComposeEnvironments" "2010-12-01"))
       common-lisp:nil "ComposeEnvironmentsResult"
-      '(("TooManyEnvironmentsException" . too-many-environments-exception)
-        ("InsufficientPrivilegesException"
-         . insufficient-privileges-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'compose-environments))
 (common-lisp:progn
  (common-lisp:defun create-application
@@ -6806,7 +6889,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "CreateApplication" "2010-12-01"))
       common-lisp:nil "CreateApplicationResult"
-      '(("TooManyApplicationsException" . too-many-applications-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'create-application))
 (common-lisp:progn
  (common-lisp:defun create-application-version
@@ -6829,14 +6934,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "CreateApplicationVersion" "2010-12-01"))
       common-lisp:nil "CreateApplicationVersionResult"
-      '(("TooManyApplicationsException" . too-many-applications-exception)
-        ("TooManyApplicationVersionsException"
-         . too-many-application-versions-exception)
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
         ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
         ("S3LocationNotInServiceRegionException"
          . s3location-not-in-service-region-exception)
-        ("CodeBuildNotInServiceRegionException"
-         . code-build-not-in-service-region-exception)))))
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'create-application-version))
 (common-lisp:progn
  (common-lisp:defun create-configuration-template
@@ -6859,10 +6979,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "CreateConfigurationTemplate" "2010-12-01"))
       common-lisp:nil "CreateConfigurationTemplateResult"
-      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
         ("TooManyBucketsException" . too-many-buckets-exception)
         ("TooManyConfigurationTemplatesException"
-         . too-many-configuration-templates-exception)))))
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'create-configuration-template))
 (common-lisp:progn
  (common-lisp:defun create-environment
@@ -6885,9 +7024,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "CreateEnvironment" "2010-12-01"))
       common-lisp:nil "CreateEnvironmentResult"
-      '(("TooManyEnvironmentsException" . too-many-environments-exception)
-        ("InsufficientPrivilegesException"
-         . insufficient-privileges-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'create-environment))
 (common-lisp:progn
  (common-lisp:defun create-platform-version
@@ -6908,9 +7067,28 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "CreatePlatformVersion" "2010-12-01"))
       common-lisp:nil "CreatePlatformVersionResult"
-      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
         ("ElasticBeanstalkServiceException"
          . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
         ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'create-platform-version))
 (common-lisp:progn
@@ -6922,10 +7100,29 @@
                                 `(("Action" ,@"CreateStorageLocation")
                                   ("Version" ,@"2010-12-01"))))
     common-lisp:nil "CreateStorageLocationResult"
-    '(("TooManyBucketsException" . too-many-buckets-exception)
+    '(("CodeBuildNotInServiceRegionException"
+       . code-build-not-in-service-region-exception)
+      ("ElasticBeanstalkServiceException"
+       . elastic-beanstalk-service-exception)
+      ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+      ("InvalidRequestException" . invalid-request-exception)
+      ("ManagedActionInvalidStateException"
+       . managed-action-invalid-state-exception)
+      ("OperationInProgressException" . operation-in-progress-exception)
+      ("PlatformVersionStillReferencedException"
+       . platform-version-still-referenced-exception)
+      ("S3LocationNotInServiceRegionException"
+       . s3location-not-in-service-region-exception)
       ("S3SubscriptionRequiredException" . s3subscription-required-exception)
-      ("InsufficientPrivilegesException"
-       . insufficient-privileges-exception))))
+      ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+      ("TooManyApplicationVersionsException"
+       . too-many-application-versions-exception)
+      ("TooManyApplicationsException" . too-many-applications-exception)
+      ("TooManyBucketsException" . too-many-buckets-exception)
+      ("TooManyConfigurationTemplatesException"
+       . too-many-configuration-templates-exception)
+      ("TooManyEnvironmentsException" . too-many-environments-exception)
+      ("TooManyPlatformsException" . too-many-platforms-exception))))
  (common-lisp:export 'create-storage-location))
 (common-lisp:progn
  (common-lisp:defun delete-application
@@ -6943,7 +7140,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteApplication" "2010-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("OperationInProgressException" . operation-in-progress-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'delete-application))
 (common-lisp:progn
  (common-lisp:defun delete-application-version
@@ -6964,11 +7183,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteApplicationVersion" "2010-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("SourceBundleDeletionException" . source-bundle-deletion-exception)
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
         ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
         ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
         ("S3LocationNotInServiceRegionException"
-         . s3location-not-in-service-region-exception)))))
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'delete-application-version))
 (common-lisp:progn
  (common-lisp:defun delete-configuration-template
@@ -6986,7 +7223,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteConfigurationTemplate" "2010-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("OperationInProgressException" . operation-in-progress-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'delete-configuration-template))
 (common-lisp:progn
  (common-lisp:defun delete-environment-configuration
@@ -7004,7 +7263,30 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteEnvironmentConfiguration" "2010-12-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'delete-environment-configuration))
 (common-lisp:progn
  (common-lisp:defun delete-platform-version
@@ -7021,12 +7303,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DeletePlatformVersion" "2010-12-01"))
       common-lisp:nil "DeletePlatformVersionResult"
-      '(("OperationInProgressException" . operation-in-progress-exception)
-        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
         ("ElasticBeanstalkServiceException"
          . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
         ("PlatformVersionStillReferencedException"
-         . platform-version-still-referenced-exception)))))
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'delete-platform-version))
 (common-lisp:progn
  (common-lisp:defun describe-application-versions
@@ -7046,7 +7345,30 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeApplicationVersions" "2010-12-01"))
-      common-lisp:nil "DescribeApplicationVersionsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeApplicationVersionsResult"
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'describe-application-versions))
 (common-lisp:progn
  (common-lisp:defun describe-applications
@@ -7062,7 +7384,30 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeApplications" "2010-12-01"))
-      common-lisp:nil "DescribeApplicationsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeApplicationsResult"
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'describe-applications))
 (common-lisp:progn
  (common-lisp:defun describe-configuration-options
@@ -7083,7 +7428,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeConfigurationOptions" "2010-12-01"))
       common-lisp:nil "DescribeConfigurationOptionsResult"
-      '(("TooManyBucketsException" . too-many-buckets-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'describe-configuration-options))
 (common-lisp:progn
  (common-lisp:defun describe-configuration-settings
@@ -7103,7 +7470,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeConfigurationSettings" "2010-12-01"))
       common-lisp:nil "DescribeConfigurationSettingsResult"
-      '(("TooManyBucketsException" . too-many-buckets-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'describe-configuration-settings))
 (common-lisp:progn
  (common-lisp:defun describe-environment-health
@@ -7123,9 +7512,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEnvironmentHealth" "2010-12-01"))
       common-lisp:nil "DescribeEnvironmentHealthResult"
-      '(("InvalidRequestException" . invalid-request-exception)
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
         ("ElasticBeanstalkServiceException"
-         . elastic-beanstalk-service-exception)))))
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'describe-environment-health))
 (common-lisp:progn
  (common-lisp:defun describe-environment-managed-action-history
@@ -7146,8 +7555,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEnvironmentManagedActionHistory" "2010-12-01"))
       common-lisp:nil "DescribeEnvironmentManagedActionHistoryResult"
-      '(("ElasticBeanstalkServiceException"
-         . elastic-beanstalk-service-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'describe-environment-managed-action-history))
 (common-lisp:progn
  (common-lisp:defun describe-environment-managed-actions
@@ -7166,8 +7596,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEnvironmentManagedActions" "2010-12-01"))
       common-lisp:nil "DescribeEnvironmentManagedActionsResult"
-      '(("ElasticBeanstalkServiceException"
-         . elastic-beanstalk-service-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'describe-environment-managed-actions))
 (common-lisp:progn
  (common-lisp:defun describe-environment-resources
@@ -7186,8 +7637,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEnvironmentResources" "2010-12-01"))
       common-lisp:nil "DescribeEnvironmentResourcesResult"
-      '(("InsufficientPrivilegesException"
-         . insufficient-privileges-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'describe-environment-resources))
 (common-lisp:progn
  (common-lisp:defun describe-environments
@@ -7208,7 +7680,30 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEnvironments" "2010-12-01"))
-      common-lisp:nil "DescribeEnvironmentsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeEnvironmentsResult"
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'describe-environments))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -7230,7 +7725,30 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEvents" "2010-12-01"))
-      common-lisp:nil "DescribeEventsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeEventsResult"
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
  (common-lisp:defun describe-instances-health
@@ -7251,9 +7769,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeInstancesHealth" "2010-12-01"))
       common-lisp:nil "DescribeInstancesHealthResult"
-      '(("InvalidRequestException" . invalid-request-exception)
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
         ("ElasticBeanstalkServiceException"
-         . elastic-beanstalk-service-exception)))))
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'describe-instances-health))
 (common-lisp:progn
  (common-lisp:defun describe-platform-version
@@ -7271,9 +7809,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "DescribePlatformVersion" "2010-12-01"))
       common-lisp:nil "DescribePlatformVersionResult"
-      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
         ("ElasticBeanstalkServiceException"
-         . elastic-beanstalk-service-exception)))))
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'describe-platform-version))
 (common-lisp:progn
  (common-lisp:defun list-available-solution-stacks ()
@@ -7283,7 +7841,30 @@
                                 "/" :params
                                 `(("Action" ,@"ListAvailableSolutionStacks")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "ListAvailableSolutionStacksResult" 'common-lisp:nil))
+    common-lisp:nil "ListAvailableSolutionStacksResult"
+    '(("CodeBuildNotInServiceRegionException"
+       . code-build-not-in-service-region-exception)
+      ("ElasticBeanstalkServiceException"
+       . elastic-beanstalk-service-exception)
+      ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+      ("InvalidRequestException" . invalid-request-exception)
+      ("ManagedActionInvalidStateException"
+       . managed-action-invalid-state-exception)
+      ("OperationInProgressException" . operation-in-progress-exception)
+      ("PlatformVersionStillReferencedException"
+       . platform-version-still-referenced-exception)
+      ("S3LocationNotInServiceRegionException"
+       . s3location-not-in-service-region-exception)
+      ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+      ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+      ("TooManyApplicationVersionsException"
+       . too-many-application-versions-exception)
+      ("TooManyApplicationsException" . too-many-applications-exception)
+      ("TooManyBucketsException" . too-many-buckets-exception)
+      ("TooManyConfigurationTemplatesException"
+       . too-many-configuration-templates-exception)
+      ("TooManyEnvironmentsException" . too-many-environments-exception)
+      ("TooManyPlatformsException" . too-many-platforms-exception))))
  (common-lisp:export 'list-available-solution-stacks))
 (common-lisp:progn
  (common-lisp:defun list-platform-versions
@@ -7300,9 +7881,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "ListPlatformVersions" "2010-12-01"))
       common-lisp:nil "ListPlatformVersionsResult"
-      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
         ("ElasticBeanstalkServiceException"
-         . elastic-beanstalk-service-exception)))))
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'list-platform-versions))
 (common-lisp:progn
  (common-lisp:defun rebuild-environment
@@ -7320,8 +7921,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "RebuildEnvironment" "2010-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("InsufficientPrivilegesException"
-         . insufficient-privileges-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'rebuild-environment))
 (common-lisp:progn
  (common-lisp:defun request-environment-info
@@ -7339,7 +7961,30 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "RequestEnvironmentInfo" "2010-12-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'request-environment-info))
 (common-lisp:progn
  (common-lisp:defun restart-app-server
@@ -7356,7 +8001,30 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "RestartAppServer" "2010-12-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'restart-app-server))
 (common-lisp:progn
  (common-lisp:defun retrieve-environment-info
@@ -7375,7 +8043,30 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "RetrieveEnvironmentInfo" "2010-12-01"))
-      common-lisp:nil "RetrieveEnvironmentInfoResult" 'common-lisp:nil)))
+      common-lisp:nil "RetrieveEnvironmentInfoResult"
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'retrieve-environment-info))
 (common-lisp:progn
  (common-lisp:defun swap-environment-cnames
@@ -7395,7 +8086,30 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "SwapEnvironmentCNAMEs" "2010-12-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'swap-environment-cnames))
 (common-lisp:progn
  (common-lisp:defun terminate-environment
@@ -7415,8 +8129,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "TerminateEnvironment" "2010-12-01"))
       common-lisp:nil "TerminateEnvironmentResult"
-      '(("InsufficientPrivilegesException"
-         . insufficient-privileges-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'terminate-environment))
 (common-lisp:progn
  (common-lisp:defun update-application
@@ -7432,7 +8167,30 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateApplication" "2010-12-01"))
-      common-lisp:nil "UpdateApplicationResult" 'common-lisp:nil)))
+      common-lisp:nil "UpdateApplicationResult"
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'update-application))
 (common-lisp:progn
  (common-lisp:defun update-application-resource-lifecycle
@@ -7452,8 +8210,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateApplicationResourceLifecycle" "2010-12-01"))
       common-lisp:nil "UpdateApplicationResourceLifecycleResult"
-      '(("InsufficientPrivilegesException"
-         . insufficient-privileges-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'update-application-resource-lifecycle))
 (common-lisp:progn
  (common-lisp:defun update-application-version
@@ -7472,7 +8251,30 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateApplicationVersion" "2010-12-01"))
-      common-lisp:nil "UpdateApplicationVersionResult" 'common-lisp:nil)))
+      common-lisp:nil "UpdateApplicationVersionResult"
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'update-application-version))
 (common-lisp:progn
  (common-lisp:defun update-configuration-template
@@ -7493,8 +8295,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateConfigurationTemplate" "2010-12-01"))
       common-lisp:nil "UpdateConfigurationTemplateResult"
-      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
-        ("TooManyBucketsException" . too-many-buckets-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'update-configuration-template))
 (common-lisp:progn
  (common-lisp:defun update-environment
@@ -7517,8 +8340,29 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateEnvironment" "2010-12-01"))
       common-lisp:nil "UpdateEnvironmentResult"
-      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
-        ("TooManyBucketsException" . too-many-buckets-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'update-environment))
 (common-lisp:progn
  (common-lisp:defun validate-configuration-settings
@@ -7539,6 +8383,27 @@
         'elasticbeanstalk-request aws-sdk/generator/operation::input "POST" "/"
         "ValidateConfigurationSettings" "2010-12-01"))
       common-lisp:nil "ValidateConfigurationSettingsResult"
-      '(("InsufficientPrivilegesException" . insufficient-privileges-exception)
-        ("TooManyBucketsException" . too-many-buckets-exception)))))
+      '(("CodeBuildNotInServiceRegionException"
+         . code-build-not-in-service-region-exception)
+        ("ElasticBeanstalkServiceException"
+         . elastic-beanstalk-service-exception)
+        ("InsufficientPrivilegesException" . insufficient-privileges-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("ManagedActionInvalidStateException"
+         . managed-action-invalid-state-exception)
+        ("OperationInProgressException" . operation-in-progress-exception)
+        ("PlatformVersionStillReferencedException"
+         . platform-version-still-referenced-exception)
+        ("S3LocationNotInServiceRegionException"
+         . s3location-not-in-service-region-exception)
+        ("S3SubscriptionRequiredException" . s3subscription-required-exception)
+        ("SourceBundleDeletionException" . source-bundle-deletion-exception)
+        ("TooManyApplicationVersionsException"
+         . too-many-application-versions-exception)
+        ("TooManyApplicationsException" . too-many-applications-exception)
+        ("TooManyBucketsException" . too-many-buckets-exception)
+        ("TooManyConfigurationTemplatesException"
+         . too-many-configuration-templates-exception)
+        ("TooManyEnvironmentsException" . too-many-environments-exception)
+        ("TooManyPlatformsException" . too-many-platforms-exception)))))
  (common-lisp:export 'validate-configuration-settings))

@@ -2810,12 +2810,17 @@
                                                         "AssociateFleet"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
         ("IncompatibleImageException" . incompatible-image-exception)
-        ("OperationNotPermittedException"
-         . operation-not-permitted-exception)))))
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'associate-fleet))
 (common-lisp:progn
  (common-lisp:defun create-directory-config
@@ -2838,8 +2843,17 @@
                                                         "CreateDirectoryConfig"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'create-directory-config))
 (common-lisp:progn
  (common-lisp:defun create-fleet
@@ -2864,15 +2878,17 @@
                                                         "CreateFleet"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotAvailableException" . resource-not-available-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
         ("InvalidParameterCombinationException"
          . invalid-parameter-combination-exception)
-        ("IncompatibleImageException" . incompatible-image-exception)))))
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'create-fleet))
 (common-lisp:progn
  (common-lisp:defun create-stack
@@ -2893,13 +2909,17 @@
                                                         "CreateStack"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'create-stack))
 (common-lisp:progn
  (common-lisp:defun create-streaming-url
@@ -2921,11 +2941,17 @@
                                                         "CreateStreamingURL"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceNotAvailableException" . resource-not-available-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'create-streaming-url))
 (common-lisp:progn
  (common-lisp:defun delete-directory-config
@@ -2944,7 +2970,16 @@
                                                         "DeleteDirectoryConfig"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceInUseException" . resource-in-use-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-directory-config))
 (common-lisp:progn
@@ -2964,10 +2999,17 @@
                                                         "DeleteFleet"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-fleet))
 (common-lisp:progn
  (common-lisp:defun delete-stack
@@ -2986,10 +3028,17 @@
                                                         "DeleteStack"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-stack))
 (common-lisp:progn
  (common-lisp:defun describe-directory-configs
@@ -3010,7 +3059,17 @@
                                                         "DescribeDirectoryConfigs"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-directory-configs))
 (common-lisp:progn
  (common-lisp:defun describe-fleets
@@ -3029,7 +3088,17 @@
                                                         "DescribeFleets"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-fleets))
 (common-lisp:progn
  (common-lisp:defun describe-images
@@ -3048,7 +3117,17 @@
                                                         "DescribeImages"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-images))
 (common-lisp:progn
  (common-lisp:defun describe-sessions
@@ -3070,8 +3149,17 @@
                                                         "DescribeSessions"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-sessions))
 (common-lisp:progn
  (common-lisp:defun describe-stacks
@@ -3090,7 +3178,17 @@
                                                         "DescribeStacks"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-stacks))
 (common-lisp:progn
  (common-lisp:defun disassociate-fleet
@@ -3109,10 +3207,17 @@
                                                         "DisassociateFleet"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'disassociate-fleet))
 (common-lisp:progn
  (common-lisp:defun expire-session
@@ -3130,7 +3235,18 @@
                                                         "POST" "/"
                                                         "ExpireSession"
                                                         "2016-12-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'expire-session))
 (common-lisp:progn
  (common-lisp:defun list-associated-fleets
@@ -3148,7 +3264,18 @@
                                                         "POST" "/"
                                                         "ListAssociatedFleets"
                                                         "2016-12-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-associated-fleets))
 (common-lisp:progn
  (common-lisp:defun list-associated-stacks
@@ -3166,7 +3293,18 @@
                                                         "POST" "/"
                                                         "ListAssociatedStacks"
                                                         "2016-12-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-associated-stacks))
 (common-lisp:progn
  (common-lisp:defun start-fleet
@@ -3184,11 +3322,17 @@
                                                         "POST" "/" "StartFleet"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("OperationNotPermittedException" . operation-not-permitted-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'start-fleet))
 (common-lisp:progn
  (common-lisp:defun stop-fleet
@@ -3206,9 +3350,17 @@
                                                         "POST" "/" "StopFleet"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'stop-fleet))
 (common-lisp:progn
  (common-lisp:defun update-directory-config
@@ -3231,10 +3383,17 @@
                                                         "UpdateDirectoryConfig"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ConcurrentModificationException"
-         . concurrent-modification-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'update-directory-config))
 (common-lisp:progn
  (common-lisp:defun update-fleet
@@ -3261,17 +3420,17 @@
                                                         "UpdateFleet"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceInUseException" . resource-in-use-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceNotAvailableException" . resource-not-available-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
         ("InvalidParameterCombinationException"
          . invalid-parameter-combination-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("IncompatibleImageException" . incompatible-image-exception)
-        ("OperationNotPermittedException"
-         . operation-not-permitted-exception)))))
+        ("InvalidRoleException" . invalid-role-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'update-fleet))
 (common-lisp:progn
  (common-lisp:defun update-stack
@@ -3293,11 +3452,15 @@
                                                         "UpdateStack"
                                                         "2016-12-01"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ResourceInUseException" . resource-in-use-exception)
-        ("InvalidRoleException" . invalid-role-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("IncompatibleImageException" . incompatible-image-exception)
         ("InvalidParameterCombinationException"
          . invalid-parameter-combination-exception)
+        ("InvalidRoleException" . invalid-role-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("IncompatibleImageException" . incompatible-image-exception)))))
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotAvailableException" . resource-not-available-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'update-stack))

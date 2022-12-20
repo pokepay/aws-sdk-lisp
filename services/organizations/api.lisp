@@ -3753,19 +3753,56 @@
                                                         "AcceptHandshake"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
         ("HandshakeConstraintViolationException"
          . handshake-constraint-violation-exception)
         ("HandshakeNotFoundException" . handshake-not-found-exception)
         ("InvalidHandshakeTransitionException"
          . invalid-handshake-transition-exception)
-        ("HandshakeAlreadyInStateException"
-         . handshake-already-in-state-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'accept-handshake))
 (common-lisp:progn
@@ -3785,17 +3822,55 @@
                                                         "AttachPolicy"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
         ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
         ("DuplicatePolicyAttachmentException"
          . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
         ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
         ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
         ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'attach-policy))
@@ -3816,15 +3891,56 @@
                                                         "CancelHandshake"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
+      '(("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
         ("HandshakeNotFoundException" . handshake-not-found-exception)
         ("InvalidHandshakeTransitionException"
          . invalid-handshake-transition-exception)
-        ("HandshakeAlreadyInStateException"
-         . handshake-already-in-state-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'cancel-handshake))
 (common-lisp:progn
@@ -3847,14 +3963,56 @@
                                                         "CreateAccount"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
         ("ConstraintViolationException" . constraint-violation-exception)
-        ("InvalidInputException" . invalid-input-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
         ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-account))
 (common-lisp:progn
@@ -3874,12 +4032,56 @@
                                                         "CreateOrganization"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
+      '(("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
         ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
         ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-organization))
 (common-lisp:progn
@@ -3900,16 +4102,56 @@
                                                         "CreateOrganizationalUnit"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
         ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
         ("DuplicateOrganizationalUnitException"
          . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
         ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-organizational-unit))
 (common-lisp:progn
@@ -3929,18 +4171,56 @@
                                                         "CreatePolicy"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
         ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
         ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
         ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
         ("PolicyTypeNotAvailableForOrganizationException"
          . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-policy))
 (common-lisp:progn
@@ -3960,15 +4240,56 @@
                                                         "DeclineHandshake"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
+      '(("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
         ("HandshakeNotFoundException" . handshake-not-found-exception)
         ("InvalidHandshakeTransitionException"
          . invalid-handshake-transition-exception)
-        ("HandshakeAlreadyInStateException"
-         . handshake-already-in-state-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'decline-handshake))
 (common-lisp:progn
@@ -3980,13 +4301,56 @@
                                 `(("Action" ,@"DeleteOrganization")
                                   ("Version" ,@"2016-11-28"))))
     common-lisp:nil common-lisp:nil
-    '(("AccessDeniedException" . access-denied-exception)
-      ("AWSOrganizationsNotInUseException"
+    '(("AWSOrganizationsNotInUseException"
        . awsorganizations-not-in-use-exception)
+      ("AccessDeniedException" . access-denied-exception)
+      ("AccountNotFoundException" . account-not-found-exception)
+      ("AlreadyInOrganizationException" . already-in-organization-exception)
+      ("ChildNotFoundException" . child-not-found-exception)
       ("ConcurrentModificationException" . concurrent-modification-exception)
+      ("ConstraintViolationException" . constraint-violation-exception)
+      ("CreateAccountStatusNotFoundException"
+       . create-account-status-not-found-exception)
+      ("DestinationParentNotFoundException"
+       . destination-parent-not-found-exception)
+      ("DuplicateAccountException" . duplicate-account-exception)
+      ("DuplicateHandshakeException" . duplicate-handshake-exception)
+      ("DuplicateOrganizationalUnitException"
+       . duplicate-organizational-unit-exception)
+      ("DuplicatePolicyAttachmentException"
+       . duplicate-policy-attachment-exception)
+      ("DuplicatePolicyException" . duplicate-policy-exception)
+      ("FinalizingOrganizationException" . finalizing-organization-exception)
+      ("HandshakeAlreadyInStateException"
+       . handshake-already-in-state-exception)
+      ("HandshakeConstraintViolationException"
+       . handshake-constraint-violation-exception)
+      ("HandshakeNotFoundException" . handshake-not-found-exception)
+      ("InvalidHandshakeTransitionException"
+       . invalid-handshake-transition-exception)
       ("InvalidInputException" . invalid-input-exception)
+      ("MalformedPolicyDocumentException"
+       . malformed-policy-document-exception)
+      ("MasterCannotLeaveOrganizationException"
+       . master-cannot-leave-organization-exception)
       ("OrganizationNotEmptyException" . organization-not-empty-exception)
+      ("OrganizationalUnitNotEmptyException"
+       . organizational-unit-not-empty-exception)
+      ("OrganizationalUnitNotFoundException"
+       . organizational-unit-not-found-exception)
+      ("ParentNotFoundException" . parent-not-found-exception)
+      ("PolicyInUseException" . policy-in-use-exception)
+      ("PolicyNotAttachedException" . policy-not-attached-exception)
+      ("PolicyNotFoundException" . policy-not-found-exception)
+      ("PolicyTypeAlreadyEnabledException"
+       . policy-type-already-enabled-exception)
+      ("PolicyTypeNotAvailableForOrganizationException"
+       . policy-type-not-available-for-organization-exception)
+      ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+      ("RootNotFoundException" . root-not-found-exception)
       ("ServiceException" . service-exception)
+      ("SourceParentNotFoundException" . source-parent-not-found-exception)
+      ("TargetNotFoundException" . target-not-found-exception)
       ("TooManyRequestsException" . too-many-requests-exception))))
  (common-lisp:export 'delete-organization))
 (common-lisp:progn
@@ -4007,16 +4371,56 @@
                                                         "DeleteOrganizationalUnit"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
         ("OrganizationalUnitNotEmptyException"
          . organizational-unit-not-empty-exception)
         ("OrganizationalUnitNotFoundException"
          . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-organizational-unit))
 (common-lisp:progn
@@ -4036,14 +4440,56 @@
                                                         "DeletePolicy"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
         ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
         ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-policy))
 (common-lisp:progn
@@ -4063,12 +4509,56 @@
                                                         "DescribeAccount"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AccountNotFoundException" . account-not-found-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-account))
 (common-lisp:progn
@@ -4089,13 +4579,56 @@
                                                         "DescribeCreateAccountStatus"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
         ("CreateAccountStatusNotFoundException"
          . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-create-account-status))
 (common-lisp:progn
@@ -4115,11 +4648,56 @@
                                                         "DescribeHandshake"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
+      '(("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
         ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-handshake))
 (common-lisp:progn
@@ -4131,11 +4709,56 @@
                                 `(("Action" ,@"DescribeOrganization")
                                   ("Version" ,@"2016-11-28"))))
     common-lisp:nil common-lisp:nil
-    '(("AccessDeniedException" . access-denied-exception)
-      ("AWSOrganizationsNotInUseException"
+    '(("AWSOrganizationsNotInUseException"
        . awsorganizations-not-in-use-exception)
+      ("AccessDeniedException" . access-denied-exception)
+      ("AccountNotFoundException" . account-not-found-exception)
+      ("AlreadyInOrganizationException" . already-in-organization-exception)
+      ("ChildNotFoundException" . child-not-found-exception)
       ("ConcurrentModificationException" . concurrent-modification-exception)
+      ("ConstraintViolationException" . constraint-violation-exception)
+      ("CreateAccountStatusNotFoundException"
+       . create-account-status-not-found-exception)
+      ("DestinationParentNotFoundException"
+       . destination-parent-not-found-exception)
+      ("DuplicateAccountException" . duplicate-account-exception)
+      ("DuplicateHandshakeException" . duplicate-handshake-exception)
+      ("DuplicateOrganizationalUnitException"
+       . duplicate-organizational-unit-exception)
+      ("DuplicatePolicyAttachmentException"
+       . duplicate-policy-attachment-exception)
+      ("DuplicatePolicyException" . duplicate-policy-exception)
+      ("FinalizingOrganizationException" . finalizing-organization-exception)
+      ("HandshakeAlreadyInStateException"
+       . handshake-already-in-state-exception)
+      ("HandshakeConstraintViolationException"
+       . handshake-constraint-violation-exception)
+      ("HandshakeNotFoundException" . handshake-not-found-exception)
+      ("InvalidHandshakeTransitionException"
+       . invalid-handshake-transition-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("MalformedPolicyDocumentException"
+       . malformed-policy-document-exception)
+      ("MasterCannotLeaveOrganizationException"
+       . master-cannot-leave-organization-exception)
+      ("OrganizationNotEmptyException" . organization-not-empty-exception)
+      ("OrganizationalUnitNotEmptyException"
+       . organizational-unit-not-empty-exception)
+      ("OrganizationalUnitNotFoundException"
+       . organizational-unit-not-found-exception)
+      ("ParentNotFoundException" . parent-not-found-exception)
+      ("PolicyInUseException" . policy-in-use-exception)
+      ("PolicyNotAttachedException" . policy-not-attached-exception)
+      ("PolicyNotFoundException" . policy-not-found-exception)
+      ("PolicyTypeAlreadyEnabledException"
+       . policy-type-already-enabled-exception)
+      ("PolicyTypeNotAvailableForOrganizationException"
+       . policy-type-not-available-for-organization-exception)
+      ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+      ("RootNotFoundException" . root-not-found-exception)
       ("ServiceException" . service-exception)
+      ("SourceParentNotFoundException" . source-parent-not-found-exception)
+      ("TargetNotFoundException" . target-not-found-exception)
       ("TooManyRequestsException" . too-many-requests-exception))))
  (common-lisp:export 'describe-organization))
 (common-lisp:progn
@@ -4156,13 +4779,56 @@
                                                         "DescribeOrganizationalUnit"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
         ("OrganizationalUnitNotFoundException"
          . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-organizational-unit))
 (common-lisp:progn
@@ -4182,12 +4848,56 @@
                                                         "DescribePolicy"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
         ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'describe-policy))
 (common-lisp:progn
@@ -4207,15 +4917,55 @@
                                                         "DetachPolicy"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
         ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
         ("PolicyNotAttachedException" . policy-not-attached-exception)
         ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
         ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'detach-policy))
@@ -4236,15 +4986,56 @@
                                                         "DisablePolicyType"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
         ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
         ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
         ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'disable-policy-type))
 (common-lisp:progn
@@ -4256,14 +5047,56 @@
                                 `(("Action" ,@"EnableAllFeatures")
                                   ("Version" ,@"2016-11-28"))))
     common-lisp:nil common-lisp:nil
-    '(("AccessDeniedException" . access-denied-exception)
-      ("AWSOrganizationsNotInUseException"
+    '(("AWSOrganizationsNotInUseException"
        . awsorganizations-not-in-use-exception)
+      ("AccessDeniedException" . access-denied-exception)
+      ("AccountNotFoundException" . account-not-found-exception)
+      ("AlreadyInOrganizationException" . already-in-organization-exception)
+      ("ChildNotFoundException" . child-not-found-exception)
       ("ConcurrentModificationException" . concurrent-modification-exception)
+      ("ConstraintViolationException" . constraint-violation-exception)
+      ("CreateAccountStatusNotFoundException"
+       . create-account-status-not-found-exception)
+      ("DestinationParentNotFoundException"
+       . destination-parent-not-found-exception)
+      ("DuplicateAccountException" . duplicate-account-exception)
+      ("DuplicateHandshakeException" . duplicate-handshake-exception)
+      ("DuplicateOrganizationalUnitException"
+       . duplicate-organizational-unit-exception)
+      ("DuplicatePolicyAttachmentException"
+       . duplicate-policy-attachment-exception)
+      ("DuplicatePolicyException" . duplicate-policy-exception)
+      ("FinalizingOrganizationException" . finalizing-organization-exception)
+      ("HandshakeAlreadyInStateException"
+       . handshake-already-in-state-exception)
       ("HandshakeConstraintViolationException"
        . handshake-constraint-violation-exception)
+      ("HandshakeNotFoundException" . handshake-not-found-exception)
+      ("InvalidHandshakeTransitionException"
+       . invalid-handshake-transition-exception)
       ("InvalidInputException" . invalid-input-exception)
+      ("MalformedPolicyDocumentException"
+       . malformed-policy-document-exception)
+      ("MasterCannotLeaveOrganizationException"
+       . master-cannot-leave-organization-exception)
+      ("OrganizationNotEmptyException" . organization-not-empty-exception)
+      ("OrganizationalUnitNotEmptyException"
+       . organizational-unit-not-empty-exception)
+      ("OrganizationalUnitNotFoundException"
+       . organizational-unit-not-found-exception)
+      ("ParentNotFoundException" . parent-not-found-exception)
+      ("PolicyInUseException" . policy-in-use-exception)
+      ("PolicyNotAttachedException" . policy-not-attached-exception)
+      ("PolicyNotFoundException" . policy-not-found-exception)
+      ("PolicyTypeAlreadyEnabledException"
+       . policy-type-already-enabled-exception)
+      ("PolicyTypeNotAvailableForOrganizationException"
+       . policy-type-not-available-for-organization-exception)
+      ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+      ("RootNotFoundException" . root-not-found-exception)
       ("ServiceException" . service-exception)
+      ("SourceParentNotFoundException" . source-parent-not-found-exception)
+      ("TargetNotFoundException" . target-not-found-exception)
       ("TooManyRequestsException" . too-many-requests-exception))))
  (common-lisp:export 'enable-all-features))
 (common-lisp:progn
@@ -4283,19 +5116,57 @@
                                                         "EnablePolicyType"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
         ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
         ("PolicyTypeAlreadyEnabledException"
          . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
         ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("PolicyTypeNotAvailableForOrganizationException"
-         . policy-type-not-available-for-organization-exception)))))
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'enable-policy-type))
 (common-lisp:progn
  (common-lisp:defun invite-account-to-organization
@@ -4315,16 +5186,56 @@
                                                         "InviteAccountToOrganization"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
         ("HandshakeConstraintViolationException"
          . handshake-constraint-violation-exception)
-        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'invite-account-to-organization))
 (common-lisp:progn
@@ -4336,16 +5247,56 @@
                                 `(("Action" ,@"LeaveOrganization")
                                   ("Version" ,@"2016-11-28"))))
     common-lisp:nil common-lisp:nil
-    '(("AccessDeniedException" . access-denied-exception)
-      ("AccountNotFoundException" . account-not-found-exception)
-      ("AWSOrganizationsNotInUseException"
+    '(("AWSOrganizationsNotInUseException"
        . awsorganizations-not-in-use-exception)
+      ("AccessDeniedException" . access-denied-exception)
+      ("AccountNotFoundException" . account-not-found-exception)
+      ("AlreadyInOrganizationException" . already-in-organization-exception)
+      ("ChildNotFoundException" . child-not-found-exception)
       ("ConcurrentModificationException" . concurrent-modification-exception)
       ("ConstraintViolationException" . constraint-violation-exception)
+      ("CreateAccountStatusNotFoundException"
+       . create-account-status-not-found-exception)
+      ("DestinationParentNotFoundException"
+       . destination-parent-not-found-exception)
+      ("DuplicateAccountException" . duplicate-account-exception)
+      ("DuplicateHandshakeException" . duplicate-handshake-exception)
+      ("DuplicateOrganizationalUnitException"
+       . duplicate-organizational-unit-exception)
+      ("DuplicatePolicyAttachmentException"
+       . duplicate-policy-attachment-exception)
+      ("DuplicatePolicyException" . duplicate-policy-exception)
+      ("FinalizingOrganizationException" . finalizing-organization-exception)
+      ("HandshakeAlreadyInStateException"
+       . handshake-already-in-state-exception)
+      ("HandshakeConstraintViolationException"
+       . handshake-constraint-violation-exception)
+      ("HandshakeNotFoundException" . handshake-not-found-exception)
+      ("InvalidHandshakeTransitionException"
+       . invalid-handshake-transition-exception)
       ("InvalidInputException" . invalid-input-exception)
+      ("MalformedPolicyDocumentException"
+       . malformed-policy-document-exception)
       ("MasterCannotLeaveOrganizationException"
        . master-cannot-leave-organization-exception)
+      ("OrganizationNotEmptyException" . organization-not-empty-exception)
+      ("OrganizationalUnitNotEmptyException"
+       . organizational-unit-not-empty-exception)
+      ("OrganizationalUnitNotFoundException"
+       . organizational-unit-not-found-exception)
+      ("ParentNotFoundException" . parent-not-found-exception)
+      ("PolicyInUseException" . policy-in-use-exception)
+      ("PolicyNotAttachedException" . policy-not-attached-exception)
+      ("PolicyNotFoundException" . policy-not-found-exception)
+      ("PolicyTypeAlreadyEnabledException"
+       . policy-type-already-enabled-exception)
+      ("PolicyTypeNotAvailableForOrganizationException"
+       . policy-type-not-available-for-organization-exception)
+      ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+      ("RootNotFoundException" . root-not-found-exception)
       ("ServiceException" . service-exception)
+      ("SourceParentNotFoundException" . source-parent-not-found-exception)
+      ("TargetNotFoundException" . target-not-found-exception)
       ("TooManyRequestsException" . too-many-requests-exception))))
  (common-lisp:export 'leave-organization))
 (common-lisp:progn
@@ -4365,11 +5316,56 @@
                                                         "ListAccounts"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-accounts))
 (common-lisp:progn
@@ -4390,12 +5386,56 @@
                                                         "ListAccountsForParent"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
         ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-accounts-for-parent))
 (common-lisp:progn
@@ -4417,12 +5457,56 @@
                                                         "ListChildren"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
         ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-children))
 (common-lisp:progn
@@ -4443,11 +5527,56 @@
                                                         "ListCreateAccountStatus"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-create-account-status))
 (common-lisp:progn
@@ -4468,10 +5597,56 @@
                                                         "ListHandshakesForAccount"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
+      '(("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-handshakes-for-account))
 (common-lisp:progn
@@ -4492,12 +5667,56 @@
                                                         "ListHandshakesForOrganization"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-handshakes-for-organization))
 (common-lisp:progn
@@ -4519,12 +5738,56 @@
                                                         "ListOrganizationalUnitsForParent"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
         ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-organizational-units-for-parent))
 (common-lisp:progn
@@ -4545,12 +5808,56 @@
                                                         "ListParents"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
         ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-parents))
 (common-lisp:progn
@@ -4570,11 +5877,56 @@
                                                         "ListPolicies"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-policies))
 (common-lisp:progn
@@ -4595,11 +5947,55 @@
                                                         "ListPoliciesForTarget"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
         ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-policies-for-target))
@@ -4619,11 +6015,56 @@
                                                         "POST" "/" "ListRoots"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-roots))
 (common-lisp:progn
@@ -4644,12 +6085,56 @@
                                                         "ListTargetsForPolicy"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
         ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'list-targets-for-policy))
 (common-lisp:progn
@@ -4671,18 +6156,57 @@
                                                         "MoveAccount"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("InvalidInputException" . invalid-input-exception)
-        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+      '(("AWSOrganizationsNotInUseException"
+         . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
+        ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
         ("DestinationParentNotFoundException"
          . destination-parent-not-found-exception)
         ("DuplicateAccountException" . duplicate-account-exception)
-        ("AccountNotFoundException" . account-not-found-exception)
-        ("TooManyRequestsException" . too-many-requests-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("AWSOrganizationsNotInUseException"
-         . awsorganizations-not-in-use-exception)
-        ("ServiceException" . service-exception)))))
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
+        ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
+        ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'move-account))
 (common-lisp:progn
  (common-lisp:defun remove-account-from-organization
@@ -4702,16 +6226,56 @@
                                                         "RemoveAccountFromOrganization"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AccountNotFoundException" . account-not-found-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
         ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
         ("MasterCannotLeaveOrganizationException"
          . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'remove-account-from-organization))
 (common-lisp:progn
@@ -4732,16 +6296,56 @@
                                                         "UpdateOrganizationalUnit"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
+        ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
         ("DuplicateOrganizationalUnitException"
          . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
+        ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
+        ("MalformedPolicyDocumentException"
+         . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
         ("OrganizationalUnitNotFoundException"
          . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
+        ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-organizational-unit))
 (common-lisp:progn
@@ -4762,16 +6366,55 @@
                                                         "UpdatePolicy"
                                                         "2016-11-28"))
       common-lisp:nil common-lisp:nil
-      '(("AccessDeniedException" . access-denied-exception)
-        ("AWSOrganizationsNotInUseException"
+      '(("AWSOrganizationsNotInUseException"
          . awsorganizations-not-in-use-exception)
+        ("AccessDeniedException" . access-denied-exception)
+        ("AccountNotFoundException" . account-not-found-exception)
+        ("AlreadyInOrganizationException" . already-in-organization-exception)
+        ("ChildNotFoundException" . child-not-found-exception)
         ("ConcurrentModificationException" . concurrent-modification-exception)
         ("ConstraintViolationException" . constraint-violation-exception)
+        ("CreateAccountStatusNotFoundException"
+         . create-account-status-not-found-exception)
+        ("DestinationParentNotFoundException"
+         . destination-parent-not-found-exception)
+        ("DuplicateAccountException" . duplicate-account-exception)
+        ("DuplicateHandshakeException" . duplicate-handshake-exception)
+        ("DuplicateOrganizationalUnitException"
+         . duplicate-organizational-unit-exception)
+        ("DuplicatePolicyAttachmentException"
+         . duplicate-policy-attachment-exception)
         ("DuplicatePolicyException" . duplicate-policy-exception)
+        ("FinalizingOrganizationException" . finalizing-organization-exception)
+        ("HandshakeAlreadyInStateException"
+         . handshake-already-in-state-exception)
+        ("HandshakeConstraintViolationException"
+         . handshake-constraint-violation-exception)
+        ("HandshakeNotFoundException" . handshake-not-found-exception)
+        ("InvalidHandshakeTransitionException"
+         . invalid-handshake-transition-exception)
         ("InvalidInputException" . invalid-input-exception)
         ("MalformedPolicyDocumentException"
          . malformed-policy-document-exception)
+        ("MasterCannotLeaveOrganizationException"
+         . master-cannot-leave-organization-exception)
+        ("OrganizationNotEmptyException" . organization-not-empty-exception)
+        ("OrganizationalUnitNotEmptyException"
+         . organizational-unit-not-empty-exception)
+        ("OrganizationalUnitNotFoundException"
+         . organizational-unit-not-found-exception)
+        ("ParentNotFoundException" . parent-not-found-exception)
+        ("PolicyInUseException" . policy-in-use-exception)
+        ("PolicyNotAttachedException" . policy-not-attached-exception)
         ("PolicyNotFoundException" . policy-not-found-exception)
+        ("PolicyTypeAlreadyEnabledException"
+         . policy-type-already-enabled-exception)
+        ("PolicyTypeNotAvailableForOrganizationException"
+         . policy-type-not-available-for-organization-exception)
+        ("PolicyTypeNotEnabledException" . policy-type-not-enabled-exception)
+        ("RootNotFoundException" . root-not-found-exception)
         ("ServiceException" . service-exception)
+        ("SourceParentNotFoundException" . source-parent-not-found-exception)
+        ("TargetNotFoundException" . target-not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-policy))

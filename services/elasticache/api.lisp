@@ -6558,10 +6558,78 @@
                                                         "AddTagsToResource"
                                                         "2015-02-02"))
       common-lisp:nil "AddTagsToResourceResult"
-      '(("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
         ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
         ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
-        ("InvalidARNFault" . invalid-arnfault)))))
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
  (common-lisp:defun authorize-cache-security-group-ingress
@@ -6584,15 +6652,78 @@
                                                         "AuthorizeCacheSecurityGroupIngress"
                                                         "2015-02-02"))
       common-lisp:nil "AuthorizeCacheSecurityGroupIngressResult"
-      '(("CacheSecurityGroupNotFoundFault"
-         . cache-security-group-not-found-fault)
-        ("InvalidCacheSecurityGroupStateFault"
-         . invalid-cache-security-group-state-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
         ("AuthorizationAlreadyExistsFault"
          . authorization-already-exists-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'authorize-cache-security-group-ingress))
 (common-lisp:progn
  (common-lisp:defun copy-snapshot
@@ -6614,13 +6745,78 @@
                                                         "CopySnapshot"
                                                         "2015-02-02"))
       common-lisp:nil "CopySnapshotResult"
-      '(("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
         ("SnapshotNotFoundFault" . snapshot-not-found-fault)
         ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
-        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'copy-snapshot))
 (common-lisp:progn
  (common-lisp:defun create-cache-cluster
@@ -6654,28 +6850,78 @@
                                                         "CreateCacheCluster"
                                                         "2015-02-02"))
       common-lisp:nil "CreateCacheClusterResult"
-      '(("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
-        ("InvalidReplicationGroupStateFault"
-         . invalid-replication-group-state-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
         ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
-        ("InsufficientCacheClusterCapacityFault"
-         . insufficient-cache-cluster-capacity-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
         ("CacheSecurityGroupNotFoundFault"
          . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
         ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
         ("ClusterQuotaForCustomerExceededFault"
          . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
         ("NodeQuotaForClusterExceededFault"
          . node-quota-for-cluster-exceeded-fault)
         ("NodeQuotaForCustomerExceededFault"
          . node-quota-for-customer-exceeded-fault)
-        ("CacheParameterGroupNotFoundFault"
-         . cache-parameter-group-not-found-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
         ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'create-cache-cluster))
 (common-lisp:progn
  (common-lisp:defun create-cache-parameter-group
@@ -6698,15 +6944,78 @@
                                                         "CreateCacheParameterGroup"
                                                         "2015-02-02"))
       common-lisp:nil "CreateCacheParameterGroupResult"
-      '(("CacheParameterGroupQuotaExceededFault"
-         . cache-parameter-group-quota-exceeded-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
         ("CacheParameterGroupAlreadyExistsFault"
          . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
         ("InvalidCacheParameterGroupStateFault"
          . invalid-cache-parameter-group-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'create-cache-parameter-group))
 (common-lisp:progn
  (common-lisp:defun create-cache-security-group
@@ -6727,13 +7036,78 @@
                                                         "CreateCacheSecurityGroup"
                                                         "2015-02-02"))
       common-lisp:nil "CreateCacheSecurityGroupResult"
-      '(("CacheSecurityGroupAlreadyExistsFault"
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
          . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
         ("CacheSecurityGroupQuotaExceededFault"
          . cache-security-group-quota-exceeded-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'create-cache-security-group))
 (common-lisp:progn
  (common-lisp:defun create-cache-subnet-group
@@ -6756,12 +7130,78 @@
                                                         "CreateCacheSubnetGroup"
                                                         "2015-02-02"))
       common-lisp:nil "CreateCacheSubnetGroupResult"
-      '(("CacheSubnetGroupAlreadyExistsFault"
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
          . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
         ("CacheSubnetGroupQuotaExceededFault"
          . cache-subnet-group-quota-exceeded-fault)
         ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
-        ("InvalidSubnet" . invalid-subnet)))))
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'create-cache-subnet-group))
 (common-lisp:progn
  (common-lisp:defun create-replication-group
@@ -6799,30 +7239,78 @@
                                                         "CreateReplicationGroup"
                                                         "2015-02-02"))
       common-lisp:nil "CreateReplicationGroupResult"
-      '(("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
-        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
-        ("ReplicationGroupAlreadyExistsFault"
-         . replication-group-already-exists-fault)
-        ("InsufficientCacheClusterCapacityFault"
-         . insufficient-cache-cluster-capacity-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
         ("CacheSecurityGroupNotFoundFault"
          . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
         ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
         ("ClusterQuotaForCustomerExceededFault"
          . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
         ("NodeQuotaForClusterExceededFault"
          . node-quota-for-cluster-exceeded-fault)
         ("NodeQuotaForCustomerExceededFault"
          . node-quota-for-customer-exceeded-fault)
-        ("CacheParameterGroupNotFoundFault"
-         . cache-parameter-group-not-found-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
         ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
-        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
-         . node-groups-per-replication-group-quota-exceeded-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'create-replication-group))
 (common-lisp:progn
  (common-lisp:defun create-snapshot
@@ -6844,19 +7332,78 @@
                                                         "CreateSnapshot"
                                                         "2015-02-02"))
       common-lisp:nil "CreateSnapshotResult"
-      '(("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
         ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
-        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
         ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
-        ("InvalidReplicationGroupStateFault"
-         . invalid-replication-group-state-fault)
-        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
-        ("SnapshotFeatureNotSupportedFault"
-         . snapshot-feature-not-supported-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
          . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException"
-         . invalid-parameter-value-exception)))))
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'create-snapshot))
 (common-lisp:progn
  (common-lisp:defun delete-cache-cluster
@@ -6877,15 +7424,78 @@
                                                         "DeleteCacheCluster"
                                                         "2015-02-02"))
       common-lisp:nil "DeleteCacheClusterResult"
-      '(("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
         ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
         ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
         ("SnapshotFeatureNotSupportedFault"
          . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
         ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'delete-cache-cluster))
 (common-lisp:progn
  (common-lisp:defun delete-cache-parameter-group
@@ -6905,13 +7515,78 @@
                                                         "DeleteCacheParameterGroup"
                                                         "2015-02-02"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidCacheParameterGroupStateFault"
-         . invalid-cache-parameter-group-state-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
         ("CacheParameterGroupNotFoundFault"
          . cache-parameter-group-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'delete-cache-parameter-group))
 (common-lisp:progn
  (common-lisp:defun delete-cache-security-group
@@ -6931,13 +7606,78 @@
                                                         "DeleteCacheSecurityGroup"
                                                         "2015-02-02"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidCacheSecurityGroupStateFault"
-         . invalid-cache-security-group-state-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
         ("CacheSecurityGroupNotFoundFault"
          . cache-security-group-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'delete-cache-security-group))
 (common-lisp:progn
  (common-lisp:defun delete-cache-subnet-group
@@ -6957,9 +7697,78 @@
                                                         "DeleteCacheSubnetGroup"
                                                         "2015-02-02"))
       common-lisp:nil common-lisp:nil
-      '(("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
-        ("CacheSubnetGroupNotFoundFault"
-         . cache-subnet-group-not-found-fault)))))
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'delete-cache-subnet-group))
 (common-lisp:progn
  (common-lisp:defun delete-replication-group
@@ -6981,16 +7790,78 @@
                                                         "DeleteReplicationGroup"
                                                         "2015-02-02"))
       common-lisp:nil "DeleteReplicationGroupResult"
-      '(("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("InvalidReplicationGroupStateFault"
          . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
         ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
         ("SnapshotFeatureNotSupportedFault"
          . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
         ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'delete-replication-group))
 (common-lisp:progn
  (common-lisp:defun delete-snapshot
@@ -7009,11 +7880,78 @@
                                                         "DeleteSnapshot"
                                                         "2015-02-02"))
       common-lisp:nil "DeleteSnapshotResult"
-      '(("SnapshotNotFoundFault" . snapshot-not-found-fault)
-        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'delete-snapshot))
 (common-lisp:progn
  (common-lisp:defun describe-cache-clusters
@@ -7036,10 +7974,78 @@
                                                         "DescribeCacheClusters"
                                                         "2015-02-02"))
       common-lisp:nil "DescribeCacheClustersResult"
-      '(("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'describe-cache-clusters))
 (common-lisp:progn
  (common-lisp:defun describe-cache-engine-versions
@@ -7062,7 +8068,79 @@
                                                         "POST" "/"
                                                         "DescribeCacheEngineVersions"
                                                         "2015-02-02"))
-      common-lisp:nil "DescribeCacheEngineVersionsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeCacheEngineVersionsResult"
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'describe-cache-engine-versions))
 (common-lisp:progn
  (common-lisp:defun describe-cache-parameter-groups
@@ -7084,11 +8162,78 @@
                                                         "DescribeCacheParameterGroups"
                                                         "2015-02-02"))
       common-lisp:nil "DescribeCacheParameterGroupsResult"
-      '(("CacheParameterGroupNotFoundFault"
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
          . cache-parameter-group-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'describe-cache-parameter-groups))
 (common-lisp:progn
  (common-lisp:defun describe-cache-parameters
@@ -7111,11 +8256,78 @@
                                                         "DescribeCacheParameters"
                                                         "2015-02-02"))
       common-lisp:nil "DescribeCacheParametersResult"
-      '(("CacheParameterGroupNotFoundFault"
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
          . cache-parameter-group-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'describe-cache-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-cache-security-groups
@@ -7137,11 +8349,78 @@
                                                         "DescribeCacheSecurityGroups"
                                                         "2015-02-02"))
       common-lisp:nil "DescribeCacheSecurityGroupsResult"
-      '(("CacheSecurityGroupNotFoundFault"
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
          . cache-security-group-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'describe-cache-security-groups))
 (common-lisp:progn
  (common-lisp:defun describe-cache-subnet-groups
@@ -7163,8 +8442,78 @@
                                                         "DescribeCacheSubnetGroups"
                                                         "2015-02-02"))
       common-lisp:nil "DescribeCacheSubnetGroupsResult"
-      '(("CacheSubnetGroupNotFoundFault"
-         . cache-subnet-group-not-found-fault)))))
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'describe-cache-subnet-groups))
 (common-lisp:progn
  (common-lisp:defun describe-engine-default-parameters
@@ -7186,9 +8535,78 @@
                                                         "DescribeEngineDefaultParameters"
                                                         "2015-02-02"))
       common-lisp:nil "DescribeEngineDefaultParametersResult"
-      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'describe-engine-default-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-events
@@ -7210,9 +8628,78 @@
                                                         "DescribeEvents"
                                                         "2015-02-02"))
       common-lisp:nil "DescribeEventsResult"
-      '(("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
  (common-lisp:defun describe-replication-groups
@@ -7233,10 +8720,78 @@
                                                         "DescribeReplicationGroups"
                                                         "2015-02-02"))
       common-lisp:nil "DescribeReplicationGroupsResult"
-      '(("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'describe-replication-groups))
 (common-lisp:progn
  (common-lisp:defun describe-reserved-cache-nodes
@@ -7261,11 +8816,78 @@
                                                         "DescribeReservedCacheNodes"
                                                         "2015-02-02"))
       common-lisp:nil "DescribeReservedCacheNodesResult"
-      '(("ReservedCacheNodeNotFoundFault"
-         . reserved-cache-node-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'describe-reserved-cache-nodes))
 (common-lisp:progn
  (common-lisp:defun describe-reserved-cache-nodes-offerings
@@ -7289,11 +8911,78 @@
                                                         "DescribeReservedCacheNodesOfferings"
                                                         "2015-02-02"))
       common-lisp:nil "DescribeReservedCacheNodesOfferingsResult"
-      '(("ReservedCacheNodesOfferingNotFoundFault"
-         . reserved-cache-nodes-offering-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'describe-reserved-cache-nodes-offerings))
 (common-lisp:progn
  (common-lisp:defun describe-snapshots
@@ -7316,11 +9005,78 @@
                                                         "DescribeSnapshots"
                                                         "2015-02-02"))
       common-lisp:nil "DescribeSnapshotsResult"
-      '(("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
-        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'describe-snapshots))
 (common-lisp:progn
  (common-lisp:defun list-allowed-node-type-modifications
@@ -7341,12 +9097,78 @@
                                                         "ListAllowedNodeTypeModifications"
                                                         "2015-02-02"))
       common-lisp:nil "ListAllowedNodeTypeModificationsResult"
-      '(("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
-        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
          . invalid-parameter-combination-exception)
-        ("InvalidParameterValueException"
-         . invalid-parameter-value-exception)))))
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'list-allowed-node-type-modifications))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -7365,9 +9187,78 @@
                                                         "ListTagsForResource"
                                                         "2015-02-02"))
       common-lisp:nil "ListTagsForResourceResult"
-      '(("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
         ("SnapshotNotFoundFault" . snapshot-not-found-fault)
-        ("InvalidARNFault" . invalid-arnfault)))))
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun modify-cache-cluster
@@ -7400,24 +9291,78 @@
                                                         "ModifyCacheCluster"
                                                         "2015-02-02"))
       common-lisp:nil "ModifyCacheClusterResult"
-      '(("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
-        ("InvalidCacheSecurityGroupStateFault"
-         . invalid-cache-security-group-state-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
         ("InsufficientCacheClusterCapacityFault"
          . insufficient-cache-cluster-capacity-fault)
-        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
         ("NodeQuotaForClusterExceededFault"
          . node-quota-for-cluster-exceeded-fault)
         ("NodeQuotaForCustomerExceededFault"
          . node-quota-for-customer-exceeded-fault)
-        ("CacheSecurityGroupNotFoundFault"
-         . cache-security-group-not-found-fault)
-        ("CacheParameterGroupNotFoundFault"
-         . cache-parameter-group-not-found-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'modify-cache-cluster))
 (common-lisp:progn
  (common-lisp:defun modify-cache-parameter-group
@@ -7439,13 +9384,78 @@
                                                         "ModifyCacheParameterGroup"
                                                         "2015-02-02"))
       common-lisp:nil "ModifyCacheParameterGroupResult"
-      '(("CacheParameterGroupNotFoundFault"
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
          . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
         ("InvalidCacheParameterGroupStateFault"
          . invalid-cache-parameter-group-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'modify-cache-parameter-group))
 (common-lisp:progn
  (common-lisp:defun modify-cache-subnet-group
@@ -7468,9 +9478,78 @@
                                                         "ModifyCacheSubnetGroup"
                                                         "2015-02-02"))
       common-lisp:nil "ModifyCacheSubnetGroupResult"
-      '(("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
         ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
-        ("SubnetInUse" . subnet-in-use) ("InvalidSubnet" . invalid-subnet)))))
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'modify-cache-subnet-group))
 (common-lisp:progn
  (common-lisp:defun modify-replication-group
@@ -7504,27 +9583,78 @@
                                                         "ModifyReplicationGroup"
                                                         "2015-02-02"))
       common-lisp:nil "ModifyReplicationGroupResult"
-      '(("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
-        ("InvalidReplicationGroupStateFault"
-         . invalid-replication-group-state-fault)
-        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
-        ("InvalidCacheSecurityGroupStateFault"
-         . invalid-cache-security-group-state-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
         ("InsufficientCacheClusterCapacityFault"
          . insufficient-cache-cluster-capacity-fault)
-        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
         ("NodeQuotaForClusterExceededFault"
          . node-quota-for-cluster-exceeded-fault)
         ("NodeQuotaForCustomerExceededFault"
          . node-quota-for-customer-exceeded-fault)
-        ("CacheSecurityGroupNotFoundFault"
-         . cache-security-group-not-found-fault)
-        ("CacheParameterGroupNotFoundFault"
-         . cache-parameter-group-not-found-fault)
-        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'modify-replication-group))
 (common-lisp:progn
  (common-lisp:defun purchase-reserved-cache-nodes-offering
@@ -7547,15 +9677,78 @@
                                                         "PurchaseReservedCacheNodesOffering"
                                                         "2015-02-02"))
       common-lisp:nil "PurchaseReservedCacheNodesOfferingResult"
-      '(("ReservedCacheNodesOfferingNotFoundFault"
-         . reserved-cache-nodes-offering-not-found-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
         ("ReservedCacheNodeAlreadyExistsFault"
          . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
         ("ReservedCacheNodeQuotaExceededFault"
          . reserved-cache-node-quota-exceeded-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'purchase-reserved-cache-nodes-offering))
 (common-lisp:progn
  (common-lisp:defun reboot-cache-cluster
@@ -7576,8 +9769,78 @@
                                                         "RebootCacheCluster"
                                                         "2015-02-02"))
       common-lisp:nil "RebootCacheClusterResult"
-      '(("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
-        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)))))
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'reboot-cache-cluster))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-resource
@@ -7597,10 +9860,78 @@
                                                         "RemoveTagsFromResource"
                                                         "2015-02-02"))
       common-lisp:nil "RemoveTagsFromResourceResult"
-      '(("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
-        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
         ("InvalidARNFault" . invalid-arnfault)
-        ("TagNotFoundFault" . tag-not-found-fault)))))
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'remove-tags-from-resource))
 (common-lisp:progn
  (common-lisp:defun reset-cache-parameter-group
@@ -7623,13 +9954,78 @@
                                                         "ResetCacheParameterGroup"
                                                         "2015-02-02"))
       common-lisp:nil "ResetCacheParameterGroupResult"
-      '(("InvalidCacheParameterGroupStateFault"
-         . invalid-cache-parameter-group-state-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
         ("CacheParameterGroupNotFoundFault"
          . cache-parameter-group-not-found-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'reset-cache-parameter-group))
 (common-lisp:progn
  (common-lisp:defun revoke-cache-security-group-ingress
@@ -7652,14 +10048,78 @@
                                                         "RevokeCacheSecurityGroupIngress"
                                                         "2015-02-02"))
       common-lisp:nil "RevokeCacheSecurityGroupIngressResult"
-      '(("CacheSecurityGroupNotFoundFault"
-         . cache-security-group-not-found-fault)
+      '(("APICallRateForCustomerExceededFault"
+         . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
         ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
+        ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
         ("InvalidCacheSecurityGroupStateFault"
          . invalid-cache-security-group-state-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
+        ("InvalidReplicationGroupStateFault"
+         . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
+        ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
+        ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'revoke-cache-security-group-ingress))
 (common-lisp:progn
  (common-lisp:defun test-failover
@@ -7681,13 +10141,74 @@
       common-lisp:nil "TestFailoverResult"
       '(("APICallRateForCustomerExceededFault"
          . apicall-rate-for-customer-exceeded-fault)
+        ("AuthorizationAlreadyExistsFault"
+         . authorization-already-exists-fault)
+        ("AuthorizationNotFoundFault" . authorization-not-found-fault)
+        ("CacheClusterAlreadyExistsFault" . cache-cluster-already-exists-fault)
+        ("CacheClusterNotFoundFault" . cache-cluster-not-found-fault)
+        ("CacheParameterGroupAlreadyExistsFault"
+         . cache-parameter-group-already-exists-fault)
+        ("CacheParameterGroupNotFoundFault"
+         . cache-parameter-group-not-found-fault)
+        ("CacheParameterGroupQuotaExceededFault"
+         . cache-parameter-group-quota-exceeded-fault)
+        ("CacheSecurityGroupAlreadyExistsFault"
+         . cache-security-group-already-exists-fault)
+        ("CacheSecurityGroupNotFoundFault"
+         . cache-security-group-not-found-fault)
+        ("CacheSecurityGroupQuotaExceededFault"
+         . cache-security-group-quota-exceeded-fault)
+        ("CacheSubnetGroupAlreadyExistsFault"
+         . cache-subnet-group-already-exists-fault)
+        ("CacheSubnetGroupInUse" . cache-subnet-group-in-use)
+        ("CacheSubnetGroupNotFoundFault" . cache-subnet-group-not-found-fault)
+        ("CacheSubnetGroupQuotaExceededFault"
+         . cache-subnet-group-quota-exceeded-fault)
+        ("CacheSubnetQuotaExceededFault" . cache-subnet-quota-exceeded-fault)
+        ("ClusterQuotaForCustomerExceededFault"
+         . cluster-quota-for-customer-exceeded-fault)
+        ("InsufficientCacheClusterCapacityFault"
+         . insufficient-cache-cluster-capacity-fault)
+        ("InvalidARNFault" . invalid-arnfault)
         ("InvalidCacheClusterStateFault" . invalid-cache-cluster-state-fault)
+        ("InvalidCacheParameterGroupStateFault"
+         . invalid-cache-parameter-group-state-fault)
+        ("InvalidCacheSecurityGroupStateFault"
+         . invalid-cache-security-group-state-fault)
+        ("InvalidParameterCombinationException"
+         . invalid-parameter-combination-exception)
+        ("InvalidParameterValueException" . invalid-parameter-value-exception)
         ("InvalidReplicationGroupStateFault"
          . invalid-replication-group-state-fault)
+        ("InvalidSnapshotStateFault" . invalid-snapshot-state-fault)
+        ("InvalidSubnet" . invalid-subnet)
+        ("InvalidVPCNetworkStateFault" . invalid-vpcnetwork-state-fault)
         ("NodeGroupNotFoundFault" . node-group-not-found-fault)
+        ("NodeGroupsPerReplicationGroupQuotaExceededFault"
+         . node-groups-per-replication-group-quota-exceeded-fault)
+        ("NodeQuotaForClusterExceededFault"
+         . node-quota-for-cluster-exceeded-fault)
+        ("NodeQuotaForCustomerExceededFault"
+         . node-quota-for-customer-exceeded-fault)
+        ("ReplicationGroupAlreadyExistsFault"
+         . replication-group-already-exists-fault)
         ("ReplicationGroupNotFoundFault" . replication-group-not-found-fault)
-        ("TestFailoverNotAvailableFault" . test-failover-not-available-fault)
-        ("InvalidParameterValueException" . invalid-parameter-value-exception)
-        ("InvalidParameterCombinationException"
-         . invalid-parameter-combination-exception)))))
+        ("ReservedCacheNodeAlreadyExistsFault"
+         . reserved-cache-node-already-exists-fault)
+        ("ReservedCacheNodeNotFoundFault"
+         . reserved-cache-node-not-found-fault)
+        ("ReservedCacheNodeQuotaExceededFault"
+         . reserved-cache-node-quota-exceeded-fault)
+        ("ReservedCacheNodesOfferingNotFoundFault"
+         . reserved-cache-nodes-offering-not-found-fault)
+        ("SnapshotAlreadyExistsFault" . snapshot-already-exists-fault)
+        ("SnapshotFeatureNotSupportedFault"
+         . snapshot-feature-not-supported-fault)
+        ("SnapshotNotFoundFault" . snapshot-not-found-fault)
+        ("SnapshotQuotaExceededFault" . snapshot-quota-exceeded-fault)
+        ("SubnetInUse" . subnet-in-use)
+        ("TagNotFoundFault" . tag-not-found-fault)
+        ("TagQuotaPerResourceExceeded" . tag-quota-per-resource-exceeded)
+        ("TestFailoverNotAvailableFault"
+         . test-failover-not-available-fault)))))
  (common-lisp:export 'test-failover))

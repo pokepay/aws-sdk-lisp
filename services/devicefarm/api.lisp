@@ -6030,8 +6030,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'create-device-pool))
 (common-lisp:progn
@@ -6060,8 +6062,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'create-network-profile))
 (common-lisp:progn
@@ -6083,8 +6087,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'create-project))
 (common-lisp:progn
@@ -6108,8 +6114,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'create-remote-access-session))
 (common-lisp:progn
@@ -6131,8 +6139,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'create-upload))
 (common-lisp:progn
@@ -6153,8 +6163,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'delete-device-pool))
 (common-lisp:progn
@@ -6175,8 +6187,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'delete-network-profile))
 (common-lisp:progn
@@ -6197,8 +6211,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'delete-project))
 (common-lisp:progn
@@ -6220,8 +6236,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'delete-remote-access-session))
 (common-lisp:progn
@@ -6241,8 +6259,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'delete-run))
 (common-lisp:progn
@@ -6263,8 +6283,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'delete-upload))
 (common-lisp:progn
@@ -6277,8 +6299,10 @@
                                   ("Version" ,@"2015-06-23"))))
     common-lisp:nil common-lisp:nil
     '(("ArgumentException" . argument-exception)
-      ("NotFoundException" . not-found-exception)
+      ("IdempotencyException" . idempotency-exception)
       ("LimitExceededException" . limit-exceeded-exception)
+      ("NotEligibleException" . not-eligible-exception)
+      ("NotFoundException" . not-found-exception)
       ("ServiceAccountException" . service-account-exception))))
  (common-lisp:export 'get-account-settings))
 (common-lisp:progn
@@ -6298,8 +6322,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-device))
 (common-lisp:progn
@@ -6320,8 +6346,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-device-pool))
 (common-lisp:progn
@@ -6344,8 +6372,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-device-pool-compatibility))
 (common-lisp:progn
@@ -6365,8 +6395,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-job))
 (common-lisp:progn
@@ -6387,8 +6419,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-network-profile))
 (common-lisp:progn
@@ -6409,9 +6443,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
-        ("NotEligibleException" . not-eligible-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-offering-status))
 (common-lisp:progn
@@ -6431,8 +6466,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-project))
 (common-lisp:progn
@@ -6454,8 +6491,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-remote-access-session))
 (common-lisp:progn
@@ -6475,8 +6514,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-run))
 (common-lisp:progn
@@ -6496,8 +6537,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-suite))
 (common-lisp:progn
@@ -6517,8 +6560,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-test))
 (common-lisp:progn
@@ -6538,8 +6583,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'get-upload))
 (common-lisp:progn
@@ -6562,8 +6609,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'install-to-remote-access-session))
 (common-lisp:progn
@@ -6584,8 +6633,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-artifacts))
 (common-lisp:progn
@@ -6606,8 +6657,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-device-pools))
 (common-lisp:progn
@@ -6628,8 +6681,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-devices))
 (common-lisp:progn
@@ -6649,8 +6704,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
@@ -6671,8 +6728,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-network-profiles))
 (common-lisp:progn
@@ -6693,9 +6752,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
-        ("NotEligibleException" . not-eligible-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-offering-promotions))
 (common-lisp:progn
@@ -6717,9 +6777,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
-        ("NotEligibleException" . not-eligible-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-offering-transactions))
 (common-lisp:progn
@@ -6740,9 +6801,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
-        ("NotEligibleException" . not-eligible-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-offerings))
 (common-lisp:progn
@@ -6763,8 +6825,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-projects))
 (common-lisp:progn
@@ -6786,8 +6850,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-remote-access-sessions))
 (common-lisp:progn
@@ -6807,8 +6873,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-runs))
 (common-lisp:progn
@@ -6829,8 +6897,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-samples))
 (common-lisp:progn
@@ -6850,8 +6920,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-suites))
 (common-lisp:progn
@@ -6871,8 +6943,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-tests))
 (common-lisp:progn
@@ -6893,8 +6967,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-unique-problems))
 (common-lisp:progn
@@ -6915,8 +6991,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'list-uploads))
 (common-lisp:progn
@@ -6939,9 +7017,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
-        ("NotEligibleException" . not-eligible-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'purchase-offering))
 (common-lisp:progn
@@ -6962,9 +7041,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
-        ("NotEligibleException" . not-eligible-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'renew-offering))
 (common-lisp:progn
@@ -6988,9 +7068,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
         ("IdempotencyException" . idempotency-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'schedule-run))
 (common-lisp:progn
@@ -7012,8 +7093,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'stop-remote-access-session))
 (common-lisp:progn
@@ -7033,8 +7116,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'stop-run))
 (common-lisp:progn
@@ -7055,8 +7140,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'update-device-pool))
 (common-lisp:progn
@@ -7084,8 +7171,10 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'update-network-profile))
 (common-lisp:progn
@@ -7107,7 +7196,9 @@
                                                         "2015-06-23"))
       common-lisp:nil common-lisp:nil
       '(("ArgumentException" . argument-exception)
-        ("NotFoundException" . not-found-exception)
+        ("IdempotencyException" . idempotency-exception)
         ("LimitExceededException" . limit-exceeded-exception)
+        ("NotEligibleException" . not-eligible-exception)
+        ("NotFoundException" . not-found-exception)
         ("ServiceAccountException" . service-account-exception)))))
  (common-lisp:export 'update-project))

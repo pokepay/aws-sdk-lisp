@@ -3809,10 +3809,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "AddTags" "2015-12-01"))
       common-lisp:nil "AddTagsResult"
-      '(("DuplicateTagKeysException" . duplicate-tag-keys-exception)
-        ("TooManyTagsException" . too-many-tags-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
         ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
-        ("TargetGroupNotFoundException" . target-group-not-found-exception)))))
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun create-listener
@@ -3832,21 +3864,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "CreateListener" "2015-12-01"))
       common-lisp:nil "CreateListenerResult"
-      '(("DuplicateListenerException" . duplicate-listener-exception)
-        ("TooManyListenersException" . too-many-listeners-exception)
-        ("TooManyCertificatesException" . too-many-certificates-exception)
-        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
-        ("TargetGroupNotFoundException" . target-group-not-found-exception)
-        ("TargetGroupAssociationLimitException"
-         . target-group-association-limit-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
         ("InvalidConfigurationRequestException"
          . invalid-configuration-request-exception)
-        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
         ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
         ("TooManyRegistrationsForTargetIdException"
-         . too-many-registrations-for-target-id-exception)))))
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'create-listener))
 (common-lisp:progn
  (common-lisp:defun create-load-balancer
@@ -3866,17 +3919,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "CreateLoadBalancer" "2015-12-01"))
       common-lisp:nil "CreateLoadBalancerResult"
-      '(("DuplicateLoadBalancerNameException"
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
          . duplicate-load-balancer-name-exception)
-        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
         ("InvalidConfigurationRequestException"
          . invalid-configuration-request-exception)
-        ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)
-        ("InvalidSecurityGroupException" . invalid-security-group-exception)
         ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
         ("TooManyTagsException" . too-many-tags-exception)
-        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)))))
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'create-load-balancer))
 (common-lisp:progn
  (common-lisp:defun create-rule
@@ -3894,17 +3972,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "CreateRule" "2015-12-01"))
       common-lisp:nil "CreateRuleResult"
-      '(("PriorityInUseException" . priority-in-use-exception)
-        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
-        ("TooManyRulesException" . too-many-rules-exception)
-        ("TargetGroupAssociationLimitException"
-         . target-group-association-limit-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
         ("InvalidConfigurationRequestException"
          . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
         ("TooManyRegistrationsForTargetIdException"
-         . too-many-registrations-for-target-id-exception)))))
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'create-rule))
 (common-lisp:progn
  (common-lisp:defun create-target-group
@@ -3928,9 +4031,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "CreateTargetGroup" "2015-12-01"))
       common-lisp:nil "CreateTargetGroupResult"
-      '(("DuplicateTargetGroupNameException"
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
          . duplicate-target-group-name-exception)
-        ("TooManyTargetGroupsException" . too-many-target-groups-exception)))))
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'create-target-group))
 (common-lisp:progn
  (common-lisp:defun delete-listener
@@ -3947,7 +4083,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DeleteListener" "2015-12-01"))
       common-lisp:nil "DeleteListenerResult"
-      '(("ListenerNotFoundException" . listener-not-found-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'delete-listener))
 (common-lisp:progn
  (common-lisp:defun delete-load-balancer
@@ -3964,9 +4135,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DeleteLoadBalancer" "2015-12-01"))
       common-lisp:nil "DeleteLoadBalancerResult"
-      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
-        ("OperationNotPermittedException"
-         . operation-not-permitted-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'delete-load-balancer))
 (common-lisp:progn
  (common-lisp:defun delete-rule
@@ -3983,9 +4187,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DeleteRule" "2015-12-01"))
       common-lisp:nil "DeleteRuleResult"
-      '(("RuleNotFoundException" . rule-not-found-exception)
-        ("OperationNotPermittedException"
-         . operation-not-permitted-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'delete-rule))
 (common-lisp:progn
  (common-lisp:defun delete-target-group
@@ -4002,7 +4239,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DeleteTargetGroup" "2015-12-01"))
       common-lisp:nil "DeleteTargetGroupResult"
-      '(("ResourceInUseException" . resource-in-use-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'delete-target-group))
 (common-lisp:progn
  (common-lisp:defun deregister-targets
@@ -4019,8 +4291,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DeregisterTargets" "2015-12-01"))
       common-lisp:nil "DeregisterTargetsResult"
-      '(("TargetGroupNotFoundException" . target-group-not-found-exception)
-        ("InvalidTargetException" . invalid-target-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'deregister-targets))
 (common-lisp:progn
  (common-lisp:defun describe-account-limits
@@ -4036,7 +4342,43 @@
        (aws-sdk/generator/shape:make-request-with-input
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeAccountLimits" "2015-12-01"))
-      common-lisp:nil "DescribeAccountLimitsResult" 'common-lisp:nil)))
+      common-lisp:nil "DescribeAccountLimitsResult"
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'describe-account-limits))
 (common-lisp:progn
  (common-lisp:defun describe-listeners
@@ -4055,9 +4397,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeListeners" "2015-12-01"))
       common-lisp:nil "DescribeListenersResult"
-      '(("ListenerNotFoundException" . listener-not-found-exception)
-        ("LoadBalancerNotFoundException"
-         . load-balancer-not-found-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'describe-listeners))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancer-attributes
@@ -4075,8 +4450,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeLoadBalancerAttributes" "2015-12-01"))
       common-lisp:nil "DescribeLoadBalancerAttributesResult"
-      '(("LoadBalancerNotFoundException"
-         . load-balancer-not-found-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'describe-load-balancer-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-load-balancers
@@ -4095,8 +4504,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeLoadBalancers" "2015-12-01"))
       common-lisp:nil "DescribeLoadBalancersResult"
-      '(("LoadBalancerNotFoundException"
-         . load-balancer-not-found-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'describe-load-balancers))
 (common-lisp:progn
  (common-lisp:defun describe-rules
@@ -4114,8 +4557,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeRules" "2015-12-01"))
       common-lisp:nil "DescribeRulesResult"
-      '(("ListenerNotFoundException" . listener-not-found-exception)
-        ("RuleNotFoundException" . rule-not-found-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'describe-rules))
 (common-lisp:progn
  (common-lisp:defun describe-sslpolicies
@@ -4132,7 +4609,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeSSLPolicies" "2015-12-01"))
       common-lisp:nil "DescribeSSLPoliciesResult"
-      '(("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'describe-sslpolicies))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -4149,10 +4661,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeTags" "2015-12-01"))
       common-lisp:nil "DescribeTagsResult"
-      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
-        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
         ("ListenerNotFoundException" . listener-not-found-exception)
-        ("RuleNotFoundException" . rule-not-found-exception)))))
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun describe-target-group-attributes
@@ -4170,7 +4714,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeTargetGroupAttributes" "2015-12-01"))
       common-lisp:nil "DescribeTargetGroupAttributesResult"
-      '(("TargetGroupNotFoundException" . target-group-not-found-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'describe-target-group-attributes))
 (common-lisp:progn
  (common-lisp:defun describe-target-groups
@@ -4190,8 +4769,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeTargetGroups" "2015-12-01"))
       common-lisp:nil "DescribeTargetGroupsResult"
-      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
-        ("TargetGroupNotFoundException" . target-group-not-found-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'describe-target-groups))
 (common-lisp:progn
  (common-lisp:defun describe-target-health
@@ -4208,9 +4821,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeTargetHealth" "2015-12-01"))
       common-lisp:nil "DescribeTargetHealthResult"
-      '(("InvalidTargetException" . invalid-target-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
         ("TargetGroupNotFoundException" . target-group-not-found-exception)
-        ("HealthUnavailableException" . health-unavailable-exception)))))
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'describe-target-health))
 (common-lisp:progn
  (common-lisp:defun modify-listener
@@ -4230,21 +4876,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "ModifyListener" "2015-12-01"))
       common-lisp:nil "ModifyListenerResult"
-      '(("DuplicateListenerException" . duplicate-listener-exception)
-        ("TooManyListenersException" . too-many-listeners-exception)
-        ("TooManyCertificatesException" . too-many-certificates-exception)
-        ("ListenerNotFoundException" . listener-not-found-exception)
-        ("TargetGroupNotFoundException" . target-group-not-found-exception)
-        ("TargetGroupAssociationLimitException"
-         . target-group-association-limit-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
         ("IncompatibleProtocolsException" . incompatible-protocols-exception)
-        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
-        ("CertificateNotFoundException" . certificate-not-found-exception)
         ("InvalidConfigurationRequestException"
          . invalid-configuration-request-exception)
-        ("UnsupportedProtocolException" . unsupported-protocol-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
         ("TooManyRegistrationsForTargetIdException"
-         . too-many-registrations-for-target-id-exception)))))
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'modify-listener))
 (common-lisp:progn
  (common-lisp:defun modify-load-balancer-attributes
@@ -4262,9 +4929,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "ModifyLoadBalancerAttributes" "2015-12-01"))
       common-lisp:nil "ModifyLoadBalancerAttributesResult"
-      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
         ("InvalidConfigurationRequestException"
-         . invalid-configuration-request-exception)))))
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'modify-load-balancer-attributes))
 (common-lisp:progn
  (common-lisp:defun modify-rule
@@ -4281,14 +4981,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "ModifyRule" "2015-12-01"))
       common-lisp:nil "ModifyRuleResult"
-      '(("TargetGroupAssociationLimitException"
-         . target-group-association-limit-exception)
-        ("RuleNotFoundException" . rule-not-found-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
         ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
         ("TooManyRegistrationsForTargetIdException"
          . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
         ("TooManyTargetsException" . too-many-targets-exception)
-        ("TargetGroupNotFoundException" . target-group-not-found-exception)))))
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'modify-rule))
 (common-lisp:progn
  (common-lisp:defun modify-target-group
@@ -4312,7 +5040,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "ModifyTargetGroup" "2015-12-01"))
       common-lisp:nil "ModifyTargetGroupResult"
-      '(("TargetGroupNotFoundException" . target-group-not-found-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'modify-target-group))
 (common-lisp:progn
  (common-lisp:defun modify-target-group-attributes
@@ -4330,7 +5093,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "ModifyTargetGroupAttributes" "2015-12-01"))
       common-lisp:nil "ModifyTargetGroupAttributesResult"
-      '(("TargetGroupNotFoundException" . target-group-not-found-exception)))))
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'modify-target-group-attributes))
 (common-lisp:progn
  (common-lisp:defun register-targets
@@ -4347,11 +5145,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "RegisterTargets" "2015-12-01"))
       common-lisp:nil "RegisterTargetsResult"
-      '(("TargetGroupNotFoundException" . target-group-not-found-exception)
-        ("TooManyTargetsException" . too-many-targets-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
         ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
         ("TooManyRegistrationsForTargetIdException"
-         . too-many-registrations-for-target-id-exception)))))
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'register-targets))
 (common-lisp:progn
  (common-lisp:defun remove-tags
@@ -4368,11 +5197,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "RemoveTags" "2015-12-01"))
       common-lisp:nil "RemoveTagsResult"
-      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
-        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
         ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("RuleNotFoundException" . rule-not-found-exception)
-        ("TooManyTagsException" . too-many-tags-exception)))))
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
  (common-lisp:defun set-ip-address-type
@@ -4390,10 +5250,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "SetIpAddressType" "2015-12-01"))
       common-lisp:nil "SetIpAddressTypeResult"
-      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
         ("InvalidConfigurationRequestException"
          . invalid-configuration-request-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)))))
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'set-ip-address-type))
 (common-lisp:progn
  (common-lisp:defun set-rule-priorities
@@ -4410,10 +5302,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "SetRulePriorities" "2015-12-01"))
       common-lisp:nil "SetRulePrioritiesResult"
-      '(("RuleNotFoundException" . rule-not-found-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
+        ("InvalidConfigurationRequestException"
+         . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
         ("PriorityInUseException" . priority-in-use-exception)
-        ("OperationNotPermittedException"
-         . operation-not-permitted-exception)))))
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'set-rule-priorities))
 (common-lisp:progn
  (common-lisp:defun set-security-groups
@@ -4431,11 +5355,42 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "SetSecurityGroups" "2015-12-01"))
       common-lisp:nil "SetSecurityGroupsResult"
-      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
         ("InvalidConfigurationRequestException"
          . invalid-configuration-request-exception)
-        ("InvalidSecurityGroupException"
-         . invalid-security-group-exception)))))
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
+        ("SubnetNotFoundException" . subnet-not-found-exception)
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'set-security-groups))
 (common-lisp:progn
  (common-lisp:defun set-subnets
@@ -4452,9 +5407,40 @@
         'elasticloadbalancingv2-request aws-sdk/generator/operation::input
         "POST" "/" "SetSubnets" "2015-12-01"))
       common-lisp:nil "SetSubnetsResult"
-      '(("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+      '(("CertificateNotFoundException" . certificate-not-found-exception)
+        ("DuplicateListenerException" . duplicate-listener-exception)
+        ("DuplicateLoadBalancerNameException"
+         . duplicate-load-balancer-name-exception)
+        ("DuplicateTagKeysException" . duplicate-tag-keys-exception)
+        ("DuplicateTargetGroupNameException"
+         . duplicate-target-group-name-exception)
+        ("HealthUnavailableException" . health-unavailable-exception)
+        ("IncompatibleProtocolsException" . incompatible-protocols-exception)
         ("InvalidConfigurationRequestException"
          . invalid-configuration-request-exception)
+        ("InvalidSchemeException" . invalid-scheme-exception)
+        ("InvalidSecurityGroupException" . invalid-security-group-exception)
+        ("InvalidSubnetException" . invalid-subnet-exception)
+        ("InvalidTargetException" . invalid-target-exception)
+        ("ListenerNotFoundException" . listener-not-found-exception)
+        ("LoadBalancerNotFoundException" . load-balancer-not-found-exception)
+        ("OperationNotPermittedException" . operation-not-permitted-exception)
+        ("PriorityInUseException" . priority-in-use-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("RuleNotFoundException" . rule-not-found-exception)
+        ("SSLPolicyNotFoundException" . sslpolicy-not-found-exception)
         ("SubnetNotFoundException" . subnet-not-found-exception)
-        ("InvalidSubnetException" . invalid-subnet-exception)))))
+        ("TargetGroupAssociationLimitException"
+         . target-group-association-limit-exception)
+        ("TargetGroupNotFoundException" . target-group-not-found-exception)
+        ("TooManyCertificatesException" . too-many-certificates-exception)
+        ("TooManyListenersException" . too-many-listeners-exception)
+        ("TooManyLoadBalancersException" . too-many-load-balancers-exception)
+        ("TooManyRegistrationsForTargetIdException"
+         . too-many-registrations-for-target-id-exception)
+        ("TooManyRulesException" . too-many-rules-exception)
+        ("TooManyTagsException" . too-many-tags-exception)
+        ("TooManyTargetGroupsException" . too-many-target-groups-exception)
+        ("TooManyTargetsException" . too-many-targets-exception)
+        ("UnsupportedProtocolException" . unsupported-protocol-exception)))))
  (common-lisp:export 'set-subnets))

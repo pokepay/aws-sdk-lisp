@@ -5596,13 +5596,133 @@
                                                         "AddTagsToOnPremisesInstances"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InstanceNameRequiredException" . instance-name-required-exception)
-        ("TagRequiredException" . tag-required-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
         ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
-        ("InstanceNotRegisteredException"
-         . instance-not-registered-exception)))))
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'add-tags-to-on-premises-instances))
 (common-lisp:progn
  (common-lisp:defun batch-get-application-revisions
@@ -5622,15 +5742,133 @@
                                                         "BatchGetApplicationRevisions"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationDoesNotExistException"
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
          . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
         ("ApplicationNameRequiredException"
          . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
         ("InvalidApplicationNameException"
          . invalid-application-name-exception)
-        ("RevisionRequiredException" . revision-required-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
         ("InvalidRevisionException" . invalid-revision-exception)
-        ("BatchLimitExceededException" . batch-limit-exceeded-exception)))))
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'batch-get-application-revisions))
 (common-lisp:progn
  (common-lisp:defun batch-get-applications
@@ -5649,13 +5887,133 @@
                                                         "BatchGetApplications"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
-         . application-name-required-exception)
-        ("InvalidApplicationNameException"
-         . invalid-application-name-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
         ("ApplicationDoesNotExistException"
          . application-does-not-exist-exception)
-        ("BatchLimitExceededException" . batch-limit-exceeded-exception)))))
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'batch-get-applications))
 (common-lisp:progn
  (common-lisp:defun batch-get-deployment-groups
@@ -5676,17 +6034,133 @@
                                                         "BatchGetDeploymentGroups"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
-         . application-name-required-exception)
-        ("InvalidApplicationNameException"
-         . invalid-application-name-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
         ("ApplicationDoesNotExistException"
          . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
         ("DeploymentGroupNameRequiredException"
          . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
         ("InvalidDeploymentGroupNameException"
          . invalid-deployment-group-name-exception)
-        ("BatchLimitExceededException" . batch-limit-exceeded-exception)))))
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'batch-get-deployment-groups))
 (common-lisp:progn
  (common-lisp:defun batch-get-deployment-instances
@@ -5706,13 +6180,133 @@
                                                         "BatchGetDeploymentInstances"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
         ("DeploymentDoesNotExistException"
          . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
         ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
         ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
         ("InvalidInstanceNameException" . invalid-instance-name-exception)
-        ("BatchLimitExceededException" . batch-limit-exceeded-exception)))))
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'batch-get-deployment-instances))
 (common-lisp:progn
  (common-lisp:defun batch-get-deployments
@@ -5731,9 +6325,133 @@
                                                         "BatchGetDeployments"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
         ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
-        ("BatchLimitExceededException" . batch-limit-exceeded-exception)))))
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'batch-get-deployments))
 (common-lisp:progn
  (common-lisp:defun batch-get-on-premises-instances
@@ -5753,9 +6471,133 @@
                                                         "BatchGetOnPremisesInstances"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InstanceNameRequiredException" . instance-name-required-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
         ("InvalidInstanceNameException" . invalid-instance-name-exception)
-        ("BatchLimitExceededException" . batch-limit-exceeded-exception)))))
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'batch-get-on-premises-instances))
 (common-lisp:progn
  (common-lisp:defun continue-deployment
@@ -5774,14 +6616,131 @@
                                                         "ContinueDeployment"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
-        ("DeploymentDoesNotExistException"
-         . deployment-does-not-exist-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
         ("DeploymentAlreadyCompletedException"
          . deployment-already-completed-exception)
-        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
         ("DeploymentIsNotInReadyStateException"
          . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
         ("UnsupportedActionForDeploymentTypeException"
          . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'continue-deployment))
@@ -5802,14 +6761,133 @@
                                                         "CreateApplication"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
-         . application-name-required-exception)
-        ("InvalidApplicationNameException"
-         . invalid-application-name-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
         ("ApplicationAlreadyExistsException"
          . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
         ("ApplicationLimitExceededException"
-         . application-limit-exceeded-exception)))))
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'create-application))
 (common-lisp:progn
  (common-lisp:defun create-deployment
@@ -5836,36 +6914,133 @@
                                                         "CreateDeployment"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
-         . application-name-required-exception)
-        ("InvalidApplicationNameException"
-         . invalid-application-name-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
         ("ApplicationDoesNotExistException"
          . application-does-not-exist-exception)
-        ("DeploymentGroupNameRequiredException"
-         . deployment-group-name-required-exception)
-        ("InvalidDeploymentGroupNameException"
-         . invalid-deployment-group-name-exception)
-        ("DeploymentGroupDoesNotExistException"
-         . deployment-group-does-not-exist-exception)
-        ("RevisionRequiredException" . revision-required-exception)
-        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
-        ("InvalidRevisionException" . invalid-revision-exception)
-        ("InvalidDeploymentConfigNameException"
-         . invalid-deployment-config-name-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
         ("DeploymentConfigDoesNotExistException"
          . deployment-config-does-not-exist-exception)
-        ("DescriptionTooLongException" . description-too-long-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
         ("DeploymentLimitExceededException"
          . deployment-limit-exceeded-exception)
-        ("InvalidTargetInstancesException"
-         . invalid-target-instances-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
         ("InvalidAutoRollbackConfigException"
          . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
         ("InvalidLoadBalancerInfoException"
          . invalid-load-balancer-info-exception)
-        ("InvalidFileExistsBehaviorException"
-         . invalid-file-exists-behavior-exception)))))
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'create-deployment))
 (common-lisp:progn
  (common-lisp:defun create-deployment-config
@@ -5886,16 +7061,133 @@
                                                         "CreateDeploymentConfig"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidDeploymentConfigNameException"
-         . invalid-deployment-config-name-exception)
-        ("DeploymentConfigNameRequiredException"
-         . deployment-config-name-required-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
         ("DeploymentConfigAlreadyExistsException"
          . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
         ("InvalidMinimumHealthyHostValueException"
          . invalid-minimum-healthy-host-value-exception)
-        ("DeploymentConfigLimitExceededException"
-         . deployment-config-limit-exceeded-exception)))))
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'create-deployment-config))
 (common-lisp:progn
  (common-lisp:defun create-deployment-group
@@ -5926,51 +7218,133 @@
                                                         "CreateDeploymentGroup"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
-         . application-name-required-exception)
-        ("InvalidApplicationNameException"
-         . invalid-application-name-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
         ("ApplicationDoesNotExistException"
          . application-does-not-exist-exception)
-        ("DeploymentGroupNameRequiredException"
-         . deployment-group-name-required-exception)
-        ("InvalidDeploymentGroupNameException"
-         . invalid-deployment-group-name-exception)
-        ("DeploymentGroupAlreadyExistsException"
-         . deployment-group-already-exists-exception)
-        ("InvalidEC2TagException" . invalid-ec2tag-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("InvalidAutoScalingGroupException"
-         . invalid-auto-scaling-group-exception)
-        ("InvalidDeploymentConfigNameException"
-         . invalid-deployment-config-name-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
         ("DeploymentConfigDoesNotExistException"
          . deployment-config-does-not-exist-exception)
-        ("RoleRequiredException" . role-required-exception)
-        ("InvalidRoleException" . invalid-role-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
         ("DeploymentGroupLimitExceededException"
          . deployment-group-limit-exceeded-exception)
-        ("LifecycleHookLimitExceededException"
-         . lifecycle-hook-limit-exceeded-exception)
-        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
-        ("TriggerTargetsLimitExceededException"
-         . trigger-targets-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
         ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
-        ("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
         ("InvalidAutoRollbackConfigException"
          . invalid-auto-rollback-config-exception)
-        ("InvalidLoadBalancerInfoException"
-         . invalid-load-balancer-info-exception)
-        ("InvalidDeploymentStyleException"
-         . invalid-deployment-style-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
         ("InvalidBlueGreenDeploymentConfigurationException"
          . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
         ("InvalidEC2TagCombinationException"
          . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
         ("InvalidOnPremisesTagCombinationException"
          . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
         ("TagSetListLimitExceededException"
-         . tag-set-list-limit-exceeded-exception)))))
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'create-deployment-group))
 (common-lisp:progn
  (common-lisp:defun delete-application
@@ -5989,10 +7363,133 @@
                                                         "DeleteApplication"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
          . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
         ("InvalidApplicationNameException"
-         . invalid-application-name-exception)))))
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'delete-application))
 (common-lisp:progn
  (common-lisp:defun delete-deployment-config
@@ -6011,12 +7508,133 @@
                                                         "DeleteDeploymentConfig"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidDeploymentConfigNameException"
-         . invalid-deployment-config-name-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
         ("DeploymentConfigNameRequiredException"
          . deployment-config-name-required-exception)
-        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
-        ("InvalidOperationException" . invalid-operation-exception)))))
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'delete-deployment-config))
 (common-lisp:progn
  (common-lisp:defun delete-deployment-group
@@ -6036,15 +7654,133 @@
                                                         "DeleteDeploymentGroup"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
          . application-name-required-exception)
-        ("InvalidApplicationNameException"
-         . invalid-application-name-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
         ("DeploymentGroupNameRequiredException"
          . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
         ("InvalidDeploymentGroupNameException"
          . invalid-deployment-group-name-exception)
-        ("InvalidRoleException" . invalid-role-exception)))))
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'delete-deployment-group))
 (common-lisp:progn
  (common-lisp:defun deregister-on-premises-instance
@@ -6064,8 +7800,133 @@
                                                         "DeregisterOnPremisesInstance"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InstanceNameRequiredException" . instance-name-required-exception)
-        ("InvalidInstanceNameException" . invalid-instance-name-exception)))))
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'deregister-on-premises-instance))
 (common-lisp:progn
  (common-lisp:defun get-application
@@ -6084,12 +7945,133 @@
                                                         "GetApplication"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
          . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
         ("InvalidApplicationNameException"
          . invalid-application-name-exception)
-        ("ApplicationDoesNotExistException"
-         . application-does-not-exist-exception)))))
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'get-application))
 (common-lisp:progn
  (common-lisp:defun get-application-revision
@@ -6108,15 +8090,133 @@
                                                         "GetApplicationRevision"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationDoesNotExistException"
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
          . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
         ("ApplicationNameRequiredException"
          . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
         ("InvalidApplicationNameException"
          . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
         ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
         ("RevisionRequiredException" . revision-required-exception)
-        ("InvalidRevisionException" . invalid-revision-exception)))))
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'get-application-revision))
 (common-lisp:progn
  (common-lisp:defun get-deployment
@@ -6135,10 +8235,133 @@
                                                         "GetDeployment"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
-        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
         ("DeploymentDoesNotExistException"
-         . deployment-does-not-exist-exception)))))
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'get-deployment))
 (common-lisp:progn
  (common-lisp:defun get-deployment-config
@@ -6157,12 +8380,133 @@
                                                         "GetDeploymentConfig"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidDeploymentConfigNameException"
-         . invalid-deployment-config-name-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
         ("DeploymentConfigNameRequiredException"
          . deployment-config-name-required-exception)
-        ("DeploymentConfigDoesNotExistException"
-         . deployment-config-does-not-exist-exception)))))
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'get-deployment-config))
 (common-lisp:progn
  (common-lisp:defun get-deployment-group
@@ -6182,18 +8526,133 @@
                                                         "GetDeploymentGroup"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
-         . application-name-required-exception)
-        ("InvalidApplicationNameException"
-         . invalid-application-name-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
         ("ApplicationDoesNotExistException"
          . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
         ("DeploymentGroupNameRequiredException"
          . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
         ("InvalidDeploymentGroupNameException"
          . invalid-deployment-group-name-exception)
-        ("DeploymentGroupDoesNotExistException"
-         . deployment-group-does-not-exist-exception)))))
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'get-deployment-group))
 (common-lisp:progn
  (common-lisp:defun get-deployment-instance
@@ -6212,13 +8671,133 @@
                                                         "GetDeploymentInstance"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
         ("DeploymentDoesNotExistException"
          . deployment-does-not-exist-exception)
-        ("InstanceIdRequiredException" . instance-id-required-exception)
-        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
         ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
-        ("InvalidInstanceNameException" . invalid-instance-name-exception)))))
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'get-deployment-instance))
 (common-lisp:progn
  (common-lisp:defun get-on-premises-instance
@@ -6237,9 +8816,133 @@
                                                         "GetOnPremisesInstance"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InstanceNameRequiredException" . instance-name-required-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
         ("InstanceNotRegisteredException" . instance-not-registered-exception)
-        ("InvalidInstanceNameException" . invalid-instance-name-exception)))))
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'get-on-premises-instance))
 (common-lisp:progn
  (common-lisp:defun list-application-revisions
@@ -6261,23 +8964,133 @@
                                                         "ListApplicationRevisions"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationDoesNotExistException"
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
          . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
         ("ApplicationNameRequiredException"
          . application-name-required-exception)
-        ("InvalidApplicationNameException"
-         . invalid-application-name-exception)
-        ("InvalidSortByException" . invalid-sort-by-exception)
-        ("InvalidSortOrderException" . invalid-sort-order-exception)
-        ("InvalidBucketNameFilterException"
-         . invalid-bucket-name-filter-exception)
-        ("InvalidKeyPrefixFilterException"
-         . invalid-key-prefix-filter-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
         ("BucketNameFilterRequiredException"
          . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
         ("InvalidDeployedStateFilterException"
          . invalid-deployed-state-filter-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)))))
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'list-application-revisions))
 (common-lisp:progn
  (common-lisp:defun list-applications
@@ -6296,7 +9109,133 @@
                                                         "ListApplications"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)))))
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'list-applications))
 (common-lisp:progn
  (common-lisp:defun list-deployment-configs
@@ -6315,7 +9254,133 @@
                                                         "ListDeploymentConfigs"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)))))
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'list-deployment-configs))
 (common-lisp:progn
  (common-lisp:defun list-deployment-groups
@@ -6334,13 +9399,133 @@
                                                         "ListDeploymentGroups"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
-         . application-name-required-exception)
-        ("InvalidApplicationNameException"
-         . invalid-application-name-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
         ("ApplicationDoesNotExistException"
          . application-does-not-exist-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)))))
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'list-deployment-groups))
 (common-lisp:progn
  (common-lisp:defun list-deployment-instances
@@ -6362,16 +9547,133 @@
                                                         "ListDeploymentInstances"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
         ("DeploymentDoesNotExistException"
          . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
         ("DeploymentNotStartedException" . deployment-not-started-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
         ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
         ("InvalidInstanceStatusException" . invalid-instance-status-exception)
         ("InvalidInstanceTypeException" . invalid-instance-type-exception)
-        ("InvalidDeploymentInstanceTypeException"
-         . invalid-deployment-instance-type-exception)))))
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'list-deployment-instances))
 (common-lisp:progn
  (common-lisp:defun list-deployments
@@ -6393,22 +9695,133 @@
                                                         "ListDeployments"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
-         . application-name-required-exception)
-        ("InvalidApplicationNameException"
-         . invalid-application-name-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
         ("ApplicationDoesNotExistException"
          . application-does-not-exist-exception)
-        ("InvalidDeploymentGroupNameException"
-         . invalid-deployment-group-name-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
         ("DeploymentGroupDoesNotExistException"
          . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
         ("DeploymentGroupNameRequiredException"
          . deployment-group-name-required-exception)
-        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
         ("InvalidDeploymentStatusException"
          . invalid-deployment-status-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)))))
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'list-deployments))
 (common-lisp:progn
  (common-lisp:defun list-git-hub-account-token-names
@@ -6428,8 +9841,133 @@
                                                         "ListGitHubAccountTokenNames"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("ResourceValidationException" . resource-validation-exception)))))
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'list-git-hub-account-token-names))
 (common-lisp:progn
  (common-lisp:defun list-on-premises-instances
@@ -6450,10 +9988,133 @@
                                                         "ListOnPremisesInstances"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRegistrationStatusException"
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
          . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
         ("InvalidTagFilterException" . invalid-tag-filter-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)))))
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'list-on-premises-instances))
 (common-lisp:progn
  (common-lisp:defun register-application-revision
@@ -6474,15 +10135,133 @@
                                                         "RegisterApplicationRevision"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationDoesNotExistException"
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
          . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
         ("ApplicationNameRequiredException"
          . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
         ("InvalidApplicationNameException"
          . invalid-application-name-exception)
-        ("DescriptionTooLongException" . description-too-long-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
         ("RevisionRequiredException" . revision-required-exception)
-        ("InvalidRevisionException" . invalid-revision-exception)))))
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'register-application-revision))
 (common-lisp:progn
  (common-lisp:defun register-on-premises-instance
@@ -6504,20 +10283,133 @@
                                                         "RegisterOnPremisesInstance"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InstanceNameAlreadyRegisteredException"
-         . instance-name-already-registered-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
         ("IamArnRequiredException" . iam-arn-required-exception)
         ("IamSessionArnAlreadyRegisteredException"
          . iam-session-arn-already-registered-exception)
         ("IamUserArnAlreadyRegisteredException"
          . iam-user-arn-already-registered-exception)
-        ("InstanceNameRequiredException" . instance-name-required-exception)
         ("IamUserArnRequiredException" . iam-user-arn-required-exception)
-        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
         ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
         ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
         ("MultipleIamArnsProvidedException"
-         . multiple-iam-arns-provided-exception)))))
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'register-on-premises-instance))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-on-premises-instances
@@ -6537,13 +10429,133 @@
                                                         "RemoveTagsFromOnPremisesInstances"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("InstanceNameRequiredException" . instance-name-required-exception)
-        ("TagRequiredException" . tag-required-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
         ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
-        ("InstanceNotRegisteredException"
-         . instance-not-registered-exception)))))
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'remove-tags-from-on-premises-instances))
 (common-lisp:progn
  (common-lisp:defun skip-wait-time-for-instance-termination
@@ -6563,13 +10575,131 @@
                                                         "SkipWaitTimeForInstanceTermination"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
-        ("DeploymentDoesNotExistException"
-         . deployment-does-not-exist-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
         ("DeploymentAlreadyCompletedException"
          . deployment-already-completed-exception)
-        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
         ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
         ("UnsupportedActionForDeploymentTypeException"
          . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'skip-wait-time-for-instance-termination))
@@ -6591,12 +10721,133 @@
                                                         "StopDeployment"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("DeploymentIdRequiredException" . deployment-id-required-exception)
-        ("DeploymentDoesNotExistException"
-         . deployment-does-not-exist-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
+        ("ApplicationDoesNotExistException"
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
         ("DeploymentAlreadyCompletedException"
          . deployment-already-completed-exception)
-        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)))))
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'stop-deployment))
 (common-lisp:progn
  (common-lisp:defun update-application
@@ -6616,14 +10867,133 @@
                                                         "UpdateApplication"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
-         . application-name-required-exception)
-        ("InvalidApplicationNameException"
-         . invalid-application-name-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
         ("ApplicationAlreadyExistsException"
          . application-already-exists-exception)
         ("ApplicationDoesNotExistException"
-         . application-does-not-exist-exception)))))
+         . application-does-not-exist-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
+        ("DeploymentConfigDoesNotExistException"
+         . deployment-config-does-not-exist-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
+        ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
+        ("InvalidAutoRollbackConfigException"
+         . invalid-auto-rollback-config-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
+        ("InvalidBlueGreenDeploymentConfigurationException"
+         . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
+        ("InvalidEC2TagCombinationException"
+         . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidOnPremisesTagCombinationException"
+         . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
+        ("TagSetListLimitExceededException"
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'update-application))
 (common-lisp:progn
  (common-lisp:defun update-deployment-group
@@ -6655,48 +11025,131 @@
                                                         "UpdateDeploymentGroup"
                                                         "2014-10-06"))
       common-lisp:nil common-lisp:nil
-      '(("ApplicationNameRequiredException"
-         . application-name-required-exception)
-        ("InvalidApplicationNameException"
-         . invalid-application-name-exception)
+      '(("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("ApplicationAlreadyExistsException"
+         . application-already-exists-exception)
         ("ApplicationDoesNotExistException"
          . application-does-not-exist-exception)
-        ("InvalidDeploymentGroupNameException"
-         . invalid-deployment-group-name-exception)
-        ("DeploymentGroupAlreadyExistsException"
-         . deployment-group-already-exists-exception)
-        ("DeploymentGroupNameRequiredException"
-         . deployment-group-name-required-exception)
-        ("DeploymentGroupDoesNotExistException"
-         . deployment-group-does-not-exist-exception)
-        ("InvalidEC2TagException" . invalid-ec2tag-exception)
-        ("InvalidTagException" . invalid-tag-exception)
-        ("InvalidAutoScalingGroupException"
-         . invalid-auto-scaling-group-exception)
-        ("InvalidDeploymentConfigNameException"
-         . invalid-deployment-config-name-exception)
+        ("ApplicationLimitExceededException"
+         . application-limit-exceeded-exception)
+        ("ApplicationNameRequiredException"
+         . application-name-required-exception)
+        ("BatchLimitExceededException" . batch-limit-exceeded-exception)
+        ("BucketNameFilterRequiredException"
+         . bucket-name-filter-required-exception)
+        ("DeploymentAlreadyCompletedException"
+         . deployment-already-completed-exception)
+        ("DeploymentConfigAlreadyExistsException"
+         . deployment-config-already-exists-exception)
         ("DeploymentConfigDoesNotExistException"
          . deployment-config-does-not-exist-exception)
-        ("InvalidRoleException" . invalid-role-exception)
-        ("LifecycleHookLimitExceededException"
-         . lifecycle-hook-limit-exceeded-exception)
-        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
-        ("TriggerTargetsLimitExceededException"
-         . trigger-targets-limit-exceeded-exception)
+        ("DeploymentConfigInUseException" . deployment-config-in-use-exception)
+        ("DeploymentConfigLimitExceededException"
+         . deployment-config-limit-exceeded-exception)
+        ("DeploymentConfigNameRequiredException"
+         . deployment-config-name-required-exception)
+        ("DeploymentDoesNotExistException"
+         . deployment-does-not-exist-exception)
+        ("DeploymentGroupAlreadyExistsException"
+         . deployment-group-already-exists-exception)
+        ("DeploymentGroupDoesNotExistException"
+         . deployment-group-does-not-exist-exception)
+        ("DeploymentGroupLimitExceededException"
+         . deployment-group-limit-exceeded-exception)
+        ("DeploymentGroupNameRequiredException"
+         . deployment-group-name-required-exception)
+        ("DeploymentIdRequiredException" . deployment-id-required-exception)
+        ("DeploymentIsNotInReadyStateException"
+         . deployment-is-not-in-ready-state-exception)
+        ("DeploymentLimitExceededException"
+         . deployment-limit-exceeded-exception)
+        ("DeploymentNotStartedException" . deployment-not-started-exception)
+        ("DescriptionTooLongException" . description-too-long-exception)
+        ("GitHubAccountTokenDoesNotExistException"
+         . git-hub-account-token-does-not-exist-exception)
+        ("IamArnRequiredException" . iam-arn-required-exception)
+        ("IamSessionArnAlreadyRegisteredException"
+         . iam-session-arn-already-registered-exception)
+        ("IamUserArnAlreadyRegisteredException"
+         . iam-user-arn-already-registered-exception)
+        ("IamUserArnRequiredException" . iam-user-arn-required-exception)
+        ("InstanceDoesNotExistException" . instance-does-not-exist-exception)
+        ("InstanceIdRequiredException" . instance-id-required-exception)
+        ("InstanceLimitExceededException" . instance-limit-exceeded-exception)
+        ("InstanceNameAlreadyRegisteredException"
+         . instance-name-already-registered-exception)
+        ("InstanceNameRequiredException" . instance-name-required-exception)
+        ("InstanceNotRegisteredException" . instance-not-registered-exception)
         ("InvalidAlarmConfigException" . invalid-alarm-config-exception)
-        ("AlarmsLimitExceededException" . alarms-limit-exceeded-exception)
+        ("InvalidApplicationNameException"
+         . invalid-application-name-exception)
         ("InvalidAutoRollbackConfigException"
          . invalid-auto-rollback-config-exception)
-        ("InvalidLoadBalancerInfoException"
-         . invalid-load-balancer-info-exception)
-        ("InvalidDeploymentStyleException"
-         . invalid-deployment-style-exception)
+        ("InvalidAutoScalingGroupException"
+         . invalid-auto-scaling-group-exception)
         ("InvalidBlueGreenDeploymentConfigurationException"
          . invalid-blue-green-deployment-configuration-exception)
+        ("InvalidBucketNameFilterException"
+         . invalid-bucket-name-filter-exception)
+        ("InvalidDeployedStateFilterException"
+         . invalid-deployed-state-filter-exception)
+        ("InvalidDeploymentConfigNameException"
+         . invalid-deployment-config-name-exception)
+        ("InvalidDeploymentGroupNameException"
+         . invalid-deployment-group-name-exception)
+        ("InvalidDeploymentIdException" . invalid-deployment-id-exception)
+        ("InvalidDeploymentInstanceTypeException"
+         . invalid-deployment-instance-type-exception)
+        ("InvalidDeploymentStatusException"
+         . invalid-deployment-status-exception)
+        ("InvalidDeploymentStyleException"
+         . invalid-deployment-style-exception)
         ("InvalidEC2TagCombinationException"
          . invalid-ec2tag-combination-exception)
+        ("InvalidEC2TagException" . invalid-ec2tag-exception)
+        ("InvalidFileExistsBehaviorException"
+         . invalid-file-exists-behavior-exception)
+        ("InvalidIamSessionArnException" . invalid-iam-session-arn-exception)
+        ("InvalidIamUserArnException" . invalid-iam-user-arn-exception)
+        ("InvalidInstanceNameException" . invalid-instance-name-exception)
+        ("InvalidInstanceStatusException" . invalid-instance-status-exception)
+        ("InvalidInstanceTypeException" . invalid-instance-type-exception)
+        ("InvalidKeyPrefixFilterException"
+         . invalid-key-prefix-filter-exception)
+        ("InvalidLoadBalancerInfoException"
+         . invalid-load-balancer-info-exception)
+        ("InvalidMinimumHealthyHostValueException"
+         . invalid-minimum-healthy-host-value-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
         ("InvalidOnPremisesTagCombinationException"
          . invalid-on-premises-tag-combination-exception)
+        ("InvalidOperationException" . invalid-operation-exception)
+        ("InvalidRegistrationStatusException"
+         . invalid-registration-status-exception)
+        ("InvalidRevisionException" . invalid-revision-exception)
+        ("InvalidRoleException" . invalid-role-exception)
+        ("InvalidSortByException" . invalid-sort-by-exception)
+        ("InvalidSortOrderException" . invalid-sort-order-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("InvalidTagFilterException" . invalid-tag-filter-exception)
+        ("InvalidTargetInstancesException"
+         . invalid-target-instances-exception)
+        ("InvalidTimeRangeException" . invalid-time-range-exception)
+        ("InvalidTriggerConfigException" . invalid-trigger-config-exception)
+        ("LifecycleHookLimitExceededException"
+         . lifecycle-hook-limit-exceeded-exception)
+        ("MultipleIamArnsProvidedException"
+         . multiple-iam-arns-provided-exception)
+        ("ResourceValidationException" . resource-validation-exception)
+        ("RevisionDoesNotExistException" . revision-does-not-exist-exception)
+        ("RevisionRequiredException" . revision-required-exception)
+        ("RoleRequiredException" . role-required-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("TagRequiredException" . tag-required-exception)
         ("TagSetListLimitExceededException"
-         . tag-set-list-limit-exceeded-exception)))))
+         . tag-set-list-limit-exceeded-exception)
+        ("TriggerTargetsLimitExceededException"
+         . trigger-targets-limit-exceeded-exception)
+        ("UnsupportedActionForDeploymentTypeException"
+         . unsupported-action-for-deployment-type-exception)))))
  (common-lisp:export 'update-deployment-group))

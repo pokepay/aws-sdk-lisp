@@ -299,8 +299,7 @@
         'entitlement.marketplace-request aws-sdk/generator/operation::input
         "POST" "/" "GetEntitlements" "2017-01-11"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("InternalServiceErrorException"
-         . internal-service-error-exception)))))
+      '(("InternalServiceErrorException" . internal-service-error-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'get-entitlements))

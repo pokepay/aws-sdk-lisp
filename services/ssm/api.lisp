@@ -17121,10 +17121,112 @@
                                                         "AddTagsToResource"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidResourceType" . invalid-resource-type)
-        ("InvalidResourceId" . invalid-resource-id)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
         ("InternalServerError" . internal-server-error)
-        ("TooManyTagsError" . too-many-tags-error)))))
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
  (common-lisp:defun cancel-command
@@ -17143,10 +17245,112 @@
                                                         "CancelCommand"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
         ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
         ("InvalidInstanceId" . invalid-instance-id)
-        ("DuplicateInstanceId" . duplicate-instance-id)))))
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'cancel-command))
 (common-lisp:progn
  (common-lisp:defun create-activation
@@ -17168,7 +17372,112 @@
                                                         "CreateActivation"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'create-activation))
 (common-lisp:progn
  (common-lisp:defun create-association
@@ -17191,17 +17500,112 @@
                                                         "CreateAssociation"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("AssociationAlreadyExists" . association-already-exists)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
         ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
         ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
         ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
         ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
         ("InvalidInstanceId" . invalid-instance-id)
-        ("UnsupportedPlatformType" . unsupported-platform-type)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
         ("InvalidOutputLocation" . invalid-output-location)
         ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
         ("InvalidTarget" . invalid-target)
-        ("InvalidSchedule" . invalid-schedule)))))
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'create-association))
 (common-lisp:progn
  (common-lisp:defun create-association-batch
@@ -17220,17 +17624,112 @@
                                                         "CreateAssociationBatch"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidDocument" . invalid-document)
-        ("InvalidDocumentVersion" . invalid-document-version)
-        ("InvalidInstanceId" . invalid-instance-id)
-        ("InvalidParameters" . invalid-parameters)
-        ("DuplicateInstanceId" . duplicate-instance-id)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
         ("AssociationLimitExceeded" . association-limit-exceeded)
-        ("UnsupportedPlatformType" . unsupported-platform-type)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
         ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
         ("InvalidTarget" . invalid-target)
-        ("InvalidSchedule" . invalid-schedule)))))
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'create-association-batch))
 (common-lisp:progn
  (common-lisp:defun create-document
@@ -17249,12 +17748,112 @@
                                                         "CreateDocument"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DocumentAlreadyExists" . document-already-exists)
-        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
-        ("InternalServerError" . internal-server-error)
-        ("InvalidDocumentContent" . invalid-document-content)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
         ("DocumentLimitExceeded" . document-limit-exceeded)
-        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)))))
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'create-document))
 (common-lisp:progn
  (common-lisp:defun create-maintenance-window
@@ -17277,9 +17876,112 @@
                                                         "CreateMaintenanceWindow"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'create-maintenance-window))
 (common-lisp:progn
  (common-lisp:defun create-patch-baseline
@@ -17304,9 +18006,112 @@
                                                         "CreatePatchBaseline"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'create-patch-baseline))
 (common-lisp:progn
  (common-lisp:defun create-resource-data-sync
@@ -17326,13 +18131,112 @@
                                                         "CreateResourceDataSync"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("ResourceDataSyncCountExceededException"
-         . resource-data-sync-count-exceeded-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
         ("ResourceDataSyncAlreadyExistsException"
          . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
         ("ResourceDataSyncInvalidConfigurationException"
-         . resource-data-sync-invalid-configuration-exception)))))
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'create-resource-data-sync))
 (common-lisp:progn
  (common-lisp:defun delete-activation
@@ -17351,9 +18255,112 @@
                                                         "DeleteActivation"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidActivationId" . invalid-activation-id)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
         ("InvalidActivation" . invalid-activation)
-        ("InternalServerError" . internal-server-error)))))
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'delete-activation))
 (common-lisp:progn
  (common-lisp:defun delete-association
@@ -17373,11 +18380,112 @@
                                                         "DeleteAssociation"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("AssociationDoesNotExist" . association-does-not-exist)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
         ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
         ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
         ("InvalidInstanceId" . invalid-instance-id)
-        ("TooManyUpdates" . too-many-updates)))))
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'delete-association))
 (common-lisp:progn
  (common-lisp:defun delete-document
@@ -17396,10 +18504,112 @@
                                                         "DeleteDocument"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
         ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
         ("InvalidDocumentOperation" . invalid-document-operation)
-        ("AssociatedInstances" . associated-instances)))))
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'delete-document))
 (common-lisp:progn
  (common-lisp:defun delete-maintenance-window
@@ -17419,7 +18629,112 @@
                                                         "DeleteMaintenanceWindow"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'delete-maintenance-window))
 (common-lisp:progn
  (common-lisp:defun delete-parameter
@@ -17438,8 +18753,112 @@
                                                         "DeleteParameter"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("ParameterNotFound" . parameter-not-found)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'delete-parameter))
 (common-lisp:progn
  (common-lisp:defun delete-parameters
@@ -17458,7 +18877,112 @@
                                                         "DeleteParameters"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'delete-parameters))
 (common-lisp:progn
  (common-lisp:defun delete-patch-baseline
@@ -17477,8 +19001,112 @@
                                                         "DeletePatchBaseline"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceInUseException" . resource-in-use-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'delete-patch-baseline))
 (common-lisp:progn
  (common-lisp:defun delete-resource-data-sync
@@ -17498,9 +19126,112 @@
                                                         "DeleteResourceDataSync"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
         ("ResourceDataSyncNotFoundException"
-         . resource-data-sync-not-found-exception)))))
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'delete-resource-data-sync))
 (common-lisp:progn
  (common-lisp:defun deregister-managed-instance
@@ -17520,8 +19251,112 @@
                                                         "DeregisterManagedInstance"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInstanceId" . invalid-instance-id)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'deregister-managed-instance))
 (common-lisp:progn
  (common-lisp:defun deregister-patch-baseline-for-patch-group
@@ -17541,8 +19376,112 @@
                                                         "DeregisterPatchBaselineForPatchGroup"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidResourceId" . invalid-resource-id)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'deregister-patch-baseline-for-patch-group))
 (common-lisp:progn
  (common-lisp:defun deregister-target-from-maintenance-window
@@ -17563,9 +19502,112 @@
                                                         "DeregisterTargetFromMaintenanceWindow"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
         ("InternalServerError" . internal-server-error)
-        ("TargetInUseException" . target-in-use-exception)))))
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'deregister-target-from-maintenance-window))
 (common-lisp:progn
  (common-lisp:defun deregister-task-from-maintenance-window
@@ -17585,8 +19627,112 @@
                                                         "DeregisterTaskFromMaintenanceWindow"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'deregister-task-from-maintenance-window))
 (common-lisp:progn
  (common-lisp:defun describe-activations
@@ -17605,9 +19751,112 @@
                                                         "DescribeActivations"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidFilter" . invalid-filter)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
         ("InvalidNextToken" . invalid-next-token)
-        ("InternalServerError" . internal-server-error)))))
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-activations))
 (common-lisp:progn
  (common-lisp:defun describe-association
@@ -17629,11 +19878,112 @@
                                                         "DescribeAssociation"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("AssociationDoesNotExist" . association-does-not-exist)
-        ("InvalidAssociationVersion" . invalid-association-version)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
         ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
         ("InvalidDocument" . invalid-document)
-        ("InvalidInstanceId" . invalid-instance-id)))))
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-association))
 (common-lisp:progn
  (common-lisp:defun describe-automation-executions
@@ -17653,8 +20003,112 @@
                                                         "DescribeAutomationExecutions"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidNextToken" . invalid-next-token)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-automation-executions))
 (common-lisp:progn
  (common-lisp:defun describe-available-patches
@@ -17674,7 +20128,112 @@
                                                         "DescribeAvailablePatches"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-available-patches))
 (common-lisp:progn
  (common-lisp:defun describe-document
@@ -17693,9 +20252,112 @@
                                                         "DescribeDocument"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
         ("InvalidDocument" . invalid-document)
-        ("InvalidDocumentVersion" . invalid-document-version)))))
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-document))
 (common-lisp:progn
  (common-lisp:defun describe-document-permission
@@ -17715,9 +20377,112 @@
                                                         "DescribeDocumentPermission"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
         ("InvalidDocument" . invalid-document)
-        ("InvalidPermissionType" . invalid-permission-type)))))
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-document-permission))
 (common-lisp:progn
  (common-lisp:defun describe-effective-instance-associations
@@ -17738,9 +20503,112 @@
                                                         "DescribeEffectiveInstanceAssociations"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
         ("InvalidInstanceId" . invalid-instance-id)
-        ("InvalidNextToken" . invalid-next-token)))))
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-effective-instance-associations))
 (common-lisp:progn
  (common-lisp:defun describe-effective-patches-for-patch-baseline
@@ -17761,10 +20629,112 @@
                                                         "DescribeEffectivePatchesForPatchBaseline"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidResourceId" . invalid-resource-id)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
         ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
         ("UnsupportedOperatingSystem" . unsupported-operating-system)
-        ("InternalServerError" . internal-server-error)))))
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-effective-patches-for-patch-baseline))
 (common-lisp:progn
  (common-lisp:defun describe-instance-associations-status
@@ -17785,9 +20755,112 @@
                                                         "DescribeInstanceAssociationsStatus"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
         ("InvalidInstanceId" . invalid-instance-id)
-        ("InvalidNextToken" . invalid-next-token)))))
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-instance-associations-status))
 (common-lisp:progn
  (common-lisp:defun describe-instance-information
@@ -17810,12 +20883,112 @@
                                                         "DescribeInstanceInformation"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
         ("InvalidInstanceId" . invalid-instance-id)
-        ("InvalidNextToken" . invalid-next-token)
         ("InvalidInstanceInformationFilterValue"
          . invalid-instance-information-filter-value)
-        ("InvalidFilterKey" . invalid-filter-key)))))
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-instance-information))
 (common-lisp:progn
  (common-lisp:defun describe-instance-patch-states
@@ -17836,8 +21009,112 @@
                                                         "DescribeInstancePatchStates"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidNextToken" . invalid-next-token)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-instance-patch-states))
 (common-lisp:progn
  (common-lisp:defun describe-instance-patch-states-for-patch-group
@@ -17859,9 +21136,112 @@
                                                         "DescribeInstancePatchStatesForPatchGroup"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
         ("InvalidFilter" . invalid-filter)
-        ("InvalidNextToken" . invalid-next-token)))))
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-instance-patch-states-for-patch-group))
 (common-lisp:progn
  (common-lisp:defun describe-instance-patches
@@ -17883,10 +21263,112 @@
                                                         "DescribeInstancePatches"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidInstanceId" . invalid-instance-id)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
         ("InvalidFilter" . invalid-filter)
-        ("InvalidNextToken" . invalid-next-token)))))
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-instance-patches))
 (common-lisp:progn
  (common-lisp:defun describe-maintenance-window-execution-task-invocations
@@ -17909,8 +21391,112 @@
                                                         "DescribeMaintenanceWindowExecutionTaskInvocations"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-maintenance-window-execution-task-invocations))
 (common-lisp:progn
  (common-lisp:defun describe-maintenance-window-execution-tasks
@@ -17932,8 +21518,112 @@
                                                         "DescribeMaintenanceWindowExecutionTasks"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-maintenance-window-execution-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-maintenance-window-executions
@@ -17954,7 +21644,112 @@
                                                         "DescribeMaintenanceWindowExecutions"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-maintenance-window-executions))
 (common-lisp:progn
  (common-lisp:defun describe-maintenance-window-targets
@@ -17975,8 +21770,112 @@
                                                         "DescribeMaintenanceWindowTargets"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-maintenance-window-targets))
 (common-lisp:progn
  (common-lisp:defun describe-maintenance-window-tasks
@@ -17997,8 +21896,112 @@
                                                         "DescribeMaintenanceWindowTasks"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-maintenance-window-tasks))
 (common-lisp:progn
  (common-lisp:defun describe-maintenance-windows
@@ -18018,7 +22021,112 @@
                                                         "DescribeMaintenanceWindows"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-maintenance-windows))
 (common-lisp:progn
  (common-lisp:defun describe-parameters
@@ -18039,11 +22147,112 @@
                                                         "DescribeParameters"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
         ("InvalidFilterKey" . invalid-filter-key)
         ("InvalidFilterOption" . invalid-filter-option)
         ("InvalidFilterValue" . invalid-filter-value)
-        ("InvalidNextToken" . invalid-next-token)))))
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-parameters))
 (common-lisp:progn
  (common-lisp:defun describe-patch-baselines
@@ -18062,7 +22271,112 @@
                                                         "DescribePatchBaselines"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-patch-baselines))
 (common-lisp:progn
  (common-lisp:defun describe-patch-group-state
@@ -18082,8 +22396,112 @@
                                                         "DescribePatchGroupState"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidNextToken" . invalid-next-token)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-patch-group-state))
 (common-lisp:progn
  (common-lisp:defun describe-patch-groups
@@ -18102,7 +22520,112 @@
                                                         "DescribePatchGroups"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'describe-patch-groups))
 (common-lisp:progn
  (common-lisp:defun get-automation-execution
@@ -18121,9 +22644,112 @@
                                                         "GetAutomationExecution"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("AutomationExecutionNotFoundException"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
          . automation-execution-not-found-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-automation-execution))
 (common-lisp:progn
  (common-lisp:defun get-command-invocation
@@ -18143,11 +22769,112 @@
                                                         "GetCommandInvocation"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
         ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
         ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
         ("InvalidPluginName" . invalid-plugin-name)
-        ("InvocationDoesNotExist" . invocation-does-not-exist)))))
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-command-invocation))
 (common-lisp:progn
  (common-lisp:defun get-default-patch-baseline
@@ -18167,7 +22894,112 @@
                                                         "GetDefaultPatchBaseline"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-default-patch-baseline))
 (common-lisp:progn
  (common-lisp:defun get-deployable-patch-snapshot-for-instance
@@ -18187,8 +23019,112 @@
                                                         "GetDeployablePatchSnapshotForInstance"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("UnsupportedOperatingSystem" . unsupported-operating-system)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-deployable-patch-snapshot-for-instance))
 (common-lisp:progn
  (common-lisp:defun get-document
@@ -18207,9 +23143,112 @@
                                                         "GetDocument"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
         ("InvalidDocument" . invalid-document)
-        ("InvalidDocumentVersion" . invalid-document-version)))))
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-document))
 (common-lisp:progn
  (common-lisp:defun get-inventory
@@ -18230,12 +23269,112 @@
                                                         "GetInventory"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
         ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
         ("InvalidNextToken" . invalid-next-token)
-        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
         ("InvalidResultAttributeException"
-         . invalid-result-attribute-exception)))))
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-inventory))
 (common-lisp:progn
  (common-lisp:defun get-inventory-schema
@@ -18256,9 +23395,112 @@
                                                         "GetInventorySchema"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
         ("InvalidTypeNameException" . invalid-type-name-exception)
-        ("InvalidNextToken" . invalid-next-token)))))
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-inventory-schema))
 (common-lisp:progn
  (common-lisp:defun get-maintenance-window
@@ -18277,8 +23519,112 @@
                                                         "GetMaintenanceWindow"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-maintenance-window))
 (common-lisp:progn
  (common-lisp:defun get-maintenance-window-execution
@@ -18298,8 +23644,112 @@
                                                         "GetMaintenanceWindowExecution"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-maintenance-window-execution))
 (common-lisp:progn
  (common-lisp:defun get-maintenance-window-execution-task
@@ -18319,8 +23769,112 @@
                                                         "GetMaintenanceWindowExecutionTask"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-maintenance-window-execution-task))
 (common-lisp:progn
  (common-lisp:defun get-maintenance-window-execution-task-invocation
@@ -18342,8 +23896,112 @@
                                                         "GetMaintenanceWindowExecutionTaskInvocation"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-maintenance-window-execution-task-invocation))
 (common-lisp:progn
  (common-lisp:defun get-maintenance-window-task
@@ -18363,8 +24021,112 @@
                                                         "GetMaintenanceWindowTask"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-maintenance-window-task))
 (common-lisp:progn
  (common-lisp:defun get-parameter
@@ -18383,9 +24145,112 @@
                                                         "GetParameter"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
         ("InvalidKeyId" . invalid-key-id)
-        ("ParameterNotFound" . parameter-not-found)))))
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-parameter))
 (common-lisp:progn
  (common-lisp:defun get-parameter-history
@@ -18406,10 +24271,112 @@
                                                         "GetParameterHistory"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("ParameterNotFound" . parameter-not-found)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
         ("InvalidNextToken" . invalid-next-token)
-        ("InvalidKeyId" . invalid-key-id)))))
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-parameter-history))
 (common-lisp:progn
  (common-lisp:defun get-parameters
@@ -18428,8 +24395,112 @@
                                                         "GetParameters"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidKeyId" . invalid-key-id)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-parameters))
 (common-lisp:progn
  (common-lisp:defun get-parameters-by-path
@@ -18451,12 +24522,112 @@
                                                         "GetParametersByPath"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
         ("InvalidFilterKey" . invalid-filter-key)
         ("InvalidFilterOption" . invalid-filter-option)
         ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
         ("InvalidKeyId" . invalid-key-id)
-        ("InvalidNextToken" . invalid-next-token)))))
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-parameters-by-path))
 (common-lisp:progn
  (common-lisp:defun get-patch-baseline
@@ -18475,9 +24646,112 @@
                                                         "GetPatchBaseline"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
         ("InvalidResourceId" . invalid-resource-id)
-        ("InternalServerError" . internal-server-error)))))
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-patch-baseline))
 (common-lisp:progn
  (common-lisp:defun get-patch-baseline-for-patch-group
@@ -18497,7 +24771,112 @@
                                                         "GetPatchBaselineForPatchGroup"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'get-patch-baseline-for-patch-group))
 (common-lisp:progn
  (common-lisp:defun list-association-versions
@@ -18518,9 +24897,112 @@
                                                         "ListAssociationVersions"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
         ("InvalidNextToken" . invalid-next-token)
-        ("AssociationDoesNotExist" . association-does-not-exist)))))
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'list-association-versions))
 (common-lisp:progn
  (common-lisp:defun list-associations
@@ -18541,8 +25023,112 @@
                                                         "ListAssociations"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidNextToken" . invalid-next-token)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'list-associations))
 (common-lisp:progn
  (common-lisp:defun list-command-invocations
@@ -18564,11 +25150,112 @@
                                                         "ListCommandInvocations"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
         ("InvalidCommandId" . invalid-command-id)
-        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
         ("InvalidFilterKey" . invalid-filter-key)
-        ("InvalidNextToken" . invalid-next-token)))))
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'list-command-invocations))
 (common-lisp:progn
  (common-lisp:defun list-commands
@@ -18590,11 +25277,112 @@
                                                         "ListCommands"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
         ("InvalidCommandId" . invalid-command-id)
-        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
         ("InvalidFilterKey" . invalid-filter-key)
-        ("InvalidNextToken" . invalid-next-token)))))
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'list-commands))
 (common-lisp:progn
  (common-lisp:defun list-compliance-items
@@ -18616,11 +25404,112 @@
                                                         "ListComplianceItems"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidResourceType" . invalid-resource-type)
-        ("InvalidResourceId" . invalid-resource-id)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
         ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
         ("InvalidFilter" . invalid-filter)
-        ("InvalidNextToken" . invalid-next-token)))))
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'list-compliance-items))
 (common-lisp:progn
  (common-lisp:defun list-compliance-summaries
@@ -18640,9 +25529,112 @@
                                                         "ListComplianceSummaries"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidFilter" . invalid-filter)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
         ("InvalidNextToken" . invalid-next-token)
-        ("InternalServerError" . internal-server-error)))))
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'list-compliance-summaries))
 (common-lisp:progn
  (common-lisp:defun list-document-versions
@@ -18661,9 +25653,112 @@
                                                         "ListDocumentVersions"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
         ("InvalidNextToken" . invalid-next-token)
-        ("InvalidDocument" . invalid-document)))))
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'list-document-versions))
 (common-lisp:progn
  (common-lisp:defun list-documents
@@ -18684,9 +25779,112 @@
                                                         "ListDocuments"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
         ("InvalidNextToken" . invalid-next-token)
-        ("InvalidFilterKey" . invalid-filter-key)))))
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'list-documents))
 (common-lisp:progn
  (common-lisp:defun list-inventory-entries
@@ -18708,11 +25906,112 @@
                                                         "ListInventoryEntries"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidInstanceId" . invalid-instance-id)
-        ("InvalidTypeNameException" . invalid-type-name-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
         ("InvalidFilter" . invalid-filter)
-        ("InvalidNextToken" . invalid-next-token)))))
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'list-inventory-entries))
 (common-lisp:progn
  (common-lisp:defun list-resource-compliance-summaries
@@ -18732,9 +26031,112 @@
                                                         "ListResourceComplianceSummaries"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidFilter" . invalid-filter)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
         ("InvalidNextToken" . invalid-next-token)
-        ("InternalServerError" . internal-server-error)))))
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'list-resource-compliance-summaries))
 (common-lisp:progn
  (common-lisp:defun list-resource-data-sync
@@ -18753,8 +26155,112 @@
                                                         "ListResourceDataSync"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidNextToken" . invalid-next-token)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'list-resource-data-sync))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -18773,9 +26279,112 @@
                                                         "ListTagsForResource"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidResourceType" . invalid-resource-type)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
         ("InvalidResourceId" . invalid-resource-id)
-        ("InternalServerError" . internal-server-error)))))
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun modify-document-permission
@@ -18798,11 +26407,112 @@
                                                         "ModifyDocumentPermission"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidDocument" . invalid-document)
-        ("InvalidPermissionType" . invalid-permission-type)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
         ("DocumentPermissionLimit" . document-permission-limit)
-        ("DocumentLimitExceeded" . document-limit-exceeded)))))
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'modify-document-permission))
 (common-lisp:progn
  (common-lisp:defun put-compliance-items
@@ -18824,15 +26534,112 @@
                                                         "PutComplianceItems"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidItemContentException" . invalid-item-content-exception)
-        ("TotalSizeLimitExceededException"
-         . total-size-limit-exceeded-exception)
-        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
         ("ComplianceTypeCountLimitExceededException"
          . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
         ("InvalidResourceType" . invalid-resource-type)
-        ("InvalidResourceId" . invalid-resource-id)))))
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'put-compliance-items))
 (common-lisp:progn
  (common-lisp:defun put-inventory
@@ -18851,24 +26658,112 @@
                                                         "PutInventory"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidInstanceId" . invalid-instance-id)
-        ("InvalidTypeNameException" . invalid-type-name-exception)
-        ("InvalidItemContentException" . invalid-item-content-exception)
-        ("TotalSizeLimitExceededException"
-         . total-size-limit-exceeded-exception)
-        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
-        ("ItemContentMismatchException" . item-content-mismatch-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
         ("CustomSchemaCountLimitExceededException"
          . custom-schema-count-limit-exceeded-exception)
-        ("UnsupportedInventorySchemaVersionException"
-         . unsupported-inventory-schema-version-exception)
-        ("UnsupportedInventoryItemContextException"
-         . unsupported-inventory-item-context-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
         ("InvalidInventoryItemContextException"
          . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
         ("SubTypeCountLimitExceededException"
-         . sub-type-count-limit-exceeded-exception)))))
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'put-inventory))
 (common-lisp:progn
  (common-lisp:defun put-parameter
@@ -18890,18 +26785,112 @@
                                                         "PutParameter"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidKeyId" . invalid-key-id)
-        ("ParameterLimitExceeded" . parameter-limit-exceeded)
-        ("TooManyUpdates" . too-many-updates)
-        ("ParameterAlreadyExists" . parameter-already-exists)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
         ("HierarchyLevelLimitExceededException"
          . hierarchy-level-limit-exceeded-exception)
         ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
         ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
         ("ParameterPatternMismatchException"
          . parameter-pattern-mismatch-exception)
-        ("UnsupportedParameterType" . unsupported-parameter-type)))))
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'put-parameter))
 (common-lisp:progn
  (common-lisp:defun register-default-patch-baseline
@@ -18921,9 +26910,112 @@
                                                         "RegisterDefaultPatchBaseline"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidResourceId" . invalid-resource-id)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
         ("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'register-default-patch-baseline))
 (common-lisp:progn
  (common-lisp:defun register-patch-baseline-for-patch-group
@@ -18944,10 +27036,111 @@
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
       '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
         ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
         ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'register-patch-baseline-for-patch-group))
 (common-lisp:progn
  (common-lisp:defun register-target-with-maintenance-window
@@ -18970,10 +27163,112 @@
                                                         "RegisterTargetWithMaintenanceWindow"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
         ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
         ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'register-target-with-maintenance-window))
 (common-lisp:progn
  (common-lisp:defun register-task-with-maintenance-window
@@ -18999,11 +27294,112 @@
                                                         "RegisterTaskWithMaintenanceWindow"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
         ("DoesNotExistException" . does-not-exist-exception)
-        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
         ("FeatureNotAvailableException" . feature-not-available-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'register-task-with-maintenance-window))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-resource
@@ -19024,9 +27420,112 @@
                                                         "RemoveTagsFromResource"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidResourceType" . invalid-resource-type)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
         ("InvalidResourceId" . invalid-resource-id)
-        ("InternalServerError" . internal-server-error)))))
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'remove-tags-from-resource))
 (common-lisp:progn
  (common-lisp:defun send-automation-signal
@@ -19047,11 +27546,112 @@
                                                         "SendAutomationSignal"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("AutomationExecutionNotFoundException"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
          . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
         ("InvalidAutomationSignalException"
          . invalid-automation-signal-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'send-automation-signal))
 (common-lisp:progn
  (common-lisp:defun send-command
@@ -19078,16 +27678,112 @@
                                                         "SendCommand"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DuplicateInstanceId" . duplicate-instance-id)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
         ("InternalServerError" . internal-server-error)
-        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
         ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
         ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
         ("InvalidParameters" . invalid-parameters)
-        ("UnsupportedPlatformType" . unsupported-platform-type)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
         ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
-        ("InvalidRole" . invalid-role)
-        ("InvalidNotificationConfig" . invalid-notification-config)))))
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'send-command))
 (common-lisp:progn
  (common-lisp:defun start-automation-execution
@@ -19109,15 +27805,112 @@
                                                         "StartAutomationExecution"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("AutomationDefinitionNotFoundException"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
          . automation-definition-not-found-exception)
-        ("InvalidAutomationExecutionParametersException"
-         . invalid-automation-execution-parameters-exception)
-        ("AutomationExecutionLimitExceededException"
-         . automation-execution-limit-exceeded-exception)
         ("AutomationDefinitionVersionNotFoundException"
          . automation-definition-version-not-found-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'start-automation-execution))
 (common-lisp:progn
  (common-lisp:defun stop-automation-execution
@@ -19137,9 +27930,112 @@
                                                         "StopAutomationExecution"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("AutomationExecutionNotFoundException"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
          . automation-execution-not-found-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'stop-automation-execution))
 (common-lisp:progn
  (common-lisp:defun update-association
@@ -19163,19 +28059,112 @@
                                                         "UpdateAssociation"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidSchedule" . invalid-schedule)
-        ("InvalidParameters" . invalid-parameters)
-        ("InvalidOutputLocation" . invalid-output-location)
-        ("InvalidDocumentVersion" . invalid-document-version)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
         ("AssociationDoesNotExist" . association-does-not-exist)
-        ("InvalidUpdate" . invalid-update)
-        ("TooManyUpdates" . too-many-updates)
-        ("InvalidDocument" . invalid-document)
-        ("InvalidTarget" . invalid-target)
-        ("InvalidAssociationVersion" . invalid-association-version)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
         ("AssociationVersionLimitExceeded"
-         . association-version-limit-exceeded)))))
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'update-association))
 (common-lisp:progn
  (common-lisp:defun update-association-status
@@ -19196,12 +28185,112 @@
                                                         "UpdateAssociationStatus"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
-        ("InvalidInstanceId" . invalid-instance-id)
-        ("InvalidDocument" . invalid-document)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
         ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
         ("StatusUnchanged" . status-unchanged)
-        ("TooManyUpdates" . too-many-updates)))))
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'update-association-status))
 (common-lisp:progn
  (common-lisp:defun update-document
@@ -19220,14 +28309,112 @@
                                                         "UpdateDocument"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
         ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
-        ("InternalServerError" . internal-server-error)
+        ("DoesNotExistException" . does-not-exist-exception)
         ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
         ("InvalidDocumentContent" . invalid-document-content)
-        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidDocumentOperation" . invalid-document-operation)
         ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
-        ("InvalidDocument" . invalid-document)))))
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'update-document))
 (common-lisp:progn
  (common-lisp:defun update-document-default-version
@@ -19247,10 +28434,112 @@
                                                         "UpdateDocumentDefaultVersion"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
         ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
         ("InvalidDocumentVersion" . invalid-document-version)
-        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)))))
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'update-document-default-version))
 (common-lisp:progn
  (common-lisp:defun update-maintenance-window
@@ -19274,8 +28563,112 @@
                                                         "UpdateMaintenanceWindow"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'update-maintenance-window))
 (common-lisp:progn
  (common-lisp:defun update-maintenance-window-target
@@ -19298,8 +28691,112 @@
                                                         "UpdateMaintenanceWindowTarget"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'update-maintenance-window-target))
 (common-lisp:progn
  (common-lisp:defun update-maintenance-window-task
@@ -19325,8 +28822,112 @@
                                                         "UpdateMaintenanceWindowTask"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'update-maintenance-window-task))
 (common-lisp:progn
  (common-lisp:defun update-managed-instance-role
@@ -19346,8 +28947,112 @@
                                                         "UpdateManagedInstanceRole"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInstanceId" . invalid-instance-id)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'update-managed-instance-role))
 (common-lisp:progn
  (common-lisp:defun update-patch-baseline
@@ -19372,6 +29077,110 @@
                                                         "UpdatePatchBaseline"
                                                         "2014-11-06"))
       common-lisp:nil common-lisp:nil
-      '(("DoesNotExistException" . does-not-exist-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("AssociatedInstances" . associated-instances)
+        ("AssociationAlreadyExists" . association-already-exists)
+        ("AssociationDoesNotExist" . association-does-not-exist)
+        ("AssociationLimitExceeded" . association-limit-exceeded)
+        ("AssociationVersionLimitExceeded"
+         . association-version-limit-exceeded)
+        ("AutomationDefinitionNotFoundException"
+         . automation-definition-not-found-exception)
+        ("AutomationDefinitionVersionNotFoundException"
+         . automation-definition-version-not-found-exception)
+        ("AutomationExecutionLimitExceededException"
+         . automation-execution-limit-exceeded-exception)
+        ("AutomationExecutionNotFoundException"
+         . automation-execution-not-found-exception)
+        ("ComplianceTypeCountLimitExceededException"
+         . compliance-type-count-limit-exceeded-exception)
+        ("CustomSchemaCountLimitExceededException"
+         . custom-schema-count-limit-exceeded-exception)
+        ("DocumentAlreadyExists" . document-already-exists)
+        ("DocumentLimitExceeded" . document-limit-exceeded)
+        ("DocumentPermissionLimit" . document-permission-limit)
+        ("DocumentVersionLimitExceeded" . document-version-limit-exceeded)
+        ("DoesNotExistException" . does-not-exist-exception)
+        ("DuplicateDocumentContent" . duplicate-document-content)
+        ("DuplicateInstanceId" . duplicate-instance-id)
+        ("FeatureNotAvailableException" . feature-not-available-exception)
+        ("HierarchyLevelLimitExceededException"
+         . hierarchy-level-limit-exceeded-exception)
+        ("HierarchyTypeMismatchException" . hierarchy-type-mismatch-exception)
+        ("IdempotentParameterMismatch" . idempotent-parameter-mismatch)
+        ("InternalServerError" . internal-server-error)
+        ("InvalidActivation" . invalid-activation)
+        ("InvalidActivationId" . invalid-activation-id)
+        ("InvalidAllowedPatternException" . invalid-allowed-pattern-exception)
+        ("InvalidAssociationVersion" . invalid-association-version)
+        ("InvalidAutomationExecutionParametersException"
+         . invalid-automation-execution-parameters-exception)
+        ("InvalidAutomationSignalException"
+         . invalid-automation-signal-exception)
+        ("InvalidCommandId" . invalid-command-id)
+        ("InvalidDocument" . invalid-document)
+        ("InvalidDocumentContent" . invalid-document-content)
+        ("InvalidDocumentOperation" . invalid-document-operation)
+        ("InvalidDocumentSchemaVersion" . invalid-document-schema-version)
+        ("InvalidDocumentVersion" . invalid-document-version)
+        ("InvalidFilter" . invalid-filter)
+        ("InvalidFilterKey" . invalid-filter-key)
+        ("InvalidFilterOption" . invalid-filter-option)
+        ("InvalidFilterValue" . invalid-filter-value)
+        ("InvalidInstanceId" . invalid-instance-id)
+        ("InvalidInstanceInformationFilterValue"
+         . invalid-instance-information-filter-value)
+        ("InvalidInventoryItemContextException"
+         . invalid-inventory-item-context-exception)
+        ("InvalidItemContentException" . invalid-item-content-exception)
+        ("InvalidKeyId" . invalid-key-id)
+        ("InvalidNextToken" . invalid-next-token)
+        ("InvalidNotificationConfig" . invalid-notification-config)
+        ("InvalidOutputFolder" . invalid-output-folder)
+        ("InvalidOutputLocation" . invalid-output-location)
+        ("InvalidParameters" . invalid-parameters)
+        ("InvalidPermissionType" . invalid-permission-type)
+        ("InvalidPluginName" . invalid-plugin-name)
+        ("InvalidResourceId" . invalid-resource-id)
+        ("InvalidResourceType" . invalid-resource-type)
+        ("InvalidResultAttributeException"
+         . invalid-result-attribute-exception)
+        ("InvalidRole" . invalid-role) ("InvalidSchedule" . invalid-schedule)
+        ("InvalidTarget" . invalid-target)
+        ("InvalidTypeNameException" . invalid-type-name-exception)
+        ("InvalidUpdate" . invalid-update)
+        ("InvocationDoesNotExist" . invocation-does-not-exist)
+        ("ItemContentMismatchException" . item-content-mismatch-exception)
+        ("ItemSizeLimitExceededException" . item-size-limit-exceeded-exception)
+        ("MaxDocumentSizeExceeded" . max-document-size-exceeded)
+        ("ParameterAlreadyExists" . parameter-already-exists)
+        ("ParameterLimitExceeded" . parameter-limit-exceeded)
+        ("ParameterNotFound" . parameter-not-found)
+        ("ParameterPatternMismatchException"
+         . parameter-pattern-mismatch-exception)
+        ("ResourceDataSyncAlreadyExistsException"
+         . resource-data-sync-already-exists-exception)
+        ("ResourceDataSyncCountExceededException"
+         . resource-data-sync-count-exceeded-exception)
+        ("ResourceDataSyncInvalidConfigurationException"
+         . resource-data-sync-invalid-configuration-exception)
+        ("ResourceDataSyncNotFoundException"
+         . resource-data-sync-not-found-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceLimitExceededException" . resource-limit-exceeded-exception)
+        ("StatusUnchanged" . status-unchanged)
+        ("SubTypeCountLimitExceededException"
+         . sub-type-count-limit-exceeded-exception)
+        ("TargetInUseException" . target-in-use-exception)
+        ("TooManyTagsError" . too-many-tags-error)
+        ("TooManyUpdates" . too-many-updates)
+        ("TotalSizeLimitExceededException"
+         . total-size-limit-exceeded-exception)
+        ("UnsupportedInventoryItemContextException"
+         . unsupported-inventory-item-context-exception)
+        ("UnsupportedInventorySchemaVersionException"
+         . unsupported-inventory-schema-version-exception)
+        ("UnsupportedOperatingSystem" . unsupported-operating-system)
+        ("UnsupportedParameterType" . unsupported-parameter-type)
+        ("UnsupportedPlatformType" . unsupported-platform-type)))))
  (common-lisp:export 'update-patch-baseline))

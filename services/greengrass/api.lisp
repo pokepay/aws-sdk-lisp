@@ -6401,7 +6401,8 @@
                                                         "CreateCoreDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-core-definition))
 (common-lisp:progn
  (common-lisp:defun create-core-definition-version
@@ -6433,7 +6434,8 @@
                                                         "CreateCoreDefinitionVersion"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-core-definition-version))
 (common-lisp:progn
  (common-lisp:defun create-deployment
@@ -6465,7 +6467,8 @@
                                                         "CreateDeployment"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-deployment))
 (common-lisp:progn
  (common-lisp:defun create-device-definition
@@ -6486,7 +6489,8 @@
                                                         "CreateDeviceDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-device-definition))
 (common-lisp:progn
  (common-lisp:defun create-device-definition-version
@@ -6518,7 +6522,8 @@
                                                         "CreateDeviceDefinitionVersion"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-device-definition-version))
 (common-lisp:progn
  (common-lisp:defun create-function-definition
@@ -6540,7 +6545,8 @@
                                                         "CreateFunctionDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-function-definition))
 (common-lisp:progn
  (common-lisp:defun create-function-definition-version
@@ -6572,7 +6578,8 @@
                                                         "CreateFunctionDefinitionVersion"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-function-definition-version))
 (common-lisp:progn
  (common-lisp:defun create-group
@@ -6593,7 +6600,8 @@
                                                         "CreateGroup"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-group))
 (common-lisp:progn
  (common-lisp:defun create-group-certificate-authority
@@ -6660,7 +6668,8 @@
                                                         "CreateGroupVersion"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-group-version))
 (common-lisp:progn
  (common-lisp:defun create-logger-definition
@@ -6681,7 +6690,8 @@
                                                         "CreateLoggerDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-logger-definition))
 (common-lisp:progn
  (common-lisp:defun create-logger-definition-version
@@ -6713,7 +6723,8 @@
                                                         "CreateLoggerDefinitionVersion"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-logger-definition-version))
 (common-lisp:progn
  (common-lisp:defun create-subscription-definition
@@ -6735,7 +6746,8 @@
                                                         "CreateSubscriptionDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-subscription-definition))
 (common-lisp:progn
  (common-lisp:defun create-subscription-definition-version
@@ -6768,7 +6780,8 @@
                                                         "CreateSubscriptionDefinitionVersion"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'create-subscription-definition-version))
 (common-lisp:progn
  (common-lisp:defun delete-core-definition
@@ -6797,7 +6810,8 @@
                                                         "DeleteCoreDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'delete-core-definition))
 (common-lisp:progn
  (common-lisp:defun delete-device-definition
@@ -6826,7 +6840,8 @@
                                                         "DeleteDeviceDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'delete-device-definition))
 (common-lisp:progn
  (common-lisp:defun delete-function-definition
@@ -6856,7 +6871,8 @@
                                                         "DeleteFunctionDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'delete-function-definition))
 (common-lisp:progn
  (common-lisp:defun delete-group
@@ -6885,7 +6901,8 @@
                                                         "DeleteGroup"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'delete-group))
 (common-lisp:progn
  (common-lisp:defun delete-logger-definition
@@ -6914,7 +6931,8 @@
                                                         "DeleteLoggerDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'delete-logger-definition))
 (common-lisp:progn
  (common-lisp:defun delete-subscription-definition
@@ -6944,7 +6962,8 @@
                                                         "DeleteSubscriptionDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'delete-subscription-definition))
 (common-lisp:progn
  (common-lisp:defun disassociate-role-from-group
@@ -6987,7 +7006,8 @@
                                    ,@"DisassociateServiceRoleFromAccount")
                                   ("Version" ,@"2017-06-07"))))
     common-lisp:nil common-lisp:nil
-    '(("InternalServerErrorException" . internal-server-error-exception))))
+    '(("BadRequestException" . bad-request-exception)
+      ("InternalServerErrorException" . internal-server-error-exception))))
  (common-lisp:export 'disassociate-service-role-from-account))
 (common-lisp:progn
  (common-lisp:defun get-associated-role
@@ -7076,7 +7096,8 @@
                                                         "GetCoreDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-core-definition))
 (common-lisp:progn
  (common-lisp:defun get-core-definition-version
@@ -7112,7 +7133,8 @@
                                                         "GetCoreDefinitionVersion"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-core-definition-version))
 (common-lisp:progn
  (common-lisp:defun get-deployment-status
@@ -7145,7 +7167,8 @@
                                                         "GetDeploymentStatus"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-deployment-status))
 (common-lisp:progn
  (common-lisp:defun get-device-definition
@@ -7174,7 +7197,8 @@
                                                         "GetDeviceDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-device-definition))
 (common-lisp:progn
  (common-lisp:defun get-device-definition-version
@@ -7210,7 +7234,8 @@
                                                         "GetDeviceDefinitionVersion"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-device-definition-version))
 (common-lisp:progn
  (common-lisp:defun get-function-definition
@@ -7239,7 +7264,8 @@
                                                         "GetFunctionDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-function-definition))
 (common-lisp:progn
  (common-lisp:defun get-function-definition-version
@@ -7276,7 +7302,8 @@
                                                         "GetFunctionDefinitionVersion"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-function-definition-version))
 (common-lisp:progn
  (common-lisp:defun get-group
@@ -7305,7 +7332,8 @@
                                                         "GetGroup"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-group))
 (common-lisp:progn
  (common-lisp:defun get-group-certificate-authority
@@ -7405,7 +7433,8 @@
                                                         "GetGroupVersion"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-group-version))
 (common-lisp:progn
  (common-lisp:defun get-logger-definition
@@ -7434,7 +7463,8 @@
                                                         "GetLoggerDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-logger-definition))
 (common-lisp:progn
  (common-lisp:defun get-logger-definition-version
@@ -7470,7 +7500,8 @@
                                                         "GetLoggerDefinitionVersion"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-logger-definition-version))
 (common-lisp:progn
  (common-lisp:defun get-service-role-for-account ()
@@ -7481,7 +7512,8 @@
                                 `(("Action" ,@"GetServiceRoleForAccount")
                                   ("Version" ,@"2017-06-07"))))
     common-lisp:nil common-lisp:nil
-    '(("InternalServerErrorException" . internal-server-error-exception))))
+    '(("BadRequestException" . bad-request-exception)
+      ("InternalServerErrorException" . internal-server-error-exception))))
  (common-lisp:export 'get-service-role-for-account))
 (common-lisp:progn
  (common-lisp:defun get-subscription-definition
@@ -7511,7 +7543,8 @@
                                                         "GetSubscriptionDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-subscription-definition))
 (common-lisp:progn
  (common-lisp:defun get-subscription-definition-version
@@ -7548,7 +7581,8 @@
                                                         "GetSubscriptionDefinitionVersion"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'get-subscription-definition-version))
 (common-lisp:progn
  (common-lisp:defun list-core-definition-versions
@@ -7580,7 +7614,8 @@
                                                         "ListCoreDefinitionVersions"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-core-definition-versions))
 (common-lisp:progn
  (common-lisp:defun list-core-definitions
@@ -7599,7 +7634,9 @@
                                                         "/greengrass/definition/cores"
                                                         "ListCoreDefinitions"
                                                         "2017-06-07"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-core-definitions))
 (common-lisp:progn
  (common-lisp:defun list-deployments
@@ -7629,7 +7666,8 @@
                                                         "ListDeployments"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-deployments))
 (common-lisp:progn
  (common-lisp:defun list-device-definition-versions
@@ -7661,7 +7699,8 @@
                                                         "ListDeviceDefinitionVersions"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-device-definition-versions))
 (common-lisp:progn
  (common-lisp:defun list-device-definitions
@@ -7680,7 +7719,9 @@
                                                         "/greengrass/definition/devices"
                                                         "ListDeviceDefinitions"
                                                         "2017-06-07"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-device-definitions))
 (common-lisp:progn
  (common-lisp:defun list-function-definition-versions
@@ -7712,7 +7753,8 @@
                                                         "ListFunctionDefinitionVersions"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-function-definition-versions))
 (common-lisp:progn
  (common-lisp:defun list-function-definitions
@@ -7732,7 +7774,9 @@
                                                         "/greengrass/definition/functions"
                                                         "ListFunctionDefinitions"
                                                         "2017-06-07"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-function-definitions))
 (common-lisp:progn
  (common-lisp:defun list-group-certificate-authorities
@@ -7793,7 +7837,8 @@
                                                         "ListGroupVersions"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-group-versions))
 (common-lisp:progn
  (common-lisp:defun list-groups
@@ -7812,7 +7857,9 @@
                                                         "/greengrass/groups"
                                                         "ListGroups"
                                                         "2017-06-07"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-groups))
 (common-lisp:progn
  (common-lisp:defun list-logger-definition-versions
@@ -7844,7 +7891,8 @@
                                                         "ListLoggerDefinitionVersions"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-logger-definition-versions))
 (common-lisp:progn
  (common-lisp:defun list-logger-definitions
@@ -7863,7 +7911,9 @@
                                                         "/greengrass/definition/loggers"
                                                         "ListLoggerDefinitions"
                                                         "2017-06-07"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-logger-definitions))
 (common-lisp:progn
  (common-lisp:defun list-subscription-definition-versions
@@ -7895,7 +7945,8 @@
                                                         "ListSubscriptionDefinitionVersions"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-subscription-definition-versions))
 (common-lisp:progn
  (common-lisp:defun list-subscription-definitions
@@ -7915,7 +7966,9 @@
                                                         "/greengrass/definition/subscriptions"
                                                         "ListSubscriptionDefinitions"
                                                         "2017-06-07"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'list-subscription-definitions))
 (common-lisp:progn
  (common-lisp:defun update-connectivity-info
@@ -7974,7 +8027,8 @@
                                                         "UpdateCoreDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'update-core-definition))
 (common-lisp:progn
  (common-lisp:defun update-device-definition
@@ -8003,7 +8057,8 @@
                                                         "UpdateDeviceDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'update-device-definition))
 (common-lisp:progn
  (common-lisp:defun update-function-definition
@@ -8033,7 +8088,8 @@
                                                         "UpdateFunctionDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'update-function-definition))
 (common-lisp:progn
  (common-lisp:defun update-group
@@ -8062,7 +8118,8 @@
                                                         "UpdateGroup"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'update-group))
 (common-lisp:progn
  (common-lisp:defun update-group-certificate-configuration
@@ -8124,7 +8181,8 @@
                                                         "UpdateLoggerDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'update-logger-definition))
 (common-lisp:progn
  (common-lisp:defun update-subscription-definition
@@ -8155,5 +8213,6 @@
                                                         "UpdateSubscriptionDefinition"
                                                         "2017-06-07"))
       common-lisp:nil common-lisp:nil
-      '(("BadRequestException" . bad-request-exception)))))
+      '(("BadRequestException" . bad-request-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)))))
  (common-lisp:export 'update-subscription-definition))

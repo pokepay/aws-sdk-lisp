@@ -1658,7 +1658,11 @@
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
       '(("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)))))
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-rule))
 (common-lisp:progn
  (common-lisp:defun describe-event-bus ()
@@ -1669,8 +1673,12 @@
                                 `(("Action" ,@"DescribeEventBus")
                                   ("Version" ,@"2015-10-07"))))
     common-lisp:nil common-lisp:nil
-    '(("ResourceNotFoundException" . resource-not-found-exception)
-      ("InternalException" . internal-exception))))
+    '(("ConcurrentModificationException" . concurrent-modification-exception)
+      ("InternalException" . internal-exception)
+      ("InvalidEventPatternException" . invalid-event-pattern-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+      ("ResourceNotFoundException" . resource-not-found-exception))))
  (common-lisp:export 'describe-event-bus))
 (common-lisp:progn
  (common-lisp:defun describe-rule
@@ -1689,8 +1697,12 @@
                                                         "DescribeRule"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalException" . internal-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-rule))
 (common-lisp:progn
  (common-lisp:defun disable-rule
@@ -1709,9 +1721,12 @@
                                                         "DisableRule"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'disable-rule))
 (common-lisp:progn
  (common-lisp:defun enable-rule
@@ -1729,9 +1744,12 @@
                                                         "POST" "/" "EnableRule"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'enable-rule))
 (common-lisp:progn
  (common-lisp:defun list-rule-names-by-target
@@ -1751,7 +1769,12 @@
                                                         "ListRuleNamesByTarget"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-rule-names-by-target))
 (common-lisp:progn
  (common-lisp:defun list-rules
@@ -1769,7 +1792,12 @@
                                                         "POST" "/" "ListRules"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-rules))
 (common-lisp:progn
  (common-lisp:defun list-targets-by-rule
@@ -1788,8 +1816,12 @@
                                                         "ListTargetsByRule"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalException" . internal-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-targets-by-rule))
 (common-lisp:progn
  (common-lisp:defun put-events
@@ -1807,7 +1839,12 @@
                                                         "POST" "/" "PutEvents"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'put-events))
 (common-lisp:progn
  (common-lisp:defun put-permission
@@ -1826,9 +1863,12 @@
                                                         "PutPermission"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("PolicyLengthExceededException" . policy-length-exceeded-exception)
-        ("InternalException" . internal-exception)))))
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'put-permission))
 (common-lisp:progn
  (common-lisp:defun put-rule
@@ -1849,10 +1889,12 @@
                                                         "POST" "/" "PutRule"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidEventPatternException" . invalid-event-pattern-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)))))
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'put-rule))
 (common-lisp:progn
  (common-lisp:defun put-targets
@@ -1870,10 +1912,12 @@
                                                         "POST" "/" "PutTargets"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("InternalException" . internal-exception)))))
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'put-targets))
 (common-lisp:progn
  (common-lisp:defun remove-permission
@@ -1892,8 +1936,12 @@
                                                         "RemovePermission"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalException" . internal-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'remove-permission))
 (common-lisp:progn
  (common-lisp:defun remove-targets
@@ -1912,9 +1960,12 @@
                                                         "RemoveTargets"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("ConcurrentModificationException" . concurrent-modification-exception)
-        ("InternalException" . internal-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'remove-targets))
 (common-lisp:progn
  (common-lisp:defun test-event-pattern
@@ -1933,6 +1984,10 @@
                                                         "TestEventPattern"
                                                         "2015-10-07"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidEventPatternException" . invalid-event-pattern-exception)
-        ("InternalException" . internal-exception)))))
+      '(("ConcurrentModificationException" . concurrent-modification-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidEventPatternException" . invalid-event-pattern-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PolicyLengthExceededException" . policy-length-exceeded-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'test-event-pattern))

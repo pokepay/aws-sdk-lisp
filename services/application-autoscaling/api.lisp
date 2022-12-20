@@ -1529,10 +1529,13 @@
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "DeleteScalingPolicy" "2016-02-06"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ConcurrentUpdateException" . concurrent-update-exception)
+        ("FailedResourceAccessException" . failed-resource-access-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("ObjectNotFoundException" . object-not-found-exception)
-        ("ConcurrentUpdateException" . concurrent-update-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'delete-scaling-policy))
 (common-lisp:progn
  (common-lisp:defun deregister-scalable-target
@@ -1552,10 +1555,13 @@
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "DeregisterScalableTarget" "2016-02-06"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ConcurrentUpdateException" . concurrent-update-exception)
+        ("FailedResourceAccessException" . failed-resource-access-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("ObjectNotFoundException" . object-not-found-exception)
-        ("ConcurrentUpdateException" . concurrent-update-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'deregister-scalable-target))
 (common-lisp:progn
  (common-lisp:defun describe-scalable-targets
@@ -1576,10 +1582,13 @@
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeScalableTargets" "2016-02-06"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ConcurrentUpdateException" . concurrent-update-exception)
+        ("FailedResourceAccessException" . failed-resource-access-exception)
+        ("InternalServiceException" . internal-service-exception)
         ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("ConcurrentUpdateException" . concurrent-update-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ObjectNotFoundException" . object-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-scalable-targets))
 (common-lisp:progn
  (common-lisp:defun describe-scaling-activities
@@ -1600,10 +1609,13 @@
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeScalingActivities" "2016-02-06"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ConcurrentUpdateException" . concurrent-update-exception)
+        ("FailedResourceAccessException" . failed-resource-access-exception)
+        ("InternalServiceException" . internal-service-exception)
         ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("ConcurrentUpdateException" . concurrent-update-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ObjectNotFoundException" . object-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-scaling-activities))
 (common-lisp:progn
  (common-lisp:defun describe-scaling-policies
@@ -1624,11 +1636,13 @@
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "DescribeScalingPolicies" "2016-02-06"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ConcurrentUpdateException" . concurrent-update-exception)
         ("FailedResourceAccessException" . failed-resource-access-exception)
+        ("InternalServiceException" . internal-service-exception)
         ("InvalidNextTokenException" . invalid-next-token-exception)
-        ("ConcurrentUpdateException" . concurrent-update-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ObjectNotFoundException" . object-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'describe-scaling-policies))
 (common-lisp:progn
  (common-lisp:defun put-scaling-policy
@@ -1651,12 +1665,13 @@
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "PutScalingPolicy" "2016-02-06"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ConcurrentUpdateException" . concurrent-update-exception)
+        ("FailedResourceAccessException" . failed-resource-access-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
         ("LimitExceededException" . limit-exceeded-exception)
         ("ObjectNotFoundException" . object-not-found-exception)
-        ("ConcurrentUpdateException" . concurrent-update-exception)
-        ("FailedResourceAccessException" . failed-resource-access-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'put-scaling-policy))
 (common-lisp:progn
  (common-lisp:defun register-scalable-target
@@ -1676,8 +1691,11 @@
         'application-autoscaling-request aws-sdk/generator/operation::input
         "POST" "/" "RegisterScalableTarget" "2016-02-06"))
       common-lisp:nil common-lisp:nil
-      '(("ValidationException" . validation-exception)
+      '(("ConcurrentUpdateException" . concurrent-update-exception)
+        ("FailedResourceAccessException" . failed-resource-access-exception)
+        ("InternalServiceException" . internal-service-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("ConcurrentUpdateException" . concurrent-update-exception)
-        ("InternalServiceException" . internal-service-exception)))))
+        ("ObjectNotFoundException" . object-not-found-exception)
+        ("ValidationException" . validation-exception)))))
  (common-lisp:export 'register-scalable-target))

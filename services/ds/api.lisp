@@ -4664,13 +4664,24 @@
                                                         "AddIpRoutes"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("DirectoryUnavailableException" . directory-unavailable-exception)
-        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'add-ip-routes))
 (common-lisp:progn
  (common-lisp:defun add-tags-to-resource
@@ -4689,11 +4700,24 @@
                                                         "AddTagsToResource"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
  (common-lisp:defun cancel-schema-extension
@@ -4713,9 +4737,24 @@
                                                         "CancelSchemaExtension"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'cancel-schema-extension))
 (common-lisp:progn
  (common-lisp:defun connect-directory
@@ -4737,11 +4776,24 @@
                                                         "ConnectDirectory"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("DirectoryLimitExceededException"
-         . directory-limit-exceeded-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'connect-directory))
 (common-lisp:progn
  (common-lisp:defun create-alias
@@ -4760,11 +4812,24 @@
                                                         "CreateAlias"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'create-alias))
 (common-lisp:progn
  (common-lisp:defun create-computer
@@ -4788,13 +4853,23 @@
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
       '(("AuthenticationFailedException" . authentication-failed-exception)
+        ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
         ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
         ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
         ("InvalidParameterException" . invalid-parameter-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)
-        ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'create-computer))
 (common-lisp:progn
  (common-lisp:defun create-conditional-forwarder
@@ -4816,13 +4891,24 @@
                                                         "CreateConditionalForwarder"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("DirectoryUnavailableException" . directory-unavailable-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'create-conditional-forwarder))
 (common-lisp:progn
  (common-lisp:defun create-directory
@@ -4844,11 +4930,24 @@
                                                         "CreateDirectory"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("DirectoryLimitExceededException"
-         . directory-limit-exceeded-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'create-directory))
 (common-lisp:progn
  (common-lisp:defun create-microsoft-ad
@@ -4869,11 +4968,23 @@
                                                         "CreateMicrosoftAD"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("DirectoryLimitExceededException"
-         . directory-limit-exceeded-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
         ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
         ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'create-microsoft-ad))
 (common-lisp:progn
@@ -4893,11 +5004,24 @@
                                                         "CreateSnapshot"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'create-snapshot))
 (common-lisp:progn
  (common-lisp:defun create-trust
@@ -4920,11 +5044,23 @@
                                                         "CreateTrust"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityAlreadyExistsException" . entity-already-exists-exception)
-        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
         ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
         ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'create-trust))
 (common-lisp:progn
@@ -4946,12 +5082,24 @@
                                                         "DeleteConditionalForwarder"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("DirectoryUnavailableException" . directory-unavailable-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'delete-conditional-forwarder))
 (common-lisp:progn
  (common-lisp:defun delete-directory
@@ -4970,9 +5118,24 @@
                                                         "DeleteDirectory"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'delete-directory))
 (common-lisp:progn
  (common-lisp:defun delete-snapshot
@@ -4991,10 +5154,24 @@
                                                         "DeleteSnapshot"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'delete-snapshot))
 (common-lisp:progn
  (common-lisp:defun delete-trust
@@ -5015,10 +5192,23 @@
                                                         "DeleteTrust"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
         ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
         ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'delete-trust))
 (common-lisp:progn
@@ -5038,10 +5228,24 @@
                                                         "DeregisterEventTopic"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'deregister-event-topic))
 (common-lisp:progn
  (common-lisp:defun describe-conditional-forwarders
@@ -5062,12 +5266,24 @@
                                                         "DescribeConditionalForwarders"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("DirectoryUnavailableException" . directory-unavailable-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'describe-conditional-forwarders))
 (common-lisp:progn
  (common-lisp:defun describe-directories
@@ -5086,11 +5302,24 @@
                                                         "DescribeDirectories"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'describe-directories))
 (common-lisp:progn
  (common-lisp:defun describe-domain-controllers
@@ -5113,11 +5342,23 @@
                                                         "DescribeDomainControllers"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
+        ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
         ("InvalidNextTokenException" . invalid-next-token-exception)
         ("InvalidParameterException" . invalid-parameter-exception)
-        ("ClientException" . client-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
         ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
         ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'describe-domain-controllers))
 (common-lisp:progn
@@ -5137,10 +5378,24 @@
                                                         "DescribeEventTopics"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'describe-event-topics))
 (common-lisp:progn
  (common-lisp:defun describe-snapshots
@@ -5161,11 +5416,24 @@
                                                         "DescribeSnapshots"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidNextTokenException" . invalid-next-token-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'describe-snapshots))
 (common-lisp:progn
  (common-lisp:defun describe-trusts
@@ -5185,11 +5453,23 @@
                                                         "DescribeTrusts"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
+        ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
         ("InvalidNextTokenException" . invalid-next-token-exception)
         ("InvalidParameterException" . invalid-parameter-exception)
-        ("ClientException" . client-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
         ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
         ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'describe-trusts))
 (common-lisp:progn
@@ -5209,9 +5489,24 @@
                                                         "DisableRadius"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'disable-radius))
 (common-lisp:progn
  (common-lisp:defun disable-sso
@@ -5230,12 +5525,24 @@
                                                         "POST" "/" "DisableSso"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
+        ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
         ("InsufficientPermissionsException"
          . insufficient-permissions-exception)
-        ("AuthenticationFailedException" . authentication-failed-exception)
-        ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'disable-sso))
 (common-lisp:progn
  (common-lisp:defun enable-radius
@@ -5254,11 +5561,24 @@
                                                         "EnableRadius"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
+        ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
         ("EntityAlreadyExistsException" . entity-already-exists-exception)
         ("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'enable-radius))
 (common-lisp:progn
  (common-lisp:defun enable-sso
@@ -5277,12 +5597,24 @@
                                                         "POST" "/" "EnableSso"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
+        ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
         ("InsufficientPermissionsException"
          . insufficient-permissions-exception)
-        ("AuthenticationFailedException" . authentication-failed-exception)
-        ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'enable-sso))
 (common-lisp:progn
  (common-lisp:defun get-directory-limits ()
@@ -5292,9 +5624,22 @@
                                 `(("Action" ,@"GetDirectoryLimits")
                                   ("Version" ,@"2015-04-16"))))
     common-lisp:nil common-lisp:nil
-    '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+    '(("AuthenticationFailedException" . authentication-failed-exception)
       ("ClientException" . client-exception)
-      ("ServiceException" . service-exception))))
+      ("DirectoryLimitExceededException" . directory-limit-exceeded-exception)
+      ("DirectoryUnavailableException" . directory-unavailable-exception)
+      ("DomainControllerLimitExceededException"
+       . domain-controller-limit-exceeded-exception)
+      ("EntityAlreadyExistsException" . entity-already-exists-exception)
+      ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      ("InsufficientPermissionsException" . insufficient-permissions-exception)
+      ("InvalidNextTokenException" . invalid-next-token-exception)
+      ("InvalidParameterException" . invalid-parameter-exception)
+      ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+      ("ServiceException" . service-exception)
+      ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+      ("TagLimitExceededException" . tag-limit-exceeded-exception)
+      ("UnsupportedOperationException" . unsupported-operation-exception))))
  (common-lisp:export 'get-directory-limits))
 (common-lisp:progn
  (common-lisp:defun get-snapshot-limits
@@ -5313,9 +5658,24 @@
                                                         "GetSnapshotLimits"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'get-snapshot-limits))
 (common-lisp:progn
  (common-lisp:defun list-ip-routes
@@ -5334,11 +5694,24 @@
                                                         "ListIpRoutes"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
+        ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
         ("InvalidNextTokenException" . invalid-next-token-exception)
         ("InvalidParameterException" . invalid-parameter-exception)
-        ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'list-ip-routes))
 (common-lisp:progn
  (common-lisp:defun list-schema-extensions
@@ -5357,10 +5730,24 @@
                                                         "ListSchemaExtensions"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidNextTokenException" . invalid-next-token-exception)
-        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'list-schema-extensions))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -5379,11 +5766,24 @@
                                                         "ListTagsForResource"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
+        ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
         ("InvalidNextTokenException" . invalid-next-token-exception)
         ("InvalidParameterException" . invalid-parameter-exception)
-        ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun register-event-topic
@@ -5402,10 +5802,24 @@
                                                         "RegisterEventTopic"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'register-event-topic))
 (common-lisp:progn
  (common-lisp:defun remove-ip-routes
@@ -5424,11 +5838,24 @@
                                                         "RemoveIpRoutes"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("DirectoryUnavailableException" . directory-unavailable-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'remove-ip-routes))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-resource
@@ -5448,10 +5875,24 @@
                                                         "RemoveTagsFromResource"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'remove-tags-from-resource))
 (common-lisp:progn
  (common-lisp:defun restore-from-snapshot
@@ -5470,10 +5911,24 @@
                                                         "RestoreFromSnapshot"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'restore-from-snapshot))
 (common-lisp:progn
  (common-lisp:defun start-schema-extension
@@ -5496,12 +5951,24 @@
                                                         "StartSchemaExtension"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("DirectoryUnavailableException" . directory-unavailable-exception)
-        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'start-schema-extension))
 (common-lisp:progn
  (common-lisp:defun update-conditional-forwarder
@@ -5523,12 +5990,24 @@
                                                         "UpdateConditionalForwarder"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("DirectoryUnavailableException" . directory-unavailable-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'update-conditional-forwarder))
 (common-lisp:progn
  (common-lisp:defun update-number-of-domain-controllers
@@ -5548,14 +6027,24 @@
                                                         "UpdateNumberOfDomainControllers"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
+        ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
         ("DirectoryUnavailableException" . directory-unavailable-exception)
         ("DomainControllerLimitExceededException"
          . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
         ("InvalidParameterException" . invalid-parameter-exception)
-        ("UnsupportedOperationException" . unsupported-operation-exception)
-        ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'update-number-of-domain-controllers))
 (common-lisp:progn
  (common-lisp:defun update-radius
@@ -5574,10 +6063,24 @@
                                                         "UpdateRadius"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
-        ("ServiceException" . service-exception)))))
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
+        ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'update-radius))
 (common-lisp:progn
  (common-lisp:defun verify-trust
@@ -5596,9 +6099,22 @@
                                                         "VerifyTrust"
                                                         "2015-04-16"))
       common-lisp:nil common-lisp:nil
-      '(("EntityDoesNotExistException" . entity-does-not-exist-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AuthenticationFailedException" . authentication-failed-exception)
         ("ClientException" . client-exception)
+        ("DirectoryLimitExceededException"
+         . directory-limit-exceeded-exception)
+        ("DirectoryUnavailableException" . directory-unavailable-exception)
+        ("DomainControllerLimitExceededException"
+         . domain-controller-limit-exceeded-exception)
+        ("EntityAlreadyExistsException" . entity-already-exists-exception)
+        ("EntityDoesNotExistException" . entity-does-not-exist-exception)
+        ("InsufficientPermissionsException"
+         . insufficient-permissions-exception)
+        ("InvalidNextTokenException" . invalid-next-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("IpRouteLimitExceededException" . ip-route-limit-exceeded-exception)
         ("ServiceException" . service-exception)
+        ("SnapshotLimitExceededException" . snapshot-limit-exceeded-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)
         ("UnsupportedOperationException" . unsupported-operation-exception)))))
  (common-lisp:export 'verify-trust))

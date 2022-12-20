@@ -2406,15 +2406,19 @@
                                                         "CompareFaces"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidS3ObjectException" . invalid-s3object-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("ImageTooLargeException" . image-too-large-exception)
-        ("AccessDeniedException" . access-denied-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
         ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("InvalidImageFormatException" . invalid-image-format-exception)))))
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'compare-faces))
 (common-lisp:progn
  (common-lisp:defun create-collection
@@ -2433,14 +2437,19 @@
                                                         "CreateCollection"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("AccessDeniedException" . access-denied-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
         ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("ResourceAlreadyExistsException"
-         . resource-already-exists-exception)))))
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'create-collection))
 (common-lisp:progn
  (common-lisp:defun delete-collection
@@ -2459,13 +2468,19 @@
                                                         "DeleteCollection"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("AccessDeniedException" . access-denied-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
         ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'delete-collection))
 (common-lisp:progn
  (common-lisp:defun delete-faces
@@ -2484,13 +2499,19 @@
                                                         "DeleteFaces"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("AccessDeniedException" . access-denied-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
         ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'delete-faces))
 (common-lisp:progn
  (common-lisp:defun detect-faces
@@ -2509,15 +2530,19 @@
                                                         "DetectFaces"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidS3ObjectException" . invalid-s3object-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("ImageTooLargeException" . image-too-large-exception)
-        ("AccessDeniedException" . access-denied-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
         ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("InvalidImageFormatException" . invalid-image-format-exception)))))
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'detect-faces))
 (common-lisp:progn
  (common-lisp:defun detect-labels
@@ -2537,15 +2562,19 @@
                                                         "DetectLabels"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidS3ObjectException" . invalid-s3object-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("ImageTooLargeException" . image-too-large-exception)
-        ("AccessDeniedException" . access-denied-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
         ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("InvalidImageFormatException" . invalid-image-format-exception)))))
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'detect-labels))
 (common-lisp:progn
  (common-lisp:defun detect-moderation-labels
@@ -2564,15 +2593,19 @@
                                                         "DetectModerationLabels"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidS3ObjectException" . invalid-s3object-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("ImageTooLargeException" . image-too-large-exception)
-        ("AccessDeniedException" . access-denied-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
         ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("InvalidImageFormatException" . invalid-image-format-exception)))))
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'detect-moderation-labels))
 (common-lisp:progn
  (common-lisp:defun get-celebrity-info
@@ -2591,13 +2624,19 @@
                                                         "GetCelebrityInfo"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("AccessDeniedException" . access-denied-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
         ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'get-celebrity-info))
 (common-lisp:progn
  (common-lisp:defun index-faces
@@ -2618,16 +2657,19 @@
                                                         "POST" "/" "IndexFaces"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidS3ObjectException" . invalid-s3object-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("ImageTooLargeException" . image-too-large-exception)
-        ("AccessDeniedException" . access-denied-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
         ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InvalidImageFormatException" . invalid-image-format-exception)))))
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'index-faces))
 (common-lisp:progn
  (common-lisp:defun list-collections
@@ -2646,15 +2688,19 @@
                                                         "ListCollections"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("AccessDeniedException" . access-denied-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
         ("InvalidPaginationTokenException"
          . invalid-pagination-token-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'list-collections))
 (common-lisp:progn
  (common-lisp:defun list-faces
@@ -2673,15 +2719,19 @@
                                                         "POST" "/" "ListFaces"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("AccessDeniedException" . access-denied-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
         ("InvalidPaginationTokenException"
          . invalid-pagination-token-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'list-faces))
 (common-lisp:progn
  (common-lisp:defun recognize-celebrities
@@ -2700,16 +2750,19 @@
                                                         "RecognizeCelebrities"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidS3ObjectException" . invalid-s3object-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
-        ("InvalidImageFormatException" . invalid-image-format-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("ImageTooLargeException" . image-too-large-exception)
-        ("AccessDeniedException" . access-denied-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
         ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("InvalidImageFormatException" . invalid-image-format-exception)))))
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'recognize-celebrities))
 (common-lisp:progn
  (common-lisp:defun search-faces
@@ -2731,13 +2784,19 @@
                                                         "SearchFaces"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidParameterException" . invalid-parameter-exception)
-        ("AccessDeniedException" . access-denied-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("ImageTooLargeException" . image-too-large-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
         ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'search-faces))
 (common-lisp:progn
  (common-lisp:defun search-faces-by-image
@@ -2758,14 +2817,17 @@
                                                         "SearchFacesByImage"
                                                         "2016-06-27"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidS3ObjectException" . invalid-s3object-exception)
-        ("InvalidParameterException" . invalid-parameter-exception)
+      '(("AccessDeniedException" . access-denied-exception)
         ("ImageTooLargeException" . image-too-large-exception)
-        ("AccessDeniedException" . access-denied-exception)
         ("InternalServerError" . internal-server-error)
-        ("ThrottlingException" . throttling-exception)
+        ("InvalidImageFormatException" . invalid-image-format-exception)
+        ("InvalidPaginationTokenException"
+         . invalid-pagination-token-exception)
+        ("InvalidParameterException" . invalid-parameter-exception)
+        ("InvalidS3ObjectException" . invalid-s3object-exception)
         ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InvalidImageFormatException" . invalid-image-format-exception)))))
+        ("ThrottlingException" . throttling-exception)))))
  (common-lisp:export 'search-faces-by-image))

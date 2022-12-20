@@ -5292,14 +5292,29 @@
                                                         "AcceptCertificateTransfer"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
         ("TransferAlreadyCompletedException"
          . transfer-already-completed-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
         ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'accept-certificate-transfer))
 (common-lisp:progn
  (common-lisp:defun attach-principal-policy
@@ -5328,13 +5343,29 @@
                                                         "AttachPrincipalPolicy"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'attach-principal-policy))
 (common-lisp:progn
  (common-lisp:defun attach-thing-principal
@@ -5363,12 +5394,29 @@
                                                         "AttachThingPrincipal"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'attach-thing-principal))
 (common-lisp:progn
  (common-lisp:defun cancel-certificate-transfer
@@ -5398,14 +5446,29 @@
                                                         "CancelCertificateTransfer"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
         ("TransferAlreadyCompletedException"
          . transfer-already-completed-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
         ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'cancel-certificate-transfer))
 (common-lisp:progn
  (common-lisp:defun create-certificate-from-csr
@@ -5427,11 +5490,29 @@
                                                         "CreateCertificateFromCsr"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'create-certificate-from-csr))
 (common-lisp:progn
  (common-lisp:defun create-keys-and-certificate
@@ -5452,11 +5533,29 @@
                                                         "CreateKeysAndCertificate"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'create-keys-and-certificate))
 (common-lisp:progn
  (common-lisp:defun create-policy
@@ -5485,13 +5584,29 @@
                                                         "CreatePolicy"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("MalformedPolicyException" . malformed-policy-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'create-policy))
 (common-lisp:progn
  (common-lisp:defun create-policy-version
@@ -5522,14 +5637,29 @@
                                                         "CreatePolicyVersion"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("MalformedPolicyException" . malformed-policy-exception)
-        ("VersionsLimitExceededException" . versions-limit-exceeded-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'create-policy-version))
 (common-lisp:progn
  (common-lisp:defun create-thing
@@ -5560,13 +5690,29 @@
                                                         "CreateThing"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
         ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
         ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'create-thing))
 (common-lisp:progn
  (common-lisp:defun create-thing-type
@@ -5596,13 +5742,29 @@
                                                         "CreateThingType"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("ResourceAlreadyExistsException"
-         . resource-already-exists-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'create-thing-type))
 (common-lisp:progn
  (common-lisp:defun create-topic-rule
@@ -5631,11 +5793,29 @@
                                                         "CreateTopicRule"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("SqlParseException" . sql-parse-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
         ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
         ("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)))))
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'create-topic-rule))
 (common-lisp:progn
  (common-lisp:defun delete-cacertificate
@@ -5664,13 +5844,29 @@
                                                         "DeleteCACertificate"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
         ("CertificateStateException" . certificate-state-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'delete-cacertificate))
 (common-lisp:progn
  (common-lisp:defun delete-certificate
@@ -5699,14 +5895,29 @@
                                                         "DeleteCertificate"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("CertificateStateException" . certificate-state-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
         ("DeleteConflictException" . delete-conflict-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("InternalException" . internal-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'delete-certificate))
 (common-lisp:progn
  (common-lisp:defun delete-policy
@@ -5735,13 +5946,29 @@
                                                         "DeletePolicy"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("DeleteConflictException" . delete-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'delete-policy))
 (common-lisp:progn
  (common-lisp:defun delete-policy-version
@@ -5774,13 +6001,29 @@
                                                         "DeletePolicyVersion"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("DeleteConflictException" . delete-conflict-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'delete-policy-version))
 (common-lisp:progn
  (common-lisp:defun delete-registration-code ()
@@ -5791,11 +6034,28 @@
                                 `(("Action" ,@"DeleteRegistrationCode")
                                   ("Version" ,@"2015-05-28"))))
     common-lisp:nil common-lisp:nil
-    '(("ThrottlingException" . throttling-exception)
+    '(("CertificateConflictException" . certificate-conflict-exception)
+      ("CertificateStateException" . certificate-state-exception)
+      ("CertificateValidationException" . certificate-validation-exception)
+      ("DeleteConflictException" . delete-conflict-exception)
+      ("InternalException" . internal-exception)
+      ("InternalFailureException" . internal-failure-exception)
+      ("InvalidRequestException" . invalid-request-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MalformedPolicyException" . malformed-policy-exception)
+      ("RegistrationCodeValidationException"
+       . registration-code-validation-exception)
+      ("ResourceAlreadyExistsException" . resource-already-exists-exception)
       ("ResourceNotFoundException" . resource-not-found-exception)
-      ("UnauthorizedException" . unauthorized-exception)
       ("ServiceUnavailableException" . service-unavailable-exception)
-      ("InternalFailureException" . internal-failure-exception))))
+      ("SqlParseException" . sql-parse-exception)
+      ("ThrottlingException" . throttling-exception)
+      ("TransferAlreadyCompletedException"
+       . transfer-already-completed-exception)
+      ("TransferConflictException" . transfer-conflict-exception)
+      ("UnauthorizedException" . unauthorized-exception)
+      ("VersionConflictException" . version-conflict-exception)
+      ("VersionsLimitExceededException" . versions-limit-exceeded-exception))))
  (common-lisp:export 'delete-registration-code))
 (common-lisp:progn
  (common-lisp:defun delete-thing
@@ -5824,13 +6084,29 @@
                                                         "DeleteThing"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("VersionConflictException" . version-conflict-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'delete-thing))
 (common-lisp:progn
  (common-lisp:defun delete-thing-type
@@ -5859,12 +6135,29 @@
                                                         "DeleteThingType"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'delete-thing-type))
 (common-lisp:progn
  (common-lisp:defun delete-topic-rule
@@ -5893,10 +6186,29 @@
                                                         "DeleteTopicRule"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("UnauthorizedException" . unauthorized-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'delete-topic-rule))
 (common-lisp:progn
  (common-lisp:defun deprecate-thing-type
@@ -5925,12 +6237,29 @@
                                                         "DeprecateThingType"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'deprecate-thing-type))
 (common-lisp:progn
  (common-lisp:defun describe-cacertificate
@@ -5959,12 +6288,29 @@
                                                         "DescribeCACertificate"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'describe-cacertificate))
 (common-lisp:progn
  (common-lisp:defun describe-certificate
@@ -5993,12 +6339,29 @@
                                                         "DescribeCertificate"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'describe-certificate))
 (common-lisp:progn
  (common-lisp:defun describe-endpoint ()
@@ -6009,9 +6372,28 @@
                                 `(("Action" ,@"DescribeEndpoint")
                                   ("Version" ,@"2015-05-28"))))
     common-lisp:nil common-lisp:nil
-    '(("InternalFailureException" . internal-failure-exception)
+    '(("CertificateConflictException" . certificate-conflict-exception)
+      ("CertificateStateException" . certificate-state-exception)
+      ("CertificateValidationException" . certificate-validation-exception)
+      ("DeleteConflictException" . delete-conflict-exception)
+      ("InternalException" . internal-exception)
+      ("InternalFailureException" . internal-failure-exception)
+      ("InvalidRequestException" . invalid-request-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MalformedPolicyException" . malformed-policy-exception)
+      ("RegistrationCodeValidationException"
+       . registration-code-validation-exception)
+      ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+      ("ResourceNotFoundException" . resource-not-found-exception)
+      ("ServiceUnavailableException" . service-unavailable-exception)
+      ("SqlParseException" . sql-parse-exception)
+      ("ThrottlingException" . throttling-exception)
+      ("TransferAlreadyCompletedException"
+       . transfer-already-completed-exception)
+      ("TransferConflictException" . transfer-conflict-exception)
       ("UnauthorizedException" . unauthorized-exception)
-      ("ThrottlingException" . throttling-exception))))
+      ("VersionConflictException" . version-conflict-exception)
+      ("VersionsLimitExceededException" . versions-limit-exceeded-exception))))
  (common-lisp:export 'describe-endpoint))
 (common-lisp:progn
  (common-lisp:defun describe-thing
@@ -6040,12 +6422,29 @@
                                                         "DescribeThing"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'describe-thing))
 (common-lisp:progn
  (common-lisp:defun describe-thing-type
@@ -6074,12 +6473,29 @@
                                                         "DescribeThingType"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'describe-thing-type))
 (common-lisp:progn
  (common-lisp:defun detach-principal-policy
@@ -6108,12 +6524,29 @@
                                                         "DetachPrincipalPolicy"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'detach-principal-policy))
 (common-lisp:progn
  (common-lisp:defun detach-thing-principal
@@ -6142,12 +6575,29 @@
                                                         "DetachThingPrincipal"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'detach-thing-principal))
 (common-lisp:progn
  (common-lisp:defun disable-topic-rule
@@ -6176,10 +6626,29 @@
                                                         "DisableTopicRule"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("UnauthorizedException" . unauthorized-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'disable-topic-rule))
 (common-lisp:progn
  (common-lisp:defun enable-topic-rule
@@ -6208,10 +6677,29 @@
                                                         "EnableTopicRule"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("UnauthorizedException" . unauthorized-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'enable-topic-rule))
 (common-lisp:progn
  (common-lisp:defun get-logging-options ()
@@ -6222,9 +6710,28 @@
                                 `(("Action" ,@"GetLoggingOptions")
                                   ("Version" ,@"2015-05-28"))))
     common-lisp:nil common-lisp:nil
-    '(("InternalException" . internal-exception)
+    '(("CertificateConflictException" . certificate-conflict-exception)
+      ("CertificateStateException" . certificate-state-exception)
+      ("CertificateValidationException" . certificate-validation-exception)
+      ("DeleteConflictException" . delete-conflict-exception)
+      ("InternalException" . internal-exception)
+      ("InternalFailureException" . internal-failure-exception)
       ("InvalidRequestException" . invalid-request-exception)
-      ("ServiceUnavailableException" . service-unavailable-exception))))
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MalformedPolicyException" . malformed-policy-exception)
+      ("RegistrationCodeValidationException"
+       . registration-code-validation-exception)
+      ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+      ("ResourceNotFoundException" . resource-not-found-exception)
+      ("ServiceUnavailableException" . service-unavailable-exception)
+      ("SqlParseException" . sql-parse-exception)
+      ("ThrottlingException" . throttling-exception)
+      ("TransferAlreadyCompletedException"
+       . transfer-already-completed-exception)
+      ("TransferConflictException" . transfer-conflict-exception)
+      ("UnauthorizedException" . unauthorized-exception)
+      ("VersionConflictException" . version-conflict-exception)
+      ("VersionsLimitExceededException" . versions-limit-exceeded-exception))))
  (common-lisp:export 'get-logging-options))
 (common-lisp:progn
  (common-lisp:defun get-policy
@@ -6253,12 +6760,29 @@
                                                         "GetPolicy"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'get-policy))
 (common-lisp:progn
  (common-lisp:defun get-policy-version
@@ -6291,12 +6815,29 @@
                                                         "GetPolicyVersion"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'get-policy-version))
 (common-lisp:progn
  (common-lisp:defun get-registration-code ()
@@ -6307,11 +6848,28 @@
                                 `(("Action" ,@"GetRegistrationCode")
                                   ("Version" ,@"2015-05-28"))))
     common-lisp:nil common-lisp:nil
-    '(("ThrottlingException" . throttling-exception)
-      ("UnauthorizedException" . unauthorized-exception)
-      ("ServiceUnavailableException" . service-unavailable-exception)
+    '(("CertificateConflictException" . certificate-conflict-exception)
+      ("CertificateStateException" . certificate-state-exception)
+      ("CertificateValidationException" . certificate-validation-exception)
+      ("DeleteConflictException" . delete-conflict-exception)
+      ("InternalException" . internal-exception)
       ("InternalFailureException" . internal-failure-exception)
-      ("InvalidRequestException" . invalid-request-exception))))
+      ("InvalidRequestException" . invalid-request-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MalformedPolicyException" . malformed-policy-exception)
+      ("RegistrationCodeValidationException"
+       . registration-code-validation-exception)
+      ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+      ("ResourceNotFoundException" . resource-not-found-exception)
+      ("ServiceUnavailableException" . service-unavailable-exception)
+      ("SqlParseException" . sql-parse-exception)
+      ("ThrottlingException" . throttling-exception)
+      ("TransferAlreadyCompletedException"
+       . transfer-already-completed-exception)
+      ("TransferConflictException" . transfer-conflict-exception)
+      ("UnauthorizedException" . unauthorized-exception)
+      ("VersionConflictException" . version-conflict-exception)
+      ("VersionsLimitExceededException" . versions-limit-exceeded-exception))))
  (common-lisp:export 'get-registration-code))
 (common-lisp:progn
  (common-lisp:defun get-topic-rule
@@ -6340,10 +6898,29 @@
                                                         "GetTopicRule"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("UnauthorizedException" . unauthorized-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'get-topic-rule))
 (common-lisp:progn
  (common-lisp:defun list-cacertificates
@@ -6363,11 +6940,29 @@
                                                         "ListCACertificates"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-cacertificates))
 (common-lisp:progn
  (common-lisp:defun list-certificates
@@ -6387,11 +6982,29 @@
                                                         "ListCertificates"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-certificates))
 (common-lisp:progn
  (common-lisp:defun list-certificates-by-ca
@@ -6422,11 +7035,29 @@
                                                         "ListCertificatesByCA"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-certificates-by-ca))
 (common-lisp:progn
  (common-lisp:defun list-outgoing-certificates
@@ -6448,11 +7079,29 @@
                                                         "ListOutgoingCertificates"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-outgoing-certificates))
 (common-lisp:progn
  (common-lisp:defun list-policies
@@ -6472,11 +7121,29 @@
                                                         "ListPolicies"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-policies))
 (common-lisp:progn
  (common-lisp:defun list-policy-principals
@@ -6498,12 +7165,29 @@
                                                         "ListPolicyPrincipals"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-policy-principals))
 (common-lisp:progn
  (common-lisp:defun list-policy-versions
@@ -6532,12 +7216,29 @@
                                                         "ListPolicyVersions"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-policy-versions))
 (common-lisp:progn
  (common-lisp:defun list-principal-policies
@@ -6559,12 +7260,29 @@
                                                         "ListPrincipalPolicies"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-principal-policies))
 (common-lisp:progn
  (common-lisp:defun list-principal-things
@@ -6585,12 +7303,29 @@
                                                         "ListPrincipalThings"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-principal-things))
 (common-lisp:progn
  (common-lisp:defun list-thing-principals
@@ -6619,12 +7354,29 @@
                                                         "ListThingPrincipals"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-thing-principals))
 (common-lisp:progn
  (common-lisp:defun list-thing-types
@@ -6644,11 +7396,29 @@
                                                         "ListThingTypes"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-thing-types))
 (common-lisp:progn
  (common-lisp:defun list-things
@@ -6670,11 +7440,29 @@
                                                         "ListThings"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-things))
 (common-lisp:progn
  (common-lisp:defun list-topic-rules
@@ -6695,9 +7483,29 @@
                                                         "ListTopicRules"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'list-topic-rules))
 (common-lisp:progn
  (common-lisp:defun register-cacertificate
@@ -6719,16 +7527,29 @@
                                                         "RegisterCACertificate"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceAlreadyExistsException" . resource-already-exists-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
         ("RegistrationCodeValidationException"
          . registration-code-validation-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("CertificateValidationException" . certificate-validation-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'register-cacertificate))
 (common-lisp:progn
  (common-lisp:defun register-certificate
@@ -6751,15 +7572,29 @@
                                                         "RegisterCertificate"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceAlreadyExistsException" . resource-already-exists-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("CertificateValidationException" . certificate-validation-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
         ("CertificateStateException" . certificate-state-exception)
-        ("CertificateConflictException" . certificate-conflict-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'register-certificate))
 (common-lisp:progn
  (common-lisp:defun reject-certificate-transfer
@@ -6789,14 +7624,29 @@
                                                         "RejectCertificateTransfer"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
         ("TransferAlreadyCompletedException"
          . transfer-already-completed-exception)
-        ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
         ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'reject-certificate-transfer))
 (common-lisp:progn
  (common-lisp:defun replace-topic-rule
@@ -6825,11 +7675,29 @@
                                                         "ReplaceTopicRule"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("SqlParseException" . sql-parse-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
         ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("UnauthorizedException" . unauthorized-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'replace-topic-rule))
 (common-lisp:progn
  (common-lisp:defun set-default-policy-version
@@ -6863,12 +7731,29 @@
                                                         "SetDefaultPolicyVersion"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'set-default-policy-version))
 (common-lisp:progn
  (common-lisp:defun set-logging-options
@@ -6888,9 +7773,29 @@
                                                         "SetLoggingOptions"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'set-logging-options))
 (common-lisp:progn
  (common-lisp:defun transfer-certificate
@@ -6921,14 +7826,29 @@
                                                         "TransferCertificate"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
         ("CertificateStateException" . certificate-state-exception)
-        ("TransferConflictException" . transfer-conflict-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'transfer-certificate))
 (common-lisp:progn
  (common-lisp:defun update-cacertificate
@@ -6960,12 +7880,29 @@
                                                         "UpdateCACertificate"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'update-cacertificate))
 (common-lisp:progn
  (common-lisp:defun update-certificate
@@ -6994,13 +7931,29 @@
                                                         "UpdateCertificate"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
         ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
+        ("InternalFailureException" . internal-failure-exception)
         ("InvalidRequestException" . invalid-request-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InternalFailureException" . internal-failure-exception)))))
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'update-certificate))
 (common-lisp:progn
  (common-lisp:defun update-thing
@@ -7032,11 +7985,27 @@
                                                         "UpdateThing"
                                                         "2015-05-28"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidRequestException" . invalid-request-exception)
-        ("VersionConflictException" . version-conflict-exception)
-        ("ThrottlingException" . throttling-exception)
-        ("UnauthorizedException" . unauthorized-exception)
-        ("ServiceUnavailableException" . service-unavailable-exception)
+      '(("CertificateConflictException" . certificate-conflict-exception)
+        ("CertificateStateException" . certificate-state-exception)
+        ("CertificateValidationException" . certificate-validation-exception)
+        ("DeleteConflictException" . delete-conflict-exception)
+        ("InternalException" . internal-exception)
         ("InternalFailureException" . internal-failure-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("InvalidRequestException" . invalid-request-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MalformedPolicyException" . malformed-policy-exception)
+        ("RegistrationCodeValidationException"
+         . registration-code-validation-exception)
+        ("ResourceAlreadyExistsException" . resource-already-exists-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("SqlParseException" . sql-parse-exception)
+        ("ThrottlingException" . throttling-exception)
+        ("TransferAlreadyCompletedException"
+         . transfer-already-completed-exception)
+        ("TransferConflictException" . transfer-conflict-exception)
+        ("UnauthorizedException" . unauthorized-exception)
+        ("VersionConflictException" . version-conflict-exception)
+        ("VersionsLimitExceededException"
+         . versions-limit-exceeded-exception)))))
  (common-lisp:export 'update-thing))

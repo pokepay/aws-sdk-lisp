@@ -1760,12 +1760,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
-        ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("DryRunOperation" . dry-run-operation)
-        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InternalServerError" . internal-server-error)
         ("InvalidInputException" . invalid-input-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'associate-created-artifact))
 (common-lisp:progn
  (common-lisp:defun associate-discovered-resource
@@ -1789,13 +1790,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
-        ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("DryRunOperation" . dry-run-operation)
-        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InternalServerError" . internal-server-error)
         ("InvalidInputException" . invalid-input-exception)
         ("PolicyErrorException" . policy-error-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'associate-discovered-resource))
 (common-lisp:progn
  (common-lisp:defun create-progress-update-stream
@@ -1817,11 +1818,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
-        ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("DryRunOperation" . dry-run-operation)
-        ("UnauthorizedOperation" . unauthorized-operation)
-        ("InvalidInputException" . invalid-input-exception)))))
+        ("InternalServerError" . internal-server-error)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'create-progress-update-stream))
 (common-lisp:progn
  (common-lisp:defun delete-progress-update-stream
@@ -1843,12 +1846,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
-        ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("DryRunOperation" . dry-run-operation)
-        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InternalServerError" . internal-server-error)
         ("InvalidInputException" . invalid-input-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'delete-progress-update-stream))
 (common-lisp:progn
  (common-lisp:defun describe-application-state
@@ -1869,11 +1873,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
+        ("DryRunOperation" . dry-run-operation)
         ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("InvalidInputException" . invalid-input-exception)
         ("PolicyErrorException" . policy-error-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'describe-application-state))
 (common-lisp:progn
  (common-lisp:defun describe-migration-task
@@ -1895,10 +1901,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
+        ("DryRunOperation" . dry-run-operation)
         ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'describe-migration-task))
 (common-lisp:progn
  (common-lisp:defun disassociate-created-artifact
@@ -1922,12 +1931,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
-        ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("DryRunOperation" . dry-run-operation)
-        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InternalServerError" . internal-server-error)
         ("InvalidInputException" . invalid-input-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'disassociate-created-artifact))
 (common-lisp:progn
  (common-lisp:defun disassociate-discovered-resource
@@ -1951,12 +1961,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
-        ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("DryRunOperation" . dry-run-operation)
-        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InternalServerError" . internal-server-error)
         ("InvalidInputException" . invalid-input-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'disassociate-discovered-resource))
 (common-lisp:progn
  (common-lisp:defun import-migration-task
@@ -1978,12 +1989,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
-        ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("DryRunOperation" . dry-run-operation)
-        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InternalServerError" . internal-server-error)
         ("InvalidInputException" . invalid-input-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'import-migration-task))
 (common-lisp:progn
  (common-lisp:defun list-created-artifacts
@@ -2006,10 +2018,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
+        ("DryRunOperation" . dry-run-operation)
         ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'list-created-artifacts))
 (common-lisp:progn
  (common-lisp:defun list-discovered-resources
@@ -2033,10 +2048,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
+        ("DryRunOperation" . dry-run-operation)
         ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'list-discovered-resources))
 (common-lisp:progn
  (common-lisp:defun list-migration-tasks
@@ -2057,11 +2075,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
+        ("DryRunOperation" . dry-run-operation)
         ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("InvalidInputException" . invalid-input-exception)
         ("PolicyErrorException" . policy-error-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'list-migration-tasks))
 (common-lisp:progn
  (common-lisp:defun list-progress-update-streams
@@ -2082,9 +2102,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
+        ("DryRunOperation" . dry-run-operation)
         ("InternalServerError" . internal-server-error)
+        ("InvalidInputException" . invalid-input-exception)
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
         ("ServiceUnavailableException" . service-unavailable-exception)
-        ("InvalidInputException" . invalid-input-exception)))))
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'list-progress-update-streams))
 (common-lisp:progn
  (common-lisp:defun notify-application-state
@@ -2104,13 +2128,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
-        ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("DryRunOperation" . dry-run-operation)
-        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InternalServerError" . internal-server-error)
         ("InvalidInputException" . invalid-input-exception)
         ("PolicyErrorException" . policy-error-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'notify-application-state))
 (common-lisp:progn
  (common-lisp:defun notify-migration-task-state
@@ -2135,12 +2159,13 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
-        ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("DryRunOperation" . dry-run-operation)
-        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InternalServerError" . internal-server-error)
         ("InvalidInputException" . invalid-input-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'notify-migration-task-state))
 (common-lisp:progn
  (common-lisp:defun put-resource-attributes
@@ -2163,10 +2188,11 @@
                                                         "2017-05-31"))
       common-lisp:nil common-lisp:nil
       '(("AccessDeniedException" . access-denied-exception)
-        ("InternalServerError" . internal-server-error)
-        ("ServiceUnavailableException" . service-unavailable-exception)
         ("DryRunOperation" . dry-run-operation)
-        ("UnauthorizedOperation" . unauthorized-operation)
+        ("InternalServerError" . internal-server-error)
         ("InvalidInputException" . invalid-input-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)))))
+        ("PolicyErrorException" . policy-error-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("ServiceUnavailableException" . service-unavailable-exception)
+        ("UnauthorizedOperation" . unauthorized-operation)))))
  (common-lisp:export 'put-resource-attributes))

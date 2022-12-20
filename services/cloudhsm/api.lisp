@@ -1789,8 +1789,8 @@
                                                         "AddTagsToResource"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'add-tags-to-resource))
 (common-lisp:progn
@@ -1809,8 +1809,8 @@
                                                         "POST" "/" "CreateHapg"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'create-hapg))
 (common-lisp:progn
@@ -1832,8 +1832,8 @@
                                                         "POST" "/" "CreateHsm"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'create-hsm))
 (common-lisp:progn
@@ -1853,8 +1853,8 @@
                                                         "CreateLunaClient"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'create-luna-client))
 (common-lisp:progn
@@ -1873,8 +1873,8 @@
                                                         "POST" "/" "DeleteHapg"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'delete-hapg))
 (common-lisp:progn
@@ -1893,8 +1893,8 @@
                                                         "POST" "/" "DeleteHsm"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'delete-hsm))
 (common-lisp:progn
@@ -1914,8 +1914,8 @@
                                                         "DeleteLunaClient"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'delete-luna-client))
 (common-lisp:progn
@@ -1935,8 +1935,8 @@
                                                         "DescribeHapg"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'describe-hapg))
 (common-lisp:progn
@@ -1956,8 +1956,8 @@
                                                         "DescribeHsm"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'describe-hsm))
 (common-lisp:progn
@@ -1978,8 +1978,8 @@
                                                         "DescribeLunaClient"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'describe-luna-client))
 (common-lisp:progn
@@ -1999,8 +1999,8 @@
                                                         "POST" "/" "GetConfig"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'get-config))
 (common-lisp:progn
@@ -2012,8 +2012,8 @@
                                 `(("Action" ,@"ListAvailableZones")
                                   ("Version" ,@"2014-05-30"))))
     common-lisp:nil common-lisp:nil
-    '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-      ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+    '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      ("CloudHsmServiceException" . cloud-hsm-service-exception)
       ("InvalidRequestException" . invalid-request-exception))))
  (common-lisp:export 'list-available-zones))
 (common-lisp:progn
@@ -2032,8 +2032,8 @@
                                                         "POST" "/" "ListHapgs"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'list-hapgs))
 (common-lisp:progn
@@ -2052,8 +2052,8 @@
                                                         "POST" "/" "ListHsms"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'list-hsms))
 (common-lisp:progn
@@ -2073,8 +2073,8 @@
                                                         "ListLunaClients"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'list-luna-clients))
 (common-lisp:progn
@@ -2094,8 +2094,8 @@
                                                         "ListTagsForResource"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
@@ -2115,8 +2115,8 @@
                                                         "POST" "/" "ModifyHapg"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'modify-hapg))
 (common-lisp:progn
@@ -2138,8 +2138,8 @@
                                                         "POST" "/" "ModifyHsm"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'modify-hsm))
 (common-lisp:progn
@@ -2159,7 +2159,9 @@
                                                         "ModifyLunaClient"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)))))
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
+        ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'modify-luna-client))
 (common-lisp:progn
  (common-lisp:defun remove-tags-from-resource
@@ -2179,7 +2181,7 @@
                                                         "RemoveTagsFromResource"
                                                         "2014-05-30"))
       common-lisp:nil common-lisp:nil
-      '(("CloudHsmServiceException" . cloud-hsm-service-exception)
-        ("CloudHsmInternalException" . cloud-hsm-internal-exception)
+      '(("CloudHsmInternalException" . cloud-hsm-internal-exception)
+        ("CloudHsmServiceException" . cloud-hsm-service-exception)
         ("InvalidRequestException" . invalid-request-exception)))))
  (common-lisp:export 'remove-tags-from-resource))

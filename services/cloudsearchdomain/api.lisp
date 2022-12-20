@@ -766,7 +766,8 @@
         'cloudsearchdomain-request aws-sdk/generator/operation::input "GET"
         "/2013-01-01/search?format=sdk&pretty=true" "Search" "2013-01-01"))
       common-lisp:nil common-lisp:nil
-      '(("SearchException" . search-exception)))))
+      '(("DocumentServiceException" . document-service-exception)
+        ("SearchException" . search-exception)))))
  (common-lisp:export 'search))
 (common-lisp:progn
  (common-lisp:defun suggest
@@ -783,7 +784,8 @@
         'cloudsearchdomain-request aws-sdk/generator/operation::input "GET"
         "/2013-01-01/suggest?format=sdk&pretty=true" "Suggest" "2013-01-01"))
       common-lisp:nil common-lisp:nil
-      '(("SearchException" . search-exception)))))
+      '(("DocumentServiceException" . document-service-exception)
+        ("SearchException" . search-exception)))))
  (common-lisp:export 'suggest))
 (common-lisp:progn
  (common-lisp:defun upload-documents
@@ -801,5 +803,6 @@
         "/2013-01-01/documents/batch?format=sdk" "UploadDocuments"
         "2013-01-01"))
       common-lisp:nil common-lisp:nil
-      '(("DocumentServiceException" . document-service-exception)))))
+      '(("DocumentServiceException" . document-service-exception)
+        ("SearchException" . search-exception)))))
  (common-lisp:export 'upload-documents))

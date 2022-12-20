@@ -1816,7 +1816,23 @@
                                                         "POST" "/"
                                                         "AddPermission"
                                                         "2012-11-05"))
-      common-lisp:nil common-lisp:nil '(("OverLimit" . over-limit)))))
+      common-lisp:nil common-lisp:nil
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'add-permission))
 (common-lisp:progn
  (common-lisp:defun change-message-visibility
@@ -1838,8 +1854,22 @@
                                                         "ChangeMessageVisibility"
                                                         "2012-11-05"))
       common-lisp:nil common-lisp:nil
-      '(("MessageNotInflight" . message-not-inflight)
-        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)))))
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'change-message-visibility))
 (common-lisp:progn
  (common-lisp:defun change-message-visibility-batch
@@ -1859,10 +1889,22 @@
                                                         "ChangeMessageVisibilityBatch"
                                                         "2012-11-05"))
       common-lisp:nil "ChangeMessageVisibilityBatchResult"
-      '(("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
         ("EmptyBatchRequest" . empty-batch-request)
-        ("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
-        ("InvalidBatchEntryId" . invalid-batch-entry-id)))))
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'change-message-visibility-batch))
 (common-lisp:progn
  (common-lisp:defun create-queue
@@ -1881,8 +1923,22 @@
                                                         "CreateQueue"
                                                         "2012-11-05"))
       common-lisp:nil "CreateQueueResult"
-      '(("QueueDeletedRecently" . queue-deleted-recently)
-        ("QueueNameExists" . queue-name-exists)))))
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'create-queue))
 (common-lisp:progn
  (common-lisp:defun delete-message
@@ -1901,8 +1957,22 @@
                                                         "DeleteMessage"
                                                         "2012-11-05"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidIdFormat" . invalid-id-format)
-        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)))))
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'delete-message))
 (common-lisp:progn
  (common-lisp:defun delete-message-batch
@@ -1921,10 +1991,22 @@
                                                         "DeleteMessageBatch"
                                                         "2012-11-05"))
       common-lisp:nil "DeleteMessageBatchResult"
-      '(("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
         ("EmptyBatchRequest" . empty-batch-request)
-        ("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
-        ("InvalidBatchEntryId" . invalid-batch-entry-id)))))
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'delete-message-batch))
 (common-lisp:progn
  (common-lisp:defun delete-queue
@@ -1942,7 +2024,23 @@
                                                         "POST" "/"
                                                         "DeleteQueue"
                                                         "2012-11-05"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'delete-queue))
 (common-lisp:progn
  (common-lisp:defun get-queue-attributes
@@ -1961,7 +2059,22 @@
                                                         "GetQueueAttributes"
                                                         "2012-11-05"))
       common-lisp:nil "GetQueueAttributesResult"
-      '(("InvalidAttributeName" . invalid-attribute-name)))))
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'get-queue-attributes))
 (common-lisp:progn
  (common-lisp:defun get-queue-url
@@ -1981,7 +2094,22 @@
                                                         "GetQueueUrl"
                                                         "2012-11-05"))
       common-lisp:nil "GetQueueUrlResult"
-      '(("QueueDoesNotExist" . queue-does-not-exist)))))
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'get-queue-url))
 (common-lisp:progn
  (common-lisp:defun list-dead-letter-source-queues
@@ -2001,7 +2129,22 @@
                                                         "ListDeadLetterSourceQueues"
                                                         "2012-11-05"))
       common-lisp:nil "ListDeadLetterSourceQueuesResult"
-      '(("QueueDoesNotExist" . queue-does-not-exist)))))
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'list-dead-letter-source-queues))
 (common-lisp:progn
  (common-lisp:defun list-queues
@@ -2018,7 +2161,23 @@
                                                         aws-sdk/generator/operation::input
                                                         "POST" "/" "ListQueues"
                                                         "2012-11-05"))
-      common-lisp:nil "ListQueuesResult" 'common-lisp:nil)))
+      common-lisp:nil "ListQueuesResult"
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'list-queues))
 (common-lisp:progn
  (common-lisp:defun purge-queue
@@ -2036,8 +2195,22 @@
                                                         "POST" "/" "PurgeQueue"
                                                         "2012-11-05"))
       common-lisp:nil common-lisp:nil
-      '(("QueueDoesNotExist" . queue-does-not-exist)
-        ("PurgeQueueInProgress" . purge-queue-in-progress)))))
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'purge-queue))
 (common-lisp:progn
  (common-lisp:defun receive-message
@@ -2061,7 +2234,23 @@
                                                         "POST" "/"
                                                         "ReceiveMessage"
                                                         "2012-11-05"))
-      common-lisp:nil "ReceiveMessageResult" '(("OverLimit" . over-limit)))))
+      common-lisp:nil "ReceiveMessageResult"
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'receive-message))
 (common-lisp:progn
  (common-lisp:defun remove-permission
@@ -2079,7 +2268,23 @@
                                                         "POST" "/"
                                                         "RemovePermission"
                                                         "2012-11-05"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'remove-permission))
 (common-lisp:progn
  (common-lisp:defun send-message
@@ -2102,7 +2307,21 @@
                                                         "SendMessage"
                                                         "2012-11-05"))
       common-lisp:nil "SendMessageResult"
-      '(("InvalidMessageContents" . invalid-message-contents)
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
         ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'send-message))
 (common-lisp:progn
@@ -2122,11 +2341,21 @@
                                                         "SendMessageBatch"
                                                         "2012-11-05"))
       common-lisp:nil "SendMessageBatchResult"
-      '(("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
-        ("EmptyBatchRequest" . empty-batch-request)
-        ("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
         ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
         ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
         ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'send-message-batch))
 (common-lisp:progn
@@ -2146,5 +2375,20 @@
                                                         "SetQueueAttributes"
                                                         "2012-11-05"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidAttributeName" . invalid-attribute-name)))))
+      '(("BatchEntryIdsNotDistinct" . batch-entry-ids-not-distinct)
+        ("BatchRequestTooLong" . batch-request-too-long)
+        ("EmptyBatchRequest" . empty-batch-request)
+        ("InvalidAttributeName" . invalid-attribute-name)
+        ("InvalidBatchEntryId" . invalid-batch-entry-id)
+        ("InvalidIdFormat" . invalid-id-format)
+        ("InvalidMessageContents" . invalid-message-contents)
+        ("MessageNotInflight" . message-not-inflight)
+        ("OverLimit" . over-limit)
+        ("PurgeQueueInProgress" . purge-queue-in-progress)
+        ("QueueDeletedRecently" . queue-deleted-recently)
+        ("QueueDoesNotExist" . queue-does-not-exist)
+        ("QueueNameExists" . queue-name-exists)
+        ("ReceiptHandleIsInvalid" . receipt-handle-is-invalid)
+        ("TooManyEntriesInBatchRequest" . too-many-entries-in-batch-request)
+        ("UnsupportedOperation" . unsupported-operation)))))
  (common-lisp:export 'set-queue-attributes))

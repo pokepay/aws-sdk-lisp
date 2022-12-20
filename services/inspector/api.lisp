@@ -4316,10 +4316,18 @@
                                                         "AddAttributesToFindings"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'add-attributes-to-findings))
 (common-lisp:progn
  (common-lisp:defun create-assessment-target
@@ -4340,11 +4348,18 @@
                                                         "CreateAssessmentTarget"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'create-assessment-target))
 (common-lisp:progn
  (common-lisp:defun create-assessment-template
@@ -4368,11 +4383,18 @@
                                                         "CreateAssessmentTemplate"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'create-assessment-template))
 (common-lisp:progn
  (common-lisp:defun create-resource-group
@@ -4391,10 +4413,18 @@
                                                         "CreateResourceGroup"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("AccessDeniedException" . access-denied-exception)))))
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'create-resource-group))
 (common-lisp:progn
  (common-lisp:defun delete-assessment-run
@@ -4413,12 +4443,18 @@
                                                         "DeleteAssessmentRun"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
         ("AssessmentRunInProgressException"
          . assessment-run-in-progress-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'delete-assessment-run))
 (common-lisp:progn
  (common-lisp:defun delete-assessment-target
@@ -4437,12 +4473,18 @@
                                                         "DeleteAssessmentTarget"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
         ("AssessmentRunInProgressException"
          . assessment-run-in-progress-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'delete-assessment-target))
 (common-lisp:progn
  (common-lisp:defun delete-assessment-template
@@ -4462,12 +4504,18 @@
                                                         "DeleteAssessmentTemplate"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
         ("AssessmentRunInProgressException"
          . assessment-run-in-progress-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'delete-assessment-template))
 (common-lisp:progn
  (common-lisp:defun describe-assessment-runs
@@ -4486,8 +4534,18 @@
                                                         "DescribeAssessmentRuns"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'describe-assessment-runs))
 (common-lisp:progn
  (common-lisp:defun describe-assessment-targets
@@ -4507,8 +4565,18 @@
                                                         "DescribeAssessmentTargets"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'describe-assessment-targets))
 (common-lisp:progn
  (common-lisp:defun describe-assessment-templates
@@ -4528,8 +4596,18 @@
                                                         "DescribeAssessmentTemplates"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'describe-assessment-templates))
 (common-lisp:progn
  (common-lisp:defun describe-cross-account-access-role ()
@@ -4540,7 +4618,18 @@
                                 `(("Action" ,@"DescribeCrossAccountAccessRole")
                                   ("Version" ,@"2016-02-16"))))
     common-lisp:nil common-lisp:nil
-    '(("InternalException" . internal-exception))))
+    '(("AccessDeniedException" . access-denied-exception)
+      ("AgentsAlreadyRunningAssessmentException"
+       . agents-already-running-assessment-exception)
+      ("AssessmentRunInProgressException"
+       . assessment-run-in-progress-exception)
+      ("InternalException" . internal-exception)
+      ("InvalidCrossAccountRoleException"
+       . invalid-cross-account-role-exception)
+      ("InvalidInputException" . invalid-input-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("NoSuchEntityException" . no-such-entity-exception)
+      ("UnsupportedFeatureException" . unsupported-feature-exception))))
  (common-lisp:export 'describe-cross-account-access-role))
 (common-lisp:progn
  (common-lisp:defun describe-findings
@@ -4559,8 +4648,18 @@
                                                         "DescribeFindings"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'describe-findings))
 (common-lisp:progn
  (common-lisp:defun describe-resource-groups
@@ -4579,8 +4678,18 @@
                                                         "DescribeResourceGroups"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'describe-resource-groups))
 (common-lisp:progn
  (common-lisp:defun describe-rules-packages
@@ -4599,8 +4708,18 @@
                                                         "DescribeRulesPackages"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)))))
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'describe-rules-packages))
 (common-lisp:progn
  (common-lisp:defun get-assessment-report
@@ -4621,12 +4740,17 @@
                                                         "GetAssessmentReport"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
         ("AssessmentRunInProgressException"
          . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
         ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'get-assessment-report))
 (common-lisp:progn
@@ -4646,10 +4770,18 @@
                                                         "GetTelemetryMetadata"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'get-telemetry-metadata))
 (common-lisp:progn
  (common-lisp:defun list-assessment-run-agents
@@ -4671,10 +4803,18 @@
                                                         "ListAssessmentRunAgents"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'list-assessment-run-agents))
 (common-lisp:progn
  (common-lisp:defun list-assessment-runs
@@ -4696,10 +4836,18 @@
                                                         "ListAssessmentRuns"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'list-assessment-runs))
 (common-lisp:progn
  (common-lisp:defun list-assessment-targets
@@ -4718,9 +4866,18 @@
                                                         "ListAssessmentTargets"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'list-assessment-targets))
 (common-lisp:progn
  (common-lisp:defun list-assessment-templates
@@ -4743,10 +4900,18 @@
                                                         "ListAssessmentTemplates"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'list-assessment-templates))
 (common-lisp:progn
  (common-lisp:defun list-event-subscriptions
@@ -4766,10 +4931,18 @@
                                                         "ListEventSubscriptions"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'list-event-subscriptions))
 (common-lisp:progn
  (common-lisp:defun list-findings
@@ -4790,10 +4963,18 @@
                                                         "ListFindings"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'list-findings))
 (common-lisp:progn
  (common-lisp:defun list-rules-packages
@@ -4812,9 +4993,18 @@
                                                         "ListRulesPackages"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'list-rules-packages))
 (common-lisp:progn
  (common-lisp:defun list-tags-for-resource
@@ -4833,10 +5023,18 @@
                                                         "ListTagsForResource"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'list-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun preview-agents
@@ -4857,12 +5055,18 @@
                                                         "PreviewAgents"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
         ("InvalidCrossAccountRoleException"
-         . invalid-cross-account-role-exception)))))
+         . invalid-cross-account-role-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'preview-agents))
 (common-lisp:progn
  (common-lisp:defun register-cross-account-access-role
@@ -4882,11 +5086,18 @@
                                                         "RegisterCrossAccountAccessRole"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
         ("InvalidCrossAccountRoleException"
-         . invalid-cross-account-role-exception)))))
+         . invalid-cross-account-role-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'register-cross-account-access-role))
 (common-lisp:progn
  (common-lisp:defun remove-attributes-from-findings
@@ -4906,10 +5117,18 @@
                                                         "RemoveAttributesFromFindings"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'remove-attributes-from-findings))
 (common-lisp:progn
  (common-lisp:defun set-tags-for-resource
@@ -4928,10 +5147,18 @@
                                                         "SetTagsForResource"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'set-tags-for-resource))
 (common-lisp:progn
  (common-lisp:defun start-assessment-run
@@ -4952,15 +5179,18 @@
                                                         "StartAssessmentRun"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
-        ("InvalidInputException" . invalid-input-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
         ("InvalidCrossAccountRoleException"
          . invalid-cross-account-role-exception)
-        ("AgentsAlreadyRunningAssessmentException"
-         . agents-already-running-assessment-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'start-assessment-run))
 (common-lisp:progn
  (common-lisp:defun stop-assessment-run
@@ -4979,10 +5209,18 @@
                                                         "StopAssessmentRun"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'stop-assessment-run))
 (common-lisp:progn
  (common-lisp:defun subscribe-to-event
@@ -5001,11 +5239,18 @@
                                                         "SubscribeToEvent"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'subscribe-to-event))
 (common-lisp:progn
  (common-lisp:defun unsubscribe-from-event
@@ -5024,10 +5269,18 @@
                                                         "UnsubscribeFromEvent"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'unsubscribe-from-event))
 (common-lisp:progn
  (common-lisp:defun update-assessment-target
@@ -5049,8 +5302,16 @@
                                                         "UpdateAssessmentTarget"
                                                         "2016-02-16"))
       common-lisp:nil common-lisp:nil
-      '(("InternalException" . internal-exception)
+      '(("AccessDeniedException" . access-denied-exception)
+        ("AgentsAlreadyRunningAssessmentException"
+         . agents-already-running-assessment-exception)
+        ("AssessmentRunInProgressException"
+         . assessment-run-in-progress-exception)
+        ("InternalException" . internal-exception)
+        ("InvalidCrossAccountRoleException"
+         . invalid-cross-account-role-exception)
         ("InvalidInputException" . invalid-input-exception)
-        ("AccessDeniedException" . access-denied-exception)
-        ("NoSuchEntityException" . no-such-entity-exception)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("NoSuchEntityException" . no-such-entity-exception)
+        ("UnsupportedFeatureException" . unsupported-feature-exception)))))
  (common-lisp:export 'update-assessment-target))

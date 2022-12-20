@@ -4610,11 +4610,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "AddTags" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
         ("InvalidTagException" . invalid-tag-exception)
-        ("TagLimitExceededException" . tag-limit-exceeded-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
  (common-lisp:defun create-batch-prediction
@@ -4634,10 +4638,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateBatchPrediction" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServerException" . internal-server-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'create-batch-prediction))
 (common-lisp:progn
  (common-lisp:defun create-data-source-from-rds
@@ -4657,10 +4666,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateDataSourceFromRDS" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServerException" . internal-server-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'create-data-source-from-rds))
 (common-lisp:progn
  (common-lisp:defun create-data-source-from-redshift
@@ -4681,10 +4695,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateDataSourceFromRedshift" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServerException" . internal-server-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'create-data-source-from-redshift))
 (common-lisp:progn
  (common-lisp:defun create-data-source-from-s3
@@ -4704,10 +4723,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateDataSourceFromS3" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServerException" . internal-server-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'create-data-source-from-s3))
 (common-lisp:progn
  (common-lisp:defun create-evaluation
@@ -4727,10 +4751,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateEvaluation" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServerException" . internal-server-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'create-evaluation))
 (common-lisp:progn
  (common-lisp:defun create-mlmodel
@@ -4750,10 +4779,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateMLModel" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServerException" . internal-server-exception)
-        ("IdempotentParameterMismatchException"
-         . idempotent-parameter-mismatch-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'create-mlmodel))
 (common-lisp:progn
  (common-lisp:defun create-realtime-endpoint
@@ -4770,9 +4804,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "CreateRealtimeEndpoint" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'create-realtime-endpoint))
 (common-lisp:progn
  (common-lisp:defun delete-batch-prediction
@@ -4789,9 +4829,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteBatchPrediction" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'delete-batch-prediction))
 (common-lisp:progn
  (common-lisp:defun delete-data-source
@@ -4808,9 +4854,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteDataSource" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'delete-data-source))
 (common-lisp:progn
  (common-lisp:defun delete-evaluation
@@ -4827,9 +4879,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteEvaluation" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'delete-evaluation))
 (common-lisp:progn
  (common-lisp:defun delete-mlmodel
@@ -4846,9 +4904,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteMLModel" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'delete-mlmodel))
 (common-lisp:progn
  (common-lisp:defun delete-realtime-endpoint
@@ -4865,9 +4929,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteRealtimeEndpoint" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'delete-realtime-endpoint))
 (common-lisp:progn
  (common-lisp:defun delete-tags
@@ -4885,10 +4955,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DeleteTags" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
         ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
  (common-lisp:defun describe-batch-predictions
@@ -4908,8 +4983,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeBatchPredictions" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
-        ("InternalServerException" . internal-server-exception)))))
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'describe-batch-predictions))
 (common-lisp:progn
  (common-lisp:defun describe-data-sources
@@ -4929,8 +5011,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeDataSources" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
-        ("InternalServerException" . internal-server-exception)))))
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'describe-data-sources))
 (common-lisp:progn
  (common-lisp:defun describe-evaluations
@@ -4950,8 +5039,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeEvaluations" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
-        ("InternalServerException" . internal-server-exception)))))
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'describe-evaluations))
 (common-lisp:progn
  (common-lisp:defun describe-mlmodels
@@ -4971,8 +5067,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeMLModels" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
-        ("InternalServerException" . internal-server-exception)))))
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'describe-mlmodels))
 (common-lisp:progn
  (common-lisp:defun describe-tags
@@ -4989,9 +5092,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "DescribeTags" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
  (common-lisp:defun get-batch-prediction
@@ -5008,9 +5117,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "GetBatchPrediction" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'get-batch-prediction))
 (common-lisp:progn
  (common-lisp:defun get-data-source
@@ -5027,9 +5142,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "GetDataSource" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'get-data-source))
 (common-lisp:progn
  (common-lisp:defun get-evaluation
@@ -5046,9 +5167,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "GetEvaluation" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'get-evaluation))
 (common-lisp:progn
  (common-lisp:defun get-mlmodel
@@ -5065,9 +5192,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "GetMLModel" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'get-mlmodel))
 (common-lisp:progn
  (common-lisp:defun predict
@@ -5085,11 +5218,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "Predict" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("LimitExceededException" . limit-exceeded-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
         ("InternalServerException" . internal-server-exception)
-        ("PredictorNotMountedException" . predictor-not-mounted-exception)))))
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'predict))
 (common-lisp:progn
  (common-lisp:defun update-batch-prediction
@@ -5108,9 +5245,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateBatchPrediction" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'update-batch-prediction))
 (common-lisp:progn
  (common-lisp:defun update-data-source
@@ -5128,9 +5271,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateDataSource" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'update-data-source))
 (common-lisp:progn
  (common-lisp:defun update-evaluation
@@ -5147,9 +5296,15 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateEvaluation" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'update-evaluation))
 (common-lisp:progn
  (common-lisp:defun update-mlmodel
@@ -5167,7 +5322,13 @@
         'machinelearning-request aws-sdk/generator/operation::input "POST" "/"
         "UpdateMLModel" "2014-12-12"))
       common-lisp:nil common-lisp:nil
-      '(("InvalidInputException" . invalid-input-exception)
+      '(("IdempotentParameterMismatchException"
+         . idempotent-parameter-mismatch-exception)
+        ("InternalServerException" . internal-server-exception)
+        ("InvalidInputException" . invalid-input-exception)
+        ("InvalidTagException" . invalid-tag-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("PredictorNotMountedException" . predictor-not-mounted-exception)
         ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerException" . internal-server-exception)))))
+        ("TagLimitExceededException" . tag-limit-exceeded-exception)))))
  (common-lisp:export 'update-mlmodel))

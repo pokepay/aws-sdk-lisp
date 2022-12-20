@@ -3868,10 +3868,16 @@
                                                         "BatchGetItem"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("ProvisionedThroughputExceededException"
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'batch-get-item))
 (common-lisp:progn
  (common-lisp:defun batch-write-item
@@ -3893,12 +3899,16 @@
                                                         "BatchWriteItem"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
         ("ItemCollectionSizeLimitExceededException"
          . item-collection-size-limit-exceeded-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'batch-write-item))
 (common-lisp:progn
  (common-lisp:defun create-table
@@ -3923,9 +3933,16 @@
                                                         "CreateTable"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceInUseException" . resource-in-use-exception)
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'create-table))
 (common-lisp:progn
  (common-lisp:defun delete-item
@@ -3953,12 +3970,14 @@
       common-lisp:nil common-lisp:nil
       '(("ConditionalCheckFailedException"
          . conditional-check-failed-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)
         ("ItemCollectionSizeLimitExceededException"
          . item-collection-size-limit-exceeded-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-item))
 (common-lisp:progn
  (common-lisp:defun delete-table
@@ -3977,10 +3996,16 @@
                                                         "DeleteTable"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'delete-table))
 (common-lisp:progn
  (common-lisp:defun describe-limits ()
@@ -3991,7 +4016,15 @@
                                 `(("Action" ,@"DescribeLimits")
                                   ("Version" ,@"2012-08-10"))))
     common-lisp:nil common-lisp:nil
-    '(("InternalServerError" . internal-server-error))))
+    '(("ConditionalCheckFailedException" . conditional-check-failed-exception)
+      ("InternalServerError" . internal-server-error)
+      ("ItemCollectionSizeLimitExceededException"
+       . item-collection-size-limit-exceeded-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("ProvisionedThroughputExceededException"
+       . provisioned-throughput-exceeded-exception)
+      ("ResourceInUseException" . resource-in-use-exception)
+      ("ResourceNotFoundException" . resource-not-found-exception))))
  (common-lisp:export 'describe-limits))
 (common-lisp:progn
  (common-lisp:defun describe-table
@@ -4010,8 +4043,16 @@
                                                         "DescribeTable"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-table))
 (common-lisp:progn
  (common-lisp:defun describe-time-to-live
@@ -4030,8 +4071,16 @@
                                                         "DescribeTimeToLive"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'describe-time-to-live))
 (common-lisp:progn
  (common-lisp:defun get-item
@@ -4054,10 +4103,16 @@
                                                         "POST" "/" "GetItem"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("ProvisionedThroughputExceededException"
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'get-item))
 (common-lisp:progn
  (common-lisp:defun list-tables
@@ -4076,7 +4131,16 @@
                                                         "POST" "/" "ListTables"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("InternalServerError" . internal-server-error)))))
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-tables))
 (common-lisp:progn
  (common-lisp:defun list-tags-of-resource
@@ -4095,8 +4159,16 @@
                                                         "ListTagsOfResource"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerError" . internal-server-error)))))
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'list-tags-of-resource))
 (common-lisp:progn
  (common-lisp:defun put-item
@@ -4123,12 +4195,14 @@
       common-lisp:nil common-lisp:nil
       '(("ConditionalCheckFailedException"
          . conditional-check-failed-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)
         ("ItemCollectionSizeLimitExceededException"
          . item-collection-size-limit-exceeded-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'put-item))
 (common-lisp:progn
  (common-lisp:defun query
@@ -4157,10 +4231,16 @@
                                                         "POST" "/" "Query"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("ProvisionedThroughputExceededException"
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'query))
 (common-lisp:progn
  (common-lisp:defun scan
@@ -4188,10 +4268,16 @@
                                                         "POST" "/" "Scan"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("ProvisionedThroughputExceededException"
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
          . provisioned-throughput-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'scan))
 (common-lisp:progn
  (common-lisp:defun tag-resource
@@ -4210,10 +4296,16 @@
                                                         "TagResource"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
         ("InternalServerError" . internal-server-error)
-        ("ResourceInUseException" . resource-in-use-exception)))))
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
  (common-lisp:defun untag-resource
@@ -4232,10 +4324,16 @@
                                                         "UntagResource"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("LimitExceededException" . limit-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
         ("InternalServerError" . internal-server-error)
-        ("ResourceInUseException" . resource-in-use-exception)))))
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
  (common-lisp:defun update-item
@@ -4263,12 +4361,14 @@
       common-lisp:nil common-lisp:nil
       '(("ConditionalCheckFailedException"
          . conditional-check-failed-exception)
-        ("ProvisionedThroughputExceededException"
-         . provisioned-throughput-exceeded-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+        ("InternalServerError" . internal-server-error)
         ("ItemCollectionSizeLimitExceededException"
          . item-collection-size-limit-exceeded-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'update-item))
 (common-lisp:progn
  (common-lisp:defun update-table
@@ -4292,10 +4392,16 @@
                                                         "UpdateTable"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'update-table))
 (common-lisp:progn
  (common-lisp:defun update-time-to-live
@@ -4315,8 +4421,14 @@
                                                         "UpdateTimeToLive"
                                                         "2012-08-10"))
       common-lisp:nil common-lisp:nil
-      '(("ResourceInUseException" . resource-in-use-exception)
-        ("ResourceNotFoundException" . resource-not-found-exception)
+      '(("ConditionalCheckFailedException"
+         . conditional-check-failed-exception)
+        ("InternalServerError" . internal-server-error)
+        ("ItemCollectionSizeLimitExceededException"
+         . item-collection-size-limit-exceeded-exception)
         ("LimitExceededException" . limit-exceeded-exception)
-        ("InternalServerError" . internal-server-error)))))
+        ("ProvisionedThroughputExceededException"
+         . provisioned-throughput-exceeded-exception)
+        ("ResourceInUseException" . resource-in-use-exception)
+        ("ResourceNotFoundException" . resource-not-found-exception)))))
  (common-lisp:export 'update-time-to-live))

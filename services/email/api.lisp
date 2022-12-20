@@ -5069,9 +5069,34 @@
                                                         "CloneReceiptRuleSet"
                                                         "2010-12-01"))
       common-lisp:nil "CloneReceiptRuleSetResult"
-      '(("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception)
-        ("AlreadyExistsException" . already-exists-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'clone-receipt-rule-set))
 (common-lisp:progn
  (common-lisp:defun create-configuration-set
@@ -5090,11 +5115,34 @@
                                                         "CreateConfigurationSet"
                                                         "2010-12-01"))
       common-lisp:nil "CreateConfigurationSetResult"
-      '(("ConfigurationSetAlreadyExistsException"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
          . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
         ("InvalidConfigurationSetException"
          . invalid-configuration-set-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'create-configuration-set))
 (common-lisp:progn
  (common-lisp:defun create-configuration-set-event-destination
@@ -5115,16 +5163,34 @@
                                                         "CreateConfigurationSetEventDestination"
                                                         "2010-12-01"))
       common-lisp:nil "CreateConfigurationSetEventDestinationResult"
-      '(("ConfigurationSetDoesNotExistException"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
          . configuration-set-does-not-exist-exception)
         ("EventDestinationAlreadyExistsException"
          . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
         ("InvalidCloudWatchDestinationException"
          . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
         ("InvalidFirehoseDestinationException"
          . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
         ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'create-configuration-set-event-destination))
 (common-lisp:progn
  (common-lisp:defun create-receipt-filter
@@ -5143,8 +5209,34 @@
                                                         "CreateReceiptFilter"
                                                         "2010-12-01"))
       common-lisp:nil "CreateReceiptFilterResult"
-      '(("LimitExceededException" . limit-exceeded-exception)
-        ("AlreadyExistsException" . already-exists-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'create-receipt-filter))
 (common-lisp:progn
  (common-lisp:defun create-receipt-rule
@@ -5163,13 +5255,34 @@
                                                         "CreateReceiptRule"
                                                         "2010-12-01"))
       common-lisp:nil "CreateReceiptRuleResult"
-      '(("InvalidSnsTopicException" . invalid-sns-topic-exception)
-        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
         ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
-        ("AlreadyExistsException" . already-exists-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
         ("RuleDoesNotExistException" . rule-does-not-exist-exception)
-        ("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'create-receipt-rule))
 (common-lisp:progn
  (common-lisp:defun create-receipt-rule-set
@@ -5189,7 +5302,33 @@
                                                         "2010-12-01"))
       common-lisp:nil "CreateReceiptRuleSetResult"
       '(("AlreadyExistsException" . already-exists-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'create-receipt-rule-set))
 (common-lisp:progn
  (common-lisp:defun delete-configuration-set
@@ -5208,8 +5347,34 @@
                                                         "DeleteConfigurationSet"
                                                         "2010-12-01"))
       common-lisp:nil "DeleteConfigurationSetResult"
-      '(("ConfigurationSetDoesNotExistException"
-         . configuration-set-does-not-exist-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'delete-configuration-set))
 (common-lisp:progn
  (common-lisp:defun delete-configuration-set-event-destination
@@ -5231,10 +5396,34 @@
                                                         "DeleteConfigurationSetEventDestination"
                                                         "2010-12-01"))
       common-lisp:nil "DeleteConfigurationSetEventDestinationResult"
-      '(("ConfigurationSetDoesNotExistException"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
          . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
         ("EventDestinationDoesNotExistException"
-         . event-destination-does-not-exist-exception)))))
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'delete-configuration-set-event-destination))
 (common-lisp:progn
  (common-lisp:defun delete-identity
@@ -5252,7 +5441,35 @@
                                                         "POST" "/"
                                                         "DeleteIdentity"
                                                         "2010-12-01"))
-      common-lisp:nil "DeleteIdentityResult" 'common-lisp:nil)))
+      common-lisp:nil "DeleteIdentityResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'delete-identity))
 (common-lisp:progn
  (common-lisp:defun delete-identity-policy
@@ -5270,7 +5487,35 @@
                                                         "POST" "/"
                                                         "DeleteIdentityPolicy"
                                                         "2010-12-01"))
-      common-lisp:nil "DeleteIdentityPolicyResult" 'common-lisp:nil)))
+      common-lisp:nil "DeleteIdentityPolicyResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'delete-identity-policy))
 (common-lisp:progn
  (common-lisp:defun delete-receipt-filter
@@ -5288,7 +5533,35 @@
                                                         "POST" "/"
                                                         "DeleteReceiptFilter"
                                                         "2010-12-01"))
-      common-lisp:nil "DeleteReceiptFilterResult" 'common-lisp:nil)))
+      common-lisp:nil "DeleteReceiptFilterResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'delete-receipt-filter))
 (common-lisp:progn
  (common-lisp:defun delete-receipt-rule
@@ -5307,7 +5580,33 @@
                                                         "DeleteReceiptRule"
                                                         "2010-12-01"))
       common-lisp:nil "DeleteReceiptRuleResult"
-      '(("RuleSetDoesNotExistException"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
          . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'delete-receipt-rule))
 (common-lisp:progn
@@ -5327,7 +5626,34 @@
                                                         "DeleteReceiptRuleSet"
                                                         "2010-12-01"))
       common-lisp:nil "DeleteReceiptRuleSetResult"
-      '(("CannotDeleteException" . cannot-delete-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'delete-receipt-rule-set))
 (common-lisp:progn
  (common-lisp:defun delete-verified-email-address
@@ -5346,7 +5672,35 @@
                                                         "POST" "/"
                                                         "DeleteVerifiedEmailAddress"
                                                         "2010-12-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'delete-verified-email-address))
 (common-lisp:progn
  (common-lisp:defun describe-active-receipt-rule-set ()
@@ -5355,7 +5709,34 @@
      (common-lisp:make-instance 'email-request :method "POST" :path "/" :params
                                 `(("Action" ,@"DescribeActiveReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "DescribeActiveReceiptRuleSetResult" 'common-lisp:nil))
+    common-lisp:nil "DescribeActiveReceiptRuleSetResult"
+    '(("AlreadyExistsException" . already-exists-exception)
+      ("CannotDeleteException" . cannot-delete-exception)
+      ("ConfigurationSetAlreadyExistsException"
+       . configuration-set-already-exists-exception)
+      ("ConfigurationSetDoesNotExistException"
+       . configuration-set-does-not-exist-exception)
+      ("EventDestinationAlreadyExistsException"
+       . event-destination-already-exists-exception)
+      ("EventDestinationDoesNotExistException"
+       . event-destination-does-not-exist-exception)
+      ("InvalidCloudWatchDestinationException"
+       . invalid-cloud-watch-destination-exception)
+      ("InvalidConfigurationSetException"
+       . invalid-configuration-set-exception)
+      ("InvalidFirehoseDestinationException"
+       . invalid-firehose-destination-exception)
+      ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+      ("InvalidPolicyException" . invalid-policy-exception)
+      ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+      ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+      ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MailFromDomainNotVerifiedException"
+       . mail-from-domain-not-verified-exception)
+      ("MessageRejected" . message-rejected)
+      ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+      ("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception))))
  (common-lisp:export 'describe-active-receipt-rule-set))
 (common-lisp:progn
  (common-lisp:defun describe-configuration-set
@@ -5378,8 +5759,34 @@
                                                         "DescribeConfigurationSet"
                                                         "2010-12-01"))
       common-lisp:nil "DescribeConfigurationSetResult"
-      '(("ConfigurationSetDoesNotExistException"
-         . configuration-set-does-not-exist-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'describe-configuration-set))
 (common-lisp:progn
  (common-lisp:defun describe-receipt-rule
@@ -5398,7 +5805,32 @@
                                                         "DescribeReceiptRule"
                                                         "2010-12-01"))
       common-lisp:nil "DescribeReceiptRuleResult"
-      '(("RuleDoesNotExistException" . rule-does-not-exist-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
         ("RuleSetDoesNotExistException"
          . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'describe-receipt-rule))
@@ -5420,7 +5852,33 @@
                                                         "DescribeReceiptRuleSet"
                                                         "2010-12-01"))
       common-lisp:nil "DescribeReceiptRuleSetResult"
-      '(("RuleSetDoesNotExistException"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
          . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'describe-receipt-rule-set))
 (common-lisp:progn
@@ -5440,7 +5898,35 @@
                                                         "POST" "/"
                                                         "GetIdentityDkimAttributes"
                                                         "2010-12-01"))
-      common-lisp:nil "GetIdentityDkimAttributesResult" 'common-lisp:nil)))
+      common-lisp:nil "GetIdentityDkimAttributesResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'get-identity-dkim-attributes))
 (common-lisp:progn
  (common-lisp:defun get-identity-mail-from-domain-attributes
@@ -5460,7 +5946,34 @@
                                                         "GetIdentityMailFromDomainAttributes"
                                                         "2010-12-01"))
       common-lisp:nil "GetIdentityMailFromDomainAttributesResult"
-      'common-lisp:nil)))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'get-identity-mail-from-domain-attributes))
 (common-lisp:progn
  (common-lisp:defun get-identity-notification-attributes
@@ -5480,7 +5993,34 @@
                                                         "GetIdentityNotificationAttributes"
                                                         "2010-12-01"))
       common-lisp:nil "GetIdentityNotificationAttributesResult"
-      'common-lisp:nil)))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'get-identity-notification-attributes))
 (common-lisp:progn
  (common-lisp:defun get-identity-policies
@@ -5498,7 +6038,35 @@
                                                         "POST" "/"
                                                         "GetIdentityPolicies"
                                                         "2010-12-01"))
-      common-lisp:nil "GetIdentityPoliciesResult" 'common-lisp:nil)))
+      common-lisp:nil "GetIdentityPoliciesResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'get-identity-policies))
 (common-lisp:progn
  (common-lisp:defun get-identity-verification-attributes
@@ -5518,7 +6086,34 @@
                                                         "GetIdentityVerificationAttributes"
                                                         "2010-12-01"))
       common-lisp:nil "GetIdentityVerificationAttributesResult"
-      'common-lisp:nil)))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'get-identity-verification-attributes))
 (common-lisp:progn
  (common-lisp:defun get-send-quota ()
@@ -5527,7 +6122,34 @@
      (common-lisp:make-instance 'email-request :method "POST" :path "/" :params
                                 `(("Action" ,@"GetSendQuota")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "GetSendQuotaResult" 'common-lisp:nil))
+    common-lisp:nil "GetSendQuotaResult"
+    '(("AlreadyExistsException" . already-exists-exception)
+      ("CannotDeleteException" . cannot-delete-exception)
+      ("ConfigurationSetAlreadyExistsException"
+       . configuration-set-already-exists-exception)
+      ("ConfigurationSetDoesNotExistException"
+       . configuration-set-does-not-exist-exception)
+      ("EventDestinationAlreadyExistsException"
+       . event-destination-already-exists-exception)
+      ("EventDestinationDoesNotExistException"
+       . event-destination-does-not-exist-exception)
+      ("InvalidCloudWatchDestinationException"
+       . invalid-cloud-watch-destination-exception)
+      ("InvalidConfigurationSetException"
+       . invalid-configuration-set-exception)
+      ("InvalidFirehoseDestinationException"
+       . invalid-firehose-destination-exception)
+      ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+      ("InvalidPolicyException" . invalid-policy-exception)
+      ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+      ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+      ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MailFromDomainNotVerifiedException"
+       . mail-from-domain-not-verified-exception)
+      ("MessageRejected" . message-rejected)
+      ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+      ("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception))))
  (common-lisp:export 'get-send-quota))
 (common-lisp:progn
  (common-lisp:defun get-send-statistics ()
@@ -5536,7 +6158,34 @@
      (common-lisp:make-instance 'email-request :method "POST" :path "/" :params
                                 `(("Action" ,@"GetSendStatistics")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "GetSendStatisticsResult" 'common-lisp:nil))
+    common-lisp:nil "GetSendStatisticsResult"
+    '(("AlreadyExistsException" . already-exists-exception)
+      ("CannotDeleteException" . cannot-delete-exception)
+      ("ConfigurationSetAlreadyExistsException"
+       . configuration-set-already-exists-exception)
+      ("ConfigurationSetDoesNotExistException"
+       . configuration-set-does-not-exist-exception)
+      ("EventDestinationAlreadyExistsException"
+       . event-destination-already-exists-exception)
+      ("EventDestinationDoesNotExistException"
+       . event-destination-does-not-exist-exception)
+      ("InvalidCloudWatchDestinationException"
+       . invalid-cloud-watch-destination-exception)
+      ("InvalidConfigurationSetException"
+       . invalid-configuration-set-exception)
+      ("InvalidFirehoseDestinationException"
+       . invalid-firehose-destination-exception)
+      ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+      ("InvalidPolicyException" . invalid-policy-exception)
+      ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+      ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+      ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MailFromDomainNotVerifiedException"
+       . mail-from-domain-not-verified-exception)
+      ("MessageRejected" . message-rejected)
+      ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+      ("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception))))
  (common-lisp:export 'get-send-statistics))
 (common-lisp:progn
  (common-lisp:defun list-configuration-sets
@@ -5554,7 +6203,35 @@
                                                         "POST" "/"
                                                         "ListConfigurationSets"
                                                         "2010-12-01"))
-      common-lisp:nil "ListConfigurationSetsResult" 'common-lisp:nil)))
+      common-lisp:nil "ListConfigurationSetsResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'list-configuration-sets))
 (common-lisp:progn
  (common-lisp:defun list-identities
@@ -5573,7 +6250,35 @@
                                                         "POST" "/"
                                                         "ListIdentities"
                                                         "2010-12-01"))
-      common-lisp:nil "ListIdentitiesResult" 'common-lisp:nil)))
+      common-lisp:nil "ListIdentitiesResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'list-identities))
 (common-lisp:progn
  (common-lisp:defun list-identity-policies
@@ -5591,7 +6296,35 @@
                                                         "POST" "/"
                                                         "ListIdentityPolicies"
                                                         "2010-12-01"))
-      common-lisp:nil "ListIdentityPoliciesResult" 'common-lisp:nil)))
+      common-lisp:nil "ListIdentityPoliciesResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'list-identity-policies))
 (common-lisp:progn
  (common-lisp:defun list-receipt-filters ()
@@ -5600,7 +6333,34 @@
      (common-lisp:make-instance 'email-request :method "POST" :path "/" :params
                                 `(("Action" ,@"ListReceiptFilters")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "ListReceiptFiltersResult" 'common-lisp:nil))
+    common-lisp:nil "ListReceiptFiltersResult"
+    '(("AlreadyExistsException" . already-exists-exception)
+      ("CannotDeleteException" . cannot-delete-exception)
+      ("ConfigurationSetAlreadyExistsException"
+       . configuration-set-already-exists-exception)
+      ("ConfigurationSetDoesNotExistException"
+       . configuration-set-does-not-exist-exception)
+      ("EventDestinationAlreadyExistsException"
+       . event-destination-already-exists-exception)
+      ("EventDestinationDoesNotExistException"
+       . event-destination-does-not-exist-exception)
+      ("InvalidCloudWatchDestinationException"
+       . invalid-cloud-watch-destination-exception)
+      ("InvalidConfigurationSetException"
+       . invalid-configuration-set-exception)
+      ("InvalidFirehoseDestinationException"
+       . invalid-firehose-destination-exception)
+      ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+      ("InvalidPolicyException" . invalid-policy-exception)
+      ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+      ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+      ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MailFromDomainNotVerifiedException"
+       . mail-from-domain-not-verified-exception)
+      ("MessageRejected" . message-rejected)
+      ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+      ("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception))))
  (common-lisp:export 'list-receipt-filters))
 (common-lisp:progn
  (common-lisp:defun list-receipt-rule-sets
@@ -5618,7 +6378,35 @@
                                                         "POST" "/"
                                                         "ListReceiptRuleSets"
                                                         "2010-12-01"))
-      common-lisp:nil "ListReceiptRuleSetsResult" 'common-lisp:nil)))
+      common-lisp:nil "ListReceiptRuleSetsResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'list-receipt-rule-sets))
 (common-lisp:progn
  (common-lisp:defun list-verified-email-addresses ()
@@ -5627,7 +6415,34 @@
      (common-lisp:make-instance 'email-request :method "POST" :path "/" :params
                                 `(("Action" ,@"ListVerifiedEmailAddresses")
                                   ("Version" ,@"2010-12-01"))))
-    common-lisp:nil "ListVerifiedEmailAddressesResult" 'common-lisp:nil))
+    common-lisp:nil "ListVerifiedEmailAddressesResult"
+    '(("AlreadyExistsException" . already-exists-exception)
+      ("CannotDeleteException" . cannot-delete-exception)
+      ("ConfigurationSetAlreadyExistsException"
+       . configuration-set-already-exists-exception)
+      ("ConfigurationSetDoesNotExistException"
+       . configuration-set-does-not-exist-exception)
+      ("EventDestinationAlreadyExistsException"
+       . event-destination-already-exists-exception)
+      ("EventDestinationDoesNotExistException"
+       . event-destination-does-not-exist-exception)
+      ("InvalidCloudWatchDestinationException"
+       . invalid-cloud-watch-destination-exception)
+      ("InvalidConfigurationSetException"
+       . invalid-configuration-set-exception)
+      ("InvalidFirehoseDestinationException"
+       . invalid-firehose-destination-exception)
+      ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+      ("InvalidPolicyException" . invalid-policy-exception)
+      ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+      ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+      ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+      ("LimitExceededException" . limit-exceeded-exception)
+      ("MailFromDomainNotVerifiedException"
+       . mail-from-domain-not-verified-exception)
+      ("MessageRejected" . message-rejected)
+      ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+      ("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception))))
  (common-lisp:export 'list-verified-email-addresses))
 (common-lisp:progn
  (common-lisp:defun put-identity-policy
@@ -5646,7 +6461,34 @@
                                                         "PutIdentityPolicy"
                                                         "2010-12-01"))
       common-lisp:nil "PutIdentityPolicyResult"
-      '(("InvalidPolicyException" . invalid-policy-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'put-identity-policy))
 (common-lisp:progn
  (common-lisp:defun reorder-receipt-rule-set
@@ -5665,8 +6507,34 @@
                                                         "ReorderReceiptRuleSet"
                                                         "2010-12-01"))
       common-lisp:nil "ReorderReceiptRuleSetResult"
-      '(("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception)
-        ("RuleDoesNotExistException" . rule-does-not-exist-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'reorder-receipt-rule-set))
 (common-lisp:progn
  (common-lisp:defun send-bounce
@@ -5688,7 +6556,34 @@
                                                         "POST" "/" "SendBounce"
                                                         "2010-12-01"))
       common-lisp:nil "SendBounceResult"
-      '(("MessageRejected" . message-rejected)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'send-bounce))
 (common-lisp:progn
  (common-lisp:defun send-email
@@ -5710,11 +6605,34 @@
                                                         "POST" "/" "SendEmail"
                                                         "2010-12-01"))
       common-lisp:nil "SendEmailResult"
-      '(("MessageRejected" . message-rejected)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MailFromDomainNotVerifiedException"
          . mail-from-domain-not-verified-exception)
-        ("ConfigurationSetDoesNotExistException"
-         . configuration-set-does-not-exist-exception)))))
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'send-email))
 (common-lisp:progn
  (common-lisp:defun send-raw-email
@@ -5736,11 +6654,34 @@
                                                         "SendRawEmail"
                                                         "2010-12-01"))
       common-lisp:nil "SendRawEmailResult"
-      '(("MessageRejected" . message-rejected)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
         ("MailFromDomainNotVerifiedException"
          . mail-from-domain-not-verified-exception)
-        ("ConfigurationSetDoesNotExistException"
-         . configuration-set-does-not-exist-exception)))))
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'send-raw-email))
 (common-lisp:progn
  (common-lisp:defun set-active-receipt-rule-set
@@ -5760,7 +6701,33 @@
                                                         "SetActiveReceiptRuleSet"
                                                         "2010-12-01"))
       common-lisp:nil "SetActiveReceiptRuleSetResult"
-      '(("RuleSetDoesNotExistException"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
          . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'set-active-receipt-rule-set))
 (common-lisp:progn
@@ -5780,7 +6747,35 @@
                                                         "POST" "/"
                                                         "SetIdentityDkimEnabled"
                                                         "2010-12-01"))
-      common-lisp:nil "SetIdentityDkimEnabledResult" 'common-lisp:nil)))
+      common-lisp:nil "SetIdentityDkimEnabledResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'set-identity-dkim-enabled))
 (common-lisp:progn
  (common-lisp:defun set-identity-feedback-forwarding-enabled
@@ -5800,7 +6795,34 @@
                                                         "SetIdentityFeedbackForwardingEnabled"
                                                         "2010-12-01"))
       common-lisp:nil "SetIdentityFeedbackForwardingEnabledResult"
-      'common-lisp:nil)))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'set-identity-feedback-forwarding-enabled))
 (common-lisp:progn
  (common-lisp:defun set-identity-headers-in-notifications-enabled
@@ -5821,7 +6843,34 @@
                                                         "SetIdentityHeadersInNotificationsEnabled"
                                                         "2010-12-01"))
       common-lisp:nil "SetIdentityHeadersInNotificationsEnabledResult"
-      'common-lisp:nil)))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'set-identity-headers-in-notifications-enabled))
 (common-lisp:progn
  (common-lisp:defun set-identity-mail-from-domain
@@ -5842,7 +6891,35 @@
                                                         "POST" "/"
                                                         "SetIdentityMailFromDomain"
                                                         "2010-12-01"))
-      common-lisp:nil "SetIdentityMailFromDomainResult" 'common-lisp:nil)))
+      common-lisp:nil "SetIdentityMailFromDomainResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'set-identity-mail-from-domain))
 (common-lisp:progn
  (common-lisp:defun set-identity-notification-topic
@@ -5862,7 +6939,35 @@
                                                         "POST" "/"
                                                         "SetIdentityNotificationTopic"
                                                         "2010-12-01"))
-      common-lisp:nil "SetIdentityNotificationTopicResult" 'common-lisp:nil)))
+      common-lisp:nil "SetIdentityNotificationTopicResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'set-identity-notification-topic))
 (common-lisp:progn
  (common-lisp:defun set-receipt-rule-position
@@ -5882,8 +6987,34 @@
                                                         "SetReceiptRulePosition"
                                                         "2010-12-01"))
       common-lisp:nil "SetReceiptRulePositionResult"
-      '(("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception)
-        ("RuleDoesNotExistException" . rule-does-not-exist-exception)))))
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'set-receipt-rule-position))
 (common-lisp:progn
  (common-lisp:defun update-configuration-set-event-destination
@@ -5904,16 +7035,34 @@
                                                         "UpdateConfigurationSetEventDestination"
                                                         "2010-12-01"))
       common-lisp:nil "UpdateConfigurationSetEventDestinationResult"
-      '(("ConfigurationSetDoesNotExistException"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
          . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
         ("EventDestinationDoesNotExistException"
          . event-destination-does-not-exist-exception)
         ("InvalidCloudWatchDestinationException"
          . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
         ("InvalidFirehoseDestinationException"
          . invalid-firehose-destination-exception)
-        ("InvalidSNSDestinationException"
-         . invalid-snsdestination-exception)))))
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'update-configuration-set-event-destination))
 (common-lisp:progn
  (common-lisp:defun update-receipt-rule
@@ -5932,12 +7081,34 @@
                                                         "UpdateReceiptRule"
                                                         "2010-12-01"))
       common-lisp:nil "UpdateReceiptRuleResult"
-      '(("InvalidSnsTopicException" . invalid-sns-topic-exception)
-        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
         ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
-        ("RuleSetDoesNotExistException" . rule-set-does-not-exist-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
         ("RuleDoesNotExistException" . rule-does-not-exist-exception)
-        ("LimitExceededException" . limit-exceeded-exception)))))
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'update-receipt-rule))
 (common-lisp:progn
  (common-lisp:defun verify-domain-dkim
@@ -5955,7 +7126,35 @@
                                                         "POST" "/"
                                                         "VerifyDomainDkim"
                                                         "2010-12-01"))
-      common-lisp:nil "VerifyDomainDkimResult" 'common-lisp:nil)))
+      common-lisp:nil "VerifyDomainDkimResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'verify-domain-dkim))
 (common-lisp:progn
  (common-lisp:defun verify-domain-identity
@@ -5973,7 +7172,35 @@
                                                         "POST" "/"
                                                         "VerifyDomainIdentity"
                                                         "2010-12-01"))
-      common-lisp:nil "VerifyDomainIdentityResult" 'common-lisp:nil)))
+      common-lisp:nil "VerifyDomainIdentityResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'verify-domain-identity))
 (common-lisp:progn
  (common-lisp:defun verify-email-address
@@ -5991,7 +7218,35 @@
                                                         "POST" "/"
                                                         "VerifyEmailAddress"
                                                         "2010-12-01"))
-      common-lisp:nil common-lisp:nil 'common-lisp:nil)))
+      common-lisp:nil common-lisp:nil
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'verify-email-address))
 (common-lisp:progn
  (common-lisp:defun verify-email-identity
@@ -6009,5 +7264,33 @@
                                                         "POST" "/"
                                                         "VerifyEmailIdentity"
                                                         "2010-12-01"))
-      common-lisp:nil "VerifyEmailIdentityResult" 'common-lisp:nil)))
+      common-lisp:nil "VerifyEmailIdentityResult"
+      '(("AlreadyExistsException" . already-exists-exception)
+        ("CannotDeleteException" . cannot-delete-exception)
+        ("ConfigurationSetAlreadyExistsException"
+         . configuration-set-already-exists-exception)
+        ("ConfigurationSetDoesNotExistException"
+         . configuration-set-does-not-exist-exception)
+        ("EventDestinationAlreadyExistsException"
+         . event-destination-already-exists-exception)
+        ("EventDestinationDoesNotExistException"
+         . event-destination-does-not-exist-exception)
+        ("InvalidCloudWatchDestinationException"
+         . invalid-cloud-watch-destination-exception)
+        ("InvalidConfigurationSetException"
+         . invalid-configuration-set-exception)
+        ("InvalidFirehoseDestinationException"
+         . invalid-firehose-destination-exception)
+        ("InvalidLambdaFunctionException" . invalid-lambda-function-exception)
+        ("InvalidPolicyException" . invalid-policy-exception)
+        ("InvalidS3ConfigurationException" . invalid-s3configuration-exception)
+        ("InvalidSNSDestinationException" . invalid-snsdestination-exception)
+        ("InvalidSnsTopicException" . invalid-sns-topic-exception)
+        ("LimitExceededException" . limit-exceeded-exception)
+        ("MailFromDomainNotVerifiedException"
+         . mail-from-domain-not-verified-exception)
+        ("MessageRejected" . message-rejected)
+        ("RuleDoesNotExistException" . rule-does-not-exist-exception)
+        ("RuleSetDoesNotExistException"
+         . rule-set-does-not-exist-exception)))))
  (common-lisp:export 'verify-email-identity))

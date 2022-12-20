@@ -7295,10 +7295,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-app))
 (common-lisp:progn
@@ -7330,10 +7330,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-campaign))
 (common-lisp:progn
@@ -7365,10 +7365,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-import-job))
 (common-lisp:progn
@@ -7400,10 +7400,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'create-segment))
 (common-lisp:progn
@@ -7434,10 +7434,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-apns-channel))
 (common-lisp:progn
@@ -7469,10 +7469,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-apns-sandbox-channel))
 (common-lisp:progn
@@ -7503,10 +7503,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-app))
 (common-lisp:progn
@@ -7541,10 +7541,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-campaign))
 (common-lisp:progn
@@ -7575,10 +7575,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-email-channel))
 (common-lisp:progn
@@ -7609,10 +7609,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-event-stream))
 (common-lisp:progn
@@ -7643,10 +7643,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-gcm-channel))
 (common-lisp:progn
@@ -7681,10 +7681,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-segment))
 (common-lisp:progn
@@ -7715,10 +7715,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'delete-sms-channel))
 (common-lisp:progn
@@ -7749,10 +7749,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-apns-channel))
 (common-lisp:progn
@@ -7783,10 +7783,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-apns-sandbox-channel))
 (common-lisp:progn
@@ -7816,10 +7816,10 @@
                                                         "GetApp" "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-app))
 (common-lisp:progn
@@ -7850,10 +7850,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-application-settings))
 (common-lisp:progn
@@ -7874,10 +7874,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-apps))
 (common-lisp:progn
@@ -7912,10 +7912,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-campaign))
 (common-lisp:progn
@@ -7952,10 +7952,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-campaign-activities))
 (common-lisp:progn
@@ -7995,10 +7995,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-campaign-version))
 (common-lisp:progn
@@ -8035,10 +8035,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-campaign-versions))
 (common-lisp:progn
@@ -8069,10 +8069,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-campaigns))
 (common-lisp:progn
@@ -8103,10 +8103,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-email-channel))
 (common-lisp:progn
@@ -8141,10 +8141,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-endpoint))
 (common-lisp:progn
@@ -8175,10 +8175,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-event-stream))
 (common-lisp:progn
@@ -8209,10 +8209,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-gcm-channel))
 (common-lisp:progn
@@ -8247,10 +8247,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-import-job))
 (common-lisp:progn
@@ -8281,10 +8281,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-import-jobs))
 (common-lisp:progn
@@ -8319,10 +8319,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-segment))
 (common-lisp:progn
@@ -8359,10 +8359,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-segment-import-jobs))
 (common-lisp:progn
@@ -8402,10 +8402,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-segment-version))
 (common-lisp:progn
@@ -8442,10 +8442,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-segment-versions))
 (common-lisp:progn
@@ -8476,10 +8476,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-segments))
 (common-lisp:progn
@@ -8510,10 +8510,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'get-sms-channel))
 (common-lisp:progn
@@ -8545,10 +8545,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'put-event-stream))
 (common-lisp:progn
@@ -8579,10 +8579,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'send-messages))
 (common-lisp:progn
@@ -8614,10 +8614,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-apns-channel))
 (common-lisp:progn
@@ -8651,10 +8651,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-apns-sandbox-channel))
 (common-lisp:progn
@@ -8688,10 +8688,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-application-settings))
 (common-lisp:progn
@@ -8728,10 +8728,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-campaign))
 (common-lisp:progn
@@ -8763,10 +8763,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-email-channel))
 (common-lisp:progn
@@ -8803,10 +8803,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-endpoint))
 (common-lisp:progn
@@ -8838,10 +8838,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-endpoints-batch))
 (common-lisp:progn
@@ -8873,10 +8873,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-gcm-channel))
 (common-lisp:progn
@@ -8913,10 +8913,10 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-segment))
 (common-lisp:progn
@@ -8948,9 +8948,9 @@
                                                         "2016-12-01"))
       "structure" common-lisp:nil
       '(("BadRequestException" . bad-request-exception)
-        ("InternalServerErrorException" . internal-server-error-exception)
         ("ForbiddenException" . forbidden-exception)
-        ("NotFoundException" . not-found-exception)
+        ("InternalServerErrorException" . internal-server-error-exception)
         ("MethodNotAllowedException" . method-not-allowed-exception)
+        ("NotFoundException" . not-found-exception)
         ("TooManyRequestsException" . too-many-requests-exception)))))
  (common-lisp:export 'update-sms-channel))
